@@ -40,7 +40,7 @@ public class Handler extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
         HttpSession session = request.getSession();
 
-//        Session lv = new Session();
+        Session lv = new Session();
 //        lv.setUser_code("devel");
 //        lv.setUser_name("test2");
 //        lv.setSite_code("S0001");

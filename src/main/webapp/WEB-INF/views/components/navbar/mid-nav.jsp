@@ -75,7 +75,7 @@
                     <c:if test="${main_list.menu_name eq '자재관리'}">
                     <i class="menu-icon fa fa-map"></i>
                     </c:if>
-                    <c:if test="${main_list.menu_name eq '출하관리'}">
+                    <c:if test="${main_list.menu_name eq '제품관리'}">
                     <i class="menu-icon fa fa-truck"></i>
                     </c:if>
                     <c:if test="${main_list.menu_name eq '영업관리'}">
@@ -93,6 +93,7 @@
                     <c:if test="${main_list.menu_name eq '설비관리'}">
                     <i class="menu-icon fa fa-wrench"></i>
                     </c:if>
+
                     <c:if test="${main_list.menu_name eq '게시판'}">
                     <a href="javascript:void(0);" style="cursor:pointer;">
                         <i class="menu-icon fa fa-comments"></i>

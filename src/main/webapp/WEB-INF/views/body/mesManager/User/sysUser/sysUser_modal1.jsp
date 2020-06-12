@@ -49,7 +49,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 전화번호 </div>
             <div class="profile-info-value">
-                <input type="text" name="tel_no" class="form-control modal_value" onkeyup="num_keyup_hyphen(this)">
+                <input type="text" name="tel_no" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_hyphen(this)">
             </div>
         </div>
         <div class="profile-info-row">

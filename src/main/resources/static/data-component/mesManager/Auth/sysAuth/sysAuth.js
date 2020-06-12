@@ -17,15 +17,12 @@ var main_data = {
 $(document).ready(function () {
     authcheck(); // 권한 체크
     msg_get(); // 메세지 설정
-
     /*----모달----*/
     modal_start1(); // 모달1 시작 함수
-
     /*----그리드----*/
     jqGrid_main(); // main 그리드 생성
     jqGridResize("#mes_grid" , $('#mes_grid').closest('[class*="col-"]')); // 그리드 resize
     jqgridPagerIcons(); // 그리드 아이콘 설정
-    get_btn(1); // 페이지 load 동시에 그리드 조회
 
     // ccn_ajax("/test0609", {}).then(function (data) { // ajax 통신으로 해당 메뉴의 권한을 가져 온다
     //     console.log(data); // main_data 에 권한 데이터를 담는다.

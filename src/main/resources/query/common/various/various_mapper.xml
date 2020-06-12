@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.Various.VariousMapper">
+    <select id="sysSuppGet" resultType="com.mes.Common.Various.DTO.SYSSupp">
+		EXEC [SP_SYS_SUPP_GET]  #{page},#{rows},#{keyword},#{keyword2}
+   </select>
+    <select id="sysBPartGroupSelectGet" resultType="com.mes.mesScm.Standard.DTO.sysBPartGroup">
+		EXEC [SP_SYS_BPART_GROUP_GET]  0,0,#{keyword},''
+   </select>
+    <select id="sysLocAllGet" resultType="com.mes.mesScm.Standard.DTO.sysLoc">
+		EXEC [SP_SYS_LOC_GET]  0,0,'',#{keyword}
+   </select>
+    <select id="sysCommonUnitGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
+		EXEC [SP_SYS_COMMON_GET]  0,0,'UNIT','','Y'
+   </select>
+
+    <select id="sysBPartModalGet" resultType="com.mes.mesScm.Standard.DTO.sysBPart">
+        EXEC SP_SYS_BPART_GET #{page}, #{rows},'', #{keyword2}, '',#{keyword}
+    </select>
+
+    <select id="sysBPartAllGet" resultType="com.mes.mesScm.Standard.DTO.sysBPart">
+        EXEC SP_SYS_BPART_GET #{page}, #{rows},#{keyword}, #{keyword2}, '',''
+    </select>
+
+    <select id="sysCommonAllGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
+        EXEC SP_SYS_COMMON_GET 0,0,#{keyword}, '','Y'
+    </select>
+    <select id="sysPartTypeGet" resultType="com.mes.Common.Various.DTO.SYSPartType">
+        EXEC SP_SYS_PART_TYPE_GET #{keyword}
+    </select>
+    <select id="sysPartTypeOneGet" resultType="com.mes.Common.Various.DTO.SYSPartType">
+        EXEC SP_SYS_PART_TYPE_GET #{keyword},#{keyword2}
+    </select>
+    <select id="qmsQcItemAllGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_ITEM">
+        EXEC SP_SYS_QC_ITEM_GET #{page},#{rows},#{keyword},#{keyword2},''
+    </select>
+
+    <select id="tpmMachineAllGet" resultType="com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD">
+        EXEC SP_TPM_MACHINE_GET 0,0,#{keyword},''
+    </select>
+
+    <select id="getLine" resultType="com.mes.mesManager.Master.DTO.SYSProdLine">
+        EXEC SP_SYS_LINE_GET 0,0,'D9000','';
+    </select>
+
+    <select id="tpmMachineRegItemAllGet" resultType="com.mes.mesTpm.RegItem.DTO.TPM_REG_ITEM_CD">
+        EXEC SP_TPM_REG_ITEM_GET  0,0,'',#{keyword}
+    </select>
+
+    <select id="menuAuthGet" resultType="com.mes.mesManager.Authority.DTO.SYSAuthProgram">
+   		EXEC SP_SYS_AUTH_MENU_GET  #{keyword} ,#{user_code}
+   </select>
+
+
+    <select id="crmOrderModalGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_ORD_RECP">
+		EXEC [SP_CRM_ORD_RECP_DIALOG_GET]  #{page},#{rows}, #{start_date},#{end_date} ,''
+   </select>
+
+    <select id="suppModalGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
+        EXEC SP_SYS_SUPP_GET2 #{page},#{rows},#{keyword},#{keyword2},#{keyword3},'Y'
+    </select>
+
+    <select id="sysPartGroupAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_GROUP">
+        EXEC SP_SYS_PART_GROUP_GET 0,0,#{keyword},''
+    </select>
+
+    <select id="partGroup1" resultType="com.mes.Common.Various.DTO.VT_PART_GROUP">
+        SELECT * FROM VT_PART_GROUP1 WHERE SITE_CODE = #{site_code} AND PART_TYPE = #{keyword}
+        ORDER BY PART_GRP_CODE
+    </select>
+    <select id="partGroup2" resultType="com.mes.Common.Various.DTO.VT_PART_GROUP">
+        SELECT * FROM VT_PART_GROUP2 WHERE SITE_CODE = #{site_code} AND PART_TYPE = #{keyword}
+         ORDER BY PART_GRP_CODE
+    </select>
+    <select id="partGroup3" resultType="com.mes.Common.Various.DTO.VT_PART_GROUP">
+        SELECT * FROM VT_PART_GROUP3 WHERE SITE_CODE = #{site_code} AND PART_TYPE = #{keyword}
+         ORDER BY PART_GRP_CODE
+    </select>
+
+    <select id="crmAssyCableAllGet" resultType="com.mes.mesCrm.mesCrm.DTO.SYS_ASSY_CABLE">
+		EXEC SP_SYS_ASSY_CABLE_GET 0, 0, #{keyword}
+	</select>
+
+    <select id="sysPartNameGroupAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_COMMON2_CD">
+        EXEC SP_SYS_COMMON2_GET 0, 0,#{keyword},#{keyword2}
+    </select>
+
+    <select id="popRouteGroupAllGet" resultType="com.mes.mesPop.Standard.DTO.POP_ROUTE_CD">
+        EXEC SP_POP_ROUTE_GET 0,0,''
+    </select>
+
+    <select id="sysPartNameAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_NAME">
+        EXEC SP_SYS_PART_NAME_GET 0,0,''
+    </select>
+
+
+    <select id="sysProdLineAllGet" resultType="com.mes.mesManager.Master.DTO.SYSProdLine">
+    	EXEC SP_SYS_LINE_GET 0, 0, '',''
+    </select>
+
+
+    <select id="popLineUserAllGet" resultType="com.mes.mesPop.Standard.DTO.POP_LINE_USER_CD">
+        EXEC SP_POP_LINE_USER_GET 0,0,#{keyword}
+    </select>
+
+    <select id="wmsStockTotalOneGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK_TOTAL">
+        EXEC SP_WMS_STOCK_TOTAL_GET #{keyword},#{keyword2}
+    </select>
+
+
+
+
+    <select id="sysCargoAllGet" resultType="com.mes.mesManager.Master.DTO.SYSCargo">
+        EXEC SP_SYS_CARGO_GET 0,0,'','Y'
+    </select>
+
+    <select id="sysProdTypeAllGet" resultType="com.mes.Common.Various.DTO.SYS_PROD_TYPE">
+        EXEC SP_SYS_PROD_TYPE_GET 0,0,''
+    </select>
+
+
+    <select id="sysProdAllGet" resultType="com.mes.Common.Various.DTO.SYS_PROD_CD">
+        EXEC SP_SYS_PROD_GET 0,0,#{keyword},''
+    </select>
+
+    <select id="sysPartAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
+        	EXEC SP_SYS_PART_GET #{page}, #{rows},'',#{keyword2}
+    </select>
+
+
+    <select id="msgGet" resultType="com.mes.mesManager.Master.DTO.SYSMsg">
+        EXEC SP_MESSAGE_GET #{keyword}
+    </select>
+
+    <select id="sysPartNamePartAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
+        EXEC SP_SYS_PART_NAME_PART_GET 0 , 0 , #{keyword}
+    </select>
+
+    <select id="sysMenuFavoritesAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_MENU_FAVORITES_ADD #{user_code},#{menu_code}
+    </select>
+
+    <select id="sysMenuFavoritesGet" resultType="com.mes.Common.Various.DTO.SYS_MENU_FAVORITES_CD">
+       SELECT A.*,B.MENU_NAME
+        FROM SYS_MENU_FAVORITES_CD A
+            LEFT JOIN SYS_USER_CD U ON A.USER_CODE = U.USER_CODE
+            LEFT JOIN (SELECT AUTH_CODE,MENU_CODE  FROM SYS_AUTH_SUB WHERE CHECK_GET ='Y') C ON C.AUTH_CODE = U.AUTH_CODE AND A.MENU_CODE = C.MENU_CODE
+            INNER JOIN SYS_MENU_CD B ON C.MENU_CODE = B.MENU_CODE
+        WHERE A.USER_CODE = #{user_code}
+        ORDER BY A.SEQ;
+    </select>
+</mapper>
+
+

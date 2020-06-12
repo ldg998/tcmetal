@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesQms.Shipment.QmsShipmentMapper">
+    <select id="qmsProdErrorManGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+            EXEC SP_QMS_PROD_NG_GET  #{page}, #{rows}, #{start_date}, #{end_date}
+    </select>
+
+    <select id="qmsProdErrorManOneGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+            EXEC SP_QMS_PROD_NG_GET  1, 1, '', '',#{in_no},#{part_code}
+    </select>
+
+    <select id="qmsProdListGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+        EXEC SP_QMS_PROD_SUB_DATE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3}
+    </select>
+
+    <select id="qmsProdMRBGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+            EXEC SP_QMS_PROD_MRB_GET #{page},#{rows},#{start_date},#{end_date},#{keyword}
+    </select>
+
+    <select id="qmsProdMRBAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_PROD_MRB_ADD  #{keyword}
+    </select>
+
+    <select id="qmsProdMRBCancel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_PROD_MRB_CANCEL  #{keyword}
+    </select>
+    <select id="qmsProdGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD">
+            EXEC [SP_QMS_PROD_GET]  #{page}, #{rows}, #{start_date}, #{end_date} ,'0' ,''
+    </select>
+    <select id="qmsProdSubGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+            EXEC [SP_QMS_PROD_SUB_GET]  #{page}, #{rows}, #{keyword}
+    </select>
+    <select id="qmsProdAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_PROD_INSP_ADD #{user_code},#{in_no},#{keyword}, #{keyword2}
+    </select>
+    <select id="qmsProdListRPTGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_RPT">
+        EXEC SP_QMS_PROD_RPT_GET #{page},#{rows},#{keyword},#{keyword2}
+    </select>
+    <update id="qmsProdErrorManAdd">
+        UPDATE QMS_PROD_SUB
+        SET
+            ACT_TYPE = #{key3}
+            WHERE
+            QC_NO = #{key1}
+    </update>
+    <update id="qmsProdErrorManAdd2">
+        UPDATE QMS_PROD_SUB
+        SET
+            FILE2 = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            QC_NO = #{key1}
+    </update>
+    <update id="qmsProdErrorManAdd3">
+        UPDATE QMS_PROD_SUB
+        SET
+            FILE3 = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            QC_NO = #{key1}
+    </update>
+    <update id="qmsProdErrorManAdd_AllFile">
+        UPDATE QMS_PROD_SUB
+        SET
+            ${name} = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            QC_NO = #{key1}
+    </update>
+
+    <select id="qmsProdErrorListSumGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_NG_SUM">
+            EXEC SP_QMS_PROD_NG_SUM_GET  #{start_date}, #{end_date},#{keyword3}
+    </select>
+
+
+    <select id="qmsProdListOneGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+        EXEC SP_QMS_PROD_SUB_DATE_GET 1,1,'','','',#{qc_no},''
+    </select>
+
+</mapper>

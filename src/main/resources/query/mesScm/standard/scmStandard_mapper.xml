@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesScm.Standard.ScmStandardMapper">
+
+    <select id="sysPartGroupGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_GROUP">
+        	EXEC SP_SYS_PART_GROUP_GET #{page}, #{rows},#{keyword}, #{keyword2},''
+    </select>
+    <select id="sysPartGroupOneGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_GROUP">
+        	EXEC SP_SYS_PART_GROUP_GET 1, 1,#{part_type}, #{part_level},#{part_grp_code}
+    </select>
+    <select id="sysPartGroupAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_GROUP_ADD #{part_type},#{part_level},#{part_grp_code},#{part_grp_name},#{remark},#{user_code},#{keyword}
+    </select>
+    <select id="sysPartGroupDel" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_GROUP_DEL #{keyword}
+    </select>
+
+
+
+    <select id="sysPartSuppGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
+        	EXEC SP_SYS_PART_GET #{page}, #{rows},#{keyword}, #{keyword2}, #{keyword3},#{keyword4},#{keyword5},#{keyword6}
+    </select>
+
+
+
+
+    <select id="sysPartPriceGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_PRICE">
+        	EXEC SP_SYS_PART_PRICE_GET #{page}, #{rows},#{start_date},#{stop_date},#{keyword}, #{keyword2},#{keyword3},#{keyword4},''
+    </select>
+    <select id="sysPartPriceOneGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_PRICE">
+        	EXEC SP_SYS_PART_PRICE_GET 1, 1,#{start_date},'',#{supp_code},'','','',#{part_code}
+    </select>
+
+    <select id="sysPartPriceAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_PRICE_ADD #{supp_code},#{part_code},#{start_date},#{stop_date},#{currency_code},#{unit_price},#{user_code},#{keyword}
+    </select>
+
+    <select id="sysPartPriceDel" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_PRICE_DEL #{keyword}
+    </select>
+
+
+    <select id="sysCommon2AllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_COMMON2_CD">
+        	EXEC SP_SYS_COMMON2_GET 0, 0,#{keyword},#{keyword2}
+    </select>
+
+    <select id="sysPartNameGroupSubAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_COMMON2_SUB_ADD #{idx},#{code_value},#{code_name1},#{code_name2},#{user_code},#{keyword}
+    </select>
+
+    <select id="sysPartNameGroupSubOneGet" resultType="com.mes.mesScm.Standard.DTO.SYS_COMMON2_CD">
+        	EXEC SP_SYS_COMMON2_SUB_ONE_GET #{idx}
+    </select>
+
+
+    <select id="sysPartNameGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_NAME">
+        	EXEC SP_SYS_PART_NAME_GET #{page}, #{rows},''
+    </select>
+
+    <select id="sysPartNameOneGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_NAME">
+        	EXEC SP_SYS_PART_NAME_GET 1, 1,#{keyword}
+    </select>
+
+    <select id="sysPartNameAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_NAME_ADD #{part_name_code},#{part_name},#{user_code},#{keyword}
+    </select>
+
+    <select id="sysPartNameDel" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_NAME_DEL #{keyword}
+    </select>
+
+
+    <select id="sysPartGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
+        	EXEC SP_SYS_PART_GET #{page}, #{rows},#{keyword},#{keyword2}
+    </select>
+    <select id="sysPartOneGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
+        	EXEC SP_SYS_PART_GET #{page}, #{rows},#{keyword},''
+    </select>
+    <select id="sysPartAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_ADD #{part_code},#{part_name_code},#{spec},#{supp_code},#{unit_code},#{part_type},#{cargo_code},#{loc_code},#{qc_level},#{user_code},#{keyword}
+    </select>
+    <select id="sysPartDel" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_DEL #{keyword}
+    </select>
+</mapper>

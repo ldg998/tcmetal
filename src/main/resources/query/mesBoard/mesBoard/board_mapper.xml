@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesBoard.mesBoard.MesBoardMapper">
+    <select id="getBoardName" resultType="String">
+        SELECT BOARD_KR FROM SYS_BOARD_CD WHERE BOARD_CODE = #{idx}
+    </select>
+    <select id="getBoardData" resultType="com.mes.mesBoard.board.DTO.SYS_BOARD_CD">
+        EXEC SP_SYS_BOARD_ALL  #{user_code} , #{board_code} , '','','','','','','' , 0, 0 , 0 , 0
+    </select>
+    <select id="setBoardListData" resultType="int">
+        EXEC SP_SYS_BOARD_ALL #{user_code},#{board_code},'','','','',#{subject},#{description},'',0,0,0,0
+    </select>
+    <select id="getBoardList" resultType="com.mes.mesBoard.board.DTO.SYS_BOARD_LIST">
+        EXEC SP_SYS_BOARD_ALL #{user_code},#{board_code} , '','','',#{keyword}, '','','',0, #{pageStart} , #{perPageNum} , 1;
+    </select>
+    <select id="getCount" resultType="int">
+        EXEC SP_SYS_BOARD_ALL #{user_code},#{board_code},'','','',#{keyword},'','','',0,0,0,9
+    </select>
+    <select id="getInfoData" resultType="com.mes.mesBoard.board.DTO.SYS_BOARD_LIST">
+        EXEC SP_SYS_BOARD_ALL '','',#{idx},'','','','','','',0,0,0,2
+    </select>
+    <select id="getPrev" resultType="com.mes.mesBoard.board.DTO.SYS_BOARD_LIST">
+        EXEC SP_SYS_BOARD_ALL '',#{board_code},'','','','','','','',#{seq},0,0,11
+    </select>
+    <select id="getNext" resultType="com.mes.mesBoard.board.DTO.SYS_BOARD_LIST">
+        EXEC SP_SYS_BOARD_ALL '',#{board_code},'','','','','','','',#{seq},0,0,12
+    </select>
+    <select id="upHits">
+        EXEC SP_SYS_BOARD_ALL '','',#{idx},'','','','','','',0,0,0,10
+    </select>
+    <select id="addReply" resultType="String">
+        EXEC SP_SYS_BOARD_ALL #{user_code},#{board_code},#{board_idx},'','','','','',#{reply_desc},0,0,0,6
+    </select>
+    <select id="getReplyData" resultType="com.mes.mesBoard.board.DTO.SYS_BOARD_REPLY">
+        EXEC SP_SYS_BOARD_ALL '','',#{idx},'','','','','','',0,0,0,13
+    </select>
+    <delete id="delReply">
+        DELETE FROM SYS_BOARD_REPLY WHERE REPLY_IDX = #{idx}
+    </delete>
+    <select id="sysCommonBoardGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
+		EXEC SP_SYS_COMMON_GET  0,0,'BOARD_TYPE','','Y'
+    </select>
+    <select id="addFileCD" resultType="String">
+        EXEC SP_SYS_BOARD_ALL #{user_code},#{file_name},'','','',#{key_value},#{file_og_name},#{upload_path},#{url},#{file_size},#{file_volume},0,14
+    </select>
+    <select id="addBoardFile" resultType="String">
+        EXEC SP_SYS_BOARD_ALL '',#{board_code},#{board_idx},'','',#{key_value},#{file_name},'','',0,0,0,15
+    </select>
+    <select id="getBoardIdx" resultType="String">
+        SELECT DBO.MakeIDX('','','',0)
+    </select>
+    <select id="addBoardList" resultType="String">
+        EXEC SP_SYS_BOARD_ALL #{user_code},#{board_code},#{board_idx},'',#{type},'',#{subject},#{description},'',0,0,0,3
+    </select>
+    <delete id="delBoardReply">
+        DELETE FROM SYS_BOARD_REPLY WHERE BOARD_IDX = #{idx}
+    </delete>
+    <delete id="delBoardList">
+        DELETE FROM SYS_BOARD_LIST WHERE BOARD_IDX = #{idx}
+    </delete>
+    <select id="getFileData" resultType="com.mes.Common.File.DTO.Files">
+        SELECT B.*
+        FROM SYS_BOARD_FILE A
+        LEFT JOIN SYS_FILE_CD B ON A.FILE_IDX = B.KEY_VALUE
+        WHERE BOARD_IDX = #{idx}
+    </select>
+
+    <select id="getFileData2" resultType="com.mes.Common.File.DTO.Files">
+        SELECT B.*
+        FROM SYS_BOARD_FILE A
+        LEFT JOIN SYS_FILE_CD B ON A.FILE_IDX = B.KEY_VALUE
+        WHERE BOARD_IDX = #{idx}
+    </select>
+
+    <delete id="deleteFileBoard">
+        DELETE FROM SYS_FILE_CD WHERE KEY_VALUE = #{key_value}
+    </delete>
+
+    <delete id="deleteBoard_file">
+        DELETE FROM SYS_BOARD_FILE WHERE FILE_IDX = #{key_value}
+    </delete>
+
+
+
+    <select id="getInfoData2" resultType="com.mes.mesBoard.board.DTO.SYS_BOARD_LIST">
+         SELECT A.*
+        FROM SYS_BOARD_LIST A
+        WHERE BOARD_IDX = #{idx}
+    </select>
+
+    <update id="upBoardList">
+        UPDATE SYS_BOARD_LIST SET
+
+         SUBJECT = #{subject},
+         DESCRIPTION = #{description}
+         WHERE  BOARD_CODE = #{board_code} AND
+                BOARD_IDX = #{board_idx}
+    </update>
+
+
+
+
+</mapper>
+
+

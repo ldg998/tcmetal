@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesManager.Master.MasterMapper">
+    <!--공통코드관리 -->
+    <!--공통코드관리 코드그룹 목록 -->
+    <select id="getCommonGroup" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
+        EXEC SP_SYS_COMMON_GROUP_GET
+    </select>
+    <!--공통코드관리 그리드 리스트 조회 -->
+    <select id="sysCommonGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
+        EXEC SP_SYS_COMMON_GET #{page},#{rows},#{keyword},'',#{keyword2}
+    </select>
+    <!--공통코드관리 공통코드 추가 -->
+    <select id="sysCommonAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_COMMON_ADD #{group_code},#{code_value},#{code_name1},#{code_name2},#{code_name3},#{code_name4},#{code_name5},#{code_name6},#{code_name7},#{code_name8},#{use_yn},#{user_code},#{keyword}
+    </select>
+    <!--공통코드관리 공통코드 삭제 -->
+    <select id="sysCommonDelete" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_COMMON_DEL #{keyword}
+    </select>
+    <!--공통코드관리 공통코드 수정 , 그리드에서 하나의 항목 값 조회 -->
+    <select id="sysCommonOneGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
+        EXEC SP_SYS_COMMON_GET 1,1,#{keyword},#{keyword2},''
+    </select>
+
+
+
+    <select id="sysCommonDutyGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
+        SELECT * from sys_common_cd
+        WHERE  CODE_TYPE = 'DUTY'
+    </select>
+
+</mapper>
+
+

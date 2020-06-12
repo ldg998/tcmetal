@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesPop.Device.MesPopDeviceMapper">
+    <select id="popPCGet" resultType="com.mes.mesPop.Device.DTO.POP_PC_CD">
+        EXEC SP_POP_PC_GET #{page},#{rows},''
+    </select>
+    <select id="popPCOneGet" resultType="com.mes.mesPop.Device.DTO.POP_PC_CD">
+        EXEC SP_POP_PC_GET 1,1,#{keyword}
+    </select>
+    <select id="popPCAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PC_ADD #{pc_code},#{pc_name},#{ip},#{remark},#{user_code},#{keyword}
+    </select>
+    <select id="popPCDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PC_DEL #{pc_code}
+    </select>
+    <select id="popTerminalGet" resultType="com.mes.mesPop.Standard.DTO.POP_TERMINAL_CD">
+        EXEC SP_POP_TERMINAL_GET #{page},#{rows},''
+    </select>
+    <select id="popTerminalOneGet" resultType="com.mes.mesPop.Standard.DTO.POP_TERMINAL_CD">
+        EXEC SP_POP_TERMINAL_GET 1,1,#{keyword}
+    </select>
+
+    <select id="popTerminalAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_TERMINAL_ADD #{terminal_code},#{terminal_name},#{pc_code},#{screen_x},#{screen_y},#{bcr_form_code},#{port_scan},#{port_print},#{port_prod},#{port_test},#{port_1},#{port_2},#{user_code},#{keyword}
+    </select>
+
+    <select id="popTerminalDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_TERMINAL_DEL #{keyword}
+    </select>
+
+    <select id="popTerminalSubGet" resultType="com.mes.mesPop.Standard.DTO.POP_TERMINAL_SUB">
+        EXEC SP_POP_TERMINAL_SUB_GET 0,0,#{keyword}
+    </select>
+    <select id="popTerminalSubAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_TERMINAL_SUB_ADD #{terminal_code},#{item_code},#{item_name},#{item_value}
+    </select>
+
+    <select id="popTerminalSubDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_TERMINAL_SUB_DEL #{terminal_code},#{keyword}
+    </select>
+</mapper>

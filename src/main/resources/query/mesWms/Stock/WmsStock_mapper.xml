@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesWms.Stock.WmsStockMapper">
+    <select id="wmsStockListGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_WMS_STOCK_GET #{page},#{rows}
+    </select>
+
+    <select id="wmsStockSumDayListGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
+        EXEC SP_WMS_STOCK_GET_DAY #{page},#{rows},#{start_date},#{keyword},#{keyword2},#{keyword3},''
+    </select>
+
+    <select id="wmsStockSumMonthListGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
+        EXEC SP_WMS_STOCK_GET_MONTH #{page},#{rows},#{start_date},#{keyword},#{keyword2},#{keyword3},''
+    </select>
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesPop.Standard.MesPopMapper">
+
+
+    <select id="popRouteGet" resultType="com.mes.mesPop.Standard.DTO.POP_ROUTE_CD">
+        EXEC SP_POP_ROUTE_GET #{page},#{rows},''
+    </select>
+
+    <select id="popRouteOneGet" resultType="com.mes.mesPop.Standard.DTO.POP_ROUTE_CD">
+        EXEC SP_POP_ROUTE_GET 1,1,#{keyword}
+    </select>
+
+    <select id="popRouteAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_ROUTE_ADD #{route_code},#{route_name},#{line_code1},#{line_code2},#{line_code3},#{line_code4},#{line_code5},#{line_code6},#{line_code7},#{line_code8},#{user_code},#{keyword}
+    </select>
+
+    <select id="popRouteDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_ROUTE_DEL #{keyword}
+    </select>
+
+
+    <select id="popBcrFormGet" resultType="com.mes.mesPop.Standard.DTO.POP_BCR_FORM">
+        EXEC SP_SYS_BCR_FORM_GET #{page},#{rows},''
+    </select>
+
+    <select id="popBcrFormOneGet" resultType="com.mes.mesPop.Standard.DTO.POP_BCR_FORM">
+        EXEC SP_SYS_BCR_FORM_GET 1,1,#{keyword}
+    </select>
+
+    <select id="popBcrFormAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_BCR_FORM_ADD #{bcr_form_code},#{bcr_form_name},#{bcr_contents},#{user_code},#{remark},#{keyword}
+    </select>
+
+    <select id="popBcrFormDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_BCR_FORM_DEL #{keyword}
+    </select>
+
+
+    <select id="popLineUserGet" resultType="com.mes.mesPop.Standard.DTO.POP_LINE_USER_CD">
+        EXEC SP_POP_LINE_USER_GET #{page},#{rows},#{keyword}
+    </select>
+
+    <select id="popLineUserAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_LINE_USER_ADD #{line_code},#{keyword},#{user_code}
+    </select>
+
+    <select id="popLineUserDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_LINE_USER_DEL #{line_code},#{keyword}
+    </select>
+
+    <select id="popErrorTypeAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_LINE_ERROR_ADD #{line_code},#{keyword},#{user_code}
+    </select>
+
+    <select id="popErrorTypeGet" resultType="com.mes.mesPop.Standard.DTO.POP_LINE_ERROR_CD">
+        EXEC SP_POP_LINE_ERROR_GET #{page},#{rows},#{keyword}
+    </select>
+
+    <select id="popErrorTypeDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_LINE_ERROR_DEL #{line_code},#{keyword}
+    </select>
+
+    <select id="popSpecGet" resultType="com.mes.mesPop.Standard.DTO.POP_SPEC">
+        EXEC SP_POP_SPEC_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{keyword4},#{keyword5}
+    </select>
+
+
+    <select id="popSpecOneGet" resultType="com.mes.mesPop.Standard.DTO.POP_SPEC">
+        EXEC SP_POP_SPEC_GET 1,1,'','','',#{part_code},#{line_code}
+    </select>
+
+    <select id="popSpecAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_SPEC_ADD #{line_code},#{part_code},
+                            #{data0_1},#{data0_2},#{data0_3},#{data0_4},#{data0_5},#{data0_6},
+                            #{data1_1},#{data1_2},#{data1_3},#{data1_4},#{data1_5},#{data1_6},
+                            #{data2_1},#{data2_2},#{data2_3},#{data2_4},#{data2_5},#{data2_6},
+                            #{data3_1},#{data3_2},#{data3_3},#{data3_4},#{data3_5},#{data3_6},
+                            #{data4_1},#{data4_2},#{data4_3},#{data4_4},#{data4_5},#{data4_6},
+                            #{user_code},#{keyword}
+    </select>
+    <select id="popSpecDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_SPEC_DEL #{keyword}
+    </select>
+
+    <select id="popReportSpecGet" resultType="com.mes.mesPop.Standard.DTO.SYS_PROD_REPORT_SPEC">
+        EXEC SP_SYS_PROD_REPORT_SPEC_GET #{page},#{rows},#{keyword},#{keyword2}
+    </select>
+
+    <select id="popReportSpecOneGet" resultType="com.mes.mesPop.Standard.DTO.SYS_PROD_REPORT_SPEC">
+        EXEC SP_SYS_PROD_REPORT_SPEC_GET 1,1,#{keyword},#{keyword2}
+    </select>
+
+
+    <select id="popReportSpecAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_PROD_REPORT_SPEC_ADD #{prod_type},#{prod_code},#{part_name_code},#{route_code},#{remark},#{part_name_code1},#{part_name_code2},#{part_name_code3},#{part_name_code4},#{part_name_code5},#{part_name_code6},#{part_name_code7},#{part_name_code8},#{part_name_code9},#{part_name_code10}
+        ,#{user_code},#{keyword}
+
+    </select>
+
+    <update id="popReportSpecImageUpdate" >
+        UPDATE SYS_PROD_REPORT_SPEC SET IMAGE = #{keyword3}
+        WHERE PROD_TYPE = #{keyword} AND PROD_CODE = #{keyword2}
+    </update>
+
+</mapper>

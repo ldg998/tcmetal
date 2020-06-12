@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesScm.Order.OrderMapper">
+    <select id="scmOrderImageGet" resultType="com.mes.mesScm.Order.DTO.SYS_ORD_IMAGE_CD">
+        EXEC SP_SCM_ORD_IMAGE_GET #{page},#{rows},''
+    </select>
+    <select id="scmOrderImageOneGet" resultType="com.mes.mesScm.Order.DTO.SYS_ORD_IMAGE_CD">
+        EXEC SP_SCM_ORD_IMAGE_GET 1,1,#{keyword}
+    </select>
+    <select id="scmOrderImageUpdate">
+        UPDATE SYS_ORD_IMAGE_CD SET FILE1 = #{keyword2}
+        WHERE IMG_CODE = #{keyword}
+    </select>
+    <select id="scmOrderImageAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SCM_ORD_IMAGE_ADD #{img_code},#{img_name},#{remark},#{user_code},#{keyword}
+    </select>
+    <select id="scmOrderImageDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SCM_ORD_IMAGE_DEL #{keyword}
+    </select>
+    <select id="scmOrderImageList" resultType="com.mes.mesScm.Order.DTO.SYS_ORD_IMAGE_CD">
+        EXEC SP_SCM_ORD_IMAGE_GET #{keyword},#{keyword2},''
+    </select>
+
+    <select id="scmOrderGet" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD">
+        EXEC SP_SCM_IN_ORD_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},''
+    </select>
+    <select id="scmOrderSubGet" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB">
+        EXEC SP_SCM_IN_ORD_SUB_GET #{page},#{rows},#{keyword}
+    </select>
+    <select id="scmOrderPartGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
+        EXEC SP_SCM_IN_ORD_PART_GET #{page},#{rows},#{keyword},#{keyword2}
+    </select>
+    <select id="scmOrderAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SCM_IN_ORD_ADD #{ord_no},#{crm_ord_no},#{work_date},#{keyword},#{img_code},#{delivery_place},#{remark},#{user_code},#{stop_date},#{payment},#{save_type},#{ord_sub},#{place_name}
+    </select>
+    <select id="scmOrderPartOneGet" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB">
+        EXEC SP_SCM_IN_ORD_SUB_GET 0,0,#{keyword}
+    </select>
+    <select id="scmOrderOneGet" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD">
+        EXEC SP_SCM_IN_ORD_GET 1,1,'','','','',#{keyword}
+    </select>
+    <select id="scmOrderDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SCM_IN_ORD_DEL #{ord_no}
+    </select>
+    <select id="scmOrderComp" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SCM_IN_ORD_COMP #{keyword}
+    </select>
+    <select id="scmOrderReady" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SCM_IN_ORD_READY #{keyword}
+    </select>
+    <select id="scmOrderListGet" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB">
+        EXEC SP_SCM_IN_ORD_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword}
+    </select>
+
+
+
+    <select id="scmReqOrderGet" resultType="com.mes.mesScm.Order.DTO.SCM_REQ_ORD">
+        EXEC SP_SCM_REQ_ORD_GET #{page},#{rows},#{start_date},#{stop_date}
+    </select>
+
+    <select id="scmReqOrderSubGet" resultType="com.mes.mesScm.Order.DTO.SCM_REQ_ORD_SUB">
+        EXEC SP_SCM_REQ_ORD_SUB_GET #{page},#{rows},#{keyword}
+    </select>
+
+    <select id="scmReqOrderDel" resultType="com.mes.Common.DataTransferObject.Message">
+        	EXEC SP_SCM_REQ_ORD_DEL #{req_no}
+    </select>
+
+
+
+    <select id="scmOrderSub1Get" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB">
+        EXEC SP_SCM_IN_ORD_SUB_GET #{page},#{rows},#{keyword}
+    </select>
+
+
+
+
+
+
+    <select id="scmReqOrderAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SCM_REQ_ORD_ADD #{work_date},#{end_date},#{req_no},#{keyword},#{user_code}
+    </select>
+
+    <select id="scmOrderAdd2" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SCM_IN_ORD_ADD2 #{keyword}, #{user_code}
+    </select>
+
+
+    <select id="scmOrderCancel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SCM_IN_ORD_CANCEL #{keyword}, #{user_code}
+    </select>
+
+    <select id="scmOrderSubPdfGet" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB_PDF">
+        EXEC SP_SCM_IN_ORD_SUB_PDF_GET 0,0,#{keyword}
+    </select>
+
+</mapper>

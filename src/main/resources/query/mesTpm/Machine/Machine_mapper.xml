@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesTpm.Machine.MachineMapper">
+
+    <select id="tpmMCGet" resultType="com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD">
+        EXEC SP_TPM_MACHINE_GET  #{page}, #{rows},#{keyword},''
+    </select>
+    <select id="tpmMCOneGet" resultType="com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD">
+        EXEC SP_TPM_MACHINE_GET  1, 1,'',#{machine_code}
+    </select>
+
+    <select id="tpmMCAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_ADD #{machine_code}, #{machine_name},#{line_code},#{loc_code},#{install_date},#{install_amount},#{level},
+        #{focus_yn},#{install_corp_name},#{corp_user_name},#{corp_tel_no},#{machine_manager},#{remark},#{user_code},#{keyword}
+    </select>
+
+<!-- 연습중 -->
+    <select id="tpmMCAdd1" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_ADD #{machine_code}, #{machine_name},#{line_code},#{loc_code},#{install_date},#{install_amount},#{level},
+        #{focus_yn},#{install_corp_name},#{corp_user_name},#{corp_tel_no},#{machine_manager},#{remark},#{user_code},#{keyword}
+    </select>
+
+    <select id="tpmMCFileAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_FILE_ADD #{machine_code}, #{image1},#{image2},#{image3}
+
+    </select>
+
+    <select id="tpmMCDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_DEL #{keyword}
+    </select>
+
+    <select id="tpmMCFileGet" resultType="com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD">
+        EXEC SP_TPM_MACHINE_FILE_GET #{keyword}
+    </select>
+
+    <select id="tpmMCPartAllGet" resultType="com.mes.mesTpm.Machine.DTO.TPM_MACHINE_PART_CD">
+        EXEC SP_TPM_MACHINE_PART_GET  0, 0,#{keyword},''
+    </select>
+
+    <select id="tpmMCPartOneGet" resultType="com.mes.mesTpm.Machine.DTO.TPM_MACHINE_PART_CD">
+        EXEC SP_TPM_MACHINE_PART_GET  1, 1,#{machine_code},#{part_name}
+    </select>
+
+    <select id="tpmMCPartAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_PART_ADD #{machine_code}, #{part_name},#{spec},#{qty},#{buy_corp_name},#{corp_tel_no},#{remark},
+        #{user_code},#{keyword}
+    </select>
+    <select id="tpmMCPartDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_PART_DEL #{keyword}
+    </select>
+</mapper>

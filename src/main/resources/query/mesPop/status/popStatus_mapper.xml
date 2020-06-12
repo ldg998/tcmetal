@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesPop.Status.MesPopStatusMapper">
+    <select id="popPlanOrderGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD">
+        EXEC SP_POP_PLAN_ORD_GET #{page},#{rows},#{start_date},#{stop_date},''
+    </select>
+
+    <select id="popPlanOrderOrd" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD">
+        EXEC SP_POP_PLAN_ORD_ORD #{keyword},#{user_code}
+    </select>
+
+    <select id="popProdRangeGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PROD">
+        EXEC SP_POP_PROD_RANGE_GET #{page},#{rows},#{start_date},#{stop_date},#{keyword}
+    </select>
+
+    <select id="popProdList1Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PROD">
+        EXEC SP_POP_PROD_LIST1_GET #{page},#{rows},#{start_date},#{stop_date},#{keyword},#{keyword2},#{keyword3},#{keyword4}
+    </select>
+</mapper>

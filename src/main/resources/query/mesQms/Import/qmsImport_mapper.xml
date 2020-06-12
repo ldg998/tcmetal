@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesQms.Import.QmsImportMapper">
+    <select id="qmsRecvGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV">
+            EXEC [SP_QMS_RECV_GET]  #{page}, #{rows}, #{start_date}, #{end_date} ,'0' ,''
+    </select>
+    <select id="qmsRecvSubGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
+            EXEC [SP_QMS_RECV_SUB_GET]  #{page}, #{rows}, #{keyword}
+    </select>
+    <select id="qmsRecvErrorManGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
+            EXEC SP_QMS_RECV_NG_GET  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},'',''
+    </select>
+    <select id="qmsRecvErrorManOneGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
+            EXEC SP_QMS_RECV_NG_GET  1, 1, '', '',#{supp_code},#{in_no},#{part_code}
+    </select>
+    <select id="qmsRecvAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_RECV_INSP_ADD #{user_code},#{in_no}, #{keyword}
+    </select>
+    <select id="qmsRecvFileAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_RECV_INSP_FILE1_ADD  #{keyword}
+    </select>
+
+    <select id="qmsRecvListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
+        EXEC [SP_QMS_RECV_LIST_GET]  #{page}, #{rows},#{start_date},#{end_date}, #{keyword},#{keyword2},''
+    </select>
+    <select id="qmsRecvListOneGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
+        EXEC [SP_QMS_RECV_LIST_GET] 1,1,'','','','',#{in_no}
+    </select>
+
+    <select id="qmsRecvMRBGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
+            EXEC [SP_QMS_RECV_MRB_GET]  #{page}, #{rows},#{start_date},#{end_date}, #{keyword},#{keyword2}
+    </select>
+    <select id="qmsRecvMRBAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_RECV_MRB_ADD  #{keyword}
+    </select>
+    <select id="qmsRecvMRBCancel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_RECV_MRB_CANCEL  #{keyword}
+    </select>
+
+    <update id="qmsRecvErrorManAdd">
+        UPDATE SCM_IN_SUB
+        SET
+            ACT_TYPE = #{key3}
+            WHERE
+            IN_NO = #{key1} AND PART_CODE = #{key2}
+    </update>
+
+    <update id="qmsRecvErrorManAdd1">
+        UPDATE SCM_IN_SUB
+        SET
+            FILE1 = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            IN_NO = #{key1} AND PART_CODE = #{key2}
+    </update>
+
+    <update id="qmsRecvErrorManAdd2">
+        UPDATE SCM_IN_SUB
+        SET
+            FILE2 = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            IN_NO = #{key1} AND PART_CODE = #{key2}
+    </update>
+
+    <update id="qmsRecvErrorManAdd3">
+        UPDATE SCM_IN_SUB
+        SET
+            FILE3 = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            IN_NO = #{key1} AND PART_CODE = #{key2}
+    </update>
+
+    <update id="qmsRecvErrorManAdd_AllFile">
+        UPDATE SCM_IN_SUB
+        SET
+            ${name} = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            IN_NO = #{key1} AND PART_CODE = #{key2}
+    </update>
+
+    <select id="qmsRecvErrorListSumGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_NG_SUM">
+            EXEC SP_QMS_RECV_NG_SUM_GET  #{start_date}, #{end_date},#{keyword}
+    </select>
+
+</mapper>

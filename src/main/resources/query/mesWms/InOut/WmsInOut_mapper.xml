@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesWms.InOut.WmsInOutMapper">
+    <select id="wmsInListGet" resultType="com.mes.mesWms.InOut.DTO.WMS_IN_SUB">
+        EXEC [SP_WMS_IN_LIST_GET] #{page}, #{rows}, #{start_date}, #{end_date}
+    </select>
+    <select id="wmsOutListGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_SUB">
+        EXEC [SP_WMS_OUT_LIST_GET]  #{page}, #{rows}, #{start_date}, #{end_date}
+    </select>
+    <select id="wmsOutReadyGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB">
+        EXEC [SP_WMS_OUT_READY_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword}
+    </select>
+    <select id="wmsOutOrderGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD">
+        EXEC [SP_WMS_OUT_ORD_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{supp_code},#{keyword2}
+    </select>
+    <select id="wmsOutOrderSubGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB">
+        EXEC [SP_WMS_OUT_ORD_SUB_GET]  #{page}, #{rows},#{keyword}
+    </select>
+
+    <select id="wmsOutOrderAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_WMS_OUT_ORD_ADD #{req_no},#{work_date}, #{ord_no}, #{user_code},#{code_list}, #{keyword}
+    </select>
+    <select id="wmsOutOrderDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_WMS_OUT_ORD_DEL #{keyword}
+    </select>
+    <select id="wmsOrdPlanGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_WMS_OUT_ORD_PLAN_GET #{supp_code}, #{keyword2}
+    </select>
+
+    <select id="wmsOutOrderSubOneGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_WMS_OUT_ORD_PLAN_GET #{supp_code}, #{keyword2}
+    </select>
+
+    <select id="wmsOutOrderOneGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD">
+        EXEC SP_WMS_OUT_ORD_ONE_GET 1,1,#{keyword}
+    </select>
+
+    <select id="wmsOrdPlanUpGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_WMS_OUT_PLAN_UP_GET #{keyword}
+    </select>
+</mapper>

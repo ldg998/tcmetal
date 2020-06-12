@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesManager.User.UserMapper">
+    <select id="sysUserSelectList" resultType="com.mes.mesManager.User.DTO.SYSUser">
+        	SELECT * from sys_user_cd
+    </select>
+    <select id="sysUserGet" resultType="com.mes.mesManager.User.DTO.SYSUser">
+        	EXEC SP_SYS_USER_GET  #{page}, #{rows}, '', #{keyword},#{keyword2}
+    </select>
+
+     <select id="sysUserAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_USER_ADD #{user_code},#{user_name},#{dept_code},#{duty_code},#{auth_code},#{tel_no},#{email},#{use_yn},#{update_user},#{keyword}
+    </select>
+
+    <select id="sysUserDelete" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_USER_DEL #{keyword}
+    </select>
+
+    <select id="sysUserOneGet" resultType="com.mes.mesManager.User.DTO.SYSUser">
+        	EXEC SP_SYS_USER_GET 1,1,#{user_code},#{dept_code},''
+    </select>
+
+    <select id="userInformationCheck" resultType="Integer">
+        	SELECT COUNT(USER_CODE) FROM SYS_USER_CD WHERE USER_CODE = #{user_code} AND USER_PWD = #{user_pwd}
+    </select>
+
+    <update id="userInformationChange">
+        UPDATE SYS_USER_CD SET
+                USER_PWD = #{user_pwd}
+            WHERE USER_CODE = #{user_code}
+    </update>
+
+    <select id="sysUserPwdReset" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_USER_PWD_RESET #{user_code},#{update_user},#{keyword}
+    </select>
+
+</mapper>
+
+

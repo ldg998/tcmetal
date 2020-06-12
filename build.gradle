@@ -1,0 +1,49 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+apply plugin: 'war'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com'
+version = '1.0'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    compile group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.7'
+    runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+    testCompile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '8.1.0.jre13-preview'
+    compile group : 'org.apache.tomcat.embed', name : 'tomcat-embed-jasper', version : '9.0.21'
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    compile group: 'org.apache.poi', name: 'poi', version: '3.17'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
+    compile group: 'eu.bitwalker', name: 'UserAgentUtils', version: '1.21'
+}
+
+test {
+    useJUnitPlatform()
+}

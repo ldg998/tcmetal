@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesPop.Pop.MesPopPopMapper">
+    <select id="popPlan1Get" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN1_CD">
+        EXEC SP_POP_PLAN1_GET #{page},#{rows},#{start_date},#{stop_date},'',#{keyword},#{keyword2},#{keyword3}
+    </select>
+
+    <select id="popPlan1Add" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN1_ADD #{plan_date},#{plan_no1},'',#{part_grp_code},#{part_grp_code2},#{part_code},'',#{status},#{prod_type},#{prod_dept},#{plan_qty},#{work_qty},#{end_date},'',#{user_code},#{remark},#{remark1},#{keyword}
+    </select>
+
+    <select id="popPlan1OneGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN1_CD">
+        EXEC SP_POP_PLAN1_GET 1,1,'','',#{plan_no1},#{part_grp_code},#{part_grp_code2},#{part_code}
+    </select>
+
+    <select id="popPlan1Del" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN1_DEL  #{keyword}
+    </select>
+
+    <select id="popPlan2Add2" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN2_ADD2 #{keyword},#{user_code}
+    </select>
+
+    <select id="popPlan2Get" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN2_CD">
+        EXEC SP_POP_PLAN2_GET #{page},#{rows},#{keyword}
+    </select>
+
+    <select id="popPlan2Add" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN2_ADD #{plan_no1},#{keyword},#{user_code}
+    </select>
+    <select id="popPlan2Get2" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN2_CD">
+        EXEC SP_POP_PLAN2_GET2 #{page},#{rows},#{start_date},#{stop_date},#{keyword},#{keyword2},#{keyword3},#{keyword4},#{keyword5}
+    </select>
+
+    <select id="popPlan3Add" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN3_ADD #{plan_no2},#{keyword},#{user_code}
+    </select>
+
+    <select id="popPlan3Get" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN3_CD">
+        EXEC SP_POP_PLAN3_GET #{page},#{rows},#{keyword}
+    </select>
+
+
+
+    <select id="popPlanSubAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_SUB_ADD #{plan_date},#{plan_no3},#{line_code},#{mat_code},#{mat_name},#{prod_type},#{prod_dept},#{plan_qty},#{work_qty},#{end_date},#{route_code},#{user_code},#{remark},#{remark1},#{unit_code},#{work_user_code},#{keyword}
+    </select>
+
+    <select id="popPlanSubOneGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN_SUB_CD">
+        EXEC SP_POP_PLAN_SUB_GET 1,1,'','','',#{plan_no3},''
+    </select>
+
+    <select id="popPlanSubDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_SUB_DEL #{keyword}
+    </select>
+
+    <select id="popPlanASSYGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN_ASSY_CD">
+        EXEC SP_POP_PLAN_ASSY_GET #{page},#{rows},#{start_date},#{stop_date},#{keyword},#{keyword2},''
+    </select>
+
+    <select id="popPlanASSYAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_ASSY_ADD #{plan_date},#{plan_no3},#{part_grp_code},#{part_grp_code2},#{part_code},#{part_name},#{part_code1},#{part_code2},#{part_length},#{unit_type},#{plan_qty},#{work_qty},#{user_code},#{prod_type},#{prod_dept},#{work_user_code},#{end_date},#{remark},#{remark1},#{keyword}
+    </select>
+
+    <select id="popPlanASSYOneGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN_ASSY_CD">
+        EXEC SP_POP_PLAN_ASSY_GET 1,1,'','','','',#{plan_no3}
+    </select>
+
+    <select id="popPlanASSYDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_ASSY_DEL #{keyword}
+    </select>
+
+
+    <select id="popPlanAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_ADD
+        #{plan_no},
+        #{ord_no},
+        #{place_name},
+        #{prod_type},
+        #{prod_code},
+
+        #{part_name_code},
+        #{plan_name},
+        #{prod_type1},
+        #{route_code},
+        #{plan_date},
+        #{remark},
+
+
+        #{part_name1},
+        #{part_code1},
+
+        #{part_name2},
+        #{part_code2},
+
+        #{part_name3},
+        #{part_code3},
+
+        #{part_name4},
+        #{part_code4},
+
+        #{part_name5},
+        #{part_code5},
+
+        #{part_name6},
+        #{part_code6},
+
+        #{part_name7},
+        #{part_code7},
+
+        #{part_name8},
+        #{part_code8},
+
+        #{part_name9},
+        #{part_code9},
+
+        #{part_name10},
+        #{part_code10},
+
+        #{user_code},
+        #{keyword},
+        #{keyword2}
+    </select>
+
+    <update id="popPlanImage5Update">
+        UPDATE POP_PLAN SET IMAGE5 = #{keyword2} WHERE PLAN_NO = #{keyword}
+    </update>
+
+    <select id="popPlanOneGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_POP_PLAN_GET 1,1,'',#{keyword}
+    </select>
+
+    <select id="popPlanGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_POP_PLAN_GET #{page},#{rows},#{keyword},''
+    </select>
+
+    <select id="popPlanSubGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN_SUB">
+        EXEC SP_POP_PLAN_SUB_GET 0,0,#{keyword}
+    </select>
+    
+    <select id="popPlanListGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_POP_PLAN_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+    </select>
+    <select id="popPlanListOneGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_POP_PLAN_LIST_ONE_GET #{plan_no}
+    </select>
+    <select id="popPlanCheckStatusUpdate" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_CHECK #{status},#{plan_no}
+    </select>
+
+
+
+</mapper>

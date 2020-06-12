@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesOut.mesOut.MesOutMapper">
+    <select id="outsOutListGet" resultType="com.mes.mesOut.mesOut.DTO.OUTS_OUT_SUB">
+            EXEC [SP_OUTS_OUT_SUB_DATE_GET]  #{page}, #{rows}, #{start_date}, #{end_date} ,#{keyword}
+    </select>
+    <select id="outsInListGet" resultType="com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB">
+            EXEC [SP_OUTS_IN_SUB_DATE_GET]  #{page}, #{rows}, #{start_date}, #{end_date} ,#{keyword}
+    </select>
+
+
+    <select id="outsInReadyGet" resultType="com.mes.mesOut.mesOut.DTO.OUTS_IO_CD">
+            EXEC [SP_OUTS_IN_SUB_READY_DATE_GET]  #{page}, #{rows}, #{start_date}, #{end_date} ,#{keyword}
+    </select>
+
+    <select id="outsIOListGet" resultType="com.mes.mesOut.mesOut.DTO.OUTS_IO_CD">
+            EXEC [SP_OUTS_IO_SUB_DATE_GET]  #{page}, #{rows}, #{start_date}, #{end_date} ,#{keyword},#{keyword2}
+    </select>
+</mapper>

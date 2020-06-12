@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesQms.Standard.QmsStandardMapper">
+    <select id="qmsTestStdGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_DIAMETER">
+        EXEC SP_SYS_QC_DAIMETER_GET #{page},#{rows},#{keyword5},#{keyword},#{keyword2},#{keyword3},''
+    </select>
+    <select id="qmsTestStdAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_QC_DAIMETER_ADD #{line_code},#{part_code},#{diameter1_start},#{diameter1_stop},#{diameter2_start},#{diameter2_stop},#{user_code},#{keyword}
+    </select>
+    <select id="qmsTestStdOneGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_DIAMETER">
+        EXEC SP_SYS_QC_DAIMETER_GET 1,1,#{line_code},'','','',#{part_code}
+    </select>
+    <select id="qmsTestStdDelete" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_QC_DIAMETER_DEL #{keyword}
+    </select>
+
+
+    <select id="qmsQcItemGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_ITEM">
+        	EXEC SP_SYS_QC_ITEM_GET #{page}, #{rows},#{keyword}, #{keyword2},''
+    </select>
+    <select id="qmsQcItemOneGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_ITEM">
+        	EXEC SP_SYS_QC_ITEM_GET 1, 1,'', '',#{qc_code}
+    </select>
+    <select id="qmsQcItemAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_QC_ITEM_ADD #{qc_group}, #{qc_type},#{qc_code}, #{qc_name}, #{user_code}, #{keyword}
+    </select>
+    <select id="qmsQcItemDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_QC_ITEM_DEL  #{keyword}
+    </select>
+</mapper>

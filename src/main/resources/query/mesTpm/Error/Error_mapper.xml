@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesTpm.Error.ErrorMapper">
+    <select id="tpmMachineErrorGet" resultType="com.mes.mesTpm.Error.DTO.tpmMachineError">
+        EXEC SP_TPM_MACHINE_ERROR_GET  #{page}, #{rows},#{start_date},#{end_date},#{keyword}, #{keyword2},''
+    </select>
+
+    <select id="tpmMachineErrorDelete" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_ERROR_DEL #{keyword}
+    </select>
+
+    <select id="tpmMachineErrorAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_ERROR_ADD #{line_code},#{machine_code},#{work_date},#{error_name},#{error_type},#{error_result},#{measure_name},#{stop_yn},#{stop_time},#{check_user_code},#{keyword}
+    </select>
+
+    <select id ="tpmMachineErrorOneGet" resultType="com.mes.mesTpm.Error.DTO.tpmMachineError">
+        EXEC SP_TPM_MACHINE_ERROR_GET 1,1,'','',#{keyword},#{keyword2},#{keyword3}
+    </select>
+</mapper>

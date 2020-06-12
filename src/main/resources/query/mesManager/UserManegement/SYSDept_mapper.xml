@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesManager.User.UserMapper">
+    <select id="sysDeptGet" resultType="com.mes.mesManager.User.DTO.SYSDept">
+        	EXEC SP_SYS_DEPT_GET  #{page}, #{rows}, '',''
+    </select>
+
+    <select id="sysDeptAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_DEPT_ADD #{dept_code},#{dept_name},#{use_yn},#{user_code},#{keyword}
+    </select>
+    <select id="sysDeptDelete" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_DEPT_DEL #{keyword}
+    </select>
+
+    <select id="sysDeptAllGet" resultType="com.mes.mesManager.User.DTO.SYSDept">
+    		EXEC SP_SYS_DEPT_GET  #{page}, #{rows}, '','Y'
+    </select>
+
+    <select id="sysDeptOneGet" resultType="com.mes.mesManager.User.DTO.SYSDept">
+        	EXEC SP_SYS_DEPT_GET  1, 1, #{keyword},''
+    </select>
+</mapper>
+
+

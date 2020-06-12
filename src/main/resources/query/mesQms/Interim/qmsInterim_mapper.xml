@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesQms.Interim.QmsInterimMapper">
+    <select id="qmsAssyListGet" resultType="com.mes.mesQms.Interim.DTO.QMS_ASSY">
+       EXEC SP_QMS_PROD_SUB_DATE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},'2'
+    </select>
+
+    <select id="qmsAssyListOneGet" resultType="com.mes.mesQms.Interim.DTO.QMS_ASSY">
+        EXEC SP_QMS_PROD_SUB_DATE_GET 1,1,'','','',#{qc_no},'2'
+    </select>
+
+<!--    <select id="qmsAssyErrorManOneGet" resultType="com.mes.mesQms.Interim.DTO.QMS_ASSY">-->
+<!--&#45;&#45;         EXEC-->
+<!--    </select>-->
+
+    <update id="qmsAssyErrorManAdd_NoneFile">
+        UPDATE QMS_ASSY_SUB
+        SET
+            ACT_TYPE = #{key3}
+            WHERE
+            IN_NO = #{key1} AND PART_CODE = #{key2}
+    </update>
+    <update id="qmsAssyErrorManAdd_File2">
+        UPDATE QMS_ASSY_SUB
+        SET
+            FILE2 = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            IN_NO = #{key1} AND PART_CODE = #{key2}
+    </update>
+    <update id="qmsAssyErrorManAdd_File3">
+        UPDATE QMS_ASSY_SUB
+        SET
+            FILE3 = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            IN_NO = #{key1} AND PART_CODE = #{key2}
+    </update>
+    <update id="qmsAssyErrorManAdd_AllFile">
+        UPDATE QMS_ASSY_SUB
+        SET
+            ${name} = #{key_value},
+            ACT_TYPE = #{key3}
+            WHERE
+            IN_NO = #{key1} AND PART_CODE = #{key2}
+    </update>
+
+    <select id="qmsAssyErrorListSumGet" resultType="com.mes.mesQms.Interim.DTO.QMS_ASSY_NG_SUM">
+            EXEC SP_QMS_Assy_NG_SUM_GET  #{start_date}, #{end_date}
+    </select>
+
+</mapper>

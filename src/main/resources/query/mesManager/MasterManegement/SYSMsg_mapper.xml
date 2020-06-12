@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesManager.Master.MasterMapper">
+    <!--메세지관리 -->
+    <!--메세지관리 그리드 리스트 조회 -->
+    <select id="sysMsgGet" resultType="com.mes.mesManager.Master.DTO.SYSMsg">
+    	EXEC SP_SYS_MSG_GET #{page}, #{rows}, ''
+    </select>
+    <!--메세지코드 추가 -->
+    <select id="sysMsgAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_MSG_ADD #{msg_code},#{msg_name1},#{msg_name2},#{msg_name3},#{msg_name4},#{user_code},#{keyword}
+    </select>
+    <!--메세지코드 삭제 -->
+    <select id="sysMsgDelete" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_MSG_DEL #{keyword}
+    </select>
+    <!--메세지코드 수정 시 그리드에서 하나의 항목 값 조회 -->
+    <select id="sysMsgOneGet" resultType="com.mes.mesManager.Master.DTO.SYSMsg">
+        EXEC SP_SYS_MSG_GET 1,1,#{keyword}
+    </select>
+</mapper>
+
+

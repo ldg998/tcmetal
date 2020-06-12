@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.Auth.AuthMapper">
+    <select id="authMainSelect" resultType="com.mes.Common.Auth.Auth">
+		EXEC SP_SYS_AUTH_MENU_TREE_GET  '' ,#{user_code}
+   </select>
+    <select id="authSubSelect" resultType="com.mes.Common.Auth.Auth">
+   		EXEC SP_SYS_AUTH_MENU_TREE_GET  #{keyword} ,#{user_code}
+   </select>
+
+    <select id="menuAuth" resultType="com.mes.mesManager.Authority.DTO.SYSAuthProgram">
+   		EXEC SP_SYS_AUTH_MENU_GET  #{keyword} ,#{user_code}
+   </select>
+    <select id="loginAction" resultType="com.mes.Common.Interceptor.Session">
+        EXEC SP_SYS_LOGIN #{user_code} , #{user_pwd}
+    </select>
+
+    <select id="menuFavoritesGet" resultType="com.mes.Common.Various.DTO.SYS_MENU_FAVORITES_CD">
+       SELECT A.*,B.MENU_NAME
+        FROM SYS_MENU_FAVORITES_CD A
+            LEFT JOIN SYS_USER_CD U ON A.USER_CODE = U.USER_CODE
+            LEFT JOIN (SELECT AUTH_CODE,MENU_CODE  FROM SYS_AUTH_SUB WHERE CHECK_GET ='Y') C ON C.AUTH_CODE = U.AUTH_CODE AND A.MENU_CODE = C.MENU_CODE
+            INNER JOIN SYS_MENU_CD B ON C.MENU_CODE = B.MENU_CODE
+        WHERE A.USER_CODE = #{user_code}
+        ORDER BY A.SEQ;
+    </select>
+
+    <select id="menuFavoritesCheck" resultType="integer">
+        SELECT COUNT(SEQ) FROM SYS_MENU_FAVORITES_CD WHERE USER_CODE = #{user_code} AND MENU_CODE = #{menu_code}
+    </select>
+</mapper>
+
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesManager.User.UserMapper">
+
+    <select id="sysUserSuppGet" resultType="com.mes.mesManager.User.DTO.SYSUserSupp">
+        	EXEC SP_SYS_USER_SUPP_GET  #{page},#{rows},''
+    </select>
+    <select id="sysUserSuppOneGet" resultType="com.mes.mesManager.User.DTO.SYSUserSupp">
+        	SELECT * FROM  SYS_USER_CD WHERE  USER_TYPE = '1' AND USER_CODE = #{keyword}
+    </select>
+
+    <select id="sysUserSuppAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_USER_SUPP_ADD #{user_code},#{user_name},#{auth_code},#{tel_no},#{email},#{use_yn},#{update_user},#{keyword}
+    </select>
+    <select id="sysUserSuppDelete" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_USER_SUPP_DEL #{keyword}
+    </select>
+</mapper>
+
+

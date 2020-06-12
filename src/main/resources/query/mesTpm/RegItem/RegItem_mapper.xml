@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesTpm.RegItem.RegitemMapper">
+    <select id="tpmMachineRegItemGet" resultType="com.mes.mesTpm.RegItem.DTO.TPM_REG_ITEM_CD">
+        EXEC [SP_TPM_REG_ITEM_GET]  #{page}, #{rows}, '', ''
+    </select>
+    <select id="tpmMachineRegItemOneGet" resultType="com.mes.mesTpm.RegItem.DTO.TPM_REG_ITEM_CD">
+        EXEC [SP_TPM_REG_ITEM_GET]  1, 1, #{keyword},''
+    </select>
+    <select id="tpmMachineRegItemAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_REG_ITEM_ADD #{qc_code}, #{qc_name},#{use_yn},#{user_code},#{keyword}
+    </select>
+    <select id="tpmMachineRegItemDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_REG_ITEM_DEL #{keyword}
+    </select>
+
+    <select id="tpmMachineRegGet" resultType="com.mes.mesTpm.RegItem.DTO.TPM_MACHINE_REG">
+        EXEC SP_TPM_MACHINE_REG_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
+    </select>
+
+    <select id="tpmMachineRegDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_REG_DEL #{keyword}
+    </select>
+
+    <select id="tpmMachineRegAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_REG_ADD #{line_code},#{machine_code},#{qc_code},#{cycle_type},#{cycle_qty},#{start_date},#{user_code},#{keyword}
+    </select>
+
+    <select id="tpmMachineRegOneGet" resultType="com.mes.mesTpm.RegItem.DTO.TPM_MACHINE_REG">
+        EXEC SP_TPM_MACHINE_REG_GET 1,1,#{keyword},#{keyword2},#{keyword3}
+    </select>
+
+    <select id="tpmMachineRegCompGet" resultType="com.mes.mesTpm.RegItem.DTO.TPM_MACHINE_REG_PLAN">
+        EXEC SP_TPM_MACHINE_REG_READY_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},'',#{keyword4}
+    </select>
+
+    <select id="tpmMachineRegCompOneGet" resultType="com.mes.mesTpm.RegItem.DTO.TPM_MACHINE_REG_PLAN">
+        EXEC SP_TPM_MACHINE_REG_READY_GET 1,1,'','',#{keyword},#{keyword2},#{keyword3},#{keyword4}
+    </select>
+
+    <select id="tpmMachineRegCompAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_MACHINE_REG_READY_ADD #{line_code},#{machine_code},#{qc_code},#{work_date},#{check_yn},#{check_code},#{measure_name},#{check_user_code},#{keyword}
+    </select>
+
+    <select id="tpmMachineRegAlarmGet" resultType="com.mes.mesTpm.RegItem.DTO.TPM_MACHINE_REG_ALARM">
+        EXEC [SP_TPM_REG_ALARM_GET]  #{page}, #{rows}, #{keyword}, #{keyword2}
+    </select>
+
+    <select id="tpmMachineRegAlarmAllGet" resultType="com.mes.mesTpm.RegItem.DTO.TPM_MACHINE_REG_ALARM">
+        EXEC [SP_TPM_REG_ALARM_GET]  0, 0, #{line_code}, #{machine_code}
+    </select>
+
+    <select id="tpmMachineRegAlarmAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_REG_ALARM_ADD #{line_code},#{machine_code},#{alarm_day},#{user_code},#{alarm_user_code},#{keyword}
+    </select>
+
+    <select id="tpmMachineRegAlarmDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_TPM_REG_ALARM_DEL #{keyword}
+    </select>
+
+</mapper>

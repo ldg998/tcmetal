@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesManager.Authority.AuthorityMapper">
+    <!-- 권한관리 -->
+    <select id="sysAuthGet" resultType="com.mes.mesManager.Authority.DTO.SYSAuth"><!-- 권한 조회 -->
+        EXEC SP_SYS_AUTH_GROUP_GET  #{page},#{rows},''
+    </select>
+    <select id="sysAuthOneGet" resultType="com.mes.mesManager.Authority.DTO.SYSAuth"><!-- 권한 조회(UPDATE - 하나의 컬럼 조회) -->
+        EXEC SP_SYS_AUTH_GROUP_GET  1,1,#{keyword}
+    </select>
+    <select id="sysAuthAU" resultType="com.mes.Common.DataTransferObject.Message"><!-- 권한 추가 -->
+        	EXEC SP_SYS_AUTH_GROUP_ADD  #{auth_code},#{auth_name},#{user_code},#{keyword}
+    </select>
+    <select id="sysAuthDelete" resultType="com.mes.Common.DataTransferObject.Message"><!-- 권한 삭제 -->
+        	EXEC SP_SYS_AUTH_GROUP_DEL  #{keyword}
+    </select>
+
+    <!-- 권한그룹별 프로그램 관리 -->
+    <select id="sysAuthAllGet" resultType="com.mes.mesManager.Authority.DTO.SYSAuth"><!-- 권한그룹명 조회 -->
+        	EXEC SP_SYS_AUTH_GROUP_GET  0,0,''
+    </select>
+    <select id="sysAuthProgramGet" resultType="com.mes.mesManager.Authority.DTO.SYSAuthProgram"><!-- 메뉴별 권한 조회 -->
+        	EXEC SP_SYS_AUTH_PROGRAM_GET #{keyword},#{keyword2}
+    </select>
+    <select id="sysAuthProgramAdd" resultType="com.mes.Common.DataTransferObject.Message"><!-- 메뉴별 권한 수정 -->
+        	EXEC SP_SYS_AUTH_PROGRAM_ADD #{keyword},#{keyword2}
+    </select>
+    <select id="menuAllGet" resultType="com.mes.Common.Auth.Auth"><!-- 업무분류 조회 -->
+        	EXEC SP_SYS_MENU_TREE_GET ''
+    </select>
+</mapper>
+
+

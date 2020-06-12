@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.File.FileMapper">
+    <select id="setOneFile" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_FILE_ADD  #{user_code}, #{key_value}, #{file_name},
+        #{file_og_name}, #{file_size}, #{file_volume}, #{upload_path}, #{url}
+    </select>
+    <select id="FileDownloads" resultType="com.mes.Common.File.DTO.Files">
+        SELECT * FROM SYS_FILE_CD WHERE key_value = #{key_value}
+    </select>
+    <update id="setTwoFile">
+        UPDATE QMS_RECV_SUB
+        SET
+            FILE2 = #{file2},
+            FILE3 = #{file3}
+        WHERE
+            IN_NO = #{key1} AND PART_CODE = {key2}
+    </update>
+</mapper>
+
+

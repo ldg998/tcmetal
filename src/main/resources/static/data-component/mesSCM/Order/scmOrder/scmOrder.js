@@ -1,0 +1,1062 @@
+/**
+ * various.js 와 연동
+ */
+
+////////////////////////////데이터/////////////////////////////////////
+var save_rowid;
+
+var main_data = {
+    check: 'I',     // 수정,추가 판단용
+    supp_check: 'A',//업체 체크
+    send_data: {},  //조회시 data  담는용도
+    send_data_post: {},
+    check2: 'Y',
+    auth: {},      //권한체크 후 권한 data 담는 용도
+    check3: 'Y',
+    status: 'N'
+};
+
+////////////////////////////시작 함수/////////////////////////////////////
+
+$(document).ready(function () {
+    msg_get(); //메세지설정
+    authcheck(); // 권한체크
+    suppModal_start(); //업체모달 실행
+    modal_start1();    //모달 실행
+    datepickerInput(); //날짜 표현형식
+    selectBox();     //select Box 데이터 할당
+    jqGrid_main();  //main 그리드 생성
+    jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]')); //그리드 resize
+    jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));//그리드 resize
+    jqgridPagerIcons(); //그리드 아이콘 설정
+    get_btn(1); // 페이지 load 동시에 그리드 조회
+});
+
+////////////////////////////클릭 함수/////////////////////////////////////
+
+//조회버튼
+function get_btn(page) {
+    main_data.send_data = value_return(".condition_main"); //해당클레스 이름을 가진객체 name value 할당
+    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, ''); //가져온 날짜데이터 가공 2020-06-01 = 20200601
+    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');   ////가져온 날짜데이터 가공 2020-06-01 = 20200601
+    main_data.send_data_post = main_data.send_data; //데이터 나눠주기
+    //console.log(main_data.send_data);
+    $("#mes_grid").setGridParam({ //그리드조회
+        url: "/scmOrderGet",    // URL -> RESTCONTROLLER 호출
+        datatype: "json",    //json 데이터 형식으로
+        page: page,         // 페이지번호
+        postData: main_data.send_data //매개변수전달
+    }).trigger("reloadGrid");  // trigger 그리드 reload 실행 / 해당이벤트를 강제발생시키는 개념
+
+    $('#mes_grid2').jqGrid('clearGridData'); //해당 그리드의 데이터삭제 및 업데이트
+}
+
+function get_btn_post(page) {
+    $("#mes_grid").setGridParam({
+        url: '/scmOrderGet',
+        datatype: "json",
+        page: page,
+        postData: main_data.send_data_post
+    }).trigger("reloadGrid");
+    $('#mes_grid2').jqGrid('clearGridData');
+}
+
+//선택한 그리드의 로우 id를사용해 해당id 와같은 id 를 그리드조회
+function under_get(rowid) {
+    $("#mes_grid2").setGridParam({
+        url: '/scmOrderSubGet',
+        datatype: "json",
+        page: 1,
+        postData: {keyword: rowid}
+    }).trigger("reloadGrid");
+}
+
+// 추가버튼
+function add_btn() {
+    main_data.check3 = 'Y';
+    main_data.status = 'N';
+    if (main_data.auth.check_add != "N") { //권한 체크
+        modal_reset(".modal_value", []); //해당 클레스명의 value 리셋 readonly name이있다면 그객체를 leadonly
+        $("#mes_add_grid").jqGrid('clearGridData');   //해당 그리드의 데이터삭제 및 업데이트
+        $("#mes_add_grid2").jqGrid('clearGridData');  //해당 그리드의 데이터삭제 및 업데이트
+        var date = new Date();  //날짜데이터 호출
+        var date2 = new Date(); //날짜데이터 호출
+        date2.setDate(date.getDate() + 1); //현재날짜에 + 1
+        $('#datepicker3').datepicker('setDate', date); //해당 id에 현재날짜 세팅  2020-06-04
+        $('#datepicker4').datepicker('setDate', date2); // 해당 id에 현재날짜+1 세팅 2020-06-05
+        $("#supp_name_modal").prop("disabled", false).trigger('change'); //업체모달
+        $("#crm_ord_no").prop("disabled", false).trigger('change');    //수주번호
+        main_data.check = 'I';   //추가권한 부여
+        $("#addDialog").dialog('open'); // 모달오픈
+        jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //해당그리드 리사이즈
+        jqGridResize2("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]')); //해당그리드 리사이즈
+    } else {
+        alert(msg_object.TBMES_A001.msg_name1); // 오류메세지출력
+
+    }
+}
+
+//삭제버튼
+function delete_btn() {
+    if (main_data.auth.check_del != "N") { //권한체크
+        var gu5 = String.fromCharCode(5); //아스키코드 char5 담아추기
+        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크한 그리도 로우 가져오기
+        var check = '';
+        var check2 = [];
+        if (ids.length === 0) { //체크 여부
+            alert(msg_object.TBMES_A004.msg_name1); // 오류메세지출력
+        } else {
+            ids.forEach(function (id) { //체크한 로우만큼 반복
+                check = $('#mes_grid').jqGrid('getRowData', id).status; //check = 선택한 로우id 에 데이터에 있는 status(상태) 번호이다
+                if (check === '1') { //상태번호가 1이면
+                    check2.push(id); //check2[] 에 담아준다
+                }
+
+            });
+            if (check2.length > 0) { //체크2에 존재유무 체크
+                alert(check2.join(",") + " 전표가 완료 되어있습니다.");
+            } else {
+                if (confirm(msg_object.TBMES_A005.msg_name1)) { //실행유무
+                    main_data.check = 'D';   //삭제권한부여
+                    wrapWindowByMask2();    //삭제하는동안 마스크
+                    ccn_ajax("/scmOrderDel", {ord_no: ids.join(gu5)}).then(function (data) { //아스키 코드를 추가한 데이터 넘겨주기
+                        if (data.result === 'NG') { //프로시저 메세지 가 ng 라면
+                            alert(data.message);   //오류메세지 출력
+                        } else {
+                            get_btn_post($("#mes_grid").getGridParam('page')); //재호출
+                        }
+                        $('#mes_grid2').jqGrid('clearGridData'); //해당 그리드 삭제 및 업데이트
+                        closeWindowByMask(); //마스크 해제
+                    }).catch(function (err) {
+                        closeWindowByMask(); // 마스크해제
+                        console.error(err); // Error 출력
+                    });
+                }
+            }
+            $('#mes_grid').jqGrid("resetSelection");   //해당그리드 재검색
+        }
+    } else {
+        alert(msg_object.TBMES_A002.msg_name1);// 오류메세지 출력
+
+    }
+}
+
+// 업체버튼을 선택하면 업체 모달을
+function supp_btn(what) {
+    main_data.supp_check = what;
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+    $("#supp-search-dialog").dialog('open');
+    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
+    $('#supp_code_search').val('').trigger("change");
+    $("#supp_code_search").focus();
+    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
+}
+
+// 업체모달안에 선택된 업체 name 과 code 할당
+function suppModal_bus(code, name) {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val(name);
+        $("#supp_code_main").val(code);
+    } else if (main_data.supp_check === 'B') {
+        $("#supp_name_modal").val(name);
+        $("#supp_code_modal").val(code);
+        $("#ord_no").val('');
+        $("#place_name").val('');
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
+
+// 업채모달에 선택 객체를 비워준다
+function suppModal_close_bus() {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val("");
+        $("#supp_code_main").val("");
+    } else if (main_data.supp_check === 'B') {
+        $("#supp_name_modal").val("");
+        $("#supp_code_modal").val("");
+        $("#ord_no").val("");
+        $("#place_name").val("");
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
+
+//완료처리버튼
+function complete_btn() {
+    if (main_data.auth.check_edit != "N") {
+        var gu5 = String.fromCharCode(5);             //아스키코드5
+        var ids = $("#mes_grid").getGridParam('selarrrow'); //선택한 그리드 로우
+        if (ids.length === 0) {                             //선택여부
+            alert("완료처리하는 데이터를 선택해주세요");
+        } else {
+            if (confirm("완료처리 하시겠습니까?")) {           //시행여부
+                wrapWindowByMask2();                       //마스크 온
+                ccn_ajax("/scmOrderComp", {keyword: ids.join(gu5)}).then(function (data) {
+                    if (data.result === 'NG') {
+                        alert(data.message);
+                    } else {
+                        get_btn_post($("#mes_grid").getGridParam('page')); //페이지 재로딩
+                    }
+                    $('#mes_grid2').jqGrid('clearGridData');  //해당 그리드 데이터 비우고 업데이트
+                    closeWindowByMask();                //마스크 오프
+                }).catch(function (err) {
+                    closeWindowByMask();                //마스크 오프
+                    console.error(err); // Error 출력
+                });
+            }
+            $('#mes_grid').jqGrid("resetSelection");    //그리드 전체 선택해제
+        }
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1);         //오류메세지 출력
+    }
+}
+
+//대기처리 버튼   완료처리 버튼과같이  선택한 로우에 스테이터스 를 대기처리로 한다
+function ready_btn() {
+    if (main_data.auth.check_edit != "N") {
+        var gu5 = String.fromCharCode(5);
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        // console.log(ids);
+        if (ids.length === 0) {
+            alert("대기처리하는 데이터를 선택해주세요");
+        } else {
+            if (confirm("대기처리 하시겠습니까?")) {
+                wrapWindowByMask2();
+                ccn_ajax("/scmOrderReady", {keyword: ids.join(gu5)}).then(function (data) {
+                    if (data.result === 'NG') {
+                        alert(data.message);
+                    } else {
+                        get_btn_post($("#mes_grid").getGridParam('page'));
+                    }
+                    $('#mes_grid2').jqGrid('clearGridData');
+                    closeWindowByMask();
+                }).catch(function (err) {
+                    closeWindowByMask();
+                    console.error(err); // Error 출력
+                });
+            }
+            $('#mes_grid').jqGrid("resetSelection");
+        }
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1);
+    }
+}
+
+var agent = navigator.userAgent.toLowerCase();
+
+//발주서 버튼
+function pdfMake_btn() {
+    var ids = $("#mes_grid").getGridParam('selarrrow').slice(); //선택한 그리드로우
+
+    if (ids.length === 0) {  // 선택여부
+        alert("데이터를 선택해주세요");
+        return false;
+    } else if (ids.length > 1) { //초과선택여부
+        alert("하나의 데이터를 선택해주세요");
+        return false;
+    } else {
+        ccn_ajax('/scmOrderSubPdfGet', {keyword: ids[0]}).then(function (data) { //해당 로우의 발주서를 이미지로 뿌려주기위한 데이터 조회
+            if (data[0].file1 !== '' && data[0].file1 !== null) {
+                var img = new Image();
+                img.setAttribute('crossOrigin', 'anonymous');
+                img.src = "/uploadFile" + data[0].file1.replace('C:/UploadFile/sound', ''); //띄워줄이미지
+
+                img.onload = function () {
+                    var canvas = document.createElement("canvas");
+                    canvas.width = this.width;
+                    canvas.height = this.height;
+
+                    var ctx = canvas.getContext("2d");
+                    ctx.drawImage(this, 0, 0);
+
+                    var dataURL = canvas.toDataURL("image/png");
+
+                    var topList = [
+                        [
+                            {fillColor: '#F2F2F2', text: '수 신', fontSize: 12, alignment: 'center'},
+                            {text: data[0].supp_name + " 귀하", fontSize: 8},
+                            {fillColor: '#F2F2F2', text: '상 호', fontSize: 12, alignment: 'center'},
+                            {text: '(주)사운드방음문', fontSize: 8},
+                            {fillColor: '#F2F2F2', text: '대표자', fontSize: 12, alignment: 'center'},
+                            {text: '이 재 택', fontSize: 8},
+                        ],
+
+                        [
+                            {fillColor: '#F2F2F2', text: 'T E L', fontSize: 12, alignment: 'center'},
+                            {text: data[0].tel_no, fontSize: 8},
+                            {fillColor: '#F2F2F2', text: '사업자번호', fontSize: 12, alignment: 'center'},
+                            {text: '860-81-00814', fontSize: 8},
+                            {fillColor: '#F2F2F2', text: 'TEL', fontSize: 12, alignment: 'center'},
+                            {text: '032-428-5959', fontSize: 8},
+                        ],
+                        [
+                            {fillColor: '#F2F2F2', text: 'F A X', fontSize: 12, alignment: 'center'},
+                            {text: data[0].fax_no, fontSize: 8},
+                            {fillColor: '#F2F2F2', text: '담당자', fontSize: 12, alignment: 'center'},
+                            {text: data[0].user_name, fontSize: 8},
+                            {fillColor: '#F2F2F2', text: 'FAX', fontSize: 12, alignment: 'center'},
+                            {text: '032-563-8704', fontSize: 8},
+                        ],
+                        [
+                            {fillColor: '#F2F2F2', text: '발주일자', fontSize: 12, alignment: 'center'},
+                            {text: formmatterDate2(data[0].work_date), fontSize: 8},
+                            {fillColor: '#F2F2F2', text: '이메일', fontSize: 12, alignment: 'center'},
+                            {text: 'sound5959@hanmail.net', fontSize: 8, colSpan: 3},
+                            {},
+                            {},
+                        ],
+                        [
+                            {fillColor: '#F2F2F2', text: '납기일자', fontSize: 12, alignment: 'center'},
+                            {text: formmatterDate2(data[0].end_date), fontSize: 8},
+                            {fillColor: '#F2F2F2', text: '주 소', fontSize: 12, alignment: 'center'},
+                            {text: '인천광역시 서구 염곡로14번길 30, 1층(가좌동)', fontSize: 8, colSpan: 3},
+                            {},
+                            {},
+                        ],
+                        [
+                            {fillColor: '#F2F2F2', text: '결제조건', fontSize: 12, alignment: 'center'},
+                            {text: data[0].payment, fontSize: 8},
+                            {fillColor: '#F2F2F2', text: '업 태', fontSize: 12, alignment: 'center'},
+                            {text: '제조업', fontSize: 8},
+                            {fillColor: '#F2F2F2', text: '종목', fontSize: 12, alignment: 'center'},
+                            {text: '방음문의', fontSize: 8},
+                        ],
+
+                    ];
+
+                    var heightList = [20];
+                    var content = {
+                        margin: [0, 5, 0, 0],
+                        table: {
+                            heights: [],
+                            widths: [30, 70, 70, 50, 40,'*', '*'],
+                            body: [
+                                [
+                                    {fillColor: '#F2F2F2', text: 'No.', fontSize: 10, alignment: 'center'},
+                                    {fillColor: '#F2F2F2', text: '품목명', fontSize: 10, alignment: 'center'},
+                                    {fillColor: '#F2F2F2', text: '규격', fontSize: 10, alignment: 'center'},
+                                    {fillColor: '#F2F2F2', text: '수량', fontSize: 10, alignment: 'center'},
+                                    {fillColor: '#F2F2F2', text: '단위', fontSize: 10, alignment: 'center'},
+                                    {fillColor: '#F2F2F2', text: '방향', fontSize: 10, alignment: 'center'},
+                                    {fillColor: '#F2F2F2', text: '비고', fontSize: 10, alignment: 'center'},
+                                ],
+                            ]
+                        }
+                    };
+
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        heightList.push(25);
+
+                        content.table.body.push([
+                            {text: i + 1, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                            {text: data[i].part_name, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                            {text: data[i].spec, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                            {text: data[i].ord_qty, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                            {text: data[i].unit_name, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                            {text: data[i].direction, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                            {text: data[i].remark, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                        ]);
+
+                    }
+
+                    if ((7 - data.length) > 0) {
+                        for (var j = 1; j <= (7 - data.length); j++) {
+                            heightList.push(25);
+                            content.table.body.push([
+                                {},
+                                {},
+                                {},
+                                {},
+                                {},
+                                {},
+                                {},
+                            ]);
+                        }
+                    }
+
+                    heightList.push(25);
+                    content.table.body.push([
+                        {text: '##', fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                    ]);
+
+                    heightList.push(20);
+                    content.table.body.push([
+                        {
+                            fillColor: '#F2F2F2',
+                            text: '계',
+                            fontSize: 10,
+                            alignment: 'center',
+                            colSpan: 2,
+                            margin: [0, 5, 0, 0]
+                        },
+                        {},
+                        {text: '', fontSize: 10, alignment: 'center'},
+                        {text: '', fontSize: 10, alignment: 'center'},
+                        {text: '', fontSize: 10, alignment: 'center'},
+                        {text: '', fontSize: 10, alignment: 'center'},
+                        {text: '', fontSize: 10, alignment: 'center'},
+                    ]);
+                    content.table.heights = heightList;
+
+                    var file = dataURL;
+
+
+                    pdfMake.fonts = {
+                        hangul: {
+                            normal: "malgun.ttf",
+                            bold: "malgunbd.ttf",
+                            italics: "malgun.ttf",
+                            bolditalics: "malgun.ttf"
+                        }
+                    };
+                    var documentDefinition = {
+                        content: [
+                            {
+
+                                margin: [170, 0, 0, 0],
+                                table: {
+                                    heights: [30],
+                                    widths: [160],
+                                    body: [
+                                        [
+                                            {
+                                                border: [false, false, false, true],
+                                                text: [
+                                                    {text: '  발 주 서  ', fontSize: 30},
+                                                ],
+                                                //italics: true,
+                                                bold: true,
+                                                style: 'header'
+
+                                            },
+
+                                        ]
+                                    ]
+                                },
+                            },
+                            {
+                                margin: [0, 5, 0, 0],
+                                table: {
+
+                                    widths: [60, 150, 60, '*', 60, '*'],
+                                    body: topList
+                                },
+                            },
+                            {
+                                margin: [0, 5, 0, 0],
+                                text: '아래와 같이 발주합니다.',
+                                fontSize: 10,
+
+
+                            },
+                            {
+                                margin: [0, 5, 0, 0],
+                                table: {
+
+                                    widths: ['*'],
+                                    body: [
+                                        [
+                                            {
+                                                border: [true, true, true, true],
+                                                text: [
+                                                    {text: '합계 금액 : ', fontSize: 10, margin: [0, 12, 0, 0]},
+                                                ],
+                                                //italics: true,
+                                                bold: true,
+
+                                            }
+                                        ]
+                                    ]
+                                },
+                            },
+                            content,
+                            {
+                                margin: [0, 5, 0, 0],
+                                table: {
+                                    heights: [20],
+                                    widths: ['*'],
+                                    body: [
+
+                                        [
+                                            {
+                                                border: [true, true, true, true],
+                                                text: [
+                                                    {
+                                                        text: '납품장소 : ' + data[0].place_name,
+                                                        fontSize: 10,
+                                                        margin: [0, 12, 0, 0]
+                                                    },
+                                                ],
+                                                //italics: true,
+                                                //bold: true,
+
+                                            }
+                                        ]
+                                    ]
+                                },
+                            },
+                            {
+                                margin: [0, 5, 0, 0],
+                                table: {
+                                    heights: [10, 170],
+                                    widths: ['*', '*'],
+                                    body: [
+                                        [
+                                            {
+                                                border: [true, true, true, true],
+                                                fillColor: '#F2F2F2',
+                                                text: '공통사항',
+                                                fontSize: 10,
+                                                alignment: 'center',
+                                                bold: true,
+                                                colSpan: 2
+
+                                            },
+                                            {}
+                                        ],
+                                        [
+                                            {
+                                                border: [true, true, false, true],
+                                                text: data[0].ord_remark, fontSize: 10
+
+                                            },
+                                            {
+                                                border: [false, true, true, true],
+                                                image: file,
+                                                height: 160,
+                                                alignment: 'right',
+
+                                            }
+                                        ]
+                                    ]
+                                },
+                            },
+
+
+                        ],
+//하단의 현재페이지 / 페이지 수 넣기
+                        footer: function (currentPage, pageCount) {
+                            return {
+                                margin: 10,
+                                columns: [{
+                                    fontSize: 9,
+                                    text: [
+                                        {
+                                            text: '' + currentPage.toString() + ' of ' +
+                                                pageCount,
+                                        }
+                                    ],
+                                    alignment: 'center'
+                                }]
+                            };
+
+                        },
+//필요한 스타일 정의하기
+                        styles: {
+                            style_test: {
+                                fontSize: 18,
+                                bold: true,
+                                margin: [0, 0, 0, 0],
+                                alignment: 'center', font: 'hangul'
+                            },
+                            tableExample: {
+                                margin: [0, 5, 0, 15], font: 'hangul'
+                            },
+                            header: {
+                                alignment: 'center',
+                                font: 'hangul'
+                            }
+                        },
+
+// 페이지 크기 용지의 크기 사이즈 넣기 또는 특정 사이즈 넣기 { width: number, height: number }
+                        pageSize: 'A4',
+
+                        /* 페이지 방향 portrait : 가로 , landscape : 세로 */
+                        pageOrientation: 'portrait',
+                        defaultStyle: {
+                            font: 'hangul'
+                        }
+                    };
+
+                    var pdf_name = 'pdf파일 만들기.pdf'; // pdf 만들 파일의 이름
+                    if (agent.indexOf("chrome") != -1) {
+
+                        pdfMake.createPdf(documentDefinition).open();
+
+                    } else {
+                        pdfMake.createPdf(documentDefinition).download();
+                    }
+                };
+            } else {
+                var topList = [
+                    [
+                        {fillColor: '#F2F2F2', text: '수 신', fontSize: 12, alignment: 'center'},
+                        {text: data[0].supp_name + " 귀하", fontSize: 8},
+                        {fillColor: '#F2F2F2', text: '상 호', fontSize: 12, alignment: 'center'},
+                        {text: '(주)사운드방음문', fontSize: 8},
+                        {fillColor: '#F2F2F2', text: '대표자', fontSize: 12, alignment: 'center'},
+                        {text: '이 재 택', fontSize: 8},
+                    ],
+
+                    [
+                        {fillColor: '#F2F2F2', text: 'T E L', fontSize: 12, alignment: 'center'},
+                        {text: data[0].tel_no, fontSize: 8},
+                        {fillColor: '#F2F2F2', text: '사업자번호', fontSize: 12, alignment: 'center'},
+                        {text: '860-81-00814', fontSize: 8},
+                        {fillColor: '#F2F2F2', text: 'TEL', fontSize: 12, alignment: 'center'},
+                        {text: '032-428-5959', fontSize: 8},
+                    ],
+                    [
+                        {fillColor: '#F2F2F2', text: 'F A X', fontSize: 12, alignment: 'center'},
+                        {text: data[0].fax_no, fontSize: 8},
+                        {fillColor: '#F2F2F2', text: '담당자', fontSize: 12, alignment: 'center'},
+                        {text: data[0].user_name, fontSize: 8},
+                        {fillColor: '#F2F2F2', text: 'FAX', fontSize: 12, alignment: 'center'},
+                        {text: '032-563-8704', fontSize: 8},
+                    ],
+                    [
+                        {fillColor: '#F2F2F2', text: '발주일자', fontSize: 12, alignment: 'center'},
+                        {text: formmatterDate2(data[0].work_date), fontSize: 8},
+                        {fillColor: '#F2F2F2', text: '이메일', fontSize: 12, alignment: 'center'},
+                        {text: 'sound5959@hanmail.net', fontSize: 8, colSpan: 3},
+                        {},
+                        {},
+                    ],
+                    [
+                        {fillColor: '#F2F2F2', text: '납기일자', fontSize: 12, alignment: 'center'},
+                        {text: formmatterDate2(data[0].end_date), fontSize: 8},
+                        {fillColor: '#F2F2F2', text: '주 소', fontSize: 12, alignment: 'center'},
+                        {text: '인천광역시 서구 염곡로14번길 30, 1층(가좌동)', fontSize: 8, colSpan: 3},
+                        {},
+                        {},
+                    ],
+                    [
+                        {fillColor: '#F2F2F2', text: '결제조건', fontSize: 12, alignment: 'center'},
+                        {text: data[0].payment, fontSize: 8},
+                        {fillColor: '#F2F2F2', text: '업 태', fontSize: 12, alignment: 'center'},
+                        {text: '제조업', fontSize: 8},
+                        {fillColor: '#F2F2F2', text: '종목', fontSize: 12, alignment: 'center'},
+                        {text: '방음문의', fontSize: 8},
+                    ],
+
+                ];
+                var heightList = [20];
+                var content = {
+                    margin: [0, 5, 0, 0],
+                    table: {
+                        heights: [],
+                        widths: [30, 70, 70, 50, 40, '*','*'],
+                        body: [
+                            [
+                                {fillColor: '#F2F2F2', text: 'No.', fontSize: 10, alignment: 'center'},
+                                {fillColor: '#F2F2F2', text: '품목명', fontSize: 10, alignment: 'center'},
+                                {fillColor: '#F2F2F2', text: '규격', fontSize: 10, alignment: 'center'},
+                                {fillColor: '#F2F2F2', text: '수량', fontSize: 10, alignment: 'center'},
+                                {fillColor: '#F2F2F2', text: '단위', fontSize: 10, alignment: 'center'},
+                                {fillColor: '#F2F2F2', text: '방향', fontSize: 10, alignment: 'center'},
+                                {fillColor: '#F2F2F2', text: '비고', fontSize: 10, alignment: 'center'},
+                            ],
+                        ]
+                    }
+                };
+                for (var i = 0; i < data.length; i++) {
+                    heightList.push(25);
+                    content.table.body.push([
+                        {text: i + 1, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                        {text: data[i].part_name, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                        {text: data[i].spec, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                        {text: data[i].ord_qty, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                        {text: data[i].unit_name, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                        {text: data[i].direction, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                        {text: data[i].remark, fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                    ]);
+                }
+
+                if ((7 - data.length) > 0) {
+                    for (var j = 1; j <= (7 - data.length); j++) {
+                        heightList.push(25);
+                        content.table.body.push([
+                            {},
+                            {},
+                            {},
+                            {},
+                            {},
+                            {},
+                            {},
+                        ]);
+                    }
+                }
+
+                heightList.push(25);
+                content.table.body.push([
+                    {text: '##', fontSize: 10, alignment: 'center', margin: [0, 6, 0, 0]},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                ]);
+
+                heightList.push(20);
+                content.table.body.push([
+                    {
+                        fillColor: '#F2F2F2',
+                        text: '계',
+                        fontSize: 10,
+                        alignment: 'center',
+                        colSpan: 2,
+                        margin: [0, 5, 0, 0]
+                    },
+                    {},
+                    {text: '', fontSize: 10, alignment: 'center'},
+                    {text: '', fontSize: 10, alignment: 'center'},
+                    {text: '', fontSize: 10, alignment: 'center'},
+                    {text: '', fontSize: 10, alignment: 'center'},
+                    {text: '', fontSize: 10, alignment: 'center'},
+                ]);
+                content.table.heights = heightList;
+
+                pdfMake.fonts = {
+                    hangul: {
+                        normal: "malgun.ttf",
+                        bold: "malgunbd.ttf",
+                        italics: "malgun.ttf",
+                        bolditalics: "malgun.ttf"
+                    }
+                };
+                var documentDefinition = {
+                    content: [
+                        {
+                            margin: [170, 0, 0, 0],
+                            table: {
+                                heights: [30],
+                                widths: [160],
+                                body: [
+
+                                    [
+                                        {
+                                            border: [false, false, false, true],
+                                            text: [
+                                                {text: '  발 주 서  ', fontSize: 30},
+                                            ],
+                                            //italics: true,
+                                            bold: true,
+                                            style: 'header'
+
+                                        },
+
+                                    ]
+                                ]
+                            },
+                        },
+                        {
+                            margin: [0, 5, 0, 0],
+                            table: {
+
+                                widths: [60, 150, 60, '*', 60, '*'],
+                                body: topList
+                            },
+                        },
+                        {
+                            margin: [0, 5, 0, 0],
+                            text: '아래와 같이 발주합니다.',
+                            fontSize: 10,
+
+
+                        },
+                        {
+                            margin: [0, 5, 0, 0],
+                            table: {
+
+                                widths: ['*'],
+                                body: [
+                                    [
+                                        {
+                                            border: [true, true, true, true],
+                                            text: [
+                                                {text: '합계 금액 : ', fontSize: 10, margin: [0, 12, 0, 0]},
+                                            ],
+                                            //italics: true,
+                                            bold: true,
+
+                                        }
+                                    ]
+                                ]
+                            },
+                        },
+                        content,
+                        {
+                            margin: [0, 5, 0, 0],
+                            table: {
+                                heights: [20],
+                                widths: ['*'],
+                                body: [
+
+                                    [
+                                        {
+                                            border: [true, true, true, true],
+                                            text: [
+                                                {
+                                                    text: '납품장소 : ' + data[0].place_name,
+                                                    fontSize: 10,
+                                                    margin: [0, 12, 0, 0]
+                                                },
+                                            ],
+                                            //italics: true,
+                                            //bold: true,
+
+                                        }
+                                    ]
+                                ]
+                            },
+                        },
+                        {
+                            margin: [0, 5, 0, 0],
+                            table: {
+                                heights: [10, 170],
+                                widths: ['*', '*'],
+                                body: [
+                                    [
+                                        {
+                                            border: [true, true, true, true],
+                                            fillColor: '#F2F2F2',
+                                            text: '공통사항',
+                                            fontSize: 10,
+                                            alignment: 'center',
+                                            bold: true,
+                                            colSpan: 2
+
+                                        },
+                                        {}
+                                    ],
+                                    [
+                                        {
+                                            border: [true, true, false, true],
+                                            text: data[0].ord_remark, fontSize: 10
+
+                                        },
+                                        {
+                                            border: [false, true, true, true],
+                                            text: '',
+
+                                            alignment: 'right',
+
+                                        }
+                                    ]
+                                ]
+                            },
+                        },
+
+
+                    ],
+//하단의 현재페이지 / 페이지 수 넣기
+                    footer: function (currentPage, pageCount) {
+                        return {
+                            margin: 10,
+                            columns: [{
+                                fontSize: 9,
+                                text: [
+                                    {
+                                        text: '' + currentPage.toString() + ' of ' +
+                                            pageCount,
+                                    }
+                                ],
+                                alignment: 'center'
+                            }]
+                        };
+
+                    },
+//필요한 스타일 정의하기
+                    styles: {
+                        style_test: {
+                            fontSize: 18,
+                            bold: true,
+                            margin: [0, 0, 0, 0],
+                            alignment: 'center', font: 'hangul'
+                        },
+                        tableExample: {
+                            margin: [0, 5, 0, 15], font: 'hangul'
+                        },
+                        header: {
+                            alignment: 'center',
+                            font: 'hangul'
+                        }
+                    },
+
+// 페이지 크기 용지의 크기 사이즈 넣기 또는 특정 사이즈 넣기 { width: number, height: number }
+                    pageSize: 'A4',
+
+                    /* 페이지 방향 portrait : 가로 , landscape : 세로 */
+                    pageOrientation: 'portrait',
+                    defaultStyle: {
+                        font: 'hangul'
+                    }
+                };
+
+                var pdf_name = 'pdf파일 만들기.pdf'; // pdf 만들 파일의 이름
+                if (agent.indexOf("chrome") != -1) {
+
+                    pdfMake.createPdf(documentDefinition).open();
+
+                } else {
+                    pdfMake.createPdf(documentDefinition).download();
+                }
+            }
+        });
+    }
+
+}
+
+
+function getBase64FromImageUrl(url) {
+    var img = new Image();
+
+    img.setAttribute('crossOrigin', 'anonymous');
+    img.src = url;
+    img.onload = function () {
+        var canvas = document.createElement("canvas");
+        canvas.width = this.width;
+        canvas.height = this.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(this, 0, 0);
+
+        var dataURL = canvas.toDataURL("image/jpg");
+        //return dataURL;
+        // alert(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
+    };
+
+
+}
+
+////////////////////////////호출 함수/////////////////////////////////////
+function msg_get() {
+    msgGet_auth("TBMES_A001"); // 추가권한없음
+    msgGet_auth("TBMES_A002"); // 삭제권한없음
+    msgGet_auth("TBMES_A003"); // 수정권한없음
+    msgGet_auth("TBMES_A004"); // 삭제 데이터 선택 요청
+    msgGet_auth("TBMES_A005"); // 삭제여부
+}
+
+function authcheck() { // 권한체크
+    ccn_ajax("/menuAuthGet", {keyword: "scmOrder"}).then(function (data) {
+        main_data.auth = data;
+    });
+}
+
+function selectBox() {
+    $('#status_select').select2();
+}
+
+function datepickerInput() {  //초기 날짜할당
+    datepicker_makes("#datepicker", -30);
+    datepicker_makes("#datepicker2", 0);
+}
+
+function jqGrid_main() {  //메인 jqGrid
+    $('#mes_grid').jqGrid({
+        mtype: 'POST', // post 방식 데이터 전달
+        datatype: 'local', // local 설정을 통해 handler 에 재요청하는 경우를 방지
+        multiselect: true,  // 다중선택 가능
+        caption: '발주등록 | MES', // grid 제목
+        colNames: ['발주일자', '전표번호', '업체명', '상태', '납기일자', '납품장소', '등록자', '등록일시'], // grid 헤더 설정
+        colModel: [
+            {
+                name: 'work_date',
+                index: 'work_date',
+                sortable: false,
+                formatter: formmatterDate2,
+                fixed: true,
+                width: 100
+            }, // formatter 사용을 통해 데이터 형식 가공
+            {name: 'ord_no', index: 'ord_no', sortable: false, key: true, fixed: true, width: 130},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name: 'supp_name', index: 'supp_name', sortable: false, fixed: true, width: 130},
+            {name: 'status_name', index: 'status_name', sortable: false, fixed: true, width: 100},
+            {name: 'end_date', index: 'end_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 200},
+            {name: 'delivery_place', index: 'delivery_place', sortable: false, fixed: true, width: 150},
+            {name: 'user_name', index: 'user_name', sortable: false, fixed: true, width: 100},
+            {
+                name: 'update_date',
+                index: 'update_date',
+                sortable: false,
+                formatter: formmatterDate,
+                fixed: true,
+                width: 150
+            }
+        ],
+        autowidth: true, // 그리드 자동 가로 길이 설정
+        viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
+        height: 243,     // 그리드 세로 길이 설정
+        rowNum: 100,    // 1페이지당 데이터 수
+        rowList: [100, 200, 300, 500, 1000], // 페이지당 데이터 수 설정
+        pager: '#mes_grid_pager',            // pager 연결
+        beforeSelectRow: function (rowid, e) {   // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
+            var $myGrid = $(this),
+                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                cm = $myGrid.jqGrid('getGridParam', 'colModel');
+            $myGrid.setRowData(save_rowid, false, {background: "#FFFFFF"});
+            save_rowid = rowid;
+            $myGrid.setRowData(rowid, false, {background: "rgb(190, 220, 260)"});
+            return (cm[i].name === 'cb');
+        },
+        onCellSelect: function (rowid, icol, cellcontent, e) { //클릭시 이벤트 아래그리드 get
+            under_get(rowid);
+        },
+        ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
+            var data = $('#mes_grid').jqGrid('getRowData', rowid); //선택한 로우 에 data를 넣고
+
+            if (data.status === '1') { //상태 구분
+                main_data.check2 = 'N';
+            } else {
+                main_data.check2 = 'Y';
+            }
+            update_btn(rowid); //업데이트 버튼 실행
+        },
+        loadComplete: function () {  //그리드 로드가 진행완료후 실행
+            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
+                $("table#mes_grid tr.jqgfirstrow").css("height", "1px");
+            else
+                $("table#mes_grid tr.jqgfirstrow").css("height", "0px");
+        }
+    });
+
+    $('#mes_grid2').jqGrid({  //메인 그리드2(아래 그리드)
+        mtype: 'POST',
+        datatype: 'local',
+        caption: '발주등록 | MES',
+        colNames: ['전표번호', '품번', '품명', '규격', '발주수량', '입고수량', '미입고', '단위', '방향', '비고'],
+        colModel: [
+            {name: 'ord_no', index: 'ord_no', sortable: false},
+            {name: 'part_code', index: 'part_code', sortable: false},
+            {name: 'part_name', index: 'part_name', sortable: false},
+            {name: 'spec', index: 'spec', sortable: false},
+            {name: 'ord_qty', index: 'ord_qty', sortable: false, align: 'right'},
+            {name: 'qty', index: 'qty', sortable: false, align: 'right'},
+            {name: 'not_qty', index: 'not_qty', sortable: false, align: 'right'},
+            {name: 'unit_name', index: 'unit_name', sortable: false},
+            {name: 'direction', index: 'direction', sortable: false},
+            {name: 'remark', index: 'remark', sortable: false}
+        ],
+        autowidth: true,
+        viewrecords: true,
+        height: 194,
+        rowNum: 100,
+        rowList: [100, 200, 300, 500, 1000],
+        pager: '#mes_grid2_pager',
+        loadComplete: function () {
+            if ($("#mes_grid2").jqGrid('getGridParam', 'reccount') === 0)
+                $("table#mes_grid2 tr.jqgfirstrow").css("height", "1px");
+            else
+                $("table#mes_grid2 tr.jqgfirstrow").css("height", "0px");
+        }
+    });
+}
+

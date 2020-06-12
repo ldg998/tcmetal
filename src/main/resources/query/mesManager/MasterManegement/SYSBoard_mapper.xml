@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.mesManager.Master.MasterMapper">
+    <select id="sysBoardGet" resultType="com.mes.mesManager.Master.DTO.SYSBoard">
+        EXEC SP_SYS_BOARD_GET  #{page}, #{rows}, ''
+    </select>
+    <select id="sysBoardAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_BOARD_ADD #{board_code},#{board_en},#{board_kr},#{files},#{file_size},#{user_code},#{keyword}
+    </select>
+    <select id="sysBoardDelete" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_BOARD_DEL #{keyword}
+    </select>
+
+    <select id="sysBoardOneGet" resultType="com.mes.mesManager.Master.DTO.SYSBoard">
+        EXEC SP_SYS_BOARD_GET 1,1,#{keyword}
+    </select>
+</mapper>
+
+

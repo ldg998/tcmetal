@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.Test.Test">
+    <select id="mobileKey" resultType="Integer">
+        SELECT COUNT(APP_KEY) FROM MOBILE_KEY WHERE APP_KEY = #{keyword}
+    </select>
+
+    <select id="mobileLogin" resultType="com.mes.mesManager.User.DTO.SYSUser">
+        SELECT * FROM SYS_USER_CD WHERE USER_CODE = #{user_code} AND USER_PWD = #{user_pwd}
+    </select>
+
+    <select id="mobileLine" resultType="com.mes.mesManager.Master.DTO.SYSProdLine">
+    	EXEC SP_SYS_LINE_GET 0, 0, '',''
+    </select>
+
+    <resultMap id="myId1" type="com.mes.mesManager.Authority.DTO.SYSAuth"></resultMap>
+
+    <resultMap id="myId2" type="Integer"></resultMap>
+
+    <select id="test0609" resultMap="myId1, myId2">
+
+	    EXEC SP_TEST_GET
+
+    </select>
+
+</mapper>
+
+

@@ -65,7 +65,7 @@
             <li id="mid-nav" class="hover <c:out value="${main_list.menu_name}"/>">
 
                 <c:if test="${main_list.menu_name != '게시판'}">
-                <a class="dropdown-toggle" href='javascript:void(0);"/>'>
+                <a class="dropdown-toggle" href='javascript:void(0);"/>"'>
 
                     </c:if>
 

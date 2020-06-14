@@ -25,6 +25,7 @@ function addUdate_btn() {
         if (confirm(text)) {
             wrapWindowByMask2();
             modal_objact.keyword = main_data.check;
+
             ccn_ajax("/sysAuthAdd", modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);

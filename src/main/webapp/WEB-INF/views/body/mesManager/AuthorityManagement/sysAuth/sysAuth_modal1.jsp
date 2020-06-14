@@ -10,14 +10,14 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 권한그룹코드 </div>
             <div class="profile-info-value">
-                <input type="text" name="auth_code" class="form-control modal_value" autocomplete="off" readonly placeholder="자동생성">
+                <input type="text" name="auth_code" class="form-control modal_value" autofocus autocomplete="off" >
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name"> 권한그룹명 </div>
             <div class="profile-info-value">
-                <input type="text" name="auth_name" class="form-control modal_value" autofocus autocomplete="off">
+                <input type="text" name="auth_name" class="form-control modal_value"  autocomplete="off">
             </div>
         </div>
 

@@ -164,6 +164,9 @@ var array =
         //사후보전
         {code: "tmpMachineRegAlarm", title: '설비관리', sub: '사후보전관리', name: '사후보전관리'},
 
+        //게시판-topBoard1
+        {code:"board", title:"게시판" , sub:"게시판", name:"게시판"},
+
     ];
 var path = window.location.pathname.split("/").slice(1);
 $(function () {

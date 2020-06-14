@@ -32,9 +32,7 @@ $(document).ready(function () {
     modal_start1(); // 모달1 시작 함수
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정
-    setTimeout(function() {
-        get_btn(1);
-        }, 100);
+
 
 });
 

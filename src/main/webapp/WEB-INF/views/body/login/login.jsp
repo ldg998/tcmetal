@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="(주)사운드방음문 MES" />
-    <title>사운드방음문 | LOGIN</title>
-    <link rel="shortcut icon" href="/ui-component/imagesNew/icon/icon.ico">
+    <meta name="description" content="(주)태창금속산업 MES" />
+    <title>(주)태창금속산업 | LOGIN</title>
+    <link rel="shortcut icon" href="/ui-component/imagesNew/icon/slogo.png">
 
     <link rel="stylesheet" href="/ui-component/assets/neon/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="/ui-component/assets/neon/font-icons/entypo/css/entypo.css">
@@ -53,9 +53,9 @@
     <div class="login-header login-caret">
         <div class="login-content">
             <a href="index.html" class="logo">
-                <img src="/ui-component/assets/images/logo@2x-1.png" width="120" alt="" />
+                <img src="/ui-component/assets/images/logo@2x-1.png" width="200" alt="" />
             </a>
-            <p class="description"> (주)사운드방음문 MES</p>
+
             <div class="login-progressbar-indicator">
                 <h3>43%</h3>
                 <span>데이터 요청중입니다..</span>

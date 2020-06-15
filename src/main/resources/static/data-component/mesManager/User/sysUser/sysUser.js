@@ -34,7 +34,7 @@ $(document).ready(function () {
     jqGrid_main(); // main 그리드 생성
     jqGridResize("#mes_grid" , $('#mes_grid').closest('[class*="col-"]')); //그리드 리 사이즈
     jqgridPagerIcons(); // 그리드 아이콘 설정 맨 하단으로
-    get_btn(1);
+
 });
 
 

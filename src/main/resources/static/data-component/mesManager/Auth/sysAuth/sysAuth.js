@@ -55,6 +55,7 @@ function add_btn() {
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 설정 / 모달창 데이터 초기화
         main_data.check = 'I'; // 저장인지 체크 INSERT - I
         $("#addDialog").dialog('open'); // 모달 열기
+
     } else {
         alert(msg_object.TBMES_A001.msg_name1); // 경고메세지 출력
     }

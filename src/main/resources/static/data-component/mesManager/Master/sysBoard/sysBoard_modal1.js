@@ -26,19 +26,22 @@ function addUdate_btn() {
 
         if (confirm(text)) {
             wrapWindowByMask2();
+
             modal_objact.keyword = main_data.check;
             ccn_ajax("/sysBoardAdd", modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
                     if (main_data.check === "I") {
+                        $("#addDialog").dialog('close');
                         get_btn(1);
                     } else {
+                        $("#addDialog").dialog('close');
                         get_btn($("#mes_grid").getGridParam('page'));
                     }
                 }
                 closeWindowByMask();
-                $("#addDialog").dialog('close');
+
             }).catch(function (err) {
                 closeWindowByMask();
                 alert(msg_object.TBMES_E008.msg_name1);

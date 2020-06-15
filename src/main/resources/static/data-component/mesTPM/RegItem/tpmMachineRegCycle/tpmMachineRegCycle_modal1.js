@@ -57,7 +57,7 @@ function addUdate_btn() {
             text = msg_object.TBMES_Q003.msg_name1;
         }
         if (confirm(text)) {
-
+            wrapWindowByMask2()
             modal_objact.keyword = main_data.check;
 
             ccn_ajax("/tpmMachineRegAdd", modal_objact).then(function (data) {
@@ -65,11 +65,13 @@ function addUdate_btn() {
                     alert(data.message);
                 } else {
                     if(main_data.check==='I'){
+                        $("#addDialog").dialog('close');
                         get_btn(1);
                     }
+                    $("#addDialog").dialog('close');
                     $('#mes_grid').trigger("reloadGrid");
                 }
-                $("#addDialog").dialog('close');
+              closeWindowByMask();
             }).catch(function (err) {
                 alert(msg_object.TBMES_E008.msg_name1);
             });

@@ -31,13 +31,14 @@ function addUdate_btn() {
                     alert(data.message);
                 } else {
                     if (main_data.check === "I") {
+                        $("#addDialog").dialog('close');
                         get_btn(1);
                     } else {
+                        $("#addDialog").dialog('close');
                         get_btn($("#mes_grid").getGridParam('page'));
                     }
                 }
                 closeWindowByMask();
-                $("#addDialog").dialog('close');
             }).catch(function (err) {
                 closeWindowByMask();
                 alert(msg_object.TBMES_E008.msg_name1);

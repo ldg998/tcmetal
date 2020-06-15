@@ -25,12 +25,10 @@ $(document).ready(function () {
     msg_get();
     jqGrid_main(); // main 그리드 생성
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]')); // 그리드 리사이즈
-
     /*----모달----*/
     modal_start1(); // 모달1 시작 함수
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정
-    get_btn();
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////

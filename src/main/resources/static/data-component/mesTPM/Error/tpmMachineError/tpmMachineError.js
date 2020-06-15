@@ -24,7 +24,6 @@ $(document).ready(function () {
     modal_start1();
     authcheck();
     jqgridPagerIcons();
-    get_btn(1);
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////

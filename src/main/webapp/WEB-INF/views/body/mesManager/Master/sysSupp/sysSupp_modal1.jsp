@@ -41,11 +41,11 @@
         <div class="profile-info-row">
             <div class="profile-info-name">업체코드</div>
             <div class="profile-info-value">
-                <input type="text" name="supp_code" class="form-control modal_value" autocomplete="off" readonly placeholder="자동생성"/>
+                <input type="text" name="supp_code" class="form-control modal_value" autocomplete="off" autofocus/>
             </div>
             <div class="profile-info-name">업체명</div>
             <div class="profile-info-value">
-                <input id="tags" type="text" name="supp_name" class="form-control modal_value" onkeyup="autoSupp_name(this.value)" autocomplete="on" autofocus/>
+                <input id="tags" type="text" name="supp_name" class="form-control modal_value"  autocomplete="off" />
             </div>
         </div>
         <div class="profile-info-row">
@@ -61,7 +61,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">사업자번호</div>
             <div class="profile-info-value">
-                <input id="tags1" type="text" name="supp_no" class="form-control modal_value" onkeyup="autoSupp_no(this.value);" autocomplete="on"/>
+                <input id="tags1" type="text" name="supp_no" class="form-control modal_value"  autocomplete="off"/>
             </div>
             <div class="profile-info-name">전화번호</div>
             <div class="profile-info-value">
@@ -131,7 +131,7 @@
             </div>
             <div class="profile-info-name">계좌번호</div>
             <div class="profile-info-value">
-                <input type="text" name="bank_account" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="bank_account" class="form-control modal_value" autocomplete="off"/>    
             </div>
         </div>
         <div class="profile-info-row">
@@ -139,26 +139,28 @@
             <div class="profile-info-value">
                 <input type="text" name="bank_name" class="form-control modal_value" autocomplete="off"/>
             </div>
-            <div class="profile-info-name">사업자등록증</div>
-            <div class="profile-info-value">
-                <form id="suppForm">
-                    <div class='filebox'>
-                        <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold file_labal" for='file_01'>
-                             <span><i class="fa fa-upload bigger-110 blue"></i>
-                                <span>업로드</span>
-                            </span>
-                        </label>
-                        <input type='file' id='file_01' name='file' onchange='file_change(this);' />
-                        <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" onclick="file_del();">
-                            <span><i class="fa fa-trash bigger-110 blue"></i>
-                                <span id="image_del_btn">삭제</span>
-                            </span>
-                        </label>
-                    </div>
+            <div class="profile-info-name"></div>
+            <div class="profile-info-value"></div>
+            <%--            <div class="profile-info-name">사업자등록증</div>--%>
+<%--            <div class="profile-info-value">--%>
+<%--                <form id="suppForm">--%>
+<%--                    <div class='filebox'>--%>
+<%--                        <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold file_labal" for='file_01'>--%>
+<%--                             <span><i class="fa fa-upload bigger-110 blue"></i>--%>
+<%--                                <span>업로드</span>--%>
+<%--                            </span>--%>
+<%--                        </label>--%>
+<%--                        <input type='file' id='file_01' name='file' onchange='file_change(this);' />--%>
+<%--                        <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" onclick="file_del();">--%>
+<%--                            <span><i class="fa fa-trash bigger-110 blue"></i>--%>
+<%--                                <span id="image_del_btn">삭제</span>--%>
+<%--                            </span>--%>
+<%--                        </label>--%>
+<%--                    </div>--%>
 
-                </form>
+<%--                </form>--%>
 
-            </div>
+<%--            </div>--%>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name" style="border-bottom: 1px solid #F7FBFF;">이메일</div>

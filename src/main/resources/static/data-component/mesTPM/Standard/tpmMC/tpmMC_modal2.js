@@ -37,10 +37,16 @@ function modal2_addUdate_btn() {
                 if (data.result === 'NG') { //NG일시
                     alert(data.message); //message
                 } else { //성공시
-                    modal2_get_btn(1);
+                    if(modal2_data.check ==='I'){
+                        modal2_get_btn(1);
+                        $("#addDialog2").dialog('close');
+                    }else {
+                        $("#addDialog2").dialog('close');
+                        $('#mes_modal_grid').trigger("reloadGrid");
+                    }
+
                 }
                 closeWindowByMask(); //마스크해제
-                $("#addDialog2").dialog('close');
             }).catch(function (err) {
                 closeWindowByMask(); //마스크해제
                 alert(msg_object.TBMES_E008.msg_name1); //경고창

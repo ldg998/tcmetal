@@ -11,7 +11,7 @@
 var main_data = {
     check: 'I',
     send_data: {},
-    readonly:[],
+    readonly:['board_code'],
     auth:{}
 }
 

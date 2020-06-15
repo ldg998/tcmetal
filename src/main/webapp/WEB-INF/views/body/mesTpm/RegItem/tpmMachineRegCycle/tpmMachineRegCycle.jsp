@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %> <!-- 페이지 언어, 인코딩 설정 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><!-- JSTL 태그 라이브러리 -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<script type="text/javascript" src="/data-component/mesTpm/RegItem/tpmMachineRegCycle/tpmMachineRegCycle.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesTPM/RegItem/tpmMachineRegCycle/tpmMachineRegCycle.js" charset="UTF-8"></script>
 
 <!-- body 해당 전체 컨테이너 div 영역 -->
 <div class="main-content-inner">

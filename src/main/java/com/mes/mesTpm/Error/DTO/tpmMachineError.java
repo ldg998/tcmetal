@@ -8,7 +8,7 @@ public class tpmMachineError {
     private String line_code;
     private String machine_code;
     private String work_date;
-    private int seq;
+    private int seq ;
     private String error_name;
     private String error_type;
     private String error_result;

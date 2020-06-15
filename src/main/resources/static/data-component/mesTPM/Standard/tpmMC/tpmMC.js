@@ -8,7 +8,7 @@ var main_data = {
     check: 'I',// 수정,추가 판단용
     send_data: {}, //조회시 data담는 용도
     send_data_post: {}, //수정 및 삭제 시
-    readonly: [], //설정시 해당 name의 readonly 옵션
+    readonly: ['machine_code'], //설정시 해당 name의 readonly 옵션
     delCheck1:0, //이미지1 유무체크
     delCheck2:0, //이미지2 유무체크
     delCheck3:0, //이미지3 유무체크
@@ -29,7 +29,6 @@ $(document).ready(function () {
     modal_start1(); //모달1 시작함수
     modal_start2(); //모달2 시작함수
     jqgridPagerIcons(); //그리드 아이콘설정
-    get_btn(1); //페이지 load동시에 그리드 조회
 });
 
 

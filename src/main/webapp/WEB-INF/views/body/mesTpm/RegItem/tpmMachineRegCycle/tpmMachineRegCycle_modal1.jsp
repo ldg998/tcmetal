@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %><!-- 페이지 언어, 인코딩 설정 -->
-<script type="text/javascript" src="/data-component/mesTpm/RegItem/tpmMachineRegCycle/tpmMachineRegCycle_modal1.js" charset="UTF-8"></script><!-- 스크립트 파일 import -->
+<script type="text/javascript" src="/data-component/mesTPM/RegItem/tpmMachineRegCycle/tpmMachineRegCycle_modal1.js" charset="UTF-8"></script><!-- 스크립트 파일 import -->
 
 <!-- dialog 모달창 설정 -->
 <div id="addDialog" title="예방점검주기설정 추가" style="display:none">

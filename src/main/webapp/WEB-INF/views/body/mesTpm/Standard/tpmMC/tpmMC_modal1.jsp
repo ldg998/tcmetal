@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %> <!-- 페이지 언어, 인코딩 설정 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- JSTL 태그 라이브러리 -->
-<script type="text/javascript" src="/data-component/mesTpm/Standard/tpmMC/tpmMC_modal1.js" charset="UTF-8"></script><!-- 스크립트 파일 import -->
+<script type="text/javascript" src="/data-component/mesTPM/Standard/tpmMC/tpmMC_modal1.js" charset="UTF-8"></script><!-- 스크립트 파일 import -->
 <style>
     #gbox_mes_modal_grid{
         border :3px solid #1d1d1d !important;
@@ -37,11 +37,11 @@
                 <tr>
                     <td class=" td-title t-align-c">설비코드</td>
                     <td>
-                        <input name="machine_code" id="machine_code" type="text" class="form-control modal_value"  readonly placeholder="자동생성" >
+                        <input name="machine_code" id="machine_code" type="text" class="form-control modal_value" autocomplete="off" autofocus>
                     </td>
                     <td class=" td-title t-align-c">설비명</td>
                     <td>
-                        <input name="machine_name" type="text" class="form-control modal_value" autocomplete="off" autofocus>
+                        <input name="machine_name" type="text" class="form-control modal_value" autocomplete="off" >
                     </td>
                 </tr>
                 <tr>

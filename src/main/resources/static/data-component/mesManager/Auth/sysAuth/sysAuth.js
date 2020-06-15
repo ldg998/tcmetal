@@ -7,7 +7,7 @@
 var main_data = {
     check: 'I',// 수정,추가 판단용
     send_data: {}, // 조회시 data 담는 용도
-    readonly: [],// 설정시 해당 name의 readonly 옵션
+    readonly: ['auth_code'],// 설정시 해당 name의 readonly 옵션
     auth:{} // 권한 체크 후 권한 data 담는 용도
 };
 

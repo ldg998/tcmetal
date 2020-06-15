@@ -23,7 +23,6 @@ $(document).ready(function () {
     authcheck();
     modal_start1();
     jqgridPagerIcons();
-    get_btn(1);
 });
 
 

@@ -9,7 +9,7 @@ function modal_start1() {
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 function addUdate_btn() {
-    var modal_objact = value_return(".modal_value");
+    var modal_objact = value_return(".modal_value"); //8개
     modal_objact.line_code= $('#line_select2').val();
     modal_objact.work_date=modal_objact.work_date.replace(/\-/g, '');
     if (effectiveness1(modal_objact)) {

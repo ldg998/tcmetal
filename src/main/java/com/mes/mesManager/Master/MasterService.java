@@ -3,15 +3,11 @@ package com.mes.mesManager.Master;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
-import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
-import com.mes.Common.Function.ReturnFunction;
 import com.mes.Mapper.mesManager.Master.MasterMapper;
 import com.mes.mesManager.Master.DTO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -176,60 +172,10 @@ public class MasterService extends UploadFunction {
     public List<SYSSupp> autocomplete_Supp_Name(Page p) {return masterMapper.autocomplete_Supp_Name(p);}
     public List<SYSSupp> autocomplete_Supp_no(Page p) {return masterMapper.autocomplete_Supp_no(p);}
 
-    public Message sysSuppAdd(MultipartHttpServletRequest req, SYSSupp ssupp) {
+    public Message sysSuppAdd(HttpServletRequest req, SYSSupp ssupp) {
         ssupp.setUser_code(getSessionData(req).getUser_code());
-        Message msg = masterMapper.sysSuppAdd(ssupp);
-        int check1 = Integer.parseInt(req.getParameter("check1"));
-        MultipartFile up = req.getFile("file");
-        if(!msg.getResult().equals("NG")){
-            if (ssupp.getKeyword().equals("I")){
-                if (up != null) {
-                    String page_name = "sysSupp";
-                    Files newFiles = setSysSuppFile(page_name,req,"C:/UploadFile/sound/sysSupp/");
-                    newFiles.setKey1(msg.getResult()); //supp_code
-                    masterMapper.sysSuppFileUpdate(newFiles);
-                    // newFiles.getKey_value()   file1  업데이트
-                }
-            } else {
-                // supp_cd  oneGet
-                Page p = new Page();
-                p.setKeyword(msg.getResult());
-                p.setKeyword2("");
-                SYSSupp s = masterMapper.sysSuppOneGet(p);
-                if (check1 == 0) {
-                    // 기존의 데이터 삭제 후
-                    if (!s.getFile1().equals("")){
-                        File file = new File("C:/UploadFile/sound/sysSupp/"+s.getFile1());
-                        file.delete();
-                        // file_cd  key  delete
-                        masterMapper.fileCdDelete(s.getFile1());
-                    }
-
-
-                    String page_name = "sysSupp";
-                    Files newFiles = setSysSuppFile(page_name,req,"C:/UploadFile/sound/sysSupp/");
-                    newFiles.setKey1(msg.getResult()); //supp_code
-                    masterMapper.sysSuppFileUpdate(newFiles);
-                    // newFiles.getKey_value()   file1  업데이트
-
-                } else {
-                    // 파일만 삭제 후
-                    //s.getFile1();
-                    if (!s.getFile1().equals("")){
-                        File file = new File("C:/UploadFile/sound/sysSupp/"+s.getFile1());
-                        file.delete();
-                        masterMapper.fileCdDelete(s.getFile1());
-                    }
-                    Files newFiles = new Files();
-                    newFiles.setKey1(msg.getResult());
-                    newFiles.setKey_value("");
-                    masterMapper.sysSuppFileUpdate(newFiles);
-                    // File1 업데이트
-                }
-            }
-        }
-        return  msg;
-    }
+        return masterMapper.sysSuppAdd(ssupp);
+          }
 
     public Message sysSuppListDel(Page p) {
 

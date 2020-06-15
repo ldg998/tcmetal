@@ -3,15 +3,11 @@ package com.mes.mesManager.Master;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
-import com.mes.Common.File.DTO.Files;
 import com.mes.mesManager.Master.DTO.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -151,7 +147,7 @@ public class MasterRestController {
     public SYSSupp sysSuppOneGet(HttpServletRequest req, Page p) { return masterService.sysSuppOneGet(req,p); }
 
     @RequestMapping(value="/sysSuppAdd", method = RequestMethod.POST)
-    public Message sysSuppAdd(MultipartHttpServletRequest req, SYSSupp ssupp) { return masterService.sysSuppAdd(req,ssupp); }
+    public Message sysSuppAdd(HttpServletRequest req, SYSSupp ssupp) { return masterService.sysSuppAdd(req,ssupp); }
 
     @RequestMapping(value="/sysSuppListDel", method = RequestMethod.POST)
     public Message sysSuppListDel(Page p) { return masterService.sysSuppListDel(p); }

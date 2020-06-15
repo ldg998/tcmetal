@@ -17,8 +17,7 @@ var array =
         {code: "sysSupp", title: '관리자', sub: '마스터관리', name: '업체코드관리'},
         {code: "sysProdLine", title: '관리자', sub: '마스터관리', name: '라인정보'},
         {code: "sysCargo", title: '관리자', sub: '마스터관리', name: '창고관리'},
-        //공통
-        {code: "sysPassword", title: '관리자', sub: '공통', name: '비밀번호변경'},
+
 
         // 자재관리-기준정보
         {code: "sysPart", title: '자재관리', sub: '기준정보', name: '품목정보관리'},

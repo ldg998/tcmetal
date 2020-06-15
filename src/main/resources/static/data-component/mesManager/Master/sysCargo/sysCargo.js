@@ -12,7 +12,7 @@
 var main_data = {
     check: 'I',
     send_data: {},
-    readonly: [],
+    readonly: ['cargo_code'],
     auth:{}
 };
 
@@ -27,12 +27,10 @@ $(document).ready(function () {
     jqGrid_main(); // main 그리드 생성
     jqGridResize("#mes_grid" , $('#mes_grid').closest('[class*="col-"]')); //그리드 리 사이즈
     selectBox(); // select2 생성
-
     /*----모달----*/
     modal_start1(); // 모달1 시작 함수
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정 맨 하단으로
-    get_btn(1);
 
 });
 

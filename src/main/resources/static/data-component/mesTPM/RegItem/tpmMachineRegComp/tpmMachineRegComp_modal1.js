@@ -24,6 +24,7 @@ function addUdate_btn() {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
+
                     get_btn_post($("#mes_grid").getGridParam('page'));
                 }
                 $("#addDialog").dialog('close');

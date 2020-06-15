@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 
-<script type="text/javascript" src="/data-component/mesTpm/RegItem/tpmMachineRegAlarm/tpmMachineRegAlarm_modal1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesTPM/RegItem/tpmMachineRegAlarm/tpmMachineRegAlarm_modal1.js" charset="UTF-8"></script>
 <div id="addDialog"  title="예방점검알림추가" style="display: none">
     <div class="clearfix margin-at">
         <div class="col-xs-12">

@@ -14,7 +14,7 @@
     </select>
 
     <select id="sysSuppAdd" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC SP_SYS_SUPP_ADD #{supp_code},#{supp_name},#{ceo},#{supp_name_en},#{supp_no},#{tel_no},#{buss_type},#{fax_no},#{category},#{give_type},#{address},#{emp_name},#{emp_tel},#{corp_type1},#{corp_type2},#{emp_email},#{use_yn},#{user_code},#{keyword},#{bank},#{bank_account},#{bank_name}
+        EXEC SP_SYS_SUPP_ADD #{supp_code},#{supp_name},#{ceo},#{supp_name_en},#{supp_no},#{tel_no},#{buss_type},#{fax_no},#{category},#{give_type},#{address},#{emp_name},#{emp_tel},#{corp_type1},#{corp_type2},#{emp_email},#{use_yn},#{user_code},#{keyword}
     </select>
 
     <select id="autocomplete_Supp_Name" resultType="com.mes.mesManager.Master.DTO.SYSSupp">

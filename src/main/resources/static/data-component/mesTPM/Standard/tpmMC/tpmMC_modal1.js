@@ -27,7 +27,6 @@ function add_modal1_btn() {
         }else {
             add_data.install_amount = add_data.install_amount.replace(/[^0-9]/g,'');
         }
-        console.log(add_data);
 
         formData.append("machine_code",add_data.machine_code);
         formData.append("machine_name",add_data.machine_name);
@@ -42,20 +41,20 @@ function add_modal1_btn() {
         formData.append("corp_tel_no",add_data.corp_tel_no);
         formData.append("machine_manager",add_data.machine_manager);
         formData.append("remark",add_data.remark);
-        formData.append("keyword",add_data.check);
+        formData.append("keyword",main_data.check);
         // 사진 업로드
         for (var i = 1; i <=3 ; i ++){
             if (typeof $("#xlsUploads"+i).prop("files")[0] !== "undefined" && $("#xlsUploads"+i).prop("files")[0] !== "" && $("#xlsUploads"+i).prop("files")[0] !== null ) {
                 check = 1;
                 formData.append("file"+i, $("#xlsUploads"+i).prop("files")[0]);
-                if (main_data.check = 'U'){
+                if (main_data.check === 'U'){
                     main_data["delCheck"+i] = 0;
                 }
             }else {
                 check = 0;
             }
             formData.append("check"+i, check);
-            if (main_data.check = 'U'){
+            if (main_data.check === 'U'){
                 formData.append("delCheck"+i,  main_data["delCheck"+i]);
             }
         }
@@ -82,7 +81,7 @@ function add_modal1_btn() {
                     $('#addDialog').dialog('close');
                 },
                 error: function (e) {
-                    alert('업로드에 실패하였습니다.');
+                    alert('저장에 실패하였습니다.');
                     closeWindowByMask();
                     console.log("ERROR : ", e);
                 }

@@ -7,7 +7,7 @@
 var main_data = {
     check: 'I', // 수정/추가 체크용
     send_data: {}, //조회시 data 담는용
-    readonly: [],
+    readonly: ['qc_code'],
     auth:{}
 };
 
@@ -23,7 +23,7 @@ $(document).ready(function () {
     modal_start1(); // 모달1 시작 함수
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정 맨 하단으로
-    get_btn(1);
+
 });
 
 

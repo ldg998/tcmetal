@@ -23,7 +23,6 @@ var main_data = {
         datepickerInput();
         modal_start1();
         jqgridPagerIcons();
-        get_btn(1);
 
 });
 

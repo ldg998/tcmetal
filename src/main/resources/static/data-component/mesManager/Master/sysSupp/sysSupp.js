@@ -8,7 +8,7 @@ var main_data = {
     check: 'I',
     send_data: {},
     send_data_post: {},
-    readonly:[],
+    readonly:['supp_code'],
     auth:{}
 };
 
@@ -24,9 +24,7 @@ $(document).ready(function () {
     jqGrid_main();
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
-    setTimeout(function() {
-        get_btn(1);
-    }, 100);
+
 });
 
 
@@ -196,36 +194,29 @@ function selectBox() {
     $('#gubun_select').select2();
 }
 
+
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['업체코드','업체명','대표자','업체명(영문)','사업자번호','전화번호','업태','팩스번호','종목','결재방법','주소','file1','사업자등록증','등록자','등록일'],
+        colNames: ['sitecode','업체코드','업체명','대표자','업체명(영문)','사업자번호','전화번호','업태','팩스번호','종목','결재방법','주소','등록자','등록일'],
         colModel: [
-            {name: 'supp_code', index: 'supp_code',key:true, width: 100,fixed: true, sortable: false},
-            {name: 'supp_name', index: 'supp_name', width: 200,fixed: true, sortable: false},
-            {name: 'ceo', index: 'ceo', width: 200,fixed:true, sortable: false},
-            {name: 'supp_name_en', index: 'supp_name_en', width: 200,fixed: true, sortable: false},
-            {name: 'supp_no', index: 'supp_no', width: 200,fixed: true, sortable: false},
-            {name: 'tel_no', index: 'tel_no', width: 150,fixed: true, sortable: false},
-            {name: 'buss_type', index: 'buss_type', width: 100,fixed: true, sortable: false},
-            {name: 'fax_no', index: 'fax_no', width: 150,fixed: true, sortable: false},
-            {name: 'category', index: 'category', width: 100,fixed: true, sortable: false},
-            {name: 'give_type', index: 'give_type', width: 100,fixed: true, sortable: false},
-            {name: 'address', index: 'address', width: 450,fixed: true, sortable: false},
-            {name: 'file1_f', index: 'file1_f', width: 450,fixed: true, sortable: false,hidden:true},
-            {
-                name: 'file1',
-                index: 'file1',
-                sortable: false,
-                width: 100,
-                align: 'center',
-                formatter: file1_formatter,fixed:true
-            },
-            {name: 'user_name', index: 'user_name', width: 130,fixed: true, sortable: false},
-            {name: 'update_date', index: 'update_date', width: 150, formatter: formmatterDate,fixed: true, sortable: false}
+            {name: 'site_code',index:'site_code',hidden:true},
+            {name: 'supp_code', index: 'supp_code',key:true, width: 60,fixed: true},
+            {name: 'supp_name', index: 'supp_name', width: 180,fixed: true},
+            {name: 'ceo', index: 'ceo', width: 100,fixed:true},
+            {name: 'supp_name_en', index: 'supp_name_en', width: 200,fixed: true},
+            {name: 'supp_no', index: 'supp_no', width: 150,fixed: true},
+            {name: 'tel_no', index: 'tel_no', width: 130,fixed: true},
+            {name: 'buss_type', index: 'buss_type', width: 200,fixed: true},
+            {name: 'fax_no', index: 'fax_no', width: 130,fixed: true},
+            {name: 'category', index: 'category', width: 260,fixed: true},
+            {name: 'give_type', index: 'give_type', width: 70,fixed: true},
+            {name: 'address', index: 'address', width: 450,fixed: true},
+            {name: 'user_name', index: 'user_name', width: 70,fixed: true},
+            {name: 'create_date', index: 'create_date', width: 140, formatter: formmatterDate,fixed: true}
         ],
-        caption: "업체등록 | MES",
+        caption: "업체코드관리 | MES",
         autowidth: true,
         height: 562,
         pager: '#mes_grid_pager',
@@ -251,6 +242,7 @@ function jqGrid_main() {
         }
     }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
 }
+
 
 function file1_formatter(cellvalue, options, rowObject) {
     if (cellvalue !== "" && cellvalue !== null) {

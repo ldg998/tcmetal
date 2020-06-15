@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script type="text/javascript" src="/data-component/mesTpm/Standard/tpmMC/tpmMC_modal2.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesTPM/Standard/tpmMC/tpmMC_modal2.js" charset="UTF-8"></script>
 
 <div id="addDialog2" title="설비정보 부품 추가" style="display: none">
     <div class="profile-user-info profile-user-info-striped">

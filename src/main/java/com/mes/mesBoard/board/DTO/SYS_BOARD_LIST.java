@@ -3,6 +3,8 @@ package com.mes.mesBoard.board.DTO;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Data
 public class SYS_BOARD_LIST {
     private String site_code;
@@ -27,4 +29,6 @@ public class SYS_BOARD_LIST {
     private int reply_cnt;
     private int file_cnt;
     private String file_upload_cnt;
+
+    private List<MultipartFile> files;
 }

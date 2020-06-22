@@ -1,12 +1,12 @@
 package com.mes.mesBoard.board;
 
-import lombok.extern.slf4j.Slf4j;
 import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
 import com.mes.Common.Function.ReturnFunction;
 import com.mes.Mapper.mesBoard.mesBoard.MesBoardMapper;
 import com.mes.mesBoard.board.DTO.*;
 import com.mes.mesManager.Master.DTO.SYSCommon;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import static java.lang.Integer.parseInt;
 
@@ -127,6 +128,8 @@ public class MESBoardService extends ReturnFunction {
             e.printStackTrace();
         }
         return adf+adc;
+
+
     }
 
     public Files setFileData(String board_code,MultipartHttpServletRequest req,String path,int file_num){
@@ -229,5 +232,43 @@ public class MESBoardService extends ReturnFunction {
 
     public int upBoardList(SYS_BOARD_LIST boardList, HttpServletRequest req) {
         return mesBoardMapper.upBoardList(boardList);
+    }
+
+        public int board_multipart_files(SYS_BOARD_LIST boardList, HttpServletRequest req) {
+        if(boardList.getFiles() != null) {
+            List<MultipartFile> fileList = boardList.getFiles();
+            SYS_BOARD_FILE_LEE list = new SYS_BOARD_FILE_LEE();
+            int i = 1;
+            for (MultipartFile mf : fileList) {
+                list.setIndex(i);
+                list.setSaveFile(saveFile(mf));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
+                list.setSize(mf.getSize());
+                list.setOriginal_name(mf.getOriginalFilename());
+                list.setType(mf.getContentType());
+
+                System.out.println(list);
+                i++;
+            }
+        }
+        return 1;
+    }
+
+
+    private String saveFile(MultipartFile file){ //파일 업로드 소스
+        String path = "C:/UploadFile/sound";
+        // 파일 이름 변경
+        UUID uuid = UUID.randomUUID(); //랜덤 uuid
+        String originalFilename = file.getOriginalFilename(); //파일에 진짜이름
+        String saveName = uuid + "_" + originalFilename;
+        // 저장할 File 객체를 생성(껍데기 파일)
+        File saveFile = new File(path,saveName); // 저장할 폴더 이름, 저장할 파일 이름
+        try {
+            file.transferTo(saveFile); // 업로드 파일에 saveFile이라는 껍데기 입힘
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return saveName;
     }
 }

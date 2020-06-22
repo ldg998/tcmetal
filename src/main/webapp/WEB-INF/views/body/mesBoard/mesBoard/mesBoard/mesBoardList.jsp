@@ -5,7 +5,9 @@
 
 <html>
 <%@include file="/WEB-INF/views/body/mesBoard/mesBoard/mesBoard/header.jsp"%>
+
 <body>
+
 <div class="page-content">
     <div class="bbs_search">
         <form name="sfrm" action="board${pageMaker.searchOption(idx)}" method="get">
@@ -29,6 +31,7 @@
             </table>
         </form>
     </div>
+
     <!-- 게시물 시작 -->
     <table class="bbs_con" summary="게시물 목록을 보여줍니다.">
         <caption class="blind">게시물 목록</caption>
@@ -82,9 +85,19 @@
     </div>
 
 </div>
+
+
 <form id="values" action="/bd_writeForm" method="POST">
     <input type="hidden" value="${board_code}" name="board_code">
 </form>
+
+
+
+
+
+
+
+
 </body>
 </html>
 <script>

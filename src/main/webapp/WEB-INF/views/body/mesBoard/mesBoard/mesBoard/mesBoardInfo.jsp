@@ -6,8 +6,14 @@
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <%@include file="/WEB-INF/views/body/mesBoard/mesBoard/mesBoard/header.jsp" %>
 <!-- ###실제컨텐츠영역 -->
-<div class="page-content">
-    <table class="bbs_view">
+<style>
+    .board_lee{
+        style:border: 3px solid #D8D8D8;
+    }
+
+</style>
+<div class="page-content" >
+    <table class="bbs_view board_lee">
         <tbody>
         <tr>
             <th class="subject" style="text-align: left">게시명 : ${InfoData.subject}</th>
@@ -63,7 +69,7 @@
         </tbody>
     </table>
 
-    <table class="bbs_view" style="margin-bottom: 50px">
+    <table class="bbs_view board_lee" style="margin-bottom: 50px">
         <tr>
             <th width="23%">댓글 작성</th>
             <td style="padding-right:5px;">
@@ -109,7 +115,7 @@
                 </c:otherwise>
             </c:choose>
     </table>
-    <table class="bbs_view">
+    <table class="bbs_view board_lee">
         <tr>
             <th width="23%" style="border-top: 1px solid #ddd;">이전글</th>
             <c:if test="${prev eq null}">

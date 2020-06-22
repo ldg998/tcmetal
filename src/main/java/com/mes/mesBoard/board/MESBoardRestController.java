@@ -1,9 +1,9 @@
 package com.mes.mesBoard.board;
 
-import lombok.extern.slf4j.Slf4j;
 import com.mes.Common.Function.BoardFunction;
 import com.mes.mesBoard.board.DTO.SYS_BOARD_LIST;
 import com.mes.mesBoard.board.DTO.SYS_BOARD_REPLY;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -70,4 +70,10 @@ public class MESBoardRestController extends BoardFunction {
         return mesBoardService.upBoardList(boardList, req);
     }
 
-}
+
+    @RequestMapping(value = "/board_multipart_files", method = RequestMethod.POST)
+    public int board_multipart_files(SYS_BOARD_LIST boardList, HttpServletRequest req){
+
+        return mesBoardService.board_multipart_files(boardList, req);
+    }
+    }

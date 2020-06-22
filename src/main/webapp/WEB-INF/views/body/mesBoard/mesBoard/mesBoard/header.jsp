@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/ui-component/board/sub.css" />
     <link rel="stylesheet" href="/ui-component/board/board.css" />
     <link rel="stylesheet" href="/ui-component/board/form.css" />
-    <script src="/data-component/mesBoard/mesBoard/mesBoard.js"></script>
+    <script src="/ui-component/assets/js/jquery-2.1.4.min.js"></script>
+    <script src="/ui-component/assets/js/jquery-1.11.3.min.js"></script>
+    <script src="/ui-component/assets/js/jquery-ui.min.js"></script>
     <script src="/ui-component/board/ckeditor/ckeditor.js"></script>
 </head>

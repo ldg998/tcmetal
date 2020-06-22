@@ -25,6 +25,11 @@
                         <select id="part_type_select" name="keyword" class="form-control keyword condition_main" style="width:100%">
                         </select>
                     </td>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0" >품번</td>
+                    <td class="wt-px-200">
+                        <input type="text" name="part_no" class="form-control h-25 condition_main"
+                               id="part_no"  autocomplete="off" >
+                    </td>
 
                     <td></td>
                 </tr>

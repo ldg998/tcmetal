@@ -143,6 +143,7 @@ function selectBox_modal1() { //현재모달의 셀렉트박스에 데이터 할
         select_makes_base('#modal_loc_code_select','/sysLocAllGet',"loc_code","loc_name",{keyword:data[0].cargo_code},'');
      });
     select_makes_base('#modal_unit_code_select','/sysCommonAllGet','code_value','code_name1',{keyword:'UNIT'},'');
+   $('#modal_loc_code_select').select2();
     $('#modal_qc_level_select').select2();
 }
 

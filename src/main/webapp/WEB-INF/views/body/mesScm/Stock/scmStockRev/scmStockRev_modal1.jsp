@@ -49,14 +49,14 @@
         </div>
 
         <div class="profile-info-row">
-            <div class="profile-info-name">기존 재고량</div>
+            <div class="profile-info-name">총정전 재고</div>
             <div class="profile-info-value">
                 <input name="stock_qty" type="text" class="form-control keyword modal_value" style="width: 100%" autocomplete="off">
             </div>
         </div>
 
         <div class="profile-info-row">
-            <div class="profile-info-name">신규 재고량</div>
+            <div class="profile-info-name">조정후 재고</div>
             <div class="profile-info-value">
                 <input name="rev_qty" id="rev_qty" type="text" class="form-control keyword modal_value" style="width: 100%" autocomplete="off" onkeyup="num_keyup(this)">
             </div>

@@ -21,7 +21,7 @@ var main_data = {
 $(document).ready(function () {
     msg_get(); //메세지설정
     authcheck(); // 권한체크
-    modal_start1();    //모달 실행
+    modal_start1();
     datepickerInput(); //날짜 표현형식
     selectBox();     //select Box 데이터 할당
     jqGrid_main();  //main 그리드 생성
@@ -37,7 +37,6 @@ $(document).ready(function () {
 function test() {
     $("#addDialog").dialog('open');// 모달 열기
     jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //해당그리드 리사이즈
-    jqGridResize2("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]')); //해당그리드 리사이즈
 }
 
 //조회버튼
@@ -207,17 +206,14 @@ function jqGrid_main() {  //메인 jqGrid
         mtype: 'POST', // post 방식 데이터 전달
         datatype: 'local', // local 설정을 통해 handler 에 재요청하는 경우를 방지
         multiselect: true,  // 다중선택 가능
-        caption: '발주등록 | MES', // grid 제목
-        colNames: ['발주일자', '전표번호', '업체명', '상태', '납기일자', '납품장소', '등록자', '수정일'], // grid 헤더 설정
+        caption: '자재입고 | MES', // grid 제목
+        colNames: ['입고일자','전표번호','업체명','등록자','등록일시'], // grid 헤더 설정
         colModel: [
-            {name: 'work_date', index: 'work_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 100}, // formatter 사용을 통해 데이터 형식 가공
-            {name: 'ord_no', index: 'ord_no', sortable: false, key: true, fixed: true, width: 130},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name: 'supp_name', index: 'supp_name', sortable: false, fixed: true, width: 130},
-            {name: 'status_name', index: 'status_name', sortable: false, fixed: true, width: 100},
-            {name: 'end_date', index: 'end_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 200},
-            {name: 'delivery_place', index: 'delivery_place', sortable: false, fixed: true, width: 150},
-            {name: 'user_name', index: 'user_name', sortable: false, fixed: true, width: 100},
-            {name: 'update_date', index: 'update_date', sortable: false,fixed: true,width: 150}
+            {name: '', index: '', sortable: false, fixed: true, width: 100}, // formatter 사용을 통해 데이터 형식 가공
+            {name: '', index: '', sortable: false, key: true, fixed: true, width: 80},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name: '', index: '', sortable: false, fixed: true, width: 80},
+            {name: '', index: '', sortable: false, fixed: true, width: 80},
+            {name: '', index: '', sortable: false, fixed: true, width: 100}
         ],
         autowidth: true, // 그리드 자동 가로 길이 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
@@ -258,17 +254,16 @@ function jqGrid_main() {  //메인 jqGrid
     $('#mes_grid2').jqGrid({  //메인 그리드2(아래 그리드)
         mtype: 'POST',
         datatype: 'local',
-        caption: '발주등록 | MES',
-        colNames: ['구분', '품번', '품명', '규격', '단위', '발주수량', '입고수량', '미입고'],
+        caption: '자재입고 | MES',
+        colNames: ['구분', '품번', '품명', '규격', '단위', '입고수량'],
         colModel: [
             {name: 'ord_no', index: 'ord_no', sortable: false},
             {name: 'part_code', index: 'part_code', sortable: false},
             {name: 'part_name', index: 'part_name', sortable: false},
             {name: 'spec', index: 'spec', sortable: false},
             {name: 'unit_name', index: 'unit_name', sortable: false},
-            {name: 'ord_qty', index: 'ord_qty', sortable: false, align: 'right'},
-            {name: 'qty', index: 'qty', sortable: false, align: 'right'},
-            {name: 'not_qty', index: 'not_qty', sortable: false, align: 'right'}
+            {name: 'qty', index: 'qty', sortable: false, align: 'right'}
+
         ],
         autowidth: true,
         viewrecords: true,

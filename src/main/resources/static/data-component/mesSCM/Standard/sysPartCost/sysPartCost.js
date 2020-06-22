@@ -27,6 +27,10 @@ $(document).ready(function () {
 
 
 ////////////////////////////클릭 함수/////////////////////////////////////
+//모달 확인 조회 btn
+function test(){
+    $("#addDialog").dialog('open'); // 모달 열기
+}
 // 조회 버튼
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
@@ -120,12 +124,18 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['품목명코드','품목명','등록자','등록일'],// grid 헤더 설정
+        colNames : ['구분','품번','품명','규격','단위','업체','변경일자','금액','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'part_name_code',index:'part_name_code',key: true ,sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'part_name',index:'part_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}// formatter 사용을 통해 데이터 형식 가공
+            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'',index:'',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'',index:'',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'',index:'',sortable: false,width:150,fixed: true},
+            {name:'',index:'',sortable: false,width:80,fixed: true},
+            {name:'',index:'',sortable: false,width:80,fixed: true},
+            {name:'',index:'',sortable: false,width:80,fixed: true},
+            {name:'',index:'',sortable: false,width:80,fixed: true},
+            {name:'',index:'',sortable: false,width:80,fixed: true},
+            {name:'',index:'',sortable: false,width:180,fixed: true}// formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "품목명관리 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
@@ -134,7 +144,6 @@ function jqGrid_main() {
         rowNum: 100, // 1페이지당 데이터 수
         rowList: [100, 200, 300, 400], // 페이지당 데이터 수 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
-        multiselect: true, // 다중선택 가능
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
                 var $myGrid = $(this),
                     i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

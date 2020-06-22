@@ -5,11 +5,9 @@ var savecol = 0;
 ////////////////////////////시작 함수/////////////////////////////////////
 function modal_start1() {
     msg_get_modal1(); //모달 메세지설정
-    crmModal_start(); //crm 모달 시작
     modal_make1();    // 모달생산
     datepicker_modal1(); //모달안 날짜 넣어주기
     selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
-
     jqGrid_modal1();  //그리드 생성
     jqGridResize("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //행당그리드 리사이즈
     jqGridResize("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]')); //행당그리드 리사이즈
@@ -93,54 +91,6 @@ function close_modal1_btn() {
 function update_btn(rowid) {
     main_data.check3 = 'N';
     if (main_data.auth.check_edit != "N") {
-        modal_reset(".modal_value",[]);
-        $("#mes_add_grid").jqGrid('clearGridData');
-        $("#mes_add_grid2").jqGrid('clearGridData');
-        main_data.check = 'U';
-        ccn_ajax("/scmOrderOneGet", {keyword: rowid}).then(function(data){
-            console.log(data.status);
-            if(data.status === '1') {
-                main_data.status = 'Y';
-                $("#delivery_place").prop("readonly",true).trigger("change");
-                $("#datepicker3").prop("disabled",true).trigger("change");
-                $("#datepicker4").prop("disabled",true).trigger("change");
-                $("#payment").prop("readonly",true).trigger("change");
-                $("#remark").prop("disabled",true).trigger("change");
-                $("#img_select").prop("disabled",true).trigger("change");
-                $("#part_type_select").prop("disabled",true).trigger("change");
-            }else{
-                main_data.status = 'N';
-                $("#delivery_place").prop("readonly",false).trigger("change");
-                $("#datepicker3").prop("disabled",false).trigger("change");
-                $("#datepicker4").prop("disabled",false).trigger("change");
-                $("#payment").prop("readonly",false).trigger("change");
-                $("#remark").prop("disabled",false).trigger("change");
-                $("#img_select").prop("disabled",false).trigger("change");
-                $("#part_type_select").prop("disabled",false).trigger("change");
-            }
-            $("#ord_no").val(data.ord_no);
-            $("#supp_code_modal").val(data.supp_code);
-            $("#supp_name_modal").val(data.supp_name).prop("disabled",true).trigger('change');
-            $("#crm_ord_no").val(data.crm_ord_no).prop("disabled",true).trigger('change');
-            $("#place_name").val(data.place_name);
-            $('#datepicker3').datepicker('setDate',data.work_date);
-            $('#datepicker4').val(formmatterDate2(data.end_date));
-            $("#payment").val(data.payment);
-            $("#delivery_place").val(data.delivery_place);
-            $("#img_select").val(data.img_no).trigger("change");
-            $("#remark").val(data.remark);
-            main_data.check3 = 'Y';
-        });
-
-        ccn_ajax("/scmOrderPartOneGet",{keyword: rowid}).then(function(data){
-            $("#mes_add_grid2").setGridParam({
-                datatype: "local",
-                data: data
-            }).trigger("reloadGrid");
-            $("#addDialog").dialog('open');
-            jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]'));
-            jqGridResize2("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]'));
-        });
     }else {
         alert("수정권한이 없습니다.");
     }
@@ -210,71 +160,6 @@ function add_modal1_btn() {
         }
 }
 
-// 추가 모달 -> 버튼
-function right_modal1_btn() {
-    $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
-    if (main_data.check2 === 'Y') {
-        if(main_data.status === 'Y') {
-            alert("완료처리된 항목은 수정 할 수 없습니다.");
-        }else {
-            var ids = $("#mes_add_grid").getGridParam('selarrrow').slice();
-            if (ids.length === 0 ){
-                alert("옮길 데이터를 선택해주세요");
-                return false;
-            }
-            var ids2 = $("#mes_add_grid2").jqGrid("getDataIDs");
-            var overlap = [];
-            if (ids2.length != 0) {
-                ids.forEach(function (idsfor, s) {
-                    ids2.forEach(function (ids2for) {
-                        if (idsfor === ids2for) {
-                            ids.splice(s, 1, '');
-                            overlap.push(idsfor);
-                        }
-                    });
-                });
-            }
-            var list = [];
-            ids.forEach(function (idsfor) {
-                if (idsfor !== '') {
-                    list.push($("#mes_add_grid").getRowData(idsfor));
-                }
-            });
-            callback(function () {
-                if (overlap.length !== 0) {
-                    alert(overlap.join(", ") + " 중복");
-                }
-                ids2 = $("#mes_add_grid2").getRowData();
-                ids2 = ids2.concat(list);
-                $('#mes_add_grid2').jqGrid("clearGridData");
-                $("#mes_add_grid2").setGridParam({
-                    datatype: "local",
-                    data: ids2
-                }).trigger("reloadGrid");
-                $('#mes_add_grid').jqGrid("resetSelection");
-            });
-        }
-    }
-}
-
-//추가 모달 <- 버튼
-function left_modal1_btn() {
-    $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
-    if (main_data.check2 === 'Y') {
-        if(main_data.status === 'Y') {
-            alert("완료처리된 항목은 수정 할 수 없습니다.");
-        }else {
-            var ids2 = $("#mes_add_grid2").getGridParam('selarrrow').slice();
-            for (var i = 0; i < ids2.length; i++) {
-                $('#mes_add_grid2').jqGrid('delRowData', ids2[i]);
-            }
-            $('#mes_add_grid2').jqGrid("resetSelection");
-        }
-    }
-}
-
-
-
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get_modal1() {
     msgGet_auth("TBMES_Q002"); //저장 여부
@@ -284,8 +169,6 @@ function msg_get_modal1() {
 
 function datepicker_modal1() {
     datepicker_makes("#datepicker3", 0); //모달 초기날짜 설정
-    datepicker_makes("#datepicker4", 1); // 모달 초기날짜 설정
-
 }
 
 function selectBox_modal1() {
@@ -297,11 +180,21 @@ function jqGrid_modal1() { // 메인 그리드 설정
     $("#mes_add_grid").jqGrid({
         mtype: 'POST',
         datatype: "local",
-        multiselect: true,
-        caption: "발주추가 | MES",
-        colNames: [ '구분', '품번', '품명', '규격', '단위'],
+        caption: "자재입고 | MES",
+        colNames: [ '발주일자', '구분', '품번', '품명', '규격','단위','발주수량','기입고수량','입고수량','발주완료','검사구분','검사결과','검사수량','불량유형','불량상세','조치구분'],
         colModel: [
             {name: '', index: '',key:true, sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
+            {name: '', index: '', sortable: false},
             {name: '', index: '', sortable: false},
             {name: '', index: '', sortable: false},
             {name: '', index: '', sortable: false},
@@ -315,42 +208,6 @@ function jqGrid_modal1() { // 메인 그리드 설정
             if ($("#mes_add_grid").jqGrid('getGridParam', 'reccount') === 0) {
                 $("table#mes_add_grid  tr.jqgfirstrow").css("height","1px");
             }
-        }
-    });
-
-    $("#mes_add_grid2").jqGrid({ //메인그리드2 설정
-        datatype: "local",
-        multiselect: true,
-        caption: "발주추가 | MES",
-        colNames: [ '구분', '품번', '품명', '규격', '단위','발주수량','비고'],
-        colModel: [
-            {name: 'part_code', index: 'part_code', width: 80,key:true, sortable: false,fixed:true},
-            {name: 'part_name', index: 'part_name', width: 100, sortable: false,fixed:true},
-            {name: 'spec', index: 'spec', width: 120, sortable: false,fixed:true},
-            {name: 'unit_name', index: 'unit_name', width: 100, sortable: false,fixed:true},
-            {name: 'ord_qty', index: 'ord_qty', width: 100, sortable: false,align: 'right',formatter:'integer',fixed:true},
-            {name: 'direction', index: 'direction', width: 80, sortable: false},
-            {name: 'remark', index: 'remark', width: 100, sortable: false}
-        ],
-        autowidth: true,
-        height: 200,
-        cellEdit: true,
-        cellsubmit: 'clientArray',
-        beforeEditCell: function (id, name, val, IRow, ICol) {
-            lastsel = id;
-            saverow = IRow;
-            savecol = ICol;
-        },
-        beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
-            var $myGrid = $(this),
-                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
-                cm = $myGrid.jqGrid('getGridParam', 'colModel');
-            return (cm[i].name === 'cb');
-        },
-        loadComplete:function(){
-            if ($("#mes_add_grid2").jqGrid('getGridParam', 'reccount') === 0)
-                $("table#mes_add_grid2  tr.jqgfirstrow").css("height","1px");
-
         }
     });
 

@@ -24,32 +24,15 @@
                     <td class="wt-px-100 t-align-c td-title padding-a-0">업체</td>
                     <td class="wt-px-140">
                           <span class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 modal_value" id="supp_name_modal" onclick="supp_btn('B');" readonly>
-                            <input type="hidden" name="keyword" class="form-control h-25 modal_value" id="supp_code_modal">
-                          <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch-Main"></i>
+                            <input type="text" name="supp_name" class="form-control h-25 modal_value" id="supp_name_modal" >
+
+<%--                          <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch-Main"></i>--%>
                           </span>
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
                     <td class="wt-px-140">
                         <select class="form-control modal_value" name="keyword2" id="part_type_select" style="width: 100%">
                         </select>
-                    </td>
-                    <td></td>
-                </tr>
-
-                <tr>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">수주번호</td>
-                    <td class="wt-px-140">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="crm_ord_no" class="form-control h-25 modal_value"
-                                   id="crm_ord_no" onclick="ord_btn()" readonly>
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="OrdNoSearch"></i>
-                            <input type="hidden" name="ord_no" class="modal_value" id="ord_no" autofocus>
-                        </div>
-                    </td>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">현장</td>
-                    <td class="wt-px-140">
-                        <input type="text" class="form-control h-25 modal_value" name="place_name" id="place_name" readonly>
                     </td>
                     <td></td>
                 </tr>
@@ -96,32 +79,21 @@
                     <td class="wt-px-100 t-align-c td-title padding-a-0">발주일자</td>
                     <td class="wt-px-140 h-25">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="work_date" id="datepicker3" class="form-control h-25 modal_value">
+                            <input type="text" name="work_date" id="datepicker3" class="form-control h-25 modal_value" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">납기일자</td>
                     <td class="wt-px-140 h-25">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="stop_date" id="datepicker4" class="form-control h-25 modal_value">
+                            <input type="text" name="stop_date" id="datepicker4" class="form-control h-25 modal_value" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">결재조건</td>
-                    <td class="wt-px-140 h-25">
-                        <input type="text" class="form-control h-25 modal_value" name="payment" id="payment" autocomplete="off">
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
+
                     <td class="wt-px-100 t-align-c td-title padding-a-0">납품장소</td>
                     <td colspan="3" class="wt-px-140 h-25">
                         <input type="text" class="form-control h-25 modal_value" name="delivery_place" id="delivery_place" autocomplete="off">
-                    </td>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">이미지</td>
-                    <td class="wt-px-140 h-25">
-                        <select class="form-control modal_value" id="img_select" name="img_code" style="width:100%" onchange="img_change(this.value)">
-                        </select>
                     </td>
                     <td></td>
                 </tr>
@@ -154,16 +126,7 @@
                     <table id="mes_add_grid2"></table>
                 </div>
             </div>
-            <table class="table wt-100">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">비고</td>
-                    <td>
-                        <textarea id="remark" name="remark" class="modal_value" cols="100" rows="10" style="resize: none"></textarea>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+
         </div>
     </div>
 </div>

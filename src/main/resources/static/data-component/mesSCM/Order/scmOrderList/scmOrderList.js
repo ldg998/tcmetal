@@ -22,7 +22,6 @@ $(document).ready(function () {
     jqGrid_main(); //그리드 스타트
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]')); //해당 그리드 리사이즈
     jqgridPagerIcons(); // 그리드 아이콘 설정
-    get_btn(1); // 그리드 조회
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -127,7 +126,7 @@ function jqGrid_main() { //메인그리드 설정
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['발주일자', '발주번호', '업체명', '품번', '품명', '규격', '상태', '발주수량', '입고수량', '미입고', '단위', '등록자', '등록일시'],
+        colNames: ['발주일자', '발주번호', '업체명', '품번', '품명', '규격', '단위', '상태', '발주수량', '입고수량', '미입고'],
         colModel: [
             {name: 'work_date', index: 'work_date', sortable: false, formatter: formmatterDate2,fixed:true, width:100},
             {name: 'ord_no', index: 'ord_no', sortable: false,fixed:true, width:130},
@@ -135,14 +134,13 @@ function jqGrid_main() { //메인그리드 설정
             {name: 'part_code', index: 'part_code', sortable: false,fixed:true, width:100},
             {name: 'part_name', index: 'part_name', sortable: false,fixed:true, width:150},
             {name: 'spec', index: 'spec', sortable: false,fixed:true, width:150},
+            {name: 'unit_name', index: 'unit_name', sortable: false,fixed:true, width:130},
             {name: 'status_name', index: 'status_name', sortable: false,fixed:true, width:100},
             {name: 'ord_qty', index: 'ord_qty', sortable: false,formatter:'integer', align: 'right',fixed:true, width:130},
             {name: 'qty', index: 'qty', sortable: false,formatter:'integer', align: 'right',fixed:true, width:130},
             {name: 'not_qty', index: 'not_qty', sortable: false, formatter:'integer', align: 'right',fixed:true, width:130},
-            {name: 'unit_name', index: 'unit_name', sortable: false,fixed:true, width:130},
-            {name: 'user_name', index: 'user_code', sortable: false,fixed:true, width:100},
-            {name: 'update_date', index: 'update_date', sortable: false, formatter: formmatterDate,fixed:true, width:140}
-        ],
+
+          ],
         caption: '발주현황 | MES',
         autowidth: true,
         height: 562,

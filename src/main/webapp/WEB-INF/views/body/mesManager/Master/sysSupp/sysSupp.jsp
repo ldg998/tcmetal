@@ -17,17 +17,12 @@
                         <select name="keyword" id="gubun_select" class="form-control keyword condition_main" style="width:100%" >
                             <option value="CORP_TYPE1">매입</option>
                             <option value="CORP_TYPE2">매출</option>
-                            <option value="CORP_TYPE3">혼합</option>
+                            <option value="CORP_TYPE3">외주</option>
+                            <option value="CORP_TYPE4">수출</option>
                         </select>
                     </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체명</td>
-                    <td class="wt-px-200">
-                        <input type="text" name="keyword2" id="keyword2" class="form-control h-25 condition_main">
-                    </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">사업자번호</td>
-                    <td class="wt-px-200">
-                        <input type="text" name="keyword3" id="keyword3" class="form-control h-25 condition_main">
-                    </td>
+
+
                     <td></td>
                 </tr>
                 </tbody>
@@ -37,7 +32,7 @@
             <div class="pull-left tableTools-container">
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1)">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="test()">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>
@@ -54,12 +49,7 @@
                             <span>삭제</span>
                         </span>
                     </a>
-                    <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
-                       id="btn-excel" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="excel_download()">
-                        <span><i class="fa fa-download bigger-110 blue"></i>
-                            <span>저장</span>
-                        </span>
-                    </a>
+
                 </div>
             </div>
         </div>

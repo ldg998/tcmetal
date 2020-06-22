@@ -33,4 +33,5 @@ public class MasterController {
 
     @RequestMapping(value="/sysERate")
     public String sysERate() { return "mesManager/Master/sysERate/sysERate"; }
+
 }

@@ -26,10 +26,18 @@ $(document).ready(function () {
     modal_start1();// 모달1 시작 함수
     jqgridPagerIcons(); // 그리드 아이콘 설정
     get_btn(1);// 페이지 load 동시에 그리드 조회
+
+
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////
 
+
+
+//모달 확인 조회 btn
+function test(){
+    $("#addDialog").dialog('open'); //숨겨진 모달 켜기
+}
 //추가버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") { //권한체크
@@ -156,17 +164,17 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames: ['구분','품번','품명','규격','업체','단위','창고','위치','품질레벨','등록자','등록일시'],// grid 헤더 설정
+        colNames: ['구분','품번','품명','규격','단위','업체','업체2','업체3','위치','등록자','수정일시'],// grid 헤더 설정
         colModel: [
             {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 80,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name: 'part_code', index: 'part_code', key:true, sortable: false, width: 100,fixed: true},// sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed: true}, // fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
             {name: 'spec', index: 'spec', sortable: false, width: 180,fixed: true},            // formatter 사용을 통해 데이터 형식 가공
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed: true},
             {name: 'unit_name', index: 'unit_name', sortable: false, width: 100,fixed: true},
-            {name: 'cargo_name', index: 'cargo_name', sortable: false, width: 150,fixed: true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed: true},
+            {name: 'supp_name2', index: 'supp_name2', sortable: false, width: 150,fixed: true},
+            {name: 'supp_name3', index: 'supp_name3', sortable: false, width: 150,fixed: true},
             {name: 'loc_name', index: 'loc_name', sortable: false, width: 100,fixed: true},
-            {name: 'qc_level_name', index: 'qc_level_name', sortable: false, width: 100,fixed: true},
             {name: 'user_name', index: 'user_name', sortable: false, width: 100,fixed: true},
             {name: 'update_date', index: 'update_date', width: 180, sortable: false, formatter: formmatterDate,fixed: true}
 

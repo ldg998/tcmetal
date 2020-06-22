@@ -21,7 +21,6 @@ $(document).ready(function () {
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
-    get_btn(1);
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -84,17 +83,16 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['seq','품번','품명','규격','일자','수량','단위','구분'],
+        colNames: ['품번','품명','규격','단위','일자','수량','구분'],
         colModel: [
-            {name: 'seq', index: 'seq',sortable: false,key:true,hidden:true},
-            {name: 'part_code', index: 'part_code',sortable: false, fixed:true, width:150},
-            {name: 'part_name', index: 'part_name',sortable: false, fixed:true, width:150},
-            {name: 'spec', index: 'spec',sortable: false, fixed:true, width:150},
-            {name: 'work_date', index: 'work_date',sortable: false,formatter:formmatterDate2, fixed:true, width:150},
-            {name: 'qty', index: 'qty',sortable: false,formatter:'integer', align:'right', fixed:true, width:150},
-            {name: 'unit_name', index: 'unit_name',sortable: false, fixed:true, width:150},
-            {name: 'remark', index: 'remark',sortable: false, fixed:true, width:150},
-        ],
+            {name: '', index: '',sortable: false,key:true,fixed:true,width:150},
+            {name: '', index: '',sortable: false, fixed:true, width:150},
+            {name: '', index: '',sortable: false, fixed:true, width:150},
+            {name: '', index: '',sortable: false, fixed:true, width:150},
+            {name: '', index: '',sortable: false, fixed:true, width:150},
+            {name: '', index: '',sortable: false, fixed:true, width:150,formatter:formmatterDate2},
+            {name: '', index: '',sortable: false, fixed:true, width:150},
+           ],
         caption: "자재입출고현황 | MES",
         autowidth: true,
         height: 562,

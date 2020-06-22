@@ -12,21 +12,21 @@
     <!-- 전체 컨테이너 div 안 페이지 영역 -->
     <div class="page-content">
         <%-- 구분 선택창 --%>
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
-                    <td class="wt-px-200">
-                        <select name="keyword" id="cargo_select" class="form-control keyword condition_main"
-                                style="width:100%">
-                        </select>
-                    </td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+<%--        <div class="col-lg-12 padding0">--%>
+<%--            <table class="table wt-100">--%>
+<%--                <tbody>--%>
+<%--                <tr>--%>
+<%--                    <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>--%>
+<%--                    <td class="wt-px-200">--%>
+<%--                        <select name="keyword" id="cargo_select" class="form-control keyword condition_main"--%>
+<%--                                style="width:100%">--%>
+<%--                        </select>--%>
+<%--                    </td>--%>
+<%--                    <td></td>--%>
+<%--                </tr>--%>
+<%--                </tbody>--%>
+<%--            </table>--%>
+<%--        </div>--%>
         <!-- button div 영역 -->
         <div class="clearfix">
             <!-- button div 왼쪽으로 float 정렬 -->

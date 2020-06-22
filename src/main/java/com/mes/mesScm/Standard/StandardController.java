@@ -11,8 +11,8 @@ public class StandardController {
         return "mesScm/Standard/sysPart/sysPart";
     }
 
-    @RequestMapping(value = "/sysPartName")
-    public String sysPartName() { return "mesScm/Standard/sysPartName/sysPartName"; }
+    @RequestMapping(value = "/sysPartCost")
+    public String sysPartName() { return "mesScm/Standard/sysPartCost/sysPartCost"; }
 
 
     @RequestMapping(value = "/sysLoc")

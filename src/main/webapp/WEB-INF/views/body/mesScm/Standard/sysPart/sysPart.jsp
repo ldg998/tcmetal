@@ -13,18 +13,21 @@
             <table class="table wt-100">
                 <tbody>
                 <tr>
-                    <!-- 품목코드 검색창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">품목코드</td>
-                    <td class="wt-px-200">
-                        <input type="text" name="keyword"  class="form-control h-25 condition_main" autocomplete="off" />
-                    </td>
+
                     <!-- 구분 select 창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">구분</td>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">코드그룹</td>
                     <td class="wt-px-200">
                         <select id="part_type_select" name="keyword2" class="form-control keyword condition_main"  style="width:100%">
                         </select>
                     </td>
-                    <td></td>
+                    <!-- 품목코드 검색창 -->
+                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">품번</td>
+                    <td class="wt-px-200">
+                        <input type="text" name="keyword"  class="form-control h-25 condition_main" autocomplete="off" />
+                    </td>
+                    <td>
+
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -36,7 +39,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <!-- 조회버튼 -->
                     <a class="dt-button btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1)">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="test()">
                             <span>
                                 <i class="fa fa-search bigger-110 blue"></i>
                                 <span>조회</span>

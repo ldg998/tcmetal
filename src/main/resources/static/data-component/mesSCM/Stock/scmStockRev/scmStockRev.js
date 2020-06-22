@@ -15,16 +15,18 @@ var main_data = {
 $(document).ready(function () {
     msg_get();
     authcheck();
-    selectBox();
+  //  selectBox();
     modal_start1();
-
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
-    get_btn(1);
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
+function test(){
+    $("#addDialog").dialog('open');
+}
+
 function get_btn(page) {
     main_data.send_data = value_return2(".condition_main");
     $("#mes_grid").setGridParam({
@@ -62,29 +64,31 @@ function update_btn(jqgrid_data) {
     }
 }
 
-// function excel_download() {
-//     if (confirm(msg_object.TBMES_Q014.msg_name1)) {
-//         var $preparingFileModal = $("#preparing-file-modal");
-//         $preparingFileModal.dialog({modal: true});
-//         $("#progressbar").progressbar({value: false});
-//         $.fileDownload("/excel_download", {
-//             httpMethod: 'POST',
-//             data : {
-//                 "name": "scmOutList",
-//                 "row0": $('#datepicker').val().replace(/-/gi, ""),
-//                 "row1": $('#datepicker2').val().replace(/-/gi, "")
-//             },
-//             successCallback: function (url) {
-//                 $preparingFileModal.dialog('close');
-//             },
-//             failCallback: function (responseHtml, url) {
-//                 $preparingFileModal.dialog('close');
-//                 $("#error-modal").dialog({modal: true});
-//             }
-//         });
-//         return false;
-//     }
-// }
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name": "scmOutList",
+                "row0": $('#datepicker').val().replace(/-/gi, ""),
+                "row1": $('#datepicker2').val().replace(/-/gi, "")
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
+}
+
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_A001");
@@ -105,15 +109,16 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['구분','품번','품명','규격','공급업체','재고량','단위'],
+        colNames: ['구분','품번','품명','규격','단위','공급업체','재고량'],
         colModel: [
             {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 100,fixed:true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 100,fixed:true, key:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
             {name: 'spec', index: 'spec', sortable: false, width: 150,fixed:true},
+            {name: 'unit_name', index: 'unit_name', sortable: false, width: 150,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
             {name: 'stock_qty', index: 'stock_qty', sortable: false, width: 150,fixed:true,align:'right',formatter:'integer'},
-            {name: 'unit_name', index: 'unit_name', sortable: false, width: 150,fixed:true}
+
         ],
         caption: "재고조정 | MES",
         autowidth: true,
@@ -140,3 +145,5 @@ function jqGrid_main() {
         }
     });
 }
+
+

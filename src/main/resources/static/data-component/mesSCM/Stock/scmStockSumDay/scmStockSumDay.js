@@ -21,7 +21,6 @@ $(document).ready(function () {
     datepickerInput();
     selectBox();
     jqgridPagerIcons();
-    get_btn(1);
 });
 
 
@@ -108,18 +107,19 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['구분','품번','품명','규격','공급업체','전일재고','금일입고','금일출고','재고','단위'],
+        colNames: ['구분','품번','품명','규격','단위','공급업체','전일재고','금일입고','금일출고','재고'],
         colModel: [
             {name: 'part_type_name', index: 'part_type_name', width: 100,sortable:false,fixed:true},
             {name: 'part_code', index: 'part_code', width: 100,sortable:false,fixed:true},
             {name: 'part_name', index: 'part_name', width: 150,sortable:false,fixed:true},
             {name: 'spec', index: 'spec', width: 150,sortable:false,fixed:true},
+            {name: 'unit_name', index: 'unit_name', width: 120,sortable:false,fixed:true},
             {name: 'supp_name', index: 'supp_name', width: 150,sortable:false,fixed:true},
             {name: 'prev_qty', index: 'prev_qty', width: 120,sortable:false,fixed:true,align:'right',formatter:'integer'},
             {name: 'in_qty', index: 'in_qty', width: 120,sortable:false,fixed:true,align:'right',formatter:'integer'},
             {name: 'out_qty', index: 'out_qty', width: 120,sortable:false,fixed:true,align:'right',formatter:'integer'},
-            {name: 'qty', index: 'qty', width: 120,sortable:false,fixed:true,align:'right',formatter:'integer'},
-            {name: 'unit_name', index: 'unit_name', width: 120,sortable:false,fixed:true}
+            {name: 'qty', index: 'qty', width: 120,sortable:false,fixed:true,align:'right',formatter:'integer'}
+
         ],
         caption: "자재 일원장 | MES",
         autowidth: true,

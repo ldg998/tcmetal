@@ -86,5 +86,8 @@ function selectBox_modal1(){
     $('#corp_type1').select2();
     $('#corp_type2').select2();
     $('#corp_type3').select2();
+    $('#corp_type4').select2();
+    $('#corp_type5').select2();
+
     $('#use_yn').select2();
 }

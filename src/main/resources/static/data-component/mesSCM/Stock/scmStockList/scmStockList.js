@@ -15,7 +15,7 @@ var main_data = {
 $(document).ready(function () {
     msg_get();
     authcheck();
-    selectBox();
+   // selectBox();
     jqGrid_main();
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();

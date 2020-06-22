@@ -14,7 +14,7 @@ var main_data = {
 ////////////////////////////시작 함수//////////////////////////////////
 // $(function(){}); DOM이 로드되었을때 실행  / ONLOAD처럼 페이지 완료가 되자마자 동작하는 함수
 $(document).ready(function () {
-    selectBox(); //구분 선택창 데이터 할당
+   // selectBox(); //구분 선택창 데이터 할당
     msg_get();  // 메세지설정
     jqGrid_main(); // main 그리드 생성
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]')); //그리드 resize
@@ -24,7 +24,7 @@ $(document).ready(function () {
 });
 //$(function(){}); DOM이 로드되었을때 실행 하지만 로드하려는 리소스가 모두 그려지고 난 이후에 실행되기 때문에 jquery보다 늦게 실행된다.
 window.onload = function(){
-    get_btn(1);// 페이지 load 동시에 그리드 조회
+   // get_btn(1);// 페이지 load 동시에 그리드 조회
 }
 
 ////////////////////////////클릭 함수//////////////////////////////////

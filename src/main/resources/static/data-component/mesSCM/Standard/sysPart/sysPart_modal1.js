@@ -5,7 +5,7 @@ var modal_data = {
 function modal_start1() {
     msg_get_modal1(); //모달 메세지 설정
     modal_make1(); // 모달 생성
-    selectBox_modal1(); //모달 셀렉박스 추가
+    //selectBox_modal1(); //모달 셀렉박스 추가
     suppModal_start(); //업체 선택시 업체모달 활성화
 }
 

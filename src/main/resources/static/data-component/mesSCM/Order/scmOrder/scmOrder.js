@@ -23,7 +23,7 @@ $(document).ready(function () {
     authcheck(); // 권한체크
     modal_start1();    //모달 실행
     datepickerInput(); //날짜 표현형식
-    selectBox();     //select Box 데이터 할당
+    // selectBox();     //select Box 데이터 할당
     jqGrid_main();  //main 그리드 생성
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]')); //그리드 resize
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));//그리드 resize

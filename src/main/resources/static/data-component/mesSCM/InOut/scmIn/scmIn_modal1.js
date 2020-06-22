@@ -7,7 +7,7 @@ function modal_start1() {
     msg_get_modal1(); //모달 메세지설정
     modal_make1();    // 모달생산
     datepicker_modal1(); //모달안 날짜 넣어주기
-    selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
+   // selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
     jqGrid_modal1();  //그리드 생성
     jqGridResize("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //행당그리드 리사이즈
     jqGridResize("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]')); //행당그리드 리사이즈

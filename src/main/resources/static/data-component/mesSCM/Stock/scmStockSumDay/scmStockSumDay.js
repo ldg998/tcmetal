@@ -19,7 +19,7 @@ $(document).ready(function () {
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]'));
     authcheck();
     datepickerInput();
-    selectBox();
+   // selectBox();
     jqgridPagerIcons();
 });
 

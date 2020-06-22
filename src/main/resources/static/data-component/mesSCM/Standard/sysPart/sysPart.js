@@ -21,11 +21,11 @@ $(document).ready(function () {
     msg_get(); // 메세지 설정
     jqGrid_main();// main 그리드 생성
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]'));// 그리드 resize
-    selectBox(); //선택박스에 데이터 생성
+  //  selectBox(); //선택박스에 데이터 생성
     authcheck(); //권한체크
     modal_start1();// 모달1 시작 함수
     jqgridPagerIcons(); // 그리드 아이콘 설정
-    get_btn(1);// 페이지 load 동시에 그리드 조회
+  //  get_btn(1);// 페이지 load 동시에 그리드 조회
 
 
 });

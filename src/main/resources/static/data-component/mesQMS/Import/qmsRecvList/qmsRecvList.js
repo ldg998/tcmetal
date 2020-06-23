@@ -18,13 +18,10 @@ $(document).ready(function () {
     msg_get();
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
-
     datepickerInput();
-    suppModal_start();
-    selectBox();
     authcheck();
     jqgridPagerIcons();
-    get_btn(1);
+   // get_btn(1);
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -42,37 +39,6 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
-
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
 
 function excel_download() {
     if (confirm(msg_object.TBMES_Q014.msg_name1)) {
@@ -127,56 +93,29 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['rownum','입고일자','전표번호','업체', '품번', '품명', '규격', '단위', '검사종류' , '검사결과',
-            '입고수량', '검사수량', '불량수량', '불량유형', '불량내용', '조치구분', '성적서', '부적합보고서', '개선조치',
-            'file1', 'file2', 'file3', '검사자', '검사일시'],
+        colNames: ['입고일자','전표번호','업체','구분','품번','품명','규격','단위','입고수량','검사구분','검사결과','검사수량','불량유형','불량상세','조치구분','성적서','성적서 수정','검사자','검사일시'],
         colModel: [
-            {name: 'rownum', index: 'rownum', key: true, hidden: true, sortable: false},
-            {name: 'work_date', index: 'work_date', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
-            {name: 'in_no', index: 'in_no', sortable: false, width: 130,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
-            {name: 'part_code', index: 'part_code', sortable: false, width: 100,fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
-            {name: 'spec', index: 'spec', sortable: false, width: 180,fixed:true},
-            {name: 'unit_name', index: 'unit_name', sortable: false, width: 100,fixed:true},
-            {name: 'qc_level_name', index: 'qc_level_name', sortable: false, width: 100,fixed:true},
-            {name: 'qc_result_name', index: 'qc_result_name', sortable: false, width: 100,fixed:true},
-            {name: 'qty', index: 'qty', sortable: false, width: 100, align: 'right',formatter:'integer',fixed:true},
-            {name: 'qc_qty', index: 'qc_qty', sortable: false, width: 100, align: 'right',formatter:'integer',fixed:true},
-            {name: 'ng_qty', index: 'ng_qty', sortable: false, width: 100, align: 'right',formatter:'integer',fixed:true},
-            {name: 'ng_type_name', index: 'ng_type_name', sortable: false, width: 100,fixed:true},
-            {name: 'ng_name', index: 'ng_name', sortable: false, width: 200,fixed:true},
-            {name: 'act_type_name', index: 'act_type_name', sortable: false, width: 100,fixed:true},
-            {
-                name: 'file1_name',
-                index: 'file1_name',
-                sortable: false,
-                width: 100,
-                align: 'center',
-                formatter: file1_formatter,fixed:true
-            },
-            {
-                name: 'file2_name',
-                index: 'file2_name',
-                sortable: false,
-                width: 100,
-                align: 'center',
-                formatter: file2_formatter,fixed:true
-            },
-            {
-                name: 'file3_name',
-                index: 'file3_name',
-                sortable: false,
-                width: 100,
-                align: 'center',
-                formatter: file3_formatter,fixed:true
-            },
-            {name: 'file1', index: 'file1', sortable: false,hidden: true},
-            {name: 'file2', index: 'file2', sortable: false,hidden: true},
-            {name: 'file3', index: 'file3', sortable: false,hidden: true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 100,fixed:true},
-            {name: 'update_date', index: 'update_date', sortable: false, width: 150, formatter: formmatterDate,fixed:true}
-        ],
+            {name: '', index: '', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true}
+
+             ],
         caption: "수입검사현황 | MES",
         autowidth: true,
         height: 562,

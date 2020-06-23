@@ -24,7 +24,7 @@ $(document).ready(function () {
     selectBox();
     authcheck();
     jqgridPagerIcons();
-    get_btn(1);
+ //   get_btn(1);
 });
 
 
@@ -132,12 +132,13 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['검사구분','코드그룹','검사코드','검사명','등록자','등록일'],
+        colNames: ['검사구분','코드그룹','검사코드','검사명','사용유무','등록자','등록일'],
         colModel: [
             {name: 'qc_group_name', index: 'qc_group_name', width: 150, sortable:false,fixed:true},
             {name: 'qc_type_name', index: 'qc_type_name', width: 150, sortable:false,fixed:true},
             {name: 'qc_code', index: 'qc_code',key:true, width: 150, sortable:false,fixed:true},
             {name: 'qc_name', index: 'qc_name', width: 150, sortable:false,fixed:true},
+            {name: '', index: '', width: 150, sortable:false,fixed:true},
             {name: 'user_name', index: 'user_name', width: 150, sortable:false,fixed:true},
             {name: 'create_date', index: 'create_date', width: 180, sortable:false,fixed:true,formatter: formmatterDate}
         ],

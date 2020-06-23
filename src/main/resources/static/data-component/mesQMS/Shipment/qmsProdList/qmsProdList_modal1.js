@@ -1,39 +1,81 @@
-
 ////////////////////////////시작 함수/////////////////////////////////////
 function modal_start1() {
+    msg_get_modal1();
     modal_make1();
+    selectBox_modal1();
 }
-
 ////////////////////////////클릭 함수/////////////////////////////////////
+function addUdate_btn() {
+    var send_data = value_return(".modal_value");
+    if (effectiveness1(send_data)) {
+        var text = msg_object.TBMES_Q002.msg_name1;
+        if (main_data.check === "U") {
+            text = msg_object.TBMES_Q003.msg_name1;
+        }
 
-function file1_Modal(in_no,part_code) {
-    $(".file1_modal").remove();
-    var div1;
-    var div2;
-    var div3;
-    var input1;
-    ccn_ajax("/qmsProdListRPTGet", {keyword:in_no,keyword2:part_code}).then(function (data) {
-        data.forEach(function (d,i) {
+        send_data.keyword = main_data.check;
+        if (confirm(text)) {
+            var options = {
+                data:send_data,
+                success : function(data) {
+                    if (data.result === 'NG') {
+                        alert(data.message);
+                    } else {
+                        if (main_data.check === "I") {
+                            get_btn(1);
+                        } else {
+                            get_btn_post($("#mes_grid").getGridParam('page'));
+                        }
+                        $("#addDialog").dialog('close');
+                    }
+                },
+                type : "POST"
+            };
+            $("#qmsTestltem").ajaxSubmit(options);
+        }
+    }
 
-            div1 = $(' <div class="profile-info-row"></div>').addClass("file1_modal");
-            div2 = $('<div class="profile-info-name"></div>').text(d.qc_name);
-            div1.append(div2);
-            for (var z = 1; z < 21; z++) {
-                div3 = $('<div class="profile-info-value wt-px-75"></div>');
-                input1 = $('<input type="text" readonly>').addClass("form-control").val(d["qc_result"+z]);
-                div3.append(input1);
-                div1.append(div3);
 
-            }
-            $("#modal1_column").append(div1);
-        });
-        $("#addDialog").dialog('open');
-    });
+    // var modal_objact = value_return(".modal_value");
+    // if (effectiveness1(modal_objact)) {
+    //     var text = '저장하겠습니까?';
+    //     if (main_data.check === "U") {
+    //         text = '수정하겠습니까?';
+    //     }
+    //     if (confirm(text)) {
+    //
+    //         modal_objact.keyword = main_data.check;
+    //
+    //         ccn_ajax("/sysLocAdd", modal_objact).then(function (data) {
+    //             if (data.result === 'NG') {
+    //                 alert(data.message);
+    //             } else {
+    //                 if (main_data.check === "I") {
+    //                     get_btn(1);
+    //                 } else {
+    //                     get_btn_post($("#mes_grid").getGridParam('page'));
+    //                 }
+    //             }
+    //             $("#addDialog").dialog('close');
+    //         }).catch(function (err) {
+    //             alert("저장실패");
+    //         });
+    //     }
+    // }
+
+}
+////////////////////////////호출 함수/////////////////////////////////////
+function msg_get_modal1() {
+    msgGet_auth("TBMES_Q002");
+    msgGet_auth("TBMES_Q003");
 }
 
-////////////////////////////호출 함수/////////////////////////////////////
+function selectBox_modal1(){
+    $('#use_yn').select2();
+}
 
 function modal_make1() {
+
     $("#addDialog").dialog({
         modal: true,
         width: 'auto',
@@ -42,12 +84,22 @@ function modal_make1() {
         resizable: false,
         buttons: [
             {
-                text: '닫기',
+                text: '확인',
                 'class': 'btn btn-minier',
                 click: function () {
-                    $("#addDialog").dialog('close');
+                    $(this).dialog('close');
                 }
             }
         ]
-    });
+    })
+}
+
+
+function effectiveness1(modal_objact) { // 유효성 검사
+    if (modal_objact.qc_name === '') {
+        alert("검사명을 입력해주세요");
+        return false;
+    }  else {
+        return true;
+    }
 }

@@ -33,9 +33,8 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" onclick="supp_btn('A');" readonly>
-                            <input type="hidden" name="keyword" class="form-control h-25 condition_main"
-                                   id="supp_code_main">
+                                   id="supp_name_main" autocomplete="off">
+
                             <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                         </div>
                     </td>
@@ -88,6 +87,5 @@
     </div>
 </div>
 
-<%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>
 
 

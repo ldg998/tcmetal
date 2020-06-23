@@ -89,11 +89,9 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['입고일자','입고번호','업체명','품번','품명','규격','단위','입고수량','검사구분','검사결과','등록자','등록일시'],
+        colNames: ['입고일자','입고번호','업체명','품번','품명','규격','단위','출고수량','등록자','등록일시'],
         colModel: [
             {name: '', index: '',sortable: false,key:true,fixed:true,width:150,formatter:formmatterDate2},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
             {name: '', index: '',sortable: false, fixed:true, width:150},
             {name: '', index: '',sortable: false, fixed:true, width:150},
             {name: '', index: '',sortable: false, fixed:true, width:150},

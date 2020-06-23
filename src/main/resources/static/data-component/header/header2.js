@@ -44,47 +44,43 @@ var array =
         {code: "scmStockRevList", title: '자재관리', sub: '재고관리', name: '재고조정현황'},
 
 
-        //제픔관리-기준정보
-        {code: "", title: '제품관리', sub: '기준정보', name: ''},
+        //출하관리-기준정보
+       // {code: "", title: '출하관리', sub: '기준정보', name: ''},
 
         //입출고관리
-        {code: "wmsIn", title: '제품관리', sub: '입출고관리', name: '입고등록'},
-        {code: "wmsInList", title: '제품관리', sub: '입출고관리', name: '입고현황'},
-        {code: "wmsOutOrder", title: '제품관리', sub: '입출고관리', name: '제품출고 지시'},
-        {code: "wmsOut", title: '제품관리', sub: '입출고관리', name: '제품출고 처리'},
-        {code: "wmsOutList", title: '제품관리', sub: '입출고관리', name: '제품출고 현황'},
-        {code: "wmsOutReady", title: '제품관리', sub: '입출고관리', name: '제품 미출고 현황'},
+        {code: "wmsIn", title: '출하관리', sub: '입출고관리', name: '제품입고등록'},
+        {code: "wmsInList", title: '출하관리', sub: '입출고관리', name: '제품입고현황'},
+        {code: "wmsOut", title: '출하관리', sub: '입출고관리', name: '제품출고 처리'},
+        {code: "wmsOutList", title: '출하관리', sub: '입출고관리', name: '제품출고 현황'},
+        {code: "wmsOutReady", title: '출하관리', sub: '입출고관리', name: '제품 미출고 현황'},
 
-        //운송비관리
-        {code: "", title: '제품관리', sub: '운송비관리', name: '운송비등록'},
-        {code: "", title: '제품관리', sub: '운송비관리', name: '운송비현황'},
 
-        //인보이스
-        {code: "", title: '제품관리', sub: '인보이스', name: '인보이스등록'},
-        {code: "", title: '제품관리', sub: '인보이스', name: '인보이스현황'},
+        // //운송비관리
+        // {code: "", title: '출하관리', sub: '운송비관리', name: '운송비등록'},
+        // {code: "", title: '출하관리', sub: '운송비관리', name: '운송비현황'},
+        //
+        // //인보이스
+        // {code: "", title: '출하관리', sub: '인보이스', name: '인보이스등록'},
+        // {code: "", title: '출하관리', sub: '인보이스', name: '인보이스현황'},
+        //
+        // //패킹리스트
+        // {code: "", title: '출하관리', sub: '패킹리스트', name: '패킹리스트등록'},
+        // {code: "", title: '출하관리', sub: '패킹리스트', name: '패킹리스트현황'},
 
-        //패킹리스트
-        {code: "", title: '제품관리', sub: '패킹리스트', name: '패킹리스트등록'},
-        {code: "", title: '제품관리', sub: '패킹리스트', name: '패킹리스트현황'},
 
 
 
         //영업관리-기준정보
         {code: "sysSPart", title: '영업관리', sub: '기준정보', name: '품목정보관리'},
-
-
         //영업관리
         {code: "crmOrderRecp", title: '영업관리', sub: '영업관리', name: '수주정보관리'},
         {code: "crmWorkList", title: '영업관리', sub: '영업관리', name: '실적현황'},
         {code: "sysSPartCost", title: '영업관리', sub: '영업관리', name: '제품단가관리'},
         {code: "wmsoutOrd", title: '영업관리', sub: '영업관리', name: '출고지시서'},
-
         //납기관리
         {code: "", title: '영업관리', sub: '납기관리', name: '납기관리'},
         {code: "", title: '영업관리', sub: '납기관리', name: '납기현황'},
-
         //도면과리
-
 
         //대책서관리(클레임)
         {code: "", title: '영업관리', sub: '대책서관리', name: '문제점접수'},
@@ -93,12 +89,11 @@ var array =
 
 
         //품질관리 -기준정보
-        {code: "qmsTestGroup", title: '품질관리', sub: '기준정보', name: '검사그룹관리'},
         {code: "qmsTestItem", title: '품질관리', sub: '기준정보', name: '검사항목관리'},
         {code: "", title: '품질관리', sub: '기준정보', name: '용해규격관리'},
 
 
-        {code: "qmsRecvStd", title: '품질관리', sub: '수입검사', name: '수입항목관리'},
+
         {code: "qmsRecvList", title: '품질관리', sub: '수입검사', name: '수입검사현황'},
         {code: "qmsRecvErrorMan", title: '품질관리', sub: '수입검사', name: '수입검사부적합등록'},
         {code: "qmsRecvErrorList", title: '품질관리', sub: '수입검사', name: '수입검사불량현황'},
@@ -111,10 +106,10 @@ var array =
         {code: "", title: '품질관리', sub: '중간검사', name: '중간검사불량현황'},
 
         //출하검사
-        {code: "qmsProdStd", title: '품질관리', sub: '출하검사', name: '제품검사기준관리'},
+
         {code: "qmsProd", title: '품질관리', sub: '출하검사', name: '출하검사진행'},
         {code: "qmsProdList", title: '품질관리', sub: '출하검사', name: '출하검사현황'},
-        {code: "qmsProdErrorMan", title: '품질관리', sub: '출하검사', name: '출하검사부적합등록'},
+
         {code: "qmsProdErrorList", title: '품질관리', sub: '출하검사', name: '출하검사불량현황'},
 
 

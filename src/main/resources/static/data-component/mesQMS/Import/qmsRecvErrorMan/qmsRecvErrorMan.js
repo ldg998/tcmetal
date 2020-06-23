@@ -17,13 +17,12 @@ var main_data = {
 $(document).ready(function () {
     authcheck();
     modal_start1();
-    suppModal_start();
     datepickerInput();
     msg_get();
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
-    get_btn(1);
+    //get_btn(1);
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////

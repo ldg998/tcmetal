@@ -28,6 +28,21 @@
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
+                    <td class="wt-px-200">
+                        <select  name="keyword2" class="form-control keyword condition_main" style="width: 100%">
+                            <option value="">전체</option>
+                            <option value="1">합격</option>
+                            <option value="2">수정</option>
+                            <option value="3">폐기</option>
+                        </select>
+                    </td>
+
+                    <td class="wt-px-100 t-align-c td-title padding-a-0">제품LOT</td>
+                    <td class="wt-px-200">
+                        <input type="text" name="keyword3"  class="form-control h-25 condition_main">
+                    </td>
+
                     <td></td>
                 </tr>
                 </tbody>
@@ -38,7 +53,7 @@
             <div class="pull-left tableTools-container">
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1)">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="test();">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>
@@ -70,3 +85,4 @@
 </div>
 
 
+<%@include file="qmsProdList_modal1.jsp" %>

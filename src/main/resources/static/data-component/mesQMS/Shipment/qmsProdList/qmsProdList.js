@@ -18,13 +18,17 @@ $(document).ready(function () {
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     datepickerInput();
-    selectBox();
+   // selectBox();
+    modal_start1();
     authcheck();
     jqgridPagerIcons();
-    get_btn(1);
+    //get_btn(1);
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
+function test(){
+    $("#addDialog").dialog('open'); // 모달 열기
+}
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
@@ -93,40 +97,24 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype:'POST',
         datatype: "local",
-        colNames: ['검사일자', '검사번호', '지시번호', '현장', '계획명','검사항목','검사결과','불량유형','불량상세','조치구분','부적합보고서','개선조치','file02','file03','검사자','검사일시'],
+        colNames: ['검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','검사결과','첨부사진','성적서','검사자','검사일시'],
         colModel: [
-            {name: 'work_date', index: 'work_date', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
-            {name: 'qc_no', index: 'qc_no', sortable: false, width: 130,fixed:true},
-            {name: 'plan_no', index: 'plan_no', sortable: false, width: 130,fixed:true},
-            {name: 'place_name', index: 'place_name', sortable: false, width: 150,fixed:true},
-            {name: 'plan_name', index: 'plan_name', sortable: false, width: 150,fixed:true},
-            {name: 'qc_name', index: 'qc_name', sortable: false, width: 200,fixed:true},
-            {name: 'qc_result_name', index: 'qc_result_name', sortable: false, width: 100,fixed:true},
-            {name: 'ng_type_name', index: 'ng_type_name', sortable: false, width: 150,fixed:true},
-            {name: 'ng_name', index: 'ng_name', sortable: false, width: 200,fixed:true},
-            {name: 'act_type_name', index: 'act_type_name', sortable: false, width: 100,fixed:true},
-            {
-                name: 'file2_name',
-                index: 'file2_name',
-                sortable: false,
-                width: 100,
-                align: 'center',
-                formatter: file2_formatter,fixed:true
-            },
-            {
-                name: 'file3_name',
-                index: 'file3_name',
-                sortable: false,
-                width: 100,
-                align: 'center',
-                formatter: file3_formatter,fixed:true
-            },
-            {name: 'file2', index: 'file2', sortable: false, hidden: true},
-            {name: 'file3', index: 'file3', sortable: false, hidden: true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 100,fixed:true},
-            {name: 'update_date', index: 'update_date', sortable: false, width: 150, formatter: formmatterDate,fixed:true}
+            {name: '', index: '', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true}
+
         ],
-        caption: "최종검사현황 | MES",
+        caption: "출하검사현황 | MES",
         autowidth: true,
         height:562,
         pager: '#mes_grid_pager',

@@ -19,13 +19,13 @@ $(document).ready(function () {
     msg_get();
     authcheck();
     datepickerInput();
-    suppModal_start();
+   // suppModal_start();
 
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));
     jqgridPagerIcons();
-    get_btn(1);
+   // get_btn(1);
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -147,36 +147,6 @@ function drawBasic() {
 }
 
 
-function supp_btn(what) {
-    main_data.supp_check = what;
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
-
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014");
@@ -198,7 +168,7 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "수입검사불량현황 | MES",
-        colNames: ['rownum','입고일자','전표번호','업체', '품번', '품명', '규격', '단위', '검사종류', '입고수량','검사수량', '불량수량', '검사결과','불량내용','조치구분','검사자','검사일시'],
+        colNames: ['rownum','입고일자','전표번호','업체', '품번', '품명', '규격', '단위', '검사등급', '입고수량','검사수량', '불량수량', '검사결과','불량내용','조치구분','검사자','검사일시'],
         colModel: [
             {name:'rownum',index:'rownum',sortable:false,hidden:true,key:true},
             {name: 'work_date', index: 'work_date', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},

@@ -75,7 +75,7 @@
                     <c:if test="${main_list.menu_name eq '자재관리'}">
                     <i class="menu-icon fa fa-map"></i>
                     </c:if>
-                    <c:if test="${main_list.menu_name eq '제품관리'}">
+                    <c:if test="${main_list.menu_name eq '출하관리'}">
                     <i class="menu-icon fa fa-truck"></i>
                     </c:if>
                     <c:if test="${main_list.menu_name eq '영업관리'}">

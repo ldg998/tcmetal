@@ -19,6 +19,7 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     suppModal_start();
+    header_make();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -152,14 +153,14 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
         loadComplete:function(){
-            // if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
-            //     $(".jqgfirstrow").css("height","1px");
-            // else
-            //     $(".jqgfirstrow").css("height","0px");
+            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
+                $(".jqgfirstrow").css("height","1px");
+            else
+                $(".jqgfirstrow").css("height","0px");
         }
 
         });
-    header_make();
+
 
     // $("#mes_grid").jqGrid('setGroupHeaders', {
     //     useColSpanStyle: true,
@@ -178,12 +179,15 @@ function jqGrid_main() {
 
 }
 function header_make() {
-    jQuery("#mes_grid").jqGrid('setGroupHeaders', {
-        useColSpanStyle: true,
+    $("#mes_grid").jqGrid('setGroupHeaders',{
+        useColSpanStyle: false,
         groupHeaders: [
             {startColumnName: 'as', numberOfColumns: 2, titleText: '<center>전일재고</center>'},
+            {startColumnName: 'as2', numberOfColumns: 2, titleText: '<center>금일입고</center>'},
+            {startColumnName: 'as3', numberOfColumns: 2, titleText: '<center>금일출고</center>'},
+            {startColumnName: 'as4', numberOfColumns: 2, titleText: '<center>자체불량</center>'},
+            {startColumnName: 'as5', numberOfColumns: 2, titleText: '<center>재고</center>'}
 
-
-        ]
-    });
+            ]
+    })
 }

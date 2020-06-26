@@ -4,6 +4,21 @@
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <script type="text/javascript" src="/data-component/mesWMS/InOut/wmsStockReady/wmsStockReady.js" charset="UTF-8"></script>
 
+<style>
+    #gview_mes_grid>.ui-jqgrid-hdiv {
+        line-height: 0 !important;
+        max-height: 60px !important;
+        color: black;
+        white-space:normal !important;
+        height:auto !important;
+
+    }
+    #gview_mes_grid >.ui-jqgrid-hdiv>.ui-jqgrid-hbox>.ui-jqgrid-htable >thead>.ui-jqgrid-labels>.ui-state-default {
+        border-left: 0 none;
+        background-color: #f1f1f1 !important;
+
+    }
+</style>
 <div id="progressbar1" data-value="0"></div>
 
 <div class="main-content-inner">
@@ -63,9 +78,8 @@
         </div>
 
         <div class="row">
-
             <div class="col-xs-12 table-responsive">
-                <table id="mes_grid"></table>
+                <table id="mes_grid" class="mes_grid" style=""></table>
                 <div id="mes_grid_pager"></div>
             </div>
         </div>

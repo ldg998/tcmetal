@@ -4,7 +4,6 @@ function modal_start1() {
     modal_make1();
     selectBox_modal1();
     datepickerInput_modal();
-
 }
 
 
@@ -64,7 +63,7 @@ function selectBox_modal1() {
 function modal_make1() {
     $("#addDialog").dialog({
         modal: true,
-        width: 550,
+        width: 600,
         height: 'auto',
         autoOpen: false,
         resizable: false,
@@ -124,5 +123,6 @@ function effectiveness1(modal_objact) { // 유효성 검사
 
 
 function datepickerInput_modal() {  //초기 날짜할당
+
     datepicker_makes("#datepicker_modal", 0);
 }

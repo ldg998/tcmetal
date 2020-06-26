@@ -8,7 +8,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 구분</div>
             <div class="profile-info-value">
-                <input type="text" name="cargo_name" id="cargo_name" class="form-control modal_value" readonly>
+                <input type="text" name="cargo_name" id="cargo_name" class="form-control modal_value">
 
                 <input type="hidden" name="cargo_code" id="cargo_code" class="form-control modal_value">
             </div>
@@ -17,14 +17,14 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 위치코드</div>
             <div class="profile-info-value">
-                <input type="text" name="loc_code" class="form-control modal_value" readonly placeholder="자동생성">
+                <input type="text" name="loc_code" class="form-control modal_value" autofocus>
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name"> 위치명</div>
             <div class="profile-info-value">
-                <input type="text" name="loc_name" class="form-control modal_value" autofocus autocomplete="off">
+                <input type="text" name="loc_name" class="form-control modal_value"  autocomplete="off">
             </div>
         </div>
 

@@ -6,7 +6,6 @@
 <script type="text/javascript" src="/data-component/mesWMS/InOut/wmsOutOrder/wmsOutOrder.js" charset="UTF-8"></script>
 
 <div class="main-content-inner">
-
     <div class="page-content">
         <div class="col-lg-12 padding0">
             <table class="table wt-100">
@@ -31,20 +30,8 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" onclick="supp_btn('A');" readonly>
-                            <input type="hidden" name="supp_code" class="form-control h-25 condition_main"
-                                   id="supp_code_main">
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
+                            <input type="text" name="supp_name" class="form-control h-25 condition_main">
                         </div>
-                    </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">상태</td>
-                    <td class="wt-px-200">
-                        <select name="keyword2" class="form-control h-25 condition_main" id="scmOutOrderSelect">
-                            <option value="">전체</option>
-                            <option value="0">대기</option>
-                            <option value="1">완료</option>
-                        </select>
                     </td>
 
                     <td></td>
@@ -85,20 +72,10 @@
             </div>
         </div>
 
-        <hr />
-
-        <div class="row">
-            <div class="col-xs-12 table-responsive">
-                <table id="mes_grid2"></table>
-                <div id="mes_grid_pager2"></div>
-            </div>
-        </div>
-
     </div>
 </div>
 
 
-<%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>
 <%@include file="wmsOutOrder_modal1.jsp"%>
 
 

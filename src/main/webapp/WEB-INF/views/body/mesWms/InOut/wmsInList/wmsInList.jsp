@@ -31,6 +31,23 @@
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                    <%--조회할 업채명--%>
+                    <td class="wt-px-200">
+                        <div class="input-icon input-icon-right">
+                            <input type="text" name="" class="form-control h-25 condition_main" autocomplete="off">
+                            <%--<i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>--%>
+                        </div>
+                    </td>
+
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-200">
+                        <div class="input-icon input-icon-right">
+                            <input type="text" name="" class="form-control h-25 condition_main" autocomplete="off">
+                            <%--<i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>--%>
+                        </div>
+                    </td>
+
                     <td></td>
                 </tr>
                 </tbody>

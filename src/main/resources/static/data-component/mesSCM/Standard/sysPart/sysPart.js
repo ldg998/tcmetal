@@ -164,7 +164,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames: ['구분','품번','품명','규격','단위','업체','업체2','업체3','위치','등록자','수정일시'],// grid 헤더 설정
+        colNames: ['구분','품번','품명','규격','단위','업체','업체2','업체3','업체4','업체5','위치','등록자','수정일시'],// grid 헤더 설정
         colModel: [
             {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 80,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name: 'part_code', index: 'part_code', key:true, sortable: false, width: 100,fixed: true},// sortable 사용시 그리드 헤더 자체 정렬 기능 설정
@@ -174,6 +174,8 @@ function jqGrid_main() {
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed: true},
             {name: 'supp_name2', index: 'supp_name2', sortable: false, width: 150,fixed: true},
             {name: 'supp_name3', index: 'supp_name3', sortable: false, width: 150,fixed: true},
+            {name: 'supp_name4', index: 'supp_name4', sortable: false, width: 150,fixed: true},
+            {name: 'supp_name5', index: 'supp_name5', sortable: false, width: 150,fixed: true},
             {name: 'loc_name', index: 'loc_name', sortable: false, width: 100,fixed: true},
             {name: 'user_name', index: 'user_name', sortable: false, width: 100,fixed: true},
             {name: 'update_date', index: 'update_date', width: 180, sortable: false, formatter: formmatterDate,fixed: true}

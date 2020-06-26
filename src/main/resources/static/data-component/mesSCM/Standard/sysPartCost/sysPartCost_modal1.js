@@ -83,8 +83,42 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
                 "class": "btn btn-minier",
                 click: function () {
                     $(this).dialog("close");
+                    $("#addDialog2").dialog("close");
                 }
             }
         ]
     })
+}
+
+function jqGrid_main_modal() {
+    $("#mes_update_grid").jqGrid({
+        datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
+        mtype: 'POST',// post 방식 데이터 전달
+        colNames : ['변경일자','금액'],// grid 헤더 설정
+        colModel : [// grid row 의 설정할 데이터 설정
+            {name:'',index:'',sortable: false,width:40,fixed: true},
+            {name:'',index:'',sortable: false,width:40,fixed: true}
+
+        ],
+        multiselect: true,
+        caption: "자재단가 | MES",// grid 제목
+        autowidth: true,// 그리드 자동 가로 길이 설정
+        height: 50, // 그리드 세로 길이 설정
+        beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
+            var $myGrid = $(this),
+                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                cm = $myGrid.jqGrid('getGridParam', 'colModel');
+            return (cm[i].name === 'cb');
+        },
+        ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
+            var data = $('#mes_grid').jqGrid('getRowData', rowid);
+            update_btn(data);
+        },
+        loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
+            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
+                $(".jqgfirstrow").css("height","1px");
+            else
+                $(".jqgfirstrow").css("height","0px");
+        }
+    }).navGrid("#mes_update_grid_pager", {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정
 }

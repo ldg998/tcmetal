@@ -137,7 +137,7 @@ function jqGrid_main() {
             {name:'',index:'',sortable: false,width:80,fixed: true},
             {name:'',index:'',sortable: false,width:180,fixed: true}// formatter 사용을 통해 데이터 형식 가공
         ],
-        caption: "품목명관리 | MES",// grid 제목
+        caption: "자재단가 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
         height: 600, // 그리드 세로 길이 설정
         pager: '#mes_grid_pager',// pager 연결

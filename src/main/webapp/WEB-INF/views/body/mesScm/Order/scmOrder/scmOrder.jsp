@@ -28,7 +28,7 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="start_date" id="datepicker"
+                             <input type="text" name="start_date" id="datepicker"
                                    class="form-control h-25 condition_main" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>

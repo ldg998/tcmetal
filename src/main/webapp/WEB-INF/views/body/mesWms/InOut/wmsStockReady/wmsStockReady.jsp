@@ -2,9 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
-<script type="text/javascript" src="/data-component/mesWMS/InOut/wmsOutList/wmsOutList.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesWMS/InOut/wmsStockReady/wmsStockReady.js" charset="UTF-8"></script>
 
 <div id="progressbar1" data-value="0"></div>
+
 <div class="main-content-inner">
 
     <div class="page-content">
@@ -12,44 +13,30 @@
             <table class="table wt-100">
                 <tbody>
                 <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회일자</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="start_date" id="datepicker"
+                            <input type="text" name="work_date" id="datepicker"
                                    class="form-control h-25 condition_main" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-                    <td class="t-align-c" style="width:25px !important;">~</td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main" readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;" ></i>
-                        </div>
-                    </td>
-
-
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 modal_value"
-                                   onclick="supp_btn('A');" readonly>
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;"></i>
+                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
+                                   id="supp_name_main" onclick="supp_btn('A');" readonly>
+                            <input type="hidden" name="keyword" class="form-control h-25 condition_main"
+                                   id="supp_code_main">
+                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                         </div>
-                        <input type="hidden"  name="supp_code" class="form-control modal_value" readonly>
                     </td>
-
-
-
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="" class="form-control h-25 condition_main" autocomplete="off">
-                            <%--<i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>--%>
+                            <input type="text" name="" class="form-control h-25 condition_main">
                         </div>
                     </td>
-
                     <td></td>
                 </tr>
                 </tbody>

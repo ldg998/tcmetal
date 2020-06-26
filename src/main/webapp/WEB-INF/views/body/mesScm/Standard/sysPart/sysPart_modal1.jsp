@@ -82,6 +82,29 @@
                 </div>
             </div>
 
+            <div class="profile-info-row">
+                <div class="profile-info-name">업체4</div>
+                <div class="profile-info-value">
+                    <div class="input-icon input-icon-right">
+                        <input type="text" name="supp_name" class="form-control h-25 modal_value"
+                               onclick="supp_btn();" readonly>
+                        <i class="ace-icon fa fa-search dark" style="top: -2px;"></i>
+                    </div>
+                    <input type="hidden"  name="supp_code" class="form-control modal_value" readonly>
+                </div>
+            </div>
+
+            <div class="profile-info-row">
+                <div class="profile-info-name">업체5</div>
+                <div class="profile-info-value">
+                    <div class="input-icon input-icon-right">
+                        <input type="text" name="supp_name" class="form-control h-25 modal_value"
+                               onclick="supp_btn();" readonly>
+                        <i class="ace-icon fa fa-search dark" style="top: -2px;"></i>
+                    </div>
+                    <input type="hidden"  name="supp_code" class="form-control modal_value" readonly>
+                </div>
+            </div>
             <%-- 외각틀안에 제목과 내용 --%>
         <div class="profile-info-row">
             <div class="profile-info-name">위치</div>

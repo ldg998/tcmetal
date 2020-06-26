@@ -48,11 +48,13 @@ var array =
        // {code: "", title: '출하관리', sub: '기준정보', name: ''},
 
         //입출고관리
-        {code: "wmsIn", title: '출하관리', sub: '입출고관리', name: '제품입고등록'},
+        {code: "wmsIn", title: '출하관리', sub: '입출고관리', name: '제품입고관리'},
         {code: "wmsInList", title: '출하관리', sub: '입출고관리', name: '제품입고현황'},
-        {code: "wmsOut", title: '출하관리', sub: '입출고관리', name: '제품출고 처리'},
-        {code: "wmsOutList", title: '출하관리', sub: '입출고관리', name: '제품출고 현황'},
+        {code: "wmsOutOrder", title: '출하관리', sub: '입출고관리', name: '제품출고관리'},
+        {code: "wmsOutList", title: '출하관리', sub: '입출고관리', name: '제품출고현황'},
         {code: "wmsOutReady", title: '출하관리', sub: '입출고관리', name: '제품 미출고 현황'},
+        {code: "wmsStockReady", title: '출하관리', sub: '입출고관리', name: '제품재고현황'},
+        {code: "wmsSumMonth", title: '출하관리', sub: '입출고관리', name: '제품재고월원장'},
 
 
         // //운송비관리

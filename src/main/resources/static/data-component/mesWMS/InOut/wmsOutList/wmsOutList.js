@@ -19,7 +19,7 @@ $(document).ready(function () {
     datepickerInput();
     authcheck();
     jqgridPagerIcons();
-    get_btn(1);
+    suppModal_start();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -60,6 +60,42 @@ function excel_download() {
 }
 
 
+function supp_btn(what) {
+    main_data.supp_check = what;
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+    $("#supp-search-dialog").dialog('open');
+    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
+    $('#supp_code_search').val('').trigger("change");
+    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
+}
+
+function suppModal_bus(code, name) {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val(name);
+        $("#supp_code_main").val(code);
+    } else if (main_data.supp_check === 'B') {
+
+        ccn_ajax('/sysSuppOneGet', {keyword:code}).then(function (data) {
+            // console.log(data);
+            $("#supp_name_modal").val(name);
+            $("#supp_code_modal").val(code);
+            $("#supp_user_name").val(data.emp_name);
+            $("#supp_tel_no").val(data.emp_tel);
+        });
+
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+
+}
+
+function suppModal_close_bus() {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val("");
+        $("#supp_code_main").val("");
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014");
@@ -81,18 +117,24 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['출고일자', '출고번호', '현장','제품구분', '제품명', '계획명', '생산계획번호', '수주번호','등록자','출고일시'],
+        colNames: ['출고일자', '출고전표', '업체','기종', '품번', '품명','단중','수량','제품LOT','차량번호','성적서','출고요청번호','생산일자','입고일자','등록자','수정일'],
         colModel: [
-            {name: 'work_date', index: 'work_date', sortable: false, width: 150, fixed:true, formatter:formmatterDate2},
-            {name: 'out_no', index: 'out_no', sortable: false, width: 150, fixed:true},
-            {name: 'place_name', index: 'place_name', sortable: false, width: 150, fixed:true},
-            {name: 'prod_type_name', index: 'prod_type_name', sortable: false, width: 150, fixed:true},
-            {name: 'prod_name', index: 'prod_name', sortable: false, width: 150, fixed:true},
-            {name: 'plan_name', index: 'plan_name', sortable: false, width: 150, fixed:true},
-            {name: 'plan_no', index: 'plan_no', sortable: false, width: 150, fixed:true},
-            {name: 'ord_no', index: 'ord_no', sortable: false, width: 150, fixed:true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 150, fixed:true},
-            {name: 'update_date', index: 'update_date', sortable: false, width: 150, fixed:true, formatter:formmatterDate}
+            {name: '', index: '', sortable: false, width: 150, fixed:true, formatter:formmatterDate2},
+            {name: '', index: '', sortable: false, width: 80, fixed:true},
+            {name: '', index: '', sortable: false, width: 80, fixed:true},
+            {name: '', index: '', sortable: false, width: 60, fixed:true},
+            {name: '', index: '', sortable: false, width: 60, fixed:true},
+            {name: '', index: '', sortable: false, width: 60, fixed:true},
+            {name: '', index: '', sortable: false, width: 60, fixed:true},
+            {name: '', index: '', sortable: false, width: 60, fixed:true},
+            {name: '', index: '', sortable: false, width: 60, fixed:true},
+            {name: '', index: '', sortable: false, width: 120, fixed:true, formatter:formmatterDate},
+            {name: '', index: '', sortable: false, width: 90, fixed:true},
+            {name: '', index: '', sortable: false, width: 90, fixed:true},
+            {name: '', index: '', sortable: false, width: 90, fixed:true},
+            {name: '', index: '', sortable: false, width: 90, fixed:true},
+            {name: '', index: '', sortable: false, width: 90, fixed:true},
+            {name: '', index: '', sortable: false, width: 90, fixed:true}
         ],
         caption: '제품출고 현황 | MES',
         autowidth: true,

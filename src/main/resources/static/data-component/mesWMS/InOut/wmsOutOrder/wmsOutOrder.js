@@ -27,73 +27,27 @@ $(document).ready(function () {
     authcheck();
     selectBox();
     datepickerInput();
-    suppModal_start();
     modal_start1();
 
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
-    jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));
     jqgridPagerIcons();
-    get_btn(1);
+
 });
 
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-function supp_btn(what) {
-    main_data.supp_check = what;
-    // console.log(main_data.supp_check);
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    } else if(main_data.supp_check === 'B') {
-        $("#supp_name_modal").val("");
-        $("#supp_code_modal").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
-
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
     main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
     main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
     main_data.send_data_post = main_data.send_data;
 
-
     $("#mes_grid").setGridParam({
         url: "/wmsOutOrderGet",
         datatype: "json",
         page: page,
         postData: main_data.send_data
-    }).trigger("reloadGrid");
-    $('#mes_grid2').jqGrid('clearGridData');
-}
-
-function get_btn_post(page) {
-    $("#mes_grid").setGridParam({
-        url: '/wmsOutOrderGet',
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data_post
     }).trigger("reloadGrid");
     $('#mes_grid2').jqGrid('clearGridData');
 }
@@ -111,19 +65,7 @@ function under_get(rowid) {
 
 function add_btn() {
     if (main_data.auth.check_add !="N") {
-        main_data.check = 'I';
-        main_data.check2 = 'Y';
-        modal_reset(".modal_value", []);
-        $("#datepicker3").datepicker('setDate', 'today');
-        $("#ord_no").prop("disabled",false).trigger('change');
-        $("#mes_modal_grid").jqGrid('clearGridData');
-
         $("#addDialog").dialog('open');
-        $("#supp_name_modal").prop("disabled", false);
-        $("#supp_code_modal").prop("disabled", false);
-        $("#place_name").prop("readonly", false);
-
-        jqGridResize2("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
     } else {
         alert(msg_object.TBMES_A001.msg_name1);
     }
@@ -206,20 +148,25 @@ function jqGrid_main() {
         // 다중 select
         multiselect: true,
         // 타이틀
-       caption: "제품출고 지시 | MES",
-       colNames: ['출하일자','출하번호','업체명','상태','등록자','등록일시'],
+       caption: "제품출고관리 | MES",
+       colNames: ['출고일자','전표번호','업체','기종','품번','품명','단중','수량','제품LOT','차량번호','등록자','수정일'],
        colModel: [
-           {name: 'work_date', index: 'work_date' ,sortable: false,fixed:true,width:150, formatter: formmatterDate2},
-           {name: 'req_no', index: 'req_no', sortable: false,fixed:true,width:150, key:true},
-           {name: 'supp_name', index: 'supp_name', sortable: false,fixed:true,width:150},
-           {name: 'status_name', index: 'status_name', sortable: false,fixed:true,width:150},
-           {name: 'user_name', index: 'user_name', sortable: false,fixed:true,width:150},
-           {name: 'update_date', index: 'update_date', sortable: false,fixed:true,width:150,formatter: formmatterDate}
-
+           {name: '', index: '' ,sortable: false,fixed:true,width:150, formatter: formmatterDate2},
+           {name: '', index: '', sortable: false,fixed:true,width:150, key:true},
+           {name: '', index: '', sortable: false,fixed:true,width:70},
+           {name: '', index: '', sortable: false,fixed:true,width:70},
+           {name: '', index: '', sortable: false,fixed:true,width:70},
+           {name: '', index: '', sortable: false,fixed:true,width:70},
+           {name: '', index: '', sortable: false,fixed:true,width:70},
+           {name: '', index: '', sortable: false,fixed:true,width:70},
+           {name: '', index: '', sortable: false,fixed:true,width:70},
+           {name: '', index: '', sortable: false,fixed:true,width:70},
+           {name: '', index: '', sortable: false,fixed:true,width:70},
+           {name: '', index: '', sortable: false,fixed:true,width:150,formatter: formmatterDate}
        ],
         autowidth: true,
         viewrecords: true,
-        height: 243,
+        height: 562,
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         pager: '#mes_grid_pager',
@@ -254,38 +201,9 @@ function jqGrid_main() {
         }
     });
 
-    $('#mes_grid2').jqGrid({
-        mtype: 'POST',
-        datatype: "local",
-        caption: "제품출고 지시 | MES",
-       colNames: ['출하번호','현장','제품구분','제품명','계획명','생산계획번호','출고여부'],
-       colModel: [
-           {name: 'req_no', index: 'req_no', width: 150, sortable: false,fixed:true},
-           {name: 'place_name', index: 'place_name', width: 150, sortable: false,fixed:true},
-           {name: 'prod_type_name', index: 'prod_type_name', width: 150, sortable: false,fixed:true},
-           {name: 'part_name', index: 'part_name', width: 150, sortable: false,fixed:true},
-           {name: 'plan_name', index: 'plan_name', width: 150, sortable: false,fixed:true},
-           {name: 'plan_no', index: 'plan_no', width: 150, sortable: false,fixed:true},
-           {name: 'status_name', index: 'status_name', width: 150, sortable: false,fixed:true}
-       ],
-        autowidth: true,
-        viewrecords: true,
-        height: 194,
-        rowNum: 100,
-        rowList: [100, 200, 300, 500, 1000],
-        pager: '#mes_grid_pager2',
-        loadComplete:function(){
-            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
-                $(".jqgfirstrow").css("height","1px");
-            else
-                $(".jqgfirstrow").css("height","0px");
-        }
-
-    });
 
 }
 
-var save_rowid;
 
 
 

@@ -76,6 +76,11 @@ var array =
 
         //영업관리-기준정보
         {code: "sysSPart", title: '영업관리', sub: '기준정보', name: '품목정보관리'},
+        {code: "crm_1", title: '영업관리', sub: '기준정보', name: '제품품목'},
+        {code: "crm_2", title: '영업관리', sub: '기준정보', name: '환율관리'},
+        {code: "crm_3", title: '영업관리', sub: '기준정보', name: '목재단가관리'},
+        {code: "crm_4", title: '영업관리', sub: '기준정보', name: '수주등록'},
+
         //영업관리
         {code: "crmOrderRecp", title: '영업관리', sub: '영업관리', name: '수주정보관리'},
         {code: "crmWorkList", title: '영업관리', sub: '영업관리', name: '실적현황'},

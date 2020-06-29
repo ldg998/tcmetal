@@ -15,6 +15,7 @@
     #gview_mes_grid >.ui-jqgrid-hdiv>.ui-jqgrid-hbox>.ui-jqgrid-htable >thead>.ui-jqgrid-labels>.ui-state-default {
         border-left: 0 none;
         background-color: #f1f1f1 !important;
+
     }
     #gview_mes_grid >.ui-jqgrid-hdiv>.ui-jqgrid-hbox>.ui-jqgrid-htable >thead>.ui-jqgrid-labels>th{
         text-align: center !important;

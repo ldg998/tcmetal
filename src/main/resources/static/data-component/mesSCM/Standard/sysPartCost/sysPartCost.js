@@ -31,7 +31,9 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수/////////////////////////////////////
 //모달 확인 조회 btn
 function test(){
+
     $("#addDialog").dialog('open'); // 모달 열기
+    jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]'));
 }
 // 조회 버튼
 function get_btn(page) {

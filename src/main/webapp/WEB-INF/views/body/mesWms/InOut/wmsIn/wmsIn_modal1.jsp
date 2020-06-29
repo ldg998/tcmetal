@@ -27,37 +27,48 @@
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
-            <div class="profile-info-name">제품LOT</div>
-            <div class="profile-info-value input-icon input-icon-right">
-                <input name="" type="text" class="form-control keyword modal_value" autofocus style="width: 100%" autocomplete="off">
-                    <i class="ace-icon fa fa-search bigger-110 blue" style="top: 2px"; ></i>
 
-                <%--ace-icon fa fa-calendar dark--%>
-            </div>
+            <div class="profile-info-name"></div>
+            <div class="profile-info-value"> </div>
         </div>
 
             <%--2--%>
         <div class="profile-info-row">
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%" autocomplete="off">
+                <div class="input-icon input-icon-right">
+                    <input type="text" name="supp_name" class="form-control h-25 condition_main"
+                           id="supp_name_main" onclick="supp_btn('A');" readonly>
+                    <input type="hidden" name="keyword" class="form-control h-25 condition_main"
+                           id="supp_code_main">
+                    <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
+                </div>
             </div>
 
             <div class="profile-info-name">기종</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%" autocomplete="off">
+                <select name="keyword2" id="1_select" class="form-control condition_main" style="width: 100%">
+                    <option value="">전체</option>
+                    <option value="0">진행중</option>
+                    <option value="1">완료</option>
+                </select>
             </div>
         </div>
 
             <%--3--%>
         <div class="profile-info-row">
-            <div class="profile-info-name">품번</div>
-            <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%" autocomplete="off">
-            </div>
             <div class="profile-info-name">품명</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%" autocomplete="off">
+
+                <select name="keyword2" id="2_select" class="form-control condition_main" style="width: 100%">
+                    <option value="">전체</option>
+                    <option value="0">진행중</option>
+                    <option value="1">완료</option>
+                </select>
+            </div>
+            <div class="profile-info-name">품번</div>
+            <div class="profile-info-value">
+                <input name="" type="text" class="form-control keyword modal_value" placeholder="자동생성" readonly style="width: 100%" autocomplete="off">
             </div>
         </div>
 
@@ -66,10 +77,15 @@
         <div class="profile-info-row">
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%" autocomplete="off">
+                <input name="" type="text" class="form-control keyword modal_value" placeholder="자동생성" readonly style="width: 100%" autocomplete="off">
             </div>
-            <div class="profile-info-name"></div>
-            <div class="profile-info-value"> </div>
+
+            <div class="profile-info-name">제품LOT</div>
+            <div class="profile-info-value input-icon input-icon-right">
+                <input name="" type="text" class="form-control keyword modal_value" autofocus style="width: 100%" autocomplete="off">
+<%--                <i class="ace-icon fa fa-search bigger-110 blue" style="top: 2px"; ></i>--%>
+
+            </div>
         </div>
     </div>
 </div>

@@ -15,7 +15,7 @@ var main_data = {
 $(document).ready(function () {
     msg_get();
     authcheck();
-  //  selectBox();
+    selectBox();
     modal_start1();
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
@@ -102,21 +102,20 @@ function authcheck() {
 }
 
 function selectBox(){
-    select_makes_sub('#part_type_select', "/sysPartTypeGet","part_type" ,"part_type_name",{keyword:''},'Y');
-}
+    $("#part_type_select").select2();
+   }
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['구분','품번','품명','규격','단위','공급업체','재고량'],
+        colNames: ['구분','품번','품명','규격','단위','재고량'],
         colModel: [
             {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 100,fixed:true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 100,fixed:true, key:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
             {name: 'spec', index: 'spec', sortable: false, width: 150,fixed:true},
             {name: 'unit_name', index: 'unit_name', sortable: false, width: 150,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
             {name: 'stock_qty', index: 'stock_qty', sortable: false, width: 150,fixed:true,align:'right',formatter:'integer'},
 
         ],

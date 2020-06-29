@@ -52,16 +52,17 @@
                     </div>
                 </div>
                 <div class="pull-right">
-                    <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" onclick="right_modal1_btn();">
-                                <span>
-                                    <i class="fa fa-arrow-right bigger-110 blue"></i>
-                                </span>
-                    </a>
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold" style="margin-left:10px;" tabindex="0" aria-controls="dynamic-table" onclick="left_modal1_btn();">
                                 <span>
                                     <i class="fa fa-arrow-left bigger-110 blue"></i>
                                 </span>
                     </a>
+                    <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" onclick="right_modal1_btn();">
+                                <span>
+                                    <i class="fa fa-arrow-right bigger-110 blue"></i>
+                                </span>
+                    </a>
+
                 </div>
             </div>
             <div class="row">

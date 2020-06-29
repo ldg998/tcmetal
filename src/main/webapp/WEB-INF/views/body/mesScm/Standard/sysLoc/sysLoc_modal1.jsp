@@ -6,15 +6,6 @@
 <div id="addDialog" title="로케이션추가" style="display: none">
     <div class="profile-user-info profile-user-info-striped">
         <div class="profile-info-row">
-            <div class="profile-info-name"> 구분</div>
-            <div class="profile-info-value">
-                <input type="text" name="cargo_name" id="cargo_name" class="form-control modal_value">
-
-                <input type="hidden" name="cargo_code" id="cargo_code" class="form-control modal_value">
-            </div>
-        </div>
-
-        <div class="profile-info-row">
             <div class="profile-info-name"> 위치코드</div>
             <div class="profile-info-value">
                 <input type="text" name="loc_code" class="form-control modal_value" autofocus>

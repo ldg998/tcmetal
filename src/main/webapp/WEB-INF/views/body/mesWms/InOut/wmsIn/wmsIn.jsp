@@ -42,8 +42,10 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" autocomplete="off">
-                            <%--<i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>--%>
+                                   id="supp_name_main" onclick="supp_btn('A');" readonly>
+                            <input type="hidden" name="keyword" class="form-control h-25 condition_main"
+                                   id="supp_code_main">
+                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                         </div>
                     </td>
 
@@ -65,6 +67,19 @@
                             <span>조회</span>
                             </span>
                     </a>
+
+                        <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
+                           tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="add_btn()">
+                            <span><i class="fa fa-plus bigger-110 blue"></i>
+                            <span>추가</span>
+                            </span>
+                        </a>
+                        <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold" title=""
+                           onclick="delete_btn()">
+                            <span><i class="fa fa-trash bigger-110 blue"></i>
+                            <span>삭제</span>
+                            </span>
+                        </a>
                 </div>
             </div>
         </div>
@@ -81,7 +96,7 @@
 
 <!-- 모달창 import -->
 <%@include file="wmsIn_modal1.jsp" %>
-<%-- <%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %> --%>
+ <%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>
 
 
 

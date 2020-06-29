@@ -30,16 +30,16 @@ var array =
         {code: "scmOrderList", title: '자재관리', sub: '발주관리', name: '발주현황'},
 
         //자재입출고
-        {code: "scmIn", title: '자재관리', sub: '자재입출고', name: '입고등록'},
-        {code: "scmInList", title: '자재관리', sub: '자재입출고', name: '입고현황'},
-        {code: "scmOut", title: '자재관리', sub: '자재입출고', name: '출고등록'},
-        {code: "scmOutList", title: '자재관리', sub: '자재입출고', name: '출고현황'},
+        {code: "scmIn", title: '자재관리', sub: '자재입출고', name: '자재입고'},
+        {code: "scmInList", title: '자재관리', sub: '자재입출고', name: '자재입고현황'},
+        {code: "scmOut", title: '자재관리', sub: '자재입출고', name: '자재출고'},
+        {code: "scmOutList", title: '자재관리', sub: '자재입출고', name: '자재출고현황'},
         {code: "scmIOList", title: '자재관리', sub: '자재입출고', name: '자재입출고현황'},
 
         //재고관리
         {code: "scmStockList", title: '자재관리', sub: '재고관리', name: '재고현황'},
-        {code: "scmStockSumDay", title: '자재관리', sub: '재고관리', name: '자재 일원장'},
-        {code: "scmStockSumMonth", title: '자재관리', sub: '재고관리', name: '자재 월원장'},
+        {code: "scmStockSumDay", title: '자재관리', sub: '재고관리', name: '일원장'},
+        {code: "scmStockSumMonth", title: '자재관리', sub: '재고관리', name: '월원장'},
         {code: "scmStockRev", title: '자재관리', sub: '재고관리', name: '재고조정'},
         {code: "scmStockRevList", title: '자재관리', sub: '재고관리', name: '재고조정현황'},
 
@@ -55,6 +55,8 @@ var array =
         {code: "wmsOutReady", title: '출하관리', sub: '입출고관리', name: '제품 미출고 현황'},
         {code: "wmsStockReady", title: '출하관리', sub: '입출고관리', name: '제품재고현황'},
         {code: "wmsSumMonth", title: '출하관리', sub: '입출고관리', name: '제품재고월원장'},
+        {code: "wmsSumRev", title: '출하관리', sub: '재고관리', name: '제품재고조정'},
+
 
 
         // //운송비관리

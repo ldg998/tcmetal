@@ -42,6 +42,7 @@ $(document).ready(function () {
 // 조회 버튼
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // value_return 클래스명 넣으면 name에 맞게 객체 생성
+    main_data.send_data.keyword ="";
     main_data.send_data.keyword2 = "";
     main_data.send_data_post = main_data.send_data; // 수정 삭제시 다시 조회하기 위한 데이터저장
     $("#mes_grid").setGridParam({ // 그리드 조회

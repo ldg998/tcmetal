@@ -32,7 +32,12 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 변경일자</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+
+                <div class="input-icon input-icon-right">
+                    <input type="text" name="start_date" id="datepicker"
+                           class="form-control h-25 condition_main" readonly>
+                    <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                </div>
             </div>
         </div>
         <div class="profile-info-row">

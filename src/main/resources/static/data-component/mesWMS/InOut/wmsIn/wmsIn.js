@@ -26,7 +26,7 @@ $(document).ready(function () {
     jqGrid_main();  //main 그리드 생성
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]')); //그리드 resize
     jqgridPagerIcons(); //그리드 아이콘 설정
-
+    suppModal_start();
 
 });
 
@@ -54,7 +54,36 @@ function get_btn(page) {
     $('#mes_grid2').jqGrid('clearGridData'); //해당 그리드의 데이터삭제 및 업데이트
 }
 
+function supp_btn(what) {
+    main_data.supp_check = what;
 
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+    $("#supp-search-dialog").dialog('open');
+    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
+    $('#supp_code_search').val('').trigger("change");
+
+    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
+}
+
+function suppModal_bus(code, name) {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val(name);
+        $("#supp_code_main").val(code);
+    } else if (main_data.supp_check === 'B') {
+        $("#supp_name_modal").val(name);
+        $("#supp_code_modal").val(code);
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+
+}
+
+function suppModal_close_bus() {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val("");
+        $("#supp_code_main").val("");
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
@@ -86,7 +115,7 @@ function jqGrid_main() {  //메인 jqGrid
         datatype: 'local', // local 설정을 통해 handler 에 재요청하는 경우를 방지
         multiselect: true,  // 다중선택 가능
         caption: '재품입고관리 | MES', // grid 제목
-        colNames: ['입고일자','전표번호','업체','기종','품번','품명','단중','제품LOT','등록자','수정일'], // grid 헤더 설정
+        colNames: ['입고일자','전표번호','업체','기종','품명','품번','단중','제품LOT','등록자','등록일시'], // grid 헤더 설정
         colModel: [
             {name: '', index: '', sortable: false, fixed: true, width: 100}, // formatter 사용을 통해 데이터 형식 가공
             {name: '', index: '', sortable: false, key: true, fixed: true, width: 80},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출

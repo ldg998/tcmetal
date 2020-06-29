@@ -20,6 +20,7 @@ $(document).ready(function () {
     jqgridPagerIcons();
     suppModal_start();
     header_make();
+    selectBox();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -125,7 +126,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['업체', '기종', '품번','품명', '단중','수량1','중량','수량2','중량','수량3','중량','수량4','중량','수량5','중량'],
+        colNames: ['업체', '기종', '품번','품명', '단중','수량','중량','수량','중량','수량','중량','수량','중량','수량','중량'],
         colModel: [
             {name:'1', index: '1', width: 150, fixed:true},
             {name:'2', index: '2',  width: 150, fixed:true},
@@ -190,4 +191,7 @@ function header_make() {
 
             ]
     })
+}
+function selectBox() {
+    $('#1_select').select2();
 }

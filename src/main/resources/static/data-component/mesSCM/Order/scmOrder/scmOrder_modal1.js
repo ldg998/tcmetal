@@ -8,7 +8,7 @@ function modal_start1() {
     crmModal_start(); //crm 모달 시작
     modal_make1();    // 모달생산
     datepicker_modal1(); //모달안 날짜 넣어주기
-   // selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
+   selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
 
     jqGrid_modal1();  //그리드 생성
     jqGridResize("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //행당그리드 리사이즈
@@ -289,9 +289,8 @@ function datepicker_modal1() {
 }
 
 function selectBox_modal1() {
-    select_makes_sub('#part_type_select', "/sysPartTypeGet","part_type" ,"part_type_name",{keyword:''},'Y'); //셀렉트박스 초기값할당
-    select_makes_sub("#img_select", "/scmOrderImageList", "img_code","img_name",{keyword:0,keyword2:0},'N'); //셀렉트박스 초기값할당
-}
+    $('#part_type_select').select2();
+  }
 
 function jqGrid_modal1() { // 메인 그리드 설정
     $("#mes_add_grid").jqGrid({

@@ -11,13 +11,15 @@
         color: black;
         white-space:normal !important;
         height:auto !important;
-
     }
     #gview_mes_grid >.ui-jqgrid-hdiv>.ui-jqgrid-hbox>.ui-jqgrid-htable >thead>.ui-jqgrid-labels>.ui-state-default {
         border-left: 0 none;
         background-color: #f1f1f1 !important;
-
     }
+    #gview_mes_grid >.ui-jqgrid-hdiv>.ui-jqgrid-hbox>.ui-jqgrid-htable >thead>.ui-jqgrid-labels>th{
+        text-align: center !important;
+    }
+
 </style>
 <div id="progressbar1" data-value="0"></div>
 
@@ -48,9 +50,12 @@
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="" class="form-control h-25 condition_main">
-                        </div>
+                       <select id="1_select">
+                           <option value="">전체</option>
+                           <option></option>
+                           <option></option>
+
+                       </select>
                     </td>
                     <td></td>
                 </tr>

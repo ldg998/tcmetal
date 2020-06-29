@@ -20,6 +20,7 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     suppModal_start();
+    selectBox();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -117,7 +118,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['출고일자', '출고전표', '업체','기종', '품번', '품명','단중','수량','제품LOT','차량번호','성적서','출고요청번호','생산일자','입고일자','등록자','수정일'],
+        colNames: ['출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','차량번호','성적서','출고요청번호','생산일자','입고일자','등록자','등록일시'],
         colModel: [
             {name: '', index: '', sortable: false, width: 150, fixed:true, formatter:formmatterDate2},
             {name: '', index: '', sortable: false, width: 80, fixed:true},
@@ -129,6 +130,7 @@ function jqGrid_main() {
             {name: '', index: '', sortable: false, width: 60, fixed:true},
             {name: '', index: '', sortable: false, width: 60, fixed:true},
             {name: '', index: '', sortable: false, width: 120, fixed:true, formatter:formmatterDate},
+            {name: '', index: '', sortable: false, width: 90, fixed:true},
             {name: '', index: '', sortable: false, width: 90, fixed:true},
             {name: '', index: '', sortable: false, width: 90, fixed:true},
             {name: '', index: '', sortable: false, width: 90, fixed:true},
@@ -150,4 +152,8 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height","0px");
         }
     });
+}
+
+function selectBox() {
+    $('#1_select').select2();
 }

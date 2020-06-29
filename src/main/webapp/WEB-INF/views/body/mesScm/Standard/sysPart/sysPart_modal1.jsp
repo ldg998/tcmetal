@@ -12,14 +12,18 @@
         <div class="profile-info-row">
             <div class="profile-info-name">구분</div>
             <div class="profile-info-value">
-                <input type="text" id="modal_part_type" name="modal_part_type" class="form-control modal_value" autocomplete="off" >
+                <select name="keyword2" id="1_select" class="form-control condition_main"  style="width:100%">
+                    <option value="">원자재</option>
+                    <option value="0"></option>
+                    <option value="1"></option>
+                </select>
             </div>
         </div>
             <%-- 외각틀안에 제목과 내용 --%>
         <div class="profile-info-row">
             <div class="profile-info-name">품번</div>
             <div class="profile-info-value">
-                <input type="text" id="part_code" name="part_code" class="form-control modal_value" autocomplete="off" >
+                <input type="text" id="part_code" name="part_code" class="form-control modal_value" autofocus autocomplete="off" >
             </div>
         </div>
 
@@ -43,7 +47,12 @@
             <div class="profile-info-row">
                 <div class="profile-info-name">단위</div>
                 <div class="profile-info-value">
-                    <input type="text" id="unit_code" name="unit_code" class="form-control modal_value" autocomplete="off" >
+                    <select name="keyword2" id="2_select" class="form-control condition_main"  style="width:100%">
+                        <option value="">Kg</option>
+                        <option value="0"></option>
+                        <option value="1"></option>
+                    </select>
+
                 </div>
             </div>
 

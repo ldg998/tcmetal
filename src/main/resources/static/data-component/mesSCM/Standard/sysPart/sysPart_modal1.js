@@ -7,6 +7,7 @@ function modal_start1() {
     modal_make1(); // 모달 생성
     selectBox_modal1(); //모달 셀렉박스 추가
     suppModal_start(); //업체 선택시 업체모달 활성화
+
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -143,7 +144,9 @@ function selectBox_modal1() { //현재모달의 셀렉트박스에 데이터 할
     //     select_makes_base('#modal_loc_code_select','/sysLocAllGet',"loc_code","loc_name",{keyword:data[0].cargo_code},'');
     //  });
     // select_makes_base('#modal_unit_code_select','/sysCommonAllGet','code_value','code_name1',{keyword:'UNIT'},'');
-   $('#modal_loc_code_select').select2();
+    $('#1_select').select2();
+    $('#2_select').select2();
+    $('#modal_loc_code_select').select2();
     $('#modal_qc_level_select').select2();
 
 }

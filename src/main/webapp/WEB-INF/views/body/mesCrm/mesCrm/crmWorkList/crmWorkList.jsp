@@ -41,6 +41,15 @@
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                    <td class="wt-px-200">
+                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
+                                   id="supp_name_main">
+                    </td>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-200">
+                        <input type="text" name="" class="form-control h-25 condition_main">
+                    </td>
                     <td></td>
                 </tr>
                 </tbody>
@@ -57,173 +66,21 @@
                             <span>조회</span>
                             </span>
                     </a>
+                    <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
+                       id="btn-excel" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="excel_download();">
+                        <span><i class="fa fa-download bigger-110 blue"></i>
+                            <span>저장</span>
+                        </span>
+                    </a>
+
                 </div>
             </div>
         </div>
 
             <div class="row">
-                <div class="col-xs-8 table-responsive">
+                <div class="col-xs-12 table-responsive">
                     <table id="mes_grid"></table>
                     <div id="mes_grid_pager"></div>
-                </div>
-                <div class="col-xs-4 table-responsive">
-                    <div class="col-lg-12" style="height: 100% !important;">
-                        <span class="sp-title">실적관리</span>
-                        <table class="table multi_table pd-4" style="margin-top:5px; width:100% !important; height: 500px !important;">
-                            <tbody>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">월별</td>
-                                <td class="td-title t-align-c padding-a-0" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">매출계획금액</td>
-                                <td class="td-title t-align-c padding-a-0" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">매출실적</td>
-                                <td class="td-title t-align-c padding-a-0" style="font-size:15px !important;">매입금액</td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">1월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control table_main crmWorkInput" readonly name="plan1" id="plan1" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control table_main crmWorkInput" readonly name="work1" id="work1" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control table_main crmWorkInput" readonly name="in1" id="in1" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">2월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control table_main crmWorkInput" readonly name="plan2" id="plan2" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control  table_main crmWorkInput" readonly name="work2" id="work2" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control  table_main crmWorkInput" readonly name="in2" id="in2" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">3월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control table_main crmWorkInput" readonly name="plan3" id="plan3" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work3" id="work3" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in3" id="in3" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">4월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="plan4" id="plan4" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work4" id="work4" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in4" id="in4" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">5월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="plan5" id="plan5" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work5" id="work5" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in5" id="in5" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">6월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="plan6" id="plan6" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work6" id="work6" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in6" id="in6" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">7월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="plan7" id="plan7" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work7" id="work7" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in7" id="in7" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">8월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="plan8" id="plan8" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work8" id="work8" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in8" id="in8" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">9월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="plan9" id="plan9" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work9" id="work9" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in9" id="in9" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">10월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="plan10" id="plan10" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work10" id="work10" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in10" id="in10" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">11월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="plan11" id="plan11" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work11" id="work11" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in11" id="in11" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="td-title t-align-c padding-a-0 wt-px-50" style="border-right: 1px solid #b5b5b5 !important; font-size:13px !important;">12월</td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="plan12" id="plan12" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="work12" id="work12" style="font-size:13px !important;">
-                                </td>
-                                <td class="crmWorkTd">
-                                    <input type="text" class="form-control crmWorkInput table_main" readonly name="in12" id="in12" style="font-size:13px !important;">
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
                 </div>
             </div>
         </div>
@@ -231,4 +88,3 @@
 
 </div>
 
-<%@include file="crmWorkList_modal1.jsp"%>

@@ -19,7 +19,7 @@ $(document).ready(function () {
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]'));
     authcheck();
     datepickerInput();
-    //selectBox();
+    selectBox();
     jqgridPagerIcons();
     //get_btn(1);
 });
@@ -101,8 +101,8 @@ function authcheck() {
     });
 }
 function selectBox() {
-    select_makes_base("#part_type_select", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
-}
+    $('#1_select').select2();
+  }
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({

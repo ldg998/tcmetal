@@ -21,14 +21,8 @@ public class WmsInOutController {
     public String wmsOutReady() {
         return "mesWms/InOut/wmsOutReady/wmsOutReady";
     }
-    @RequestMapping(value = "/wmsStockReady")
-    public String wmsStockReady() {
-        return "mesWms/InOut/wmsStockReady/wmsStockReady";
-    }
-    @RequestMapping(value = "/wmsSumMonth")
-    public String wmsSumMonth() {
-        return "mesWms/InOut/wmsSumMonth/wmsSumMonth";
-    }
+
+
 
 
 

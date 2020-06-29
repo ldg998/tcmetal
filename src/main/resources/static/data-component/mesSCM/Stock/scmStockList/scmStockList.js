@@ -15,10 +15,11 @@ var main_data = {
 $(document).ready(function () {
     msg_get();
     authcheck();
-   // selectBox();
+   selectBox();
     jqGrid_main();
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
+    datepickerInput();
 });
 
 
@@ -73,14 +74,15 @@ function authcheck() {
 }
 
 function selectBox(){
-    select_makes_sub('#part_type_select', "/sysPartTypeGet","part_type" ,"part_type_name",{keyword:''},'Y');
-}
+    $('#part_type_select').select2();
+
+  }
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['구분','품번', '품명', '규격', '단위', '공급업체', '재고량'],
+        colNames: ['구분','품번', '품명', '규격', '단위', '전일재고', '금일입고','금일출고','재고'],
         colModel: [
             {name: 'part_type_name', index: 'part_type_name', width: 150,sortable:false,fixed:true},
             {name: 'part_code', index: 'part_code', width: 150,sortable:false,fixed:true},
@@ -88,6 +90,8 @@ function jqGrid_main() {
             {name: 'spec', index: 'spec', width: 150,sortable:false,fixed:true},
             {name: 'unit_name', index: 'unit_name', width: 150,sortable:false,fixed:true},
             {name: 'supp_name', index: 'supp_name', width: 150,sortable:false,fixed:true},
+            {name: '', index: '', width: 150,sortable:false,fixed:true},
+            {name: '', index: '', width: 150,sortable:false,fixed:true},
             {name: 'qty', index: 'qty', width: 150,sortable:false,fixed:true, align:'right', formatter:'integer'}
 
         ],
@@ -107,3 +111,8 @@ function jqGrid_main() {
     }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
 }
 
+
+function datepickerInput() {
+
+    datepicker_makes("#datepicker", 0);
+}

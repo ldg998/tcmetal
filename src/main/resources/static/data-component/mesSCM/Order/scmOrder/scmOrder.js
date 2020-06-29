@@ -28,7 +28,7 @@ $(document).ready(function () {
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]')); //그리드 resize
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));//그리드 resize
     jqgridPagerIcons(); //그리드 아이콘 설정
-
+    selectBox();
 
 });
 
@@ -208,7 +208,7 @@ function jqGrid_main() {  //메인 jqGrid
         datatype: 'local', // local 설정을 통해 handler 에 재요청하는 경우를 방지
         multiselect: true,  // 다중선택 가능
         caption: '발주등록 | MES', // grid 제목
-        colNames: ['발주일자', '전표번호', '업체명', '상태', '납기일자', '납품장소', '등록자', '수정일'], // grid 헤더 설정
+        colNames: ['발주일자', '전표번호', '업체명', '상태', '납기일자', '납품장소', '등록자', '등록일시'], // grid 헤더 설정
         colModel: [
             {name: 'work_date', index: 'work_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 100}, // formatter 사용을 통해 데이터 형식 가공
             {name: 'ord_no', index: 'ord_no', sortable: false, key: true, fixed: true, width: 130},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출

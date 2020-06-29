@@ -17,11 +17,12 @@ $(document).ready(function () {
     msg_get();
     authcheck();
     datepickerInput();
-
+    suppModal_start();
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
     get_btn(1);
+    selectBox();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -63,6 +64,38 @@ function excel_download() {
     }
 }
 
+
+function supp_btn(what) {
+    main_data.supp_check = what;
+
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+    $("#supp-search-dialog").dialog('open');
+    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
+    $('#supp_code_search').val('').trigger("change");
+
+    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
+}
+
+function suppModal_bus(code, name) {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val(name);
+        $("#supp_code_main").val(code);
+    } else if (main_data.supp_check === 'B') {
+        $("#supp_name_modal").val(name);
+        $("#supp_code_modal").val(code);
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+
+}
+
+function suppModal_close_bus() {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val("");
+        $("#supp_code_main").val("");
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014");
@@ -83,7 +116,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['입고일자', '전표번호', '업체', '기종', '품번', '품명','단중', '제품LOT', '등록자', '수정일'],
+        colNames: ['입고일자', '전표번호', '업체', '기종', '품명', '품번','단중', '제품LOT', '등록자', '등록일시'],
         colModel: [
             {name: '', index: '', sortable: false, width: 150,fixed:true, formatter: formmatterDate2},
             {name: '', index: '', sortable: false, width: 150,fixed:true},
@@ -110,4 +143,7 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height","0px");
         }
     });
+}
+function selectBox() {
+    $('#1_select').select2();
 }

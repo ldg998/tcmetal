@@ -21,7 +21,7 @@ $(document).ready(function () {
     msg_get(); // 메세지 설정
     jqGrid_main();// main 그리드 생성
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]'));// 그리드 resize
-  //  selectBox(); //선택박스에 데이터 생성
+   selectBox(); //선택박스에 데이터 생성
     authcheck(); //권한체크
     modal_start1();// 모달1 시작 함수
     jqgridPagerIcons(); // 그리드 아이콘 설정
@@ -157,7 +157,7 @@ function authcheck() { // 권한체크
 
 
 function selectBox() { //구분영역에 들어갈 select데이터 호출
-    select_makes_base("#part_type_select", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
+  $('#part_type_select').select2();
 }
 //jq 그리드 설정
 function jqGrid_main() {

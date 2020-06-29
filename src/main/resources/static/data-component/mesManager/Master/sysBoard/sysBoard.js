@@ -120,10 +120,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames:['게시판코드','영문명','한글','최대파일','파일크기(MB)','등록자','등록일'],
+        colNames:['게시판코드','명칭','파일수','파일크기(MB)','등록자','수정일'],
         colModel:[
             {name:'board_code',index:'board_code',key: true ,sortable: false,width:150,fixed: true},
-            {name:'board_en',index:'board_en',sortable: false,width:200,fixed: true},
+
             {name:'board_kr',index:'board_kr',sortable: false,width:200,fixed: true},
             {name:'files',index:'files',sortable: false,width:100,fixed: true,align:'right'},
             {name:'file_size',index:'file_size',sortable: false,width:100,fixed: true,align:'right'},

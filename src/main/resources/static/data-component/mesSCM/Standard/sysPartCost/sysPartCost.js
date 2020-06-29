@@ -21,6 +21,8 @@ $(document).ready(function () {
     modal_start1(); // 모달1 시작 함수
     authcheck();    // 권한 체크
     jqgridPagerIcons(); // 그리드 아이콘 설정 맨 하단으로
+    selectBox();
+
   //  get_btn(1);// 페이지 load 동시에 그리드 조회
 
 });
@@ -164,4 +166,7 @@ function jqGrid_main() {
 }
 
 
+function selectBox() {
+    $('#1_select').select2();
+}
 

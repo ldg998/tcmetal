@@ -47,15 +47,15 @@
                         </div>
                     </td>
 
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">상태</td>
-                        <%--조회할 상태--%>
-                    <td class="wt-px-200">
-                        <select name="keyword2" id="status_select" class="form-control condition_main">
-                            <option value="">전체</option>
-                            <option value="0">진행중</option>
-                            <option value="1">완료</option>
-                        </select>
-                    </td>
+<%--                    <td class="wt-px-100 td-title t-align-c padding-a-0">상태</td>--%>
+<%--                        &lt;%&ndash;조회할 상태&ndash;%&gt;--%>
+<%--                    <td class="wt-px-200">--%>
+<%--                        <select name="keyword2" id="status_select" class="form-control condition_main">--%>
+<%--                            <option value="">전체</option>--%>
+<%--                            <option value="0">진행중</option>--%>
+<%--                            <option value="1">완료</option>--%>
+<%--                        </select>--%>
+<%--                    </td>--%>
                     <td></td>
                 </tr>
                 </tbody>

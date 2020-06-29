@@ -41,9 +41,11 @@
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="" class="form-control h-25 condition_main">
-                        </div>
+                        <select name="keyword2" id="1_select" class="form-control condition_main">
+                            <option value="">전체</option>
+                            <option value="0">진행중</option>
+                            <option value="1">완료</option>
+                        </select>
                     </td>
                     <td></td>
                 </tr>

@@ -15,7 +15,7 @@
                 <tr>
 
                     <!-- 구분 select 창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">코드그룹</td>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">구분</td>
                     <td class="wt-px-200">
                         <select id="part_type_select" name="keyword2" class="form-control keyword condition_main"  style="width:100%">
                         </select>

@@ -3,6 +3,7 @@ function modal_start1() {
     msg_get_modal1();// 모달 메세지 설정
     modal_make1(); // 모달 생성
     add_click_btn();// 키설정
+    datepickerInput();
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -121,4 +122,8 @@ function jqGrid_main_modal() {
                 $(".jqgfirstrow").css("height","0px");
         }
     }).navGrid("#mes_update_grid_pager", {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정
+}
+function datepickerInput() {
+
+    datepicker_makes("#datepicker", 0);
 }

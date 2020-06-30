@@ -36,6 +36,18 @@ public class CrmController {
     public String crm_3(){return "mesCrm/mesCrm/dumi/crm_3";}
     @RequestMapping(value = "/crm_4")
     public String crm_4(){return "mesCrm/mesCrm/dumi/crm_4";}
+    @RequestMapping(value = "/crm_5")
+    public String crm_5(){return "mesCrm/mesCrm/dumi/crm_5";}
+    @RequestMapping(value = "/crm_6")
+    public String crm_6(){return "mesCrm/mesCrm/dumi/crm_6";}
+    @RequestMapping(value = "/crm_7")
+    public String crm_7(){return "mesCrm/mesCrm/dumi/crm_7";}
+    @RequestMapping(value = "/crm_8")
+    public String crm_8(){return "mesCrm/mesCrm/dumi/crm_8";}
+    @RequestMapping(value = "/crm_9")
+    public String crm_9(){return "mesCrm/mesCrm/dumi/crm_9";}
+    @RequestMapping(value = "/crm_10")
+    public String crm_10(){return "mesCrm/mesCrm/dumi/crm_10";}
 
 
 //    @RequestMapping(value = "/crmProdOrder")

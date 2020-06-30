@@ -20,9 +20,9 @@ var array =
 
 
         // 자재관리-기준정보
-        {code: "sysPart", title: '자재관리', sub: '기준정보', name: '품목정보관리'},
-        {code: "sysLoc", title: '자재관리', sub: '기준정보', name: '로케이션관리'},
-        {code: "sysPartCost", title: '자재관리', sub: '기준정보', name: '단가관리'},
+        {code: "sysPart", title: '자재관리', sub: '기준정보', name: '품목정보'},
+        {code: "sysLoc", title: '자재관리', sub: '기준정보', name: '로케이션'},
+        {code: "sysPartCost", title: '자재관리', sub: '기준정보', name: '자재관리'},
 
 
         //발주관리
@@ -81,6 +81,13 @@ var array =
         {code: "crm_3", title: '영업관리', sub: '기준정보', name: '목재단가관리'},
         {code: "crm_4", title: '영업관리', sub: '기준정보', name: '수주등록'},
 
+        //수주관리
+        {code: "crm_5", title: '영업관리', sub: '수주관리', name: '제품단가관리'},
+        {code: "crm_6", title: '영업관리', sub: '수주관리', name: '운송비용관리'},
+        {code: "crm_7", title: '영업관리', sub: '수주관리', name: '운송비용현황'},
+        {code: "crm_8", title: '영업관리', sub: '수주관리', name: '인보이스양식'},
+        {code: "crm_9", title: '영업관리', sub: '수주관리', name: '인보이스등록'},
+        {code: "crm_10", title: '영업관리', sub: '수주관리', name: '출고지시서'},
         //영업관리
         {code: "crmOrderRecp", title: '영업관리', sub: '영업관리', name: '수주정보관리'},
         {code: "crmWorkList", title: '영업관리', sub: '영업관리', name: '실적현황'},

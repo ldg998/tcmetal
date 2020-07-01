@@ -19,7 +19,6 @@ $(document).ready(function () {
     msg_get();
     jqGrid_main();
     jqGridResize('#mes_grid',$('#mes_grid').closest('[class*="col-"]'));
-
     modal_start1();
     selectBox();
     authcheck();
@@ -42,14 +41,6 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
-function get_btn_post(page) {
-    $("#mes_grid").setGridParam({
-        url: '/qmsQcItemGet',
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data_post
-    }).trigger("reloadGrid");
-}
 
 
 function add_btn() {
@@ -67,14 +58,8 @@ function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
         main_data.check = 'U';
-        var send_data = {};
-        send_data.qc_code = jqgrid_data.qc_code;
-
-
-        ccn_ajax('/qmsQcItemOneGet', send_data).then(function (data) {
-            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
             $("#addDialog").dialog('open');
-        });
+
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
     }
@@ -132,7 +117,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['검사구분','코드그룹','검사코드','검사명','사용유무','등록자','등록일'],
+        colNames: ['검사구분','코드그룹','검사코드','검사명','사용유무','등록자','등록일시'],
         colModel: [
             {name: 'qc_group_name', index: 'qc_group_name', width: 150, sortable:false,fixed:true},
             {name: 'qc_type_name', index: 'qc_type_name', width: 150, sortable:false,fixed:true},

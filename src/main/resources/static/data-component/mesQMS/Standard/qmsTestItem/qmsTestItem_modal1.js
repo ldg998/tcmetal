@@ -71,7 +71,8 @@ function msg_get_modal1() {
 }
 
 function selectBox_modal1(){
-    $('#use_yn').select2();
+    $('#select_modal1').select2();
+    $('#select_modal2').select2();
 }
 
 function modal_make1() {
@@ -99,14 +100,4 @@ function modal_make1() {
             }
         ]
     })
-}
-
-
-function effectiveness1(modal_objact) { // 유효성 검사
-     if (modal_objact.qc_name === '') {
-        alert("검사명을 입력해주세요");
-        return false;
-    }  else {
-        return true;
-    }
 }

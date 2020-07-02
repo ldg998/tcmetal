@@ -21,7 +21,6 @@ $(document).ready(function () {
     datepickerInput();
     authcheck();
     jqgridPagerIcons();
-    get_btn(1);
 });
 
 
@@ -81,16 +80,15 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['생산일자','계획번호','현장','구분','구분','규격','수량','계획명'],
+        colNames: ['업체','기종','품번','품명','단중','생산수량'],
         colModel: [
             {name: '', index: '', sortable: false, width: 150,fixed:true},
             {name: '', index: '', sortable: false, width: 150,fixed:true},
             {name: '', index: '', sortable: false, width: 150,fixed:true},
             {name: '', index: '', sortable: false, width: 150,fixed:true},
             {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
             {name: '', index: '', sortable: false, width: 150,fixed:true}
+
         ],
         caption: "기간별 생산실적 | MES",
         autowidth: true,

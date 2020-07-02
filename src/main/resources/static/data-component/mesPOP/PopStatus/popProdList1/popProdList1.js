@@ -1,7 +1,6 @@
 /**
  * various.js 와 연동
  */
-
 ////////////////////////////데이터/////////////////////////////////////
 
 var main_data = {
@@ -20,10 +19,8 @@ $(document).ready(function () {
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]'));
     datepickerInput();
     authcheck();
-    selectBox();
     jqgridPagerIcons();
-    suppModal_start();
-    get_btn(1);
+
 });
 
 
@@ -67,67 +64,6 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
-
-function select_change1(value) {
-    part_type_select_ajax_all('#part_prod_select', "/sysPartGroup2AllGet","part_grp_code2" ,"part_grp_name2",{keyword:'B', keyword2:value}).then(function (){
-        $('#part_name_select').empty();
-        var option = $("<option></option>").text('전체').val('');
-        $('#part_name_select').append(option);
-        $('#part_name_select').select2();
-    }).catch(function (err){
-        $('#part_prod_select').empty();
-        $('#part_name_select').empty();
-        var option = $("<option></option>").text('전체').val('');
-        var option2 = $("<option></option>").text('전체').val('');
-        $('#part_prod_select').append(option);
-        $('#part_name_select').append(option2);
-    });
-}
-function select_change2(value) {
-    if(value == null || value == ''){
-        $('#part_name_select').empty();
-        var option = $("<option></option>").text('전체').val('');
-        $('#part_name_select').append(option);
-    }else {
-        part_type_select_ajax_all('#part_name_select', "/sysPartNameAllGet","part_code" ,"part_name",{keyword:'B', keyword2:$('#part_group_select').val(), keyword3:value}).catch(function (err){
-            $('#part_name_select').empty();
-            var option = $("<option></option>").text('전체').val('');
-            $('#part_name_select').append(option);
-        });
-
-    }
-}
-
-//업체선택 모달 호출 버튼
-function supp_btn(what) {
-    main_data.supp_check = what;
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-//업체선택 모달 선택 데이터 가져오기
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
-//업체선택모달 종료 버튼
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
 ////////////////////////////호출 함수//////////////////////////////////
 
 function authcheck() {
@@ -141,28 +77,12 @@ function datepickerInput() {
     datepicker_makes("#datepicker2", 0);
 }
 
-function selectBox() {
-    part_type_select_ajax_all("#part_group_select", "/sysPartGroupAllGet", "part_grp_code", "part_grp_name", {keyword: 'B'}).then(function () {
-        $('#part_prod_select').empty();
-        $('#part_name_select').empty();
-        var option = $("<option></option>").text('전체').val('');
-        var option2 = $("<option></option>").text('전체').val('');
-        $('#part_prod_select').append(option);
-        $('#part_name_select').append(option2);
-        $('#part_prod_select').select2();
-        $('#part_name_select').select2();
-    });
-}
-
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['수주일자','업체','생산일자','계획번호','현장','구분','구분','규격','수량','계획명'],
+        colNames: ['업체','기종','품번','품명','단중','생산일자','생산수량'],
         colModel: [
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
             {name: '', index: '', sortable: false, width: 150,fixed:true},
             {name: '', index: '', sortable: false, width: 150,fixed:true},
             {name: '', index: '', sortable: false, width: 150,fixed:true},

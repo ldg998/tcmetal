@@ -9,8 +9,6 @@ function modal_start1() {
     msg_get_modal1();
     selectBox_modal1();
     modal_make1();
-    add_click_btn();
-    datepickerInput_modal();
 }
 
 
@@ -50,14 +48,7 @@ function addUdate_btn() {
 
 }
 
-// 엔터키를 통한 저장버튼 활성화
-function add_click_btn() {
-    $(document).on("keypress",'.modal_value',function (e) {
-        if (e.which == 13){
-            addUdate_btn();
-        }
-    });
-}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 
 //모달 메세지 설정
@@ -67,14 +58,6 @@ function msg_get_modal1() {
     msgGet_auth("TBMES_E008");
 }
 
-function effectiveness1(modal_objact) { // 유효성 검사
-    if (modal_objact.dept_name === '') {
-        alert("부서명을 입력해주세요");
-        return false;
-    }  else {
-        return true;
-    }
-}
 
 
 function modal_make1() {
@@ -85,12 +68,11 @@ function modal_make1() {
         autoOpen: false,
         resizable: false,
         buttons: [
-
             {
                 text: "저장",
-                "class": "btn btn-minier",
+                "class": "btn btn-primary btn-minier",
                 click: function () {
-                    $(this).dialog("close");
+                    addUdate_btn();
                 }
             },
             {
@@ -129,13 +111,8 @@ function modal_make1() {
 function selectBox_modal1() {
     $('#select_modal1').select2();
     $('#select_modal2').select2();
-    $('#select_modal3').select2();
-    $('#select_modal4').select2();
-    $('#select_modal5').select2();
+
 }
 
-function datepickerInput_modal() {
-    datepicker_makes("#datepicker_modal1",0);
-    datepicker_makes("#datepicker_modal2",0);
-    datepicker_makes("#datepicker_modal3",0);
-}
+
+

@@ -3,11 +3,11 @@ var array =
         {code: "", title: 'TCMETAL', sub: 'MES', name: 'HOME'},
 
         // 관리자 - 권한관리
-        {code: "sysAuth", title: '관리자', sub: '권한관리', name: '권한그룹관리'},
-        {code: "sysAuthProgram", title: '관리자', sub: '권한관리', name: '권한그룹별 프로그램관리'},
+        {code: "sysAuth", title: '관리자', sub: '권한관리', name: '권한그룹'},
+        {code: "sysAuthProgram", title: '관리자', sub: '권한관리', name: '권한별 프로그램관리'},
 
         //사용자관리
-        {code: "sysDept", title: '관리자', sub: '사용자관리', name: '부서관리'},
+        {code: "sysDept", title: '관리자', sub: '사용자관리', name: '부서정보'},
         {code: "sysUser", title: '관리자', sub: '사용자관리', name: '사용자관리'},
 
         //마스터관리
@@ -26,7 +26,7 @@ var array =
 
 
         //발주관리
-        {code: "scmOrder", title: '자재관리', sub: '발주관리', name: '발주등록'},
+        {code: "scmOrder", title: '자재관리', sub: '발주관리', name: '발주관리'},
         {code: "scmOrderList", title: '자재관리', sub: '발주관리', name: '발주현황'},
 
         //자재입출고
@@ -38,7 +38,6 @@ var array =
 
         //재고관리
         {code: "scmStockList", title: '자재관리', sub: '재고관리', name: '재고현황'},
-        {code: "scmStockSumDay", title: '자재관리', sub: '재고관리', name: '일원장'},
         {code: "scmStockSumMonth", title: '자재관리', sub: '재고관리', name: '월원장'},
         {code: "scmStockRev", title: '자재관리', sub: '재고관리', name: '재고조정'},
         {code: "scmStockRevList", title: '자재관리', sub: '재고관리', name: '재고조정현황'},

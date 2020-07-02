@@ -1,4 +1,7 @@
+
+
 ////////////////////////////데이터/////////////////////////////////////
+
 var main_data = {
     check: 'I',
     send_data: {},
@@ -16,11 +19,20 @@ $(document).ready(function () {
     /*----모달----*/
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정
+    selectBox();
+    datepickerInput();
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////
+function test(){
 
+    $("#addDialog").dialog('open'); // 모달 열기
+    jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]'));
+    jqGridResize('#mes_modal_grid2', $('#mes_modal_grid2').closest('[class*="col-"]')); // 그리드 리사이즈
 
+}
+
+// 조회버튼
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
     main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
@@ -32,17 +44,6 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
-// 추가 버튼
-function add_btn() {
-    if (main_data.auth.check_add !="N") {
-        modal_reset(".modal_value", main_data.readonly); // 해당 클래스 명을 가진 항목들의 내용을 리셋,비워줌 main_data readonly 에 추가한 name의 항목에 readonly 옵션을 추가
-        modalValuePush("#group_select","#group_code","#group_name"); // name1의 값을 name2,name3 에 넣어줌
-        main_data.check = 'I'; // 추가인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
-        $("#addDialog").dialog('open'); // 모달 열기
-    } else {
-        alert(msg_object.TBMES_A001.msg_name1);
-    }
-}
 
 // 그리드 항목 더블클릭시 수정 화면
 function update_btn(jqgrid_data) {
@@ -65,35 +66,37 @@ function update_btn(jqgrid_data) {
     }
 }
 
-// 삭제 버튼
-function delete_btn() {
-    if(main_data.auth.check_del != "N") {
-        var gu5 = String.fromCharCode(5);
-        var ids = $("#mes_grid").getGridParam('selarrrow'); // multiselect 된 그리드의 row
-        if (ids.length === 0) {
-            alert(msg_object.TBMES_A004.msg_name1);
-        } else {
-            if (confirm(msg_object.TBMES_A005.msg_name1)) {
-                main_data.check = 'D'; // 삭제인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
-                wrapWindowByMask2();
-                ccn_ajax("/sysCommonDelete", {keyword: ids.join(gu5)}).then(function (data) {
-                    if (data.result === 'NG') {
-                        alert(data.message);
-                    } else {
-                        get_btn_post($("#mes_grid").getGridParam('page'));
-                    }
-                    closeWindowByMask();
-                }).catch(function (err) {
-                    closeWindowByMask();
-                    console.error(err); // Error 출력
-                });
-            }
-        }
-    } else {
-        alert(msg_object.TBMES_A002.msg_name1);
-    }
+
+function supp_btn(what) {
+    main_data.supp_check = what;
+
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+    $("#supp-search-dialog").dialog('open');
+    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
+    $('#supp_code_search').val('').trigger("change");
+
+    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
 }
 
+function suppModal_bus(code, name) {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val(name);
+        $("#supp_code_main").val(code);
+    } else if (main_data.supp_check === 'B') {
+        $("#supp_name_modal").val(name);
+        $("#supp_code_modal").val(code);
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+
+}
+
+function suppModal_close_bus() {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val("");
+        $("#supp_code_main").val("");
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
 
 ////////////////////////////호출 함수//////////////////////////////////
 //호출함수
@@ -110,14 +113,15 @@ function authcheck() {
         main_data.auth = data;
     });
 }
+
+
 function jqGrid_main() {
     //jqGrid 생성
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['설비번호','설비명','기가번호','공칭능력','제원','교정기관','교정일자','유효일자','사전알림','이미지','등록자','등록일시'],
+        colNames: ['입고일자','전표번호','외주업체','업체','기종','품번','품명','단중','수량','출장검사','등록자','수정일'],
         colModel: [
-
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
@@ -129,19 +133,16 @@ function jqGrid_main() {
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-
-
+            {name: '', index: '',sortable: false, width: 80,fixed: true}
 
         ],
-        caption: "검사설비관리 | MES",
+        caption: "외주입고관리 | MES",
         autowidth: true,
         height: 562,
         pager: '#mes_grid_pager',
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
-        multiselect: true,
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
@@ -159,4 +160,13 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height","0px");
         }
     }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
+}
+
+function selectBox() {
+    $("#select1").select2();
+}
+
+function datepickerInput() {
+    datepicker_makes("#datepicker",-30);
+    datepicker_makes("#datepicker2",0);
 }

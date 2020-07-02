@@ -15,7 +15,8 @@ var main_data = {
 $(document).ready(function () {
     authcheck();
     msg_get();
-
+    selectBox();
+    datepickerInput();
     /*----모달----*/
     modal_start1(); // 모달1 시작 함수
 
@@ -27,6 +28,10 @@ $(document).ready(function () {
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
+function test() {
+$("#addDialog").dialog("open");
+
+}
 // 조회 버튼
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
@@ -39,12 +44,9 @@ function get_btn(page) {
 // 추가 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") {
-        modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
-        main_data.check = 'I'; // 저장인지 체크
-        $("select[name=use_yn] option:eq(0)").prop("selected", true).trigger("change");
+
         $("#addDialog").dialog('open'); // 모달 열기
-    } else {
-        alert(msg_object.TBMES_A001.msg_name1);
+
     }
 }
 
@@ -111,14 +113,22 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames : ['부서코드','부서명','등록자','등록일'],
+        colNames : ['불량등록일자','업체','기종','품번','품명','단중','제품LOT','불량유형','수정','폐기','등록','등록일시'],
         colModel : [
-            {name:'dept_code',index:'dept_code',key: true ,sortable: false,width:100,fixed: true},
-            {name:'dept_name',index:'dept_name',sortable: false,width:200,fixed: true},
-            {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
-            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
+            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},
+            {name:'',index:'',sortable: false,width:100,fixed: true},
+            {name:'',index:'',sortable: false,width:100,fixed: true},
+            {name:'',index:'',sortable: false,width:150,fixed: true},
+            {name:'',index:'',sortable: false,width:100,fixed: true},
+            {name:'',index:'',sortable: false,width:150,fixed: true},
+            {name:'',index:'',sortable: false,width:200,fixed: true},
+            {name:'',index:'',sortable: false,width:100,fixed: true},
+            {name:'',index:'',sortable: false,width:150,fixed: true},
+            {name:'',index:'',sortable: false,width:100,fixed: true},
+            {name:'',index:'',sortable: false,width:150,fixed: true},
+            {name:'',index:'',formatter:formmatterDate,sortable: false,width:180,fixed: true}
         ],
-        caption: "권한그룹관리 | MES",
+        caption: "환율관리 | MES",
         autowidth: true,
         height: 600,
         pager: '#mes_grid_pager',
@@ -126,7 +136,6 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 400],
         viewrecords: true,
-        multiselect: true,
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
@@ -146,3 +155,12 @@ function jqGrid_main() {
     }).navGrid("#mes_grid_pager", {search: false, add: false, edit: false, del: false});
 }
 
+function selectBox() {
+    $('#select1').select2();
+    $('#select2').select2();
+
+}
+function datepickerInput() {
+    datepicker_makes("#datepicker", -30);
+    datepicker_makes("#datepicker2", 0);
+}

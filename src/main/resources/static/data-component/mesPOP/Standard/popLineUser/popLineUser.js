@@ -23,8 +23,7 @@ $(document).ready(function () {
     selectBox();
     authcheck();
     jqgridPagerIcons();
-    user_get(1);
-    get_btn(1);
+
 });
 
 
@@ -42,15 +41,6 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
-// 수정 삭제 시 호출하는 조회
-function get_btn_post(page) {
-    $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/popLineUserGet',
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data_post
-    }).trigger("reloadGrid");
-}
 
 
 function add_btn() {
@@ -138,27 +128,18 @@ function authcheck() {
 }
 
 
-function user_get(page) {
-    $("#mes_grid2").setGridParam({ // 그리드 조회
-        url: '/sysUserGet',
-        datatype: "json",
-        page: page,
-        postData: {keyword:'D9000',keyword2:'Y'}
-    }).trigger("reloadGrid");
-}
-
 
 function selectBox() {
-    select_data_makes("#line_select", "/sysProdLineAllGet", "line_code", "line_name",{keyword:''});
+    $('#select1').select2();
+    $('#select2').select2();
 }
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['line_code','공정', '사용자코드', '사용자명'],
+        colNames: ['공정', '사용자코드', '사용자명'],
         colModel: [
-            {name: 'line_code', index: 'line_code',hidden:true, sortable: false},
             {name: 'line_name', index: 'line_name', sortable: false, width: 100,fixed:true},
             {name: 'user_code', index: 'user_code',key:true, sortable: false, width: 150,fixed:true},
             {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed:true}

@@ -11,7 +11,15 @@
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">공정</td>
                     <td class="wt-px-200">
-                        <select name="keyword" id="line_select" class="form-control keyword condition_main" style="width: 100%">
+                        <select name="keyword" id="select1" class="form-control keyword condition_main" style="width: 100%">
+                        </select>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0">세부</td>
+                    <td class="wt-px-200">
+                        <select name="keyword" id="select2" class="form-control keyword condition_main" style="width: 100%">
                         </select>
                     </td>
                     <td></td>

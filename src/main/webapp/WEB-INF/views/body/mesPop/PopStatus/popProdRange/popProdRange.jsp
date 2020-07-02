@@ -25,12 +25,15 @@
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-<%--                    <td class="wt-px-100 t-align-c td-title padding-a-0">공정</td>--%>
-<%--                    <td class="wt-px-200">--%>
-<%--                        <select name="keyword" id="line_select" class="form-control keyword condition_main" style="width:100%">--%>
-<%--                            <option value="">전체</option>--%>
-<%--                        </select>--%>
-<%--                    </td>--%>
+                    <td class="wt-px-75 t-align-c td-title padding-a-0">업체</td>
+                    <td class="wt-px-150">
+                        <input type="text" class="form-control h-25 condition_main" >
+                    </td>
+                    <td class="wt-px-75 t-align-c td-title padding-a-0">기종</td>
+                    <td class="wt-px-150">
+                        <input type="text" class="form-control h-25 condition_main" >
+                    </td>
+
                     <td></td>
                 </tr>
                 </tbody>

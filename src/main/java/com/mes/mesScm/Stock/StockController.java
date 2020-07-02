@@ -8,8 +8,6 @@ public class StockController {
     @RequestMapping(value = "/scmStockList")
     public String scmStockList() { return "mesScm/Stock/scmStockList/scmStockList"; }
 
-    @RequestMapping(value ="/scmStockSumDay")
-    public String scmStockSumDay() { return "mesScm/Stock/scmStockSumDay/scmStockSumDay"; }
 
     @RequestMapping(value ="/scmStockSumMonth")
     public String scmStockSumMonth() { return "mesScm/Stock/scmStockSumMonth/scmStockSumMonth"; }

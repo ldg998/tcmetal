@@ -28,14 +28,10 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" onclick="supp_btn('A');" readonly>
-                            <input type="hidden" name="keyword" class="form-control h-25 condition_main"
-                                   id="supp_code_main">
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
+                            <input type="text" name="supp_name" class="form-control h-25 condition_main">
                         </div>
                     </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">현장</td>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">기종</td>
                     <td class="wt-px-200 border_no">
                         <div class="input-icon input-icon-right">
                             <input id="place_name" class="form-control h-25 condition_main" name="keyword2" autocomplete="off">
@@ -77,5 +73,4 @@
 
 
 
-<%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>
 

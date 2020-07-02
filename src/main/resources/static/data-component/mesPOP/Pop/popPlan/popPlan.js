@@ -26,13 +26,9 @@ $(document).ready(function () {
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));
     datepickerInput();
     selectBox();
-    modal_start1();
-    modal_start2();
-    modal_start3();
-    suppModal_start();
     authcheck();
     jqgridPagerIcons();
-    get_btn(1);
+
 
     //workDocumentMake();
 
@@ -233,7 +229,9 @@ function msg_get() {
 }
 
 function selectBox() {
-    $("#status_select_main").select2();
+    $("#select1").select2();
+    $("#select2").select2();
+    $("#select3").select2();
 
 
 }
@@ -289,32 +287,23 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['수주일자','수주번호','업체명', '현장명', '담당자','연락처', '수주내용',  '납품예정일', '상태','납품일자',
-            '수주금액','결재1','결재2','결재3','결재4','잔액','비고','등록자','등록일시'],
+        colNames: ['구분','계획일자','업체','기종','기종','품번','품명','단중','수량','중량','비고제품LOT'],
         colModel: [
-            {name: 'work_date', index: 'work_date',formatter:formmatterDate2,  sortable: false, fixed: true},
-            {name: 'ord_no', index: 'ord_no', sortable: false, key:true, width: 150,fixed: true},
-            {name: 'supp_name', index: 'supp_name',hidden:true, sortable: false},
-            {name: 'place_name', index: 'place_name', sortable: false, width: 180, fixed: true},
-            {name: 'emp_name', index: 'emp_name', sortable: false, width: 180, fixed: true},
-            {name: 'emp_tel', index: 'emp_tel', sortable: false, width: 150,fixed: true},
-            {name: 'ord_name', index: 'ord_name', sortable: false, width: 150,fixed: true},
-            {name: 'target_date', index: 'target_date', sortable: false, width: 150,formatter:formmatterDate2,fixed: true},
-            {name: 'status_name', index: 'status_name', sortable: false, width: 150,fixed: true},
-            {name: 'end_date', index: 'end_date', sortable: false, width: 150,formatter:formmatterDate2,fixed: true},
-            {name: 'order_amount', index: 'order_amount', sortable: false, width: 150,formatter: 'integer',fixed: true},
-            {name: 'amount1', index: 'amount1', sortable: false, width: 150,formatter: 'integer',fixed: true,align: 'right'},
-            {name: 'amount2', index: 'amount2', sortable: false, width: 150,formatter: 'integer',fixed: true,align: 'right'},
-            {name: 'amount3', index: 'amount3', sortable: false, width: 150,formatter: 'integer',fixed: true,align: 'right'},
-            {name: 'amount4', index: 'amount4', sortable: false, width: 150,formatter: 'integer',fixed: true,align: 'right'},
-            {name: 'balance', index: 'balance', sortable: false, width: 150,formatter: 'integer',fixed: true,align: 'right'},
-            {name: 'remark', index: 'remark', sortable: false, width: 150,fixed: true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed: true},
-            {name: 'update_date', index: 'update_date', sortable: false, width: 150,formatter:formmatterDate,fixed: true},
-
+            {name: '', index: '', sortable: false, key:true, width: 150,fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true}
         ],
-        caption: "생산계획관리 | MES",
+        caption: "생산계획 | MES",
         autowidth: true,
+        multiselect: true,
         height: 243,
         pager: '#mes_grid_pager',
         rowList: [100, 200, 300, 500, 1000],
@@ -336,19 +325,18 @@ function jqGrid_main() {
     $('#mes_grid2').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        caption: "생산계획관리 | MES",
-        colNames: ['계획일자','계획번호','제품구분','제품명','내용','status','상태','라우팅','작업의뢰서','참고이미지'],
+        caption: "생산계획 | MES",
+        colNames: ['작업일자','공정','업체','기종','품번','품명','단중','지시수량','제품LOT'],
         colModel: [
-            {name: 'plan_date', index: 'plan_date', width: 185, sortable: false,fixed:true,formatter:formmatterDate2},
-            {name: 'plan_no', index: 'plan_no',key:true, width: 150, sortable: false,fixed:true},
-            {name: 'prod_type_name', index: 'prod_type_name', width: 150, sortable: false,fixed:true},
-            {name: 'prod_name', index: 'prod_name', width: 160, sortable: false,fixed:true},
-            {name: 'plan_name', index: 'plan_name', width: 160, sortable: false,fixed:true},
-            {name: 'status', index: 'status', width: 160,hidden:true, sortable: false,fixed:true},
-            {name: 'status_name', index: 'status_name', width: 160, sortable: false,fixed:true},
-            {name: 'route_name', index: 'route_name', width: 160, sortable: false,fixed:true},
-            {name: 'report_status_name', index: 'report_status_name', width: 160, sortable: false,fixed:true,formatter:report_status_formatter},
-            {name: 'image5', index: 'image5', width: 160, sortable: false,fixed:true,formatter:image_formatter},
+            {name: '', index: '', sortable: false, key:true, width: 150,fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
+            {name: '', index: '', sortable: false, width: 180, fixed: true},
         ],
         autowidth: true,
         viewrecords: true,

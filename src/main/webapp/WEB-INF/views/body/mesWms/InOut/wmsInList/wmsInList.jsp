@@ -10,7 +10,7 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-100">
+            <table class="table wt-75 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -46,15 +46,13 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <select name="keyword2" id="1_select" class="form-control condition_main">
+                            <select name="keyword2" id="1_select" class="form-control condition_main" style="width: 100%;">
                                 <option value="">전체</option>
                                 <option value="0">진행중</option>
                                 <option value="1">완료</option>
                             </select>
                         </div>
                     </td>
-
-                    <td></td>
                 </tr>
                 </tbody>
             </table>

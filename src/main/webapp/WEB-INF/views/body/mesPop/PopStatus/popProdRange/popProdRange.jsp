@@ -3,12 +3,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <script type="text/javascript" src="/data-component/mesPOP/PopStatus/popProdRange/popProdRange.js" charset="UTF-8"></script>
-
+<style>
+    .board_line {
+        border-right: 1px solid #DDDDDD;
+        border-bottom: 1px solid #DDDDDD;
+    }
+</style>
 <div class="main-content-inner">
 
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-100">
+            <table class="table wt-50 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -34,7 +39,6 @@
                         <input type="text" class="form-control h-25 condition_main" >
                     </td>
 
-                    <td></td>
                 </tr>
                 </tbody>
             </table>

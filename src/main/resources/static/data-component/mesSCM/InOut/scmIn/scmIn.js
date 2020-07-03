@@ -187,7 +187,7 @@ function msg_get() {
 }
 
 function authcheck() { // 권한체크
-    ccn_ajax("/menuAuthGet", {keyword: "scmOrder"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "scmIn"}).then(function (data) {
         main_data.auth = data;
     });
 }

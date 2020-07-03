@@ -6,23 +6,21 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-100">
+            <table class="table wt-15" style="border-bottom: 1px solid #DDDDDD">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">공정</td>
-                    <td class="wt-px-200">
+                    <td class="wt-px-200" style="border-right: 1px solid #DDDDDD">
                         <select name="keyword" id="select1" class="form-control keyword condition_main" style="width: 100%">
                         </select>
                     </td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">세부</td>
-                    <td class="wt-px-200">
+                    <td class="wt-px-200" style="border-right: 1px solid #DDDDDD">
                         <select name="keyword" id="select2" class="form-control keyword condition_main" style="width: 100%">
                         </select>
                     </td>
-                    <td></td>
                 </tr>
                 </tbody>
             </table>

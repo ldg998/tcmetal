@@ -9,7 +9,7 @@
         <div class="clearfix">
 
             <div class="col-lg-12 padding0">
-                <table class="table wt-100">
+                <table class="table wt-40 board_line">
                     <tbody>
                     <tr>
                         <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -42,9 +42,6 @@
 <%--                                <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>--%>
                             </div>
                         </td>
-                        <td></td>
-
-
                     </tr>
                     </tbody>
                 </table>

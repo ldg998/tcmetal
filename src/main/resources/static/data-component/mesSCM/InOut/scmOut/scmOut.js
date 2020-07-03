@@ -114,7 +114,7 @@ function msg_get() {
 
 //권한체크
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "sysPartName"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "scmOut"}).then(function (data) {
         main_data.auth = data;
     });
 }

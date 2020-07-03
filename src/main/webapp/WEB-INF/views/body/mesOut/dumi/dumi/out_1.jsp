@@ -8,7 +8,7 @@
     <div class="page-content">
         <!-- 검색 div 영역 -->
         <div class="col-lg-12 padding0">
-            <table class="table wt-100">
+            <table class="table wt-75 board_line">
                 <tbody>
                 <tr>
 
@@ -44,14 +44,13 @@
 
                     <td class="wt-px-100 t-align-c td-title padding-a-0">외주(열처리)업체</td>
                     <td class="wt-px-200">
-                       <select id="select1">
+                       <select id="select1" style="width: 100%;">
                            <option>제인산업</option>
                            <option></option>
 
                        </select>
 
                     </td>
-                    <td></td>
                 </tr>
                 </tbody>
             </table>

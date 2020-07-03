@@ -24,7 +24,7 @@
 
 </style>
 
-<div id="addDialog" title="자재단가" style="display: none">
+<div id="addDialog" title="세부항목" style="display: none">
     <div class="profile-user-info profile-user-info-striped">
         <div class="profile-info-row">
             <div class="profile-info-name"> 품번</div>

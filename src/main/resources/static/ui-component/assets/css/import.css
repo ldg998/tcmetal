@@ -17,6 +17,8 @@
 .select_hide{display:none !important;}
 .wt-15{width: 15% !important;}
 .wt-25{width: 25% !important;}
+.wt-30{width: 30% !important;}
+.wt-40{width: 40% !important;}
 .wt-50{width: 50% !important;}
 .wt-75{width: 75% !important;}
 .wt-100{width: 100% !important;}
@@ -466,3 +468,4 @@ background-image: url(/ui-component/assets/css/images/ao.gif) !important;
 .fc-unthemed td {
     border-color: #8a8686;
 }
+.board_line {border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; }

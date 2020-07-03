@@ -16,7 +16,7 @@
     <div class="page-content">
         <!-- 검색 div 영역 -->
         <div class="col-lg-12 padding0">
-            <table class="table wt-100">
+            <table class="table wt-50 board_line">
                 <tbody>
                 <tr>
                     <%-- 조회날짜(시작) --%>
@@ -56,7 +56,6 @@
 <%--                            <option value="1">완료</option>--%>
 <%--                        </select>--%>
 <%--                    </td>--%>
-                    <td></td>
                 </tr>
                 </tbody>
             </table>

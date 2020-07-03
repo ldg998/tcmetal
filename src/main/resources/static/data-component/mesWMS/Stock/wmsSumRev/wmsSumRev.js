@@ -85,7 +85,7 @@ function msg_get() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "wmsOutOrder"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "wmsSumRev"}).then(function (data) {
         main_data.auth = data;
     });
 }

@@ -30,7 +30,7 @@
     </div>
 
     <br/>
-
+    <div class="profile-user-info profile-user-info-striped">
     <div class="row">
         <div class="col-xs-12 table-responsive">
             <!-- grid영역 -->
@@ -47,6 +47,6 @@
             <!-- grid-pager 영역 -->
         </div>
     </div>
-
+    </div>
 
 </div>

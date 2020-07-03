@@ -8,7 +8,7 @@
     <div class="page-content">
         <!-- 검색 div 영역 -->
         <div class="col-lg-12 padding0">
-            <table class="table wt-100">
+            <table class="table wt-50 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -35,8 +35,6 @@
                                    id="supp_name_main">
                         </div>
                     </td>
-                    <!-- 품목코드 검색창 -->
-                    <td></td>
                 </tr>
                 </tbody>
             </table>

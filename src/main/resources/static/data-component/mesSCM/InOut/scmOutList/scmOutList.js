@@ -72,7 +72,7 @@ function msg_get() {
 
 //권한 확인 함수
 function authcheck() { //권한체크
-    ccn_ajax("/menuAuthGet", {keyword: "scmInList"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "scmOutLits"}).then(function (data) {
         main_data.auth = data;
     });
 }

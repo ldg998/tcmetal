@@ -21,11 +21,11 @@ public class WmsStockController {
     public String wmsStockList() { return  "mesWms/Stock/wmsStockList/wmsStockList"; }
     @RequestMapping(value = "/wmsStockReady")
     public String wmsStockReady() {
-        return "mesWms/InOut/wmsStockReady/wmsStockReady";
+        return "mesWms/Stock/wmsStockReady/wmsStockReady";
     }
     @RequestMapping(value = "/wmsSumMonth")
     public String wmsSumMonth() {
-        return "mesWms/InOut/wmsSumMonth/wmsSumMonth";
+        return "mesWms/Stock/wmsSumMonth/wmsSumMonth";
     }
     @RequestMapping(value = "/wmsSumRev")
     public String wmsSumRev() {

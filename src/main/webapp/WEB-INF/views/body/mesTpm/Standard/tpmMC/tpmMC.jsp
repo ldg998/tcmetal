@@ -11,7 +11,7 @@
         <div class="clearfix">
             <!-- 라인 -->
             <div class="col-lg-12 padding0">
-                <table class="table wt-100">
+                <table class="table wt-15 board_line">
                     <tbody>
                     <tr>
                         <td class="wt-px-100 t-align-c td-title padding-a-0">라인</td>
@@ -19,7 +19,6 @@
                             <select name="keyword" id="line_select" class="form-control keyword condition_main" style="width:100%">
                             </select>
                         </td>
-                        <td></td>
                     </tr>
                     </tbody>
                 </table>

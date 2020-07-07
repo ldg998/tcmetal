@@ -48,9 +48,6 @@ import java.util.List;
      List<SYSCargo> sysCargoBAllGet(Page p);
 
 
-
-
-
      List<SYSSupp> sysSuppListGet(Page p);
 
      Message sysSuppListDel(Page p);

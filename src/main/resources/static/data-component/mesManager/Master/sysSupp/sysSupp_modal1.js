@@ -25,7 +25,7 @@ function addUdate_btn() {
                         get_btn(1);
                     } else {
                         $("#addDialog").dialog('close');
-                        get_btn_post($("#mes_grid").getGridParam('page'));
+                      $("#mes_grid").trigger("reloadGrid");
                     }
                 }
 
@@ -88,6 +88,4 @@ function selectBox_modal1(){
     $('#corp_type3').select2();
     $('#corp_type4').select2();
     $('#corp_type5').select2();
-
-    $('#use_yn').select2();
 }

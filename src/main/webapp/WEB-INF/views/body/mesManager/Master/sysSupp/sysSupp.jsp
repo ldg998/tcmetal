@@ -15,10 +15,10 @@
                     <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
                     <td class="wt-px-200">
                         <select name="keyword" id="gubun_select" class="form-control keyword condition_main" style="width:100%" >
-                            <option value="CORP_TYPE1">매입</option>
-                            <option value="CORP_TYPE2">매출</option>
-                            <option value="CORP_TYPE3">외주</option>
-                            <option value="CORP_TYPE4">수출</option>
+                            <option value="corp_type1">매입</option>
+                            <option value="corp_type2">매출</option>
+                            <option value="corp_type3">외주</option>
+                            <option value="corp_type4">수출</option>
                         </select>
                     </td>
 
@@ -32,7 +32,7 @@
             <div class="pull-left tableTools-container">
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="test()">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1)">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>

@@ -49,13 +49,13 @@
             </div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-name">대표자</div>
+            <div class="profile-info-name">대표</div>
             <div class="profile-info-value">
                 <input type="text" name="ceo" class="form-control modal_value" autocomplete="off"/>
             </div>
-            <div class="profile-info-name">업체명(영문)</div>
+            <div class="profile-info-name">업체명2</div>
             <div class="profile-info-value">
-                <input type="text" name="supp_name_en" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="supp_name2" class="form-control modal_value" autocomplete="off"/>
             </div>
         </div>
         <div class="profile-info-row">
@@ -65,38 +65,38 @@
             </div>
             <div class="profile-info-name">업태</div>
             <div class="profile-info-value">
-                <input type="text" name="buss_type" class="form-control modal_value" onkeyup="num_keyup_hyphen(this)" autocomplete="off"/>
+                <input type="text" name="buss_type" class="form-control modal_value"  autocomplete="off"/>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">전화번호</div>
             <div class="profile-info-value">
-                <input type="text" name="tel_no" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="tel_no" class="form-control modal_value" onkeyup="num_keyup_hyphen(this)" autocomplete="off"/>
             </div>
             <div class="profile-info-name">종목</div>
             <div class="profile-info-value">
-                <input type="text" name="fax_no" class="form-control modal_value" onkeyup="num_keyup_hyphen(this)" autocomplete="off"/>
+                <input type="text" name="category" class="form-control modal_value"  autocomplete="off"/>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name" style="border-bottom: 1px solid #F7FBFF;">팩스번호</div>
             <div class="profile-info-value" style="border-bottom: 1px dotted #DCEBF7;">
-                <input type="text" name="category" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="fax_no" class="form-control modal_value" onkeyup="num_keyup_hyphen(this)"  autocomplete="off"/>
             </div>
             <div class="profile-info-name">담당자명</div>
             <div class="profile-info-value" style="border-bottom: 1px dotted #DCEBF7;">
-                <input type="text" name="give_type" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="emp_name" class="form-control modal_value" autocomplete="off"/>
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name" style="border-bottom: 1px solid #F7FBFF;">담당자 연락처</div>
             <div class="profile-info-value" style="border-bottom: 1px dotted #DCEBF7;">
-                <input type="text" name="category" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="emp_tel" class="form-control modal_value" onkeyup="num_keyup_hyphen(this)" autocomplete="off"/>
             </div>
             <div class="profile-info-name">이메일</div>
             <div class="profile-info-value" style="border-bottom: 1px dotted #DCEBF7;">
-                <input type="text" name="give_type" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="emp_email" class="form-control modal_value" autocomplete="off"/>
             </div>
         </div>
     </div>
@@ -113,7 +113,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name" style="border-bottom: 1px solid #F7FBFF">주소2</div>
             <div class="profile-info-value">
-                <input type="text" name="address" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="address2" class="form-control modal_value" autocomplete="off"/>
             </div>
         </div>
     </div>
@@ -122,7 +122,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name" style="border-bottom: 1px solid #F7FBFF">납품장소1</div>
             <div class="profile-info-value">
-                <input type="text" name="address" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="delivery_place1" class="form-control modal_value" autocomplete="off"/>
             </div>
         </div>
     </div>
@@ -130,7 +130,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name" style="border-bottom: 1px solid #F7FBFF">납품장소2</div>
             <div class="profile-info-value">
-                <input type="text" name="address" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="delivery_place2" class="form-control modal_value" autocomplete="off"/>
             </div>
         </div>
     </div>
@@ -138,7 +138,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name" style="border-bottom: 1px solid #F7FBFF">납품장소3</div>
             <div class="profile-info-value">
-                <input type="text" name="address" class="form-control modal_value" autocomplete="off"/>
+                <input type="text" name="delivery_place3" class="form-control modal_value" autocomplete="off"/>
             </div>
         </div>
     </div>
@@ -166,14 +166,14 @@
         <div class="profile-info-row">
             <div class="profile-info-name">외주구분</div>
             <div class="profile-info-value">
-                <select name="corp_type1" id="corp_type3" class="form-control modal_value" style="width:100%">
+                <select name="corp_type3" id="corp_type3" class="form-control modal_value" style="width:100%">
                     <option value="Y">Y</option>
                     <option value="N">N</option>
                 </select>
             </div>
-            <div class="profile-info-name">수주구분</div>
+            <div class="profile-info-name">수출구분</div>
             <div class="profile-info-value">
-                <select name="corp_type2" id="corp_type4" class="form-control modal_value" style="width:100%">
+                <select name="corp_type4" id="corp_type4" class="form-control modal_value" style="width:100%">
                     <option value="Y">Y</option>
                     <option value="N">N</option>
                 </select>
@@ -183,7 +183,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">사용유무</div>
             <div class="profile-info-value">
-                <select name="corp_type1" id="corp_type5" class="form-control modal_value" style="width:100%">
+                <select name="corp_type5" id="corp_type5" class="form-control modal_value" style="width:100%">
                     <option value="Y">Y</option>
                     <option value="N">N</option>
                 </select>

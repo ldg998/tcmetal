@@ -37,4 +37,5 @@ public class Page {
     private String password_confirm;
     private String supp_name;
     private String we_no;
+    private String supp_no;
 }

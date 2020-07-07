@@ -11,12 +11,12 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-25 board_line">
+            <table class="table wt-15 board_line">
                 <tbody>
                 <tr>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
-                    <td class="wt-px-200">
-                        <select name="keyword" id="line_select" class="form-control keyword condition_main" onchange="select_change1(this.value);" style="width:100%">
+                    <td class="wt-px-50 t-align-c td-title padding-a-0">구분</td>
+                    <td class="wt-px-100">
+                        <select name="keyword" id="select" class="form-control keyword condition_main" style="width:100%">
                             <option value="">중간점검(폐기)</option>
                         </select>
                     </td>

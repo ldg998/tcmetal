@@ -154,18 +154,21 @@ function delete_btn() {
                     keywords.push(data.line_code+gu4+data.machine_code+gu4+data.alarm_user_code);
                 }
 
-                wrapWindowByMask2();
-                ccn_ajax("/tpmMachineRegAlarmDel", {keyword:keywords.join(gu5)}).then(function (data) {
-                    if (data.result === 'NG') {
-                        alert(data.message);
-                    } else {
-                        get_btn_post($("#mes_grid").getGridParam('page'));
-                    }
-                    closeWindowByMask();
-                }).catch(function (err) {
-                    closeWindowByMask();
-                    console.error(err); // Error 출력
-                });
+               // wrapWindowByMask2();
+                //
+                // ccn_ajax("/tpmMachineRegAlarmDel", {keyword:keywords.join(gu5)}).then(function (data) {
+                //     if (data.result === 'NG') {
+                //         alert(data.message);
+                //     } else {
+                //         get_btn_post($("#mes_grid").getGridParam('page'));
+                //     }
+                //     closeWindowByMask();
+                // }).catch(function (err) {
+                //     closeWindowByMask();
+                //     console.error(err); // Error 출력
+                // });
+
+
             }
         }
     } else {
@@ -183,41 +186,25 @@ function msg_get() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "tpmMachineRegAlarm"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "sysMachineRegAlarm"}).then(function (data) {
         main_data.auth = data;
     });
 }
 
 function selectBox() {
-    part_type_select_ajax_all("#line_select", "/sysProdLineAllGet", "line_code", "line_name",{keyword:''}).then(function (data){
-        $('#machine_select').empty();
-
-        var option = $("<option></option>").text('전체').val('');
-
-        $('#machine_select').append(option);
-
-        $('#machine_select').select2();
-
-
-    });
+        $('#select').select2();
 }
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['rownum','라인명','line_code','설비명','machine_code','알림수신자','alaram_user_code','사전알림(일)','등록자','등록일시'],
+        colNames: ['구분','알람수신자','등록자','등록일시'],
         colModel: [
-            {name: 'rownum', index: 'rownum', sortable: false,key:true,hidden:true},
-            {name: 'line_name', index: 'line_name', sortable: false, width: 130,fixed:true},
-            {name: 'line_code', index: 'line_code', sortable: false,hidden:true},
-            {name: 'machine_name', index: 'machine_name', sortable: false, width: 130,fixed:true},
-            {name: 'machine_code', index: 'machine_code', sortable: false,hidden:true},
-            {name: 'alarm_user_name', index: 'alarm_user_name', sortable: false, width: 80,fixed:true},
-            {name: 'alarm_user_code', index: 'alarm_user_code', sortable: false,hidden:true},
-            {name: 'alarm_day', index: 'alarm_day', sortable: false, width: 80, align: 'right', formatter: 'integer',fixed:true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 70,fixed:true},
-            {name: 'create_date', index: 'create_date', width: 140, sortable: false, formatter: formmatterDate,fixed:true}
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 80, align: 'right', formatter: 'integer',fixed:true},
+            {name: '', index: '', sortable: false, width: 70,fixed:true},
+            {name: '', index: '', sortable: false, width: 140,  formatter: formmatterDate,fixed:true}
         ],
         caption: "예방점검알림설정 | MES",
         autowidth: true,

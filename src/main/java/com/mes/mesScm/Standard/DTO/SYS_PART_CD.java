@@ -11,6 +11,11 @@ public class SYS_PART_CD {
     private String loc_code;
     private String spec;
     private String supp_code;
+    private String supp_code2;
+    private String supp_code3;
+    private String supp_code4;
+    private String supp_code5;
+
     private String unit_code;
     private String qc_level;
     private String user_code;
@@ -21,6 +26,10 @@ public class SYS_PART_CD {
     private String loc_name;
     private String unit_name;
     private String supp_name;
+    private String supp_name2;
+    private String supp_name3;
+    private String supp_name4;
+    private String supp_name5;
     private String user_name;
     private String part_name;
     private String qc_level_name;

@@ -185,7 +185,7 @@ public class StandardService extends ReturnFunction {
 
     public RESTful sysPartGet(HttpServletRequest req, Page p) {
         List<SYS_PART_CD> rows = scmStandardMapper.sysPartGet(p);
-        return getListData(rows , p);
+        return getListData(rows ,p);
     }
 
     public SYS_PART_CD sysPartOneGet(HttpServletRequest req, Page p) {

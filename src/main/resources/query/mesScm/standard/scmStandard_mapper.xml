@@ -72,13 +72,26 @@
 
 
     <select id="sysPartGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
-        	EXEC SP_SYS_PART_GET #{page}, #{rows},#{keyword},#{keyword2}
+        	EXEC SP_SYS_PART_GET #{page},#{rows},#{keyword},#{keyword2},''
     </select>
     <select id="sysPartOneGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
-        	EXEC SP_SYS_PART_GET #{page}, #{rows},#{keyword},''
+        	EXEC SP_SYS_PART_GET 1,1,#{keyword},#{keyword2},#{keyword3}
     </select>
     <select id="sysPartAdd" resultType="com.mes.Common.DataTransferObject.Message">
-    	EXEC SP_SYS_PART_ADD #{part_code},#{part_name_code},#{spec},#{supp_code},#{unit_code},#{part_type},#{cargo_code},#{loc_code},#{qc_level},#{user_code},#{keyword}
+    	EXEC SP_SYS_PART_ADD 
+    	#{part_type},
+	#{part_code},
+	#{part_name},
+	#{spec},
+	#{unit_code},
+	#{supp_code},
+	#{supp_code2},
+	#{supp_code3},
+	#{supp_code4},
+	#{supp_code5},
+	#{loc_code},
+	#{user_code},
+	#{keyword}
     </select>
     <select id="sysPartDel" resultType="com.mes.Common.DataTransferObject.Message">
     	EXEC SP_SYS_PART_DEL #{keyword}

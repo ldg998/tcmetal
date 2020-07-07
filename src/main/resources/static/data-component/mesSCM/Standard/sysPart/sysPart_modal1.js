@@ -35,7 +35,7 @@ function addUdate_btn() { // 모든 추가와 업데이트는 여기서 처리�
                     if (main_data.check === "I") { //권한이 I 라면
                         get_btn(1);  // 재조회
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page')); //재조회
+                        $("#mes_grid").trigger("reloadGrid");
                     }
                 }
                 closeWindowByMask(); // 마스크 종료

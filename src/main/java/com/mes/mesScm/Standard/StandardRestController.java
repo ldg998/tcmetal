@@ -185,8 +185,7 @@ public class StandardRestController {
     }
 
     @RequestMapping(value = "/sysPartGet", method = RequestMethod.POST)
-    public RESTful sysPartGet(HttpServletRequest req, Page p) {
-        return standardService.sysPartGet(req, p);
+    public RESTful sysPartGet(HttpServletRequest req, Page p) { return standardService.sysPartGet(req, p);
     }
 
     @RequestMapping(value = "/sysPartOneGet", method = RequestMethod.POST)

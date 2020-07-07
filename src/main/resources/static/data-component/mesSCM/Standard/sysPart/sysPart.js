@@ -35,23 +35,18 @@ $(document).ready(function () {
 
 
 //모달 확인 조회 btn
-function test(){
-    $("#addDialog").dialog('open'); //숨겨진 모달 켜기
-}
 //추가버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") { //권한체크
         main_data.check = 'I';   // 추가권한을 부여
-     //   main_data.condition_data = value_return(".condition_main");
-
         modal_reset(".modal_value", main_data.readonly); // 해당클레스명을 가지고있는 객체val 값을 초기화
-        //$("#part_name").val(main_data.condition_data.keyword4);
-        $("select[name=part_name_code] option:eq(0)").prop("selected", true).trigger("change");
-        $("select[name=part_type] option:eq(0)").prop("selected", true).trigger("change");
-        $("select[name=cargo_code] option:eq(0)").prop("selected", true).trigger("change");
-        $("select[name=loc_code] option:eq(0)").prop("selected", true).trigger("change");
-        $("select[name=unit_code] option:eq(0)").prop("selected", true).trigger("change");
-        $("select[name=qc_level] option:eq(0)").prop("selected", true).trigger("change");
+        var select = $('#part_type_select').val();
+
+        if(select ==''){
+            $("#part_type_modal1 option:eq(0)").prop("selected", true).trigger('change');
+        }else {
+        $('#part_type_modal1').val(select).trigger('change');
+        }
 
         $("#addDialog").dialog('open'); //숨겨진 모달 켜기
 
@@ -64,7 +59,6 @@ function add_btn() {
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");//해당클레스 이름을 가지고있는 객체의value 를 객체이름에 넣어주는 쿼리
   //  main_data.send_data_post = main_data.send_data;
-
     $("#mes_grid").setGridParam({ //그리드조회
         url: '/sysPartGet',      // URL -> RESTCONTROLLER 호출
         datatype: "json",       //json 데이터 형식으로
@@ -73,34 +67,23 @@ function get_btn(page) {
     }).trigger("reloadGrid");  // trigger 그리드 reload 실행 / 해당이벤트를 강제발생시키는 개념
 }
 
-
-function get_btn_post(page) {
-    $("#mes_grid").setGridParam({
-        url: '/sysPartGet',
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data_post
-    }).trigger("reloadGrid");
-}
-
 function update_btn(jqgrid_data) { //업로드버튼
     if (main_data.auth.check_edit !="N") { //권한체크
         main_data.check = 'U';             //업로드권한부여
-        main_data.check2 = 'N';            //권한 제거
         modal_reset(".modal_value", []); //값 초기화
 
+        var send_data = {
+            keyword:jqgrid_data.part_type,
+            keyword2:jqgrid_data.part_code,
+            keyword3:""
+        }
+
+
         //ajax 통신에 필요한 url 과 data 를 넘겨주고 성공한뒤 .then 안에 실행쿼리를 사용
-        ccn_ajax('/sysPartOneGet', {keyword:jqgrid_data.part_code}).then(function (data) {
+        ccn_ajax('/sysPartOneGet', send_data).then(function (data) {
             modal_edits('.modal_value', main_data.readonly,data); // response 값 출력
 
-            //셀렉트박스에 값을 채워넣어줌
-            select_makes_base('#modal_loc_code_select', '/sysLocAllGet', "loc_code", "loc_name", {keyword: data.cargo_code}, '').then(function (data2) {
-                $("#modal_loc_code_select").val(data.loc_code).trigger("change");
-                main_data.check2 = 'Y';
-
-                //모달 열기
-                $("#addDialog").dialog('open');
-            });
+            $("#addDialog").dialog('open');
         });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
@@ -124,7 +107,7 @@ function delete_btn() {
                     if (data.result === 'NG') { //실패하면 메세지
                         alert(data.message);
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page'));//그외라면 그리드 호출
+                        $("#mes_grid").trigger("reloadGrid");
                     }
                     closeWindowByMask(); // 마스크 종료
                 }).catch(function (err) {
@@ -164,8 +147,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames: ['구분','품번','품명','규격','단위','업체','업체2','업체3','업체4','업체5','위치','등록자','등록일시'],// grid 헤더 설정
+        colNames: ['','','구분','품번','품명','규격','단위','업체','업체2','업체3','업체4','업체5','위치','등록자','등록일시'],// grid 헤더 설정
         colModel: [
+            {name: 'part_type', index: 'part_type',hidden:true, sortable: false},
+            {name: 'supp_code', index: 'supp_code',hidden:true, sortable: false},
             {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 80,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name: 'part_code', index: 'part_code', key:true, sortable: false, width: 100,fixed: true},// sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed: true}, // fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정

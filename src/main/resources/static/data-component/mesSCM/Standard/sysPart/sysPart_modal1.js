@@ -59,7 +59,8 @@ function cargo_select_change(value) {
 }
 
 /* 업체선택시 업체 모달 띄우기 */
-function supp_btn() {
+function supp_btn(what) {
+    modal_data.supp_check = what;
     $("#SuppSearchGrid").jqGrid('clearGridData');
     $("#supp-search-dialog").dialog('open');
     $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
@@ -69,15 +70,16 @@ function supp_btn() {
 
 /* 받아온 코드와 네임으로 업체모달 객체 name ,value 할당해주기 */
 function suppModal_bus(code, name) {
-    $("#supp_name_modal").val(name);
-    $("#supp_code_modal").val(code);
+    $("input[name=supp_name"+modal_data.supp_check+"]").val(name);
+    $("input[name=supp_code"+modal_data.supp_check+"]").val(code);
+    // $("#supp_code_modal").val(code);
     $("#SuppSearchGrid").jqGrid('clearGridData');
 }
 
 /* 업체모달 객체 비워주기*/
 function suppModal_close_bus() {
-    $("#supp_name_modal").val("");
-    $("#supp_code_modal").val("");
+    $("input[name=supp_name"+modal_data.supp_check+"]").val("");
+    $("input[name=supp_code"+modal_data.supp_check+"]").val("");
     $("#SuppSearchGrid").jqGrid('clearGridData');
 }
 
@@ -144,11 +146,10 @@ function selectBox_modal1() { //현재모달의 셀렉트박스에 데이터 할
     //     select_makes_base('#modal_loc_code_select','/sysLocAllGet',"loc_code","loc_name",{keyword:data[0].cargo_code},'');
     //  });
     // select_makes_base('#modal_unit_code_select','/sysCommonAllGet','code_value','code_name1',{keyword:'UNIT'},'');
-    $('#1_select').select2();
-    $('#2_select').select2();
-    $('#modal_loc_code_select').select2();
-    $('#modal_qc_level_select').select2();
 
+    select_makes_base("#part_type_modal1", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'').then(function (data) {});
+    select_makes_base('#unit_code_modal1','/sysCommonAllGet','code_value','code_name1',{keyword:'UNIT'},'');
+    select_makes_base('#loc_code_modal1','/sysLocAllGet',"loc_code","loc_name",{keyword:"M0001"},'');
 }
 
 

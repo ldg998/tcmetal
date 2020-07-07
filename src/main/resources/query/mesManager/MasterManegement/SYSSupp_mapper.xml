@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mes.Mapper.mesManager.Master.MasterMapper">
     <select id="sysSuppListGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
-        EXEC SP_SYS_SUPP_GET2 #{page},#{rows},#{keyword}
+        EXEC SP_SYS_SUPP_GET #{page},#{rows},#{keyword}
     </select>
 
     <select id="sysSuppListDel" resultType="com.mes.Common.DataTransferObject.Message">
@@ -37,9 +37,9 @@
 	#{corp_type2},
 	#{corp_type3},
 	#{corp_type4},
-	#{corp_type5},
 	#{user_code},
-	#{keyword}
+	#{keyword},
+	#{use_yn}
     </select>
 
     <select id="autocomplete_Supp_Name" resultType="com.mes.mesManager.Master.DTO.SYSSupp">

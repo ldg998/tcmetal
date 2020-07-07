@@ -33,6 +33,7 @@ $(document).ready(function () {
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
     main_data.send_data_post = main_data.send_data;
+
     $("#mes_grid").setGridParam({
         url: '/sysSuppListGet',
         datatype: "json",
@@ -50,7 +51,7 @@ function add_btn() {
         $('#corp_type2').val('N').trigger('change');
         $('#corp_type3').val('N').trigger('change');
         $('#corp_type4').val('N').trigger('change');
-        $('#corp_type5').val('N').trigger('change');
+        $('#use_yn').val('N').trigger('change');
 
         $('#'+corp_type).val('Y').trigger('change');
 

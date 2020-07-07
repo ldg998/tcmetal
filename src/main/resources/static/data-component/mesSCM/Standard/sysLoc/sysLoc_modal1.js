@@ -11,6 +11,7 @@ function modal_start1() {
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
     var modal_objact = value_return(".modal_value"); //해당 클레스네임 객체에 value name 할당
+    modal_objact.cargo_code="M0001";
     if (effectiveness1(modal_objact)) {    //유효성 검사
         var text = msg_object.TBMES_Q002.msg_name1; //해당키워드 따라 메세지출력
         if (main_data.check === "U") {
@@ -27,7 +28,7 @@ function addUdate_btn() {
                     if (main_data.check === "I") { // 추가였다면
                         get_btn(1);  // 재조회
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page')); //재조회
+                        $("#mes_grid").trigger("reloadGrid");
                     }
                 }
                 closeWindowByMask(); // 마스크 종료

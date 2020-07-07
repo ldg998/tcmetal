@@ -73,7 +73,7 @@
                     <i class="menu-icon fa fa-user"></i>
                     </c:if>
                     <c:if test="${main_list.menu_name eq '자재관리'}">
-                    <i class="menu-icon fa fa-map"></i>
+                    <i class="menu-icon fa fa-cogs"></i>
                     </c:if>
                     <c:if test="${main_list.menu_name eq '출하관리'}">
                     <i class="menu-icon fa fa-truck"></i>

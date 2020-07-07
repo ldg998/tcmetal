@@ -157,7 +157,7 @@ function authcheck() { // 권한체크
 
 
 function selectBox() { //구분영역에 들어갈 select데이터 호출
-  $('#part_type_select').select2();
+    select_makes_base("#part_type_select", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
 }
 //jq 그리드 설정
 function jqGrid_main() {

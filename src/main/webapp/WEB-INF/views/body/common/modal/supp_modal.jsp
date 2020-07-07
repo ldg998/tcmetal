@@ -10,9 +10,11 @@
                     <td class="wt-px-100 td-title" style="background-color: #ffffff !important;">
                         <input type="hidden" autofocus>
                         <select name="keyword" id="gubun_select" class="form-control keyword suppModal_condition" style="width:100%">
+                            <option value="">전체</option>
                             <option value="CORP_TYPE1">매입</option>
                             <option value="CORP_TYPE2">매출</option>
-                            <option value="CORP_TYPE3">혼합</option>
+                            <option value="CORP_TYPE3">외주</option>
+                            <option value="CORP_TYPE4">수출</option>
                         </select>
                     </td>
                     <td class="wt-px-100 td-title t-align-c">업체</td>

@@ -19,7 +19,7 @@
 <body>
     <div class="col-lg-12 " style="width: 100%; height: 100%;  margin-top:12px;">
         <div class="cropping">
-        <img src="/ui-component/assets/images/main/main.jpg" class="center-block" style="height: 100%; width: 100%;"/>
+        <img src="/ui-component/assets/images/main/main.jpg" class="center-block" style="height: 100%; width: 100%; filter: brightness(85%);"/>
         </div>
         <div class="t-align-c main_title" style="">
             <p style="color: #000000; font-size:30px;">태창금속산업(주)</p>

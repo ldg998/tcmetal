@@ -16,7 +16,7 @@
             </button>
 
             <a href="/" class="navbar-brand">
-                <img src="/ui-component/assets/images/logo@2x-1.png" id="main_logo_img" width="180px">
+                <img src="/ui-component/assets/images/tclogo2.png" id="main_logo_img" width="180px">
             </a>
             <div class="form-group">
                 <a href="javascript:void(0);" class="navbar-brand top_m">

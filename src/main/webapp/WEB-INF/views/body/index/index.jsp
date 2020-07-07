@@ -2,16 +2,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
 <html>
+<style>
+    .cropping{
+        max-height: 500px;
+        overflow: hidden;
+    }
+
+    .cropping img{
+        max-height: initial;
+        margin-top: -15%;
+    }
+</style>
 <head>
     <title>Title</title>
 </head>
 <body>
-    <div class="col-lg-12" style="width: 100%; height:100%; margin-top:12px;">
-        <img src="/ui-component/assets/images/main/main_img.jpg" class="center-block" style="height: 100%; width: 100%;"/>
-        <div class="t-align-c" style="width: 500px; margin:0 auto; margin-top: 30px; border-right:10px solid black; border-left:10px solid black; display:block;">
-            <p style="color: #0EB7EE; font-size:30px;">(주)사운드방음문</p>
-            <p style="font-size:20px">calm and peaceful</p>
-            <p style="color: #0F3171; font-size:30px; font-weight: bold">SOUNDVISION</p>
+    <div class="col-lg-12 " style="width: 100%; height: 100%;  margin-top:12px;">
+        <div class="cropping">
+        <img src="/ui-component/assets/images/main/main.jpg" class="center-block" style="height: 100%; width: 100%;"/>
+        </div>
+        <div class="t-align-c main_title" style="">
+            <p style="color: #000000; font-size:30px;">태창금속산업(주)</p>
+            <p style="font-size:20px"> The Most Trustworthy Iron Casting Comany  </p>
+            <p style="font-size:20px"> We "CAST" your future</p>
+
+<%--            <p style="color: #0F3171; font-size:30px; font-weight: bold">SOUNDVISION</p>--%>
         </div>
     </div>
 <%--                                    </a>--%>

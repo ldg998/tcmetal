@@ -93,19 +93,19 @@ var array =
         {code: "sysSPartCost", title: '영업관리', sub: '영업관리', name: '제품단가관리'},
         {code: "wmsoutOrd", title: '영업관리', sub: '영업관리', name: '출고지시서'},
         //납기관리
-        {code: "", title: '영업관리', sub: '납기관리', name: '납기관리'},
-        {code: "", title: '영업관리', sub: '납기관리', name: '납기현황'},
+        // {code: "", title: '영업관리', sub: '납기관리', name: '납기관리'},
+        // {code: "", title: '영업관리', sub: '납기관리', name: '납기현황'},
         //도면과리
 
         //대책서관리(클레임)
-        {code: "", title: '영업관리', sub: '대책서관리', name: '문제점접수'},
-        {code: "", title: '영업관리', sub: '대책서관리', name: '진행상황관리'},
+        // {code: "", title: '영업관리', sub: '대책서관리', name: '문제점접수'},
+        // {code: "", title: '영업관리', sub: '대책서관리', name: '진행상황관리'},
 
 
 
         //품질관리 -기준정보
         {code: "qmsTestItem", title: '품질관리', sub: '기준정보', name: '검사항목관리'},
-        {code: "", title: '품질관리', sub: '기준정보', name: '용해규격관리'},
+        // {code: "", title: '품질관리', sub: '기준정보', name: '용해규격관리'},
 
 
 
@@ -115,10 +115,10 @@ var array =
 
 
         //중간검사(1차,2차)
-        {code: "", title: '품질관리', sub: '중간검사', name: '중간검사항목관리'},
-        {code: "", title: '품질관리', sub: '중간검사', name: '중간검사현황'},
-        {code: "", title: '품질관리', sub: '중간검사', name: '중간검사부적합등록'},
-        {code: "", title: '품질관리', sub: '중간검사', name: '중간검사불량현황'},
+        // {code: "", title: '품질관리', sub: '중간검사', name: '중간검사항목관리'},
+        // {code: "", title: '품질관리', sub: '중간검사', name: '중간검사현황'},
+        // {code: "", title: '품질관리', sub: '중간검사', name: '중간검사부적합등록'},
+        // {code: "", title: '품질관리', sub: '중간검사', name: '중간검사불량현황'},
 
         //출하검사
 
@@ -129,26 +129,26 @@ var array =
 
 
         // 이력관리
-        {code: "", title: '품질관리', sub: '이력관리', name: '성적서관리'},
-        {code: "", title: '품질관리', sub: '이력관리', name: '제품이력관리'},
-        {code: "", title: '품질관리', sub: '이력관리', name: '도형제관리'},
-        {code: "", title: '품질관리', sub: '이력관리', name: '부적합관리'},
+        // {code: "", title: '품질관리', sub: '이력관리', name: '성적서관리'},
+        // {code: "", title: '품질관리', sub: '이력관리', name: '제품이력관리'},
+        // {code: "", title: '품질관리', sub: '이력관리', name: '도형제관리'},
+        // {code: "", title: '품질관리', sub: '이력관리', name: '부적합관리'},
 
         //POP 생산관리 - 기준정보
-        {code: "", title: '생산관리', sub: '기준정보', name: '바코드양식'},
-        {code: "", title: '생산관리', sub: '기준정보', name: '공정라우팅'},
-        {code: "", title: '생산관리', sub: '기준정보', name: '공정별작업자관리'},
-        {code: "", title: '생산관리', sub: '기준정보', name: '작업의뢰서설정'},
+        // {code: "", title: '생산관리', sub: '기준정보', name: '바코드양식'},
+        // {code: "", title: '생산관리', sub: '기준정보', name: '공정라우팅'},
+        // {code: "", title: '생산관리', sub: '기준정보', name: '공정별작업자관리'},
+        // {code: "", title: '생산관리', sub: '기준정보', name: '작업의뢰서설정'},
 
         //생산관리
-        {code: "", title: '생산관리', sub: '생산관리', name: '생산계획관리'},
-        {code: "", title: '생산관리', sub: '생산관리', name: '작업의뢰서관리'},
+        // {code: "", title: '생산관리', sub: '생산관리', name: '생산계획관리'},
+        // {code: "", title: '생산관리', sub: '생산관리', name: '작업의뢰서관리'},
 
         //생산현황
         {code: "popProdRange", title: '생산관리', sub: '생산형황', name: '기간별생산실적'},
         {code: "popProdList1", title: '생산관리', sub: '생산형황', name: '제품별생산실적'},
         {code: "popProdList2", title: '생산관리', sub: '생산형황', name: '공정별작업현황'},
-        {code: "", title: '생산관리', sub: '생산형황', name: '작업일보관리'},
+        // {code: "", title: '생산관리', sub: '생산형황', name: '작업일보관리'},
         {code: "popMonitoring", title: '생산관리', sub: '생산형황', name: '생산모니터링'},
 
 
@@ -158,7 +158,7 @@ var array =
         {code: "OutsIn", title: '외주업체', sub: '외주관리', name: '외주입고등록'},
         {code: "OutsInList", title: '외주업체', sub: '외주관리', name: '외주입고현황'},
         {code: "OutsInReady", title: '외주업체', sub: '외주관리', name: '미입고관리'},
-        {code: "", title: '외주업체', sub: '외주관리', name: '외주불량현황'},
+        // {code: "", title: '외주업체', sub: '외주관리', name: '외주불량현황'},
 
 
         //설비관리-기준정보

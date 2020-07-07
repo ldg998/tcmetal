@@ -16,7 +16,7 @@
             </button>
 
             <a href="/" class="navbar-brand">
-                <img src="/ui-component/assets/images/logo@2x-1.png" id="main_logo_img" width="180px">
+                <img src="/ui-component/assets/images/tclogo2.png" id="main_logo_img" width="180px">
             </a>
             <div class="form-group">
                 <a href="javascript:void(0);" class="navbar-brand top_m">
@@ -73,7 +73,7 @@
                     <i class="menu-icon fa fa-user"></i>
                     </c:if>
                     <c:if test="${main_list.menu_name eq '자재관리'}">
-                    <i class="menu-icon fa fa-map"></i>
+                    <i class="menu-icon fa fa-cogs"></i>
                     </c:if>
                     <c:if test="${main_list.menu_name eq '출하관리'}">
                     <i class="menu-icon fa fa-truck"></i>

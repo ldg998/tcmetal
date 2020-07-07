@@ -8,13 +8,12 @@ var main_data = {
     check: 'I',// 수정,추가 판단용
     send_data: {},// 조회시 data 담는 용도
     send_data_post: {}, //위와 같음
-    readonly: [], //설정시 해당 name readonly 욥션
+    readonly: ["loc_code"], //설정시 해당 name readonly 욥션
     auth:{} // 권한체크 후 권한 data 담는 용도
 };
 ////////////////////////////시작 함수//////////////////////////////////
 // $(function(){}); DOM이 로드되었을때 실행  / ONLOAD처럼 페이지 완료가 되자마자 동작하는 함수
 $(document).ready(function () {
-   // selectBox(); //구분 선택창 데이터 할당
     msg_get();  // 메세지설정
     jqGrid_main(); // main 그리드 생성
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]')); //그리드 resize
@@ -36,7 +35,7 @@ function get_btn(page) {
         url: '/sysLocGet',  // URL -> RESTCONTROLLER 호출
         datatype: "json", // JSON 데이터 형식으로
         page: page,   // PAGE는 받은 파라미터로 설정
-        postData: main_data.send_data  // 매개변수 전달
+        postData: {keyword:""}  // 매개변수 전달
     }).trigger("reloadGrid"); // trigger 그리드 reload 실행 / 해당이벤트를 강제발생시키는 개념
 }
 
@@ -44,8 +43,9 @@ function get_btn(page) {
 //추가 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") { //권한체크
-
-          main_data.check = 'I'; // 추가권한 부여
+        modal_reset(".modal_value", main_data.readonly); // 해당 클레스이름 객체내용 비워주기 readonly 이름이있다면 readonly옵션추가
+        // modalValuePush("#cargo_select","#cargo_code","#cargo_name"); //모달안에 선택박스 데이터 채워주기
+        main_data.check = 'I'; // 추가권한 부여
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
         alert(msg_object.TBMES_A001.msg_name1); // 오류메세지 출력
@@ -55,6 +55,14 @@ function add_btn() {
 // 수정버튼
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
+        modal_reset(".modal_value", []); //해당 클레스이름 객체 내용비워주기 readonly 이름이있다면 readonly옵션추가
+        main_data.check = 'U'; //업데이트 권한부여
+        var send_data = {};
+        send_data.keyword = jqgrid_data.loc_code; //키워드에 받아온 select cod 담아주기
+        ccn_ajax('/sysLocOneGet', send_data).then(function (data) {
+            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
+            $("#addDialog").dialog('open'); //모달창 열어주기
+        });
     } else {
         alert(msg_object.TBMES_A003.msg_name1); //오류 메세지 출력
     }
@@ -71,7 +79,18 @@ function delete_btn() {
             if (confirm(msg_object.TBMES_A005.msg_name1)) { //실행여부
                 main_data.check = 'D'; //삭제권한 부여
                 wrapWindowByMask2(); // 마스크로 덥고 삭제하는동안 다른행동 제약걸기
-
+                // 가져온 그리드 row 객체에 아스키코드5 를 추가  1|2|3 형식으로 데이터 를보내준다
+                ccn_ajax("/sysLocDelete", {keyword: ids.join(gu5)}).then(function (data) {
+                    if (data.result === 'NG') { // 프로시져 메세지가 ng 라면
+                        alert(data.message); // 해당 오류메세지 출력
+                    } else {
+                        $("#mes_grid").trigger("reloadGrid");
+                    }
+                    closeWindowByMask(); // 마스크해제
+                }).catch(function (err) {
+                    closeWindowByMask();//마스크해제
+                    console.error(err); // Error 출력
+                });
             }
         }
     } else {
@@ -94,11 +113,7 @@ function authcheck() {
         main_data.auth = data;
     });
 }
-// 실행 selectBox 데이터 할당
-function selectBox() {
-    select_makes("#cargo_select", "/sysCargoBAllGet", "cargo_code", "cargo_name");
 
-}
 //jqGrid 설정
 function jqGrid_main() {
     $('#mes_grid').jqGrid({

@@ -46,13 +46,9 @@
                             <span>삭제</span>
                         </span>
                     </a>
-
-
                 </div>
             </div>
         </div>
-
-
         <div class="row">
             <div class="col-md-12">
                 <table id="mes_grid"></table>

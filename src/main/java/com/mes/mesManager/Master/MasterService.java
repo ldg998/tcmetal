@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.util.List;
 
 @Service
@@ -178,17 +177,6 @@ public class MasterService extends UploadFunction {
           }
 
     public Message sysSuppListDel(Page p) {
-
-        String gu5 = "";
-        char sp_gu5 = 5;
-        gu5 = Character.toString(sp_gu5);
-
-
-        String s[] = p.getKeyword2().split(gu5);
-        for (String s1 : s) {
-            File file = new File("C:/UploadFile/sound/sysSupp/"+s1);
-            file.delete();
-        }
         return masterMapper.sysSuppListDel(p);
     }
 

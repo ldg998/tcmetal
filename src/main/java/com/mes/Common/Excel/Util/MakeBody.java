@@ -1126,7 +1126,7 @@ public class MakeBody {
                     obj.add(data.getSupp_code());
                     obj.add(data.getSupp_name());
                     obj.add(data.getCeo());
-                    obj.add(data.getSupp_name_en());
+                    obj.add(data.getSupp_name2());
                     obj.add(data.getSupp_no());
                     obj.add(data.getTel_no());
                     obj.add(data.getBuss_type());

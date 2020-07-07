@@ -6,7 +6,7 @@ import lombok.Data;
 public class SYSSupp {
     private String supp_code;
     private String supp_name;
-    private String supp_name_en;
+    private String supp_name2;
     private String ceo;
 
     private String supp_no;
@@ -15,6 +15,7 @@ public class SYSSupp {
     private String buss_type;
     private String category;
     private String address;
+    private String address2;
     private String give_type;
     private String emp_name;
     private String emp_tel;
@@ -22,10 +23,15 @@ public class SYSSupp {
     private String corp_type1;
     private String corp_type2;
     private String corp_type3;
+    private String corp_type4;
+    private String corp_type5;
     private String use_yn;
     private String create_date;
     private String update_date;
 
+    private String delivery_place1;
+    private String delivery_place2;
+    private String delivery_place3;
     private String keyword;
     private String keyword2;
     private String site_code;
@@ -42,5 +48,7 @@ public class SYSSupp {
     private String bank_name;
 
     private String file1_f;
+
+    private String save_type;
 
 }

@@ -14,10 +14,10 @@ var array =
         {code: "sysCommon", title: '관리자', sub: '마스터관리', name: '공통코드관리'},
         {code: "sysMsg", title: '관리자', sub: '마스터관리', name: '메세지관리'},
         {code: "sysBoard", title: '관리자', sub: '마스터관리', name: '게시판관리'},
-        {code: "sysSupp", title: '관리자', sub: '마스터관리', name: '업체코드관리'},
+        {code: "sysSupp", title: '관리자', sub: '마스터관리', name: '업체정보'},
         {code: "sysProdLine", title: '관리자', sub: '마스터관리', name: '라인정보'},
         {code: "sysCargo", title: '관리자', sub: '마스터관리', name: '창고관리'},
-
+        {code: "sysMachineRegAlarm", title: '관리자', sub: '마스터관리', name: '예방점검알림설정'},
 
         // 자재관리-기준정보
         {code: "sysPart", title: '자재관리', sub: '기준정보', name: '품목정보'},
@@ -168,7 +168,7 @@ var array =
         {code: "tpmMachineRegItem", title: '설비관리', sub: '예방점검', name: '예방점검항목관리'},
         {code: "tpmMachineRegCycle", title: '설비관리', sub: '예방점검', name: '예방점검주기설정'},
         {code: "tpmMachineRegComp", title: '설비관리', sub: '예방점검', name: '예방점검관리'},
-        {code: "tmpMachineRegAlarm", title: '설비관리', sub: '예방점검', name: '예방점검알림설정'},
+
 
         //사후보전
         {code: "tmpMachineRegAlarm", title: '설비관리', sub: '사후보전관리', name: '사후보전관리'},

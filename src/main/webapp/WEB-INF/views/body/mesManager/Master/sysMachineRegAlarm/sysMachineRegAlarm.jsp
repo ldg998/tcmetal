@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<script type="text/javascript" src="/data-component/mesTPM/RegItem/tpmMachineRegAlarm/tpmMachineRegAlarm.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesManager/Master/sysMachineRegAlarm/sysMachineRegAlarm.js" charset="UTF-8"></script>
 <style>
     #mes_modal1_grid1_pager #pg_mes_modal1_grid1_pager table{
         table-layout:auto !important;
@@ -14,18 +14,13 @@
             <table class="table wt-25 board_line">
                 <tbody>
                 <tr>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">라인</td>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
                     <td class="wt-px-200">
                         <select name="keyword" id="line_select" class="form-control keyword condition_main" onchange="select_change1(this.value);" style="width:100%">
-                            <option value="">전체</option>
+                            <option value="">중간점검(폐기)</option>
                         </select>
                     </td>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">설비</td>
-                    <td class="wt-px-200">
-                        <select name="keyword2" class="form-control h-25 condition_main" id="machine_select" style="width:100%">
-                            <option value="">전체</option>
-                        </select>
-                    </td>
+
                 </tr>
                 </tbody>
             </table>
@@ -67,7 +62,7 @@
     </div>
 </div>
 
-<%@include file="tpmMachineRegAlarm_modal1.jsp" %>
+<%@include file="sysMachineRegAlarm_modal1.jsp" %>
 
 
 

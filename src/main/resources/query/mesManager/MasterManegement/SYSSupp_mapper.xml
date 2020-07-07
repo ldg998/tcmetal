@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mes.Mapper.mesManager.Master.MasterMapper">
     <select id="sysSuppListGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
-        EXEC SP_SYS_SUPP_GET2 #{page},#{rows},#{keyword},#{keyword2},#{keyword3},''
+        EXEC SP_SYS_SUPP_GET2 #{page},#{rows},#{keyword}
     </select>
 
     <select id="sysSuppListDel" resultType="com.mes.Common.DataTransferObject.Message">
@@ -10,11 +10,36 @@
     </select>
 
     <select id="sysSuppOneGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
-        EXEC SP_SYS_SUPP_GET2 1,1,'',#{keyword},#{keyword2},''
+        EXEC SP_SYS_SUPP_ONE_GET #{keyword}, #{keyword2}
     </select>
 
     <select id="sysSuppAdd" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC SP_SYS_SUPP_ADD #{supp_code},#{supp_name},#{ceo},#{supp_name_en},#{supp_no},#{tel_no},#{buss_type},#{fax_no},#{category},#{give_type},#{address},#{emp_name},#{emp_tel},#{corp_type1},#{corp_type2},#{emp_email},#{use_yn},#{user_code},#{keyword}
+        EXEC SP_SYS_SUPP_ADD
+
+       #{supp_code},
+	#{supp_name},
+	#{ceo},
+	#{supp_name2},
+	#{supp_no},
+	#{category}	,
+	#{buss_type},
+	#{tel_no},
+	#{fax_no},
+	#{address},
+	#{address2},
+	#{delivery_place1},
+	#{delivery_place2},
+	#{delivery_place3},
+	#{emp_name},
+	#{emp_tel},
+	#{emp_email},
+	#{corp_type1},
+	#{corp_type2},
+	#{corp_type3},
+	#{corp_type4},
+	#{corp_type5},
+	#{user_code},
+	#{keyword}
     </select>
 
     <select id="autocomplete_Supp_Name" resultType="com.mes.mesManager.Master.DTO.SYSSupp">

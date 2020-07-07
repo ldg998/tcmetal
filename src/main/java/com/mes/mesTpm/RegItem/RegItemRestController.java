@@ -80,6 +80,8 @@ public class RegItemRestController {
         return regItemService.tpmMachineRegAlarmGet(req, p);
     }
 
+
+    
     @RequestMapping(value = "/tpmMachineRegAlarmAllGet", method = RequestMethod.POST)
     public List<TPM_MACHINE_REG_ALARM> tpmMachineRegAlarmAllGet(HttpServletRequest req, TPM_MACHINE_REG_ALARM tmra) {
         return regItemService.tpmMachineRegAlarmAllGet(req, tmra);

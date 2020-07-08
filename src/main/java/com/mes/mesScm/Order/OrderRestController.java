@@ -40,7 +40,7 @@ public class OrderRestController {
     @RequestMapping(value = "/scmOrderSubPdfGet", method = RequestMethod.POST)
     public List<SCM_IN_ORD_SUB_PDF> scmOrderSubPdfGet(Page p ) { return orderService.scmOrderSubPdfGet(p); }
     @RequestMapping(value = "/scmOrderAdd", method = RequestMethod.POST)
-    public Message scmOrderAdd(HttpServletRequest req, SCM_IN_ORD sio) { return orderService.scmOrderAdd(req, sio);}
+    public Message scmOrderAdd(HttpServletRequest req, SCM_IN_ORD sio) { System.out.println(sio); return orderService.scmOrderAdd(req, sio);}
 
     @RequestMapping(value ="/scmOrderPartGet", method = RequestMethod.POST)
     public RESTful scmOrderPartGet(HttpServletRequest req, Page p) { return orderService.scmOrderPartGet(req,p); }

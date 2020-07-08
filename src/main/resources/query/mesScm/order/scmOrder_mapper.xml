@@ -32,7 +32,7 @@
         EXEC SP_SCM_IN_ORD_PART_GET #{page},#{rows},#{keyword},#{keyword2}
     </select>
     <select id="scmOrderAdd" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC SP_SCM_IN_ORD_ADD #{ord_no},#{crm_ord_no},#{work_date},#{keyword},#{img_code},#{delivery_place},#{remark},#{user_code},#{stop_date},#{payment},#{save_type},#{ord_sub},#{place_name}
+        EXEC SP_SCM_IN_ORD_ADD #{ord_no},#{work_date},#{keyword},#{delivery_place},#{user_code},#{stop_date},#{save_type},#{ord_sub}
     </select>
     <select id="scmOrderPartOneGet" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB">
         EXEC SP_SCM_IN_ORD_SUB_GET 0,0,#{keyword}

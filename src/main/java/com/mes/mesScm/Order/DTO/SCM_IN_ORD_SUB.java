@@ -20,6 +20,7 @@ public class SCM_IN_ORD_SUB {
     private String spec;
     private String spec_all;
     private String unit_name;
+    private String status;
     private String status_name;
     private String user_code;
     private String user_name;
@@ -39,6 +40,7 @@ public class SCM_IN_ORD_SUB {
     private String shipping_addr;
     private String remark;
     private String keyword;
+    private String part_type_name;
 
     private int rownum_page;
 

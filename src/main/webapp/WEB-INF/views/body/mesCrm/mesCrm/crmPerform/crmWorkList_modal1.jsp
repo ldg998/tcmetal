@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script type="text/javascript" src="/data-component/mesCRM/mesCrm/crmWorkList/crmWorkList_modal1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/static/data-component/mesCRM/mesCrm/crmWorkList/crmWorkList_modal1.js" charset="UTF-8"></script>
 
 <div id="addDialog" title="실적추가" style="display:none">
     <div class="profile-user-info profile-user-info-striped" style="margin-bottom: 10px">

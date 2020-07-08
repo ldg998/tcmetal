@@ -3,8 +3,8 @@ var array =
         {code: "", title: 'TCMETAL', sub: 'MES', name: 'HOME'},
 
         // 관리자 - 권한관리
-        {code: "sysAuth", title: '관리자', sub: '권한관리', name: '권한그룹'},
-        {code: "sysAuthProgram", title: '관리자', sub: '권한관리', name: '권한별 프로그램관리'},
+        {code: "sysAuth", title: '관리자', sub: '권한관리', name: '권한그룹관리'},
+        {code: "sysAuthProgram", title: '관리자', sub: '권한관리', name: '권한그룹별 프로그램관리'},
 
         //사용자관리
         {code: "sysDept", title: '관리자', sub: '사용자관리', name: '부서정보'},

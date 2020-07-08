@@ -23,22 +23,16 @@ $(document).ready(function () {
     authcheck(); // 권한체크
     modal_start1();    //모달 실행
     datepickerInput(); //날짜 표현형식
-    // selectBox();     //select Box 데이터 할당
     jqGrid_main();  //main 그리드 생성
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]')); //그리드 resize
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));//그리드 resize
     jqgridPagerIcons(); //그리드 아이콘 설정
     selectBox();
-
+    suppModal_start();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 //모달 확인 조회 btn
-function test() {
-    $("#addDialog").dialog('open');// 모달 열기
-    jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //해당그리드 리사이즈
-    jqGridResize2("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]')); //해당그리드 리사이즈
-}
 
 //조회버튼
 function get_btn(page) {
@@ -55,16 +49,6 @@ function get_btn(page) {
     }).trigger("reloadGrid");  // trigger 그리드 reload 실행 / 해당이벤트를 강제발생시키는 개념
 
     $('#mes_grid2').jqGrid('clearGridData'); //해당 그리드의 데이터삭제 및 업데이트
-}
-
-function get_btn_post(page) {
-    $("#mes_grid").setGridParam({
-        url: '/scmOrderGet',
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data_post
-    }).trigger("reloadGrid");
-    $('#mes_grid2').jqGrid('clearGridData');
 }
 
 //선택한 그리드의 로우 id를사용해 해당id 와같은 id 를 그리드조회
@@ -85,6 +69,7 @@ function add_btn() {
         modal_reset(".modal_value", []); //해당 클레스명의 value 리셋 readonly name이있다면 그객체를 leadonly
         $("#mes_add_grid").jqGrid('clearGridData');   //해당 그리드의 데이터삭제 및 업데이트
         $("#mes_add_grid2").jqGrid('clearGridData');  //해당 그리드의 데이터삭제 및 업데이트
+        trigger_false();
         var date = new Date();  //날짜데이터 호출
         var date2 = new Date(); //날짜데이터 호출
         date2.setDate(date.getDate() + 1); //현재날짜에 + 1
@@ -112,12 +97,12 @@ function delete_btn() {
         if (ids.length === 0) { //체크 여부
             alert(msg_object.TBMES_A004.msg_name1); // 오류메세지출력
         } else {
+
             ids.forEach(function (id) { //체크한 로우만큼 반복
                 check = $('#mes_grid').jqGrid('getRowData', id).status; //check = 선택한 로우id 에 데이터에 있는 status(상태) 번호이다
                 if (check === '1') { //상태번호가 1이면
                     check2.push(id); //check2[] 에 담아준다
                 }
-
             });
             if (check2.length > 0) { //체크2에 존재유무 체크
                 alert(check2.join(",") + " 전표가 완료 되어있습니다.");
@@ -129,7 +114,7 @@ function delete_btn() {
                         if (data.result === 'NG') { //프로시저 메세지 가 ng 라면
                             alert(data.message);   //오류메세지 출력
                         } else {
-                            get_btn_post($("#mes_grid").getGridParam('page')); //재호출
+                            $("#mes_grid").trigger("reloadGrid"); //화면 리로딩
                         }
                         $('#mes_grid2').jqGrid('clearGridData'); //해당 그리드 삭제 및 업데이트
                         closeWindowByMask(); //마스크 해제
@@ -161,9 +146,9 @@ function complete_btn() {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page')); //페이지 재로딩
+                        $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
+                        $('#mes_grid2').jqGrid('clearGridData');
                     }
-                    $('#mes_grid2').jqGrid('clearGridData');  //해당 그리드 데이터 비우고 업데이트
                     closeWindowByMask();                //마스크 오프
                 }).catch(function (err) {
                     closeWindowByMask();                //마스크 오프
@@ -176,8 +161,32 @@ function complete_btn() {
         alert(msg_object.TBMES_A003.msg_name1);         //오류메세지 출력
     }
 }
+function supp_btn(what) {
+    main_data.supp_check = what;
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+    $("#supp-search-dialog").dialog('open');
+    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
+    $('#supp_code_search').val('').trigger("change");
 
-
+    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
+}
+function suppModal_bus(code, name) {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val(name);
+        $("#supp_code_main").val(code);
+    } else if (main_data.supp_check === 'B') {
+        $("#supp_name_modal1").val(name);
+        $("#supp_code_modal1").val(code);
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
+function suppModal_close_bus() {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val("");
+        $("#supp_code_main").val("");
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_A001"); // 추가권한없음
@@ -208,8 +217,9 @@ function jqGrid_main() {  //메인 jqGrid
         datatype: 'local', // local 설정을 통해 handler 에 재요청하는 경우를 방지
         multiselect: true,  // 다중선택 가능
         caption: '발주등록 | MES', // grid 제목
-        colNames: ['발주일자', '전표번호', '업체명', '상태', '납기일자', '납품장소', '등록자', '등록일시'], // grid 헤더 설정
+        colNames: ['','발주일자', '전표번호', '업체명', '상태', '납기일자', '납품장소', '등록자', '등록일시'], // grid 헤더 설정
         colModel: [
+            {name: 'status', index: 'status', sortable: false, hidden:true},
             {name: 'work_date', index: 'work_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 100}, // formatter 사용을 통해 데이터 형식 가공
             {name: 'ord_no', index: 'ord_no', sortable: false, key: true, fixed: true, width: 130},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name: 'supp_name', index: 'supp_name', sortable: false, fixed: true, width: 130},
@@ -261,7 +271,7 @@ function jqGrid_main() {  //메인 jqGrid
         caption: '발주등록 | MES',
         colNames: ['구분', '품번', '품명', '규격', '단위', '발주수량', '입고수량', '미입고'],
         colModel: [
-            {name: 'ord_no', index: 'ord_no', sortable: false},
+            {name: 'part_type_name', index: 'part_type_name', sortable: false},
             {name: 'part_code', index: 'part_code', sortable: false},
             {name: 'part_name', index: 'part_name', sortable: false},
             {name: 'spec', index: 'spec', sortable: false},

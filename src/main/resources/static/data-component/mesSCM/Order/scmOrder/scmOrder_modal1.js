@@ -101,33 +101,18 @@ function update_btn(rowid) {
             console.log(data.status);
             if(data.status === '1') {
                 main_data.status = 'Y';
-                $("#delivery_place").prop("readonly",true).trigger("change");
-                $("#datepicker3").prop("disabled",true).trigger("change");
-                $("#datepicker4").prop("disabled",true).trigger("change");
-                $("#payment").prop("readonly",true).trigger("change");
-                $("#remark").prop("disabled",true).trigger("change");
-                $("#img_select").prop("disabled",true).trigger("change");
-                $("#part_type_select").prop("disabled",true).trigger("change");
+                trigger_true();
             }else{
                 main_data.status = 'N';
-                $("#delivery_place").prop("readonly",false).trigger("change");
-                $("#datepicker3").prop("disabled",false).trigger("change");
-                $("#datepicker4").prop("disabled",false).trigger("change");
-                $("#payment").prop("readonly",false).trigger("change");
-                $("#remark").prop("disabled",false).trigger("change");
-                $("#img_select").prop("disabled",false).trigger("change");
-                $("#part_type_select").prop("disabled",false).trigger("change");
+                trigger_false();
             }
             $("#ord_no").val(data.ord_no);
             $("#supp_code_modal").val(data.supp_code);
             $("#supp_name_modal").val(data.supp_name).prop("disabled",true).trigger('change');
-            $("#crm_ord_no").val(data.crm_ord_no).prop("disabled",true).trigger('change');
             $("#place_name").val(data.place_name);
             $('#datepicker3').datepicker('setDate',data.work_date);
             $('#datepicker4').val(formmatterDate2(data.end_date));
-            $("#payment").val(data.payment);
             $("#delivery_place").val(data.delivery_place);
-            $("#img_select").val(data.img_no).trigger("change");
             $("#remark").val(data.remark);
             main_data.check3 = 'Y';
         });
@@ -162,7 +147,8 @@ function add_modal1_btn() {
             var list2 = [];
             jdata.forEach(function (data, j) {
                 if (data.ord_qty !== '' && data.ord_qty > 0) {
-                    list.push(data.part_code + gu4 + data.ord_qty +gu4 + data.spec + gu4 + data.direction + gu4 + data.remark);
+                    list.push(data.part_code + gu4 + data.ord_qty + gu4 + data.remark);
+
                 } else {
                     list2.push(data.part_code);
                 }
@@ -190,7 +176,8 @@ function add_modal1_btn() {
                                     if (main_data.check === "I") {
                                         get_btn(1);
                                     } else {
-                                        get_btn_post($("#mes_grid").getGridParam('page'));
+                                        $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
+                                        $('#mes_grid2').trigger("reloadGrid"); //화면 리로딩
                                     }
                                 }
                                 $('#mes_add_grid').jqGrid('clearGridData');
@@ -289,7 +276,7 @@ function datepicker_modal1() {
 }
 
 function selectBox_modal1() {
-    $('#part_type_select').select2();
+    select_makes_sub('#part_type_select', "/sysPartTypeGet","part_type" ,"part_type_name",{keyword:''},'Y'); //셀렉트박스 초기값할당
   }
 
 function jqGrid_modal1() { // 메인 그리드 설정
@@ -300,11 +287,11 @@ function jqGrid_modal1() { // 메인 그리드 설정
         caption: "발주추가 | MES",
         colNames: [ '구분', '품번', '품명', '규격', '단위'],
         colModel: [
-            {name: '', index: '',key:true, sortable: false},
-            {name: '', index: '', sortable: false},
-            {name: '', index: '', sortable: false},
-            {name: '', index: '', sortable: false},
-            {name: '', index: '', sortable: false}
+            {name: 'part_type_name', index: 'part_type_name', sortable: false},
+            {name: 'part_code',key:true, index: 'part_code', sortable: false},
+            {name: 'part_name', index: 'part_name', sortable: false},
+            {name: 'spec', index: 'spec', sortable: false},
+            {name: 'unit_name', index: 'unit_name', sortable: false}
         ],
         autowidth: true,
         height: 200,
@@ -321,15 +308,101 @@ function jqGrid_modal1() { // 메인 그리드 설정
         datatype: "local",
         multiselect: true,
         caption: "발주추가 | MES",
-        colNames: [ '구분', '품번', '품명', '규격', '단위','발주수량','비고'],
+        colNames: ['구분', '품번', '품명', '규격', '단위','발주수량','비고'],
         colModel: [
-            {name: 'part_code', index: 'part_code', width: 80,key:true, sortable: false,fixed:true},
-            {name: 'part_name', index: 'part_name', width: 100, sortable: false,fixed:true},
-            {name: 'spec', index: 'spec', width: 120, sortable: false,fixed:true},
+            {name: 'part_type_name', index: 'part_type_name', width: 80, sortable: false,fixed:true},
+            {name: 'part_code', index: 'part_code', width: 100,key:true, sortable: false,fixed:true},
+            {name: 'part_name', index: 'part_name', width: 120, sortable: false,fixed:true},
+            {name: 'spec', index: 'spec', width: 100, sortable: false,fixed:true},
             {name: 'unit_name', index: 'unit_name', width: 100, sortable: false,fixed:true},
-            {name: 'ord_qty', index: 'ord_qty', width: 100, sortable: false,align: 'right',formatter:'integer',fixed:true},
-            {name: 'direction', index: 'direction', width: 80, sortable: false},
-            {name: 'remark', index: 'remark', width: 100, sortable: false}
+            {name: 'ord_qty', index: 'ord_qty', width: 80, sortable: false,align: 'right',formatter:'integer',fixed:true,
+                editable: true,
+                editoptions: {
+                    dataEvents: [
+                        {
+                            type: 'focus',
+                            fn: function (e) {
+                                if (e.target.value === '0'){
+                                    e.target.value = '';
+                                }
+
+                                if(main_data.status === 'Y') {
+                                    $(e.target).prop('readonly',true);
+                                }else {
+                                    $(e.target).prop('readonly',false);
+                                }
+
+                                $(e.target).attr('autocomplete', 'off');
+                            }
+                        },
+                        {
+                            type: 'keydown',
+                            fn: function (e) {
+                                if (e.keyCode === 13) {
+                                    var row = $(e.target).closest('tr.jqgrow');
+                                    var value = e.target.value;
+                                    if (isNaN(value)){
+                                        alert("숫자만 입력가능합니다.");
+                                        e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
+                                        $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
+                                        return false;
+                                    } else if(parseFloat_change(value) <= 0) {
+                                        alert("발주수량이 0보다 커야합니다.");
+                                        e.target.value = '';
+                                        $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
+                                        return false;
+                                    }
+                                    $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
+                                }
+                            }
+
+                        },
+                        {
+                            type: 'focusout',
+                            fn: function (e) {
+                                var row = $(e.target).closest('tr.jqgrow');
+                                var value = e.target.value;
+                                if (isNaN(value)){
+                                    alert("숫자만 입력가능합니다.");
+                                    e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
+                                    $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
+                                    return false;
+                                } else if(parseInt_change(value) <= 0) {
+                                    alert("발주수량이 0보다 커야합니다.");
+                                    e.target.value = '';
+                                    $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
+                                    return false;
+                                }
+                                $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
+                            }
+                        }
+                    ]
+                }
+            },
+            {name: 'remark', index: 'remark', width: 100, sortable: false ,editable: true,
+                editoptions: {
+                    dataEvents: [
+                        {
+                            type: 'focus',
+                            fn: function (e) {
+                                if(main_data.status === 'Y') {
+                                    $(e.target).prop('readonly',true);
+                                }else {
+                                    $(e.target).prop('readonly',false);
+                                }
+
+                                $(e.target).attr('autocomplete','off');
+                            }
+                        },
+                        {
+                            type: 'focusout',
+                            fn: function() {
+                                $("#mes_add_grid2").jqGrid("saveCell",saverow, savecol);
+                            }
+                        }
+                    ]
+                }
+            }
         ],
         autowidth: true,
         height: 200,
@@ -386,3 +459,18 @@ function modal_make1() {
 }
 
 
+function trigger_false (){
+    $("#delivery_place").prop("readonly",false).trigger("change");
+    $("#datepicker3").prop("disabled",false).trigger("change");
+    $("#datepicker4").prop("disabled",false).trigger("change");
+    $("#remark").prop("disabled",false).trigger("change");
+    $("#part_type_select").prop("disabled",false).trigger("change");
+}
+
+function trigger_true(){
+    $("#delivery_place").prop("readonly",true).trigger("change");
+    $("#datepicker3").prop("disabled",true).trigger("change");
+    $("#datepicker4").prop("disabled",true).trigger("change");
+    $("#remark").prop("disabled",true).trigger("change");
+    $("#part_type_select").prop("disabled",true).trigger("change");
+}

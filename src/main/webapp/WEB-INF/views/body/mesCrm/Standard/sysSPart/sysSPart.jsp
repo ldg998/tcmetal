@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<script type="text/javascript" src="/data-component/mesCRM/mesCrm/crm_1/crm_1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesCRM/standard/sysSPart/sysSPart.js" charset="UTF-8"></script>
 
 <div class="main-content-inner">
     <div class="page-content">

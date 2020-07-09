@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script type="text/javascript" src="/static/data-component/mesQMS/Qms/dumi/qms_7_modal1.js"
+<script type="text/javascript" src="/data-component/mesQMS/Shipment/qmsMoldWash/qmsMoldWash_modal1.js"
         charset="UTF-8"></script>
 
 <style>

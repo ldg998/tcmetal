@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="/static/ui-component/assets/js/jquery.fileDownload.js"></script>
-<script type="text/javascript" src="/static/data-component/mesQMS/Qms/dumi/qms_7.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesQMS/Shipment/qmsMoldWash/qmsMoldWash.js" charset="UTF-8"></script>
 
 
 <style>

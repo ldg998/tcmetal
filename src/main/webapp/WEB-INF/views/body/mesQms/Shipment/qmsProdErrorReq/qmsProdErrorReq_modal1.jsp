@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script type="text/javascript" src="/data-component/mesQMS/Qms/dumi/qms_8_modal1.js"
+<script type="text/javascript" src="/data-component/mesQMS/Shipment/qmsProdErrorReq/qmsProdErrorReq_modal1.js"
         charset="UTF-8"></script>
 <style>
     .grid_lee {

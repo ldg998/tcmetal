@@ -13,22 +13,11 @@ public class PopDumiController {
     public String pop_2(){
         return "mesPop/Dumi/dumi/pop_2";
     }
-    @RequestMapping("pop_3")
-    public String pop_3(){
-        return "mesPop/Dumi/dumi/pop_3";
-    }
     @RequestMapping("pop_4")
     public String pop_4(){
         return "mesPop/Dumi/dumi/pop_4";
     }
-    @RequestMapping("pop_5")
-    public String pop_5(){
-        return "mesPop/Dumi/dumi/pop_5";
-    }
-    @RequestMapping("pop_6")
-    public String pop_6(){
-        return "mesPop/Dumi/dumi/pop_6";
-    }
+
 
 
 

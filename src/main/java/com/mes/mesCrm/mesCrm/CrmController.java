@@ -16,8 +16,8 @@ public class CrmController {
         return "mesCrm/mesCrm/crmPlan/crmPlan";
     }
 
-    @RequestMapping(value = "/crmWorkList")
-    public String crmWorkList() { return "mesCrm/mesCrm/crmWorkList/crmWorkList"; }
+    @RequestMapping(value = "/crmPerform")
+    public String crmPerform() { return "mesCrm/mesCrm/crmPerform/crmPerform"; }
 
     @RequestMapping(value = "/crmMoney")
     public String crmMoney() { return "mesCrm/mesCrm/crmMoney/crmMoney"; }
@@ -29,25 +29,32 @@ public class CrmController {
     public String crmCalendar(){return "mesCrm/mesCrm/crmCalendar/crmCalendar";}
 
     @RequestMapping(value = "/sysSPart")
-    public String sysSPart(){return "mesCrm/mesCrm/sysSPart/sysSPart";}
+    public String sysSPart(){return "mesCrm/Standard/sysSPart/sysSPart";}
     @RequestMapping(value = "/sysERate")
-    public String sysERate(){return "mesCrm/mesCrm/sysERate/sysERate";}
+    public String sysERate(){return "mesCrm/Standard/sysERate/sysERate";}
     @RequestMapping(value = "/sysWood")
-    public String sysWood(){return "mesCrm/mesCrm/sysWood/sysWood";}
+    public String sysWood(){return "mesCrm/Standard/sysWood/sysWood";}
+
+
     @RequestMapping(value = "/crm_4")
     public String crm_4(){return "mesCrm/mesCrm/dumi/crm_4";}
     @RequestMapping(value = "/crm_5")
     public String crm_5(){return "mesCrm/mesCrm/dumi/crm_5";}
-    @RequestMapping(value = "/crm_6")
-    public String crm_6(){return "mesCrm/mesCrm/dumi/crm_6";}
+
+    @RequestMapping(value = "/crmShipping")
+    public String crmShipping(){return "mesCrm/mesCrm/crmShipping/crmShipping";}
+
     @RequestMapping(value = "/crm_7")
     public String crm_7(){return "mesCrm/mesCrm/dumi/crm_7";}
-    @RequestMapping(value = "/crm_8")
-    public String crm_8(){return "mesCrm/mesCrm/dumi/crm_8";}
-    @RequestMapping(value = "/crm_9")
-    public String crm_9(){return "mesCrm/mesCrm/dumi/crm_9";}
-    @RequestMapping(value = "/crm_10")
-    public String crm_10(){return "mesCrm/mesCrm/dumi/crm_10";}
+
+    @RequestMapping(value = "/wmsInvoiceForm")
+    public String wmsInvoiceForm(){return "mesCrm/mesCrm/wmsInvoiceForm/wmsInvoiceForm";}
+
+    @RequestMapping(value = "/wmsInvoice")
+    public String wmsInvoice(){return "mesCrm/mesCrm/wmsInvoice/wmsInvoice";}
+
+    @RequestMapping(value = "/wmsOutOrder")
+    public String wmsOutOrder(){return "mesCrm/mesCrm/wmsOutOrder/wmsOutOrder";}
 
 
 //    @RequestMapping(value = "/crmProdOrder")

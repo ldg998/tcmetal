@@ -49,7 +49,6 @@ var array =
         //입출고관리
         {code: "wmsIn", title: '출하관리', sub: '입출고관리', name: '제품입고관리'},
         {code: "wmsInList", title: '출하관리', sub: '입출고관리', name: '제품입고현황'},
-        {code: "wmsOutOrder", title: '출하관리', sub: '입출고관리', name: '제품출고관리'},
         {code: "wmsOutList", title: '출하관리', sub: '입출고관리', name: '제품출고현황'},
         {code: "wmsOutReady", title: '출하관리', sub: '입출고관리', name: '제품 미출고 현황'},
         {code: "wmsStockReady", title: '출하관리', sub: '입출고관리', name: '제품재고현황'},
@@ -86,12 +85,11 @@ var array =
         {code: "crm_7", title: '영업관리', sub: '수주관리', name: '운송비용현황'},
         {code: "crm_8", title: '영업관리', sub: '수주관리', name: '인보이스양식'},
         {code: "crm_9", title: '영업관리', sub: '수주관리', name: '인보이스등록'},
-        {code: "crm_10", title: '영업관리', sub: '수주관리', name: '출고지시서'},
+        {code: "wmsOutOrder", title: '영업관리', sub: '수주관리', name: '출고지시서'},
         //영업관리
         {code: "crmOrderRecp", title: '영업관리', sub: '영업관리', name: '수주정보관리'},
         {code: "crmWorkList", title: '영업관리', sub: '영업관리', name: '실적현황'},
         {code: "sysSPartCost", title: '영업관리', sub: '영업관리', name: '제품단가관리'},
-        {code: "wmsoutOrd", title: '영업관리', sub: '영업관리', name: '출고지시서'},
         //납기관리
         // {code: "", title: '영업관리', sub: '납기관리', name: '납기관리'},
         // {code: "", title: '영업관리', sub: '납기관리', name: '납기현황'},

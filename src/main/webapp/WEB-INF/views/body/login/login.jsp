@@ -53,7 +53,7 @@
     <div class="login-header login-caret">
         <div class="login-content">
             <a href="index.html" class="logo">
-                <img src="/ui-component/assets/images/tclogo2.png" width="400" alt="" />
+                <img src="/ui-component/assets/images/tclogo3.png" width="400" alt="" />
             </a>
 <%--            <p class="description"> 태창금속산업(주) MES</p>--%>
             <div class="login-progressbar-indicator">

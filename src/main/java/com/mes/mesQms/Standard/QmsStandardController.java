@@ -14,4 +14,9 @@ public class QmsStandardController {
 
     @RequestMapping(value = "/qmsErrorType")
     public String qmsErrorType() { return "mesQms/Standard/qmsErrorType/qmsErrorType"; }
+
+    @RequestMapping(value = "/qmsMeltSpec")
+    public String qmsMeltSpec() { return "mesQms/Standard/qmsMeltSpec/qmsMeltSpec"; }
+
+
 }

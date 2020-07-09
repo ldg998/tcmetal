@@ -50,8 +50,6 @@
                     </tbody>
                 </table>
             </div>
-
-
         </div>
 
         <div class="clearfix">
@@ -59,7 +57,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <a id="get_btn"
                        class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1)">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="test()">
                                 <span>
                                     <i class="fa fa-search bigger-110 blue"></i>
                                     <span>조회</span>
@@ -74,9 +72,9 @@
                                         </span>
                     </a>
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1)">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="">
                                 <span>
-                                    <span>작업지시현황</span>
+                                    <span>인쇄</span>
                                 </span>
                     </a>
                 </div>
@@ -90,73 +88,11 @@
             </div>
         </div>
 
-
-        <hr/>
-
-        <div class="col-lg-12 padding0">
-            <div class="col-lg-4 col-md-12  padding0 ">
-                <table class="table wt-100 margin-bottom-3 board_line">
-                    <tbody>
-                    <tr>
-                        <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">공정</td>
-                        <td class="wt-px-150 border_no">
-                            <select id="select2" class="form-control h-25 condition_main" name="keyword2"
-                                    style="width: 100%">
-                                <option value="">전체</option>
-                                <option value="0"></option>
-                                <option value="1"></option>
-                            </select>
-                        </td>
-
-                        <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">세부공정</td>
-                        <td class="wt-px-150 border_no">
-                            <select id="select3" class="form-control h-25 condition_main" name="keyword2"
-                                    style="width: 100%">
-                                <option value="">전체</option>
-                                <option value="0"></option>
-                                <option value="1"></option>
-                            </select>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
-        </div>
-
-        <div class="clearfix">
-            <div class="pull-left tableTools-container">
-                <div class="dt-buttons btn-overlap btn-group">
-                    <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1)">
-                                <span>
-                                    <i class="fa fa-search bigger-110 blue"></i>
-                                    <span>조회</span>
-                                </span>
-                    </a>
-
-                    <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1)">
-                                <span>
-                                    <span>인쇄</span>
-                                </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 table-responsive">
-                <table id="mes_grid2"></table>
-                <div id="mes_grid2_pager"></div>
-            </div>
-        </div>
-
     </div>
 
 </div>
 
-
+<%@include file="popPlan_modal1.jsp"%>
 
 
 

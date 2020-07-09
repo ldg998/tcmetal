@@ -42,6 +42,9 @@ public class PopStatusController {
  @RequestMapping("sysSPartWood")
     public String sysSPartWood() { return  "mesPop/PopStatus/sysSPartWood/sysSPartWood";}
 
+ @RequestMapping("popLotTracking")
+    public String popLotTracking() { return  "mesPop/PopStatus/popLotTracking/popLotTracking";}
+
 
 
 }

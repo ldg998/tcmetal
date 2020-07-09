@@ -20,11 +20,16 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정
     suppModal_start();
-
+    modal_start1();
+    selectBox();
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////
 // 조회버튼
+function test(){
+    $('#addDialog').dialog('open');
+}
+
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
     main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
@@ -204,3 +209,7 @@ function jqGrid_main() {
     }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
 }
 
+function selectBox() {
+    $('#select1').select2();
+
+}

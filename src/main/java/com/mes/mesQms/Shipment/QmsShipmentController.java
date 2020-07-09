@@ -6,21 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class QmsShipmentController {
 
-    @RequestMapping(value = "/qmsProd")
-    public String qmsProd() { return "mesQms/Shipment/qmsProd/qmsProd"; }
-
-    @RequestMapping(value = "/qmsProdList")
-    public String qmsProdList() { return "mesQms/Shipment/qmsProdList/qmsProdList"; }
-
-    @RequestMapping(value = "/qmsProdErrorMan")
-    public String qmsProdErrorMan() { return "mesQms/Shipment/qmsProdErrorMan/qmsProdErrorMan"; }
-
+    @RequestMapping(value = "/qmsInspMachine")
+    public String qmsInspMachine() { return "mesQms/Shipment/qmsInspMachine/qmsInspMachine"; }
+    @RequestMapping(value = "/qmsMoldWash")
+    public String qmsMoldWash() { return "mesQms/Shipment/qmsMoldWash/qmsMoldWash"; }
     @RequestMapping(value = "/qmsProdErrorList")
     public String qmsProdErrorList() { return "mesQms/Shipment/qmsProdErrorList/qmsProdErrorList"; }
-
-    @RequestMapping(value ="/qmsProdMRB")
-    public String qmsProdMRB() { return "mesQms/Shipment/qmsProdMRB/qmsProdMRB"; }
-
-    @RequestMapping(value = "/qmsProdStd")
-    public String qmsProdStd() { return "mesQms/Shipment/qmsProdStd/qmsProdStd"; }
+    @RequestMapping(value = "/qmsProdErrorReq")
+    public String qmsProdErrorReq() { return "mesQms/Shipment/qmsProdErrorReq/qmsProdErrorReq"; }
+    @RequestMapping(value = "/qmsProdHistory")
+    public String qmsProdHistory() { return "mesQms/Shipment/qmsProdHistory/qmsProdHistory"; }
+    @RequestMapping(value = "/qmsProdList")
+    public String qmsProdList() { return "mesQms/Shipment/qmsProdList/qmsProdList"; }
 }

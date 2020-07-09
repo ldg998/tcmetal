@@ -48,6 +48,9 @@ function add_btn() {
         $('#part_type_modal1').val(select).trigger('change');
         }
 
+        $("#unit_code_modal1 option:eq(0)").prop("selected", true).trigger('change');
+        $("#loc_code_modal1 option:eq(0)").prop("selected", true).trigger('change');
+
         $("#addDialog").dialog('open'); //숨겨진 모달 켜기
 
     } else {

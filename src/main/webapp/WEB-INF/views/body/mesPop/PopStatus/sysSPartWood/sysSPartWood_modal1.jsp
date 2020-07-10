@@ -10,7 +10,7 @@
 
 </style>
 
-<div id="addDialog" title="제품단가관리" style="display: none">
+<div id="addDialog" title="고객지급품관리" style="display: none">
     <div class="profile-user-info profile-user-info-striped" style="border-bottom: none">
 
         <div class="profile-info-row">

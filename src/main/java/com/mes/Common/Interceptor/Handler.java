@@ -50,14 +50,9 @@ public class Handler extends HandlerInterceptorAdapter {
 
         Session userData = (Session) session.getAttribute("userData");
         response.setHeader("pragma", "No-cache");
-
         response.setHeader("Cache-Control", "no-cache");
-
         response.addHeader("Cache-Control", "No-store");
-
-
         response.setDateHeader("Expires", 1L);
-
         try {
             if (ObjectUtils.isEmpty(userData)) {
                 if (!request.getServletPath().equals("/")) {

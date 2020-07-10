@@ -26,6 +26,9 @@ $(document).ready(function () {
 
 
 ////////////////////////////클릭 함수/////////////////////////////////////
+
+
+
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
     main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');

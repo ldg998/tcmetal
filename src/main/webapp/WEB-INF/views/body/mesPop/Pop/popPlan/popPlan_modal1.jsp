@@ -10,7 +10,7 @@
 
 </style>
 
-<div id="addDialog" title="제품단가관리" style="display: none">
+<div id="addDialog" title="생산계획관리" style="display: none">
 
 
     <!-- button div 왼쪽으로 float 정렬 -->

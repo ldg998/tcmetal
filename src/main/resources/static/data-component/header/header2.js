@@ -43,7 +43,10 @@ var array =
         {code: "wmsInList", title: '출하관리', sub: '입출고관리', name: '제품입고 현황'},
         {code: "wmsOutList", title: '출하관리', sub: '입출고관리', name: '제품출고 현황'},
         {code: "wmsOutReady", title: '출하관리', sub: '입출고관리', name: '제품 미출고 현황'},
-        {code: "wmsStockRev", title: '출하관리', sub: '입출고관리', name: '제품재고 현황'},
+    //재고관리
+        {code: "wmsStockSum", title: '출하관리', sub: '입출고관리', name: '제품재고 현황'},
+        {code: "wmsStockSumMonth", title: '출하관리', sub: '입출고관리', name: '제품재고 월원장'},
+        {code: "wmsStockRev", title: '출하관리', sub: '입출고관리', name: '제품재고 조정'},
         {code: "wmsStockRevList", title: '출하관리', sub: '입출고관리', name: '제품재고 조정현황'},
 
 

@@ -5,31 +5,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class WmsStockController {
-    @RequestMapping(value = "/wmsStock")
-    public String wmsStock() {
-        return "mesWms/Stock/wmsStock/wmsStock";
-    }
-    @RequestMapping(value = "/wmsStockIOSumDay")
-    public String wmsStockIOSumDay() {
-        return "mesWms/Stock/wmsStockIOSumDay/wmsStockIOSumDay";
-    }
+
     @RequestMapping(value = "/wmsStockIOSumMonth")
     public String wmsstockiosummonth() {
         return "mesWms/Stock/wmsStockIOSumMonth/wmsStockIOSumMonth";
     }
     @RequestMapping(value = "/wmsStockList")
     public String wmsStockList() { return  "mesWms/Stock/wmsStockList/wmsStockList"; }
-    @RequestMapping(value = "/wmsStockReady")
-    public String wmsStockReady() {
-        return "mesWms/Stock/wmsStockReady/wmsStockReady";
+
+
+    @RequestMapping(value = "/wmsStockSum")
+    public String wmsStockSum() {
+        return "mesWms/Stock/wmsStockSum/wmsStockSum";
     }
-    @RequestMapping(value = "/wmsSumMonth")
-    public String wmsSumMonth() {
-        return "mesWms/Stock/wmsSumMonth/wmsSumMonth";
+
+    @RequestMapping(value = "/wmsStockSumMonth")
+    public String wmsStockSumMonth() {
+        return "mesWms/Stock/wmsStockSumMonth/wmsStockSumMonth";
     }
-    @RequestMapping(value = "/wmsSumRev")
-    public String wmsSumRev() {
-        return "mesWms/Stock/wmsSumRev/wmsSumRev";
+
+    @RequestMapping(value = "/wmsStockRev")
+    public String wmsStockRev() {
+        return "mesWms/Stock/wmsStockRev/wmsStockRev";
+    }
+
+    @RequestMapping(value = "/wmsStockRevList")
+    public String wmsStockRevList() {
+        return "mesWms/Stock/wmsStockRevList/wmsStockRevList";
     }
 
 

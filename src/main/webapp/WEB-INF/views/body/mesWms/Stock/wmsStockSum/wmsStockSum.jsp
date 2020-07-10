@@ -2,8 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
-<script type="text/javascript" src="/data-component/mesWMS/Stock/wmsSumMonth/wmsSumMonth.js" charset="UTF-8"></script>
-
+<script type="text/javascript" src="/data-component/mesWMS/Stock/wmsStockSum/wmsStockSum.js" charset="UTF-8"></script>
 <style>
     #gview_mes_grid>.ui-jqgrid-hdiv {
         line-height: 0 !important;
@@ -25,7 +24,6 @@
         border-bottom: 1px solid #E1E1E1 !important;
     }
 </style>
-
 <div id="progressbar1" data-value="0"></div>
 
 <div class="main-content-inner">
@@ -35,16 +33,16 @@
             <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회일자</td>
-                    <td class="wt-px-200">
+                    <td class="wt-px-75 td-title t-align-c padding-a-0">조회일자</td>
+                    <td class="wt-px-125">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="work_date" id="datepicker"
                                    class="form-control h-25 condition_main" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
-                    <td class="wt-px-200">
+                    <td class="wt-px-75 td-title t-align-c padding-a-0">업체</td>
+                    <td class="wt-px-125">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="supp_name" class="form-control h-25 condition_main"
                                    id="supp_name_main" onclick="supp_btn('A');" readonly>
@@ -53,9 +51,9 @@
                             <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                         </div>
                     </td>
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-75 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-100">
-                       <select id="1_select" style="width: 100%">
+                       <select id="1_select" style="width: 100%;">
                            <option value="">전체</option>
                            <option></option>
                            <option></option>

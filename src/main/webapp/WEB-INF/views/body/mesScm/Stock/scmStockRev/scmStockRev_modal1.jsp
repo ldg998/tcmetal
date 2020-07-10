@@ -41,15 +41,9 @@
             </div>
         </div>
 
-        <div class="profile-info-row">
-            <div class="profile-info-name">공급업체</div>
-            <div class="profile-info-value">
-                <input name="supp_name" type="text" class="form-control keyword modal_value" style="width: 100%" autocomplete="off">
-            </div>
-        </div>
 
         <div class="profile-info-row">
-            <div class="profile-info-name">총정전 재고</div>
+            <div class="profile-info-name">조정전 재고</div>
             <div class="profile-info-value">
                 <input name="stock_qty" type="text" class="form-control keyword modal_value" style="width: 100%" autocomplete="off">
             </div>

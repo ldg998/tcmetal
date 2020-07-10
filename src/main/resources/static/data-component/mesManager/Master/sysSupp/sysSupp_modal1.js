@@ -47,7 +47,7 @@ function modal_make1() {
 
     $("#addDialog").dialog({
         modal: true,
-        width: 700,
+        width: 600,
         height: 'auto',
         autoOpen: false,
         resizable: false,

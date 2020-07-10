@@ -2,7 +2,6 @@
 function modal_start1() {
     msg_get_modal1(); //모달 메세지 설정
     modal_make1(); // 모달생성
-    add_click_btn(); //키설정
 }
 
 

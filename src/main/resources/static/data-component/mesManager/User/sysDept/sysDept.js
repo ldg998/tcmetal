@@ -118,7 +118,7 @@ function jqGrid_main() {
             {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
             {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
         ],
-        caption: "권한그룹관리 | MES",
+        caption: "부서정보 | MES",
         autowidth: true,
         height: 600,
         pager: '#mes_grid_pager',

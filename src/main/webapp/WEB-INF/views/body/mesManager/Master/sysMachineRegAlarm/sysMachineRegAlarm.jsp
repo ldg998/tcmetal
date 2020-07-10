@@ -2,25 +2,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<script type="text/javascript" src="/data-component/mesManager/Master/sysMachineRegAlarm/sysMachineRegAlarm.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesManager/Master/sysMachineRegAlarm/sysMachineRegAlarm.js"
+        charset="UTF-8"></script>
 <style>
-    #mes_modal1_grid1_pager #pg_mes_modal1_grid1_pager table{
-        table-layout:auto !important;
+    #mes_modal1_grid1_pager #pg_mes_modal1_grid1_pager table {
+        table-layout: auto !important;
     }
 </style>
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-15 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-50 t-align-c td-title padding-a-0">구분</td>
                     <td class="wt-px-100">
-                        <select name="keyword" id="select" class="form-control keyword condition_main" style="width:100%">
+                        <select name="keyword" id="select" class="form-control keyword condition_main"
+                                style="width:100%">
                             <option value="">중간점검(폐기)</option>
                         </select>
                     </td>
-
+                    <td></td>
                 </tr>
                 </tbody>
             </table>
@@ -43,7 +45,8 @@
                             </span>
                     </a>
                     <a class="dt-button btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="delete_btn()">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
+                       onclick="delete_btn()">
                             <span>
                                 <i class="fa fa-trash bigger-110 blue"></i>
                                 <span>삭제</span>

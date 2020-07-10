@@ -9,7 +9,7 @@ function modal_start1() {
     msg_get_modal1();
     selectBox_modal1();
     modal_make1();
-    add_click_btn();
+
 }
 
 

@@ -26,7 +26,10 @@ $(document).ready(function () {
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-
+function test(){
+    $('#addDialog').dialog('open');
+    jqGridResize("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
+}
 function get_btn(page) {
     // main_data.send_data = value_return(".condition_main");
     // main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');

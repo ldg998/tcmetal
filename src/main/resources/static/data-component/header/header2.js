@@ -7,169 +7,109 @@ var array =
         {code: "sysAuthProgram", title: '관리자', sub: '권한관리', name: '권한그룹별 프로그램관리'},
 
         //사용자관리
-        {code: "sysDept", title: '관리자', sub: '사용자관리', name: '부서정보'},
+        {code: "sysDept", title: '관리자', sub: '사용자관리', name: '부서관리'},
         {code: "sysUser", title: '관리자', sub: '사용자관리', name: '사용자관리'},
+        {code: "sysCommon", title: '관리자', sub: '사용자관리', name: '공통코드관리'},
+        {code: "sysMsg", title: '관리자', sub: '사용자관리', name: '메세지관리'},
+        {code: "sysBoard", title: '관리자', sub: '사용자관리', name: '게시판관리'},
+        {code: "sysSupp", title: '관리자', sub: '사용자관리', name: '업체코드관리'},
+        {code: "sysProdLine", title: '관리자', sub: '사용자관리', name: '라인정보'},
+        {code: "sysMachineRegAlarm", title: '관리자', sub: '사용자관리', name: '예방점검알림설정'},
+        //{code: "sysCargo", title: '관리자', sub: '사용자관리', name: '창고관리'},
 
-        //마스터관리
-        {code: "sysCommon", title: '관리자', sub: '마스터관리', name: '공통코드관리'},
-        {code: "sysMsg", title: '관리자', sub: '마스터관리', name: '메세지관리'},
-        {code: "sysBoard", title: '관리자', sub: '마스터관리', name: '게시판관리'},
-        {code: "sysSupp", title: '관리자', sub: '마스터관리', name: '업체정보'},
-        {code: "sysProdLine", title: '관리자', sub: '마스터관리', name: '라인정보'},
-        {code: "sysCargo", title: '관리자', sub: '마스터관리', name: '창고관리'},
-        {code: "sysMachineRegAlarm", title: '관리자', sub: '마스터관리', name: '예방점검알림설정'},
+    //자재관리 -기준정보관리
+        {code: "sysPart", title: '자재관리', sub: '기준정보관리', name: '품목정보관리'},
+        {code: "sysLoc", title: '자재관리', sub: '기준정보관리', name: '로케이션관리'},
+        {code: "sysPartCost", title: '자재관리', sub: '기준정보관리', name: '단가관리'},
 
-        // 자재관리-기준정보
-        {code: "sysPart", title: '자재관리', sub: '기준정보', name: '품목정보'},
-        {code: "sysLoc", title: '자재관리', sub: '기준정보', name: '로케이션'},
-        {code: "sysPartCost", title: '자재관리', sub: '기준정보', name: '자재관리'},
-
-
-        //발주관리
-        {code: "scmOrder", title: '자재관리', sub: '발주관리', name: '발주관리'},
+    //발주관리
+        {code: "scmOrder", title: '자재관리', sub: '발주관리', name: '발주등록'},
         {code: "scmOrderList", title: '자재관리', sub: '발주관리', name: '발주현황'},
 
-        //자재입출고
-        {code: "scmIn", title: '자재관리', sub: '자재입출고', name: '자재입고'},
-        {code: "scmInList", title: '자재관리', sub: '자재입출고', name: '자재입고현황'},
-        {code: "scmOut", title: '자재관리', sub: '자재입출고', name: '자재출고'},
-        {code: "scmOutList", title: '자재관리', sub: '자재입출고', name: '자재출고현황'},
-        {code: "scmIOList", title: '자재관리', sub: '자재입출고', name: '자재입출고현황'},
+    //입/출고관리
+        {code: "scmIn", title: '자재관리', sub: '입/출고관리', name: '자재입고'},
+        {code: "scmInList", title: '자재관리', sub: '입/출고관리', name: '자재입고 현황'},
+        {code: "scmOut", title: '자재관리', sub: '입/출고관리', name: '자재출고'},
+        {code: "scmOutList", title: '자재관리', sub: '입/출고관리', name: '자재출고 현황'},
+        {code: "scmIOList", title: '자재관리', sub: '입/출고관리', name: '자재입출고 현황'},
 
-        //재고관리
-        {code: "scmStockList", title: '자재관리', sub: '재고관리', name: '재고현황'},
-        {code: "scmStockSumMonth", title: '자재관리', sub: '재고관리', name: '월원장'},
-        {code: "scmStockRev", title: '자재관리', sub: '재고관리', name: '재고조정'},
-        {code: "scmStockRevList", title: '자재관리', sub: '재고관리', name: '재고조정현황'},
+    //재고관리
+        {code: "scmStockList", title: '자재관리', sub: '재고관리', name: '자재재고 현황'},
+        {code: "scmStockSumMonth", title: '자재관리', sub: '재고관리', name: '자재재고 월원장'},
+        {code: "scmStockRev", title: '자재관리', sub: '재고관리', name: '자재재고 조정'},
+        {code: "scmStockRevList", title: '자재관리', sub: '재고관리', name: '자재재고조정 현황'},
 
-
-        //출하관리-기준정보
-       // {code: "", title: '출하관리', sub: '기준정보', name: ''},
-
-        //입출고관리
-        {code: "wmsIn", title: '출하관리', sub: '입출고관리', name: '제품입고관리'},
-        {code: "wmsInList", title: '출하관리', sub: '입출고관리', name: '제품입고현황'},
-        {code: "wmsOutList", title: '출하관리', sub: '입출고관리', name: '제품출고현황'},
+    //출하관리 - 입출고관리
+        {code: "wmsInList", title: '출하관리', sub: '입출고관리', name: '제품입고 현황'},
+        {code: "wmsOutList", title: '출하관리', sub: '입출고관리', name: '제품출고 현황'},
         {code: "wmsOutReady", title: '출하관리', sub: '입출고관리', name: '제품 미출고 현황'},
-        {code: "wmsStockReady", title: '출하관리', sub: '입출고관리', name: '제품재고현황'},
-        {code: "wmsSumMonth", title: '출하관리', sub: '입출고관리', name: '제품재고월원장'},
-        {code: "wmsSumRev", title: '출하관리', sub: '재고관리', name: '제품재고조정'},
+        {code: "wmsStockRev", title: '출하관리', sub: '입출고관리', name: '제품재고 현황'},
+        {code: "wmsStockRevList", title: '출하관리', sub: '입출고관리', name: '제품재고 조정현황'},
 
 
+     //영업관리 - 기준정보관리
+        {code: "sysSPart", title: '영업관리', sub: '기준정보관리', name: '제품품목정보관리'},
+        {code: "sysERate", title: '영업관리', sub: '기준정보관리', name: '환율관리'},
+        {code: "sysWood", title: '영업관리', sub: '기준정보관리', name: '목재단가관리'},
 
-        // //운송비관리
-        // {code: "", title: '출하관리', sub: '운송비관리', name: '운송비등록'},
-        // {code: "", title: '출하관리', sub: '운송비관리', name: '운송비현황'},
-        //
-        // //인보이스
-        // {code: "", title: '출하관리', sub: '인보이스', name: '인보이스등록'},
-        // {code: "", title: '출하관리', sub: '인보이스', name: '인보이스현황'},
-        //
-        // //패킹리스트
-        // {code: "", title: '출하관리', sub: '패킹리스트', name: '패킹리스트등록'},
-        // {code: "", title: '출하관리', sub: '패킹리스트', name: '패킹리스트현황'},
-
-
-
-
-        //영업관리-기준정보
-        {code: "sysSPart", title: '영업관리', sub: '기준정보', name: '품목정보관리'},
-        {code: "crm_1", title: '영업관리', sub: '기준정보', name: '제품품목'},
-        {code: "crm_2", title: '영업관리', sub: '기준정보', name: '환율관리'},
-        {code: "crm_3", title: '영업관리', sub: '기준정보', name: '목재단가관리'},
-        {code: "crm_4", title: '영업관리', sub: '기준정보', name: '수주등록'},
-
-        //수주관리
-        {code: "crm_5", title: '영업관리', sub: '수주관리', name: '제품단가관리'},
-        {code: "crm_6", title: '영업관리', sub: '수주관리', name: '운송비용관리'},
-        {code: "crm_7", title: '영업관리', sub: '수주관리', name: '운송비용현황'},
-        {code: "crm_8", title: '영업관리', sub: '수주관리', name: '인보이스양식'},
-        {code: "crm_9", title: '영업관리', sub: '수주관리', name: '인보이스등록'},
+    //수주관리
+        {code: "crmOrderRecp", title: '영업관리', sub: '수주관리', name: '수주정보관리'},
+        {code: "crmPerform", title: '영업관리', sub: '수주관리', name: '실적현황'},
+        {code: "crmShipping", title: '영업관리', sub: '수주관리', name: '운송비용관리'},
         {code: "wmsOutOrder", title: '영업관리', sub: '수주관리', name: '출고지시서'},
-        //영업관리
-        {code: "crmOrderRecp", title: '영업관리', sub: '영업관리', name: '수주정보관리'},
-        {code: "crmWorkList", title: '영업관리', sub: '영업관리', name: '실적현황'},
-        {code: "sysSPartCost", title: '영업관리', sub: '영업관리', name: '제품단가관리'},
-        //납기관리
-        // {code: "", title: '영업관리', sub: '납기관리', name: '납기관리'},
-        // {code: "", title: '영업관리', sub: '납기관리', name: '납기현황'},
-        //도면과리
+        {code: "wmsInvoiceForm", title: '영업관리', sub: '수주관리', name: '인보이스 양식'},
+        {code: "wmsInvoice", title: '영업관리', sub: '수주관리', name: '인보이스 관리'},
 
-        //대책서관리(클레임)
-        // {code: "", title: '영업관리', sub: '대책서관리', name: '문제점접수'},
-        // {code: "", title: '영업관리', sub: '대책서관리', name: '진행상황관리'},
-
-
-
-        //품질관리 -기준정보
-        {code: "qmsTestItem", title: '품질관리', sub: '기준정보', name: '검사항목관리'},
-        // {code: "", title: '품질관리', sub: '기준정보', name: '용해규격관리'},
-
-
-
+    //품질관리 - 기중정보관리
+        {code: "qmsTestItem", title: '품질관리', sub: '기중정보관리', name: '검사항목 관리'},
+        {code: "qmsMeltSpec", title: '품질관리', sub: '기중정보관리', name: '용해규격관리'},
+    //수입검사
         {code: "qmsRecvList", title: '품질관리', sub: '수입검사', name: '수입검사현황'},
-        {code: "qmsRecvErrorMan", title: '품질관리', sub: '수입검사', name: '수입검사부적합등록'},
-        {code: "qmsRecvErrorList", title: '품질관리', sub: '수입검사', name: '수입검사불량현황'},
+        {code: "qmsRecvErrorList", title: '품질관리', sub: '수입검사', name: '수입검사 불량현황'},
+    //중간검사
+        {code: "qmsProdList", title: '품질관리', sub: '중간검사', name: '중간검사 현황'},
+        {code: "qmsProdErrorMan", title: '품질관리', sub: '중간검사', name: '중간검사 조치기록'},
+        {code: "qmsProdErrorList", title: '품질관리', sub: '중간검사', name: '중간검사 불량현황'},
+    //출하검사
+        {code: "qmsProdList", title: '품질관리', sub: '출하검사', name:'출하검사현황'},
+        {code: "qmsProdErrorList", title: '품질관리', sub: '출하검사', name:'출하검사 불량현황'},
+        {code: "qmsProdHistory", title: '품질관리', sub: '출하검사', name:'제품이력관리'},
+        {code: "qmsMoldWash", title: '품질관리', sub: '출하검사', name:'도형제관리'},
+        {code: "qmsProdErrorReq", title: '품질관리', sub: '출하검사', name:'부적합관리'},
+        {code: "qmsInspMachine", title: '품질관리', sub: '출하검사', name:'검사설비관리'},
+    //생산관리 -기준정보
+        {code: "popLineUser", title: '생산관리', sub: '기준정보', name:'공정별 작업자 관리'},
+    //생산관리
+        {code: "popPlan", title: '생산관리', sub: '생산관리', name:'생산계획관리'},
+    //생산현황
+        {code: "popProdList", title: '생산관리', sub: '생산현황', name:'생산진행현황'},
+        {code: "popProdRange", title: '생산관리', sub: '생산현황', name:'기간별 생산실적'},
+        {code: "popProdList1", title: '생산관리', sub: '생산현황', name:'제품별 생산실적'},
+        {code: "popProdList2", title: '생산관리', sub: '생산현황', name:'공정별 작업현황'},
+        {code: "popProdReport", title: '생산관리', sub: '생산현황', name:'작업일보현황'},
+        {code: "popMonitoring", title: '생산관리', sub: '생산현황', name:'생산모니터링'},
+        {code: "popLotTracking", title: '생산관리', sub: '생산현황', name:'제조이력관리'},
+        {code: "sysSPartDrawing", title: '생산관리', sub: '생산현황', name:'도면관리'},
+        {code: "sysSPartWood", title: '생산관리', sub: '생산현황', name:'고객지급품관리'},
 
+    //외주관리 - 입출고관리
+        {code: "outsInList", title: '외주관리', sub: '입출고관리', name:'외주입고현황'},
+        {code: "outsOut", title: '외주관리', sub: '입출고관리', name:'외주출고관리'},
+        {code: "outsIOList", title: '외주관리', sub: '입출고관리', name:'외주입출고 현황'},
+    //재고관리
+        {code: "outsStockSum", title: '외주관리', sub: '재고관리', name:'외주재고현황'},
+        {code: "outsStockSumMonth", title: '외주관리', sub: '재고관리', name:'외주재고 월원장'},
+        {code: "outsError", title: '외주관리', sub: '재고관리', name:'외주불량'},
 
-        //중간검사(1차,2차)
-        // {code: "", title: '품질관리', sub: '중간검사', name: '중간검사항목관리'},
-        // {code: "", title: '품질관리', sub: '중간검사', name: '중간검사현황'},
-        // {code: "", title: '품질관리', sub: '중간검사', name: '중간검사부적합등록'},
-        // {code: "", title: '품질관리', sub: '중간검사', name: '중간검사불량현황'},
+    //설비관리 - 기준정보
+        {code: "tpmMC", title: '설비관리', sub: '기준정보', name:'설비정보'},
+    //예방정검
+        {code: "tpmMachineRegItem", title: '설비관리', sub: '예방정검', name:'예방점검항목관리'},
+        {code: "tpmMachineRegCycle", title: '설비관리', sub: '예방정검', name:'예방점검주기설정'},
+        {code: "tpmMachineRegComp", title: '설비관리', sub: '예방정검', name:'예방점검관리'},
+    //사후보전
+        {code: "tpmMachineError", title: '설비관리', sub: '사후보전', name:'사후보전관리'},
 
-        //출하검사
-
-        {code: "qmsProd", title: '품질관리', sub: '출하검사', name: '출하검사진행'},
-        {code: "qmsProdList", title: '품질관리', sub: '출하검사', name: '출하검사현황'},
-
-        {code: "qmsProdErrorList", title: '품질관리', sub: '출하검사', name: '출하검사불량현황'},
-
-
-        // 이력관리
-        // {code: "", title: '품질관리', sub: '이력관리', name: '성적서관리'},
-        // {code: "", title: '품질관리', sub: '이력관리', name: '제품이력관리'},
-        // {code: "", title: '품질관리', sub: '이력관리', name: '도형제관리'},
-        // {code: "", title: '품질관리', sub: '이력관리', name: '부적합관리'},
-
-        //POP 생산관리 - 기준정보
-        // {code: "", title: '생산관리', sub: '기준정보', name: '바코드양식'},
-        // {code: "", title: '생산관리', sub: '기준정보', name: '공정라우팅'},
-        // {code: "", title: '생산관리', sub: '기준정보', name: '공정별작업자관리'},
-        // {code: "", title: '생산관리', sub: '기준정보', name: '작업의뢰서설정'},
-
-        //생산관리
-        // {code: "", title: '생산관리', sub: '생산관리', name: '생산계획관리'},
-        // {code: "", title: '생산관리', sub: '생산관리', name: '작업의뢰서관리'},
-
-        //생산현황
-        {code: "popProdRange", title: '생산관리', sub: '생산형황', name: '기간별생산실적'},
-        {code: "popProdList1", title: '생산관리', sub: '생산형황', name: '제품별생산실적'},
-        {code: "popProdList2", title: '생산관리', sub: '생산형황', name: '공정별작업현황'},
-        // {code: "", title: '생산관리', sub: '생산형황', name: '작업일보관리'},
-        {code: "popMonitoring", title: '생산관리', sub: '생산형황', name: '생산모니터링'},
-
-
-        //외주업체-외주관리
-        {code: "OutsOut", title: '외주업체', sub: '외주관리', name: '외주출고등록'},
-        {code: "OutsOutList", title: '외주업체', sub: '외주관리', name: '외주출고현황'},
-        {code: "OutsIn", title: '외주업체', sub: '외주관리', name: '외주입고등록'},
-        {code: "OutsInList", title: '외주업체', sub: '외주관리', name: '외주입고현황'},
-        {code: "OutsInReady", title: '외주업체', sub: '외주관리', name: '미입고관리'},
-        // {code: "", title: '외주업체', sub: '외주관리', name: '외주불량현황'},
-
-
-        //설비관리-기준정보
-        {code: "tpmMC", title: '설비관리', sub: '기준정보', name: '설비정보'},
-
-        //예방점검
-        {code: "tpmMachineRegItem", title: '설비관리', sub: '예방점검', name: '예방점검항목관리'},
-        {code: "tpmMachineRegCycle", title: '설비관리', sub: '예방점검', name: '예방점검주기설정'},
-        {code: "tpmMachineRegComp", title: '설비관리', sub: '예방점검', name: '예방점검관리'},
-
-
-        //사후보전
-        {code: "tmpMachineRegAlarm", title: '설비관리', sub: '사후보전관리', name: '사후보전관리'},
 
         //게시판-topBoard1
         {code:"board", title:"게시판" , sub:"게시판", name:"게시판"},

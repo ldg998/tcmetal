@@ -126,10 +126,12 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames : ['라인코드','라인명','등록자','등록일'],
+        colNames : ['부서명','라인코드','라인명','라인그룹','등록자','등록일'],
         colModel : [
+            {name:'',index:'',sortable: false,width:150,fixed: true},
             {name:'line_code',index:'line_code',key: true,sortable: false,width:150,fixed: true},
             {name:'line_name',index:'line_name',sortable: false,width:150,fixed: true},
+            {name:'',index:'',sortable: false,width:150,fixed: true},
             {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
             {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
         ],

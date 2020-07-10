@@ -22,7 +22,7 @@
                 <tbody>
                 <tr>
                     <td class="wt-px-50 td-title t-align-c padding-a-0">조회기간</td>
-                    <td class="wt-px-150">
+                    <td class="wt-px-125">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="start_date" id="datepicker_modal"
                                    class="form-control h-25 condition_main" readonly>
@@ -30,7 +30,7 @@
                         </div>
                     </td>
                     <td class="t-align-c" style="width:25px !important;">~</td>
-                    <td class="wt-px-150">
+                    <td class="wt-px-125">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="end_date" id="datepicker2_modal"
                                    class="form-control h-25 condition_main" readonly>

@@ -178,7 +178,6 @@ function jqGrid_main() {
         ],
         caption: "생산계획 | MES",
         autowidth: true,
-        multiselect: true,
         height: 562,
         pager: '#mes_grid_pager',
         rowList: [100, 200, 300, 500, 1000],

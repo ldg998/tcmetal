@@ -136,7 +136,7 @@ function jqGrid_main() {
             {name: '', index: '',sortable: false, width: 80,fixed: true}
 
         ],
-        caption: "외주입고관리 | MES",
+        caption: "외주입고현황 | MES",
         autowidth: true,
         height: 562,
         pager: '#mes_grid_pager',

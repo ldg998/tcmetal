@@ -9,7 +9,7 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-25 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
 
@@ -31,6 +31,7 @@
                                     autocomplete="off" >
                         </div>
                     </td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

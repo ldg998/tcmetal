@@ -2,14 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  <!-- JSTL 태그 라이브러리 -->
 <%@ page session="false" %> <!-- 응답 HTTP 헤더에 세션 쿠키가 존재함을 확인할 수 있습니다. -->
 
-<script type="text/javascript" src="/data-component/mesOUT/mesOut/dumi/out_5.js" charset="UTF-8"></script> <!-- 스크립트 파일 import -->
+<script type="text/javascript" src="/data-component/mesOUT/stock/outsError/outsError.js" charset="UTF-8"></script> <!-- 스크립트 파일 import -->
 
 <div class="main-content-inner">
     <div class="page-content">
         <div class="clearfix">
 
             <div class="col-lg-12 padding0">
-                <table class="table wt-75 board_line">
+                <table class="table wt-100 board_line">
                     <tbody>
                     <tr>
                         <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -47,6 +47,7 @@
                                 <option value="1"></option>
                             </select>
                         </td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>
@@ -83,7 +84,7 @@
 </div>
 
 <!-- 모달창 import -->
-<%@include file="out_5_modal1.jsp"%>
+<%@include file="outsError_modal1.jsp"%>
 
 
 

@@ -8,14 +8,14 @@
 
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-15 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-50 td-title t-align-c padding-a-0 border_no">제품LOT</td>
                     <td class="wt-px-100 border_no">
                         <input type="text" name="" class="form-control h-25 condition_main">
                     </td>
-                    </td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

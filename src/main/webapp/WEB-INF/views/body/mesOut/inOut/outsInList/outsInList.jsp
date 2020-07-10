@@ -3,13 +3,13 @@
 <%@ page session="false" %>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
-<script type="text/javascript" src="/data-component/mesOUT/mesOut/outsInList/outsInList.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesOUT/inOut/outsInList/outsInList.js" charset="UTF-8"></script>
 
 <div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-75 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -34,7 +34,7 @@
                     <td class="wt-px-150">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   autocomplete="off" >
+                                   autocomplete="off" placeholder="별도창검색" readonly>
                         </div>
                     </td>
                     <td class="wt-px-50 td-title t-align-c padding-a-0">기종</td>
@@ -50,7 +50,7 @@
                             <option>반드시 선택</option>
                         </select>
                     </td>
-
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

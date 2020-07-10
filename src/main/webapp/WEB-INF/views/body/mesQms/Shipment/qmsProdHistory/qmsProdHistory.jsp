@@ -9,7 +9,7 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-30 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">업체</td>
@@ -29,6 +29,7 @@
                                    autocomplete="off" >
                         </div>
                     </td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>
@@ -58,14 +59,7 @@
         </div>
 
 
-        <hr/>
 
-        <div class="row">
-
-            <div class="col-xs-12">
-                <div id="chart_div" style="border:1px solid black;"></div>
-            </div>
-        </div>
         <div title="데이터 저장중입니다...." id="preparing-file-modal" style="display: none;">
             <div id="progressbar" style="width: 100%; height: 22px; margin-top: 20px;"></div>
         </div>

@@ -22,6 +22,7 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     modal_start1();
+    suppModal_start();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////

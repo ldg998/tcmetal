@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script type="text/javascript" src="/data-component/mesOUT/mesOut/dumi/out_1_modal1.js"
+<script type="text/javascript" src="/data-component/mesOUT/inOut/outsOut/outsOut_modal1.js"
         charset="UTF-8"></script>
 <style>
 #addDialog{

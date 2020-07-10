@@ -8,7 +8,7 @@
     <div class="page-content">
         <!-- 검색 div 영역 -->
         <div class="col-lg-12 padding0">
-            <table class="table wt-30 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
 
@@ -23,6 +23,7 @@
                     <td class="wt-px-200">
                         <input type="text" name="keyword"  class="form-control h-25 condition_main" autocomplete="off" />
                     </td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

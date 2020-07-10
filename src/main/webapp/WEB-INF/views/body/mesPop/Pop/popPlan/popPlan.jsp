@@ -4,12 +4,7 @@
 
 <script src="/data-component/common/html2canvas.js"></script>
 <script type="text/javascript" src="/data-component/mesPOP/Pop/popPlan/popPlan.js" charset="UTF-8"></script>
-<style>
-    .board_line {
-        border-right: 1px solid #DDDDDD;
-        border-bottom: 1px solid #DDDDDD;
-    }
-</style>
+
 <div id="progressbar1" data-value="0"></div>
 
 <div class="main-content-inner">
@@ -46,6 +41,7 @@
                                 <option value="1">합형3</option>
                             </select>
                         </td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>

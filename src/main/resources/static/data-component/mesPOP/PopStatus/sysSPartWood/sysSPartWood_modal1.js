@@ -3,6 +3,7 @@ function modal_start1() {
     msg_get_modal1();// 모달 메세지 설정
     modal_make1(); // 모달 생성
     select_modale_box();
+    datepickerInput();
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -22,7 +23,7 @@ function msg_get_modal1() {
 function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설정해준다
     $("#addDialog").dialog({
         modal: true, // 모달 설정 ( 뒷배경 클릭 방지 마스크로 덮음)
-        width: 450, // 가로 설정
+        width: 550, // 가로 설정
         height: 'auto', //세로 설정
         autoOpen: false, //자동 오픈 해제
         resizable: false, // 크기 조절 불가설정
@@ -53,4 +54,8 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
 function select_modale_box(){
     $('#select_modal1').select2();
     $('#select_modal2').select2();
+}
+
+function datepickerInput() {
+    datepicker_makes("#datepicker_modal1", 0);
 }

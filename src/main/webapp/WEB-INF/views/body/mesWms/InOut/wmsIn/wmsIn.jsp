@@ -16,7 +16,7 @@
     <div class="page-content">
         <!-- 검색 div 영역 -->
         <div class="col-lg-12 padding0">
-            <table class="table wt-50 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <%-- 조회날짜(시작) --%>
@@ -48,6 +48,7 @@
                             <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                         </div>
                     </td>
+                        <td></td>
                 </tr>
                 </tbody>
             </table>

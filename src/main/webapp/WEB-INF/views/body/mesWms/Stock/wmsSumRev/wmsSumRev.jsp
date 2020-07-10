@@ -8,7 +8,7 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-40 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
@@ -29,6 +29,7 @@
                             <option value="1">완료</option>
                         </select>
                     </td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

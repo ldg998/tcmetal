@@ -6,7 +6,7 @@
     <div class="clearfix margin-at">
         <div class="col-xs-12">
             <div class="col-xs-5">
-                <table class="table wt-75 board_line">
+                <table class="table wt-100 board_line">
                     <tbody>
                     <tr>
                         <td class="wt-px-100 t-align-c td-title padding-a-0">부서</td>
@@ -16,7 +16,7 @@
                                     style="width: 100%">
                             </select>
                         </td>
-
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="col-xs-7">
-                <table class="table wt-50 board_line">
+                <table class="table wt-100 board_line">
                     <tbody>
                     <tr>
                         <td class="wt-px-50 t-align-c td-title padding-a-0">구분</td>
@@ -59,7 +59,7 @@
                                 <option value="">중간검사(폐기)</option>
                             </select>
                         </td>
-
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>

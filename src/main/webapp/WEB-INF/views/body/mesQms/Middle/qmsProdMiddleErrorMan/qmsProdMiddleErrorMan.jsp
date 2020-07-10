@@ -9,7 +9,7 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-50 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -41,13 +41,8 @@
 
                         </select>
                     </td>
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">제품LOT</td>
-                    <td class="wt-px-150">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   autocomplete="off" >
-                        </div>
-                    </td>
+
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

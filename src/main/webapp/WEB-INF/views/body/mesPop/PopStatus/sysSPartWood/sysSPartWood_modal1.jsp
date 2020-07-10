@@ -78,9 +78,10 @@
             </div>
             <div class="profile-info-name" style="width: 25%">입고일</div>
             <div class="profile-info-value" style="width: 25%">
-                <select id="select_modal2" style="width: 100%">
-                    <option></option>
-                </select>
+                <div class="input-icon input-icon-right">
+                <input type="text"  id="datepicker_modal1" class="form-control h-25 condition_main" readonly>
+                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -88,7 +89,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name" style="width: 25%;border-top: 1px solid #F7FBFF">비고</div>
             <div class="profile-info-value" style="width: 75%;border-top: 1px dotted #D5E4F1">
-                <textarea rows="7" cols="42"></textarea>
+                <textarea rows="7" cols="54"></textarea>
             </div>
         </div>
     </div>

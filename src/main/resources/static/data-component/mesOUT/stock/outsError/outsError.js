@@ -128,7 +128,7 @@ function jqGrid_main() {
             {name:'',index:'',sortable: false,width:150,fixed: true},
             {name:'',index:'',formatter:formmatterDate,sortable: false,width:180,fixed: true}
         ],
-        caption: "환율관리 | MES",
+        caption: "외주불량 | MES",
         autowidth: true,
         height: 600,
         pager: '#mes_grid_pager',

@@ -59,12 +59,11 @@ function msg_get_modal1() {
 function modal_make1() {
     $("#addDialog").dialog({
         modal: true,
-        width: 450,
+        width: 550,
         height: 'auto',
         autoOpen: false,
         resizable: false,
         buttons: [
-
             {
                 text: "저장",
                 "class": "btn btn-minier",

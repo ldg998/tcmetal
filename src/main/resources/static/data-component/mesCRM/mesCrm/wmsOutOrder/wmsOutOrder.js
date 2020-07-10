@@ -152,7 +152,7 @@ function datepickerInput() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "tpmMachineError"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "wmsOutOrder"}).then(function (data) {
         main_data.auth = data;
     });
 }

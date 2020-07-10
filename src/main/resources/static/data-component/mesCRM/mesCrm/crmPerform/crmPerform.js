@@ -38,7 +38,7 @@ function add_btn() {
 ////////////////////////////호출 함수////////////////////////////////
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "crmWorkList"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "crmPerform"}).then(function (data) {
         main_data.auth = data;
     });
 }

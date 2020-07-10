@@ -110,7 +110,7 @@ function datepickerInput() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "wmsOutReady"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "crmShipping"}).then(function (data) {
         main_data.auth = data;
     });
 }

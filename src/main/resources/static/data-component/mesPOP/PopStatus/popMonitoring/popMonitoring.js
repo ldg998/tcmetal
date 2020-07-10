@@ -41,7 +41,7 @@ function get_btn(page) {
 ////////////////////////////호출 함수//////////////////////////////////
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "popProdList1"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "popMonitoring"}).then(function (data) {
         main_data.auth = data;
     });
 }

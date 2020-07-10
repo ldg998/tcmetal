@@ -88,7 +88,7 @@ function msg_get() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "qmsProdErrorList"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "qmsProdHistory"}).then(function (data) {
         main_data.auth = data;
     });
 }

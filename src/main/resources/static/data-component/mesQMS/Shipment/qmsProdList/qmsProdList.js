@@ -89,7 +89,7 @@ function datepickerInput() {
     datepicker_makes("#datepicker2", 0);
 }
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "qmsProdErrorList"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "qmsProdList"}).then(function (data) {
         main_data.auth = data;
     });
 }

@@ -104,7 +104,7 @@ function msg_get() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "sysDept"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "outsError"}).then(function (data) {
         main_data.auth = data;
     });
 }

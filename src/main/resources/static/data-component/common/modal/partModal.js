@@ -6,6 +6,7 @@ function partModal_start(what) {
     partModal_jqGrid();
     jqGridResize("#partSearchGrid", $('#partSearchGrid').closest('[class*="col-"]'));
     selectBox_part_modal();
+    jqgridPagerIcons(); // 그리드 아이콘 설정
 }
 
 
@@ -99,7 +100,7 @@ function partModal_jqGrid() {
         height: 250,
         rowNum: 100,
         pager: '#partSearchGridPager',
-        jsonReader: {cell:""},
+        // jsonReader: {cell:""},
         rowList: [100, 200, 300, 400],
         viewrecords: true,
         beforeSelectRow: function (rowid, e) {
@@ -115,7 +116,7 @@ function partModal_jqGrid() {
         if ($("#partSearchGrid").jqGrid('getGridParam', 'reccount') === 0)
             $("table#partSearchGrid tr.jqgfirstrow").css("height","1px");
     }
-    });
+    }).navGrid('#partSearchGridPager', {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정;
 }
 
 

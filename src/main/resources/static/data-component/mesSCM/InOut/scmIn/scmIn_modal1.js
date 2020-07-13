@@ -89,6 +89,30 @@ function close_modal1_btn() {
 function update_btn(rowid) {
     main_data.check3 = 'N';
     if (main_data.auth.check_edit != "N") {
+        $("#supp_name_modal").prop("disabled", true);
+        $("#datepicker3").prop("disabled", true);
+        $("#modal1_remark").prop("disabled", true);
+        modal_reset(".modal_value", []);
+        $("#mes_add_grid").jqGrid('clearGridData');
+
+        main_data.check = 'U';
+
+        ccn_ajax('/scmInSub2Get', {keyword: rowid}).then(function (data) {
+            $("#supp_name_modal").val(data[0].supp_name);
+            $("#supp_code_modal").val(data[0].supp_code);
+            $("#datepicker3").val(formmatterDate2(data[0].work_date));
+            $("#remark").val(data[0].remark);
+
+
+            $("#mes_add_grid").setGridParam({
+                datatype: "local",
+                data: data
+            }).trigger("reloadGrid");
+
+            $("#addDialog").dialog('open');
+            jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]'));
+
+        });
     } else {
         alert("수정권한이 없습니다.");
     }
@@ -96,21 +120,21 @@ function update_btn(rowid) {
 
 // 추가 모달 저장 버튼
 function add_modal1_btn() {
-    $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
+    $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
     var gu5 = String.fromCharCode(5);
     var gu4 = String.fromCharCode(4);
     var add_data = value_return(".modal_value");
     add_data.work_date = add_data.work_date.replace(/\-/g, '');
-    add_data.stop_date = add_data.stop_date.replace(/\-/g, '');
-    add_data.save_type = main_data.check;
-    var jdata = $("#mes_add_grid2").getRowData();
+    add_data.supp_code = add_data.keyword;
+    add_data.remark = add_data.keyword2;
+    var jdata = $("#mes_add_grid").getRowData();
 
     if (jdata.length > 0) {
         var list = [];
         var list2 = [];
         jdata.forEach(function (data, j) {
-            if (data.ord_qty !== '' && data.ord_qty > 0) {
-                list.push(data.part_code + gu4 + data.ord_qty + gu4 + data.spec + gu4 + data.direction + gu4 + data.remark);
+            if (data.in_qty !== '' && data.in_qty > 0) {
+                list.push(data.ord_no + gu4 + data.part_code  + gu4 + data.ord_qty  + gu4 + data.qty + gu4 + data.in_qty + gu4 + data.status + gu4 + data.qc_result + gu4 + data.qc_qty + gu4 + data.ng_type + gu4 + data.ng_name  + gu4 + data.act_type);
             } else {
                 list2.push(data.part_code);
             }
@@ -119,30 +143,24 @@ function add_modal1_btn() {
             if (list2.length > 0) {
                 alert(list2[0] + "를 다시 확인해주세요");
             } else {
-                if (main_data.status === 'Y') {
-                    alert("완료처리된 항목은 수정 할 수 없습니다.");
-                } else {
+
                     var text = msg_object.TBMES_Q002.msg_name1;
                     if (main_data.check === "U") {
                         text = msg_object.TBMES_Q003.msg_name1;
                     }
 
                     if (confirm(text)) {
-                        wrapWindowByMask2();
-                        add_data.ord_sub = list.join(gu5);
+                        // wrapWindowByMask2();
+                        add_data.keyword = list.join(gu5);
                         console.log(add_data);
-                        ccn_ajax("/scmOrderAdd", add_data).then(function (data) {
+                        ccn_ajax("/scmInAdd", add_data).then(function (data) {
                             if (data.result === 'NG') {
                                 alert(data.message);
                             } else {
-                                if (main_data.check === "I") {
-                                    get_btn(1);
-                                } else {
-                                    get_btn_post($("#mes_grid").getGridParam('page'));
-                                }
+                                get_btn(1);
                             }
                             $('#mes_add_grid').jqGrid('clearGridData');
-                            $('#mes_add_grid2').jqGrid('clearGridData');
+                            $('#mes_grid2').jqGrid('clearGridData');
                             closeWindowByMask();
                             $("#addDialog").dialog('close');
                         }).catch(function (err) {
@@ -150,7 +168,7 @@ function add_modal1_btn() {
                             alert(msg_object.TBMES_E008.msg_name1);
                         });
                     }
-                }
+
             }
         });
     } else {
@@ -179,7 +197,7 @@ function jqGrid_modal1() { // 메인 그리드 설정
         mtype: 'POST',
         datatype: "local",
         caption: "자재입고 | MES",
-        colNames: ['rownum', '발주일자', '구분', '품번', '품명', '규격', '단위', '발주수량', '기입고수량', '입고수량', '발주완료', '검사구분', '검사결과', '검사수량', '불량유형', 'ng_type', '불량상세', '조치구분'],
+        colNames: ['rownum', '발주일자','ord_no', '구분', '품번', '품명', '규격', '단위', '발주수량', '기입고수량', '입고수량', '발주완료', '검사구분', '검사결과', '검사수량', '불량유형' ,'불량상세', '조치구분'],
         colModel: [
             {name: 'rownum', index: 'rownum', key: true, hidden: true, sortable: false},
             {
@@ -190,6 +208,7 @@ function jqGrid_modal1() { // 메인 그리드 설정
                 fixed: true,
                 width: 100
             },
+            {name: 'ord_no', index: 'ord_no', sortable: false,hidden: true,fixed: true, width: 100},
             {name: 'part_type_name', index: 'part_type_name', sortable: false,fixed: true, width: 100},
             {name: 'part_code', index: 'part_code', sortable: false,fixed: true, width: 100},
             {name: 'part_name', index: 'part_name', sortable: false,fixed: true, width: 100},
@@ -404,63 +423,35 @@ function jqGrid_modal1() { // 메인 그리드 설정
                     ]
                 }
             },
-            {name: 'ng_type_name', index: 'ng_type_name', sortable: false,fixed: true, width: 100,
+            {name: 'ng_type', index: 'ng_type', sortable: false,fixed: true, width: 100,
                 editable: true,                                       // 수정가능 여부
                 // SELECT 포매터
+                formatter: 'select',                                 // SELECT 포매터
                 edittype: 'select',                                    // EDIT타입 : SELECT
-                editoptions: {
-                    dataUrl:"popLineUserAllGet",
-                    postData: function (rowid, value, cmName) {
-                        var data = $('#mes_add_grid').jqGrid('getRowData', rowid);
-                        return {
-                            keyword: data.line_code
-                        }
-                    },
-                    buildSelect:setSelectCombo2,
-                    dataInit: function ss(elem){
 
-                        $(elem).css('height','18px');
-                        $(elem).css('width','100%');
+                    editoptions: {
+                        value: ":선택안함;" + main_data.qcItem_list_string.join(";"),
 
-                    },
-                    dataEvents: [{
-                        type: 'change',
-                        fn: function (e) {                // 값 : this.value || e.target.val()
+                        defaultValue: '',
+                        dataEvents: [{
+                            type: 'change',
+                            fn: function (e) {                // 값 : this.value || e.target.val()
 
-                            var row = $(e.target).closest('tr.jqgrow');
-                            var rowid = row.attr('id');
-                            var value = e.target.value;
-                            var text = $(e.target).find("option:selected").text();
-                            $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
-                            $('#mes_add_grid').jqGrid('setCell', rowid, 'ng_type', value);
-                            if (value === ''){
-                                $('#mes_add_grid').jqGrid('setCell', rowid, 'ng_type', ' ');
-                            }
-                            $('#mes_add_grid').jqGrid('setCell', rowid, 'ng_type_name', text);
-                        },
-                    },
-                        {
-                            type: 'focusout',
-                            fn: function (e) {
-                                var row = $(e.target).closest('tr.jqgrow');
-                                var rowid = row.attr('id');
-                                var value = e.target.value;
-                                var text = $(e.target).find("option:selected").text();
                                 $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
-                                $('#mes_add_grid').jqGrid('setCell', rowid, 'ng_type', value);
-                                if (value === ''){
-                                    $('#mes_add_grid').jqGrid('setCell', rowid, 'ng_type', ' ');
-                                }
-                                $('#mes_add_grid').jqGrid('setCell', rowid, 'ng_type_name', text);
+                            },
+                        },
+                            {
+                                type: 'focusout',
+                                fn: function (e) {
+                                    $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
 
+                                }
                             }
-                        }
-                    ]
+                        ]
 
 
                 }
             },
-            {name: 'ng_type', index: 'ng_type', hidden:true, sortable: false,fixed: true, width: 100},
             {
                 name: 'ng_name', index: 'ng_name', width: 100, sortable: false,fixed: true,
                 editable: true,
@@ -565,14 +556,3 @@ function modal_make1() {
     });
 }
 
-
-function setSelectCombo2(data) {
-    data = jQuery.parseJSON(data);
-    var result = '<select name="work_user_name">';
-    result += '<option value="">' + '선택안함' + '</option>';
-    for(var idx=0; idx < data.length; idx++) {
-        result += '<option value="' + data[idx].qc_code + '">' + data[idx].qc_name + '</option>';
-    }
-    result += '</select>';
-    return result;
-}

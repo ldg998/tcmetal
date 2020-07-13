@@ -34,15 +34,15 @@
                     <td class="wt-px-100 t-align-c td-title padding-a-0">입고일자</td>
                     <td class="wt-px-140">
                     <div class="input-icon input-icon-right">
-                        <input type="text" name="start_date" id="datepicker3"
-                               class="form-control h-25 condition_main" readonly>
+                        <input type="text" name="work_date" id="datepicker3"
+                               class="form-control h-25 modal_value" readonly>
                         <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                     </div>
                     </td>
 
 
                     <td class="wt-px-100 t-align-c td-title padding-a-0">비고</td>
-                    <td class="wt-px-140"><input type="text" class="form-control h-25 modal_value"></td>
+                    <td class="wt-px-140"><input type="text" id="modal1_remark" name="keyword2" class="form-control h-25 modal_value"></td>
                     <td></td>
                 </tr>
                 </tbody>
@@ -58,7 +58,7 @@
                             </span>
                         </a>
 
-                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
+                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="add_modal1_btn();">
                             <span>
                                 <i class="fa fa-search bigger-110 blue"></i>
                                 <span>저장</span>

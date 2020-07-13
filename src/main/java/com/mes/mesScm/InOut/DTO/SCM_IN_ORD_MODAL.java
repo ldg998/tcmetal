@@ -11,6 +11,7 @@ public class SCM_IN_ORD_MODAL {
     private String remark;
     private String status;
     private String qc_result;
+    private String ng_type;
     private String act_type;
     private String spec;
     private String unit_name;

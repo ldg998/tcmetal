@@ -33,7 +33,6 @@ public class InOutService extends ReturnFunction {
     // 기존 프로젝트에서 긁어온 소스
     public Message scmInAdd(HttpServletRequest req, SCM_IN si)
     {
-        si.setSite_code(getSessionData(req).getSite_code());
         si.setUser_code(getSessionData(req).getUser_code());
         return inOutMapper.scmInAdd(si);
     }
@@ -65,13 +64,11 @@ public class InOutService extends ReturnFunction {
 
 
     public RESTful scmInSub1Get(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
         List<SCM_IN_SUB> rows = inOutMapper.scmInSub1Get(p);
         return getListData(rows , p);
     }
 
     public List<SCM_IN_SUB> scmInSub2Get(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
         return  inOutMapper.scmInSub1Get(p);
     }
 

@@ -3,10 +3,7 @@ package com.mes.mesScm.InOut;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
-import com.mes.mesScm.InOut.DTO.SCM_IN;
-import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
-import com.mes.mesScm.InOut.DTO.SCM_OUT_ORD;
-import com.mes.mesScm.InOut.DTO.SCM_OUT_ORD_SUB;
+import com.mes.mesScm.InOut.DTO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,7 +63,6 @@ public class InOutRestController {
     }
 
 
-
     @RequestMapping(value = "/scmOutGet", method = RequestMethod.POST)
     public RESTful scmOutGet(HttpServletRequest req, Page p){
         return inOutService.scmOutGet(req, p);
@@ -121,6 +117,21 @@ public class InOutRestController {
 
     @RequestMapping(value = "/scmInLineSubListGet", method = RequestMethod.POST)
     public RESTful scmInLineSubListGet(HttpServletRequest req,Page p) { return inOutService.scmInLineSubListGet(req, p); }
+
+    @RequestMapping(value = "/scmOutAdd", method = RequestMethod.POST)
+    public Message scmOutAdd(SCM_OUT out, HttpServletRequest req) { return inOutService.scmOutAdd(out,req); }
+
+
+    @RequestMapping(value = "/scmOutGet_lee", method = RequestMethod.POST)
+    public RESTful scmOutGet_lee(HttpServletRequest req, Page p){
+        return inOutService.scmOutGet_lee(req, p);
+    }
+
+    @RequestMapping(value = "/scmOutDel", method = RequestMethod.POST)
+    public Message scmOutDel(HttpServletRequest req, Page p){
+        return inOutService.scmOutDel(req, p);
+    }
+
 
 
 }

@@ -4,8 +4,8 @@ var part_gu2 = 'N';
 function partModal_start(what) {
     partModal_make();
     partModal_jqGrid();
-    partSelectBox(what);
     jqGridResize("#partSearchGrid", $('#partSearchGrid').closest('[class*="col-"]'));
+    selectBox_part_modal();
 }
 
 
@@ -13,6 +13,8 @@ function partModal_start(what) {
 
 function partModal_get_btn(page) {
     var part_send_data = value_return(".part_condition");
+    part_send_data.keyword3 = '';
+
     $("#partSearchGrid").setGridParam({
         url: '/sysPartGet',
         datatype: "json",
@@ -25,7 +27,7 @@ function partModal_check() {
     if ($( "#partSearchGrid" ).getGridParam( "selrow" )) {
         var ids = $( "#partSearchGrid" ).getGridParam( "selrow" );
         var data = $('#partSearchGrid').jqGrid('getRowData', ids);
-        partModal_bus(data.part_code,data.part_name);
+        partModal_bus(data);
         $("#part-search-dialog").dialog('close');
 
 
@@ -33,7 +35,6 @@ function partModal_check() {
         alert("선택하십시오");
     }
 }
-
 function partModal_close() {
     $("#part-search-dialog").dialog('close');
     suppModal_close_bus();
@@ -61,42 +62,7 @@ function select_part_modal_change2(value) {
 
 
 ////////////////////////////호출 함수/////////////////////////////////////
-function partSelectBox(what) {
-    if (what == null){
 
-        part_type_select_ajax("#part_type_select_modal", "/sysPartTypeGet", "part_type_code", "part_type_name",{keyword:''}).then(function (data) {
-            part_type_select_ajax("#part_group_select_modal", "/sysPartGroupAllGet", "part_grp_code", "part_grp_name",{keyword:data[0].part_type_code}).then(function (data2){
-                part_type_select_ajax('#part_prod_select_modal', "/sysPartGroup2AllGet","part_grp_code2" ,"part_grp_name2",{keyword:data[0].part_type_code, keyword2:data2[0].part_grp_code})
-            });
-        }).catch(function (err){
-            $('#part_group_select').empty();
-            $('#part_prod_select').empty();
-        });
-    } else if (what === 'B'){
-        part_type_select_ajax("#part_type_select_modal", "/sysPartTypeGet", "part_type_code", "part_type_name",{keyword:''}).then(function (data) {
-            $("select#part_type_select_modal option[value='A']").remove();
-            $("select#part_type_select_modal option[value='C']").remove();
-            $("select#part_type_select_modal option[value='D']").remove();
-            part_type_select_ajax("#part_group_select_modal", "/sysPartGroupAllGet", "part_grp_code", "part_grp_name",{keyword:'B'}).then(function (data2){
-                part_type_select_ajax('#part_prod_select_modal', "/sysPartGroup2AllGet","part_grp_code2" ,"part_grp_name2",{keyword:'B', keyword2:data2[0].part_grp_code})
-            });
-        }).catch(function (err){
-            $('#part_group_select').empty();
-            $('#part_prod_select').empty();
-        });
-    } else {
-        part_type_select_ajax("#part_type_select_modal", "/sysPartTypeGet", "part_type_code", "part_type_name",{keyword:''}).then(function (data) {
-            $("select#part_type_select_modal option[value='C']").remove();
-            $("select#part_type_select_modal option[value='D']").remove();
-            part_type_select_ajax("#part_group_select_modal", "/sysPartGroupAllGet", "part_grp_code", "part_grp_name",{keyword:'A'}).then(function (data2){
-                part_type_select_ajax('#part_prod_select_modal', "/sysPartGroup2AllGet","part_grp_code2" ,"part_grp_name2",{keyword:'A', keyword2:data2[0].part_grp_code})
-            });
-        }).catch(function (err){
-            $('#part_group_select').empty();
-            $('#part_prod_select').empty();
-        });
-    }
-}
 
 
 function partModal_make() {
@@ -119,7 +85,7 @@ function partModal_jqGrid() {
         mtype: 'POST',
         // 타이틀
         caption: "품목조회 | MES",
-        colNames: ['','품번','품명','규격', '품목군','제품군'],
+        colNames: ['','품번','품명','규격','단위'],
         colModel: [
             {name:'radio',index:'radio',align:"center",width:30 ,sortable: false,fixed:true, formatter: function (cellValue, option,rowObject) {
                     return '<input type="radio" name="radio_' + option.gid + '" onclick="jqGrid_row_check(\'#partSearchGrid\''+','+'\''+rowObject.part_code+'\''+');"/>';
@@ -127,8 +93,7 @@ function partModal_jqGrid() {
             {name: 'part_code', index: 'part_code', key: true, sortable: false, width: 200,fixed:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 200,fixed:true},
             {name: 'spec', index: 'spec', sortable: false, width: 200,fixed:true},
-            {name: 'part_grp_name1', index: 'part_grp_name1', sortable: false, width: 200,fixed:true},
-            {name: 'part_grp_name2', index: 'part_grp_name2', sortable: false, width: 200,fixed:true}
+            {name: 'unit_name', index: 'unit_name', sortable: false, width: 80,fixed:true}
         ],
         autowidth: true,
         height: 250,
@@ -154,5 +119,8 @@ function partModal_jqGrid() {
 }
 
 
+function selectBox_part_modal() { //구분영역에 들어갈 select데이터 호출
+    select_makes_base("#part_type_select_modal1", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
+}
 
 

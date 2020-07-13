@@ -16,7 +16,7 @@
                     <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">조회일자</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="" id="datepicker"
+                            <input type="text" name="work_date" id="datepicker"
                                    class="form-control h-25 condition_main" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
@@ -24,7 +24,8 @@
                     <!-- 품목코드 검색창 -->
                     <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">품번</td>
                     <td class="wt-px-200">
-                        <input type="text" name="keyword"  class="form-control h-25 condition_main" autofocus autocomplete="off" />
+                        <input type="text" name="part_name"  class="form-control h-25 condition_main" autofocus autocomplete="off" />
+                        <input type="hidden" name="part_code"  class="form-control h-25 condition_main" autofocus autocomplete="off" />
                     </td>
                     <td></td>
                 </tr>
@@ -39,7 +40,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <!-- 조회버튼 -->
                     <a  id="get_btn" class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="test();">
+                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="get_btn(1);">
                         <span>
                             <i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
@@ -80,3 +81,4 @@
 <!-- 모달창 import -->
 <%@include file="scmOut_modal1.jsp"%>
 
+<%@include file="/WEB-INF/views/body/common/modal/part_modal.jsp" %>

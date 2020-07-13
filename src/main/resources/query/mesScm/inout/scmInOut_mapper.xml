@@ -32,7 +32,7 @@
         	EXEC SP_SCM_IN_DEL #{keyword}
     </select>
     <select id="scmOutGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
-        	EXEC SP_SCM_OUT_GET_SUM #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}
+        	EXEC SP_SCM_OUT_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}
     </select>
     <select id="scmStockRetGet" resultType="com.mes.mesScm.InOut.DTO.SCM_STOCK_RET">
         	EXEC SP_SCM_RET_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}
@@ -43,11 +43,6 @@
     <select id="scmInAdd" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_SCM_IN_ADD #{work_date}, #{supp_code},#{remark}, #{in_no}, #{keyword}, #{keyword2}, #{keyword3}, #{user_code}
     </select>
-
-
-
-
-
 
 
 
@@ -80,5 +75,17 @@
         EXEC SP_SCM_REIN_BCR_GET #{page}, #{rows},#{keyword}
     </select>
 
+    <select id="scmOutAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SCM_OUT_ADD #{work_date},#{part_code},#{qty},#{spec},#{user_code},#{remark}
+    </select>
 
+
+    <select id="scmOutGet_lee" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
+        	EXEC SP_SCM_OUT_GET #{page}, #{rows},#{keyword},#{keyword2}
+        	/* 수정함 */
+    </select>
+
+    <select id="scmOutDel" resultType="com.mes.Common.DataTransferObject.Message">
+       EXEC  SP_SCM_OUT_DEL #{keyword}
+    </select>
 </mapper>

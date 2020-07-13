@@ -141,4 +141,8 @@ public class InOutService extends ReturnFunction {
         List<SCM_IO> rows = inOutMapper.scmIOListGet(p);
         return getListData(rows , p);
         }
+
+    public List<SCM_IN_ORD_MODAL> scmInOrdModalGet(Page p) {
+        return inOutMapper.scmInOrdModalGet(p);
+    }
 }

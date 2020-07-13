@@ -3,10 +3,7 @@ package com.mes.mesScm.InOut;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
-import com.mes.mesScm.InOut.DTO.SCM_IN;
-import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
-import com.mes.mesScm.InOut.DTO.SCM_OUT_ORD;
-import com.mes.mesScm.InOut.DTO.SCM_OUT_ORD_SUB;
+import com.mes.mesScm.InOut.DTO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -123,4 +120,6 @@ public class InOutRestController {
     public RESTful scmInLineSubListGet(HttpServletRequest req,Page p) { return inOutService.scmInLineSubListGet(req, p); }
 
 
+    @RequestMapping(value = "/scmInOrdModalGet", method = RequestMethod.POST)
+    public List<SCM_IN_ORD_MODAL> scmInOrdModalGet( Page p) { return inOutService.scmInOrdModalGet(p); }
 }

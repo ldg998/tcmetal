@@ -48,4 +48,5 @@ public interface InOutMapper {
     List<SCM_IN_SUB_ORD> scmInLot2Get(Page p);
 
 
+    List<SCM_IN_ORD_MODAL> scmInOrdModalGet(Page p);
 }

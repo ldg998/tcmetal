@@ -80,5 +80,7 @@
         EXEC SP_SCM_REIN_BCR_GET #{page}, #{rows},#{keyword}
     </select>
 
-
+    <select id="scmInOrdModalGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_ORD_MODAL">
+        EXEC SP_SCM_IN_ORD_MODAL_GET 0, 0,#{keyword}
+    </select>
 </mapper>

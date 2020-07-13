@@ -146,7 +146,7 @@ function msg_get() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "sysCommon"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "sysSPart"}).then(function (data) {
         main_data.auth = data;
     });
 }
@@ -163,15 +163,15 @@ function jqGrid_main() {
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},

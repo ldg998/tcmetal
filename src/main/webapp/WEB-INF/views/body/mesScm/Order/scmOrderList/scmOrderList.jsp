@@ -11,7 +11,7 @@
     <div class="page-content">
         <%-- 조회기간 및 업체 검색 영역 --%>
         <div class="col-lg-12 padding0">
-            <table class="table wt-40 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -34,10 +34,13 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" >
-                          <%--  <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>--%>
+                                   id="supp_name_main">
+                            <input type="hidden" name="keyword" class="form-control h-25 condition_main"
+                                   id="supp_code_main">
+                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                         </div>
                     </td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

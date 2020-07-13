@@ -89,7 +89,7 @@ function datepickerInput() {
     datepicker_makes("#datepicker2", 0);
 }
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "qmsProdErrorList"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "qmsProdList"}).then(function (data) {
         main_data.auth = data;
     });
 }
@@ -117,10 +117,8 @@ function jqGrid_main() {
             {name: '', index: '', sortable:false, width: 100, fixed:true},
             {name: '', index: '', sortable:false, width: 100, fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true}
-
-
-
         ],
+        multiselect: true,
         autowidth: true,
         viewrecords: true,
         height: 562,

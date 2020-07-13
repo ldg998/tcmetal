@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="/static/ui-component/assets/js/jquery.fileDownload.js"></script>
-<script type="text/javascript" src="/static/data-component/mesPOP/PopStatus/sysSPartWood/pop_6.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesPOP/PopStatus/sysSPartWood/sysSPartWood.js" charset="UTF-8"></script>
 
 
 
@@ -11,7 +11,7 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-25 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
 
@@ -33,7 +33,7 @@
                                     autocomplete="off" >
                         </div>
                     </td>
-
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

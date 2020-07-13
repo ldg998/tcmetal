@@ -22,19 +22,19 @@ var main_data = {
 $(document).ready(function () {
     msg_get();
     jqGrid_main();
-    jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
-    jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));
     datepickerInput();
     selectBox();
     authcheck();
     jqgridPagerIcons();
-
-
-    //workDocumentMake();
-
+    modal_start1();
+    jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
+function  test() {
+    $('#addDialog').dialog('open');
+    jqGridResize("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
+}
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
@@ -50,19 +50,7 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
-function get_btn_post(page) {
-
-    $("#mes_grid").setGridParam({
-        url: "/crmOrderRecpGet",
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data_post
-    }).trigger("reloadGrid");
-}
-
-
 function under_get_btn(value) {
-
     $("#mes_grid2").setGridParam({
         url: "/popPlanGet",
         datatype: "json",
@@ -96,35 +84,6 @@ function add_btn() {
         }
     } else {
         alert(msg_object.TBMES_A001.msg_name1);
-    }
-}
-
-function delete_btn() {
-    if(main_data.auth.check_del != "N") {
-        var gu5 = String.fromCharCode(5);
-        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
-        if (ids.length === 0) {
-            alert(msg_object.TBMES_A004.msg_name1);
-        } else {
-            if (confirm(msg_object.TBMES_A005.msg_name1)) {
-                main_data.check = 'D';
-                wrapWindowByMask2();
-
-                ccn_ajax("/crmOrderRecpDel", {keyword: ids.join(gu5)}).then(function (data) {
-                    if (data.result === 'NG') {
-                        alert(data.message);
-                    } else {
-                        get_btn_post($("#mes_grid").getGridParam('page'));
-                    }
-                    closeWindowByMask();
-                }).catch(function (err) {
-                    closeWindowByMask();
-                    console.error(err); // Error 출력
-                });
-            }
-        }
-    } else {
-        alert(msg_object.TBMES_A002.msg_name1);
     }
 }
 
@@ -172,53 +131,6 @@ function update_btn(jqgrid_data) {
     }
 }
 
-
-
-
-
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-
-
-
-        ccn_ajax('/sysSuppOneGet', {keyword:code}).then(function (data) {
-            // console.log(data);
-            $("#supp_name_modal").val(name);
-            $("#supp_code_modal").val(code);
-            $("#supp_user_name").val(data.emp_name);
-            $("#supp_tel_no").val(data.emp_tel);
-
-        });
-
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
-
-
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_A001");
@@ -230,45 +142,9 @@ function msg_get() {
 
 function selectBox() {
     $("#select1").select2();
-    $("#select2").select2();
-    $("#select3").select2();
-
 
 }
 
-function part_name_reset() {
-    $("#bcr_contents").val("");
-    $("#part_name1").text("");
-    $("#part_name2").text("");
-    $("#part_name3").text("");
-    $("#part_name4").text("");
-    $("#part_name5").text("");
-    $("#part_name6").text("");
-    $("#part_name7").text("");
-    $("#part_name8").text("");
-    $("#part_name9").text("");
-    $("#part_name10").text("");
-    $("select[name=part_code1]").val("").trigger("change");
-    $("select[name=part_code2]").val("").trigger("change");
-    $("select[name=part_code3]").val("").trigger("change");
-    $("select[name=part_code4]").val("").trigger("change");
-    $("select[name=part_code5]").val("").trigger("change");
-    $("select[name=part_code6]").val("").trigger("change");
-    $("select[name=part_code7]").val("").trigger("change");
-    $("select[name=part_code8]").val("").trigger("change");
-    $("select[name=part_code9]").val("").trigger("change");
-    $("select[name=part_code10]").val("").trigger("change");
-    $("select[name=part_code1]").prop("disabled",true).trigger('change');
-    $("select[name=part_code2]").prop("disabled",true).trigger('change');
-    $("select[name=part_code3]").prop("disabled",true).trigger('change');
-    $("select[name=part_code4]").prop("disabled",true).trigger('change');
-    $("select[name=part_code5]").prop("disabled",true).trigger('change');
-    $("select[name=part_code6]").prop("disabled",true).trigger('change');
-    $("select[name=part_code7]").prop("disabled",true).trigger('change');
-    $("select[name=part_code8]").prop("disabled",true).trigger('change');
-    $("select[name=part_code9]").prop("disabled",true).trigger('change');
-    $("select[name=part_code10]").prop("disabled",true).trigger('change');
-}
 
 function datepickerInput() {
     datepicker_makes("#datepicker", -30);
@@ -287,10 +163,9 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['구분','계획일자','업체','기종','기종','품번','품명','단중','수량','중량','비고제품LOT'],
+        colNames: ['계획일자','순번','업체','기종','품명','단중','수량','중량','제품LOT','작업자'],
         colModel: [
             {name: '', index: '', sortable: false, key:true, width: 150,fixed: true},
-            {name: '', index: '', sortable: false, width: 180, fixed: true},
             {name: '', index: '', sortable: false, width: 180, fixed: true},
             {name: '', index: '', sortable: false, width: 180, fixed: true},
             {name: '', index: '', sortable: false, width: 180, fixed: true},
@@ -303,8 +178,7 @@ function jqGrid_main() {
         ],
         caption: "생산계획 | MES",
         autowidth: true,
-        multiselect: true,
-        height: 243,
+        height: 562,
         pager: '#mes_grid_pager',
         rowList: [100, 200, 300, 500, 1000],
         rowNum: 100,
@@ -322,40 +196,6 @@ function jqGrid_main() {
 
     });
 
-    $('#mes_grid2').jqGrid({
-        mtype: 'POST',
-        datatype: "local",
-        caption: "생산계획 | MES",
-        colNames: ['작업일자','공정','업체','기종','품번','품명','단중','지시수량','제품LOT'],
-        colModel: [
-            {name: '', index: '', sortable: false, key:true, width: 150,fixed: true},
-            {name: '', index: '', sortable: false, width: 180, fixed: true},
-            {name: '', index: '', sortable: false, width: 180, fixed: true},
-            {name: '', index: '', sortable: false, width: 180, fixed: true},
-            {name: '', index: '', sortable: false, width: 180, fixed: true},
-            {name: '', index: '', sortable: false, width: 180, fixed: true},
-            {name: '', index: '', sortable: false, width: 180, fixed: true},
-            {name: '', index: '', sortable: false, width: 180, fixed: true},
-            {name: '', index: '', sortable: false, width: 180, fixed: true},
-        ],
-        autowidth: true,
-        viewrecords: true,
-        height: 194,
-        rowNum: 100,
-        rowList: [100, 200, 300, 500, 1000],
-        pager: '#mes_grid2_pager',
-        loadComplete:function(){
-            if ($("#mes_grid2").jqGrid('getGridParam', 'reccount') === 0)
-                $(".jqgfirstrow").css("height","1px");
-            else
-                $(".jqgfirstrow").css("height","0px");
-        },
-        ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
-            var data = $('#mes_grid2').jqGrid('getRowData', rowid);
-            update_btn(data);
-        },
-
-    });
 }
 function report_status_formatter(cellvalue, options, rowObject) {
 

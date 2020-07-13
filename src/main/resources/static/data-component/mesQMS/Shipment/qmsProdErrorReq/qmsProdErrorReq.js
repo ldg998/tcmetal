@@ -115,7 +115,7 @@ function msg_get() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "sysCommon"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "qmsProdErrorReq"}).then(function (data) {
         main_data.auth = data;
     });
 }
@@ -128,17 +128,17 @@ function jqGrid_main() {
         ],
         colModel: [
 
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
+            {name: '', index: '',sortable: false, width: 100,fixed: true},
+            {name: '', index: '',sortable: false, width: 100,fixed: true},
+            {name: '', index: '',sortable: false, width: 100,fixed: true},
+            {name: '', index: '',sortable: false, width: 100,fixed: true},
+            {name: '', index: '',sortable: false, width: 100,fixed: true},
+            {name: '', index: '',sortable: false, width: 100,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
+            {name: '', index: '',sortable: false, width: 120,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},
             {name: '', index: '',sortable: false, width: 80,fixed: true},

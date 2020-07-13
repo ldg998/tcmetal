@@ -28,18 +28,11 @@ public class CrmController {
     @RequestMapping(value = "/crmCalendar")
     public String crmCalendar(){return "mesCrm/mesCrm/crmCalendar/crmCalendar";}
 
-    @RequestMapping(value = "/sysSPart")
-    public String sysSPart(){return "mesCrm/Standard/sysSPart/sysSPart";}
-    @RequestMapping(value = "/sysERate")
-    public String sysERate(){return "mesCrm/Standard/sysERate/sysERate";}
-    @RequestMapping(value = "/sysWood")
-    public String sysWood(){return "mesCrm/Standard/sysWood/sysWood";}
 
 
     @RequestMapping(value = "/crm_4")
     public String crm_4(){return "mesCrm/mesCrm/dumi/crm_4";}
-    @RequestMapping(value = "/crm_5")
-    public String crm_5(){return "mesCrm/mesCrm/dumi/crm_5";}
+
 
     @RequestMapping(value = "/crmShipping")
     public String crmShipping(){return "mesCrm/mesCrm/crmShipping/crmShipping";}

@@ -21,7 +21,6 @@ $(document).ready(function () {
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
-    get_btn(1);
     selectBox();
 });
 

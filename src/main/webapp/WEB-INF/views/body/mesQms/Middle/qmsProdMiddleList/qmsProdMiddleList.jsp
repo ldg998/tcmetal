@@ -9,7 +9,7 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-40 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -31,6 +31,16 @@
                         </div>
                     </td>
 
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                    <td class="wt-px-200">
+                        <input type="text" class="form-control h-25 condition_main">
+                    </td>
+                    <td class="wt-px-50 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-100">
+                        <input type="text" class="form-control h-25 condition_main">
+                    </td>
+
+
                     <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
                     <td class="wt-px-200">
                         <select id="1_select" style="width: 100%">
@@ -41,7 +51,7 @@
 
                         </select>
                     </td>
-
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

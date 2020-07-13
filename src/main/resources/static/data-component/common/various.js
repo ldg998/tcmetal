@@ -591,13 +591,10 @@ function datepicker_makes1(tag,num) {
 
 
 function modalValuePush(name1,name2,name3) {
-
 		$(name2).val($(name1).val());
 		if ($(name1).val() === ""){
 			$(name3).val("");
-
 		} else {
-
 			$(name3).val($(name1 + " option:selected").text().trim());
 		}
 

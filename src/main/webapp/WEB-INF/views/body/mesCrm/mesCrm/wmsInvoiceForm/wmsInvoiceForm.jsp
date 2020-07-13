@@ -8,7 +8,7 @@
     <div class="page-content">
         <!-- 검색 div 영역 -->
         <div class="col-lg-12 padding0">
-            <table class="table wt-15 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
 
@@ -24,7 +24,9 @@
                         </div>
                     </td>
                     <!-- 품목코드 검색창 -->
+                    <td></td>
                 </tr>
+
                 </tbody>
             </table>
         </div>

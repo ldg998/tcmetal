@@ -17,7 +17,6 @@ var main_data = {
 };
 
 ////////////////////////////시작 함수/////////////////////////////////////
-
 $(document).ready(function () {
     msg_get(); //메세지설정
     authcheck(); // 권한체크
@@ -64,12 +63,13 @@ function under_get(rowid) {
 // 추가버튼
 function add_btn() {
     main_data.check3 = 'Y';
+    main_data.check2 = 'Y';
     main_data.status = 'N';
     if (main_data.auth.check_add != "N") { //권한 체크
         modal_reset(".modal_value", []); //해당 클레스명의 value 리셋 readonly name이있다면 그객체를 leadonly
         $("#mes_add_grid").jqGrid('clearGridData');   //해당 그리드의 데이터삭제 및 업데이트
         $("#mes_add_grid2").jqGrid('clearGridData');  //해당 그리드의 데이터삭제 및 업데이트
-        trigger_false();
+
         var date = new Date();  //날짜데이터 호출
         var date2 = new Date(); //날짜데이터 호출
         date2.setDate(date.getDate() + 1); //현재날짜에 + 1
@@ -79,6 +79,7 @@ function add_btn() {
         $("#crm_ord_no").prop("disabled", false).trigger('change');    //수주번호
         main_data.check = 'I';   //추가권한 부여
         $("#addDialog").dialog('open'); // 모달오픈
+        trigger_false();
         jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //해당그리드 리사이즈
         jqGridResize2("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]')); //해당그리드 리사이즈
     } else {
@@ -178,6 +179,8 @@ function suppModal_bus(code, name) {
         $("#supp_name_modal1").val(name);
         $("#supp_code_modal1").val(code);
     }
+    $('#mes_add_grid').jqGrid('clearGridData');
+    $('#mes_add_grid2').jqGrid('clearGridData');
     $("#SuppSearchGrid").jqGrid('clearGridData');
 }
 function suppModal_close_bus() {
@@ -217,8 +220,9 @@ function jqGrid_main() {  //메인 jqGrid
         datatype: 'local', // local 설정을 통해 handler 에 재요청하는 경우를 방지
         multiselect: true,  // 다중선택 가능
         caption: '발주등록 | MES', // grid 제목
-        colNames: ['','발주일자', '전표번호', '업체명', '상태', '납기일자', '납품장소', '등록자', '등록일시'], // grid 헤더 설정
+        colNames: ['','','발주일자', '전표번호', '업체명', '상태', '납기일자', '납품장소', '등록자', '등록일시'], // grid 헤더 설정
         colModel: [
+            {name: 'supp_code', index: 'supp_code', sortable: false, hidden:true},
             {name: 'status', index: 'status', sortable: false, hidden:true},
             {name: 'work_date', index: 'work_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 100}, // formatter 사용을 통해 데이터 형식 가공
             {name: 'ord_no', index: 'ord_no', sortable: false, key: true, fixed: true, width: 130},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출

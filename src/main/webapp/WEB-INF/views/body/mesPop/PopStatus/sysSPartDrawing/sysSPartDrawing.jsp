@@ -3,13 +3,13 @@
 <%@ page session="false" %>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
-<script type="text/javascript" src="/static/data-component/mesPOP/PopStatus/sysSPartDrawing/pop_5.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesPOP/PopStatus/sysSPartDrawing/sysSPartDrawing.js" charset="UTF-8"></script>
 
 <div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-25 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
 
@@ -31,6 +31,7 @@
                                     autocomplete="off" >
                         </div>
                     </td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

@@ -130,7 +130,7 @@ function msg_get() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "sysDept"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "crmOrderRecp"}).then(function (data) {
         main_data.auth = data;
     });
 }
@@ -153,7 +153,7 @@ function jqGrid_main() {
             {name:'',index:'',sortable: false,width:150,fixed: true},
             {name:'',index:'',sortable: false,width:180,fixed: true}
         ],
-        caption: "수주등록 | MES",
+        caption: "수주정보관리 | MES",
         autowidth: true,
         height: 600,
         pager: '#mes_grid_pager',

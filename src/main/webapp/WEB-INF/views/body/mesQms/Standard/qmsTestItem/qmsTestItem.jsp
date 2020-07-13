@@ -6,7 +6,7 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-30 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">검사구분</td>
@@ -15,8 +15,6 @@
                             <option value="1">수입검사</option>
                             <option value="2">중간검사</option>
                             <option value="3">최종검사</option>
-                            <option value="4">외주검사</option>
-
                         </select>
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">코드그룹</td>
@@ -26,6 +24,7 @@
                             <option value="2">검사항목</option>
                         </select>
                     </td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

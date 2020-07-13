@@ -8,7 +8,7 @@ var main_data = {
     check: 'I',
     send_data: {},
     send_data_post: {},
-    readonly:[],
+    readonly:['qc_code'],
     auth:{}
 };
 
@@ -46,8 +46,10 @@ function get_btn(page) {
 function add_btn() {
     if (main_data.auth.check_add !="N") {
         modal_reset(".modal_value", main_data.readonly);
-        modalValuePush("#check_select","#qc_group","#qc_group_name");
-        modalValuePush("#code_select","#qc_type","#qc_type_name");
+
+     $('#select_modal1').val($('#check_select').val()).trigger("change");
+     $('#select_modal2').val($('#code_select').val()).trigger("change");
+
         main_data.check = 'I';
         $("#addDialog").dialog('open');
     } else {
@@ -58,8 +60,12 @@ function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
         main_data.check = 'U';
+        var send_data = {};
+        send_data.qc_code = jqgrid_data.qc_code;
+        ccn_ajax('/qmsQcItemOneGet', send_data).then(function (data) {
+            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
             $("#addDialog").dialog('open');
-
+        });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
     }
@@ -79,7 +85,7 @@ function delete_btn() {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page'));
+                            $('#mes_grid').trigger("reloadGrid");
                     }
                     closeWindowByMask();
                 }).catch(function (err) {
@@ -123,7 +129,7 @@ function jqGrid_main() {
             {name: 'qc_type_name', index: 'qc_type_name', width: 150, sortable:false,fixed:true},
             {name: 'qc_code', index: 'qc_code',key:true, width: 150, sortable:false,fixed:true},
             {name: 'qc_name', index: 'qc_name', width: 150, sortable:false,fixed:true},
-            {name: '', index: '', width: 150, sortable:false,fixed:true},
+            {name: 'use_yn', index: 'use_yn', width: 150, sortable:false,fixed:true},
             {name: 'user_name', index: 'user_name', width: 150, sortable:false,fixed:true},
             {name: 'create_date', index: 'create_date', width: 180, sortable:false,fixed:true,formatter: formmatterDate}
         ],

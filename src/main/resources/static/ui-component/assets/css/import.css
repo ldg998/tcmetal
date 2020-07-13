@@ -478,7 +478,7 @@ input[type=email], input[type=url], input[type=search], input[type=tel], input[t
 .fc-unthemed td {
     border-color: #8a8686;
 }
-.board_line {border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; }
+
 .board_right{border-right: 1px solid #DDDDDD;}
 .main_title{
     width: 32vw; margin:0 auto; margin-top: 30px; border-right:10px solid black; border-left:10px solid black; display:block;

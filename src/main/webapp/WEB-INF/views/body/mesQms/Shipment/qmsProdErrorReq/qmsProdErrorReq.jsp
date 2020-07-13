@@ -6,7 +6,7 @@
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
-            <table class="table wt-75 board_line">
+            <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -27,8 +27,8 @@
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
-                    <td class="wt-px-200">
+                    <td class="wt-px-50 td-title t-align-c padding-a-0">구분</td>
+                    <td class="wt-px-75">
                         <select id="select1" style="width: 100%">
                             <option value="">국내</option>
                             <option value="">수출</option>
@@ -43,7 +43,7 @@
                                    autocomplete="off">
                         </div>
                     </td>
-
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

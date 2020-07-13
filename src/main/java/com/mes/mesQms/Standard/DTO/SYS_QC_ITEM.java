@@ -13,6 +13,7 @@ public class SYS_QC_ITEM
     private String qc_type;
     private String qc_type_name;
     private String qc_code;
+    private String use_yn;
     @NotBlank(message = "검사명를 입력하세요.")
     private String qc_name;
     private String user_code;

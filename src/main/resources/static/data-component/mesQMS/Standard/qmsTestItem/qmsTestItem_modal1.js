@@ -15,53 +15,21 @@ function addUdate_btn() {
 
         send_data.keyword = main_data.check;
         if (confirm(text)) {
-            var options = {
-                data:send_data,
-                success : function(data) {
-                    if (data.result === 'NG') {
-                        alert(data.message);
+            ccn_ajax('/qmsQcItemAdd', send_data).then(function (data) {
+                if (data.result === 'NG') {
+                    alert(data.message);
+                } else {
+                    if (main_data.check === "I") {
+                        get_btn(1);
                     } else {
-                        if (main_data.check === "I") {
-                            get_btn(1);
-                        } else {
-                            get_btn_post($("#mes_grid").getGridParam('page'));
-                        }
-                        $("#addDialog").dialog('close');
+                        $('#mes_grid').trigger("reloadGrid");
                     }
-                },
-                type : "POST"
-            };
-            $("#qmsTestltem").ajaxSubmit(options);
+                    $("#addDialog").dialog('close');
+                }
+            });
         }
     }
 
-
-    // var modal_objact = value_return(".modal_value");
-    // if (effectiveness1(modal_objact)) {
-    //     var text = '저장하겠습니까?';
-    //     if (main_data.check === "U") {
-    //         text = '수정하겠습니까?';
-    //     }
-    //     if (confirm(text)) {
-    //
-    //         modal_objact.keyword = main_data.check;
-    //
-    //         ccn_ajax("/sysLocAdd", modal_objact).then(function (data) {
-    //             if (data.result === 'NG') {
-    //                 alert(data.message);
-    //             } else {
-    //                 if (main_data.check === "I") {
-    //                     get_btn(1);
-    //                 } else {
-    //                     get_btn_post($("#mes_grid").getGridParam('page'));
-    //                 }
-    //             }
-    //             $("#addDialog").dialog('close');
-    //         }).catch(function (err) {
-    //             alert("저장실패");
-    //         });
-    //     }
-    // }
 
 }
 ////////////////////////////호출 함수/////////////////////////////////////
@@ -73,6 +41,8 @@ function msg_get_modal1() {
 function selectBox_modal1(){
     $('#select_modal1').select2();
     $('#select_modal2').select2();
+    $('#use_yn').select2();
+
 }
 
 function modal_make1() {
@@ -100,4 +70,13 @@ function modal_make1() {
             }
         ]
     })
+}
+
+function effectiveness1(modal_objact) { // 유효성 검사
+    if (modal_objact.qc_name === '') {
+        alert("검사명을 입력해주세요");
+        return false;
+    }  else {
+        return true;
+    }
 }

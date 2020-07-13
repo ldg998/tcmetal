@@ -2,7 +2,6 @@
 function modal_start1() {
     msg_get_modal1();// 모달 메세지 설정
     modal_make1(); // 모달 생성
-    add_click_btn();// 키설정
     datepicker_modal1();
 }
 
@@ -80,7 +79,7 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
                 }
             },
             {
-                text: "취소",
+                text: "삭제",
                 "class": "btn btn-minier",
                 click: function () {
                     $(this).dialog("close");

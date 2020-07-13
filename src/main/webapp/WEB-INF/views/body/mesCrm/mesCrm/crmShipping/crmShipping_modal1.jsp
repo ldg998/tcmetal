@@ -193,9 +193,9 @@
                 <div class="name_lee b1">목재비1</div>
                 <div class="profile-info-value b2">
                     <select id="_select" class="form-control h-25 condition_main" name="keyword2" style="width: 100%">
-                        <option value="">전체</option>
-                        <option value="0">진행중</option>
-                        <option value="1">완료</option>
+                        <option value="">440</option>
+                        <option value="0"></option>
+                        <option value="1"></option>
                     </select>
                 </div>
                 <div class="profile-info-value b7 text-center" >
@@ -206,9 +206,9 @@
                 <div class="name_lee b3">목재비2</div>
                 <div class="profile-info-value b4">
                     <select id="_select2" class="form-control h-25 condition_main" name="keyword2" style="width: 100%">
-                        <option value="">전체</option>
-                        <option value="0">진행중</option>
-                        <option value="1">완료</option>
+                        <option value="">1090</option>
+                        <option value="0"></option>
+                        <option value="1"></option>
                     </select>
                 </div>
                 <div class="profile-info-value b8 text-center">
@@ -221,9 +221,9 @@
                 <div class="name_lee b5">목재비3</div>
                 <div class="profile-info-value b6">
                     <select  id="_select3" class="form-control h-25 condition_main" name="keyword2" style="width: 100%">
-                        <option value="">전체</option>
-                        <option value="0">진행중</option>
-                        <option value="1">완료</option>
+                        <option value="">파렛트</option>
+                        <option value="0"></option>
+                        <option value="1"></option>
                     </select>
                 </div>
                 <div class="profile-info-value b9 text-center">

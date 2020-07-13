@@ -87,7 +87,7 @@ function datepickerInput() {
     datepicker_makes("#datepicker2", 0);
 }
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "qmsProdErrorList"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "popProdList"}).then(function (data) {
         main_data.auth = data;
     });
 }
@@ -102,21 +102,21 @@ function jqGrid_main() {
         caption: "생산진행현황 | MES",
         colNames: ['생산지시일자','지시번호','업체','PO','기종','품번','품명','단중','수량','상태','생산일자','입고일자','출고일자','등록자','등록일시'],
         colModel: [
+            {name: '', index: '', sortable:false, width: 120,  key: true,fixed:true},
+            {name: '', index: '', sortable:false, width: 100, fixed:true},
+            {name: '', index: '', sortable:false, width: 60, fixed:true},
             {name: '', index: '', sortable:false, width: 60,  key: true,fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60,  key: true,fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
+            {name: '', index: '', sortable:false, width: 100, fixed:true},
+            {name: '', index: '', sortable:false, width: 100, fixed:true},
+            {name: '', index: '', sortable:false, width: 100, fixed:true},
+            {name: '', index: '', sortable:false, width: 80, fixed:true},
+            {name: '', index: '', sortable:false, width: 100, fixed:true},
 
 
         ],

@@ -26,7 +26,10 @@ $(document).ready(function () {
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-
+function test(){
+    $('#addDialog').dialog('open');
+    jqGridResize("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
+}
 function get_btn(page) {
     // main_data.send_data = value_return(".condition_main");
     // main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
@@ -148,11 +151,11 @@ function msg_get() {
 
 function datepickerInput() {
     datepicker_makes("#datepicker", -30);
-    datepicker_makes("#datepicker2", 0);
+    datepicker_makes1("#datepicker2", 0);
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "tpmMachineError"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "wmsOutOrder"}).then(function (data) {
         main_data.auth = data;
     });
 }

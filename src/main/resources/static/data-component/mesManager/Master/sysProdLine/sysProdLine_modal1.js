@@ -4,7 +4,7 @@ function modal_start1() {
     msg_get_modal1();
     modal_make1();
     selectBox_modal1();
-    add_click_btn();
+
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -110,8 +110,8 @@ function modal_make1() {
 
 
 function selectBox_modal1() {
-    select_makes("#dept_select", "/sysDeptAllGet", "dept_code", "dept_name");
-
+    // select_makes("#dept_select", "/sysDeptAllGet", "dept_code", "dept_name");
+$('#select_modal1').select2();
 }
 // 유효성 검사
 function effectiveness1(modal_objact) {

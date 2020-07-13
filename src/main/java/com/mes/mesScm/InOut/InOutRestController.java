@@ -32,35 +32,21 @@ public class InOutRestController {
 
 
     // 기존 프로젝트에서 긁어온 소스
-    @RequestMapping(value = "/scmInAdd", method = RequestMethod.POST)
-    public Message scmInAdd(HttpServletRequest req, SCM_IN si) {
-        return inOutService.scmInAdd(req, si);
-    }
+
 
     @RequestMapping(value = "/scmInDel", method = RequestMethod.POST)
     public Message scmInDel(HttpServletRequest req, Page p) {
         return inOutService.scmInDel(req, p);
     }
 
-    @RequestMapping(value = "/scmInGet", method = RequestMethod.POST)
-    public RESTful scmInGet(HttpServletRequest req, Page p) {
-        return inOutService.scmInGet(req, p);
-    }
+
 
     @RequestMapping(value = "/scmInLot2Get", method = RequestMethod.POST)
     public RESTful scmInLot2Get(HttpServletRequest req, Page p) {
         return inOutService.scmInLot2Get(req, p);
     }
 
-    @RequestMapping(value = "/scmInSub1Get", method = RequestMethod.POST)
-    public RESTful scmInSub1Get(HttpServletRequest req, Page p) {
-        return inOutService.scmInSub1Get(req, p);
-    }
 
-    @RequestMapping(value = "/scmInSub2Get", method = RequestMethod.POST)
-    public List<SCM_IN_SUB> scmInSub2Get(HttpServletRequest req, Page p) {
-        return inOutService.scmInSub2Get(req, p);
-    }
 
 
 
@@ -119,6 +105,29 @@ public class InOutRestController {
     @RequestMapping(value = "/scmInLineSubListGet", method = RequestMethod.POST)
     public RESTful scmInLineSubListGet(HttpServletRequest req,Page p) { return inOutService.scmInLineSubListGet(req, p); }
 
+
+
+
+    @RequestMapping(value = "/scmInGet", method = RequestMethod.POST)
+    public RESTful scmInGet(HttpServletRequest req, Page p) {
+        return inOutService.scmInGet(req, p);
+    }
+
+    @RequestMapping(value = "/scmInSub1Get", method = RequestMethod.POST)
+    public RESTful scmInSub1Get(HttpServletRequest req, Page p) {
+        return inOutService.scmInSub1Get(req, p);
+    }
+
+    @RequestMapping(value = "/scmInSub2Get", method = RequestMethod.POST)
+    public List<SCM_IN_SUB> scmInSub2Get(HttpServletRequest req, Page p) {
+        return inOutService.scmInSub2Get(req, p);
+    }
+
+
+    @RequestMapping(value = "/scmInAdd", method = RequestMethod.POST)
+    public Message scmInAdd(HttpServletRequest req, SCM_IN si) {
+        return inOutService.scmInAdd(req, si);
+    }
 
     @RequestMapping(value = "/scmInOrdModalGet", method = RequestMethod.POST)
     public List<SCM_IN_ORD_MODAL> scmInOrdModalGet( Page p) { return inOutService.scmInOrdModalGet(p); }

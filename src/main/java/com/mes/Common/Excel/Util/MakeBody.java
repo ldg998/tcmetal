@@ -108,13 +108,7 @@ public class MakeBody {
                     obj.add(dateFormat(data.getWork_date()));
                     obj.add(data.getIn_no());
                     obj.add(data.getSupp_name());
-                    obj.add(data.getPart_code());
-                    obj.add(data.getPart_name());
-                    obj.add(data.getSpec());
-                    obj.add(integer(data.getQty()));
-                    obj.add(data.getUnit_name());
-                    obj.add(data.getQc_level_name());
-                    obj.add(data.getQc_result_name());
+
                     obj.add(data.getUser_name());
                     obj.add(dateFormat2(data.getUpdate_date()));
                     content.add(obj);

@@ -70,7 +70,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <%--조회버튼--%>
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1);">
                             <span>
                             <i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>

@@ -27,17 +27,6 @@ $(document).ready(function () {
 
 ////////////////////////////클릭 함수//////////////////////////////////
 
-function select_change1(value) {
-    if(value === ''){
-        $('#part_group2_select').empty();
-        var option = null;
-        option = $("<option></option>").text('전체').val('');
-        $('#part_group2_select').append(option);
-        $('#part_group2_select').select2();
-    }else{
-        part_type_select_ajax_all('#part_group2_select', "/sysPartGroup2AllGet","part_grp_code2" ,"part_grp_name2",{keyword:$("#part_type_select").val(), keyword2:value});
-    }
-}
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
@@ -100,9 +89,9 @@ function authcheck() {
     });
 }
 
-function selectBox() {
-    $('#part_type_select').select2();
-   }
+function selectBox() { //구분영역에 들어갈 select데이터 호출
+    select_makes_base("#part_type_select", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
+}
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({

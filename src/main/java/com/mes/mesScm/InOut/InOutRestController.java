@@ -34,10 +34,7 @@ public class InOutRestController {
     // 기존 프로젝트에서 긁어온 소스
 
 
-    @RequestMapping(value = "/scmInDel", method = RequestMethod.POST)
-    public Message scmInDel(HttpServletRequest req, Page p) {
-        return inOutService.scmInDel(req, p);
-    }
+
 
 
 
@@ -142,6 +139,12 @@ public class InOutRestController {
     public Message scmInAdd(HttpServletRequest req, SCM_IN si) {
         return inOutService.scmInAdd(req, si);
     }
+
+    @RequestMapping(value = "/scmInDel", method = RequestMethod.POST)
+    public Message scmInDel( Page p) {
+        return inOutService.scmInDel( p);
+    }
+
 
     @RequestMapping(value = "/scmInOrdModalGet", method = RequestMethod.POST)
     public List<SCM_IN_ORD_MODAL> scmInOrdModalGet( Page p) { return inOutService.scmInOrdModalGet(p); }

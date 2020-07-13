@@ -24,7 +24,7 @@ public class SCM_OUT {
     private String user_name;
     private String unit_name;
 
-    private int qty;
+    private double qty;
 
 
 }

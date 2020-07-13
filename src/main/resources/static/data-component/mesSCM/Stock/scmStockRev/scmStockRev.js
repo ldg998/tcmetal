@@ -101,9 +101,9 @@ function authcheck() {
     });
 }
 
-function selectBox(){
-    $("#part_type_select").select2();
-   }
+function selectBox() { //구분영역에 들어갈 select데이터 호출
+    select_makes_base("#part_type_select", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
+}
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({

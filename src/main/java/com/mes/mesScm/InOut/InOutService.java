@@ -72,8 +72,7 @@ public class InOutService extends ReturnFunction {
         return  inOutMapper.scmInSub2Get(p);
     }
 
-    public Message scmInDel(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
+    public Message scmInDel(Page p) {
         return  inOutMapper.scmInDel(p);
     }
 

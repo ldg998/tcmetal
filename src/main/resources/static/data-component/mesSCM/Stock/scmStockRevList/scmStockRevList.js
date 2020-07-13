@@ -100,27 +100,26 @@ function authcheck() {
         main_data.auth = data;
     });
 }
-function selectBox() {
-    $('#1_select').select2();
-  }
-
+function selectBox() { //구분영역에 들어갈 select데이터 호출
+    select_makes_base("#part_type_select", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
+}
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
         colNames: ['조정일자','구분','품번','품명','규격','단위','조정전 재고','조정후 재고','조정사유','등록자','등록일시'],
         colModel: [
-            {name: '', index: '', width: 120,sortable:false,fixed:true, formatter:formmatterDate2},
-            {name: '', index: '', width: 100,sortable:false,fixed:true},
-            {name: '', index: '', width: 100,sortable:false,fixed:true},
-            {name: '', index: '', width: 150,sortable:false,fixed:true},
-            {name: '', index: '', width: 150,sortable:false,fixed:true},
-            {name: '', index: '', width: 150,sortable:false,fixed:true},
-            {name: '', index: '', width: 150,sortable:false,fixed:true},
-            {name: '', index: '', width: 130,sortable:false,fixed:true},
-            {name: '', index: '', width: 130,sortable:false,fixed:true},
-            {name: '', index: '', width: 150, sortable:false,fixed:true},
-            {name: '', index: '', width: 150, sortable:false,fixed:true}
+            {name: 'work_date', index: 'work_date', width: 120,sortable:false,fixed:true, formatter:formmatterDate2},
+            {name: 'part_type_name', index: 'part_type_name', width: 100,sortable:false,fixed:true},
+            {name: 'part_code', index: 'part_code', width: 100,sortable:false,fixed:true},
+            {name: 'part_name', index: 'part_name', width: 150,sortable:false,fixed:true},
+            {name: 'spec', index: 'spec', width: 150,sortable:false,fixed:true},
+            {name: 'unit_name', index: 'unit_name', width: 150,sortable:false,fixed:true},
+            {name: 'stock_qty_prev', index: 'stock_qty_prev', width: 130,sortable:false,fixed:true, align:'right', formatter:'number'},
+            {name: 'stock_qty', index: 'stock_qty', width: 130,sortable:false,fixed:true,align:'right',formatter:'number'},
+            {name: 'rev_name', index: 'rev_name', width: 150, sortable:false,fixed:true},
+            {name: 'user_name', index: 'user_name', width: 150, sortable:false,fixed:true},
+            {name: 'create_date', index: 'create_date', width: 150, sortable:false,fixed:true, formatter:formmatterDate},
 
         ],
         caption: "자재조정현황 | MES",

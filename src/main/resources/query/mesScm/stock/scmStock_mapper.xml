@@ -3,7 +3,7 @@
 
 <mapper namespace="com.mes.Mapper.mesScm.Stock.StockMapper">
     <select id="scmStockListGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_LIST">
-        EXEC SP_SCM_STOCK_GET #{page},#{rows},#{keyword},''
+        EXEC SP_SCM_STOCK_GET #{page},#{rows},#{keyword},#{keyword2}
     </select>
 
     <select id="scmStockSumDayListGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_DAY">
@@ -11,19 +11,19 @@
     </select>
 
     <select id="scmStockSumMonthListGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_MONTH">
-        EXEC SP_SCM_STOCK_GET_MONTH #{page},#{rows},#{start_date},#{keyword},''
+        EXEC SP_SCM_STOCK_GET_MONTH #{page},#{rows},#{start_date},#{keyword},#{keyword2}
     </select>
 
     <select id="scmStockRevListGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_REV_LIST">
-        EXEC SP_SCM_STOCK_REV_GET #{page},#{rows},#{start_date},#{stop_date}
+        EXEC SP_SCM_STOCK_REV_GET #{page},#{rows},#{start_date},#{stop_date},#{keyword},#{keyword2}
     </select>
 
     <select id="scmStockRevGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_REV">
-        EXEC SP_SYS_PART_GET #{page},#{rows},'',#{keyword}
+        EXEC SP_SYS_PART_GET #{page},#{rows},#{keyword},#{keyword2},''
     </select>
 
     <select id="scmStockRevOneGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_REV_LIST">
-        EXEC SP_SYS_PART_GET 1,1,#{keyword},''
+        EXEC SP_SYS_PART_GET 1,1,'',#{keyword},''
     </select>
 
     <select id="scmStockRevAdd" resultType="com.mes.Common.DataTransferObject.Message">

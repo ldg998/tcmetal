@@ -73,26 +73,23 @@ function authcheck() {
     });
 }
 
-function selectBox(){
-    $('#part_type_select').select2();
-
-  }
+function selectBox() { //구분영역에 들어갈 select데이터 호출
+    select_makes_base("#part_type_select", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
+}
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['구분','품번', '품명', '규격', '단위', '전일재고', '금일입고','금일출고','재고'],
+        colNames: ['구분','품번', '품명', '규격', '단위','재고'],
         colModel: [
             {name: 'part_type_name', index: 'part_type_name', width: 150,sortable:false,fixed:true},
             {name: 'part_code', index: 'part_code', width: 150,sortable:false,fixed:true},
             {name: 'part_name', index: 'part_name', width: 150,sortable:false,fixed:true},
             {name: 'spec', index: 'spec', width: 150,sortable:false,fixed:true},
             {name: 'unit_name', index: 'unit_name', width: 150,sortable:false,fixed:true},
-            {name: 'supp_name', index: 'supp_name', width: 150,sortable:false,fixed:true},
-            {name: '', index: '', width: 150,sortable:false,fixed:true},
-            {name: '', index: '', width: 150,sortable:false,fixed:true},
-            {name: 'qty', index: 'qty', width: 150,sortable:false,fixed:true, align:'right', formatter:'integer'}
+
+            {name: 'qty', index: 'qty', width: 150,sortable:false,fixed:true, align:'right', formatter:'number'}
 
         ],
         caption: "재고현황 | MES",

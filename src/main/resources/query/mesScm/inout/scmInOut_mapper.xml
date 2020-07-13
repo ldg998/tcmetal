@@ -24,9 +24,7 @@
         	EXEC SP_SCM_IN_SUB2_GET #{page}, #{rows}, #{keyword}, #{keyword2}
     </select>
 
-    <select id="scmInDel" resultType="com.mes.Common.DataTransferObject.Message">
-        	EXEC SP_SCM_IN_DEL #{keyword}
-    </select>
+
     <select id="scmOutGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
         	EXEC SP_SCM_OUT_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}
     </select>
@@ -90,6 +88,10 @@
     </select>
     <select id="scmOutAdd" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_SCM_OUT_ADD #{work_date},#{part_code},#{qty},#{spec},#{user_code},#{remark}
+    </select>
+
+    <select id="scmInDel" resultType="com.mes.Common.DataTransferObject.Message">
+        	EXEC SP_SCM_IN_DEL #{keyword}
     </select>
 
 

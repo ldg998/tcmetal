@@ -34,11 +34,6 @@ $(document).ready(function () {
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-//모달 확인 조회 btn
-function test() {
-    $("#addDialog").dialog('open');// 모달 열기
-    jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //해당그리드 리사이즈
-}
 
 //조회버튼
 function get_btn(page) {
@@ -57,15 +52,6 @@ function get_btn(page) {
     $('#mes_grid2').jqGrid('clearGridData'); //해당 그리드의 데이터삭제 및 업데이트
 }
 
-function get_btn_post(page) {
-    $("#mes_grid").setGridParam({
-        url: '/scmInGet',
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data_post
-    }).trigger("reloadGrid");
-    $('#mes_grid2').jqGrid('clearGridData');
-}
 
 //선택한 그리드의 로우 id를사용해 해당id 와같은 id 를 그리드조회
 function under_get(rowid) {
@@ -77,10 +63,10 @@ function under_get(rowid) {
     }).trigger("reloadGrid");
 }
 
+
+
 // 추가버튼
 function add_btn() {
-    main_data.check3 = 'Y';
-    main_data.status = 'N';
     if (main_data.auth.check_add != "N") { //권한 체크
         modal_reset(".modal_value", []); //해당 클레스명의 value 리셋 readonly name이있다면 그객체를 leadonly
         $("#mes_add_grid").jqGrid('clearGridData');   //해당 그리드의 데이터삭제 및 업데이트
@@ -98,80 +84,35 @@ function add_btn() {
     }
 }
 
-//삭제버튼
 function delete_btn() {
-    if (main_data.auth.check_del != "N") { //권한체크
-        var gu5 = String.fromCharCode(5); //아스키코드 char5 담아추기
-        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크한 그리도 로우 가져오기
-        var check = '';
-        var check2 = [];
-        if (ids.length === 0) { //체크 여부
-            alert(msg_object.TBMES_A004.msg_name1); // 오류메세지출력
+    if(main_data.auth.check_del != "N") {
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        if (ids.length === 0) {
+            alert(msg_object.TBMES_A004.msg_name1);
         } else {
-            ids.forEach(function (id) { //체크한 로우만큼 반복
-                check = $('#mes_grid').jqGrid('getRowData', id).status; //check = 선택한 로우id 에 데이터에 있는 status(상태) 번호이다
-                if (check === '1') { //상태번호가 1이면
-                    check2.push(id); //check2[] 에 담아준다
-                }
-
-            });
-            if (check2.length > 0) { //체크2에 존재유무 체크
-                alert(check2.join(",") + " 전표가 완료 되어있습니다.");
-            } else {
-                if (confirm(msg_object.TBMES_A005.msg_name1)) { //실행유무
-                    main_data.check = 'D';   //삭제권한부여
-                    wrapWindowByMask2();    //삭제하는동안 마스크
-                    ccn_ajax("/scmOrderDel", {ord_no: ids.join(gu5)}).then(function (data) { //아스키 코드를 추가한 데이터 넘겨주기
-                        if (data.result === 'NG') { //프로시저 메세지 가 ng 라면
-                            alert(data.message);   //오류메세지 출력
-                        } else {
-                            get_btn_post($("#mes_grid").getGridParam('page')); //재호출
-                        }
-                        $('#mes_grid2').jqGrid('clearGridData'); //해당 그리드 삭제 및 업데이트
-                        closeWindowByMask(); //마스크 해제
-                    }).catch(function (err) {
-                        closeWindowByMask(); // 마스크해제
-                        console.error(err); // Error 출력
-                    });
-                }
-            }
-            $('#mes_grid').jqGrid("resetSelection");   //해당그리드 재검색
-        }
-    } else {
-        alert(msg_object.TBMES_A002.msg_name1);// 오류메세지 출력
-
-    }
-}
-
-//완료처리버튼
-function complete_btn() {
-    if (main_data.auth.check_edit != "N") {
-        var gu5 = String.fromCharCode(5);             //아스키코드5
-        var ids = $("#mes_grid").getGridParam('selarrrow'); //선택한 그리드 로우
-        if (ids.length === 0) {                             //선택여부
-            alert("완료처리하는 데이터를 선택해주세요");
-        } else {
-            if (confirm("완료처리 하시겠습니까?")) {           //시행여부
-                wrapWindowByMask2();                       //마스크 온
-                ccn_ajax("/scmOrderComp", {keyword: ids.join(gu5)}).then(function (data) {
+            if (confirm(msg_object.TBMES_A005.msg_name1)) {
+                var gu5 = String.fromCharCode(5);
+                wrapWindowByMask2();
+                ccn_ajax("/scmInDel", {keyword: ids.join(gu5)}).then(function (data) {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page')); //페이지 재로딩
+                        $('#mes_grid').trigger("reloadGrid");
+                        $('#mes_grid2').jqGrid('clearGridData');
                     }
-                    $('#mes_grid2').jqGrid('clearGridData');  //해당 그리드 데이터 비우고 업데이트
-                    closeWindowByMask();                //마스크 오프
+                    closeWindowByMask();
                 }).catch(function (err) {
-                    closeWindowByMask();                //마스크 오프
+                    closeWindowByMask();
                     console.error(err); // Error 출력
                 });
             }
-            $('#mes_grid').jqGrid("resetSelection");    //그리드 전체 선택해제
         }
     } else {
-        alert(msg_object.TBMES_A003.msg_name1);         //오류메세지 출력
+        alert(msg_object.TBMES_A002.msg_name1);
     }
 }
+
+
 function supp_btn(what) {
     main_data.supp_check = what;
     $("#SuppSearchGrid").jqGrid('clearGridData');

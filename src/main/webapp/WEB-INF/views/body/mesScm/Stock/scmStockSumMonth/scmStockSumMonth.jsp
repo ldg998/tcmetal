@@ -27,7 +27,7 @@
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0" >품번</td>
                     <td class="wt-px-200">
-                        <input type="text" name="part_no" class="form-control h-25 condition_main"
+                        <input type="text" name="keyword2" class="form-control h-25 condition_main"
                                id="part_no"  autocomplete="off" >
                     </td>
                     <td></td>

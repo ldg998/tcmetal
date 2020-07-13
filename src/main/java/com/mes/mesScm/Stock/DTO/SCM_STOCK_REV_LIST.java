@@ -26,6 +26,7 @@ public class SCM_STOCK_REV_LIST {
 
         private String work_date;
         private String rev_no;
-        private int rev_qty;
+        private double rev_qty;
         private String rev_name;
+        private String create_date;
 }

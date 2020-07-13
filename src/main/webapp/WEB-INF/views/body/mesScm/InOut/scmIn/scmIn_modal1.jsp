@@ -64,7 +64,7 @@
                                 <span>저장</span>
                             </span>
                         </a>
-                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
+                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="close_modal1_btn();">
                             <span>
                                 <i class="fa fa-search bigger-110 blue"></i>
                                 <span>취소</span>

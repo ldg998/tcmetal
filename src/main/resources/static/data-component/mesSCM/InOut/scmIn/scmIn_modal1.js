@@ -17,7 +17,7 @@ function modal_start1() {
 //모달 조회 버튼
 function get_modal1_btn() {
     if (main_data.check === "U") {
-        alert("수정할수 없습니다.");
+
     } else {
         var data = value_return(".modal_value"); //해당클레스이름 데이터 name value 할당
         if (data.keyword !== '') {
@@ -34,55 +34,6 @@ function get_modal1_btn() {
 
 }
 
-//이미지 여부를 묻고 있다면 할당 없으면 ""  체크가 y가 아니라면 다시 이미지를 호출
-function img_change(value) {
-    if (main_data.check3 === 'Y') {
-        ccn_ajax("/scmOrderImageOneGet", {keyword: value}).then(function (data) {
-            if (value == '' || value == null) {
-                $("#remark").val("").trigger("change");
-            } else {
-                $("#remark").val(data.remark).trigger("change");
-            }
-        });
-    } else {
-        ccn_ajax("/scmOrderImageOneGet", {keyword: value}).then(function (data) {
-        });
-    }
-}
-
-//수주조회 모달창 오픈
-function ord_btn() {
-    modal_reset(".crm_condition", []);
-    $("#crmSearchGrid").jqGrid('clearGridData');
-    var date = new Date();
-    var date2 = new Date();
-    date2.setDate(date.getDate() + 1);
-    $('#crm_datepicker').datepicker('setDate', date);
-    $('#crm_datepicker2').datepicker('setDate', date2);
-    $("#crm-search-dialog").dialog('open');
-
-    $("#crm_supp_name").val($("#supp_name_modal").val());
-    $("#crm_supp_code").val($("#supp_code_modal").val());
-    $("#crm_supp_name").focus();
-    jqGridResize2("#crmSearchGrid", $('#crmSearchGrid').closest('[class*="col-"]'));
-}
-
-//수주조회 선택 버튼 동작
-function crmModal_bus(data) {
-    $("#crm_ord_no").val(data.ord_no);
-    $("#place_name").val(data.place_name);
-    if ($("#supp_name_modal").val() === "" || $("#supp_name_modal").val() === null) {
-        $("#supp_name_modal").val(data.supp_name);
-        $("#supp_code_modal").val(data.supp_code);
-    }
-}
-
-//수주조회 모달 닫기 버튼 동작
-function crmModal_close_bus() {
-    $("#crm_ord_no").val("");
-    $("#place_name").val("");
-    $("#crmSearchGrid").jqGrid('clearGridData');
-}
 
 //추가모달 취소 버튼
 function close_modal1_btn() {
@@ -128,7 +79,7 @@ function update_btn(rowid) {
 function add_modal1_btn() {
     $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
     if (main_data.check === "U") {
-        alert("수정할수 없습니다.");
+
     } else {
         var gu5 = String.fromCharCode(5);
         var gu4 = String.fromCharCode(4);

@@ -69,7 +69,7 @@ public class InOutService extends ReturnFunction {
     }
 
     public List<SCM_IN_SUB> scmInSub2Get(HttpServletRequest req, Page p) {
-        return  inOutMapper.scmInSub1Get(p);
+        return  inOutMapper.scmInSub2Get(p);
     }
 
     public Message scmInDel(HttpServletRequest req, Page p) {

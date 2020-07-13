@@ -11,6 +11,7 @@ public class SCM_IN_SUB {
     private double ord_qty;
     private double prev_qty;
     private double qty;
+    private double in_qty;
     private String part_name;
     private String spec;
     private String unit_name;

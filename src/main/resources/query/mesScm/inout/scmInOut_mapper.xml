@@ -82,11 +82,11 @@
 
 
     <select id="scmInSub1Get" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
-        	EXEC SP_SCM_IN_SUB_GET #{page}, #{rows},#{keyword}
+        EXEC SP_SCM_IN_SUB_GET #{page}, #{rows},#{keyword}
     </select>
 
     <select id="scmInSub2Get" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
-        	EXEC SP_SCM_IN_SUB_GET 0, 0,#{keyword}
+        EXEC SP_SCM_IN_SUB2_GET 0, 0,#{keyword}
     </select>
     <select id="scmOutAdd" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_SCM_OUT_ADD #{work_date},#{part_code},#{qty},#{spec},#{user_code},#{remark}

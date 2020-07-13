@@ -86,7 +86,7 @@ function add_btn() {
         $("#mes_add_grid").jqGrid('clearGridData');   //해당 그리드의 데이터삭제 및 업데이트
         var date = new Date();  //날짜데이터 호출
         $('#datepicker3').datepicker('setDate', date); //해당 id에 현재날짜 세팅  2020-06-04
-        $("#supp_name_modal").prop("disabled", false);
+        $("#supp_name_modal1").prop("disabled", false);
         $("#datepicker3").prop("disabled", false);
         $("#modal1_remark").prop("disabled", false);
         main_data.check = 'I';   //추가권한 부여

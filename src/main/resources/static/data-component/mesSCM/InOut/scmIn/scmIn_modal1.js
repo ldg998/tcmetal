@@ -16,16 +16,21 @@ function modal_start1() {
 ////////////////////////////클릭 함수/////////////////////////////////////
 //모달 조회 버튼
 function get_modal1_btn() {
-    var data = value_return(".modal_value"); //해당클레스이름 데이터 name value 할당
-    if (data.keyword !== '') {
-        $("#mes_add_grid").setGridParam({ //그리드 조회
-            url: "/scmInOrdModalGet",
-            datatype: "json",
-            postData: data
-        }).trigger("reloadGrid"); //그리드 재시작
+    if (main_data.check === "U") {
+        alert("수정할수 없습니다.");
     } else {
-        alert("업체를 선택해주세요.");
+        var data = value_return(".modal_value"); //해당클레스이름 데이터 name value 할당
+        if (data.keyword !== '') {
+            $("#mes_add_grid").setGridParam({ //그리드 조회
+                url: "/scmInOrdModalGet",
+                datatype: "json",
+                postData: data
+            }).trigger("reloadGrid"); //그리드 재시작
+        } else {
+            alert("업체를 선택해주세요.");
+        }
     }
+
 
 }
 
@@ -89,7 +94,7 @@ function close_modal1_btn() {
 function update_btn(rowid) {
     main_data.check3 = 'N';
     if (main_data.auth.check_edit != "N") {
-        $("#supp_name_modal").prop("disabled", true);
+        $("#supp_name_modal1").prop("disabled", true);
         $("#datepicker3").prop("disabled", true);
         $("#modal1_remark").prop("disabled", true);
         modal_reset(".modal_value", []);
@@ -98,8 +103,9 @@ function update_btn(rowid) {
         main_data.check = 'U';
 
         ccn_ajax('/scmInSub2Get', {keyword: rowid}).then(function (data) {
-            $("#supp_name_modal").val(data[0].supp_name);
-            $("#supp_code_modal").val(data[0].supp_code);
+            console.log(data);
+            $("#supp_name_modal1").val(data[0].supp_name);
+            $("#supp_code_modal1").val(data[0].supp_code);
             $("#datepicker3").val(formmatterDate2(data[0].work_date));
             $("#remark").val(data[0].remark);
 
@@ -121,28 +127,31 @@ function update_btn(rowid) {
 // 추가 모달 저장 버튼
 function add_modal1_btn() {
     $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
-    var gu5 = String.fromCharCode(5);
-    var gu4 = String.fromCharCode(4);
-    var add_data = value_return(".modal_value");
-    add_data.work_date = add_data.work_date.replace(/\-/g, '');
-    add_data.supp_code = add_data.keyword;
-    add_data.remark = add_data.keyword2;
-    var jdata = $("#mes_add_grid").getRowData();
+    if (main_data.check === "U") {
+        alert("수정할수 없습니다.");
+    } else {
+        var gu5 = String.fromCharCode(5);
+        var gu4 = String.fromCharCode(4);
+        var add_data = value_return(".modal_value");
+        add_data.work_date = add_data.work_date.replace(/\-/g, '');
+        add_data.supp_code = add_data.keyword;
+        add_data.remark = add_data.keyword2;
+        var jdata = $("#mes_add_grid").getRowData();
 
-    if (jdata.length > 0) {
-        var list = [];
-        var list2 = [];
-        jdata.forEach(function (data, j) {
-            if (data.in_qty !== '' && data.in_qty > 0) {
-                list.push(data.ord_no + gu4 + data.part_code  + gu4 + data.ord_qty  + gu4 + data.qty + gu4 + data.in_qty + gu4 + data.status + gu4 + data.qc_result + gu4 + data.qc_qty + gu4 + data.ng_type + gu4 + data.ng_name  + gu4 + data.act_type);
-            } else {
-                list2.push(data.part_code);
-            }
-        });
-        callback(function () {
-            if (list2.length > 0) {
-                alert(list2[0] + "를 다시 확인해주세요");
-            } else {
+        if (jdata.length > 0) {
+            var list = [];
+            var list2 = [];
+            jdata.forEach(function (data, j) {
+                if (data.in_qty !== '' && data.in_qty > 0) {
+                    list.push(data.ord_no + gu4 + data.part_code + gu4 + data.ord_qty + gu4 + data.qty + gu4 + data.in_qty + gu4 + data.status + gu4 + data.qc_result + gu4 + data.qc_qty + gu4 + data.ng_type + gu4 + data.ng_name + gu4 + data.act_type);
+                } else {
+                    list2.push(data.part_code);
+                }
+            });
+            callback(function () {
+                if (list2.length > 0) {
+                    alert(list2[0] + "를 다시 확인해주세요");
+                } else {
 
                     var text = msg_object.TBMES_Q002.msg_name1;
                     if (main_data.check === "U") {
@@ -169,10 +178,11 @@ function add_modal1_btn() {
                         });
                     }
 
-            }
-        });
-    } else {
-        alert("저장 목록을 넣어주세요");
+                }
+            });
+        } else {
+            alert("저장 목록을 넣어주세요");
+        }
     }
 }
 
@@ -214,7 +224,7 @@ function jqGrid_modal1() { // 메인 그리드 설정
             {name: 'part_name', index: 'part_name', sortable: false,fixed: true, width: 100},
             {name: 'spec', index: 'spec', sortable: false,fixed: true, width: 100},
             {name: 'unit_name', index: 'unit_name', sortable: false,fixed: true, width: 100},
-            {name: 'ord_qty', index: 'ord_qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'number'},
+                {name: 'ord_qty', index: 'ord_qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'number'},
             {name: 'qty', index: 'qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'number'},
             {
                 name: 'in_qty', index: 'in_qty', sortable: false, align: 'right',formatter:'number',fixed: true, width: 100,

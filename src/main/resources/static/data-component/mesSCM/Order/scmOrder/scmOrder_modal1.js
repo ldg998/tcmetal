@@ -9,7 +9,6 @@ function modal_start1() {
     modal_make1();    // 모달생산
     datepicker_modal1(); //모달안 날짜 넣어주기
    selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
-
     jqGrid_modal1();  //그리드 생성
     jqGridResize("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //행당그리드 리사이즈
     jqGridResize("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]')); //행당그리드 리사이즈
@@ -74,6 +73,7 @@ function crmModal_bus(data) {
         $("#supp_name_modal").val(data.supp_name);
         $("#supp_code_modal").val(data.supp_code);
     }
+
 }
 
 //수주조회 모달 닫기 버튼 동작
@@ -96,6 +96,7 @@ function update_btn(rowid) {
         modal_reset(".modal_value",[]);
         $("#mes_add_grid").jqGrid('clearGridData');
         $("#mes_add_grid2").jqGrid('clearGridData');
+
         main_data.check = 'U';
         ccn_ajax("/scmOrderOneGet", {keyword: rowid}).then(function(data){
             console.log(data.status);
@@ -107,8 +108,8 @@ function update_btn(rowid) {
                 trigger_false();
             }
             $("#ord_no").val(data.ord_no);
-            $("#supp_code_modal").val(data.supp_code);
-            $("#supp_name_modal").val(data.supp_name).prop("disabled",true).trigger('change');
+            $("#supp_code_modal1").val(data.supp_code);
+            $("#supp_name_modal1").val(data.supp_name);
             $("#place_name").val(data.place_name);
             $('#datepicker3').datepicker('setDate',data.work_date);
             $('#datepicker4').val(formmatterDate2(data.end_date));

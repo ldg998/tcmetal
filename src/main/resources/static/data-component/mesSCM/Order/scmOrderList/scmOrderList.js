@@ -128,9 +128,9 @@ function jqGrid_main() { //메인그리드 설정
             {name: 'spec', index: 'spec', sortable: false,fixed:true, width:150},
             {name: 'unit_name', index: 'unit_name', sortable: false,fixed:true, width:130},
             {name: 'status_name', index: 'status_name', sortable: false,fixed:true, width:100},
-            {name: 'ord_qty', index: 'ord_qty', sortable: false,formatter:'integer', align: 'right',fixed:true, width:130},
-            {name: 'qty', index: 'qty', sortable: false,formatter:'integer', align: 'right',fixed:true, width:130},
-            {name: 'not_qty', index: 'not_qty', sortable: false, formatter:'integer', align: 'right',fixed:true, width:130},
+            {name: 'ord_qty', index: 'ord_qty', sortable: false,formatter:'number', align: 'right',fixed:true, width:130},
+            {name: 'qty', index: 'qty', sortable: false,formatter:'number', align: 'right',fixed:true, width:130},
+            {name: 'not_qty', index: 'not_qty', sortable: false, formatter:'number', align: 'right',fixed:true, width:130},
 
           ],
         caption: '발주현황 | MES',

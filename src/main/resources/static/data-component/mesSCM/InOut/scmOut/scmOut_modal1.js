@@ -9,6 +9,7 @@ function modal_start1() {
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
     var modal_objact = value_return(".modal_value");
+    modal_objact.work_date = $('#datepicker_modal1').val().replace(/\-/g, '');
     if (effectiveness1(modal_objact)) {
         var text = msg_object.TBMES_Q002.msg_name1;
         if (main_data.check === "U") {
@@ -17,7 +18,7 @@ function addUdate_btn() {
         if (confirm(text)) {
             wrapWindowByMask2(); // 마스크로 화면 덮음 / 삭제중 다른 작업을 할 수 없도록 방지
             modal_objact.keyword = main_data.check;
-            ccn_ajax("/sysPartNameAdd", modal_objact).then(function (data) {
+            ccn_ajax("/scmOutAdd", modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
@@ -37,7 +38,16 @@ function addUdate_btn() {
     }
 
 }
+function part_btn(){
+$('#partSearchGrid').jqGrid('clearGridData');
+$('#part-search-dialog').dialog('open');
 
+    jqGridResize2("#partSearchGrid", $('#partSearchGrid').closest('[class*="col-"]'));
+}
+function partModal_bus(data) {
+    modal_edits('.modal_value',[],data);
+
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get_modal1() {
     msgGet_auth("TBMES_Q002");// 저장여부
@@ -52,14 +62,6 @@ function effectiveness1(modal_objact) { // 유효성 검사
     }  else {
         return true;
     }
-}
-
-function add_click_btn() { // 엔터키를 통한 버튼 활성화
-     $(document).on("keypress",'.modal_value',function (e) {
-         if (e.which == 13){
-             addUdate_btn();
-         }
-     });
 }
 
 function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설정해준다
@@ -90,5 +92,5 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
 }
 
 function datepicker_modal1() {
-    datepicker_makes("#datepicker2", 0); //모달 초기날짜 설정
+    datepicker_makes("#datepicker_modal1", 0); //모달 초기날짜 설정
 }

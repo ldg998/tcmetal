@@ -49,7 +49,6 @@ public class InOutRestController {
 
 
 
-
     @RequestMapping(value = "/scmOutGet", method = RequestMethod.POST)
     public RESTful scmOutGet(HttpServletRequest req, Page p){
         return inOutService.scmOutGet(req, p);
@@ -104,6 +103,21 @@ public class InOutRestController {
 
     @RequestMapping(value = "/scmInLineSubListGet", method = RequestMethod.POST)
     public RESTful scmInLineSubListGet(HttpServletRequest req,Page p) { return inOutService.scmInLineSubListGet(req, p); }
+
+    @RequestMapping(value = "/scmOutAdd", method = RequestMethod.POST)
+    public Message scmOutAdd(SCM_OUT out, HttpServletRequest req) { return inOutService.scmOutAdd(out,req); }
+
+
+    @RequestMapping(value = "/scmOutGet_lee", method = RequestMethod.POST)
+    public RESTful scmOutGet_lee(HttpServletRequest req, Page p){
+        return inOutService.scmOutGet_lee(req, p);
+    }
+
+    @RequestMapping(value = "/scmOutDel", method = RequestMethod.POST)
+    public Message scmOutDel(HttpServletRequest req, Page p){
+        return inOutService.scmOutDel(req, p);
+    }
+
 
 
 

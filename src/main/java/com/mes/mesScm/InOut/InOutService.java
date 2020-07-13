@@ -139,6 +139,24 @@ public class InOutService extends ReturnFunction {
         return getListData(rows , p);
         }
 
+    public Message scmOutAdd(SCM_OUT out, HttpServletRequest req) {
+        out.setSite_code(getSessionData(req).getSite_code());
+        out.setUser_code(getSessionData(req).getUser_code());
+
+        return inOutMapper.scmOutAdd(out);
+    }
+
+    public RESTful scmOutGet_lee(HttpServletRequest req, Page p) {
+        p.setSite_code(getSessionData(req).getSite_code());
+        List<SCM_OUT> rows = inOutMapper.scmOutGet_lee(p);
+        return getListData(rows , p);
+    }
+
+    public Message scmOutDel(HttpServletRequest req, Page p) {
+
+        return inOutMapper.scmOutDel(p);
+    }
+
     public List<SCM_IN_ORD_MODAL> scmInOrdModalGet(Page p) {
         return inOutMapper.scmInOrdModalGet(p);
     }

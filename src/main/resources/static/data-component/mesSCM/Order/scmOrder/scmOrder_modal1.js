@@ -5,7 +5,6 @@ var savecol = 0;
 ////////////////////////////시작 함수/////////////////////////////////////
 function modal_start1() {
     msg_get_modal1(); //모달 메세지설정
-    crmModal_start(); //crm 모달 시작
     modal_make1();    // 모달생산
     datepicker_modal1(); //모달안 날짜 넣어주기
    selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
@@ -92,33 +91,33 @@ function close_modal1_btn() {
 //수정 버튼
 function update_btn(rowid) {
     main_data.check3 = 'N';
+
     if (main_data.auth.check_edit != "N") {
-        modal_reset(".modal_value",[]);
+        modal_reset(".modal_value", []);
         $("#mes_add_grid").jqGrid('clearGridData');
         $("#mes_add_grid2").jqGrid('clearGridData');
-
         main_data.check = 'U';
-        ccn_ajax("/scmOrderOneGet", {keyword: rowid}).then(function(data){
-            console.log(data.status);
-            if(data.status === '1') {
+        ccn_ajax("/scmOrderOneGet", {keyword: rowid}).then(function (data) {
+
+            if (data.status === '1') {
                 main_data.status = 'Y';
                 trigger_true();
-            }else{
+            } else {
                 main_data.status = 'N';
                 trigger_false();
             }
             $("#ord_no").val(data.ord_no);
-            $("#supp_code_modal1").val(data.supp_code);
-            $("#supp_name_modal1").val(data.supp_name);
+            $("#supp_code_modal1").val(data.supp_code).prop("disabled",true).trigger('change');;
+            $("#supp_name_modal1").val(data.supp_name).prop("disabled",true).trigger('change');;
             $("#place_name").val(data.place_name);
-            $('#datepicker3').datepicker('setDate',data.work_date);
+            $('#datepicker3').datepicker('setDate', data.work_date);
             $('#datepicker4').val(formmatterDate2(data.end_date));
             $("#delivery_place").val(data.delivery_place);
             $("#remark").val(data.remark);
             main_data.check3 = 'Y';
         });
 
-        ccn_ajax("/scmOrderPartOneGet",{keyword: rowid}).then(function(data){
+        ccn_ajax("/scmOrderPartOneGet", {keyword: rowid}).then(function (data) {
             $("#mes_add_grid2").setGridParam({
                 datatype: "local",
                 data: data
@@ -127,9 +126,12 @@ function update_btn(rowid) {
             jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]'));
             jqGridResize2("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]'));
         });
-    }else {
+
+    } else {
         alert("수정권한이 없습니다.");
     }
+
+
 }
 
 // 추가 모달 저장 버튼
@@ -169,7 +171,7 @@ function add_modal1_btn() {
                         if (confirm(text)) {
                             wrapWindowByMask2();
                             add_data.ord_sub = list.join(gu5);
-                            console.log(add_data);
+
                             ccn_ajax("/scmOrderAdd", add_data).then(function (data) {
                                 if (data.result === 'NG') {
                                     alert(data.message);

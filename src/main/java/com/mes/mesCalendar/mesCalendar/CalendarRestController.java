@@ -18,7 +18,6 @@ public class CalendarRestController {
 
     @RequestMapping(value = "/calendarList", method = RequestMethod.POST)
     public List<CALENDAR> calendarList(HttpServletRequest req, CALENDAR calendar) {
-        System.out.println(calendar);
         HashMap<String, Object> map = new HashMap();
         List<CALENDAR> list = calendarService.calendarList(req, calendar);
         map.put("data", list);

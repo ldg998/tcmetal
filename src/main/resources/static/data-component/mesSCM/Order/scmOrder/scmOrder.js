@@ -231,7 +231,7 @@ function jqGrid_main() {  //메인 jqGrid
             {name: 'end_date', index: 'end_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 200},
             {name: 'delivery_place', index: 'delivery_place', sortable: false, fixed: true, width: 150},
             {name: 'user_name', index: 'user_name', sortable: false, fixed: true, width: 100},
-            {name: 'update_date', index: 'update_date', sortable: false,fixed: true,width: 150}
+            {name: 'update_date', index: 'update_date', sortable: false,fixed:  true,width: 150,formatter: formmatterDate}
         ],
         autowidth: true, // 그리드 자동 가로 길이 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
@@ -280,9 +280,9 @@ function jqGrid_main() {  //메인 jqGrid
             {name: 'part_name', index: 'part_name', sortable: false},
             {name: 'spec', index: 'spec', sortable: false},
             {name: 'unit_name', index: 'unit_name', sortable: false},
-            {name: 'ord_qty', index: 'ord_qty', sortable: false, align: 'right'},
-            {name: 'qty', index: 'qty', sortable: false, align: 'right'},
-            {name: 'not_qty', index: 'not_qty', sortable: false, align: 'right'}
+            {name: 'ord_qty', index: 'ord_qty', sortable: false, align: 'right',formatter:'number'},
+            {name: 'qty', index: 'qty', sortable: false, align: 'right',formatter:'number'},
+            {name: 'not_qty', index: 'not_qty', sortable: false, align: 'right',formatter:'number'}
         ],
         autowidth: true,
         viewrecords: true,

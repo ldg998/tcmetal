@@ -145,5 +145,4 @@
 <!-- 모달창 import -->
 <%@include file="scmOrder_modal1.jsp" %>
 <%-- <%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %> --%>
-<%@include file="/WEB-INF/views/body/common/modal/crm_modal.jsp" %>
 <%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>

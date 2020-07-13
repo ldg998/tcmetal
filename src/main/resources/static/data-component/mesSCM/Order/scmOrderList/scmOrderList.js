@@ -39,14 +39,6 @@ function get_btn(page) {
     }).trigger("reloadGrid"); // 그리드 리로드
 }
 
-function get_btn_post(page) {  //그리드 조회
-    $("#mes_grid").setGridParam({
-        url: '/scmOrderListGet',
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data_post
-    }).trigger("reloadGrid");
-}
 
 // 업체버튼을 눌러 업체모달 활성화
 function supp_btn(what) {

@@ -23,7 +23,7 @@
         	EXEC SP_SYS_QC_ITEM_GET 1, 1,'', '',#{qc_code}
     </select>
     <select id="qmsQcItemAdd" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC SP_SYS_QC_ITEM_ADD #{qc_group}, #{qc_type},#{qc_code}, #{qc_name}, #{user_code}, #{keyword}
+        EXEC SP_SYS_QC_ITEM_ADD #{qc_group}, #{qc_type},#{qc_code}, #{qc_name},#{use_yn}, #{user_code}, #{keyword}
     </select>
     <select id="qmsQcItemDel" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_SYS_QC_ITEM_DEL  #{keyword}

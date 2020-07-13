@@ -21,12 +21,20 @@
                             <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                         </div>
                     </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
-                    <td class="wt-px-200">
-                        <select name="keyword2" id="1_select" class="form-control condition_main" style="width: 100%;">
+                    <td class="wt-px-50 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-75">
+                        <select name="keyword2" id="select1" class="form-control condition_main" style="width: 100%;">
                             <option value="">전체</option>
                             <option value="0">진행중</option>
                             <option value="1">완료</option>
+                        </select>
+                    </td>
+                    <td class="wt-px-50 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-75">
+                        <select name="keyword2" id="select2" class="form-control condition_main" style="width: 100%;">
+                            <option value="0">정상</option>
+                            <option value="1">비정상</option>
+
                         </select>
                     </td>
                     <td></td>
@@ -68,4 +76,5 @@
 
 
 <%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>
+<%@include file="wmsStockRev_modal1.jsp" %>
 

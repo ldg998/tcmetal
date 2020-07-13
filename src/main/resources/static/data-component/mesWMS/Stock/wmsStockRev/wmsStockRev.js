@@ -21,13 +21,15 @@ $(document).ready(function () {
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
-
+    modal_start1();
 });
 
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 
-
+function test() {
+    $('#addDialog').dialog('open');
+}
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
@@ -159,7 +161,8 @@ function datepickerInput() {
 }
 
 function selectBox() {
-    $('#1_select').select2();
+    $('#select1').select2();
+    $('#select2').select2();
 }
 
 

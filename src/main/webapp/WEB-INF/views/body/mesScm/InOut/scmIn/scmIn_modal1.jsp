@@ -23,11 +23,13 @@
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">업체</td>
                     <td class="wt-px-140">
-                          <span class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 modal_value" id="supp_name_modal" >
-
-<%--                          <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch-Main"></i>--%>
-                          </span>
+                        <div class="input-icon input-icon-right">
+                            <input type="text" name="supp_name" class="form-control h-25 modal_value"
+                                   id="supp_name_modal1" onclick="supp_btn('B');" readonly>
+                            <input type="hidden" name="keyword" class="form-control h-25 modal_value"
+                                   id="supp_code_modal1">
+                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
+                        </div>
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">입고일자</td>
                     <td class="wt-px-140">
@@ -49,7 +51,7 @@
             <div class="clearfix">
                 <div class="pull-left tableTools-container">
                     <div class="dt-buttons btn-overlap btn-group">
-                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
+                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_modal1_btn();">
                             <span>
                                 <i class="fa fa-search bigger-110 blue"></i>
                                 <span>조회</span>

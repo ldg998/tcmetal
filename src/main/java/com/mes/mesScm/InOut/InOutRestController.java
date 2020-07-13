@@ -134,4 +134,6 @@ public class InOutRestController {
 
 
 
+    @RequestMapping(value = "/scmInOrdModalGet", method = RequestMethod.POST)
+    public List<SCM_IN_ORD_MODAL> scmInOrdModalGet( Page p) { return inOutService.scmInOrdModalGet(p); }
 }

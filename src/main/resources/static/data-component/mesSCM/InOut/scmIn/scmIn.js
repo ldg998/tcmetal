@@ -28,7 +28,7 @@ $(document).ready(function () {
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]')); //그리드 resize
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));//그리드 resize
     jqgridPagerIcons(); //그리드 아이콘 설정
-
+    suppModal_start();
 
 });
 
@@ -175,7 +175,32 @@ function complete_btn() {
         alert(msg_object.TBMES_A003.msg_name1);         //오류메세지 출력
     }
 }
+function supp_btn(what) {
+    main_data.supp_check = what;
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+    $("#supp-search-dialog").dialog('open');
+    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
+    $('#supp_code_search').val('').trigger("change");
 
+    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
+}
+function suppModal_bus(code, name) {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val(name);
+        $("#supp_code_main").val(code);
+    } else if (main_data.supp_check === 'B') {
+        $("#supp_name_modal1").val(name);
+        $("#supp_code_modal1").val(code);
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
+function suppModal_close_bus() {
+    if (main_data.supp_check === 'A') {
+        $("#supp_name_main").val("");
+        $("#supp_code_main").val("");
+    }
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {

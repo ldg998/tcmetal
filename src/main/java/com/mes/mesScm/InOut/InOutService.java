@@ -159,4 +159,8 @@ public class InOutService extends ReturnFunction {
 
         return inOutMapper.scmOutDel(p);
     }
+
+    public List<SCM_IN_ORD_MODAL> scmInOrdModalGet(Page p) {
+        return inOutMapper.scmInOrdModalGet(p);
+    }
 }

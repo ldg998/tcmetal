@@ -88,4 +88,7 @@
     <select id="scmOutDel" resultType="com.mes.Common.DataTransferObject.Message">
        EXEC  SP_SCM_OUT_DEL #{keyword}
     </select>
+    <select id="scmInOrdModalGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_ORD_MODAL">
+        EXEC SP_SCM_IN_ORD_MODAL_GET 0, 0,#{keyword}
+    </select>
 </mapper>

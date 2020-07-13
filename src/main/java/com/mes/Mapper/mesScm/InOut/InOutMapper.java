@@ -53,4 +53,5 @@ public interface InOutMapper {
     List<SCM_OUT> scmOutGet_lee(Page p);
 
     Message scmOutDel(Page p);
+    List<SCM_IN_ORD_MODAL> scmInOrdModalGet(Page p);
 }

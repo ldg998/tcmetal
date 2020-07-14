@@ -6,12 +6,12 @@
         EXEC SP_SCM_OUT_LIST_GET #{page},#{rows},#{start_date},#{end_date}
     </select>
 
-    <select id="scmInListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN">
+    <select id="scmInListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
         EXEC SP_SCM_IN_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword}
     </select>
 
     <select id="scmIOListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IO">
-        EXEC SP_SCM_IO_LIST_GET  #{page}, #{rows}, #{start_date}, #{end_date}
+        EXEC SP_SCM_IO_LIST_GET  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword}
     </select>
 
 

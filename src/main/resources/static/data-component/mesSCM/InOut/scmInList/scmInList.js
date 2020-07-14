@@ -19,6 +19,7 @@ $(document).ready(function () {
     jqGrid_main();//Resize 설정 추가
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));//Pager에 Icon 설정 추가
     jqgridPagerIcons();// 그리드 아이콘설정
+    suppModal_start();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -65,6 +66,26 @@ function excel_download() {
     // }
 }
 
+
+function supp_btn(what) {
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+    $("#supp-search-dialog").dialog('open');
+    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
+    $('#supp_code_search').val('').trigger("change");
+
+    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
+}
+function suppModal_bus(code, name) {
+    $("#supp_name_main").val(name);
+    $("#supp_code_main").val(code);
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
+function suppModal_close_bus() {
+    $("#supp_name_main").val("");
+    $("#supp_code_main").val("");
+    $("#SuppSearchGrid").jqGrid('clearGridData');
+}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014"); //엑셀 시행메세지
@@ -89,20 +110,20 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['입고일자','입고번호','업체명','품번','품명','규격','단위','입고수량','검사구분','검사결과','등록자','등록일시'],
+        colNames: ['입고일자','전표번호','업체명','품번','품명','규격','입고수량','단위','검사구분','검사결과','등록자','등록일시'],
         colModel: [
-            {name: '', index: '',sortable: false,key:true,fixed:true,width:150,formatter:formmatterDate2},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150}
+            {name: 'work_date', index: 'work_date', sortable: false, formatter:formmatterDate2, width: 100, fixed: true},
+            {name: 'in_no', index: 'in_no', sortable: false, width: 150, fixed: true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150, fixed: true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 100, fixed: true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 150, fixed: true},
+            {name: 'spec', index: 'spec', sortable: false, width: 150, fixed: true},
+            {name: 'qty', index: 'qty', sortable: false, width: 150, fixed: true, formatter:'number', align:'right'},
+            {name: 'unit_name', index: 'unit_name', sortable: false, width: 150, fixed: true},
+            {name: 'qc_level_name', index: 'qc_level_name', sortable: false, width: 100, fixed: true},
+            {name: 'qc_result_name', index: 'qc_result_name', sortable: false, width: 100, fixed: true},
+            {name: 'user_name', index: 'user_name', sortable: false, width: 100, fixed: true},
+            {name: 'update_date', index: 'update_date', sortable: false, formatter:formmatterDate, width: 150, fixed: true}
         ],
         caption: "자재입고현황 | MES",
         autowidth: true,

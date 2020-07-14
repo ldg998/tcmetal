@@ -21,8 +21,7 @@ public class InOutRestController {
     @RequestMapping(value = "/scmOutListGet", method = RequestMethod.POST)
     public RESTful scmOutListGet(HttpServletRequest req, Page p) { return inOutService.scmOutListGet(req, p); }
 
-    @RequestMapping(value = "/scmInListGet", method = RequestMethod.POST)
-    public RESTful smcInListGet(HttpServletRequest req, Page p) { return inOutService.scmInListGet(req, p); }
+
 
     @RequestMapping(value = "/scmIOListGet", method = RequestMethod.POST)
     public RESTful scmIOListGet(HttpServletRequest req,Page p) { return inOutService.scmIOListGet(req, p); }
@@ -148,4 +147,7 @@ public class InOutRestController {
 
     @RequestMapping(value = "/scmInOrdModalGet", method = RequestMethod.POST)
     public List<SCM_IN_ORD_MODAL> scmInOrdModalGet( Page p) { return inOutService.scmInOrdModalGet(p); }
+
+    @RequestMapping(value = "/scmInListGet", method = RequestMethod.POST)
+    public RESTful smcInListGet(Page p) { return inOutService.scmInListGet( p); }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface InOutMapper {
     List<SCM_OUT> scmOutListGet(Page p);
-    List<SCM_IN> scmInListGet(Page p);
+    List<SCM_IN_SUB> scmInListGet(Page p);
     List<SCM_IO> scmIOListGet(Page p);
 
     //

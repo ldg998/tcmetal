@@ -33,7 +33,7 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">품번</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
+                            <input type="text" name="keyword" class="form-control h-25 condition_main"
                                    id="supp_name_main">
                         </div>
                     </td>

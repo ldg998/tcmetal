@@ -109,4 +109,5 @@ public interface ExcelMapper {
     List<QMS_ASSY_NG_SUM> qmsAssyErrorListSumGetDbList(Excel excel);
 
     List<SYSSupp> sysSuppListDbList(Excel excel);
+
 }

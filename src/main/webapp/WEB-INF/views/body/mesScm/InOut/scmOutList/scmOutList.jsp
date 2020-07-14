@@ -35,9 +35,8 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">품번</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="part_name" class="form-control h-25 condition_main1"
-                                   id="part_name" onclick="part_btn('A');" readonly>
-                            <input type="hidden" name="part_code" class="form-control h-25 condition_main1" id="part_code">
+                            <input type="text" name="part_code" class="form-control h-25 condition_main1"
+                                   id="part_code" onclick="part_btn('A');" readonly>
                             <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                         </div>
                     </td>

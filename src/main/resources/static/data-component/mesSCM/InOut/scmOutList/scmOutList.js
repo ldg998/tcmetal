@@ -42,28 +42,28 @@ function get_btn(page) {
 
 //엑셀 다운로드
 function excel_download() {
-    // if (confirm(msg_object.TBMES_Q014.msg_name1)) { //다운로드 여부
-    //     var $preparingFileModal = $("#preparing-file-modal"); //해당 id modal 할당
-    //     $preparingFileModal.dialog({modal: true});  // 모달 활성화
-    //     $("#progressbar").progressbar({value: false}); //화면 정지
-    //     $.fileDownload("/excel_download", {  //엑셀 다운로드  호출
-    //         httpMethod: 'POST',             //post 형식으로
-    //         data : {
-    //             "name":"scmInList", //url
-    //             "row0":$('#datepicker').val().replace(/-/gi,""),//넘겨줄 데이터
-    //             "row1": $('#datepicker2').val().replace(/-/gi,""),//넘겨줄 데이터
-    //             "row2":$('#supp_code_main').val()//넘겨줄 데이터
-    //         },
-    //         successCallback: function (url) {
-    //             $preparingFileModal.dialog('close');//성공하면 모달닫기
-    //         },
-    //         failCallback: function (responseHtml, url) {
-    //             $preparingFileModal.dialog('close'); //실패하면 모달닫기
-    //             $("#error-modal").dialog({modal: true}); //에러모달 열기
-    //         }
-    //     });
-    //     return false;
-    // }
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) { //다운로드 여부
+        var $preparingFileModal = $("#preparing-file-modal"); //해당 id modal 할당
+        $preparingFileModal.dialog({modal: true});  // 모달 활성화
+        $("#progressbar").progressbar({value: false}); //화면 정지
+        $.fileDownload("/excel_download", {  //엑셀 다운로드  호출
+            httpMethod: 'POST',             //post 형식으로
+            data : {
+                "name":"scmOutListGet", //url
+                "row0":$('#datepicker').val().replace(/\-/g, ''),//넘겨줄 데이터
+                "row1": $('#datepicker2').val().replace(/\-/g, ''),//넘겨줄 데이터
+                "row2":$('#part_code').val()//넘겨줄 데이터
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');//성공하면 모달닫기
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close'); //실패하면 모달닫기
+                $("#error-modal").dialog({modal: true}); //에러모달 열기
+            }
+        });
+        return false;
+    }
 }
 
 function part_btn(){

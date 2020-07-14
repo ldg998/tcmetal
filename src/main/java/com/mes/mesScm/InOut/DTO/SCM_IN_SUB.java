@@ -1,6 +1,7 @@
 package com.mes.mesScm.InOut.DTO;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class SCM_IN_SUB {
@@ -34,7 +35,8 @@ public class SCM_IN_SUB {
     private String qc_level_name;
 
     private double qc_qty;
-
-
     private String act_type;
+
+    private String file_path;
+    private MultipartFile files;
 }

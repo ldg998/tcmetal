@@ -87,4 +87,8 @@
             EXEC SP_QMS_RECV_NG_SUM_GET  #{start_date}, #{end_date},#{keyword}
     </select>
 
+    <select id="qmsRecvList_File_Upload" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC  SP_SYS_FILE_ADD #{user_code},#{key_value},#{file_name},#{file_og_name},#{file_size},#{file_volume},#{upload_path},#{url}
+    </select>
+
 </mapper>

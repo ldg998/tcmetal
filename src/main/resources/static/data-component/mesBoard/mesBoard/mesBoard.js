@@ -24,15 +24,12 @@ function uploadFile(){
     // 등록할 파일 리스트
     var uploadFileList = Object.keys(fileList);
 
-
     // 용량을 500MB를 넘을 경우 업로드 불가
     if(totalFileSize > maxUploadSize){
         // 파일 사이즈 초과 경고창
         alert("총 용량 초과\n총 업로드 가능 용량 : " + maxUploadSize + " MB");
         return;
     }
-
-
     if(confirm("등록 하시겠습니까?")){
         // 등록할 파일 리스트를 formData로 데이터 입력
         var myForm = document.getElementById('uploadForm');
@@ -40,7 +37,6 @@ function uploadFile(){
         for(var i = 0; i < uploadFileList.length; i++){
             formData.append('files', fileList[uploadFileList[i]]);
         }
-
         console.log("데이터 확인 :"+formData);
         $.ajax({
             url:"/board_multipart_files",
@@ -186,8 +182,6 @@ function fileCk(files){
     files.forEach(function(data){
         console.log("타입: "+data.type)
         if((new RegExp(IMG_FORMAT,"i")).test(data.type)) return true;
-
-
     });
 
 }

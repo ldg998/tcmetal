@@ -1,8 +1,5 @@
 package com.mes.mesQms.Import;
 
-import com.mes.mesScm.InOut.DTO.SCM_IN;
-import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
-import lombok.extern.slf4j.Slf4j;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
@@ -10,16 +7,23 @@ import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
 import com.mes.mesQms.Import.DTO.QMS_RECV_NG_SUM;
 import com.mes.mesQms.Import.DTO.QMS_RECV_SUB;
+import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
 
 @RestController
 @Slf4j
@@ -127,4 +131,37 @@ public class QmsImportRestController extends UploadFunction {
     public SCM_IN_SUB qmsRecvListOneGet(HttpServletRequest req, SCM_IN_SUB sis) {
         return qmsImportService.qmsRecvListOneGet(req,sis);
     }
+    @RequestMapping(value = "/qmsRecvList_File_Upload", method = RequestMethod.POST)
+    public Message qmsRecvList_File_Upload(HttpServletRequest req, Files file) {
+        SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");
+        Date time = new Date();
+        String time1 = format1.format(time);                //현재시간
+
+        MultipartFile files = file.getFiles();            //가져온 파일들
+        String fileName = files.getOriginalFilename();   //파일 오리진 네임
+        String uploadPath = "C:/UploadFile/tcmetal/";   //파일 저장경로
+        int type = fileName.lastIndexOf(".");
+        String ext = fileName.substring(type + 1);       //파일 확장자
+        file.setUrl("qmsRecvList_"+time1+"."+ext);
+        file.setUpload_path(uploadPath+fileName);      //전체경로
+        if(file.getKey_value()==null){
+        file.setKey_value("Q"+time1);
+        }
+        file.setFile_size(files.getSize());             //파일사이즈
+        file.setFile_name("qmsRecvList_"+time1+"."+ext);//파일 임의네임
+        file.setFile_og_name(fileName);                 // 파일 오리진 네임
+
+
+        try {
+            File file1 = new File(file.getUpload_path());
+            files.transferTo(file1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return qmsImportService.qmsRecvList_File_Upload(req,file);
+
+    }
+
+
 }

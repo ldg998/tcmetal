@@ -17,6 +17,9 @@ public class StockRestController {
     @Autowired
     private StockService stockService;
 
+    @RequestMapping(value = "/scmStockSumDayListGet", method = RequestMethod.POST)
+    public RESTful scmStockSumDayListGet(HttpServletRequest req, Page p) { return stockService.scmStockSumDayListGet(req, p); }
+
     @RequestMapping(value = "/scmStockListGet", method = RequestMethod.POST)
     public RESTful scmStockListGet(HttpServletRequest req, Page p) { return stockService.scmStockListGet(req, p); }
 

@@ -7,7 +7,7 @@
     </select>
 
     <select id="scmStockSumDayListGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_DAY">
-        EXEC SP_SCM_STOCK_GET_DAY #{page},#{rows},#{start_date},#{keyword},''
+        EXEC SP_SCM_STOCK_GET_DAY #{page},#{rows},#{start_date},#{keyword},#{keyword2}
     </select>
 
     <select id="scmStockSumMonthListGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_MONTH">

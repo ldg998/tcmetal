@@ -38,6 +38,7 @@ function addUdate_btn() {
     }
 
 }
+
 function part_btn(){
 $('#partSearchGrid').jqGrid('clearGridData');
 $('#part-search-dialog').dialog('open');
@@ -46,8 +47,8 @@ $('#part-search-dialog').dialog('open');
 }
 function partModal_bus(data) {
     modal_edits('.modal_value',[],data);
-
 }
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get_modal1() {
     msgGet_auth("TBMES_Q002");// 저장여부

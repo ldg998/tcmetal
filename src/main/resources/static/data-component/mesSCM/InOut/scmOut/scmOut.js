@@ -120,7 +120,7 @@ function jqGrid_main() {
             {name:'part_name',index:'part_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
             {name:'spec',index:'spec',sortable: false,width:150,fixed: true},
             {name:'unit_name',index:'unit_name',sortable: false,width:80,fixed: true},
-            {name:'qty',index:'qty',sortable: false,width:80,fixed: true},
+            {name:'qty',index:'qty',sortable: false,width:80,fixed: true,formatter:'number'},
             {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
             {name:'update_date',index:'update_date',sortable: false,width:180,fixed: true,formatter: formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],
@@ -139,8 +139,7 @@ function jqGrid_main() {
                 return (cm[i].name === 'cb');
         },
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
-            var data = $('#mes_grid').jqGrid('getRowData', rowid);
-            update_btn(data);
+
         },
         loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
@@ -155,5 +154,5 @@ function jqGrid_main() {
 
 
 function datepicker() {
-    datepicker_makes1("#datepicker",0);
+    datepicker_makes("#datepicker",0);
 }

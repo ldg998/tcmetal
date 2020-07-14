@@ -18,7 +18,7 @@
     </select>
     <!--  출고현황  -->
     <select id="scmOutListGetDbList" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
-        EXEC SP_SCM_OUT_LIST_GET 0,0,#{row0},#{row1}
+        EXEC SP_SCM_OUT_LIST_GET 0,0,#{row0},#{row1},#{row2}
     </select>
     <!-- 자재입출고현황 -->
 

@@ -156,3 +156,6 @@ function jqGrid_main() {
 function datepicker() {
     datepicker_makes("#datepicker",0);
 }
+function num_keyup(e) {
+    $(e).val($(e).val().replace(/[^0-9]/g,''));
+}

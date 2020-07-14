@@ -31,6 +31,7 @@ public class SCM_IN_SUB {
     private String ng_type_name;
     private String ng_name;
     private String act_type_name;
+    private String qc_level_name;
 
     private double qc_qty;
 

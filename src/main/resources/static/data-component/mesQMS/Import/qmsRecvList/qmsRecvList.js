@@ -30,7 +30,7 @@ function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
     main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
     main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
-    main_data.send_data.keyword2 = '';
+    main_data.send_data.keyword = $('#supp_code').val();
     $("#mes_grid").setGridParam({
         url: "/qmsRecvListGet",
         datatype: "json",
@@ -49,10 +49,10 @@ function excel_download() {
             httpMethod: 'POST',
             data: {
                 "name": "qmsRecvList",
-                "row0": $('#datepicker').val().replace(/-/gi, ""),
-                "row1": $('#datepicker2').val().replace(/-/gi, ""),
-                "row2": $('#supp_code_main').val(),
-                "row3": $("#result_select").val()
+                "row0": $('#datepicker').val().replace(/\-/g, ''),
+                "row1": $('#datepicker2').val().replace(/\-/g, ''),
+                "row2": $('#supp_code').val(),
+
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');
@@ -93,27 +93,26 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['입고일자','전표번호','업체','구분','품번','품명','규격','단위','입고수량','검사구분','검사결과','검사수량','불량유형','불량상세','조치구분','성적서','성적서 수정','검사자','검사일시'],
+        colNames: ['입고일자','전표번호','업체','구분','품번','품명','규격','단위','입고수량'/*,'검사구분'*/,'검사수량','불량유형','불량상세','조치구분','성적서','성적서 수정','검사자','검사일시'],
         colModel: [
-            {name: '', index: '', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true}
+            {name: 'work_date', index: 'work_date', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
+            {name: 'in_no', index: 'in_no', sortable: false, width: 130,fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
+            {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 130,fixed:true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 130,fixed:true},         //품번
+            {name: 'part_name', index: 'part_name', sortable: false, width: 130,fixed:true},        //품명
+            {name: 'spec', index: 'spec', sortable: false, width: 130,fixed:true},                  //규격
+            {name: 'unit_name', index: 'unit_name', sortable: false, width: 130,fixed:true},        //단위
+            {name: 'qty', index: 'qty', sortable: false, width: 130,fixed:true,align:'right',formatter:'number' },                    //입고수량
+          //  {name: 'qc_level', index: 'qc_level', sortable: false, width: 130,fixed:true},  //검사구분
+            {name: 'qc_qty', index: 'qc_qty', sortable: false, width: 130,fixed:true,align:'right',formatter:'number'},              //검사수령
+            {name: 'ng_type_name', index: 'ng_type_name', sortable: false, width: 130,fixed:true},   //불량유형
+            {name: 'ng_name', index: 'ng_name', sortable: false, width: 130,fixed:true},            //불량상세
+            {name: 'act_type_name', index: 'act_type_name', sortable: false, width: 130,fixed:true}, //조치구분
+            {name: 'file1_name', index: 'file1_name', sortable: false, width: 100, align: 'center', formatter: file1_formatter,fixed:true},//성적서
+            {name: 'file1_name', index: 'file1_name', sortable: false, width: 100, align: 'center', formatter: file1_formatter,fixed:true},//성적서 수정
+            {name: 'user_name', index: 'user_name', sortable: false, width: 130,fixed:true},                                //검사자
+            {name: 'update_date', index: 'update_date', sortable: false, width: 130,fixed:true,formatter: formmatterDate} //검사일시
 
              ],
         caption: "수입검사현황 | MES",

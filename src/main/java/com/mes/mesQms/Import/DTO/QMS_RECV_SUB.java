@@ -33,7 +33,7 @@ public class QMS_RECV_SUB {
     private int rownum_page;
     private int rec_count;
     private String keyword;
-
+    private String part_type_name;
     private String update_date;
     private String user_name;
     private String user_code;

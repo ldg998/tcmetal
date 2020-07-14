@@ -33,7 +33,9 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" autocomplete="off">
+                                   id="supp_name" autocomplete="off">
+                            <input type="hidden" name="supp_code" class="form-control h-25 condition_main"
+                                   id="supp_code" autocomplete="off">
 
                         </div>
                     </td>

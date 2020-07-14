@@ -48,7 +48,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 출고수량 </div>
             <div class="profile-info-value">
-                <input type="text" name="qty" class="form-control modal_value" autofocus autocomplete="off" >
+                <input type="text" name="qty" class="form-control modal_value" onkeyup="num_keyup(this)" autofocus autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">

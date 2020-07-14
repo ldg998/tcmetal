@@ -85,7 +85,7 @@
 <!--    </select>-->
 
 <!--    <select id="qmsRecvDbList" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">-->
-<!--        EXEC [SP_QMS_RECV_LIST_GET]  0, 0,#{row0},#{row1},#{row2},#{row3},''-->
+<!--        EXEC [SP_QMS_RECV_LIST_GET]  0, 0,#{row0},#{row1},#{row2}-->
 <!--    </select>-->
 
 <!--    <select id="qmsProdDbList" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">-->

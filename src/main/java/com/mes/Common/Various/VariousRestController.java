@@ -37,11 +37,6 @@ public class VariousRestController {
     }
 
 
-    @RequestMapping(value = "/sysBPartGroupSelectGet", method = RequestMethod.POST)
-    public List<sysBPartGroup> sysBPartGroupSelectGet(Page p, HttpServletRequest req) {
-        return variousService.sysBPartGroupSelectGet(p, req);
-
-    }
 
     @RequestMapping(value = "/sysLocAllGet", method = RequestMethod.POST)
     public List<sysLoc> sysLocAllGet(Page p, HttpServletRequest req) {
@@ -56,17 +51,6 @@ public class VariousRestController {
     }
 
 
-    @RequestMapping(value = "/sysBPartModalGet", method = RequestMethod.POST)
-    public RESTful sysBPartModalGet(Page p, HttpServletRequest req) {
-        return variousService.sysBPartModalGet(p, req);
-
-    }
-
-    @RequestMapping(value = "/sysBPartAllGet", method = RequestMethod.POST)
-    public List<sysBPart> sysBPartAllGet(Page p, HttpServletRequest req) {
-        return variousService.sysBPartAllGet(p, req);
-
-    }
 
     @RequestMapping(value = "/sysCommonAllGet", method = RequestMethod.POST)
     public List<SYSCommon> sysCommonAllGet(Page p, HttpServletRequest req) {
@@ -113,29 +97,12 @@ public class VariousRestController {
         return variousService.suppModalGet(req,p);
     }
 
-    @RequestMapping(value = "/sysPartGroupAllGet", method = RequestMethod.POST)
-    public List<SYS_PART_GROUP> sysPartGroupAllGet(HttpServletRequest req,Page p){ return variousService.sysPartGroupAllGet(req,p);}
 
-    @RequestMapping(value ="/partGroup1", method = RequestMethod.POST)
-    public List<VT_PART_GROUP> partGroup1(HttpServletRequest req, Page p) { return variousService.partGroup1(req,p); }
 
-    @RequestMapping(value ="/partGroup2", method = RequestMethod.POST)
-    public List<VT_PART_GROUP> partGroup2(HttpServletRequest req, Page p) { return variousService.partGroup2(req,p); }
-
-    @RequestMapping(value ="/partGroup3", method = RequestMethod.POST)
-    public List<VT_PART_GROUP> partGroup3(HttpServletRequest req, Page p) { return variousService.partGroup3(req,p); }
-
-    @RequestMapping(value = "/crmAssyCableAllGet", method = RequestMethod.POST)
-    public List<SYS_ASSY_CABLE> crmAssyCableAllGet(HttpServletRequest req, Page p) { return variousService.crmAssyCableAllGet(req, p); }
-
-    @RequestMapping(value = "/sysPartNameGroupAllGet", method = RequestMethod.POST)
-    public List<SYS_COMMON2_CD> sysPartNameGroupAllGet(HttpServletRequest req, Page p){ return variousService.sysPartNameGroupAllGet(req,p);}
 
     @RequestMapping(value ="/popRouteGroupAllGet",method = RequestMethod.POST)
     public List<POP_ROUTE_CD> popRouteGroupAllGet(HttpServletRequest req, Page p){ return variousService.popRouteGroupAllGet(req, p);}
 
-    @RequestMapping(value ="/sysPartNameAllGet",method = RequestMethod.POST)
-    public List<SYS_PART_NAME> sysPartNameAllGet(HttpServletRequest req, Page p){ return variousService.sysPartNameAllGet(req, p);}
 
     @RequestMapping(value ="/sysProdLineAllGet",method = RequestMethod.POST)
     public List<SYSProdLine> sysProdLineAllGet(HttpServletRequest req, Page p){ return variousService.sysProdLineAllGet(req, p);}
@@ -161,8 +128,6 @@ public class VariousRestController {
     @RequestMapping(value ="/msgGet")
     public SYSMsg msgGet(HttpServletRequest req, Page p) {return variousService.msgGet(req,p);}
 
-    @RequestMapping(value ="/sysPartNamePartAllGet",method = RequestMethod.POST)
-    public List<SYS_PART_CD> sysPartNamePartAllGet(HttpServletRequest req, Page p){ return variousService.sysPartNamePartAllGet(req, p);}
 
     @RequestMapping(value ="/sysMenuFavoritesAdd",method = RequestMethod.POST)
     public Message sysMenuFavoritesAdd(HttpServletRequest req, SYS_MENU_FAVORITES_CD smfc){ return variousService.sysMenuFavoritesAdd(req, smfc);}

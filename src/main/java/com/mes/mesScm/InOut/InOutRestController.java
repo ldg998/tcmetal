@@ -17,105 +17,51 @@ public class InOutRestController {
 
     @Autowired
     private InOutService inOutService;
+
     //현재 실제 사용 소스
     @RequestMapping(value = "/scmOutListGet", method = RequestMethod.POST)
-    public RESTful scmOutListGet(HttpServletRequest req, Page p) { return inOutService.scmOutListGet(req, p); }
-
-
-
-    @RequestMapping(value = "/scmIOListGet", method = RequestMethod.POST)
-    public RESTful scmIOListGet(HttpServletRequest req,Page p) { return inOutService.scmIOListGet(req, p); }
-
-
-
-
-
-    // 기존 프로젝트에서 긁어온 소스
-
-
-
-
-
-
-    @RequestMapping(value = "/scmInLot2Get", method = RequestMethod.POST)
-    public RESTful scmInLot2Get(HttpServletRequest req, Page p) {
-        return inOutService.scmInLot2Get(req, p);
+    public RESTful scmOutListGet(HttpServletRequest req, Page p) {
+        return inOutService.scmOutListGet(req, p);
     }
 
-
-
+    @RequestMapping(value = "/scmIOListGet", method = RequestMethod.POST)
+    public RESTful scmIOListGet(HttpServletRequest req, Page p) {
+        return inOutService.scmIOListGet(req, p);
+    }
 
     @RequestMapping(value = "/scmOutGet", method = RequestMethod.POST)
-    public RESTful scmOutGet(HttpServletRequest req, Page p){
+    public RESTful scmOutGet(HttpServletRequest req, Page p) {
         return inOutService.scmOutGet(req, p);
     }
 
     @RequestMapping(value = "/scmStockRetGet", method = RequestMethod.POST)
-    public RESTful scmStockRetGet(HttpServletRequest req, Page p){
+    public RESTful scmStockRetGet(HttpServletRequest req, Page p) {
         return inOutService.scmStockRetGet(req, p);
     }
 
-    @RequestMapping(value = "/scmInLineGet", method = RequestMethod.POST)
-    public RESTful scmInLineGet(HttpServletRequest req, Page p){
-        return inOutService.scmInLineGet(req, p);
-    }
 
 
-
-    @RequestMapping(value = "/scmOutOrderGet", method = RequestMethod.POST)
-    public RESTful scmOutOrderGet(HttpServletRequest req, Page p) {
-        return inOutService.scmOutOrderGet(req, p);
-    }
-
-    @RequestMapping(value = "/scmOutOrderAdd", method = RequestMethod.POST)
-    public Message scmOutOrderAdd(HttpServletRequest req, SCM_OUT_ORD soo) {
-        return inOutService.scmOutOrderAdd(req, soo);
-    }
-
-    @RequestMapping(value = "/scmOutOrderSup1Get", method = RequestMethod.POST)
-    public RESTful scmOutOrderSup1Get(HttpServletRequest req, Page p) {
-        return inOutService.scmOutOrderSup1Get(req, p);
-    }
-
-    @RequestMapping(value = "/scmOutOrderSup2Get", method = RequestMethod.POST)
-    public List<SCM_OUT_ORD_SUB> scmOutOrderSup2Get(HttpServletRequest req, Page p) {
-        return inOutService.scmOutOrderSup2Get(req, p);
-    }
-    @RequestMapping(value = "/scmOutOrderDel", method = RequestMethod.POST)
-    public Message scmOutOrderDel(HttpServletRequest req, SCM_OUT_ORD soo) {
-        return inOutService.scmOutOrderDel(req, soo);
-    }
-
-
-    @RequestMapping(value ="/scmStockRetListGet",method = RequestMethod.POST)
-    public RESTful scmStockRetListGet(HttpServletRequest req,Page p){
+    @RequestMapping(value = "/scmStockRetListGet", method = RequestMethod.POST)
+    public RESTful scmStockRetListGet(HttpServletRequest req, Page p) {
         return inOutService.scmStockRetListGet(req, p);
     }
 
-    @RequestMapping(value = "/scmInLineListGet",method = RequestMethod.POST)
-    public RESTful scmInLineListGet(HttpServletRequest req,Page p){
-        return inOutService.scmInLineListGet(req, p);
-    }
-
-    @RequestMapping(value = "/scmInLineSubListGet", method = RequestMethod.POST)
-    public RESTful scmInLineSubListGet(HttpServletRequest req,Page p) { return inOutService.scmInLineSubListGet(req, p); }
 
     @RequestMapping(value = "/scmOutAdd", method = RequestMethod.POST)
-    public Message scmOutAdd(SCM_OUT out, HttpServletRequest req) { return inOutService.scmOutAdd(out,req); }
+    public Message scmOutAdd(SCM_OUT out, HttpServletRequest req) {
+        return inOutService.scmOutAdd(out, req);
+    }
 
 
     @RequestMapping(value = "/scmOutGet_lee", method = RequestMethod.POST)
-    public RESTful scmOutGet_lee(HttpServletRequest req, Page p){
+    public RESTful scmOutGet_lee(HttpServletRequest req, Page p) {
         return inOutService.scmOutGet_lee(req, p);
     }
 
     @RequestMapping(value = "/scmOutDel", method = RequestMethod.POST)
-    public Message scmOutDel(HttpServletRequest req, Page p){
+    public Message scmOutDel(HttpServletRequest req, Page p) {
         return inOutService.scmOutDel(req, p);
     }
-
-
-
 
 
     @RequestMapping(value = "/scmInGet", method = RequestMethod.POST)
@@ -140,14 +86,18 @@ public class InOutRestController {
     }
 
     @RequestMapping(value = "/scmInDel", method = RequestMethod.POST)
-    public Message scmInDel( Page p) {
-        return inOutService.scmInDel( p);
+    public Message scmInDel(Page p) {
+        return inOutService.scmInDel(p);
     }
 
 
     @RequestMapping(value = "/scmInOrdModalGet", method = RequestMethod.POST)
-    public List<SCM_IN_ORD_MODAL> scmInOrdModalGet( Page p) { return inOutService.scmInOrdModalGet(p); }
+    public List<SCM_IN_ORD_MODAL> scmInOrdModalGet(Page p) {
+        return inOutService.scmInOrdModalGet(p);
+    }
 
     @RequestMapping(value = "/scmInListGet", method = RequestMethod.POST)
-    public RESTful smcInListGet(Page p) { return inOutService.scmInListGet( p); }
+    public RESTful smcInListGet(Page p) {
+        return inOutService.scmInListGet(p);
+    }
 }

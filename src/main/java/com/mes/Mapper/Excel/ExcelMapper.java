@@ -16,9 +16,6 @@ import com.mes.mesQms.Interim.DTO.QMS_ASSY_NG_SUM;
 import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
 import com.mes.mesScm.InOut.DTO.*;
 import com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB;
-import com.mes.mesScm.Order.DTO.SCM_REQ_ORD;
-import com.mes.mesScm.Standard.DTO.SYS_PART_PRICE;
-import com.mes.mesScm.Standard.DTO.sysBPart;
 import com.mes.mesScm.Stock.DTO.SCM_STOCK_LIST;
 import com.mes.mesScm.Stock.DTO.SCM_STOCK_REV_LIST;
 import com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_DAY;
@@ -33,16 +30,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface ExcelMapper {
-    List<sysBPart> testDbList();
-    List<SCM_REQ_ORD> scmReqOrderDbList(Excel excel);
+
     List<SCM_IN_ORD_SUB> scmOrderListDbList(Excel excel);
     List<SCM_IN> scmInListGetDbList(Excel excel);
     List<SCM_OUT> scmOutListGetDbList(Excel excel);
-    void sysBPartSetListData(sysBPart vo);
+
 
     List<SCM_STOCK_RET_SUB> scmStockRetListDbList(Excel excel);
 
-    List<SCM_REIN_SUB> scmInLineListDbList(Excel excel);
 
     List<SCM_STOCK_LIST> scmStockListDbList(Excel excel);
 
@@ -64,7 +59,7 @@ public interface ExcelMapper {
 
     List<tpmMachineError> tpmMachineErrorDbList(Excel excel);
 
-    List<SYS_PART_PRICE> sysPartPriceDbList(Excel excel);
+
 
     List<WMS_IN_SUB> wmsInListDbList(Excel excel);
 
@@ -88,15 +83,11 @@ public interface ExcelMapper {
 
     List<CRM_PLAN> crmPlanDbList(Excel excel);
 
-    List<QMS_PROD_SUB> qmsProdErrorDbList(Excel excel);
-
     List<QMS_RECV_SUB> qmsRecvErrorDbList(Excel excel);
 
     List<OUTS_IO_CD> outsIOListDbList(Excel excel);
 
     List<OUTS_IO_CD> outsInReadyGetDbList(Excel excel);
-
-    List<WMS_IN_SUB> wmsinListDbList(Excel excel);
 
     List<POP_PLAN> popPlanListDbList(Excel excel);
 

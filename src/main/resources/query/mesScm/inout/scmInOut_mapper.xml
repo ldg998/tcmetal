@@ -13,59 +13,17 @@
     </select>
 
 
-
-
-
-
-
-    <select id="scmInLot2Get" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB_ORD">
-        	EXEC SP_SCM_IN_SUB2_GET #{page}, #{rows}, #{keyword}, #{keyword2}
-    </select>
-
-
     <select id="scmOutGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
         	EXEC SP_SCM_OUT_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}
     </select>
     <select id="scmStockRetGet" resultType="com.mes.mesScm.InOut.DTO.SCM_STOCK_RET">
         	EXEC SP_SCM_RET_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}
     </select>
-    <select id="scmInLineGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
-        	EXEC SP_SYS_LINE_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}
-    </select>
 
-
-
-
-    <select id="scmOutOrderGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT_ORD">
-        	EXEC SP_SCM_OUT_ORDER_GET #{page}, #{rows},#{start_date}, #{end_date},'',#{keyword}
-    </select>
-
-    <select id="scmOutOrderAdd" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC SP_SCM_OUT_ORDER_ADD #{work_date}, #{cargo_code_to},#{usage}, #{ord_no}, #{keyword}, #{user_code}
-    </select>
-
-    <select id="scmOutOrderSup1Get" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT_ORD_SUB">
-        	EXEC SP_SCM_OUT_ORDER_SUB_GET #{page}, #{rows},#{keyword}
-    </select>
-
-    <select id="scmOutOrderDel" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC SP_SCM_OUT_ORDER_DEL #{ord_no}
-    </select>
 
     <select id="scmStockRetListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_RET_SUB">
         EXEC SP_SCM_RET_SUB_DATE_GET  #{page}, #{rows}, #{start_date}, #{end_date} , #{keyword}
     </select>
-
-    <select id="scmInLineListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_REIN_SUB">
-        EXEC SP_SCM_REIN_SUB_DATE_GET  #{page}, #{rows}, #{start_date}, #{end_date}, #{keyword}
-    </select>
-
-
-    <select id="scmInLineSubListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_REIN_BCR">
-        EXEC SP_SCM_REIN_BCR_GET #{page}, #{rows},#{keyword}
-    </select>
-
-
 
 
     <select id="scmInGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN">

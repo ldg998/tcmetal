@@ -39,10 +39,6 @@ public class VariousService extends ReturnFunction {
         return getListData(rows , p);
     }
 
-    public List<sysBPartGroup> sysBPartGroupSelectGet(Page p, HttpServletRequest req) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.sysBPartGroupSelectGet(p);
-    }
 
     public List<sysLoc> sysLocAllGet(Page p, HttpServletRequest req) {
         p.setSite_code(getSessionData(req).getSite_code());
@@ -54,22 +50,6 @@ public class VariousService extends ReturnFunction {
         return variousMapper.sysCommonUnitGet(p);
     }
 
-    public List<SYSCommon> sysCommonBoardGet(Page p, HttpServletRequest req) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.sysCommonBoardGet(p);
-    }
-
-    public RESTful sysBPartModalGet(Page p, HttpServletRequest req) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        List<sysBPart> rows = variousMapper.sysBPartModalGet(p);
-        return getListData(rows , p);
-    }
-
-
-    public List<sysBPart> sysBPartAllGet(Page p, HttpServletRequest req) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.sysBPartAllGet(p);
-    }
 
     public List<SYSCommon> sysCommonAllGet(Page p, HttpServletRequest req) {
         p.setSite_code(getSessionData(req).getSite_code());
@@ -126,45 +106,12 @@ public class VariousService extends ReturnFunction {
         return variousMapper.sysPartTypeOneGet(p);
     }
 
-    public List<SYS_PART_GROUP> sysPartGroupAllGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.sysPartGroupAllGet(p);
-    }
-
-    public List<VT_PART_GROUP> partGroup1(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.partGroup1(p);
-
-    }
-
-    public List<VT_PART_GROUP> partGroup2(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.partGroup2(p);
-    }
-
-    public List<VT_PART_GROUP> partGroup3(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.partGroup3(p);
-    }
-
-    public List<SYS_ASSY_CABLE> crmAssyCableAllGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.crmAssyCableAllGet(p);
-    }
-
-    public List<SYS_COMMON2_CD> sysPartNameGroupAllGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.sysPartNameGroupAllGet(p);
-    }
 
     public List<POP_ROUTE_CD> popRouteGroupAllGet(HttpServletRequest req, Page p) {
         p.setSite_code(getSessionData(req).getSite_code());
         return variousMapper.popRouteGroupAllGet(p);
     }
 
-    public List<SYS_PART_NAME> sysPartNameAllGet(HttpServletRequest req, Page p) {
-        return variousMapper.sysPartNameAllGet(p);
-    }
 
     public List<SYSProdLine> sysProdLineAllGet(HttpServletRequest req, Page p) {
         p.setSite_code(getSessionData(req).getSite_code());
@@ -209,10 +156,6 @@ public class VariousService extends ReturnFunction {
     public SYSMsg msgGet(HttpServletRequest req, Page p) {
         p.setSite_code(getSessionData(req).getSite_code());
         return variousMapper.msgGet(p);
-    }
-
-    public List<SYS_PART_CD> sysPartNamePartAllGet(HttpServletRequest req, Page p) {
-        return variousMapper.sysPartNamePartAllGet(p);
     }
 
     public Message sysMenuFavoritesAdd(HttpServletRequest req, SYS_MENU_FAVORITES_CD smfc) {

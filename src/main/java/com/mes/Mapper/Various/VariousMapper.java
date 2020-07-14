@@ -20,19 +20,16 @@ import com.mes.mesWms.Stock.DTO.WMS_STOCK_TOTAL;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
 public interface VariousMapper {
     List<SYSSupp> sysSuppGet(Page p);
 
-    List<sysBPartGroup> sysBPartGroupSelectGet(Page p);
 
     List<sysLoc> sysLocAllGet(Page p);
 
     List<SYSCommon> sysCommonUnitGet(Page p);
 
-    List<sysBPart> sysBPartModalGet(Page p);
-
-    List<sysBPart> sysBPartAllGet(Page p);
 
     List<SYSCommon> sysCommonAllGet(Page p);
 
@@ -41,6 +38,7 @@ public interface VariousMapper {
     List<SYS_QC_ITEM> qmsQcItemAllGet(Page p);
 
     List<TPM_MACHINE_CD> tpmMachineAllGet(Page p);
+
     List<SYSProdLine> getLine(Page p);
 
     List<TPM_REG_ITEM_CD> tpmMachineRegItemAllGet(Page p);
@@ -53,27 +51,13 @@ public interface VariousMapper {
 
     SYSPartType sysPartTypeOneGet(Page p);
 
-    List<SYS_PART_GROUP> sysPartGroupAllGet(Page p);
-
-    List<VT_PART_GROUP> partGroup1(Page p);
-
-    List<VT_PART_GROUP> partGroup2(Page p);
-
-    List<VT_PART_GROUP> partGroup3(Page p);
-
-    List<SYS_ASSY_CABLE> crmAssyCableAllGet(Page p);
-
-    List<SYS_COMMON2_CD> sysPartNameGroupAllGet(Page p);
 
     List<POP_ROUTE_CD> popRouteGroupAllGet(Page p);
 
-    List<SYS_PART_NAME> sysPartNameAllGet(Page p);
 
     List<SYSProdLine> sysProdLineAllGet(Page p);
 
     List<POP_LINE_USER_CD> popLineUserAllGet(Page p);
-
-    List<SYSCommon> sysCommonBoardGet(Page p);
 
     WMS_STOCK_TOTAL wmsStockTotalOneGet(Page p);
 
@@ -86,8 +70,6 @@ public interface VariousMapper {
     List<SYS_PART_CD> sysPartAllGet(Page p);
 
     SYSMsg msgGet(Page p);
-
-    List<SYS_PART_CD> sysPartNamePartAllGet(Page p);
 
     Message sysMenuFavoritesAdd(SYS_MENU_FAVORITES_CD smfc);
 

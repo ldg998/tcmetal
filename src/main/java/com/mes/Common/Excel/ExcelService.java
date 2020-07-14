@@ -20,9 +20,6 @@ import com.mes.mesQms.Interim.DTO.QMS_ASSY_NG_SUM;
 import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
 import com.mes.mesScm.InOut.DTO.*;
 import com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB;
-import com.mes.mesScm.Order.DTO.SCM_REQ_ORD;
-import com.mes.mesScm.Standard.DTO.SYS_PART_PRICE;
-import com.mes.mesScm.Standard.DTO.sysBPart;
 import com.mes.mesScm.Stock.DTO.SCM_STOCK_LIST;
 import com.mes.mesScm.Stock.DTO.SCM_STOCK_REV_LIST;
 import com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_DAY;
@@ -98,76 +95,7 @@ public class ExcelService extends ExcelFunction {
 
         try {
             // 파라미터 데이터로 해당 로직 처리
-            if (excel.getName().equals("sysBPart")) {
-                // 시트 생성
-                Sheet sheet = sxssfWorkbook.createSheet("자재정보");
-                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
-                excelName = URLEncoder.encode("자재정보", "UTF-8");
-
-                // DataTransfer [s]
-                List<sysBPart> list = excelMapper.testDbList();
-                List<List<Object>> rows = makeBody.sysBPart_Body(list);
-                int index = makeHeader.sysBPart_Header().length;
-                String[] data = makeHeader.sysBPart_Header();
-                // DataTransfer [e]
-
-                // (MakeHeader) 헤더 생성
-                row = sheet.createRow(rowNo++);
-                row.setHeight((short) 512);
-                for (i = 0; index > i; i++) {
-                    sheet.setColumnWidth((short) i, (short) 7000);
-                    cell = row.createCell(i);
-                    cell.setCellStyle(setHeadStyle(sxssfWorkbook));
-                    cell.setCellValue(data[i]);
-                }
-
-                // (MakeBody) 바디 생성
-                for (i = 0; list.size() > i; i++) {
-                    row = sheet.createRow(rowNo++);
-                    for (v = 0; rows.get(i).size() > v; v++) {
-                        cell = row.createCell(v);
-                        cell.setCellStyle(setBodyStyle(sxssfWorkbook));
-                        cell.setCellValue(String.valueOf(rows.get(i).get(v)));
-                    }
-                }
-            } else if (excel.getName().equals("sysPartPrice")) {
-                // 시트 생성
-                Sheet sheet = sxssfWorkbook.createSheet("자재단가관리");
-                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
-                excelName = URLEncoder.encode("자재단가관리", "UTF-8");
-
-                // DataTransfer [s]
-
-                List<SYS_PART_PRICE> list = excelMapper.sysPartPriceDbList(excel);
-                if (!list.isEmpty()) {
-                    List<List<Object>> rows = makeBody.sysPartPrice_Body(list);
-                    int index = makeHeader.sysPartPrice_Header().length;
-                    String[] data = makeHeader.sysPartPrice_Header();
-                    // DataTransfer [e]
-
-                    // (MakeHeader) 헤더 생성
-                    row = sheet.createRow(rowNo++);
-                    row.setHeight((short) 512);
-                    for (i = 0; index > i; i++) {
-                        sheet.setColumnWidth((short) i, (short) 7000);
-                        cell = row.createCell(i);
-                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
-                        cell.setCellValue(data[i]);
-                    }
-
-                    // (MakeBody) 바디 생성
-                    for (i = 0; list.size() > i; i++) {
-                        row = sheet.createRow(rowNo++);
-                        for (v = 0; rows.get(i).size() > v; v++) {
-                            cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
-                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
-                        }
-                    }
-                } else {
-                    response(response, sxssfWorkbook, excelName, "fail", null);
-                }
-            } else if (excel.getName().equals("qmsAssyList")) {
+            if (excel.getName().equals("qmsAssyList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("중간검사현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -651,39 +579,7 @@ public class ExcelService extends ExcelFunction {
                         cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                     }
                 }
-            } else if (excel.getName().equals("scmReqOrder")) {
-                // 시트 생성
-                Sheet sheet = sxssfWorkbook.createSheet("구매요청현황");
-                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
-                excelName = URLEncoder.encode("구매요청현황", "UTF-8");
 
-                // DataTransfer [s]
-
-                List<SCM_REQ_ORD> list = excelMapper.scmReqOrderDbList(excel);
-                List<List<Object>> rows = makeBody.scmReqOrder_Body(list);
-                int index = makeHeader.scmReqOrder_Header().length;
-                String[] data = makeHeader.scmReqOrder_Header();
-                // DataTransfer [e]
-
-                // (MakeHeader) 헤더 생성
-                row = sheet.createRow(rowNo++);
-                row.setHeight((short) 512);
-                for (i = 0; index > i; i++) {
-                    sheet.setColumnWidth((short) i, (short) 7000);
-                    cell = row.createCell(i);
-                    cell.setCellStyle(setHeadStyle(sxssfWorkbook));
-                    cell.setCellValue(data[i]);
-                }
-
-                // (MakeBody) 바디 생성
-                for (i = 0; list.size() > i; i++) {
-                    row = sheet.createRow(rowNo++);
-                    for (v = 0; rows.get(i).size() > v; v++) {
-                        cell = row.createCell(v);
-                        cell.setCellStyle(setBodyStyle(sxssfWorkbook));
-                        cell.setCellValue(String.valueOf(rows.get(i).get(v)));
-                    }
-                }
             } else if (excel.getName().equals("scmInList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("입고현황");
@@ -794,39 +690,6 @@ public class ExcelService extends ExcelFunction {
                 List<List<Object>> rows = makeBody.scmStockRetList_Body(list);
                 int index = makeHeader.scmStockRetList_Header().length;
                 String[] data = makeHeader.scmStockRetList_Header();
-                // DataTransfer [e]
-
-                // (MakeHeader) 헤더 생성
-                row = sheet.createRow(rowNo++);
-                row.setHeight((short) 512);
-                for (i = 0; index > i; i++) {
-                    sheet.setColumnWidth((short) i, (short) 7000);
-                    cell = row.createCell(i);
-                    cell.setCellStyle(setHeadStyle(sxssfWorkbook));
-                    cell.setCellValue(data[i]);
-                }
-
-                // (MakeBody) 바디 생성
-                for (i = 0; list.size() > i; i++) {
-                    row = sheet.createRow(rowNo++);
-                    for (v = 0; rows.get(i).size() > v; v++) {
-                        cell = row.createCell(v);
-                        cell.setCellStyle(setBodyStyle(sxssfWorkbook));
-                        cell.setCellValue(String.valueOf(rows.get(i).get(v)));
-                    }
-                }
-            } else if (excel.getName().equals("scmInLineList")) {
-                // 시트 생성
-                Sheet sheet = sxssfWorkbook.createSheet("재입고현황");
-                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
-                excelName = URLEncoder.encode("재입고현황", "UTF-8");
-
-                // DataTransfer [s]
-
-                List<SCM_REIN_SUB> list = excelMapper.scmInLineListDbList(excel);
-                List<List<Object>> rows = makeBody.scmInLineList_Body(list);
-                int index = makeHeader.scmInLineList_Header().length;
-                String[] data = makeHeader.scmInLineList_Header();
                 // DataTransfer [e]
 
                 // (MakeHeader) 헤더 생성
@@ -1773,32 +1636,32 @@ public class ExcelService extends ExcelFunction {
         }
     }
 
-    public List<sysBPart> ExcelUploadReader(Excel excel) throws IOException, InvalidFormatException {
-        OPCPackage opcPackage = OPCPackage.open(excel.getFiles().getInputStream());
-        XSSFWorkbook xssfWorkbook = new XSSFWorkbook(opcPackage);
-        Upload upload = new Upload();
-        XSSFRow row = null;
-        XSSFCell cell = null;
-        XSSFSheet sheet = null;
-        return upload.sysBPartListData(xssfWorkbook, sheet, row, cell);
-    }
+//    public List<sysBPart> ExcelUploadReader(Excel excel) throws IOException, InvalidFormatException {
+//        OPCPackage opcPackage = OPCPackage.open(excel.getFiles().getInputStream());
+//        XSSFWorkbook xssfWorkbook = new XSSFWorkbook(opcPackage);
+//        Upload upload = new Upload();
+//        XSSFRow row = null;
+//        XSSFCell cell = null;
+//        XSSFSheet sheet = null;
+//        return upload.sysBPartListData(xssfWorkbook, sheet, row, cell);
+//    }
 
-    public String excel_upload(Excel excel, HttpServletRequest req) throws IOException, InvalidFormatException {
-        OPCPackage opcPackage = OPCPackage.open(excel.getFiles().getInputStream());
-        XSSFWorkbook xssfWorkbook = new XSSFWorkbook(opcPackage);
-        Upload upload = new Upload();
-        XSSFRow row = null;
-        XSSFCell cell = null;
-        XSSFSheet sheet = null;
-        List<sysBPart> list = upload.sysBPartSetListData(xssfWorkbook, sheet, row, cell, req);
-        try {
-            for (sysBPart vo : list) {
-                excelMapper.sysBPartSetListData(vo);
-            }
-            return "업로드가 완료되었습니다.";
-        } catch (Exception e) {
-            return " 중복된 키 값이 포함되어있습니다. \n 엑셀 데이터를 확인 후 재업로드 해주세요.";
-        }
-    }
+//    public String excel_upload(Excel excel, HttpServletRequest req) throws IOException, InvalidFormatException {
+//        OPCPackage opcPackage = OPCPackage.open(excel.getFiles().getInputStream());
+//        XSSFWorkbook xssfWorkbook = new XSSFWorkbook(opcPackage);
+//        Upload upload = new Upload();
+//        XSSFRow row = null;
+//        XSSFCell cell = null;
+//        XSSFSheet sheet = null;
+//        List<sysBPart> list = upload.sysBPartSetListData(xssfWorkbook, sheet, row, cell, req);
+//        try {
+//            for (sysBPart vo : list) {
+//                excelMapper.sysBPartSetListData(vo);
+//            }
+//            return "업로드가 완료되었습니다.";
+//        } catch (Exception e) {
+//            return " 중복된 키 값이 포함되어있습니다. \n 엑셀 데이터를 확인 후 재업로드 해주세요.";
+//        }
+//    }
 }
 

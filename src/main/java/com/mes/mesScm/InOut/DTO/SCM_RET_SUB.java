@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class SCM_RET_SUB {
-    private String site_code;
     private String ret_no;
     private String part_code;
     private double qty;

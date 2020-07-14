@@ -4,23 +4,12 @@
     <select id="sysSuppGet" resultType="com.mes.Common.Various.DTO.SYSSupp">
 		EXEC [SP_SYS_SUPP_GET]  #{page},#{rows},#{keyword},#{keyword2}
    </select>
-    <select id="sysBPartGroupSelectGet" resultType="com.mes.mesScm.Standard.DTO.sysBPartGroup">
-		EXEC [SP_SYS_BPART_GROUP_GET]  0,0,#{keyword},''
-   </select>
     <select id="sysLocAllGet" resultType="com.mes.mesScm.Standard.DTO.sysLoc">
 		EXEC [SP_SYS_LOC_GET]  0,0,'',#{keyword}
    </select>
     <select id="sysCommonUnitGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
 		EXEC [SP_SYS_COMMON_GET]  0,0,'UNIT','','Y'
    </select>
-
-    <select id="sysBPartModalGet" resultType="com.mes.mesScm.Standard.DTO.sysBPart">
-        EXEC SP_SYS_BPART_GET #{page}, #{rows},'', #{keyword2}, '',#{keyword}
-    </select>
-
-    <select id="sysBPartAllGet" resultType="com.mes.mesScm.Standard.DTO.sysBPart">
-        EXEC SP_SYS_BPART_GET #{page}, #{rows},#{keyword}, #{keyword2}, '',''
-    </select>
 
     <select id="sysCommonAllGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
         EXEC SP_SYS_COMMON_GET 0,0,#{keyword}, '','Y'
@@ -60,38 +49,15 @@
         EXEC SP_SYS_SUPP_GET2 #{page},#{rows},#{keyword},#{keyword2},#{keyword3},'Y'
     </select>
 
-    <select id="sysPartGroupAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_GROUP">
-        EXEC SP_SYS_PART_GROUP_GET 0,0,#{keyword},''
-    </select>
-
-    <select id="partGroup1" resultType="com.mes.Common.Various.DTO.VT_PART_GROUP">
-        SELECT * FROM VT_PART_GROUP1 WHERE SITE_CODE = #{site_code} AND PART_TYPE = #{keyword}
-        ORDER BY PART_GRP_CODE
-    </select>
-    <select id="partGroup2" resultType="com.mes.Common.Various.DTO.VT_PART_GROUP">
-        SELECT * FROM VT_PART_GROUP2 WHERE SITE_CODE = #{site_code} AND PART_TYPE = #{keyword}
-         ORDER BY PART_GRP_CODE
-    </select>
-    <select id="partGroup3" resultType="com.mes.Common.Various.DTO.VT_PART_GROUP">
-        SELECT * FROM VT_PART_GROUP3 WHERE SITE_CODE = #{site_code} AND PART_TYPE = #{keyword}
-         ORDER BY PART_GRP_CODE
-    </select>
 
     <select id="crmAssyCableAllGet" resultType="com.mes.mesCrm.mesCrm.DTO.SYS_ASSY_CABLE">
 		EXEC SP_SYS_ASSY_CABLE_GET 0, 0, #{keyword}
 	</select>
 
-    <select id="sysPartNameGroupAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_COMMON2_CD">
-        EXEC SP_SYS_COMMON2_GET 0, 0,#{keyword},#{keyword2}
-    </select>
-
     <select id="popRouteGroupAllGet" resultType="com.mes.mesPop.Standard.DTO.POP_ROUTE_CD">
         EXEC SP_POP_ROUTE_GET 0,0,''
     </select>
 
-    <select id="sysPartNameAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_NAME">
-        EXEC SP_SYS_PART_NAME_GET 0,0,''
-    </select>
 
 
     <select id="sysProdLineAllGet" resultType="com.mes.mesManager.Master.DTO.SYSProdLine">

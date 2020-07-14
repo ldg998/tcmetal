@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class SCM_IN_ORD {
-    private String site_code;
     private String ord_no;
     private String work_date;
     private String supp_code;

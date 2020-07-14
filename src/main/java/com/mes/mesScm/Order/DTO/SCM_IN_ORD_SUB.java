@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class SCM_IN_ORD_SUB {
-    private String site_code;
     private String ord_no;
     private String part_code;
     private String qc_result;

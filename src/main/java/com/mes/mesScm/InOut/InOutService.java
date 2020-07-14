@@ -42,11 +42,6 @@ public class InOutService extends ReturnFunction {
         return getListData(rows , p);
     }
 
-    public RESTful scmInLineGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        List<SCM_IN_LINE> rows = inOutMapper.scmInLineGet(p);
-        return getListData(rows , p);
-    }
 
     public RESTful scmStockRetGet(HttpServletRequest req, Page p) {
         p.setSite_code(getSessionData(req).getSite_code());
@@ -77,60 +72,16 @@ public class InOutService extends ReturnFunction {
 
 
 
-
-
-
-    public RESTful scmOutOrderGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        List<SCM_OUT_ORD> rows = inOutMapper.scmOutOrderGet(p);
-        return getListData(rows , p);
-    }
-
-    public Message scmOutOrderAdd(HttpServletRequest req, SCM_OUT_ORD soo) {
-        soo.setSite_code(getSessionData(req).getSite_code());
-        soo.setUser_code(getSessionData(req).getUser_code());
-        return inOutMapper.scmOutOrderAdd(soo);
-    }
-
-    public RESTful scmOutOrderSup1Get(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        List<SCM_OUT_ORD_SUB> rows = inOutMapper.scmOutOrderSup1Get(p);
-        return getListData(rows , p);
-    }
-
-    public List<SCM_OUT_ORD_SUB> scmOutOrderSup2Get(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return inOutMapper.scmOutOrderSup1Get(p);
-    }
-
-    public Message scmOutOrderDel(HttpServletRequest req, SCM_OUT_ORD soo) {
-        soo.setSite_code(getSessionData(req).getSite_code());
-        return inOutMapper.scmOutOrderDel(soo);
-    }
-
     public RESTful scmStockRetListGet(HttpServletRequest req, Page p) {
         p.setSite_code(getSessionData(req).getSite_code());
         List<SCM_RET_SUB> rows = inOutMapper.scmStockRetListGet(p);
         return  getListData(rows,p);
     }
 
-    public RESTful scmInLineListGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        List<SCM_REIN_SUB> rows = inOutMapper.scmInLineListGet(p);
-        return getListData(rows,p);
-    }
 
-    public RESTful scmInLineSubListGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        List<SCM_REIN_BCR> rows = inOutMapper.scmInLineSubListGet(p);
-        return getListData(rows,p);
-    }
 
-    public RESTful scmInLot2Get(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        List<SCM_IN_SUB_ORD> rows = inOutMapper.scmInLot2Get(p);
-        return getListData(rows , p);
-    }
+
+
 
     public RESTful scmIOListGet(HttpServletRequest req, Page p) {
         List<SCM_IO> rows = inOutMapper.scmIOListGet(p);
@@ -138,14 +89,12 @@ public class InOutService extends ReturnFunction {
         }
 
     public Message scmOutAdd(SCM_OUT out, HttpServletRequest req) {
-        out.setSite_code(getSessionData(req).getSite_code());
         out.setUser_code(getSessionData(req).getUser_code());
 
         return inOutMapper.scmOutAdd(out);
     }
 
     public RESTful scmOutGet_lee(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
         List<SCM_OUT> rows = inOutMapper.scmOutGet_lee(p);
         return getListData(rows , p);
     }

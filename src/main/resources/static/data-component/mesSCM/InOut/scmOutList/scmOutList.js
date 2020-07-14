@@ -19,6 +19,7 @@ $(document).ready(function () {
     jqGrid_main();//Resize 설정 추가
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));//Pager에 Icon 설정 추가
     jqgridPagerIcons();// 그리드 아이콘설정
+    partModal_start();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -28,10 +29,10 @@ function get_btn(page) {
     main_data.send_data = value_return(".condition_main");//해당 클레스이름의 객체를 불러와 NAME VALUE 를 할당
     main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');//날짜 모양 가공 2020-06-06 = 20200606
     main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');//날짜 모양 가공 2020-06-06 = 20200606
-
+    main_data.send_data.keyword = $('#part_code').val();
     // SP_SCM_IN_LIST_GET
     $("#mes_grid").setGridParam({ //그리드 조회
-        url: '/scmInListGet',
+        url: '/scmOutListGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -65,6 +66,18 @@ function excel_download() {
     // }
 }
 
+function part_btn(){
+    $('#partSearchGrid').jqGrid('clearGridData');
+    $('#part-search-dialog').dialog('open');
+
+    jqGridResize2("#partSearchGrid", $('#partSearchGrid').closest('[class*="col-"]'));
+}
+function partModal_bus(data) {
+    modal_edits('.condition_main1',[],data);
+}
+function suppModal_close_bus(){
+    modal_reset('.condition_main1',[])
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014"); //엑셀 시행메세지
@@ -89,18 +102,17 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['입고일자','입고번호','업체명','품번','품명','규격','단위','출고수량','등록자','등록일시'],
+        colNames: ['출고일자','출고번호','품번','품명','규격','단위','출고수량','등록자','등록일시'],
         colModel: [
-            {name: '', index: '',sortable: false,key:true,fixed:true,width:150,formatter:formmatterDate2},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150},
-            {name: '', index: '',sortable: false, fixed:true, width:150}
+            {name: 'work_date', index: 'work_date',sortable: false,key:true,fixed:true,width:150,formatter:formmatterDate2},
+            {name: 'out_no', index: 'out_no',sortable: false, fixed:true, width:150},
+            {name: 'part_code', index: 'part_code',sortable: false, fixed:true, width:150},
+            {name: 'part_name', index: 'part_name',sortable: false, fixed:true, width:150},
+            {name: 'spec', index: 'spec',sortable: false, fixed:true, width:150},
+            {name: 'unit_name', index: 'unit_name',sortable: false, fixed:true, width:150},
+            {name: 'qty', index: 'qty',sortable: false, fixed:true, width:150,formatter:'number'},
+            {name: 'user_name', index: 'user_name',sortable: false, fixed:true, width:150},
+            {name: 'update_date', index: 'update_date',sortable: false, fixed:true, width:150,formatter:formmatterDate2}
         ],
         caption: "자재출고현황 | MES",
         autowidth: true,

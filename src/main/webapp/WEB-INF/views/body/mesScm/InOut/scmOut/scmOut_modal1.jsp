@@ -23,7 +23,6 @@
                 <div class="input-icon input-icon-right">
                     <input type="text" name="part_code" class="form-control h-25 modal_value"
                            id="part_code" onclick="part_btn('A');" readonly>
-
                     <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                 </div>
             </div>

@@ -22,11 +22,12 @@
     </select>
 
     <select id="qmsRecvListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
-        EXEC [SP_QMS_RECV_LIST_GET]  #{page}, #{rows},#{start_date},#{end_date}, #{keyword},#{keyword2},''
+        EXEC [SP_QMS_RECV_LIST_GET]  #{page}, #{rows},#{start_date},#{end_date}, #{keyword}
     </select>
     <select id="qmsRecvListOneGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
         EXEC [SP_QMS_RECV_LIST_GET] 1,1,'','','','',#{in_no}
     </select>
+
 
     <select id="qmsRecvMRBGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
             EXEC [SP_QMS_RECV_MRB_GET]  #{page}, #{rows},#{start_date},#{end_date}, #{keyword},#{keyword2}
@@ -84,6 +85,10 @@
 
     <select id="qmsRecvErrorListSumGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_NG_SUM">
             EXEC SP_QMS_RECV_NG_SUM_GET  #{start_date}, #{end_date},#{keyword}
+    </select>
+
+    <select id="qmsRecvList_File_Upload" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC  SP_SYS_FILE_ADD #{user_code},#{key_value},#{file_name},#{file_og_name},#{file_size},#{file_volume},#{upload_path},#{url}
     </select>
 
 </mapper>

@@ -491,6 +491,7 @@ input[type=email], input[type=url], input[type=search], input[type=tel], input[t
 
 
 .filebox_lee {display:inline-block; margin-right: 10px;}
+
 .filebox_lee label {
     display: inline-block;
     padding: .5em .75em;
@@ -514,4 +515,8 @@ input[type=email], input[type=url], input[type=search], input[type=tel], input[t
     clip:rect(0,0,0,0);
     border: 0;
 }
+
+
+
+
 

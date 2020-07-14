@@ -45,4 +45,6 @@ public interface QmsImportMapper {
     SCM_IN_SUB qmsRecvListOneGet(SCM_IN_SUB sis);
 
     int qmsRecvErrorManAdd1(Files files);
+
+    Message qmsRecvList_File_Upload(Files file);
 }

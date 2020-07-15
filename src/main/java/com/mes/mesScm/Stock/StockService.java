@@ -19,25 +19,21 @@ public class StockService extends ReturnFunction {
     private StockMapper stockMapper;
 
     public RESTful scmStockListGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
         List<SCM_STOCK_LIST> rows = stockMapper.scmStockListGet(p);
         return getListData(rows, p);
     }
 
     public RESTful scmStockSumDayListGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
         List<SCM_STOCK_SUM_DAY> rows = stockMapper.scmStockSumDayListGet(p);
         return getListData(rows, p);
     }
 
     public RESTful scmStockSumMonthListGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
         List<SCM_STOCK_SUM_MONTH> rows = stockMapper.scmStockSumMonthListGet(p);
         return  getListData(rows, p);
     }
 
     public RESTful scmStockRevListGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
         List<SCM_STOCK_REV_LIST> rows = stockMapper.scmStockRevListGet(p);
         return  getListData(rows, p);
     }

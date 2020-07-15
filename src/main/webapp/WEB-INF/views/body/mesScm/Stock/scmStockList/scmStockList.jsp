@@ -13,6 +13,13 @@
             <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회일자</td>
+                    <td class="wt-px-200">
+                        <div class="input-icon input-icon-right">
+                            <input type="text" name="start_date" id="datepicker" class="form-control h-25 condition_main" readonly>
+                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                        </div>
+                    </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
                     <td class="wt-px-200">
                         <select name="keyword" id="part_type_select" class="form-control keyword condition_main" style="width:100%">

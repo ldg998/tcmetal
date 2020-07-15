@@ -199,7 +199,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['구분','알람수신자','등록자','등록일시'],
+        colNames: ['구분','알림수신자','등록자','등록일시'],
         colModel: [
             {name: '', index: '', sortable: false, width: 130,fixed:true},
             {name: '', index: '', sortable: false, width: 80, align: 'right', formatter: 'integer',fixed:true},

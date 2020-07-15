@@ -154,7 +154,7 @@ public class QmsImportService  extends UploadFunction {
         return qmsImportMapper.qmsRecvListOneGet(sis);
     }
 
-    public Message qmsRecvList_File_Upload(HttpServletRequest req,Files file) {
+    public Message qmsRecvList_File_Upload(MultipartHttpServletRequest req,Files file) {
         file.setUser_code(getSessionData(req).getUser_code());
 
         return qmsImportMapper.qmsRecvList_File_Upload(file);

@@ -9,6 +9,8 @@ public class SCM_IN_SUB {
     private String part_type_name;
     private String part_code;
     private String qc_result;
+    private String key_value;
+    private  String ord_no;
     private double ord_qty;
     private double prev_qty;
     private double qty;
@@ -33,6 +35,8 @@ public class SCM_IN_SUB {
     private String ng_name;
     private String act_type_name;
     private String qc_level_name;
+    private String file1;
+    private String upload_path;
 
     private double qc_qty;
     private String act_type;

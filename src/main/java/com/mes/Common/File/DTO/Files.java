@@ -19,6 +19,7 @@ public class Files {
     private String upload_path;
     private String url;
     private MultipartFile files;
+    private MultipartFile file;
     private String name;
     private String board_code;
     private String board_idx;

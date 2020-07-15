@@ -71,9 +71,7 @@
                 </div>
             </div>
         </div>
-        <form id="qms_uploadForm" name="qms_uploadForm">
-            <input type="file" id="file" name="file"  style="display: none" onchange="file_change();">
-        </form>
+
 
         <div class="row">
 

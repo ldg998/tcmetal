@@ -88,7 +88,7 @@
     </select>
 
     <select id="qmsRecvList_File_Upload" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC  SP_SYS_FILE_ADD #{user_code},#{key_value},#{file_name},#{file_og_name},#{file_size},#{file_volume},#{upload_path},#{url}
+        EXEC  SP_SYS_FILE_ADD #{user_code},#{key_value},#{file_name},#{file_og_name},#{file_size},#{file_volume},#{upload_path},#{url},#{key1},#{key2},#{key3}
     </select>
 
 </mapper>

@@ -7,7 +7,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 부서명 </div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" placeholder="(고정)" readonly autocomplete="off">
+                <input type="text" name="" class="form-control modal_value" placeholder="생산(현장)" readonly autocomplete="off">
             </div>
         </div>
         <div class="profile-info-row">

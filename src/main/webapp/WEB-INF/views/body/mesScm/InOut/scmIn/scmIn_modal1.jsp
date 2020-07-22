@@ -36,7 +36,7 @@
 
 
                     <td class="wt-px-100 t-align-c td-title padding-a-0">비고</td>
-                    <td class="wt-px-140"><input type="text" id="modal1_remark" name="keyword2" class="form-control h-25 modal_value"></td>
+                    <td class="wt-px-140"><input type="text" id="modal1_remark" name="keyword2" class="form-control h-25 modal_value" autofocus></td>
                     <td></td>
                 </tr>
                 </tbody>

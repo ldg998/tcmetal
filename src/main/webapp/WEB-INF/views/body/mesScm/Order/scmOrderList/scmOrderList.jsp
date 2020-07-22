@@ -32,13 +32,8 @@
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main">
-                            <input type="hidden" name="keyword" class="form-control h-25 condition_main"
-                                   id="supp_code_main">
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
-                        </div>
+                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%">
+                        </select>
                     </td>
                     <td></td>
                 </tr>

@@ -22,6 +22,7 @@ $(document).ready(function () {
     jqGrid_main(); //그리드 스타트
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]')); //해당 그리드 리사이즈
     jqgridPagerIcons(); // 그리드 아이콘 설정
+    select_box();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -153,4 +154,8 @@ function jqGrid_main() { //메인그리드 설정
                 $("table#mes_grid tr.jqgfirstrow").css("height","0px");
         }
     });
+}
+
+function select_box() {
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"Y")
 }

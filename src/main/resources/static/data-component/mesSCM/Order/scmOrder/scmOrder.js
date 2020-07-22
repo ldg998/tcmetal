@@ -27,7 +27,6 @@ $(document).ready(function () {
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));//그리드 resize
     jqgridPagerIcons(); //그리드 아이콘 설정
     selectBox();
-    suppModal_start();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -62,10 +61,12 @@ function under_get(rowid) {
 
 // 추가버튼
 function add_btn() {
+    var code = $('#supp_code_main').val();
     main_data.check3 = 'Y';
     main_data.check2 = 'Y';
     main_data.status = 'N';
     if (main_data.auth.check_add != "N") { //권한 체크
+        $('#supp_code_modal').attr('disabled', false);// 셀렉트박스 리드온리 해제
         modal_reset(".modal_value", []); //해당 클레스명의 value 리셋 readonly name이있다면 그객체를 leadonly
         $("#mes_add_grid").jqGrid('clearGridData');   //해당 그리드의 데이터삭제 및 업데이트
         $("#mes_add_grid2").jqGrid('clearGridData');  //해당 그리드의 데이터삭제 및 업데이트
@@ -75,8 +76,9 @@ function add_btn() {
         date2.setDate(date.getDate() + 1); //현재날짜에 + 1
         $('#datepicker3').datepicker('setDate', date); //해당 id에 현재날짜 세팅  2020-06-04
         $('#datepicker4').datepicker('setDate', date2); // 해당 id에 현재날짜+1 세팅 2020-06-05
-        $("#supp_name_modal").prop("disabled", false).trigger('change'); //업체모달
-        $("#crm_ord_no").prop("disabled", false).trigger('change');    //수주번호
+        $('#supp_code_modal').prop("selected",code).trigger("change")// 해당 셀렉트에 selected 를 해당 value 값으로 바꾼다
+
+        $("#crm_ord_no").prop("disabled",false).trigger('change');    //수주번호
         main_data.check = 'I';   //추가권한 부여
         $("#addDialog").dialog('open'); // 모달오픈
         trigger_false();
@@ -162,34 +164,7 @@ function complete_btn() {
         alert(msg_object.TBMES_A003.msg_name1);         //오류메세지 출력
     }
 }
-function supp_btn(what) {
-    main_data.supp_check = what;
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
 
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal1").val(name);
-        $("#supp_code_modal1").val(code);
-    }
-    $('#mes_add_grid').jqGrid('clearGridData');
-    $('#mes_add_grid2').jqGrid('clearGridData');
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_A001"); // 추가권한없음
@@ -207,6 +182,8 @@ function authcheck() { // 권한체크
 
 function selectBox() {
     $('#status_select').select2();
+
+    select_makes_base("#supp_code_main","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"Y")
 }
 
 function datepickerInput() {  //초기 날짜할당
@@ -228,7 +205,7 @@ function jqGrid_main() {  //메인 jqGrid
             {name: 'ord_no', index: 'ord_no', sortable: false, key: true, fixed: true, width: 130},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name: 'supp_name', index: 'supp_name', sortable: false, fixed: true, width: 130},
             {name: 'status_name', index: 'status_name', sortable: false, fixed: true, width: 100},
-            {name: 'end_date', index: 'end_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 200},
+            {name: 'delivery_date', index: 'delivery_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 200},
             {name: 'delivery_place', index: 'delivery_place', sortable: false, fixed: true, width: 150},
             {name: 'user_name', index: 'user_name', sortable: false, fixed: true, width: 100},
             {name: 'update_date', index: 'update_date', sortable: false,fixed:  true,width: 150,formatter: formmatterDate}
@@ -253,7 +230,6 @@ function jqGrid_main() {  //메인 jqGrid
         },
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
             var data = $('#mes_grid').jqGrid('getRowData', rowid); //선택한 로우 에 data를 넣고
-
             if (data.status === '1') { //상태 구분
                 main_data.check2 = 'N';
             } else {

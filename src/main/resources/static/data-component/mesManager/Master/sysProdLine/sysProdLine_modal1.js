@@ -20,6 +20,7 @@ function addUdate_btn() {
         if (confirm(text)) {
             wrapWindowByMask2();
             modal_objact.keyword = main_data.check;
+            modal_objact.dept_code = 'D9000';
             ccn_ajax("/sysProdLineAdd", modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
@@ -111,7 +112,8 @@ function modal_make1() {
 
 function selectBox_modal1() {
     // select_makes("#dept_select", "/sysDeptAllGet", "dept_code", "dept_name");
-$('#select_modal1').select2();
+    select_makes_base("#line_type_select", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'');
+
 }
 // 유효성 검사
 function effectiveness1(modal_objact) {

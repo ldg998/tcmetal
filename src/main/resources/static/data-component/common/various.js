@@ -736,3 +736,23 @@ function jqGrid_row_check(gridId,rowId) {
 	$(gridId).jqGrid("setSelection", rowId);
 }
 
+
+function select_supp_name_code(tag,url,value,text,data,what){
+	$(tag).empty();
+	if (what === "Y"){
+		$(tag).append($("<option></option>").text("전체").val(""));
+	}else if (what === 'N'){
+		$(tag).append($("<option></option>").text("선택안함").val(""));
+	}
+	ccn_ajax(url,data).then(function (ajxa_data) {
+		var option = null
+		for (var j = 0; j < ajxa_data.length; j++) {
+
+			option = $("<option></option>").text(ajxa_data[j].supp_name).val(ajxa_data[j].supp_code);
+			$(tag).append(option);
+		}
+		$(tag).select2();
+	});
+
+
+}

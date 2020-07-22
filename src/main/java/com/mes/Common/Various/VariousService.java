@@ -168,4 +168,7 @@ public class VariousService extends ReturnFunction {
         m.setUser_code(getSessionData(req).getUser_code());
         return variousMapper.sysMenuFavoritesGet(m);
     }
+
+    public List<SYSSupp> suppAllGet(Page p) { return variousMapper.suppAllGet(p);
+    }
 }

@@ -24,8 +24,7 @@
                     <!-- 품목코드 검색창 -->
                     <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">품번</td>
                     <td class="wt-px-200">
-                        <input type="text" name="part_name"  class="form-control h-25 condition_main" autofocus autocomplete="off" />
-                        <input type="hidden" name="part_code"  class="form-control h-25 condition_main" autofocus autocomplete="off" />
+                        <input type="text" name="part_code"  class="form-control h-25 condition_main" autofocus autocomplete="off" />
                     </td>
                     <td></td>
                 </tr>

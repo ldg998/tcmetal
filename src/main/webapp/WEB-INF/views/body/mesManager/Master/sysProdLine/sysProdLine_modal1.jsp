@@ -16,22 +16,24 @@
                 <input type="text" name="line_code" class="form-control modal_value" autofocus autocomplete="off">
             </div>
         </div>
+
         <div class="profile-info-row">
             <div class="profile-info-name"> 라인명 </div>
             <div class="profile-info-value">
                 <input type="text" name="line_name" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
+
         <div class="profile-info-row">
             <div class="profile-info-name"> 라인그룹 </div>
             <div class="profile-info-value">
-                <select id='select_modal1' name="keyword2" class="form-control h-25 condition_main" style="width: 100%;">--%>
-                    <option value="">합형</option>
-                    <option value="1"></option>
-                    <option value="2"></option>
+                <select id='line_type_select' name="line_grp_code" class="form-control h-25 modal_value" style="width: 100%;">--%>
                 </select>
             </div>
         </div>
-       
+
+
+
+
     </div>
 </div>

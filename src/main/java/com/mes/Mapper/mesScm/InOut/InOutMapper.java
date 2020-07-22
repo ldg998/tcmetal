@@ -33,7 +33,6 @@ public interface InOutMapper {
 
     Message scmOutAdd(SCM_OUT out);
 
-    List<SCM_OUT> scmOutGet_lee(Page p);
 
     Message scmOutDel(Page p);
 

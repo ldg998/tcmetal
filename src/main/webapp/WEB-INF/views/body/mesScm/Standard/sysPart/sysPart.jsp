@@ -17,13 +17,13 @@
                     <!-- 구분 select 창 -->
                     <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">구분</td>
                     <td class="wt-px-200">
-                        <select id="part_type_select" name="keyword2" class="form-control keyword condition_main"  style="width:100%">
+                        <select id="part_type_select" name="keyword" class="form-control keyword condition_main"  style="width:100%">
                         </select>
                     </td>
                     <!-- 품목코드 검색창 -->
                     <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">품번</td>
                     <td class="wt-px-200">
-                        <input type="text" name="keyword"  class="form-control h-25 condition_main" autocomplete="off" />
+                        <input type="text" name="keyword2" class="form-control h-25 condition_main" id="part_code" autocomplete="off">
                     </td>
                     <td></td>
                 </tr>

@@ -45,13 +45,8 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <%--조회할 업채명--%>
                     <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" onclick="supp_btn('A');" readonly>
-                            <input type="hidden" name="keyword" class="form-control h-25 condition_main"
-                                   id="supp_code_main">
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
-                        </div>
+                            <select name="keyword" id="supp_code_main" class="form-control condition_main" style="width: 100%;">
+                            </select>
                     </td>
 
                     <td class="wt-px-100 td-title t-align-c padding-a-0">상태</td>
@@ -145,4 +140,3 @@
 <!-- 모달창 import -->
 <%@include file="scmOrder_modal1.jsp" %>
 <%-- <%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %> --%>
-<%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>

@@ -39,6 +39,6 @@ public class SCM_IN_ORD {
     private String ord_sub;
     private String crm_ord_no;
     private String img_no;
-
+    private String delivery_date;
 
 }

@@ -32,6 +32,7 @@ function get_modal1_btn(page) {
         alert("완료처리된 항목은 수정 할 수 없습니다.");
     }
 }
+
 //이미지 여부를 묻고 있다면 할당 없으면 ""  체크가 y가 아니라면 다시 이미지를 호출
 function img_change(value){
     if(main_data.check3 === 'Y') {
@@ -47,41 +48,6 @@ function img_change(value){
     }
 }
 
-//수주조회 모달창 오픈
-function ord_btn() {
-    modal_reset(".crm_condition",[]);
-    $("#crmSearchGrid").jqGrid('clearGridData');
-    var date = new Date();
-    var date2 = new Date();
-    date2.setDate(date.getDate()+1);
-    $('#crm_datepicker').datepicker('setDate',date);
-    $('#crm_datepicker2').datepicker('setDate',date2);
-    $("#crm-search-dialog").dialog('open');
-
-    $("#crm_supp_name").val($("#supp_name_modal").val());
-    $("#crm_supp_code").val($("#supp_code_modal").val());
-    $("#crm_supp_name").focus();
-    jqGridResize2("#crmSearchGrid", $('#crmSearchGrid').closest('[class*="col-"]'));
-}
-
-//수주조회 선택 버튼 동작
-function crmModal_bus(data) {
-    $("#crm_ord_no").val(data.ord_no);
-    $("#place_name").val(data.place_name);
-    if($("#supp_name_modal").val() === "" || $("#supp_name_modal").val() === null) {
-        $("#supp_name_modal").val(data.supp_name);
-        $("#supp_code_modal").val(data.supp_code);
-    }
-
-}
-
-//수주조회 모달 닫기 버튼 동작
-function crmModal_close_bus() {
-    $("#crm_ord_no").val("");
-    $("#place_name").val("");
-    $("#crmSearchGrid").jqGrid('clearGridData');
-}
-
 //추가모달 취소 버튼
 function close_modal1_btn() {
     modal_reset(".modal_value", []);
@@ -91,14 +57,12 @@ function close_modal1_btn() {
 //수정 버튼
 function update_btn(rowid) {
     main_data.check3 = 'N';
-
     if (main_data.auth.check_edit != "N") {
         modal_reset(".modal_value", []);
         $("#mes_add_grid").jqGrid('clearGridData');
         $("#mes_add_grid2").jqGrid('clearGridData');
         main_data.check = 'U';
         ccn_ajax("/scmOrderOneGet", {keyword: rowid}).then(function (data) {
-
             if (data.status === '1') {
                 main_data.status = 'Y';
                 trigger_true();
@@ -106,14 +70,14 @@ function update_btn(rowid) {
                 main_data.status = 'N';
                 trigger_false();
             }
+
             $("#ord_no").val(data.ord_no);
-            $("#supp_code_modal1").val(data.supp_code).prop("disabled",true).trigger('change');;
-            $("#supp_name_modal1").val(data.supp_name).prop("disabled",true).trigger('change');;
+            $('#supp_code_modal').val(data.supp_code).prop("selected",true).trigger("change")
             $("#place_name").val(data.place_name);
             $('#datepicker3').datepicker('setDate', data.work_date);
-            $('#datepicker4').val(formmatterDate2(data.end_date));
+            $('#datepicker4').val(formmatterDate2(data.delivery_date));
             $("#delivery_place").val(data.delivery_place);
-            $("#remark").val(data.remark);
+
             main_data.check3 = 'Y';
         });
 
@@ -140,8 +104,9 @@ function add_modal1_btn() {
         var gu5 = String.fromCharCode(5);
         var gu4 = String.fromCharCode(4);
         var add_data = value_return(".modal_value");
+
         add_data.work_date = add_data.work_date.replace(/\-/g, '');
-        add_data.stop_date = add_data.stop_date.replace(/\-/g, '');
+        add_data.delivery_date = add_data.delivery_date.replace(/\-/g, '');
         add_data.save_type = main_data.check;
         var jdata = $("#mes_add_grid2").getRowData();
 
@@ -275,12 +240,12 @@ function msg_get_modal1() {
 function datepicker_modal1() {
     datepicker_makes("#datepicker3", 0); //모달 초기날짜 설정
     datepicker_makes("#datepicker4", 1); // 모달 초기날짜 설정
-
 }
 
 function selectBox_modal1() {
     select_makes_sub('#part_type_select', "/sysPartTypeGet","part_type" ,"part_type_name",{keyword:''},'Y'); //셀렉트박스 초기값할당
-  }
+    select_makes_sub("#supp_code_modal","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")
+}
 
 function jqGrid_modal1() { // 메인 그리드 설정
     $("#mes_add_grid").jqGrid({
@@ -467,13 +432,23 @@ function trigger_false (){
     $("#datepicker3").prop("disabled",false).trigger("change");
     $("#datepicker4").prop("disabled",false).trigger("change");
     $("#remark").prop("disabled",false).trigger("change");
+    $("#supp_code_modal").prop("disabled",false).trigger("change");
     $("#part_type_select").prop("disabled",false).trigger("change");
+
 }
 
 function trigger_true(){
+
     $("#delivery_place").prop("readonly",true).trigger("change");
     $("#datepicker3").prop("disabled",true).trigger("change");
     $("#datepicker4").prop("disabled",true).trigger("change");
     $("#remark").prop("disabled",true).trigger("change");
-    $("#part_type_select").prop("disabled",true).trigger("change");
+    $("#supp_code_modal").prop("disabled",true).trigger("change");
+  $("#part_type_select").prop("disabled",true).trigger("change");
+}
+
+function supp_modal_change(){
+    $("#mes_add_grid").jqGrid('clearGridData');
+    $("#mes_add_grid2").jqGrid('clearGridData');
+
 }

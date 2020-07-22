@@ -36,7 +36,7 @@ function get_btn(page) {
     main_data.keyword2 = main_data.part_code;
     $("#mes_grid").setGridParam({ // 그리드 조회
         // URL -> RESTCONTROLLER 호출
-        url: '/scmOutGet_lee',
+        url: '/scmOutGet',
         // JSON 데이터 형식으로
         datatype: "json",
         // PAGE는 받은 파라미터로 설정

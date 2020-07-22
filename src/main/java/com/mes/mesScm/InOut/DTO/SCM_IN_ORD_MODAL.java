@@ -20,6 +20,7 @@ public class SCM_IN_ORD_MODAL {
     private String part_name;
     private String part_type_name;
     private String status_name;
+    private String qc_level_name;
     private int rownum;
     private int rownum_page;
     private int rec_count;

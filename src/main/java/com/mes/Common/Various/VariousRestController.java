@@ -4,7 +4,6 @@ import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.Various.DTO.*;
-import com.mes.mesCrm.mesCrm.DTO.SYS_ASSY_CABLE;
 import com.mes.mesManager.Authority.DTO.SYSAuthProgram;
 import com.mes.mesManager.Master.DTO.SYSCargo;
 import com.mes.mesManager.Master.DTO.SYSCommon;
@@ -13,7 +12,8 @@ import com.mes.mesManager.Master.DTO.SYSProdLine;
 import com.mes.mesPop.Standard.DTO.POP_LINE_USER_CD;
 import com.mes.mesPop.Standard.DTO.POP_ROUTE_CD;
 import com.mes.mesQms.Standard.DTO.SYS_QC_ITEM;
-import com.mes.mesScm.Standard.DTO.*;
+import com.mes.mesScm.Standard.DTO.SYS_PART_CD;
+import com.mes.mesScm.Standard.DTO.sysLoc;
 import com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD;
 import com.mes.mesTpm.RegItem.DTO.TPM_REG_ITEM_CD;
 import com.mes.mesWms.Stock.DTO.WMS_STOCK_TOTAL;
@@ -134,4 +134,9 @@ public class VariousRestController {
 
     @RequestMapping(value ="/sysMenuFavoritesGet",method = RequestMethod.POST)
     public List<SYS_MENU_FAVORITES_CD> sysMenuFavoritesGet(HttpServletRequest req){ return variousService.sysMenuFavoritesGet(req);}
+
+    @RequestMapping(value ="/suppAllGet",method = RequestMethod.POST)
+    public List<SYSSupp> suppAllGet(HttpServletRequest req,Page p){ return variousService.suppAllGet(p);}
+
+
 }

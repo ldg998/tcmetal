@@ -24,7 +24,7 @@ $(document).ready(function () {
     authcheck(); // 권한체크
     qmsQcItemAllGet();
     datepickerInput(); //날짜 표현형식
-    //selectBox();     //select Box 데이터 할당
+    selectBox();     //select Box 데이터 할당
     jqGrid_main();  //main 그리드 생성
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]')); //그리드 resize
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));//그리드 resize
@@ -40,6 +40,7 @@ function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); //해당클레스 이름을 가진객체 name value 할당
     main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, ''); //가져온 날짜데이터 가공 2020-06-01 = 20200601
     main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');   ////가져온 날짜데이터 가공 2020-06-01 = 20200601
+
     main_data.send_data_post = main_data.send_data; //데이터 나눠주기
     //console.log(main_data.send_data);
     $("#mes_grid").setGridParam({ //그리드조회
@@ -112,35 +113,6 @@ function delete_btn() {
     }
 }
 
-
-function supp_btn(what) {
-    main_data.supp_check = what;
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal1").val(name);
-        $("#supp_code_modal1").val(code);
-        $("#mes_add_grid").jqGrid('clearGridData');
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
 ////////////////////////////호출 함수/////////////////////////////////////
 
 function qmsQcItemAllGet() {
@@ -175,7 +147,7 @@ function authcheck() { // 권한체크
 }
 
 function selectBox() {
-    $('#status_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")
 }
 
 function datepickerInput() {  //초기 날짜할당

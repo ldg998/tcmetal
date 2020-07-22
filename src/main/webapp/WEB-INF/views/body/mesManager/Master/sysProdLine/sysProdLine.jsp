@@ -25,7 +25,7 @@
                         <input type="hidden" name="dept_name" id="default_name" value="생산(현장)">
                     </a>
                     <a class="dt-button btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="delete_btn()">
+                       tabindex="0" aria-controls="dynamic-table"  data-original-title="" title="" onclick="delete_btn()">
                         <span>
                             <i class="fa fa-trash bigger-110 blue"></i>
                             <span>삭제</span>

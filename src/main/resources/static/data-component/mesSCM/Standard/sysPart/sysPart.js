@@ -47,7 +47,8 @@ function add_btn() {
         }else {
         $('#part_type_modal1').val(select).trigger('change');
         }
-
+        $('#part_code_modal').prop("disabled",false).trigger("change");
+        $('#qc_level option:eq(0)').prop("selected", true).trigger("change");
         $("#unit_code_modal1 option:eq(0)").prop("selected", true).trigger('change');
         $("#loc_code_modal1 option:eq(0)").prop("selected", true).trigger('change');
 
@@ -85,6 +86,7 @@ function update_btn(jqgrid_data) { //업로드버튼
         //ajax 통신에 필요한 url 과 data 를 넘겨주고 성공한뒤 .then 안에 실행쿼리를 사용
         ccn_ajax('/sysPartOneGet', send_data).then(function (data) {
             modal_edits('.modal_value', main_data.readonly,data); // response 값 출력
+            $('#part_code_modal').prop("disabled",true).trigger("change");
 
             $("#addDialog").dialog('open');
         });
@@ -144,13 +146,15 @@ function authcheck() { // 권한체크
 
 function selectBox() { //구분영역에 들어갈 select데이터 호출
     select_makes_base("#part_type_select", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
+
+
 }
 //jq 그리드 설정
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames: ['','','구분','품번','품명','규격','단위','업체','업체2','업체3','업체4','업체5','위치','등록자','등록일시'],// grid 헤더 설정
+        colNames: ['','','구분','품번','품명','규격','단위','품질레벨','업체','업체2','업체3','업체4','업체5','위치','등록자','등록일시'],// grid 헤더 설정
         colModel: [
             {name: 'part_type', index: 'part_type',hidden:true, sortable: false},
             {name: 'supp_code', index: 'supp_code',hidden:true, sortable: false},
@@ -159,6 +163,7 @@ function jqGrid_main() {
             {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed: true}, // fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
             {name: 'spec', index: 'spec', sortable: false, width: 180,fixed: true},            // formatter 사용을 통해 데이터 형식 가공
             {name: 'unit_name', index: 'unit_name', sortable: false, width: 100,fixed: true},
+            {name: 'qc_level_name', index: 'user_name_name', sortable: false, width: 100,fixed: true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed: true},
             {name: 'supp_name2', index: 'supp_name2', sortable: false, width: 150,fixed: true},
             {name: 'supp_name3', index: 'supp_name3', sortable: false, width: 150,fixed: true},
@@ -167,6 +172,7 @@ function jqGrid_main() {
             {name: 'loc_name', index: 'loc_name', sortable: false, width: 100,fixed: true},
             {name: 'user_name', index: 'user_name', sortable: false, width: 100,fixed: true},
             {name: 'update_date', index: 'update_date', width: 180, sortable: false, formatter: formmatterDate,fixed: true}
+
 
         ],
         caption: "품목정보관리 | MES", // grid 제목

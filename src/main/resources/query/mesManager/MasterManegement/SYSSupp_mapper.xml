@@ -10,7 +10,7 @@
     </select>
 
     <select id="sysSuppOneGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
-        EXEC SP_SYS_SUPP_ONE_GET #{keyword}, #{keyword2}
+        EXEC SP_SYS_SUPP_ONE_GET #{keyword},#{keyword2}
     </select>
 
     <select id="sysSuppAdd" resultType="com.mes.Common.DataTransferObject.Message">

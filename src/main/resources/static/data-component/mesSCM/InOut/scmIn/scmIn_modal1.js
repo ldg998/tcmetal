@@ -7,7 +7,7 @@ function modal_start1() {
     msg_get_modal1(); //모달 메세지설정
     modal_make1();    // 모달생산
     datepicker_modal1(); //모달안 날짜 넣어주기
-    // selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
+     selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
     jqGrid_modal1();  //그리드 생성
     jqGridResize("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]')); //행당그리드 리사이즈
     jqGridResize("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]')); //행당그리드 리사이즈
@@ -149,8 +149,7 @@ function datepicker_modal1() {
 }
 
 function selectBox_modal1() {
-    select_makes_sub('#part_type_select', "/sysPartTypeGet", "part_type", "part_type_name", {keyword: ''}, 'Y'); //셀렉트박스 초기값할당
-    select_makes_sub("#img_select", "/scmOrderImageList", "img_code", "img_name", {keyword: 0, keyword2: 0}, 'N'); //셀렉트박스 초기값할당
+    select_makes_sub("#supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")
 }
 
 function jqGrid_modal1() { // 메인 그리드 설정
@@ -175,10 +174,9 @@ function jqGrid_modal1() { // 메인 그리드 설정
             {name: 'part_name', index: 'part_name', sortable: false,fixed: true, width: 100},
             {name: 'spec', index: 'spec', sortable: false,fixed: true, width: 100},
             {name: 'unit_name', index: 'unit_name', sortable: false,fixed: true, width: 100},
-                {name: 'ord_qty', index: 'ord_qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'number'},
+            {name: 'ord_qty', index: 'ord_qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'number'},
             {name: 'qty', index: 'qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'number'},
-            {
-                name: 'in_qty', index: 'in_qty', sortable: false, align: 'right',formatter:'number',fixed: true, width: 100,
+            {name: 'in_qty', index: 'in_qty', sortable: false, align: 'right',formatter:'number',fixed: true, width: 100,
                 editable: true,
                 editoptions: {
 
@@ -280,7 +278,7 @@ function jqGrid_modal1() { // 메인 그리드 설정
 
                 }
             },
-            {name: '', index: '', sortable: false,fixed: true, width: 100},
+            {name:'qc_level_name',index:'qc_level_name',sortable: false,fixed: true,width: 100},
             {
                 name: 'qc_result', index: 'qc_result', sortable: false,fixed: true, width: 100,
                 editable: true,                                       // 수정가능 여부

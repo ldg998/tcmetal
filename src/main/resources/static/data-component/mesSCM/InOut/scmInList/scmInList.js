@@ -20,6 +20,7 @@ $(document).ready(function () {
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));//Pager에 Icon 설정 추가
     jqgridPagerIcons();// 그리드 아이콘설정
     suppModal_start();
+    select_box();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -146,4 +147,9 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height","0px");
         },
     });
+}
+
+function select_box() {
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"Y")
+
 }

@@ -5,7 +5,7 @@
     	EXEC SP_SYS_LINE_GET #{page}, #{rows}, '',''
     </select>
     <select id="sysProdLineAdd" resultType="com.mes.Common.DataTransferObject.Message">
-    	EXEC SP_SYS_LINE_ADD #{dept_code},#{line_code},#{line_name},#{line_char},#{user_code},#{keyword}
+    	EXEC SP_SYS_LINE_ADD #{dept_code},#{line_code},#{line_name},#{line_grp_code},#{user_code},#{keyword}
     </select>
     <select id="sysProdLineDelete" resultType="com.mes.Common.DataTransferObject.Message">
     	EXEC SP_SYS_LINE_DEL #{keyword}

@@ -53,11 +53,6 @@ public class InOutRestController {
     }
 
 
-    @RequestMapping(value = "/scmOutGet_lee", method = RequestMethod.POST)
-    public RESTful scmOutGet_lee(HttpServletRequest req, Page p) {
-        return inOutService.scmOutGet_lee(req, p);
-    }
-
     @RequestMapping(value = "/scmOutDel", method = RequestMethod.POST)
     public Message scmOutDel(HttpServletRequest req, Page p) {
         return inOutService.scmOutDel(req, p);

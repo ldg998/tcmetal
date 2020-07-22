@@ -49,7 +49,6 @@ function add_btn() {
         $('#dept_select').attr('disabled',true);
         $('#dept_select').val("D9000").trigger("change");
         $('#line_type_select option:eq(0)').prop("selected", true).trigger("change");
-
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
         alert(msg_object.TBMES_A001.msg_name1);
@@ -68,7 +67,9 @@ function update_btn(jqgrid_data) {
 
         ccn_ajax('/sysProdLineOneGet', send_data).then(function (data) {
             modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
-            $('#dept_select').attr('disabled',true);
+
+            $('#line_type_select').prop("selected",data.line_grp_code).trigger("change")
+
             $("#addDialog").dialog('open');// 모달 열기
         });
     } else {
@@ -126,12 +127,13 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames : ['부서명','라인코드','라인명','라인그룹','등록자','등록일'],
+        colNames : ['','부서명','라인코드','라인명','라인그룹','등록자','등록일'],
         colModel : [
-            {name:'',index:'',sortable: false,width:150,fixed: true},
+            {name:'dept_code',index:'dept_code',sortable: false,hidden: true},
+            {name:'dept_name',index:'dept_name',sortable: false,width:150,fixed: true},
             {name:'line_code',index:'line_code',key: true,sortable: false,width:150,fixed: true},
             {name:'line_name',index:'line_name',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
+            {name:'line_grp_code',index:'line_grp_code',sortable: false,width:150,fixed: true},
             {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
             {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
         ],

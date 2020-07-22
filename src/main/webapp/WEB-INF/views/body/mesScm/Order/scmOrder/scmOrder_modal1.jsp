@@ -23,13 +23,8 @@
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">업체</td>
                     <td class="wt-px-140">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 modal_value"
-                                   id="supp_name_modal1" onclick="supp_btn('B');" readonly>
-                            <input type="hidden" name="keyword" class="form-control h-25 modal_value"
-                                   id="supp_code_modal1">
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
-                        </div>
+                        <select name="keyword" id="supp_code_modal" class="form-control modal_value" style="width: 100%;" onchange="supp_modal_change()">
+                        </select>
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
                     <td class="wt-px-140">
@@ -88,7 +83,7 @@
                     <td class="wt-px-100 t-align-c td-title padding-a-0">납기일자</td>
                     <td class="wt-px-140 h-25">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="stop_date" id="datepicker4" class="form-control h-25 modal_value" readonly>
+                            <input type="text" name="delivery_date" id="datepicker4" class="form-control h-25 modal_value" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>

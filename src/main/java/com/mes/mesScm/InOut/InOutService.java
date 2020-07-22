@@ -56,7 +56,6 @@ public class InOutService extends ReturnFunction {
     }
 
 
-
     public RESTful scmInSub1Get(HttpServletRequest req, Page p) {
         List<SCM_IN_SUB> rows = inOutMapper.scmInSub1Get(p);
         return getListData(rows , p);
@@ -79,10 +78,6 @@ public class InOutService extends ReturnFunction {
     }
 
 
-
-
-
-
     public RESTful scmIOListGet(HttpServletRequest req, Page p) {
         List<SCM_IO> rows = inOutMapper.scmIOListGet(p);
         return getListData(rows , p);
@@ -94,10 +89,7 @@ public class InOutService extends ReturnFunction {
         return inOutMapper.scmOutAdd(out);
     }
 
-    public RESTful scmOutGet_lee(HttpServletRequest req, Page p) {
-        List<SCM_OUT> rows = inOutMapper.scmOutGet_lee(p);
-        return getListData(rows , p);
-    }
+
 
     public Message scmOutDel(HttpServletRequest req, Page p) {
 

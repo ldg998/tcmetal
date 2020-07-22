@@ -13,9 +13,11 @@ public class SYSProdLine {
 	private String user_name;
 	private String create_date;
 	private String update_date;
-	private int rownum;     
+	private String line_grp_code;
+	private int rownum;
 	private int rec_count;
 	private String keyword;
+
 
 	private String line_char;
 	private String line_type;

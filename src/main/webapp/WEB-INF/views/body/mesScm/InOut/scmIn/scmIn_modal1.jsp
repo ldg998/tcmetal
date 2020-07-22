@@ -23,13 +23,7 @@
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">업체</td>
                     <td class="wt-px-140">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 modal_value"
-                                   id="supp_name_modal1" onclick="supp_btn('B');" readonly>
-                            <input type="hidden" name="keyword" class="form-control h-25 modal_value"
-                                   id="supp_code_modal1">
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
-                        </div>
+                        <select class="form-control modal_value" name="keyword" id="supp_modal_select" style="width: 100%"></select>
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">입고일자</td>
                     <td class="wt-px-140">

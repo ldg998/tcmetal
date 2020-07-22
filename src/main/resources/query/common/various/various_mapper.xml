@@ -115,6 +115,10 @@
         WHERE A.USER_CODE = #{user_code}
         ORDER BY A.SEQ;
     </select>
+
+    <select id="suppAllGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
+        EXEC SP_SYS_SUPP_SELECT_GET #{keyword},#{keyword2}
+    </select>
 </mapper>
 
 

@@ -12,10 +12,6 @@
         EXEC SP_SCM_IO_LIST_GET  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword}
     </select>
 
-
-    <select id="scmOutGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
-        	EXEC SP_SCM_OUT_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}
-    </select>
     <select id="scmStockRetGet" resultType="com.mes.mesScm.InOut.DTO.SCM_STOCK_RET">
         	EXEC SP_SCM_RET_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}
     </select>
@@ -50,8 +46,8 @@
         	EXEC SP_SCM_IN_DEL #{keyword}
     </select>
 
-    <select id="scmOutGet_lee" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
-        	EXEC SP_SCM_OUT_GET #{page}, #{rows},#{keyword},#{keyword2}
+    <select id="scmOutGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
+        	EXEC SP_SCM_OUT_GET #{page},#{rows},#{keyword},#{keyword2}
         	/* 수정함 */
     </select>
 
@@ -64,6 +60,6 @@
     </select>
 
     <select id="scmInOrdModalGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_ORD_MODAL">
-        EXEC SP_SCM_IN_ORD_MODAL_GET 0, 0,#{keyword}
+        EXEC SP_SCM_IN_ORD_MODAL_GET 0,0,#{keyword}
     </select>
 </mapper>

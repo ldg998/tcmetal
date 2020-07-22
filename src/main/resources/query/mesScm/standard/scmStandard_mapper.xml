@@ -29,6 +29,7 @@
 	#{supp_code5},
 	#{loc_code},
 	#{user_code},
+	#{qc_level},
 	#{keyword}
     </select>
     <select id="sysPartDel" resultType="com.mes.Common.DataTransferObject.Message">

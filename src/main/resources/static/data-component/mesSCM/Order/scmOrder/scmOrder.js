@@ -256,9 +256,9 @@ function jqGrid_main() {  //메인 jqGrid
             {name: 'part_name', index: 'part_name', sortable: false},
             {name: 'spec', index: 'spec', sortable: false},
             {name: 'unit_name', index: 'unit_name', sortable: false},
-            {name: 'ord_qty', index: 'ord_qty', sortable: false, align: 'right',formatter:'number'},
-            {name: 'qty', index: 'qty', sortable: false, align: 'right',formatter:'number'},
-            {name: 'not_qty', index: 'not_qty', sortable: false, align: 'right',formatter:'number'}
+            {name: 'ord_qty', index: 'ord_qty', sortable: false, align: 'right',formatter:'integer'},
+            {name: 'qty', index: 'qty', sortable: false, align: 'right',formatter:'integer'},
+            {name: 'not_qty', index: 'not_qty', sortable: false, align: 'right',formatter:'integer'}
         ],
         autowidth: true,
         viewrecords: true,

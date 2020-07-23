@@ -45,7 +45,7 @@
             </div>
             <div class="profile-info-name">업체명</div>
             <div class="profile-info-value">
-                <input id="tags" type="text" name="supp_name" class="form-control modal_value"  autocomplete="off" />
+                <input id="tags" type="text" name="supp_name" class="form-control modal_value"  autocomplete="on" />
             </div>
         </div>
         <div class="profile-info-row">
@@ -61,7 +61,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">사업자번호</div>
             <div class="profile-info-value">
-                <input id="tags1" type="text" name="supp_no" class="form-control modal_value"  autocomplete="off"/>
+                <input id="tags1" type="text" name="supp_no" class="form-control modal_value" autocomplete="on"/>
             </div>
             <div class="profile-info-name">업태</div>
             <div class="profile-info-value">

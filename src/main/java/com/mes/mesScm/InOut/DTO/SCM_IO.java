@@ -11,7 +11,7 @@ public class SCM_IO {
     private String part_code;
     private String part_name;
     private String work_date;
-    private double qty;
+    private int qty;
     private String spec;
     private String remark;
     private int rownum;

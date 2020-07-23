@@ -15,7 +15,6 @@ var main_data = {
 var check1 = 0;
 
 ////////////////////////////시작 함수//////////////////////////////////
-
 $(document).ready(function () {
     msg_get();
     selectBox();

@@ -83,6 +83,7 @@
     <script src="/ui-component/assets/js/jquery.ui.touch.js"></script>
     <script src="/fullcalendar/core/main.js"></script>
     <script src="/fullcalendar/daygrid/main.js"></script>
+    <script src="/ui-component/assets/js/jquery.mask.js"></script>
     <link rel="stylesheet" href="fullcalendar/core/main.css"  />
     <link rel="stylesheet" href="fullcalendar/daygrid/main.css"  />
     <link rel="stylesheet" href="/ui-component/assets/css/import.css" />

@@ -10,10 +10,10 @@ public class SCM_STOCK_SUM_MONTH {
     private String part_name;
     private String spec;
     private String unit_name;
-    private double prev_qty;
-    private double in_qty;
-    private double out_qty;
-    private double qty;
+    private int prev_qty;
+    private int in_qty;
+    private int out_qty;
+    private int qty;
     private int rec_count;
     private String supp_name;
 

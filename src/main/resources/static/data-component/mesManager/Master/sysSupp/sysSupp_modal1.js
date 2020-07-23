@@ -3,6 +3,8 @@ function modal_start1() {
     msg_get_modal1();
     modal_make1();
     selectBox_modal1();
+    mask_modal();
+
 }
 ////////////////////////////클릭 함수/////////////////////////////////////
 function addUdate_btn() {
@@ -88,4 +90,22 @@ function selectBox_modal1(){
     $('#corp_type3').select2();
     $('#corp_type4').select2();
     $('#use_yn').select2();
+}
+
+
+
+
+function mask_modal(){
+    $("#tags").autocomplete({source: []});
+    $("#tags1").autocomplete({source: []});
+    $('input[name=supp_no]').mask('999-99-99999');
+    var options =  {
+        onKeyPress: function(cep, e, field, options) {
+            var masks = ['000-000-0000', '00-000-0000'];
+            var mask = (cep.substring(0,2) === '02') ? masks[1] : masks[0];
+            $('input[name=tel_no]').mask(mask, options);
+        }};
+    $('input[name=tel_no]').mask('000-000-0000', options);
+    // $('input[name=tel_no]').mask('999-999',options);
+    $('input[name=emp_tel]').mask('999-9999-9999');
 }

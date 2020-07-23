@@ -17,7 +17,6 @@ $(document).ready(function () {
     msg_get();
     authcheck();
     datepickerInput();
-    suppModal_start();
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
@@ -145,4 +144,5 @@ function jqGrid_main() {
 }
 function selectBox() {
     $('#1_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")
 }

@@ -91,7 +91,7 @@ function jqGrid_main() {
             {name: 'spec', index: 'spec',sortable: false, fixed:true, width:150},
             {name: 'unit_name', index: 'unit_name',sortable: false, fixed:true, width:150},
             {name: 'work_date', index: 'work_date',sortable: false,formatter:formmatterDate2, fixed:true, width:150},
-            {name: 'qty', index: 'qty',sortable: false,formatter:'number', align:'right', fixed:true, width:150},
+            {name: 'qty', index: 'qty',sortable: false,formatter:'integer', align:'right', fixed:true, width:150},
             {name: 'remark', index: 'remark',sortable: false, fixed:true, width:150},
         ],
         caption: "자재입출고현황 | MES",

@@ -204,15 +204,15 @@ function jqGrid_main() {  //메인 jqGrid
         mtype: 'POST',
         datatype: 'local',
         caption: '자재입고 | MES',
-        colNames: ['구분', '품번', '품명', '규격', '단위', '입고수량'],
+        colNames: ['구분', '품번', '품명', '규격', '단위', '입고수량','LOT'],
         colModel: [
             {name: 'part_type_name', index: 'part_type_name', sortable: false, fixed: true, width: 100},
             {name: 'part_code', index: 'part_code', sortable: false, fixed: true, width: 100},
             {name: 'part_name', index: 'part_name', sortable: false, fixed: true, width: 100},
             {name: 'spec', index: 'spec', sortable: false, fixed: true, width: 100},
             {name: 'unit_name', index: 'unit_name', sortable: false, fixed: true, width: 100},
-            {name: 'qty', index: 'qty', sortable: false, align: 'right', fixed: true, width: 100 ,formatter:'number'}
-
+            {name: 'qty', index: 'qty', sortable: false, align: 'right', fixed: true, width: 100 ,formatter:'integer'},
+            {name: 'lot', index: 'lot', sortable: false, align: 'right', fixed: true, width: 100}
         ],
         autowidth: true,
         viewrecords: true,

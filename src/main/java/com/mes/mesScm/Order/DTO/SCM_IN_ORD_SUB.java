@@ -7,8 +7,8 @@ public class SCM_IN_ORD_SUB {
     private String ord_no;
     private String part_code;
     private String qc_result;
-    private double ord_qty;
-    private double qty;
+    private int ord_qty;
+    private int qty;
     private String end_date;
     private String qc_level_name;
     private String work_date;
@@ -25,8 +25,8 @@ public class SCM_IN_ORD_SUB {
     private String user_name;
     private String create_date;
     private String update_date;
-    private double not_qty;
-    private double in_qty;
+    private int not_qty;
+    private int in_qty;
     private String result_check;
     private int rownum;
     private int rec_count;

@@ -11,10 +11,10 @@ public class SCM_IN_SUB {
     private String qc_result;
     private String key_value;
     private  String ord_no;
-    private double ord_qty;
-    private double prev_qty;
-    private double qty;
-    private double in_qty;
+    private int ord_qty;
+    private int prev_qty;
+    private int qty;
+    private int in_qty;
     private String part_name;
     private String spec;
     private String unit_name;
@@ -37,9 +37,10 @@ public class SCM_IN_SUB {
     private String qc_level_name;
     private String file1;
     private String upload_path;
-
-    private double qc_qty;
+    private String lot;
+    private int qc_qty;
     private String act_type;
+    private int ng_qty;
 
     private String file_path;
     private MultipartFile files;

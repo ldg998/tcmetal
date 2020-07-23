@@ -94,7 +94,7 @@ function add_modal1_btn() {
             var list2 = [];
             jdata.forEach(function (data, j) {
                 if (data.in_qty !== '' && data.in_qty > 0) {
-                    list.push(data.ord_no + gu4 + data.part_code + gu4 + data.ord_qty + gu4 + data.qty + gu4 + data.in_qty + gu4 + data.status + gu4 + data.qc_result + gu4 + data.qc_qty + gu4 + data.ng_type + gu4 + data.ng_name + gu4 + data.act_type);
+                    list.push(data.ord_no + gu4 + data.part_code + gu4 + data.ord_qty + gu4 + data.qty + gu4 + data.in_qty + gu4 + data.status + gu4 + data.qc_result + gu4 + data.qc_qty + gu4 + data.ng_type + gu4 + data.ng_name + gu4 + data.act_type+ gu4 + data.ng_qty);
                 } else {
                     list2.push(data.part_code);
                 }
@@ -157,7 +157,7 @@ function jqGrid_modal1() { // 메인 그리드 설정
         mtype: 'POST',
         datatype: "local",
         caption: "자재입고 | MES",
-        colNames: ['rownum', '발주일자','ord_no', '구분', '품번', '품명', '규격', '단위', '발주수량', '기입고수량', '입고수량', '발주완료', '검사구분', '검사결과', '검사수량', '불량유형' ,'불량상세', '조치구분'],
+        colNames: ['rownum', '발주일자','ord_no', '구분', '품번', '품명', '규격', '단위', '발주수량', '기입고수량', '입고수량', '발주완료', '검사구분', '검사결과', '검사수량','불량수량', '불량유형' ,'불량상세', '조치구분'],
         colModel: [
             {name: 'rownum', index: 'rownum', key: true, hidden: true, sortable: false},
             {
@@ -174,9 +174,9 @@ function jqGrid_modal1() { // 메인 그리드 설정
             {name: 'part_name', index: 'part_name', sortable: false,fixed: true, width: 100},
             {name: 'spec', index: 'spec', sortable: false,fixed: true, width: 100},
             {name: 'unit_name', index: 'unit_name', sortable: false,fixed: true, width: 100},
-            {name: 'ord_qty', index: 'ord_qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'number'},
-            {name: 'qty', index: 'qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'number'},
-            {name: 'in_qty', index: 'in_qty', sortable: false, align: 'right',formatter:'number',fixed: true, width: 100,
+            {name: 'ord_qty', index: 'ord_qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'integer'},
+            {name: 'qty', index: 'qty', sortable: false,fixed: true, width: 100, align: 'right',formatter:'integer'},
+            {name: 'in_qty', index: 'in_qty', sortable: false, align: 'right',formatter:'integer',fixed: true, width: 100,
                 editable: true,
                 editoptions: {
 
@@ -306,8 +306,9 @@ function jqGrid_modal1() { // 메인 그리드 설정
 
                 }
             },
+
             {
-                name: 'qc_qty', index: 'qc_qty', sortable: false, align: 'right',formatter:'number',fixed: true, width: 100,
+                name: 'qc_qty', index: 'qc_qty', sortable: false, align: 'right',formatter:'integer',fixed: true, width: 100,
                 editable: true,
                 editoptions: {
 
@@ -382,6 +383,83 @@ function jqGrid_modal1() { // 메인 그리드 설정
                     ]
                 }
             },
+            {
+                name: 'ng_qty', index: 'ng_qty', sortable: false, align: 'right',formatter:'integer',fixed: true, width: 100,
+                editable: true,
+                editoptions: {
+
+                    dataEvents: [
+                        {
+                            type: 'focus',
+                            fn: function (e) {
+                                if (e.target.value === '0.00'){
+                                    e.target.value = '';
+                                }
+
+                                // if(main_data.check !== 'I') {
+                                //     $(e.target).prop('readonly',true);
+                                // }
+
+                                $(e.target).attr('autocomplete', 'off');
+
+                            }
+                        },
+                        {
+                            type: 'keydown',
+                            fn: function (e) {
+                                if (e.keyCode === 13) {
+                                    var row = $(e.target).closest('tr.jqgrow');
+                                    var rowid = row.attr('id');
+                                    var data = $('#mes_add_grid').jqGrid('getRowData', rowid);
+                                    var value = e.target.value;
+
+                                    if (isNaN(value)) {
+                                        alert("숫자만 입력가능합니다.");
+                                        e.target.value = 0;
+                                        $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
+                                        return false;
+                                    } else if (parseFloat_change((parseFloat(data.qc_qty))) < parseFloat_change(value)) {
+                                        alert("검사 수량을 초과 하였습니다.");
+                                        e.target.value = 0;
+                                        $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
+                                        return false;
+                                    } else if(value === ''){
+                                        e.target.value = 0;
+                                    }
+                                    $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
+                                }
+                            }
+
+                        },
+                        {
+                            type: 'focusout',
+                            fn: function (e) {
+                                var row = $(e.target).closest('tr.jqgrow');
+                                var rowid = row.attr('id');
+                                var data = $('#mes_add_grid').jqGrid('getRowData', rowid);
+                                var value = e.target.value;
+
+                                if (isNaN(value)) {
+                                    alert("숫자만 입력가능합니다.");
+                                    e.target.value = 0;
+                                    $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
+                                    return false;
+                                } else if (parseFloat_change((parseFloat(data.qc_qty))) < parseFloat_change(value)) {
+                                    alert("검사 수량을 초과 하였습니다.");
+                                    e.target.value = 0;
+                                    $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
+                                    return false;
+                                } else if(value === ''){
+                                    e.target.value = 0;
+                                }
+                                $("#mes_add_grid").jqGrid("saveCell", saverow, savecol);
+                            }
+                        }
+
+                    ]
+                }
+            },
+
             {name: 'ng_type', index: 'ng_type', sortable: false,fixed: true, width: 100,
                 editable: true,                                       // 수정가능 여부
                 // SELECT 포매터

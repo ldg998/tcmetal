@@ -23,10 +23,6 @@ $(document).ready(function () {
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-function test(){
-    $("#addDialog").dialog('open');
-}
-
 function get_btn(page) {
     main_data.send_data = value_return2(".condition_main");
     $("#mes_grid").setGridParam({

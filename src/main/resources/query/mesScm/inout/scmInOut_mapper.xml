@@ -27,7 +27,7 @@
     </select>
 
     <select id="scmInAdd" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC SP_SCM_IN_ADD #{work_date}, #{supp_code},#{remark}, #{keyword}, #{user_code}
+        EXEC SP_SCM_IN_ADD #{work_date},#{supp_code},#{remark},#{keyword},#{user_code}
     </select>
 
 

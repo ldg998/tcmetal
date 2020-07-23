@@ -120,7 +120,7 @@ function jqGrid_main() {
             {name:'part_name',index:'part_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
             {name:'spec',index:'spec',sortable: false,width:150,fixed: true},
             {name:'unit_name',index:'unit_name',sortable: false,width:80,fixed: true},
-            {name:'qty',index:'qty',sortable: false,width:80,fixed: true,formatter:'number'},
+            {name:'qty',index:'qty',sortable: false,width:80,fixed: true,formatter:'integer'},
             {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
             {name:'update_date',index:'update_date',sortable: false,width:180,fixed: true,formatter: formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],

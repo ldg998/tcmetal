@@ -133,7 +133,7 @@ function jqGrid_main() {
             {name:'dept_name',index:'dept_name',sortable: false,width:150,fixed: true},
             {name:'line_code',index:'line_code',key: true,sortable: false,width:150,fixed: true},
             {name:'line_name',index:'line_name',sortable: false,width:150,fixed: true},
-            {name:'line_grp_code',index:'line_grp_code',sortable: false,width:150,fixed: true},
+            {name:'code_name',index:'code_name',sortable: false,width:150,fixed: true},
             {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
             {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
         ],

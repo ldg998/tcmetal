@@ -12,10 +12,10 @@ public class SCM_STOCK_REV {
     private String part_name;
     private String spec;
     private String unit_name;
-    private double bcr;
-    private double stock_qty_prev;
-    private double stock_qty;
-    private double aaaa;
+    private int bcr;
+    private int stock_qty_prev;
+    private int stock_qty;
+    private int aaaa;
     private String rev_code;
     private String user_name;
     private String update_date;

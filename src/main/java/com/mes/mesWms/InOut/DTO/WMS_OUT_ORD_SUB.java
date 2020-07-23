@@ -7,11 +7,11 @@ public class WMS_OUT_ORD_SUB {
     private String site_code;
     private String req_no;
     private String part_code;
-    private double ord_qty;
-    private double comp_qty;
-    private double ready_qty;
-    private double req_qty;
-    private double qty;
+    private int ord_qty;
+    private int comp_qty;
+    private int ready_qty;
+    private int req_qty;
+    private int qty;
     private String part_grp_name;
     private String part_name;
     private String spec;
@@ -35,4 +35,8 @@ public class WMS_OUT_ORD_SUB {
     private String status_name;
     private String keyword;
     private String code_list;
+    private String part_kind;
+    private String out_no;
+    private int part_weight;
+    private int weight;
 }

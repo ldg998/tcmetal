@@ -22,7 +22,6 @@ public class WmsInOutService extends ReturnFunction {
     private WmsInOutMapper wmsInOutMapper;
 
     public RESTful wmsInListGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
         List<WMS_IN_SUB> rows = wmsInOutMapper.wmsInListGet(p);
         return getListData(rows , p);
     }

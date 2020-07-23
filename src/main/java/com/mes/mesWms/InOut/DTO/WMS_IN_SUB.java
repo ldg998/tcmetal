@@ -25,4 +25,8 @@ public class WMS_IN_SUB {
     private String prod_type_name;
     private String plan_name;
     private String prod_name;
+    private String lot_no;
+    private String part_weight;
+    private String part_kind;
+    private String ord_no;
 }

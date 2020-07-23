@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class OutInOutController {
+public class OutsInOutController {
 
     @RequestMapping(value = "/outsIOList")
     public String outsIOList() { return "mesOut/inOut/outsIOList/outsIOList"; }

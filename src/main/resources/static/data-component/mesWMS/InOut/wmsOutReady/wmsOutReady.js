@@ -19,7 +19,6 @@ $(document).ready(function () {
     datepickerInput();
     authcheck();
     jqgridPagerIcons();
-    suppModal_start();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -117,17 +116,17 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['출고요청일자', '전표번호', '업체','기종', '품명', '품번','단중','수량','중량','등록자','수정일'],
         colModel: [
-            {name: '', index: '', sortable: false, width: 150, fixed:true,formatter:formmatterDate2},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true,formatter:formmatterDate2}
+            {name: 'work_date', index: 'work_date', sortable: false, width: 150, fixed:true,formatter:formmatterDate2},
+            {name: 'out_no', index: 'out_no', sortable: false, width: 150, fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150, fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 150, fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 150, fixed:true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 150, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 150, fixed:true},
+            {name: 'qty', index: 'qty', sortable: false, width: 150, fixed:true},
+            {name: 'weight', index: 'weight', sortable: false, width: 150, fixed:true},
+            {name: 'user_name', index: 'user_name', sortable: false, width: 150, fixed:true},
+            {name: 'update_date', index: 'update_date', sortable: false, width: 150, fixed:true,formatter:formmatterDate2}
         ],
         caption: '제품 미출고 현황 | MES',
         autowidth: true,
@@ -146,5 +145,6 @@ function jqGrid_main() {
     });
 }
 function selectBox() {
-    $('#1_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+    $('#part_kind').select2();
 }

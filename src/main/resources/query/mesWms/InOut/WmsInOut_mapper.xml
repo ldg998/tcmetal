@@ -3,13 +3,13 @@
 
 <mapper namespace="com.mes.Mapper.mesWms.InOut.WmsInOutMapper">
     <select id="wmsInListGet" resultType="com.mes.mesWms.InOut.DTO.WMS_IN_SUB">
-        EXEC [SP_WMS_IN_LIST_GET] #{page}, #{rows}, #{start_date}, #{end_date}
+        EXEC [SP_WMS_IN_LIST_GET] #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}
     </select>
     <select id="wmsOutListGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_SUB">
-        EXEC [SP_WMS_OUT_LIST_GET]  #{page}, #{rows}, #{start_date}, #{end_date}
+        EXEC [SP_WMS_OUT_LIST_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}
     </select>
     <select id="wmsOutReadyGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB">
-        EXEC [SP_WMS_OUT_READY_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword}
+        EXEC [SP_WMS_OUT_READY_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}
     </select>
     <select id="wmsOutOrderGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD">
         EXEC [SP_WMS_OUT_ORD_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{supp_code},#{keyword2}

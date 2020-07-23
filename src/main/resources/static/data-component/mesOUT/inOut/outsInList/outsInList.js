@@ -37,7 +37,7 @@ function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
     main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysCommonGet',
+        url: '/outsInListGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -122,18 +122,18 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['입고일자','전표번호','외주업체','업체','기종','품번','품명','단중','수량','출장검사','등록자','수정일'],
         colModel: [
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true}
+            {name: 'work_date', index: 'work_date',sortable: false, width: 80,fixed: true},
+            {name: 'in_no', index: 'in_no',sortable: false, width: 80,fixed: true},
+            {name: 'supp_name2', index: 'supp_name2',sortable: false, width: 80,fixed: true},
+            {name: 'supp_name', index: 'supp_name',sortable: false, width: 80,fixed: true},
+            {name: 'part_kind', index: 'part_kind',sortable: false, width: 80,fixed: true},
+            {name: 'part_code', index: 'part_code',sortable: false, width: 80,fixed: true},
+            {name: 'part_name', index: 'part_name',sortable: false, width: 80,fixed: true},
+            {name: 'part_weight', index: 'part_weight',sortable: false, width: 80,fixed: true},
+            {name: 'qty', index: 'qty',sortable: false, width: 80,fixed: true},
+            {name: 'outs_qc', index: 'outs_qc',sortable: false, width: 80,fixed: true},
+            {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
+            {name: 'update_date', index: 'update_date',sortable: false, width: 80,fixed: true}
 
         ],
         caption: "외주입고현황 | MES",

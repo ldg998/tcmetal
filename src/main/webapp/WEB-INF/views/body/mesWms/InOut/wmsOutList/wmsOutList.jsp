@@ -32,7 +32,7 @@
 
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
-                        <select class="form-control condition_main" name="supp_code" id="supp_select" style="width: 100%"></select>
+                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%"></select>
                     </td>
 
 

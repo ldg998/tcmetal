@@ -60,41 +60,6 @@ function excel_download() {
 }
 
 
-function supp_btn(what) {
-    main_data.supp_check = what;
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-
-        ccn_ajax('/sysSuppOneGet', {keyword:code}).then(function (data) {
-            // console.log(data);
-            $("#supp_name_modal").val(name);
-            $("#supp_code_modal").val(code);
-            $("#supp_user_name").val(data.emp_name);
-            $("#supp_tel_no").val(data.emp_tel);
-        });
-
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
@@ -119,23 +84,23 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','차량번호','성적서','출고요청번호','생산일자','입고일자','등록자','등록일시'],
         colModel: [
-            {name: '', index: '', sortable: false, width: 150, fixed:true, formatter:formmatterDate2},
-            {name: '', index: '', sortable: false, width: 80, fixed:true},
-            {name: '', index: '', sortable: false, width: 80, fixed:true},
-            {name: '', index: '', sortable: false, width: 60, fixed:true},
-            {name: '', index: '', sortable: false, width: 60, fixed:true},
-            {name: '', index: '', sortable: false, width: 60, fixed:true},
-            {name: '', index: '', sortable: false, width: 60, fixed:true},
-            {name: '', index: '', sortable: false, width: 60, fixed:true},
-            {name: '', index: '', sortable: false, width: 60, fixed:true},
-            {name: '', index: '', sortable: false, width: 120, fixed:true, formatter:formmatterDate},
-            {name: '', index: '', sortable: false, width: 90, fixed:true},
-            {name: '', index: '', sortable: false, width: 90, fixed:true},
-            {name: '', index: '', sortable: false, width: 90, fixed:true},
-            {name: '', index: '', sortable: false, width: 90, fixed:true},
-            {name: '', index: '', sortable: false, width: 90, fixed:true},
-            {name: '', index: '', sortable: false, width: 90, fixed:true},
-            {name: '', index: '', sortable: false, width: 90, fixed:true}
+            {name: 'out_date', index: 'out_date', sortable: false, width: 150, fixed:true, formatter:formmatterDate2},
+            {name: 'out_no', index: 'out_no', sortable: false, width: 80, fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 80, fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 60, fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 60, fixed:true},
+            {name: 'part_no', index: 'part_no', sortable: false, width: 60, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 60, fixed:true,formatter:'integer'},
+            {name: 'qty', index: 'qty', sortable: false, width: 60, fixed:true,formatter:'integer'},
+            {name: 'weight', index: 'weight', sortable: false, width: 60, fixed:true,formatter:'integer'},
+            {name: 'lot_no', index: 'lot_no', sortable: false, width: 120, fixed:true },
+            {name: 'car_no', index: 'car_no', sortable: false, width: 90, fixed:true},
+            {name: 'file', index: 'file', sortable: false, width: 90, fixed:true},
+            {name: 'req_no', index: 'req_no', sortable: false, width: 90, fixed:true},
+            {name: 'create_date', index: 'create_date', sortable: false, width: 90, fixed:true},
+            {name: 'in_date', index: 'in_date', sortable: false, width: 90, fixed:true ,formatter:formmatterDate2},
+            {name: 'user_name', index: 'user_name', sortable: false, width: 90, fixed:true},
+            {name: 'update_date', index: 'update_date', sortable: false, width: 90, fixed:true,formatter:formmatterDate2}
         ],
         caption: '제품출고 현황 | MES',
         autowidth: true,

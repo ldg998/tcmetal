@@ -258,6 +258,37 @@ public class CrmService extends ReturnFunction {
     public Message crmWeDelete(Page p, HttpServletRequest req) { return crmMapper.crmWeDelete(p);
     }
 
+    public Message sysWoodAdd(CRM_WOOD wo, HttpServletRequest req) {
+        wo.setUser_code(getSessionData(req).getUser_code());
+        return crmMapper.sysWoodAdd(wo);
+    }
+
+    public RESTful sysWoodGet(Page p, HttpServletRequest req) {
+        List<CRM_WOOD> rows = crmMapper.sysWoodGet(p);
+        return getListData(rows, p);
+    }
+
+    public List<CRM_WOOD> sysWoodOneGet(Page p, HttpServletRequest req) {
+
+        return crmMapper.sysWoodOneGet(p);
+    }
+
+    public Message sysWoodDelete(CRM_WOOD wo, HttpServletRequest req) {
+        return crmMapper.sysWoodDelete(wo);
+    }
+
+    public List<CRM_WOOD> sysWoodAllGet(CRM_WOOD wo, HttpServletRequest req) {
+        return  crmMapper.sysWoodAllGet(wo);
+    }
+
+    public Message sysSpartAdd(CRM_SPART cs, HttpServletRequest req) { return crmMapper.sysSpartAdd(cs);
+    }
+
+    public RESTful sysSpartGet(Page p, HttpServletRequest req) {
+        List<CRM_SPART> rows = crmMapper.sysSpartGet(p);
+        return getListData(rows, p);
+    }
+
 
 //
 //    public RESTful crmAssyCableGet(HttpServletRequest req, Page p) {

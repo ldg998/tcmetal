@@ -9,13 +9,13 @@
         <div class="profile-info-row">
             <div class="profile-info-name">사이즈</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autofocus autocomplete="off" >
+                <input type="text" id="wood_code" name="wood_code" class="form-control modal_value" autofocus autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">단가</div>
             <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off" >
+                <input type="text"  name="unit_cost" class="form-control modal_value"  autocomplete="off" >
             </div>
         </div>
     </div>

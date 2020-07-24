@@ -4,137 +4,139 @@
 <script type="text/javascript" src="/data-component/mesCRM/standard/sysSPart/sysSPart_modal1.js" charset="UTF-8"></script> <!-- 스크립트 파일 import -->
 
 <!-- dialog 모달창 설정 -->
-<div id="addDialog" title="목재단가관리" style="display: none">
+<div id="addDialog" title="제품품목정보관리" style="display: none">
     <div class="profile-user-info profile-user-info-striped">
         <div class="profile-info-row">
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
-                    <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                           id="supp_name_modal1" onclick="supp_btn('B');" readonly>
-                    <input type="hidden" name="keyword" class="form-control h-25 condition_main"
-                           id="supp_code_modal1">
-                    <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
+
+                    <select class="form-control modal_value" name="supp_code" id="supp_modal_select" style="width: 100%"></select>
+
                 </div>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">기종</div>
             <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off" >
-            </div>
-        </div>
-        <div class="profile-info-row">
-            <div class="profile-info-name">품번</div>
-            <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off" >
+                <input type="text"  name="part_kind" class="form-control modal_value"  autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">품명</div>
             <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off" >
+                <input type="text"  name="part_name" class="form-control modal_value"  autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
+            <div class="profile-info-name">품번</div>
+            <div class="profile-info-value">
+                <input type="text"  name="part_code" class="form-control modal_value"  autocomplete="off" >
+            </div>
+        </div>
+
+        <div class="profile-info-row">
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off" >
+                <input type="text"  name="part_weight" class="form-control modal_value"  autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">사이즈</div>
             <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off" >
+                <input type="text"  name="part_size" class="form-control modal_value"  autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-name">GROSS WEIGHT</div>
+            <div class="profile-info-name">포장무게</div>
             <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off" >
+                <input type="text"  name="gross_weight" class="form-control modal_value"  autocomplete="off" >
             </div>
         </div>
-        <div class="profile-info-row">
-            <div class="profile-info-name">단가</div>
-            <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off" >
-            </div>
-        </div>
+
         <div class="profile-info-row">
             <div class="profile-info-name">화폐단위</div>
             <div class="profile-info-value">
-                <select id='select_modal1' name="" class="form-control h-25 condition_main" style="width: 100%;">--%>
-                    <option value="0">원</option>
+                <select id='select_modal1' name="currency_code" class="form-control h-25 modal_value" style="width: 100%;">
                 </select>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">공정라우팅</div>
             <div class="profile-info-value">
-                <select id='select_modal2' name="" class="form-control h-25 condition_main" style="width: 100%;">--%>
-                    <option value="0">메인생산</option>
+                <select id='select_modal2' name="route_code" class="form-control h-25 modal_value" style="width: 100%;">
+                <option value="1">내수</option>
+                <option value="2">수출</option>
                 </select>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">외주(열처리)업체</div>
             <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off"  placeholder="별도창 검색" readonly>
+                <select id='select_modal3' name="outs_supp_code" class="form-control h-25 modal_value" style="width: 100%;">
+                </select>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">운송수단</div>
             <div class="profile-info-value">
-                <select id='select_modal3' name="" class="form-control h-25 condition_main" style="width: 100%;">--%>
-                    <option value="0">페리</option>
+                <select id='select_modal4' name="trans_code" class="form-control h-25 modal_value" style="width: 100%;">
                 </select>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">사용유무</div>
             <div class="profile-info-value">
-                <select id='select_modal4' name="" class="form-control h-25 condition_main" style="width: 100%;">--%>
-                    <option value="0">Y</option>
-                    <option value="1">N</option>
+                <select id='select_modal5' name="use_yn" class="form-control h-25 modal_value" style="width: 100%;">
+                    <option value="1">Y</option>
+                    <option value="2">N</option>
                 </select>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">초도품 생산일</div>
             <div class="profile-info-value">
-                    <input type="text" name="" id="datepicker_modal1"
-                           class="form-control h-25 condition_main" readonly>
+                <div class="input-icon input-icon-right">
+                    <input type="text" name="startup_date" id="datepicker_modal1"
+                           class="form-control h-25 modal_value" readonly>
+                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                </div>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">목재1</div>
             <div class="profile-info-value">
-                <select id='select_modal5' name="" class="form-control h-25 condition_main" style="width: 100%;">--%>
-                <option value=""></option>
+                <select id='select_modal6' name="wood_code1" class="form-control h-25 modal_value" style="width: 100%;">
             </select>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">목재2</div>
             <div class="profile-info-value">
-                <select id='select_modal6' name="" class="form-control h-25 condition_main" style="width: 100%;">--%>
-                    <option value=""></option>
+                <select id='select_modal7' name="wood_code2" class="form-control h-25 modal_value" style="width: 100%;">
+
                 </select>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">목재3</div>
             <div class="profile-info-value">
-                <select id='select_modal7' name="" class="form-control h-25 condition_main" style="width: 100%;">--%>
-                    <option value=""></option>
+                <select id='select_modal8' name="wood_code3" class="form-control h-25 modal_value" style="width: 100%;">
+
+                </select>
+            </div>
+        </div>
+        <div class="profile-info-row">
+            <div class="profile-info-name">출장검사</div>
+            <div class="profile-info-value">
+                <select id='select_modal9' name="outs_qc" class="form-control h-25 modal_value" style="width: 100%;">
+                    <option value="Y">Y</option>
+                    <option value="N">N</option>
                 </select>
             </div>
         </div>
 
 
-
     </div>
 </div>
 
-
-<%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>

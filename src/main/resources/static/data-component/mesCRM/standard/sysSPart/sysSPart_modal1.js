@@ -10,7 +10,6 @@ function modal_start1() {
     modal_make1();
     datepicker_modal1();
     select_modal_start();
-    suppModal_start();
 }
 
 
@@ -19,6 +18,8 @@ function modal_start1() {
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
     var modal_objact = value_return(".modal_value");
+    modal_objact.startup_date = modal_objact.startup_date.replace(/\-/g, '');
+
     if (effectiveness1(modal_objact)) {
         var text = msg_object.TBMES_Q002.msg_name1;
         if (main_data.check === "U") {
@@ -27,7 +28,7 @@ function addUdate_btn() {
         if (confirm(text)) {
             wrapWindowByMask2();
             modal_objact.keyword = main_data.check;
-            ccn_ajax("/sysDeptAdd", modal_objact).then(function (data) {
+            ccn_ajax("/sysSpartAdd", modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
@@ -49,40 +50,6 @@ function addUdate_btn() {
     }
 
 }
-
-
-
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_modal1").val(name);
-        $("#supp_code_modal1").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal1").val(name);
-        $("#supp_code_modal1").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_modal1").val("");
-        $("#supp_code_modal1").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
 
 ////////////////////////////호출 함수/////////////////////////////////////
 
@@ -106,7 +73,7 @@ function effectiveness1(modal_objact) { // 유효성 검사
 function modal_make1() {
     $("#addDialog").dialog({
         modal: true,
-        width: 480,
+        width: 350,
         height: 'auto',
         autoOpen: false,
         resizable: false,
@@ -156,11 +123,16 @@ function datepicker_modal1() {
     datepicker_makes("#datepicker_modal1", 0); //모달 초기날짜 설정
 }
 function select_modal_start(){
-    $('#select_modal1').select2();
+
+    select_makes_base("#supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'});
+    select_makes_base("#select_modal1", "/sysCommonAllGet","code_value","code_name1",{keyword:'CURRENCY_TYPE'});
     $('#select_modal2').select2();
-    $('#select_modal3').select2();
-    $('#select_modal4').select2();
+    select_makes_base("#select_modal3","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'},"N");
+    select_makes_base("#select_modal4", "/sysCommonAllGet","code_value","code_name1",{keyword:'TRANS_TYPE'});
     $('#select_modal5').select2();
-    $('#select_modal6').select2();
-    $('#select_modal7').select2();
+    select_makes_base("#select_modal6", "/sysWoodAllGet","wood_code","wood_code",{keyword:''},'N');
+    select_makes_base("#select_modal7", "/sysWoodAllGet","wood_code","wood_code",{keyword:''},'N');
+    select_makes_base("#select_modal8", "/sysWoodAllGet","wood_code","wood_code",{keyword:''},'N');
+    $('#select_modal9').select2();
+
 }

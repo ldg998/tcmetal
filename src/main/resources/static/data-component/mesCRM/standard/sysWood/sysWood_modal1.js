@@ -25,7 +25,7 @@ function addUdate_btn() {
         if (confirm(text)) {
             wrapWindowByMask2();
             modal_objact.keyword = main_data.check;
-            ccn_ajax("/sysDeptAdd", modal_objact).then(function (data) {
+            ccn_ajax("/sysWoodAdd", modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {

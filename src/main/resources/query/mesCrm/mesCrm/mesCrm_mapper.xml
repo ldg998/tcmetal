@@ -184,30 +184,33 @@
 	<select id="crmWeDelete" resultType="com.mes.Common.DataTransferObject.Message">
 		EXEC SP_CRM_WE_DEL #{we_no}
 	</select>
-<!--	<select id="crmAssyCableGet" resultType="com.mes.mesCrm.mesCrm.DTO.SYS_ASSY_CABLE">-->
-<!--		EXEC SP_SYS_ASSY_CABLE_GET #{page}, #{rows}, #{keyword}-->
-<!--	</select>-->
-<!--	<select id="crmAssyCableAdd" resultType="com.mes.Common.DataTransferObject.Message">-->
-<!--    	EXEC SP_SYS_ASSY_CABLE_ADD  #{cable_code}, #{part_code},#{user_code}-->
-<!--    </select>-->
-<!--	<select id="crmAssyCableDel" resultType="com.mes.Common.DataTransferObject.Message">-->
-<!--    	EXEC SP_SYS_ASSY_CABLE_DEL  #{cable_code}, #{part_code}-->
-<!--    </select>-->
+	<select id="sysWoodAdd" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_CRM_WOOD_ADD #{wood_code} ,#{unit_cost},#{user_code},#{keyword}
+	</select>
+
+	<select id="sysWoodGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_WOOD">
+		EXEC SP_CRM_WOOD_GET #{page},#{rows},#{keyword}
+	</select>
+
+	<select id="sysWoodOneGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_WOOD">
+		EXEC SP_CRM_WOOD_GET 1,1,#{keyword}
+	</select>
+
+	<select id="sysWoodDelete" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_CRM_WOOD_DEL #{keyword}
+	</select>
+
+	<select id="sysWoodAllGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_WOOD">
+		EXEC SP_CRM_WOOD_SELECT_GET #{keyword}
+	</select>
+
+	<select id="sysSpartAdd" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_SYS_SPART_ADD #{supp_code},#{part_kind},#{part_code},#{part_name},#{part_weight},#{gross_weight},#{part_size},#{unit_cost},#{currency_code},#{route_code},#{outs_supp_code},#{trans_code},#{use_yn},#{startup_date},#{wood_code1},#{wood_code2},#{wood_code3},#{keyword},#{outs_qc}
+	</select>
+
+	<select id="sysSpartGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">
+		EXEC SP_SYS_SPART_GET_LIST #{page},#{rows},#{keyword},#{keyword2}
+	</select>
 
 
-<!--	<select id="crmOutListGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_OUT_SUB">-->
-<!--		EXEC SP_CRM_OUT_SUB_GET  #{page}, #{rows}, #{start_date}, #{end_date} , #{keyword}-->
-<!--	</select>-->
-
-<!--	<select id="crmProdOrderAdd" resultType="com.mes.Common.DataTransferObject.Message">-->
-<!--    	EXEC SP_CRM_PROD_ORDER_ADD  #{keyword},#{user_code}-->
-<!--    </select>-->
-
-<!--	<select id="crmProdOrderDel" resultType="com.mes.Common.DataTransferObject.Message">-->
-<!--    	EXEC SP_CRM_PROD_ORDER_DEL  #{keyword}-->
-<!--    </select>-->
-
-<!--	<select id="crmWorkListAdd" resultType="com.mes.Common.DataTransferObject.Message">-->
-<!--    	EXEC SP_CRM_ORD_RECP_PROFIT_ADD  #{keyword},#{user_code}-->
-<!--    </select>-->
 </mapper>

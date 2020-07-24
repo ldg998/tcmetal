@@ -19,22 +19,18 @@ $(document).ready(function () {
     /*----모달----*/
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정
-    suppModal_start();
     modal_start1();
     selectBox();
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////
 // 조회버튼
-function test(){
-    $('#addDialog').dialog('open');
-}
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
     main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysCommonGet',
+        url: '/sysSpartGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -45,7 +41,22 @@ function get_btn(page) {
 function add_btn() {
     if (main_data.auth.check_add !="N") {
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 명을 가진 항목들의 내용을 리셋,비워줌 main_data readonly 에 추가한 name의 항목에 readonly 옵션을 추가
-        modalValuePush("#group_select","#group_code","#group_name"); // name1의 값을 name2,name3 에 넣어줌
+
+        datepicker_makes("#datepicker_modal1", 0); //모달 초기날짜 설정
+
+        $('#supp_modal_select option:eq(0)').prop("selected", true).trigger("change");
+        $('#select_modal1 option:eq(0)').prop("selected", true).trigger("change");
+        $('#select_modal2 option:eq(0)').prop("selected", true).trigger("change");
+        $('#select_modal3 option:eq(0)').prop("selected", true).trigger("change");
+        $('#select_modal4 option:eq(0)').prop("selected", true).trigger("change");
+        $('#select_modal5 option:eq(0)').prop("selected", true).trigger("change");
+        $('#select_modal6 option:eq(0)').prop("selected", true).trigger("change");
+        $('#select_modal7 option:eq(0)').prop("selected", true).trigger("change");
+        $('#select_modal8 option:eq(0)').prop("selected", true).trigger("change");
+        $('#select_modal9 option:eq(0)').prop("selected", true).trigger("change");
+
+
+
         main_data.check = 'I'; // 추가인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
@@ -104,37 +115,6 @@ function delete_btn() {
 }
 
 
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
 ////////////////////////////호출 함수//////////////////////////////////
 //호출함수
 function msg_get() {
@@ -157,29 +137,29 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['업체','기종','품명','품번','품명(생산지시용)','단중','사이즈','GROSS WEIGHT','단가','화폐단위','공정라우팅','외주','외주(열처리)업체','사용유무','초도품생산일','목재1','목재2','목재3','출장검사','등록자','수정일'],
+        colNames: ['업체','기종','품명','품번','품명(생산지시용)','단중','사이즈','포장무게','단가','화폐단위','공정라우팅','외주','외주(열처리)업체','사용유무','초도품생산일','목재1','목재2','목재3','출장검사','등록자','수정일'],
         colModel: [
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true}
+            {name: 'supp_name', index: 'supp_name',sortable: false, width: 80,fixed: true},//업체
+            {name: 'part_kind', index: 'part_kind',sortable: false, width: 80,fixed: true},//기종
+            {name: 'part_name', index: 'part_name',sortable: false, width: 80,fixed: true},//품명
+            {name: 'part_code', index: 'part_code',sortable: false, width: 80,fixed: true},//품번
+            {name: 'part_name2', index: 'part_name2',sortable: false, width: 120,fixed: true},//품명(생산지용)
+            {name: 'part_weight', index: 'part_weight',sortable: false, width: 120,fixed: true},//단중
+            {name: 'part_size', index: 'part_size',sortable: false, width: 120,fixed: true},//사이즈
+            {name: 'gross_weight', index: 'gross_weight',sortable: false, width: 120,fixed: true},//포장무게
+            {name: 'unit_cost', index: 'unit_cost',sortable: false, width: 80,fixed: true},//단가
+            {name: 'currency_code', index: 'currency_code',sortable: false, width: 120,fixed: true},//화폐단위
+            {name: 'route_name', index: 'route_name',sortable: false, width: 120,fixed: true},//공정라우팅
+            {name: 'outs', index: 'outs',sortable: false, width: 120,fixed: true},//외주
+            {name: 'outs_supp_name', index: 'outs_supp_name',sortable: false, width: 120,fixed: true},//외주(열처리)
+            {name: 'use_yn', index: 'use_yn',sortable: false, width: 80,fixed: true},
+            {name: 'startup_date', index: 'startup_date',sortable: false, width: 80,fixed: true,formatter:formmatterDate2},
+            {name: 'wood_code1', index: 'wood_code1',sortable: false, width: 80,fixed: true},
+            {name: 'wood_code2', index: 'wood_code2',sortable: false, width: 80,fixed: true},
+            {name: 'wood_code3', index: 'wood_code3',sortable: false, width: 80,fixed: true},
+            {name: 'outs_qc', index: 'outs_qc',sortable: false, width: 80,fixed: true},
+            {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
+            {name: 'update_date', index: 'update_date',sortable: false, width: 80,fixed: true,formatter:formmatterDate}
 
         ],
         caption: "제품품목 | MES",
@@ -210,6 +190,9 @@ function jqGrid_main() {
 }
 
 function selectBox() {
-    $('#select1').select2();
+
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'},"N");
+
+    select_makes_sub("#select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'},"N");
 
 }

@@ -3,9 +3,7 @@ package com.mes.mesCrm.mesCrm;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
-import com.mes.mesCrm.mesCrm.DTO.CRM_ORD_RECP;
-import com.mes.mesCrm.mesCrm.DTO.CRM_PLAN;
-import com.mes.mesCrm.mesCrm.DTO.CRM_WE;
+import com.mes.mesCrm.mesCrm.DTO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,46 +50,6 @@ public class CrmRestController {
     @RequestMapping(value = "/crmMoneyComp")
     public Message crmMoneyComp(HttpServletRequest req, CRM_ORD_RECP cor) {return crmService.crmMoneyComp(req,cor);}
 
-
-
-
-    //    @RequestMapping(value = "/crmProdOrderGet", method = RequestMethod.POST)
-//    public RESTful crmProdOrderGet(HttpServletRequest req, Page p) {
-//        return crmService.crmProdOrderGet(req, p);
-//    }
-//
-//    @RequestMapping(value = "/crmProdOrderOneGet", method = RequestMethod.POST)
-//    public CRM_ORD_RECP crmProdOrderOneGet(HttpServletRequest req, CRM_ORD_RECP cor) {
-//        return crmService.crmProdOrderOneGet(req, cor);
-//    }
-//
-//    @RequestMapping(value = "/crmRecpAdd", method = RequestMethod.POST)
-//    public String crmRecpAdd(@Valid CRM_ORD_RECP crmOrdRecp, BindingResult errors, HttpServletRequest req){
-//        String msg = null;
-//        if(errors.hasErrors()){
-//            for (ObjectError objectError : errors.getAllErrors()) {
-//                msg = objectError.getDefaultMessage() + "를 입력하세요.";
-//            }
-//            return msg;
-//        }else{
-//            return "검증완료";
-////            return crmService.crmRecpAdd(crmOrdRecp, req);
-//        }
-//    }
-//
-//    @RequestMapping(value = "/crmOrderRecpAdd", method = RequestMethod.POST)
-//    public Message crmOrderRecpAdd(CRM_ORD_RECP crmOrdRecp, HttpServletRequest req){
-//       return crmService.crmOrderRecpAdd(crmOrdRecp,req);
-//    }
-//
-//    @RequestMapping(value = "/crmWorkListGet", method = RequestMethod.POST)
-//    public RESTful crmWorkListGet(HttpServletRequest req, Page p) { return crmService.crmWorkListGet(req, p); }
-//
-//    @RequestMapping(value = "/crmWorkListOneGet", method = RequestMethod.POST)
-//    public CRM_ORD_RECP crmWorkListOneGet(HttpServletRequest req, CRM_ORD_RECP cor) {
-//        return crmService.crmWorkListOneGet(req, cor);
-//    }
-//
     @RequestMapping(value = "/crmPlanGet", method = RequestMethod.POST)
     public RESTful crmPlanGet(HttpServletRequest req, Page p) { return crmService.crmPlanGet(req, p); }
 
@@ -131,37 +89,34 @@ public class CrmRestController {
     public Message crmWeDelete(Page p, HttpServletRequest req){ return crmService.crmWeDelete(p,req); }
 
 
+    @RequestMapping(value = "/sysWoodGet",method = RequestMethod.POST)
+    public RESTful sysWoodGet(Page p, HttpServletRequest req){ return crmService.sysWoodGet(p,req); }
+
+     @RequestMapping(value = "/sysWoodOneGet",method = RequestMethod.POST)
+    public List<CRM_WOOD> sysWoodOneGet(Page p, HttpServletRequest req){ return crmService.sysWoodOneGet(p,req); }
 
 
-//
-//
-//    @RequestMapping(value = "/crmAssyCableGet", method = RequestMethod.POST)
-//    public RESTful crmAssyCableGet(HttpServletRequest req, Page p) { return crmService.crmAssyCableGet(req, p); }
-//
-//
-//    @RequestMapping(value = "/crmAssyCableAdd", method = RequestMethod.POST)
-//    public Message crmAssyCableAdd(SYS_ASSY_CABLE sac, HttpServletRequest req){
-//        return crmService.crmAssyCableAdd(sac,req);
-//    }
-//    @RequestMapping(value = "/crmAssyCableDel", method = RequestMethod.POST)
-//    public Message crmAssyCableDel(SYS_ASSY_CABLE sac, HttpServletRequest req){
-//        return crmService.crmAssyCableDel(sac,req);
-//    }
-//
-//    @RequestMapping(value = "/crmOutListGet", method = RequestMethod.POST)
-//    public RESTful crmOutListGet(HttpServletRequest req, Page p) { return crmService.crmOutListGet(req, p); }
-//
-//    @RequestMapping(value = "/crmProdOrderAdd", method = RequestMethod.POST)
-//    public Message crmProdOrderAdd(CRM_ORD_RECP cor, HttpServletRequest req){
-//        return crmService.crmProdOrderAdd(cor,req);
-//    }
-//    @RequestMapping(value = "/crmProdOrderDel", method = RequestMethod.POST)
-//    public Message crmProdOrderDel(CRM_ORD_RECP cor, HttpServletRequest req){
-//        return crmService.crmProdOrderDel(cor,req);
-//    }
-//
-//    @RequestMapping(value = "/crmWorkListAdd", method = RequestMethod.POST)
-//    public Message crmWorkListAdd(CRM_ORD_RECP cor, HttpServletRequest req){
-//        return crmService.crmWorkListAdd(cor,req);
-//    }
+    @RequestMapping(value = "/sysWoodAdd",method = RequestMethod.POST)
+    public Message sysWoodAdd(CRM_WOOD wo, HttpServletRequest req){ return crmService.sysWoodAdd(wo,req); }
+
+    @RequestMapping(value = "/sysWoodDelete",method = RequestMethod.POST)
+    public Message sysWoodDelete(CRM_WOOD wo, HttpServletRequest req){ return crmService.sysWoodDelete(wo,req); }
+
+    @RequestMapping(value = "/sysWoodAllGet",method = RequestMethod.POST)
+    public List<CRM_WOOD> sysWoodAllGet(CRM_WOOD wo, HttpServletRequest req){ return crmService.sysWoodAllGet(wo,req); }
+
+
+    @RequestMapping(value = "/sysSpartAdd",method = RequestMethod.POST)
+    public Message sysSpartAdd(CRM_SPART cs, HttpServletRequest req){ return crmService.sysSpartAdd(cs,req); }
+
+    @RequestMapping(value = "/sysSpartGet",method = RequestMethod.POST)
+    public RESTful sysSpartGet(Page p, HttpServletRequest req){ return crmService.sysSpartGet(p,req); }
+
+
+
+
+
+
+
+
 }

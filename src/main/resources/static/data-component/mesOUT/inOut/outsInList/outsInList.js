@@ -24,18 +24,13 @@ $(document).ready(function () {
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////
-function test(){
-
-    $("#addDialog").dialog('open'); // 모달 열기
-    jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]'));
-    jqGridResize('#mes_modal_grid2', $('#mes_modal_grid2').closest('[class*="col-"]')); // 그리드 리사이즈
-
-}
 
 // 조회버튼
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
-    main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
+    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, ''); //가져온 날짜데이터 가공 2020-06-01 = 20200601
+    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');   ////가져온 날짜데이터 가공 2020-06-01 = 20200601
+
     $("#mes_grid").setGridParam({ // 그리드 조회
         url: '/outsInListGet',
         datatype: "json",
@@ -64,38 +59,6 @@ function update_btn(jqgrid_data) {
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
     }
-}
-
-
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
 }
 
 ////////////////////////////호출 함수//////////////////////////////////
@@ -163,7 +126,7 @@ function jqGrid_main() {
 }
 
 function selectBox() {
-    $("#select1").select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'})
 }
 
 function datepickerInput() {

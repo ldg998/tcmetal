@@ -6,7 +6,7 @@
 
 var main_data = {
     check: 'I', // 수정,추가 판단용
-    readonly: ['dept_code'], // 설정시 해당 name의 readonly 옵션
+    readonly: ['wood_code'], // 설정시 해당 name의 readonly 옵션
     auth:{} // 권한 체크 후 권한 data 담는 용도
 };
 
@@ -29,28 +29,35 @@ $(document).ready(function () {
 // 조회 버튼
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysDeptGet',
+        url: '/sysWoodGet',
         datatype: "json",
-        page: page
+        page: page,
+        postData: {keyword:''}
     }).trigger("reloadGrid");
 }
 
 // 추가 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") {
-
+        modal_reset('.modal_value',main_data.readonly)
+        main_data.check = 'I';
         $("#addDialog").dialog('open'); // 모달 열기
-
     }
 }
 
 // 그리는 더블 클릭 시 실행 수정버튼
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
-        modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
+        modal_reset(".modal_value",main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
+
         main_data.check = 'U'; // 수정인지 체크
-        ccn_ajax('/sysDeptOneGet', {keyword: jqgrid_data.dept_code}).then(function (data) { // user의 하나 출력
-            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
+        console.log(jqgrid_data.wood_code);
+        ccn_ajax('/sysWoodOneGet', {keyword:jqgrid_data.wood_code}).then(function (data) { // user의 하나 출력
+
+            console.log(data);
+
+            modal_edits('.modal_value', main_data.readonly,data[0]); // response 값 출력
+
             $("#addDialog").dialog('open');
         });
     } else {
@@ -69,11 +76,11 @@ function delete_btn() {
             if (confirm(msg_object.TBMES_A005.msg_name1)) {
                 main_data.check = 'D';
                 wrapWindowByMask2();
-                ccn_ajax("/sysDeptDelete", {keyword: ids.join(gu5)}).then(function (data) {
+                ccn_ajax("/sysWoodDelete", {keyword: ids.join(gu5)}).then(function (data) {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn($("#mes_grid").getGridParam('page'));
+                        $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
                     }
                     closeWindowByMask();
                 }).catch(function (err) {
@@ -109,10 +116,10 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames : ['사이즈','단가','등록자','수정일'],
         colModel : [
-            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:200,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',formatter:formmatterDate,sortable: false,width:180,fixed: true}
+            {name:'wood_code',index:'wood_code',key: true ,sortable: false,width:100,fixed: true},
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:200,fixed: true},
+            {name:'user_name',index:'user_name',sortable: false,width:100,fixed: true},
+            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
         ],
         caption: "목재단가관리 | MES",
         autowidth: true,

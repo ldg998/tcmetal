@@ -68,6 +68,20 @@ public interface CrmMapper {
 
     Message crmWeDelete(Page p);
 
+    Message sysWoodAdd(CRM_WOOD wo);
+
+    List<CRM_WOOD> sysWoodGet(Page p);
+
+    List<CRM_WOOD> sysWoodOneGet(Page p);
+
+    Message sysWoodDelete(CRM_WOOD wo);
+
+    List<CRM_WOOD> sysWoodAllGet(CRM_WOOD wo);
+
+    Message sysSpartAdd(CRM_SPART cs);
+
+    List<CRM_SPART> sysSpartGet(Page p);
+
 
 //    List<SYS_ASSY_CABLE> crmAssyCableGet(Page p);
 //

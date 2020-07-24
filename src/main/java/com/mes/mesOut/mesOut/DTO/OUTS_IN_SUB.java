@@ -22,8 +22,11 @@ public class OUTS_IN_SUB {
     private String update_date;
     private String out_date;
     private String in_date;
+    private String supp_name2;
+    private String part_kind;
+    private String outs_qc;
 
-
+    private int part_weight;
     private int rownum;
     private int rownum_page;
     private int rec_count;

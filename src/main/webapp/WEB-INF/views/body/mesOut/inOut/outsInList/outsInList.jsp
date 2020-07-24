@@ -33,22 +33,20 @@
                     <td class="wt-px-50 td-title t-align-c padding-a-0">고객사</td>
                     <td class="wt-px-150">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
+                            <input type="text" name="keyword" class="form-control h-25 condition_main"
                                    autocomplete="off" placeholder="별도창검색" readonly>
                         </div>
                     </td>
                     <td class="wt-px-50 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-150">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
+                            <input type="text" name="keyword2" class="form-control h-25 condition_main"
                                    autocomplete="off" >
                         </div>
                     </td>
                     <td class="wt-px-50 td-title t-align-c padding-a-0">외주업체</td>
                     <td class="wt-px-150">
-                        <select id="select1" style="width: 100%;">
-                            <option>반드시 선택</option>
-                        </select>
+                        <select class="form-control condition_main" name="keyword3" id="supp_select" style="width: 100%"></select>
                     </td>
                     <td></td>
                 </tr>
@@ -61,7 +59,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                       onclick=" test();">
+                       onclick=" get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>

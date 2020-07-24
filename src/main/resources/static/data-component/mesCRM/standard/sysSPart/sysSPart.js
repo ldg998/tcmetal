@@ -28,7 +28,7 @@ $(document).ready(function () {
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
-    main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
+    main_data.send_data.keyword3='';
     $("#mes_grid").setGridParam({ // 그리드 조회
         url: '/sysSpartGet',
         datatype: "json",
@@ -69,16 +69,17 @@ function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
+        console.log(jqgrid_data)
+        main_data.send_data.keyword = jqgrid_data.supp_code;
+        main_data.send_data.keyword2 = jqgrid_data.part_kind;
+        main_data.send_data.keyword3 = jqgrid_data.part_code;
+        ccn_ajax('/sysSpartGet',  main_data.send_data).then(function (data) {
+            data.rows[0].startup_date = formmatterDate2(data.rows[0].startup_date);
+            modal_edits('.modal_value', main_data.readonly, data.rows[0]); // response 값 출력
 
-        var send_data = {};
-        send_data.keyword = jqgrid_data.code_type;
-        send_data.keyword2 = jqgrid_data.code_value; // data에 값을 추가하여 파라미터로 사용
-
-        ccn_ajax('/sysCommonOneGet', send_data).then(function (data) {
-            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
-            $('#group_name').val(data.cn); // 해당 id에 값을 부여
-            $('#group_code').val(data.code_type); // 해당 id에 값을 부여
             $("#addDialog").dialog('open');// 모달 열기
+
+
         });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
@@ -137,8 +138,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['업체','기종','품명','품번','품명(생산지시용)','단중','사이즈','포장무게','단가','화폐단위','공정라우팅','외주','외주(열처리)업체','사용유무','초도품생산일','목재1','목재2','목재3','출장검사','등록자','수정일'],
+        colNames: ['','','업체','기종','품명','품번','품명(생산지시용)','단중','사이즈','포장무게','단가','화폐단위','공정라우팅','외주','외주(열처리)업체','사용유무','초도품생산일','목재1','목재2','목재3','출장검사','등록자','수정일'],
         colModel: [
+            {name: 'rownum', index: 'rownum',hidden:true,fixed: true,key:true},
+            {name: 'supp_code', index: 'supp_code',hidden:true,fixed: true},
             {name: 'supp_name', index: 'supp_name',sortable: false, width: 80,fixed: true},//업체
             {name: 'part_kind', index: 'part_kind',sortable: false, width: 80,fixed: true},//기종
             {name: 'part_name', index: 'part_name',sortable: false, width: 80,fixed: true},//품명

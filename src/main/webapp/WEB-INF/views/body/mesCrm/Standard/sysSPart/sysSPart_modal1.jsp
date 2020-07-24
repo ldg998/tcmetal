@@ -10,9 +10,7 @@
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
-
                     <select class="form-control modal_value" name="supp_code" id="supp_modal_select" style="width: 100%"></select>
-
                 </div>
             </div>
         </div>

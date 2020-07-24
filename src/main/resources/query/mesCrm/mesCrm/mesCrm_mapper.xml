@@ -209,7 +209,7 @@
 	</select>
 
 	<select id="sysSpartGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">
-		EXEC SP_SYS_SPART_GET_LIST #{page},#{rows},#{keyword},#{keyword2}
+		EXEC SP_SYS_SPART_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
 	</select>
 
 

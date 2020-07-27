@@ -289,6 +289,14 @@ public class CrmService extends ReturnFunction {
         return getListData(rows, p);
     }
 
+    public List<CRM_SPART> partKindGet(Page p, HttpServletRequest req) { return crmMapper.partKindGet(p);
+    }
+
+    public RESTful sysSpartCostGet(Page p, HttpServletRequest req) {
+        List<CRM_SPART> rows = crmMapper.sysSpartCostGet(p);
+        return getListData(rows, p);
+    }
+
 
 //
 //    public RESTful crmAssyCableGet(HttpServletRequest req, Page p) {

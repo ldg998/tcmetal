@@ -29,31 +29,32 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 기종</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off" autofocus>
+                <input type="hidden" name="supp_code" class="form-control modal_value">
+                <input type="text" name="part_kind" class="form-control modal_value"  readonly autocomplete="off" autofocus>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name"> 품번</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_code" class="form-control modal_value" readonly autocomplete="off">
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name"> 품명</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_name" class="form-control modal_value" readonly autocomplete="off">
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name"> 단중</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_weight" class="form-control modal_value" readonly autocomplete="off">
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name"> 화폐단위</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="currency_code" class="form-control modal_value" readonly autocomplete="off">
             </div>
         </div>
 
@@ -61,40 +62,33 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 변경일자</div>
             <div class="profile-info-value">
-
                 <div class="input-icon input-icon-right">
-                    <input type="text" name="start_date" id="datepicker"
-                           class="form-control h-25 condition_main" readonly>
+                    <input type="text" name="start_date" id="datepicker1_modal"
+                           class="form-control h-25 modal_value" readonly>
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
         </div>
-
         <div class="profile-info-row">
             <div class="profile-info-name"> 단가</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="unit_cost" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
-
-
     </div>
     <%-- end_input_data --%>
     <br/>
-
-
     <!-- button div 왼쪽으로 float 정렬 -->
     <div class="tableTools-container">
         <div class="btn_center">
             <div class="dt-buttons btn-overlap btn-group modal_btn">
                 <!-- 조회버튼 -->
                 <a class="btn btn-secondary btn-lg"
-                   tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
+                   tabindex="0" aria-controls="dynamic-table" onclick="add_modal1_btn()" data-original-title="" title="">
                         <span>
                             <span>저장</span>
                         </span>
                 </a>
-
                 <a class="btn btn-secondary btn-lg"
                    tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
                         <span>
@@ -106,13 +100,12 @@
         </div>
     </div>
     <%--end 버튼--%>
-
-
     <div class="row">
         <div class="col-xs-12 table-responsive">
             <!-- grid영역 -->
             <table id="mes_modal_grid"></table>
             <!-- grid-pager 영역 -->
+            <div id="mes_modal_grid_pager"></div>
         </div>
     </div>
 

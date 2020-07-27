@@ -95,7 +95,6 @@ public class CrmRestController {
      @RequestMapping(value = "/sysWoodOneGet",method = RequestMethod.POST)
     public List<CRM_WOOD> sysWoodOneGet(Page p, HttpServletRequest req){ return crmService.sysWoodOneGet(p,req); }
 
-
     @RequestMapping(value = "/sysWoodAdd",method = RequestMethod.POST)
     public Message sysWoodAdd(CRM_WOOD wo, HttpServletRequest req){ return crmService.sysWoodAdd(wo,req); }
 
@@ -105,12 +104,17 @@ public class CrmRestController {
     @RequestMapping(value = "/sysWoodAllGet",method = RequestMethod.POST)
     public List<CRM_WOOD> sysWoodAllGet(CRM_WOOD wo, HttpServletRequest req){ return crmService.sysWoodAllGet(wo,req); }
 
-
     @RequestMapping(value = "/sysSpartAdd",method = RequestMethod.POST)
     public Message sysSpartAdd(CRM_SPART cs, HttpServletRequest req){ return crmService.sysSpartAdd(cs,req); }
 
     @RequestMapping(value = "/sysSpartGet",method = RequestMethod.POST)
     public RESTful sysSpartGet(Page p, HttpServletRequest req){ return crmService.sysSpartGet(p,req); }
+
+    @RequestMapping(value = "/partKindGet",method = RequestMethod.POST)
+    public List<CRM_SPART> partKindGet(Page p, HttpServletRequest req){ return crmService.partKindGet(p,req); }
+
+    @RequestMapping(value = "/sysSpartCostGet",method = RequestMethod.POST)
+    public RESTful sysSpartCostGet(Page p, HttpServletRequest req){ return crmService.sysSpartCostGet(p,req); }
 
 
 

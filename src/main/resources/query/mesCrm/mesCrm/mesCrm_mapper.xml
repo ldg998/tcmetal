@@ -212,5 +212,12 @@
 		EXEC SP_SYS_SPART_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
 	</select>
 
+	<select id="partKindGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">
+		EXEC SP_CRM_PARTKIND_SELECT_GET #{keyword},#{keyword2}
+	</select>
+
+	<select id="sysSpartCostGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">
+		EXEC SP_SYS_SPART_COST_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
+	</select>
 
 </mapper>

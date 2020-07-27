@@ -37,4 +37,8 @@ public class CRM_SPART {
     private String keyword;
     private String outs_supp_name;
     private String route_name;
+    private String start_date;
+    private String create_date;
+    private String user_name;
+    private String user_code;
 }

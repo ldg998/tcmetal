@@ -11,13 +11,13 @@
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">업체</td>
                     <td class="wt-px-200">
-                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%"></select>
+                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="supp_select_change()"></select>
+
                     </td>
 
                     <td class="wt-px-100 t-align-c td-title padding-a-0">기종</td>
                     <td class="wt-px-200">
-                        <select id='select1' name="keyword2" class="form-control h-25 condition_main" style="width: 100%;">--%>
-
+                        <select id='part_kind_select' name="keyword2" class="form-control h-25 condition_main" style="width: 100%;">--%>
                         </select>
                     </td>
                     <td></td>

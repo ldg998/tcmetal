@@ -86,8 +86,8 @@
             <div class="profile-info-name">사용유무</div>
             <div class="profile-info-value">
                 <select id='select_modal5' name="use_yn" class="form-control h-25 modal_value" style="width: 100%;">
-                    <option value="1">Y</option>
-                    <option value="2">N</option>
+                    <option value="Y">Y</option>
+                    <option value="N">N</option>
                 </select>
             </div>
         </div>

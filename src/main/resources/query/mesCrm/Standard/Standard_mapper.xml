@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesCrm.Standard.StandardMapper">
+
+<select id="sysSpartCostAdd" resultType="com.mes.Common.DataTransferObject.Message">
+EXEC SP_SYS_SPART_COST_ADD #{supp_code},#{part_kind},#{part_code},#{start_date},#{unit_cost},#{user_code}
+</select>
+
+</mapper>

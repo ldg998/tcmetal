@@ -82,6 +82,10 @@ public interface CrmMapper {
 
     List<CRM_SPART> sysSpartGet(Page p);
 
+    List<CRM_SPART> partKindGet(Page p);
+
+    List<CRM_SPART> sysSpartCostGet(Page p);
+
 
 //    List<SYS_ASSY_CABLE> crmAssyCableGet(Page p);
 //

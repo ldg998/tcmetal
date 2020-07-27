@@ -193,9 +193,15 @@ function jqGrid_main() {
 }
 
 function selectBox() {
-
     select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'},"N");
+    $('#part_kind_select').select2();
 
-    select_makes_sub("#select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'},"N");
-
+}
+function supp_select_change() {
+var supp_code = $('#supp_select').val();
+  if(supp_code == null || supp_code ==''){
+      $("select#part_kind_select option").remove()
+  } else {
+select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:supp_code},"N");
+  }
 }

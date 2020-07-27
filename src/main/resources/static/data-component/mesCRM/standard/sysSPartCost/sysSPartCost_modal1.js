@@ -8,12 +8,27 @@ function modal_start1() {
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
-function addUdate_btn() {
+function add_modal1_btn(){
+    var modalValue = value_return('.modal_value');
+    modalValue.start_date =modalValue.start_date.replace(/\-/g, '');
+
+        if (confirm('해당 제품의 단가를 저장하시겠습니까?')) {
+            ccn_ajax('sysSpartCostAdd',modalValue).then(function (data) {
+                if (data.result === 'NG') {
+                    alert(data.message);
+                } else {
+                        $('#mes_modal_grid').trigger("reloadGrid")
+
+                }
+
+            }).catch(function (err) {
+                alert(msg_object.TBMES_E008.msg_name1);
+            });
+        }
+
 
 }
-function modal_close(){
-    $("#addDialog").dialog("close");
-}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get_modal1() {
     msgGet_auth("TBMES_Q002");// 저장여부
@@ -42,12 +57,10 @@ function jqGrid_main_modal() {
         mtype: 'POST',// post 방식 데이터 전달
         colNames : ['변경일자','금액'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'',index:'',sortable: false,width:110,fixed: true},
-            {name:'',index:'',sortable: false,width:125,fixed: true}
-
+            {name:'start_date',index:'start_date',sortable: false,width:110,fixed: true,formatter:formmatterDate2},
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:125,fixed: true}
         ],
         multiselect: true,
-      // caption: "자재단가 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
         height: 100, // 그리드 세로 길이 설정
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
@@ -56,12 +69,9 @@ function jqGrid_main_modal() {
                 cm = $myGrid.jqGrid('getGridParam', 'colModel');
             return (cm[i].name === 'cb');
         },
-        ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
-            var data = $('#mes_grid').jqGrid('getRowData', rowid);
-            update_btn(data);
-        },
+
         loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
-            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
+            if ($("#mes_modal_grid").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
                 $(".jqgfirstrow").css("height","1px");
             else
                 $(".jqgfirstrow").css("height","0px");
@@ -69,6 +79,5 @@ function jqGrid_main_modal() {
     })//.navGrid("mes_modal_grid_pager", {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정
 }
 function datepickerInput() {
-
-    datepicker_makes("#datepicker", 0);
+    datepicker_makes("#datepicker1_modal", 0);
 }

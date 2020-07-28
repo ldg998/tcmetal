@@ -33,10 +33,7 @@
 
                         <td class="wt-px-100 td-title t-align-c padding-a-0">화폐단위</td>
                         <td class="wt-px-200">
-                            <select name="keyword2" id="1_select" class="form-control condition_main"  style="width:100%">
-                                <option value="">KWR</option>
-                                <option value="0"></option>
-                                <option value="1"></option>
+                            <select name="keyword" id="select1" class="form-control condition_main"  style="width:100%">
                             </select>
                         </td>
                         <td></td>

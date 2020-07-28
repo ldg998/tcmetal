@@ -3,8 +3,29 @@
 
 <mapper namespace="com.mes.Mapper.mesCrm.Standard.StandardMapper">
 
-<select id="sysSpartCostAdd" resultType="com.mes.Common.DataTransferObject.Message">
-EXEC SP_SYS_SPART_COST_ADD #{supp_code},#{part_kind},#{part_code},#{start_date},#{unit_cost},#{user_code}
-</select>
+    <select id="sysSpartCostAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC SP_SYS_SPART_COST_ADD #{supp_code},#{part_kind},#{part_code},#{start_date},#{unit_cost},#{user_code}
+    </select>
+
+    <select id="sysSPartDel" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC  SP_SYS_SPART_DEL #{keyword}
+    </select>
+
+    <select id="sysSPartCostDel" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC  SP_SYS_SPART_COST_DEL #{keyword}
+    </select>
+
+    <select id="sysERateAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC SP_SYS_ERATE_ADD #{currency_code},#{start_date},#{stop_date},#{exch_rate},#{user_code},#{keyword}
+    </select>
+
+    <select id="sysERateGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_ERATE">
+        EXEC SP_SYS_ERATE_GET_LIST #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+    </select>
+
+     <select id="sysERateOneGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_ERATE">
+        EXEC SP_SYS_ERATE_GET_LIST 1,1,'','',#{keyword},#{keyword2}
+    </select>
+
 
 </mapper>

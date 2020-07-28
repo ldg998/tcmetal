@@ -29,6 +29,7 @@ $(document).ready(function () {
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
     main_data.send_data.keyword3='';
+    main_data.send_data.use_yn='';
     $("#mes_grid").setGridParam({ // 그리드 조회
         url: '/sysSpartGet',
         datatype: "json",
@@ -88,20 +89,29 @@ function update_btn(jqgrid_data) {
 
 // 삭제 버튼
 function delete_btn() {
-    if(main_data.auth.check_del != "N") {
+    if(main_data.auth.check_del != "N") { //권한체크
+        var gu4 = String.fromCharCode(4);
         var gu5 = String.fromCharCode(5);
-        var ids = $("#mes_grid").getGridParam('selarrrow'); // multiselect 된 그리드의 row
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        var keywords = [];
+        var code_list;
+
         if (ids.length === 0) {
             alert(msg_object.TBMES_A004.msg_name1);
         } else {
             if (confirm(msg_object.TBMES_A005.msg_name1)) {
-                main_data.check = 'D'; // 삭제인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
+                main_data.check = 'D';
+                for(var i=0;i<ids.length;i++){
+                    var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
+                    keywords.push(data.supp_code+ gu4 +data.part_code+ gu4 +data.part_kind);
+                }
+                code_list=keywords.join(gu5);
                 wrapWindowByMask2();
-                ccn_ajax("/sysCommonDelete", {keyword: ids.join(gu5)}).then(function (data) {
+                ccn_ajax("/sysSPartDel", {keyword:code_list}).then(function (data) {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page'));
+                        $("#mes_grid").trigger("reloadGrid");
                     }
                     closeWindowByMask();
                 }).catch(function (err) {
@@ -194,14 +204,15 @@ function jqGrid_main() {
 
 function selectBox() {
     select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'},"N");
-    $('#part_kind_select').select2();
-
+  //  $('#part_kind_select').select2();
+    select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'',keyword2:''},"N");
 }
-function supp_select_change() {
-var supp_code = $('#supp_select').val();
-  if(supp_code == null || supp_code ==''){
-      $("select#part_kind_select option").remove()
-  } else {
-select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:supp_code},"N");
-  }
-}
+//
+// function supp_select_change() {
+// var supp_code = $('#supp_select').val();
+//   if(supp_code == null || supp_code ==''){
+//       $("select#part_kind_select option").remove()
+//   } else {
+// select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'',keyword2:supp_code},"N");
+//   }
+// }

@@ -4,7 +4,7 @@
         charset="UTF-8"></script>
 
 <style>
-    .tableTools-container >.btn_center > .modal_btn > a {
+    .tableTools-container > .btn_center > .modal_btn > a {
         padding: 3px 15px !important;
         font-size: 6px !important;
         line-height: 1.3333333 !important;
@@ -12,14 +12,16 @@
         margin-left: 10px;
         margin-right: 10px;
     }
-    .btn_center{
+
+    .btn_center {
         text-align: left;
 
     }
-#addDialog
- {overflow-y: hidden; overflow-x: hidden;}
 
-
+    #addDialog {
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
 
 
 </style>
@@ -30,7 +32,8 @@
             <div class="profile-info-name"> 기종</div>
             <div class="profile-info-value">
                 <input type="hidden" name="supp_code" class="form-control modal_value">
-                <input type="text" name="part_kind" class="form-control modal_value"  readonly autocomplete="off" autofocus>
+                <input type="text" name="part_kind" class="form-control modal_value" readonly autocomplete="off"
+                       autofocus>
             </div>
         </div>
         <div class="profile-info-row">
@@ -84,13 +87,15 @@
             <div class="dt-buttons btn-overlap btn-group modal_btn">
                 <!-- 조회버튼 -->
                 <a class="btn btn-secondary btn-lg"
-                   tabindex="0" aria-controls="dynamic-table" onclick="add_modal1_btn()" data-original-title="" title="">
+                   tabindex="0" aria-controls="dynamic-table" onclick="add_modal1_btn()" data-original-title=""
+                   title="">
                         <span>
                             <span>저장</span>
                         </span>
                 </a>
                 <a class="btn btn-secondary btn-lg"
-                   tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
+                   tabindex="0" aria-controls="dynamic-table" onclick="delete_modal_btn()" data-original-title=""
+                   title="">
                         <span>
                             <span>삭제</span>
                         </span>
@@ -102,10 +107,8 @@
     <%--end 버튼--%>
     <div class="row">
         <div class="col-xs-12 table-responsive">
-            <!-- grid영역 -->
             <table id="mes_modal_grid"></table>
-            <!-- grid-pager 영역 -->
-            <div id="mes_modal_grid_pager"></div>
+
         </div>
     </div>
 

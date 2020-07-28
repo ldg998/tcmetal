@@ -9,7 +9,6 @@ function modal_start1() {
     msg_get_modal1();
     selectBox_modal1();
     modal_make1();
-
     datepickerInput_modal();
 }
 
@@ -19,15 +18,17 @@ function modal_start1() {
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
     var modal_objact = value_return(".modal_value");
+    modal_objact.start_date = modal_objact.start_date.replace(/\-/g, '');
+    modal_objact.stop_date = modal_objact.stop_date.replace(/\-/g, '');
+
     if (effectiveness1(modal_objact)) {
         var text = msg_object.TBMES_Q002.msg_name1;
         if (main_data.check === "U") {
             text = msg_object.TBMES_Q003.msg_name1;
-        }
-        if (confirm(text)) {
+        }if (confirm(text)) {
             wrapWindowByMask2();
             modal_objact.keyword = main_data.check;
-            ccn_ajax("/sysDeptAdd", modal_objact).then(function (data) {
+            ccn_ajax("/sysERateAdd", modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
@@ -36,7 +37,7 @@ function addUdate_btn() {
                         get_btn(1);
                     } else {
                         $("#addDialog").dialog('close');
-                        get_btn($("#mes_grid").getGridParam('page'));
+                        $("#mes_grid").trigger("reloadGrid");
                     }
                 }
                 closeWindowByMask();
@@ -50,14 +51,7 @@ function addUdate_btn() {
 
 }
 
-// 엔터키를 통한 저장버튼 활성화
-function add_click_btn() {
-    $(document).on("keypress",'.modal_value',function (e) {
-        if (e.which == 13){
-            addUdate_btn();
-        }
-    });
-}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 
 //모달 메세지 설정
@@ -68,8 +62,8 @@ function msg_get_modal1() {
 }
 
 function effectiveness1(modal_objact) { // 유효성 검사
-    if (modal_objact.dept_name === '') {
-        alert("부서명을 입력해주세요");
+    if (modal_objact.exch_rate === '') {
+        alert("환율을 확인해주세요");
         return false;
     }  else {
         return true;
@@ -126,7 +120,7 @@ function modal_make1() {
 }
 
 function selectBox_modal1() {
-    $('#modal_select1').select2();
+    select_makes_base("#modal_select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'CURRENCY_TYPE'},'');
 }
 
 function datepickerInput_modal() {

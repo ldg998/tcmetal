@@ -38,4 +38,5 @@ public class Page {
     private String supp_name;
     private String we_no;
     private String supp_no;
+    private String use_yn;
 }

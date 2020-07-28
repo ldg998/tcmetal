@@ -7,7 +7,8 @@
 var main_data = {
     check: 'I', // 수정,추가 판단용
     readonly: ['dept_code'], // 설정시 해당 name의 readonly 옵션
-    auth:{} // 권한 체크 후 권한 data 담는 용도
+    auth:{}, // 권한 체크 후 권한 data 담는 용도
+    send_data:{}
 };
 
 ////////////////////////////시작 함수/////////////////////////////////////
@@ -30,10 +31,15 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 조회 버튼
 function get_btn(page) {
+    main_data.send_data = value_return(".condition_main");
+    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
+    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
+    main_data.send_data.keyword2 ='';
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysDeptGet',
+        url: '/sysERateGet',
         datatype: "json",
-        page: page
+        page: page,
+        postData: main_data.send_data
     }).trigger("reloadGrid");
 }
 
@@ -50,9 +56,13 @@ function add_btn() {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
+        jqgrid_data.start_date = jqgrid_data.start_date.replace(/\-/g, ''); //날짜 모양 가공 2020-06-06 = 20200606
+        console.log(jqgrid_data);
         main_data.check = 'U'; // 수정인지 체크
-        ccn_ajax('/sysDeptOneGet', {keyword: jqgrid_data.dept_code}).then(function (data) { // user의 하나 출력
-            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
+        ccn_ajax('/sysERateOneGet', {keyword:jqgrid_data.currency_code,keyword2:jqgrid_data.start_date}).then(function (data) { // user의 하나 출력
+            data.rows[0].start_date =formmatterDate2(data.rows[0].start_date);
+            data.rows[0].stop_date =formmatterDate2(data.rows[0].stop_date);
+            modal_edits('.modal_value', main_data.readonly, data.rows[0]); // response 값 출력
             $("#addDialog").dialog('open');
         });
     } else {
@@ -109,21 +119,21 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames : ['화폐단위','표시문자','시작일','종료일','환율','등록자','수정일'],
+        colNames : ['','','화폐단위','시작일','종료일','환율','등록자','수정일'],
         colModel : [
-            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:200,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',formatter:formmatterDate,sortable: false,width:180,fixed: true}
+            {name:'rownum',index:'rownum',key:true,hidden:true,sortable: false,fixed: true},
+            {name:'currency_code',index:'currency_code',hidden:true,sortable: false,fixed: true},
+            {name:'code_name1',index:'code_name1',sortable: false,width:100,fixed: true},
+            {name:'start_date',index:'start_date',sortable: false,width:100,fixed: true,formatter:formmatterDate2},
+            {name:'stop_date',index:'stop_date',sortable: false,width:150,fixed: true,formatter:formmatterDate2},
+            {name:'exch_rate',index:'exch_rate',sortable: false,width:100,fixed: true},
+            {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
+            {name:'update_date',index:'update_date',formatter:formmatterDate2,sortable: false,width:180,fixed: true}
         ],
         caption: "환율관리 | MES",
         autowidth: true,
         height: 600,
         pager: '#mes_grid_pager',
-        jsonReader: {cell: ""},
         rowNum: 100,
         rowList: [100, 200, 300, 400],
         viewrecords: true,
@@ -148,7 +158,8 @@ function jqGrid_main() {
 }
 
 function selectBox() {
-    $('#1_select').select2();
+    select_makes_base("#select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'CURRENCY_TYPE'},'Y');
+
 }
 function datepickerInput() {
     datepicker_makes("#datepicker", -30);

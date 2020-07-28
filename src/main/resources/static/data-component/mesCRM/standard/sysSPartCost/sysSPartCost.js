@@ -34,6 +34,7 @@ $(document).ready(function () {
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
     main_data.send_data.keyword3='';
+    main_data.send_data.use_yn='Y';
     $("#mes_grid").setGridParam({ // 그리드 조회
         url: '/sysSpartGet',
         datatype: "json",
@@ -61,54 +62,24 @@ function update_btn(jqgrid_data) {
         main_data.send_data.keyword = jqgrid_data.supp_code;
         main_data.send_data.keyword2 = jqgrid_data.part_kind;
         main_data.send_data.keyword3 = jqgrid_data.part_code;
-
+        main_data.send_data.use_yn = jqgrid_data.use_yn;
             ccn_ajax('/sysSpartGet',  main_data.send_data).then(function (data) {
                 data.rows[0].start_date = formmatterDate2(data.rows[0].start_date);
                 modal_edits('.modal_value', main_data.readonly, data.rows[0]); // response 값 출력
 
-            $("#mes_modal_grid").setGridParam({ // 그리드 조회
+            $("#mes_modal_grid").setGridParam({ // 그리   드 조회
                 url: '/sysSpartCostGet',
                 datatype: "json",
                 page: 1,
                 postData: main_data.send_data
             }).trigger("reloadGrid");
-
-            jqGridResize2("#mes_modal_grid",$('#mes_modal_grid').closest('[class*="col-"]')); //그리드 리 사이즈
             $("#addDialog").dialog('open');// 모달 열기
+            jqGridResize2("#mes_modal_grid",$('#mes_modal_grid').closest('[class*="col-"]')); // 그리드 resize
+
         });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
     }
-}
-
-// 삭제 버튼
-function delete_btn() {
-    if(main_data.auth.check_del != "N") {  //권한체크
-        var gu5 = String.fromCharCode(5); //아스키코드 5 담기
-        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
-        if (ids.length === 0) {      //선택여부 체크  선택이안되어 0이라면
-            alert(msg_object.TBMES_A004.msg_name1); // 경고메세지 출력
-        } else {
-            if (confirm(msg_object.TBMES_A005.msg_name1)) { //시행 여부메세지 출력
-                main_data.check = 'D'; // 삭제권한 부여
-                wrapWindowByMask2();  //마스크로 덥고 삭제 진행동안 다른작업 방지하기
-                ccn_ajax("/sysPartNameDel", {keyword: ids.join(gu5)}).then(function (data) { // 체크된 그리드 로우에 아스키코드를 넣어 1|2|3| 이런식으로 데이터전달
-                    if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
-                        alert(data.message);   //해당 오류메세지 출력
-                    } else {
-                        get_btn($("#mes_grid").getGridParam('page'));// 성공시 기존에 조회했던 조건 그대로 grid를 조회
-                    }
-                    closeWindowByMask(); //마스크 종료
-                }).catch(function (err) { //에러발생시
-                    closeWindowByMask(); // 마스크종료
-                    console.error(err); // Error 출력
-                });
-            }
-        }
-    } else {
-        alert(msg_object.TBMES_A002.msg_name1);// 권한 이 없을 경우 해당 메세지 출력
-    }
-
 }
 
 
@@ -133,9 +104,10 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['','','업체','기종','품번','품명','단중','화폐단위','변경일자','금액','등록자','수정일'],// grid 헤더 설정
+        colNames : ['','','','업체','기종','품번','품명','단중','화폐단위','변경일자','금액','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name: 'rownum', index: 'rownum',hidden:true,fixed: true,key:true},
+            {name: 'use_yn', index: 'use_yn',hidden:true,fixed: true},
             {name: 'supp_code', index: 'supp_code',hidden:true,fixed: true},
             {name:'supp_name',index:'supp_name',sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name:'part_kind',index:'part_kind',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
@@ -177,14 +149,14 @@ function jqGrid_main() {
 
 function selectBox() {
     select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'},"N");
-    $('#part_kind_select').select2();
-
+    select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:''},"N");
 }
-function supp_select_change() {
-    var supp_code = $('#supp_select').val();
-    if(supp_code == null || supp_code ==''){
-        $("select#part_kind_select option").remove()
-    } else {
-        select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:supp_code},"N");
-    }
-}
+//
+// function supp_select_change() {
+//     var supp_code = $('#supp_select').val();
+//     if(supp_code == null || supp_code ==''){
+//         $("select#part_kind_select option").remove()
+//     } else {
+//         select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:supp_code},"N");
+//     }
+// }

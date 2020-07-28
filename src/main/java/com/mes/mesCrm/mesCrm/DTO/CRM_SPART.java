@@ -41,4 +41,5 @@ public class CRM_SPART {
     private String create_date;
     private String user_name;
     private String user_code;
+
 }

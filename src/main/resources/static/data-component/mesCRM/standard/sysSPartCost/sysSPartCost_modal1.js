@@ -4,6 +4,7 @@ function modal_start1() {
     modal_make1(); // 모달 생성
     datepickerInput();
     jqGrid_main_modal();
+    jqGridResize("#mes_modal_grid",$('#mes_modal_grid').closest('[class*="col-"]')); //그리드 리 사이즈
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -17,16 +18,58 @@ function add_modal1_btn(){
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
+                        $('#mes_grid').trigger("reloadGrid")
                         $('#mes_modal_grid').trigger("reloadGrid")
-
                 }
-
             }).catch(function (err) {
                 alert(msg_object.TBMES_E008.msg_name1);
             });
         }
 
 
+}
+
+
+// 삭제 버튼
+function delete_modal_btn() {
+    if(main_data.auth.check_del != "N") { //권한체크
+        var gu4 = String.fromCharCode(4);
+        var gu5 = String.fromCharCode(5);
+        var ids = $("#mes_modal_grid").getGridParam('selarrrow');
+        var keywords = [];
+        var code_list;
+
+        if (ids.length === 0) {
+            alert(msg_object.TBMES_A004.msg_name1);
+        } else {
+            if (confirm(msg_object.TBMES_A005.msg_name1)) {
+                main_data.check = 'D';
+                for(var i=0;i<ids.length;i++){
+                    var data = $('#mes_modal_grid').jqGrid('getRowData', ids[i]);
+                    data.start_date = data.start_date.replace(/\-/g, '')
+                    console.log(data.start_date)
+                    keywords.push(data.supp_code+ gu4 +data.part_code+ gu4 +data.part_kind + gu4 +data.start_date);
+                }
+                code_list=keywords.join(gu5);
+                wrapWindowByMask2();
+                ccn_ajax("/sysSPartCostDel", {keyword:code_list}).then(function (data) {
+                    if (data.result === 'NG') {
+                        alert(data.message);
+                    } else {
+                        $('#addDialog').dialog('close');
+                        $("#mes_modal_grid").trigger("reloadGrid");
+                        $("#mes_grid").trigger("reloadGrid");
+                    }
+                    closeWindowByMask();
+                }).catch(function (err) {
+                    closeWindowByMask();
+                    console.error(err); // Error 출력
+                });
+            }
+        }
+    } else {
+        alert(msg_object.TBMES_A002.msg_name1);
+    }
 }
 
 ////////////////////////////호출 함수/////////////////////////////////////
@@ -55,10 +98,14 @@ function jqGrid_main_modal() {
     $("#mes_modal_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['변경일자','금액'],// grid 헤더 설정
+        colNames : ['','','','','변경일자','금액'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'start_date',index:'start_date',sortable: false,width:110,fixed: true,formatter:formmatterDate2},
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:125,fixed: true}
+            {name:'rownum',index:'rownum',sortable: false,key:true,hidden:true},
+            {name:'supp_code',index:'supp_code',sortable: false,hidden:true},
+            {name:'part_code',index:'part_code',sortable: false,hidden:true},
+            {name:'part_kind',index:'part_kind',sortable: false,hidden:true},
+            {name:'start_date',index:'start_date',sortable: false,width:100,fixed: true,formatter:formmatterDate2},
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:130,fixed: true}
         ],
         multiselect: true,
         autowidth: true,// 그리드 자동 가로 길이 설정
@@ -69,12 +116,9 @@ function jqGrid_main_modal() {
                 cm = $myGrid.jqGrid('getGridParam', 'colModel');
             return (cm[i].name === 'cb');
         },
-
-        loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
-            if ($("#mes_modal_grid").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
-                $(".jqgfirstrow").css("height","1px");
-            else
-                $(".jqgfirstrow").css("height","0px");
+        loadComplete:function(){
+            if ($("#mes_modal_grid").jqGrid('getGridParam', 'reccount') === 0)
+                $("table#mes_modal_grid  tr.jqgfirstrow").css("height","1px");
         }
     })//.navGrid("mes_modal_grid_pager", {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정
 }

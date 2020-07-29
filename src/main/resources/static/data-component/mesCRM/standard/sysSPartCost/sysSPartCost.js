@@ -116,7 +116,7 @@ function jqGrid_main() {
             {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true},
             {name:'currency_code',index:'currency_code',sortable: false,width:80,fixed: true},
             {name:'start_date',index:'start_date',sortable: false,width:80,fixed: true,formatter:formmatterDate2},
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:80,fixed: true},
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:80,fixed: true,formatter: 'integer'},
             {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
             {name:'create_date',index:'update_date',sortable: false,width:180,fixed: true,formatter:formmatterDate2}// formatter 사용을 통해 데이터 형식 가공
         ],

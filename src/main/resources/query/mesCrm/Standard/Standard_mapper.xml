@@ -27,5 +27,9 @@
         EXEC SP_SYS_ERATE_GET_LIST 1,1,'','',#{keyword},#{keyword2}
     </select>
 
+    <select id="sysERateDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_ERATE_DEL #{keyword}
+    </select>
+
 
 </mapper>

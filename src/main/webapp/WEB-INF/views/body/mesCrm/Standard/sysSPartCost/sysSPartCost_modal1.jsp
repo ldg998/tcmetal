@@ -75,7 +75,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 단가</div>
             <div class="profile-info-value">
-                <input type="text" name="unit_cost" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="unit_cost" class="form-control modal_value" onkeyup="num_keyup_comma(this)" autocomplete="off">
             </div>
         </div>
     </div>

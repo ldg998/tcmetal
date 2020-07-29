@@ -11,7 +11,9 @@ function modal_start1() {
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function add_modal1_btn(){
     var modalValue = value_return('.modal_value');
-    modalValue.start_date =modalValue.start_date.replace(/\-/g, '');
+
+    modalValue.start_date = modalValue.start_date.replace(/\-/g, '');
+    modalValue.unit_cost = modalValue.unit_cost.replace(/\,/g, '');
 
         if (confirm('해당 제품의 단가를 저장하시겠습니까?')) {
             ccn_ajax('sysSpartCostAdd',modalValue).then(function (data) {
@@ -105,7 +107,7 @@ function jqGrid_main_modal() {
             {name:'part_code',index:'part_code',sortable: false,hidden:true},
             {name:'part_kind',index:'part_kind',sortable: false,hidden:true},
             {name:'start_date',index:'start_date',sortable: false,width:100,fixed: true,formatter:formmatterDate2},
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:130,fixed: true}
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:130,fixed: true,formatter: 'integer'}
         ],
         multiselect: true,
         autowidth: true,// 그리드 자동 가로 길이 설정

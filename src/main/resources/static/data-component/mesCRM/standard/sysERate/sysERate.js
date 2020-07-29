@@ -46,8 +46,10 @@ function get_btn(page) {
 // 추가 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") {
-
+        modal_reset('.modal_value',[]);
+        $('#modal_select1 option:eq(0)').prop("selected", true).trigger("change");
         $("#addDialog").dialog('open'); // 모달 열기
+        datepickerInput_modal();
 
     }
 }
@@ -73,19 +75,30 @@ function update_btn(jqgrid_data) {
 // 삭제 버튼
 function delete_btn() {
     if(main_data.auth.check_del != "N") {
+        var gu4 = String.fromCharCode(4);
         var gu5 = String.fromCharCode(5);
-        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        var keywords = [];
+        var code_list;
+
         if (ids.length === 0) {
             alert(msg_object.TBMES_A004.msg_name1);
         } else {
             if (confirm(msg_object.TBMES_A005.msg_name1)) {
                 main_data.check = 'D';
+                for(var i=0;i<ids.length;i++){
+                    var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
+                    data.start_date = data.start_date.replace(/\-/g, '');
+                    keywords.push(data.currency_code+gu4+data.start_date);
+
+                }//11|12|13|
+                code_list=keywords.join(gu5);
                 wrapWindowByMask2();
-                ccn_ajax("/sysDeptDelete", {keyword: ids.join(gu5)}).then(function (data) {
+                ccn_ajax("/sysERateDel", {keyword:code_list}).then(function (data) {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn($("#mes_grid").getGridParam('page'));
+                        $("#mes_grid").trigger("reloadGrid");
                     }
                     closeWindowByMask();
                 }).catch(function (err) {

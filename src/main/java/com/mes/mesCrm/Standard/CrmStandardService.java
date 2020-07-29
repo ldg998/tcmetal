@@ -43,4 +43,7 @@ public class CrmStandardService extends ReturnFunction {
         List<SYS_ERATE> rows = sm.sysERateOneGet(p);
         return getListData(rows, p);
     }
+
+    public Message sysERateDel(Page p, HttpServletRequest req) { return sm.sysERateDel(p);
+    }
 }

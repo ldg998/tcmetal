@@ -48,14 +48,7 @@ function addUdate_btn() {
 
 }
 
-// 엔터키를 통한 저장버튼 활성화
-function add_click_btn() {
-    $(document).on("keypress",'.modal_value',function (e) {
-        if (e.which == 13){
-            addUdate_btn();
-        }
-    });
-}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 
 //모달 메세지 설정

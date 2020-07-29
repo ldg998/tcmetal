@@ -34,8 +34,11 @@ public class CrmStandardRestController {
      @RequestMapping(value = "/sysERateGet",method = RequestMethod.POST)
     public RESTful sysERateGet(Page p, HttpServletRequest req){ return crmService.sysERateGet(p,req); }
 
-  @RequestMapping(value = "/sysERateOneGet",method = RequestMethod.POST)
+    @RequestMapping(value = "/sysERateOneGet",method = RequestMethod.POST)
     public RESTful sysERateOneGet(Page p, HttpServletRequest req){ return crmService.sysERateOneGet(p,req); }
+
+    @RequestMapping(value = "/sysERateDel",method = RequestMethod.POST)
+    public Message sysERateDel(Page p, HttpServletRequest req){ return crmService.sysERateDel(p,req); }
 
 
 

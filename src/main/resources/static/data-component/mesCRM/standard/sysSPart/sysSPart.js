@@ -160,7 +160,7 @@ function jqGrid_main() {
             {name: 'part_weight', index: 'part_weight',sortable: false, width: 120,fixed: true},//단중
             {name: 'part_size', index: 'part_size',sortable: false, width: 120,fixed: true},//사이즈
             {name: 'gross_weight', index: 'gross_weight',sortable: false, width: 120,fixed: true},//포장무게
-            {name: 'unit_cost', index: 'unit_cost',sortable: false, width: 80,fixed: true},//단가
+            {name: 'unit_cost', index: 'unit_cost',sortable: false, width: 80,fixed: true,formatter: 'integer'},//단가
             {name: 'currency_code', index: 'currency_code',sortable: false, width: 120,fixed: true},//화폐단위
             {name: 'route_name', index: 'route_name',sortable: false, width: 120,fixed: true},//공정라우팅
             {name: 'outs', index: 'outs',sortable: false, width: 120,fixed: true},//외주

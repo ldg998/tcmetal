@@ -92,6 +92,21 @@ function select_change_modal2(value) {
         $('#modal_select3').select2();
     }
 }
+
+function select_change_modal3(value) {
+            console.log($("#modal_select1").val());
+            console.log($("#modal_select2").val());
+            console.log(value);
+
+    if (value !== ""){
+        ccn_ajax('/sysSpartOneGet',  {keyword:$("#modal_select1").val(),keyword2:$("#modal_select2").val(),keyword3:value}).then(function (data) {
+            console.log(data.part_code);
+            $("input[name=part_code]").val(data.part_code);
+
+
+        });
+    }
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 
 //모달 메세지 설정

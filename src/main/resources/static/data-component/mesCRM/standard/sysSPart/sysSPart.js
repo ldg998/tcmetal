@@ -70,11 +70,12 @@ function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
-        console.log(jqgrid_data)
-        main_data.send_data.keyword = jqgrid_data.supp_code;
-        main_data.send_data.keyword2 = jqgrid_data.part_kind;
-        main_data.send_data.keyword3 = jqgrid_data.part_code;
-        ccn_ajax('/sysSpartOneGet',  main_data.send_data).then(function (data) {
+
+        var send_data = {};
+        send_data.keyword = jqgrid_data.supp_code;
+        send_data.keyword2 = jqgrid_data.part_kind;
+        send_data.keyword3 = jqgrid_data.part_code;
+        ccn_ajax('/sysSpartOneGet',  send_data).then(function (data) {
             data.startup_date = formmatterDate2(data.startup_date);
             modal_edits('.modal_value', main_data.readonly,data); // response 값 출력
 

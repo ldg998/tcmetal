@@ -36,7 +36,7 @@
 
             <div class="profile-info-name">품명</div>
             <div class="profile-info-value">
-                <select name="part_name" id="modal_select3" type="text" class="form-control keyword modal_value" style="width: 100%;">
+                <select name="part_name" id="modal_select3" type="text" class="form-control keyword modal_value" onchange="select_change_modal3(this.value);" style="width: 100%;">
 
                 </select>
             </div>

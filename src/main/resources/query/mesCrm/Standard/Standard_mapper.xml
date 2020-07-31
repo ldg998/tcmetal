@@ -36,7 +36,7 @@
 	</select>
 
     <select id="sysSpartOneGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">
-		EXEC SP_SYS_SPART_GET_LIST 1,1,#{keyword},#{keyword2},#{keyword3},#{use_yn}
+		EXEC SP_SYS_SPART_GET_LIST 1,1,#{keyword},#{keyword2},#{keyword3},''
 	</select>
 
 </mapper>

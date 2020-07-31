@@ -31,5 +31,12 @@
         EXEC SP_SYS_ERATE_DEL #{keyword}
     </select>
 
+    <select id="sysSpartAllGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">
+		SELECT PART_CODE, PART_NAME FROM SYS_SPART_CD WHERE SUPP_CODE = #{keyword} AND PART_KIND = #{keyword2} ORDER BY PART_CODE
+	</select>
+
+    <select id="sysSpartOneGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">
+		EXEC SP_SYS_SPART_GET_LIST 1,1,#{keyword},#{keyword2},#{keyword3},#{use_yn}
+	</select>
 
 </mapper>

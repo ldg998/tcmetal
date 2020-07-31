@@ -46,4 +46,12 @@ public class CrmStandardService extends ReturnFunction {
 
     public Message sysERateDel(Page p, HttpServletRequest req) { return sm.sysERateDel(p);
     }
+
+    public List<CRM_SPART> sysSpartAllGet(Page p, HttpServletRequest req) {
+        return sm.sysSpartAllGet(p);
+    }
+
+    public CRM_SPART sysSpartOneGet(Page p, HttpServletRequest req) {
+        return sm.sysSpartOneGet(p);
+    }
 }

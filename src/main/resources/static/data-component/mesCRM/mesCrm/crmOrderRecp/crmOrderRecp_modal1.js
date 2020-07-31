@@ -58,7 +58,40 @@ function add_click_btn() {
     });
 }
 
+function select_change_modal1(value) {
+    if (value !== ""){
+        select_makes_base("#modal_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"N").then(function (data) {
+            $('#modal_select3').empty();
+            var option2 = $("<option></option>").text('선택안함').val('');
+            $('#modal_select3').append(option2);
+            $('#modal_select3').select2();
+        });
+    } else {
+        $('#modal_select2').empty();
+        var option = $("<option></option>").text('선택안함').val('');
+        $('#modal_select2').append(option);
+        $('#modal_select2').select2();
 
+        $('#modal_select3').empty();
+        var option2 = $("<option></option>").text('선택안함').val('');
+        $('#modal_select3').append(option2);
+        $('#modal_select3').select2();
+    }
+}
+
+function select_change_modal2(value) {
+    if (value !== ""){
+        select_makes_base("#modal_select3","/sysSpartAllGet","part_code","part_name",{keyword:$("#modal_select1").val(),keyword2:value},"N").then(function (data) {
+
+        });
+    } else {
+
+        $('#modal_select3').empty();
+        var option2 = $("<option></option>").text('선택안함').val('');
+        $('#modal_select3').append(option2);
+        $('#modal_select3').select2();
+    }
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 
 //모달 메세지 설정
@@ -131,6 +164,18 @@ function selectBox_modal1() {
 }
 
 function datepickerInput_modal() {
-    datepicker_makes("#datepicker_modal", -30);
-    datepicker_makes("#datepicker_modal2", 30);
+    datepicker_makes("#datepicker_modal1", 0);
+}
+function selectBox_modal1() {
+    select_makes_base("#modal_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N").then(function (data) {
+        $('#modal_select2').empty();
+        var option = $("<option></option>").text('선택안함').val('');
+        $('#modal_select2').append(option);
+        $('#modal_select2').select2();
+
+        $('#modal_select3').empty();
+        var option2 = $("<option></option>").text('선택안함').val('');
+        $('#modal_select3').append(option2);
+        $('#modal_select3').select2();
+    });
 }

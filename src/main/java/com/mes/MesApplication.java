@@ -23,6 +23,7 @@ import java.nio.charset.Charset;
  * @version     1.0
  * @since       2019-11-14
  **/
+
 @SpringBootApplication
 @MapperScan(value = {"com.mes.Mapper"})
 public class MesApplication extends SpringBootServletInitializer{

@@ -281,7 +281,9 @@ public class CrmService extends ReturnFunction {
         return  crmMapper.sysWoodAllGet(wo);
     }
 
-    public Message sysSpartAdd(CRM_SPART cs, HttpServletRequest req) { return crmMapper.sysSpartAdd(cs);
+    public Message sysSpartAdd(CRM_SPART cs, HttpServletRequest req) {
+        cs.setUser_code(getSessionData(req).getUser_code());
+        return crmMapper.sysSpartAdd(cs);
     }
 
     public RESTful sysSpartGet(Page p, HttpServletRequest req) {

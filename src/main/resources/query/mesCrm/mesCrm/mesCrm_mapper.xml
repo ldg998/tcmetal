@@ -205,7 +205,7 @@
 	</select>
 
 	<select id="sysSpartAdd" resultType="com.mes.Common.DataTransferObject.Message">
-		EXEC SP_SYS_SPART_ADD #{supp_code},#{part_kind},#{part_code},#{part_name},#{part_weight},#{gross_weight},#{part_size},#{unit_cost},#{currency_code},#{route_code},#{outs_supp_code},#{trans_code},#{use_yn},#{startup_date},#{wood_code1},#{wood_code2},#{wood_code3},#{keyword},#{outs_qc}
+		EXEC SP_SYS_SPART_ADD #{supp_code},#{part_kind},#{part_code},#{part_name},#{part_weight},#{gross_weight},#{part_size},#{unit_cost},#{currency_code},#{route_code},#{outs_supp_code},#{trans_code},#{use_yn},#{startup_date},#{wood_code1},#{wood_code2},#{wood_code3},#{keyword},#{outs_qc},#{user_code}
 	</select>
 
 	<select id="sysSpartGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">

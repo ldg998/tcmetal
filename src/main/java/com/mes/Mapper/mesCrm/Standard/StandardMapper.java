@@ -26,4 +26,8 @@ public interface StandardMapper {
     List<SYS_ERATE> sysERateOneGet(Page p);
 
     Message sysERateDel(Page p);
+
+    List<CRM_SPART> sysSpartAllGet(Page p);
+
+    CRM_SPART sysSpartOneGet(Page p);
 }

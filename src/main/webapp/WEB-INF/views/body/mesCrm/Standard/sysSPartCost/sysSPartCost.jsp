@@ -15,7 +15,7 @@
                     <!-- 구분 select 창 -->
                     <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">업체</td>
                     <td class="wt-px-200">
-                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="supp_select_change()" ></select>
+                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value);" ></select>
 
 
                     </td>

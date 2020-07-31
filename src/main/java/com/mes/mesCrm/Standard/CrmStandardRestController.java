@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 public class CrmStandardRestController {
@@ -40,7 +41,11 @@ public class CrmStandardRestController {
     @RequestMapping(value = "/sysERateDel",method = RequestMethod.POST)
     public Message sysERateDel(Page p, HttpServletRequest req){ return crmService.sysERateDel(p,req); }
 
+    @RequestMapping(value = "/sysSpartAllGet",method = RequestMethod.POST)
+    public List<CRM_SPART> sysSpartAllGet(Page p, HttpServletRequest req){ return crmService.sysSpartAllGet(p,req); }
 
+    @RequestMapping(value = "/sysSpartOneGet",method = RequestMethod.POST)
+    public CRM_SPART sysSpartOneGet(Page p, HttpServletRequest req){ return crmService.sysSpartOneGet(p,req); }
 
 
 }

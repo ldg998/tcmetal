@@ -18,7 +18,7 @@ $(document).ready(function () {
     datepickerInput();
     /*----모달----*/
     modal_start1(); // 모달1 시작 함수
-
+    selectBox();
     /*----그리드----*/
     jqGrid_main(); // main 그리드 생성
     jqGridResize("#mes_grid" , $('#mes_grid').closest('[class*="col-"]')); //그리드 리 사이즈
@@ -39,7 +39,9 @@ function get_btn(page) {
 // 추가 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") {
-
+        modal_reset(".modal_value", []);
+        $("#modal_select1").val($("#supp_select").val()).trigger("change");
+        datepicker_makes("#datepicker_modal1", 0);
         $("#addDialog").dialog('open'); // 모달 열기
 
     }
@@ -184,4 +186,9 @@ function jqGrid_main() {
 function datepickerInput() {
     datepicker_makes("#datepicker", -30);
     datepicker_makes("#datepicker2", 0);
+}
+
+function selectBox() {
+    select_makes_base("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
+    });
 }

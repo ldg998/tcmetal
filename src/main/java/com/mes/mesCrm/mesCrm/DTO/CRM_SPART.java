@@ -40,6 +40,10 @@ public class CRM_SPART {
     private String start_date;
     private String create_date;
     private String user_name;
+    private String cost_user_name;
     private String user_code;
+
+    private String update_date;
+    private String cost_create_date;
 
 }

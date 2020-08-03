@@ -6,6 +6,7 @@
 
 var main_data = {
     check: 'I',
+    check2:"Y",
     send_data: {},
     send_data_post: {},
     readonly: [],
@@ -20,7 +21,8 @@ $(document).ready(function () {
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     datepickerInput();
-    modal_start1();
+    suppOutAllGet();
+    selectBox();
     authcheck();
     jqgridPagerIcons();
 });
@@ -28,19 +30,16 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수/////////////////////////////////////
 function test(){
     $('#addDialog').dialog('open');
-    jqGridResize("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
+    jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
 }
 function get_btn(page) {
-    // main_data.send_data = value_return(".condition_main");
-    // main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
-    // main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
-    // main_data.send_data_post = main_data.send_data;
-    // $("#mes_grid").setGridParam({
-    //     url: '/',
-    //     datatype: "json",
-    //     page: page,
-    //     postData: main_data.send_data
-    // }).trigger("reloadGrid");
+    main_data.send_data = value_return(".condition_main");
+    $("#mes_grid").setGridParam({
+        url: '/wmsOutOrderGet',
+        datatype: "json",
+        page: page,
+        postData: main_data.send_data
+    }).trigger("reloadGrid");
 }
 
 
@@ -48,9 +47,12 @@ function add_btn() {
     if(main_data.auth.check_add != "N") {
         main_data.check = 'I';
         modal_reset(".modal_value", main_data.readonly);
-
+        datepicker_makes("#datepicker_modal", -30);
+        datepicker_makes("#datepicker_modal2", 0);
+        $('#mes_modal1_grid1').jqGrid('clearGridData');
+        disabled_tf(["#modal1_select1"],"N");
         $("#addDialog").dialog('open');
-        jqGridResize("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
+        jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
     } else {
         alert(msg_object.TBMES_A001.msg_name1);
     }
@@ -62,12 +64,18 @@ function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         main_data.check = 'U';
         modal_reset(".modal_value", []);
-        var send_data = {};
-        send_data.keyword = jqgrid_data.line_code;
-        send_data.keyword2 = jqgrid_data.machine_code;
-        send_data.keyword3 = jqgrid_data.seq;
+        datepicker_makes("#datepicker_modal", -30);
+        datepicker_makes("#datepicker_modal2", 0);
+        $('#mes_modal1_grid1').jqGrid('clearGridData');
+        ccn_ajax('/wmsOutOrderOneGet', {keyword: jqgrid_data.req_no}).then(function (data) {
+            disabled_tf(["#modal1_select1"],"Y");
+
+            $("#modal1_select1").val(data[0].supp_code).trigger("change");
+            $("#modal1_select2").val(data[0].delivery_place).trigger("change");
 
             $("#addDialog").dialog('open');
+            jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
+        });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
     }
@@ -138,6 +146,25 @@ function delete_btn() {
 // }
 
 ////////////////////////////호출 함수/////////////////////////////////////
+
+function suppOutAllGet() {
+    ccn_ajax("/suppAllGet", {keyword:'Y',keyword2:'CORP_TYPE3'}).then(function (data) {
+        main_data.supp_list = data;
+        main_data.supp_list_string=[];
+        data.forEach(function (d) {
+            main_data.supp_list_string.push(d.supp_code+":"+d.supp_name);
+        })
+        modal_start1();
+
+
+
+    }).catch(function (err) {
+        console.error(err); // Error 출력
+    });
+
+
+}
+
 //메세지 받아오는 함수
 function msg_get() {
     msgGet_auth("TBMES_A001");
@@ -166,23 +193,24 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['출고일자', '출고지시번호','수주일자','업체','PO','기종','품번','품명','단중','수량','외주(열처리)','상태','등록자','등록일시'],
+        colNames: ['rownum','출고일자', '출고지시번호','수주일자','업체','PO','기종','품번','품명','단중','수량','외주(열처리)','상태','등록자','등록일시'],
         colModel: [
 
-            {name: '', index: '', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
+            {name: 'rownum', index: 'rownum', sortable: false,hidden:true,key:true, width: 80,fixed:true},
+            {name: 'work_date', index: 'work_date', sortable: false, width: 80, formatter: formmatterDate2,fixed:true},
+            {name: 'req_no', index: 'req_no', sortable: false, width: 140,fixed:true},
+            {name: 'ord_date', index: 'ord_date', sortable: false, width: 80,formatter: formmatterDate2,fixed:true  },
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 80,fixed:true},
             {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,formatter: formmatterDate2,fixed:true  },
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,fixed:true},
-            {name: '', index: '', sortable: false, width: 80,formatter: formmatterDate2,fixed:true}
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 80,fixed:true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 80,fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 80,fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 80,fixed:true, align: 'right',formatter:'integer'},
+            {name: 'qty', index: 'qty', sortable: false, width: 80,fixed:true, align: 'right',formatter:'integer'},
+            {name: 'outs_supp_name', index: 'outs_supp_name', sortable: false, width: 80,fixed:true},
+            {name: 'status_name', index: 'status_name', sortable: false, width: 80,fixed:true},
+            {name: 'user_name', index: 'user_name', sortable: false, width: 80,fixed:true},
+            {name: 'update_date', index: 'update_date', sortable: false, width: 140,formatter: formmatterDate,fixed:true}
 
         ],
         multiselect: true,
@@ -212,5 +240,10 @@ function jqGrid_main() {
             else
                 $(".jqgfirstrow").css("height","0px");
         }
+    });
+}
+
+function selectBox() {
+    select_makes_base("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
     });
 }

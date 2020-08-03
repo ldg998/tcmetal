@@ -1,11 +1,11 @@
-package com.mes.mesCrm.mesCrm;
+package com.mes.mesCrm.Orders;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-public class CrmController {
+public class CrmOrdersController {
     @RequestMapping(value = "/crmOrderRecp")
     public String crmOrderRecp() {
         return "mesCrm/mesCrm/crmOrderRecp/crmOrderRecp";

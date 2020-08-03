@@ -141,7 +141,7 @@ function jqGrid_main() {
             {name:'stop_date',index:'stop_date',sortable: false,width:150,fixed: true,formatter:formmatterDate2},
             {name:'exch_rate',index:'exch_rate',sortable: false,width:100,fixed: true},
             {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
-            {name:'update_date',index:'update_date',formatter:formmatterDate2,sortable: false,width:180,fixed: true}
+            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
         ],
         caption: "환율관리 | MES",
         autowidth: true,

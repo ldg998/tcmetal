@@ -3,7 +3,7 @@ package com.mes.mesCrm.Standard.DTO;
 import lombok.Data;
 
 @Data
-public class SYS_ERATE {
+public class SYS_ERATE_CD {
     // 화폐단위
     private String currency_code;
 

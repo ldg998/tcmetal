@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mes.Mapper.mesCrm.Standard.StandardMapper">
+<mapper namespace="com.mes.Mapper.mesCrm.Standard.CrmStandardMapper">
 
     <select id="sysSpartCostAdd" resultType="com.mes.Common.DataTransferObject.Message">
     EXEC SP_SYS_SPART_COST_ADD #{supp_code},#{part_kind},#{part_code},#{start_date},#{unit_cost},#{user_code}
@@ -19,11 +19,11 @@
     EXEC SP_SYS_ERATE_ADD #{currency_code},#{start_date},#{stop_date},#{exch_rate},#{user_code},#{keyword}
     </select>
 
-    <select id="sysERateGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_ERATE">
+    <select id="sysERateGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_ERATE_CD">
         EXEC SP_SYS_ERATE_GET_LIST #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
     </select>
 
-     <select id="sysERateOneGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_ERATE">
+     <select id="sysERateOneGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_ERATE_CD">
         EXEC SP_SYS_ERATE_GET_LIST 1,1,'','',#{keyword},#{keyword2}
     </select>
 
@@ -31,12 +31,48 @@
         EXEC SP_SYS_ERATE_DEL #{keyword}
     </select>
 
-    <select id="sysSpartAllGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">
+    <select id="sysSpartAllGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
 		SELECT PART_CODE, PART_NAME FROM SYS_SPART_CD WHERE SUPP_CODE = #{keyword} AND PART_KIND = #{keyword2} ORDER BY PART_CODE
 	</select>
 
-    <select id="sysSpartOneGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_SPART">
+    <select id="sysSpartOneGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
 		EXEC SP_SYS_SPART_GET_LIST 1,1,#{keyword},#{keyword2},#{keyword3},''
+	</select>
+
+    <select id="sysWoodAdd" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_CRM_WOOD_ADD #{wood_code} ,#{unit_cost},#{user_code},#{keyword}
+	</select>
+
+    <select id="sysWoodGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_WOOD_CD">
+		EXEC SP_CRM_WOOD_GET #{page},#{rows},#{keyword}
+	</select>
+
+    <select id="sysWoodOneGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_WOOD_CD">
+		EXEC SP_CRM_WOOD_GET 1,1,#{keyword}
+	</select>
+
+    <select id="sysWoodDelete" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_CRM_WOOD_DEL #{keyword}
+	</select>
+
+    <select id="sysWoodAllGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_WOOD_CD">
+		EXEC SP_CRM_WOOD_SELECT_GET #{keyword}
+	</select>
+
+    <select id="sysSpartAdd" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_SYS_SPART_ADD #{supp_code},#{part_kind},#{part_code},#{part_name},#{part_weight},#{gross_weight},#{part_size},#{unit_cost},#{currency_code},#{route_code},#{outs_supp_code},#{trans_code},#{use_yn},#{startup_date},#{wood_code1},#{wood_code2},#{wood_code3},#{keyword},#{outs_qc},#{user_code}
+	</select>
+
+    <select id="sysSpartGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
+		EXEC SP_SYS_SPART_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{use_yn}
+	</select>
+
+    <select id="partKindGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
+		EXEC SP_CRM_PARTKIND_SELECT_GET #{keyword},#{keyword2}
+	</select>
+
+    <select id="sysSpartCostGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
+		EXEC SP_SYS_SPART_COST_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
 	</select>
 
 </mapper>

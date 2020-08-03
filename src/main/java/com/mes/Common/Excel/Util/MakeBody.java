@@ -1,7 +1,5 @@
 package com.mes.Common.Excel.Util;
 
-import com.mes.mesCrm.mesCrm.DTO.CRM_OUT_SUB;
-import com.mes.mesCrm.mesCrm.DTO.CRM_PLAN;
 import com.mes.mesManager.Master.DTO.SYSSupp;
 import com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB;
 import com.mes.mesOut.mesOut.DTO.OUTS_IO_CD;
@@ -576,30 +574,7 @@ public class MakeBody {
 //        return content;
 //    }
 
-    public List<List<Object>> crmOutList_Body(List<CRM_OUT_SUB> list) {
-        List<List<Object>> content = new ArrayList<>();
-        try {
-            if (list.size() != 0) {
-                for (CRM_OUT_SUB data : list) {
-                    obj = new ArrayList<>();
-                    obj.add(dateFormat(data.getWork_date()));
-                    obj.add(data.getOut_no());
-                    obj.add(data.getSupp_name());
-                    obj.add(data.getPart_code());
-                    obj.add(data.getPart_name());
-                    obj.add(data.getSpec());
-                    obj.add(data.getUnit_name());
-                    obj.add(doubleFormat(data.getUnit_price()));
-                    obj.add(doubleFormat(data.getQty()));
-                    obj.add(data.getUser_name());
-                    content.add(obj);
-                }
-            }
-        } catch (Exception e) {
-            log.info("error code : " + e);
-        }
-        return content;
-    }
+
 
     public List<List<Object>> scmIOList_Body(List<SCM_IO> list) {
         List<List<Object>> content = new ArrayList<>();
@@ -722,31 +697,7 @@ public class MakeBody {
         return content;
     }
 
-    public List<List<Object>> crmPlan_Body(List<CRM_PLAN> list) {
-        List<List<Object>> content = new ArrayList<>();
-        try {
-            if (list.size() != 0) {
-                for (CRM_PLAN data : list) {
-                    obj = new ArrayList<>();
-                    obj.add(data.getPart_name());
-//                    obj.add(data.getPlan_name());
-//                    obj.add(doubleFormat(data.getMonth_plan1()));
-//                    obj.add(doubleFormat(data.getMonth_plan2()));
-//                    obj.add(doubleFormat(data.getMonth_plan3()));
-//                    obj.add(doubleFormat(data.getPlan_qty()));
-//                    obj.add(doubleFormat(data.getTotal_qty()));
-//                    obj.add(doubleFormat(data.getDiff_qty()));
-//                    obj.add(doubleFormat(data.getProd_qty()));
-//                    obj.add(doubleFormat(data.getStock_qty()));
-//                    obj.add(data.getProd_desc());
-                    content.add(obj);
-                }
-            }
-        } catch (Exception e) {
-            log.info("error code : " + e);
-        }
-        return content;
-    }
+
 
     public List<List<Object>> qmsProdError_Body(List<QMS_PROD_SUB> list) {
         List<List<Object>> content = new ArrayList<>();

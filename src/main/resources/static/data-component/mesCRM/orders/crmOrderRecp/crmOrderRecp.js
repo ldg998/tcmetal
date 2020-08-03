@@ -6,6 +6,7 @@
 
 var main_data = {
     check: 'I', // 수정,추가 판단용
+    check2: 'Y',
     readonly: ['dept_code'], // 설정시 해당 name의 readonly 옵션
     auth:{} // 권한 체크 후 권한 data 담는 용도
 };
@@ -29,10 +30,12 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 조회 버튼
 function get_btn(page) {
+    main_data.send_data = value_return(".condition_main");
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysDeptGet',
+        url: '/crmOrderRecpGet',
         datatype: "json",
-        page: page
+        page: page,
+        postData: main_data.send_data
     }).trigger("reloadGrid");
 }
 
@@ -41,9 +44,8 @@ function add_btn() {
     if (main_data.auth.check_add !="N") {
         modal_reset(".modal_value", []);
         $("#modal_select1").val($("#supp_select").val()).trigger("change");
-        datepicker_makes("#datepicker_modal1", 0);
+        disabled_tf(["#modal_select1","#modal_select2","#modal_select3"],"N");
         $("#addDialog").dialog('open'); // 모달 열기
-
     }
 }
 
@@ -52,9 +54,19 @@ function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
         main_data.check = 'U'; // 수정인지 체크
-        ccn_ajax('/sysDeptOneGet', {keyword: jqgrid_data.dept_code}).then(function (data) { // user의 하나 출력
+        main_data.check2 = 'N'; // 수정인지 체크
+        ccn_ajax('/crmOrderRecpOneGet', {keyword: jqgrid_data.ord_no}).then(function (data) { // user의 하나 출력
+            disabled_tf(["#modal_select1","#modal_select2","#modal_select3"],"Y");
             modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
-            $("#addDialog").dialog('open');
+            select_makes_base("#modal_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:data.supp_code},"N").then(function (data2) {
+                $("#modal_select2").val(data.part_kind).trigger("change");
+                select_makes_base("#modal_select3","/sysSpartAllGet","part_code","part_name",{keyword:data.supp_code,keyword2:data.part_kind},"N").then(function (data3) {
+                    $("#modal_select3").val(data.part_code).trigger("change");
+                    main_data.check2 = 'Y';
+                    $("#addDialog").dialog('open');
+                });
+            });
+
         });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
@@ -72,11 +84,11 @@ function delete_btn() {
             if (confirm(msg_object.TBMES_A005.msg_name1)) {
                 main_data.check = 'D';
                 wrapWindowByMask2();
-                ccn_ajax("/sysDeptDelete", {keyword: ids.join(gu5)}).then(function (data) {
+                ccn_ajax("/crmOrderRecpDel", {keyword: ids.join(gu5)}).then(function (data) {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn($("#mes_grid").getGridParam('page'));
+                        $('#mes_grid').trigger("reloadGrid");
                     }
                     closeWindowByMask();
                 }).catch(function (err) {
@@ -90,37 +102,6 @@ function delete_btn() {
     }
 }
 
-
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
@@ -141,19 +122,21 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames : ['수주일자','전표번호','업체','PO','기종','품번','품명','단중','단가','수량','금액'],
+        colNames : ['수주일자','전표번호','업체','PO','기종','품번','품명','단중','단가','수량','금액','등록자','등록일시'],
         colModel : [
-            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:200,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
+            {name:'work_date',index:'work_date' ,sortable: false,width:80,fixed: true,formatter:formmatterDate2},
+            {name:'ord_no',index:'ord_no',sortable: false,key: true,width:200,fixed: true},
+            {name:'supp_name',index:'supp_name',sortable: false,width:100,fixed: true},
             {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:180,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:180,fixed: true}
+            {name:'part_kind',index:'part_kind',sortable: false,width:100,fixed: true},
+            {name:'part_code',index:'part_code',sortable: false,width:100,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:100,fixed: true},
+            {name:'part_weight',index:'part_weight',sortable: false,width:100,fixed: true, align: 'right',formatter:'integer'},
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:100,fixed: true, align: 'right',formatter:'integer'},
+            {name:'qty',index:'qty',sortable: false,width:100,fixed: true, align: 'right',formatter:'integer'},
+            {name: 'price_amount', index: 'price_amount', sortable: false,fixed: true, width: 100, align: 'right',formatter:'integer'},
+            {name: 'user_name', index: 'user_name', sortable: false, width: 130,fixed:true},
+            {name: 'update_date', index: 'update_date', sortable: false, width: 150, formatter: formmatterDate,fixed:true}
         ],
         caption: "수주정보관리 | MES",
         autowidth: true,

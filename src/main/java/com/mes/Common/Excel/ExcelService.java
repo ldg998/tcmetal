@@ -4,10 +4,7 @@ import com.mes.Common.Excel.Action.ExcelFunction;
 import com.mes.Common.Excel.DTO.Excel;
 import com.mes.Common.Excel.Util.MakeBody;
 import com.mes.Common.Excel.Util.MakeHeader;
-import com.mes.Common.Excel.Util.Upload;
 import com.mes.Mapper.Excel.ExcelMapper;
-import com.mes.mesCrm.mesCrm.DTO.CRM_OUT_SUB;
-import com.mes.mesCrm.mesCrm.DTO.CRM_PLAN;
 import com.mes.mesManager.Master.DTO.SYSSupp;
 import com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB;
 import com.mes.mesOut.mesOut.DTO.OUTS_IO_CD;
@@ -30,16 +27,10 @@ import com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB;
 import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import com.mes.mesWms.Stock.DTO.WMS_STOCK;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -1005,81 +996,6 @@ public class ExcelService extends ExcelFunction {
                         cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                     }
                 }
-            } else if (excel.getName().equals("crmPlan")) {
-                // 시트 생성
-                Sheet sheet = sxssfWorkbook.createSheet("계획관리");
-                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
-                excelName = URLEncoder.encode("계획관리", "UTF-8");
-
-                // DataTransfer [s]
-
-                List<CRM_PLAN> list = excelMapper.crmPlanDbList(excel);
-                List<List<Object>> rows = makeBody.crmPlan_Body(list);
-                System.out.println(excel.getRow1());
-                System.out.println(excel.getRow1().equals("1"));
-
-                if (excel.getRow1().equals("1")) {
-                    int index = makeHeader.crmPlan_Header1().length;
-                    String[] data = makeHeader.crmPlan_Header1();
-
-                    row = sheet.createRow(rowNo++);
-                    row.setHeight((short) 512);
-                    for (i = 0; index > i; i++) {
-                        sheet.setColumnWidth((short) i, (short) 7000);
-                        cell = row.createCell(i);
-                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
-                        cell.setCellValue(data[i]);
-                    }
-                } else if (excel.getRow1().equals("2")) {
-                    int index = makeHeader.crmPlan_Header2().length;
-                    String[] data = makeHeader.crmPlan_Header2();
-
-                    row = sheet.createRow(rowNo++);
-                    row.setHeight((short) 512);
-                    for (i = 0; index > i; i++) {
-                        sheet.setColumnWidth((short) i, (short) 7000);
-                        cell = row.createCell(i);
-                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
-                        cell.setCellValue(data[i]);
-                    }
-                } else if (excel.getRow1().equals("3")) {
-                    int index = makeHeader.crmPlan_Header3().length;
-                    String[] data = makeHeader.crmPlan_Header3();
-
-                    row = sheet.createRow(rowNo++);
-                    row.setHeight((short) 512);
-                    for (i = 0; index > i; i++) {
-                        sheet.setColumnWidth((short) i, (short) 7000);
-                        cell = row.createCell(i);
-                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
-                        cell.setCellValue(data[i]);
-                    }
-                } else if (excel.getRow1().equals("4")) {
-                    int index = makeHeader.crmPlan_Header4().length;
-                    String[] data = makeHeader.crmPlan_Header4();
-
-                    row = sheet.createRow(rowNo++);
-                    row.setHeight((short) 512);
-                    for (i = 0; index > i; i++) {
-                        sheet.setColumnWidth((short) i, (short) 7000);
-                        cell = row.createCell(i);
-                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
-                        cell.setCellValue(data[i]);
-                    }
-                }
-                // DataTransfer [e]
-                // (MakeHeader) 헤더 생성
-
-
-                // (MakeBody) 바디 생성
-                for (i = 0; list.size() > i; i++) {
-                    row = sheet.createRow(rowNo++);
-                    for (v = 0; rows.get(i).size() > v; v++) {
-                        cell = row.createCell(v);
-                        cell.setCellStyle(setBodyStyle(sxssfWorkbook));
-                        cell.setCellValue(String.valueOf(rows.get(i).get(v)));
-                    }
-                }
             } else if (excel.getName().equals("crmWorkList")) {
 //                // 시트 생성
 //                Sheet sheet = sxssfWorkbook.createSheet("실적현황");
@@ -1160,39 +1076,6 @@ public class ExcelService extends ExcelFunction {
 //                        cell.setCellValue(String.valueOf(rows.get(i).get(v)));
 //                    }
 //                }
-            } else if (excel.getName().equals("crmOutList")) {
-                // 시트 생성
-                Sheet sheet = sxssfWorkbook.createSheet("출하실적");
-                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
-                excelName = URLEncoder.encode("출하실적", "UTF-8");
-
-                // DataTransfer [s]
-
-                List<CRM_OUT_SUB> list = excelMapper.crmOutListDbList(excel);
-                List<List<Object>> rows = makeBody.crmOutList_Body(list);
-                int index = makeHeader.crmOutList_Header().length;
-                String[] data = makeHeader.crmOutList_Header();
-                // DataTransfer [e]
-
-                // (MakeHeader) 헤더 생성
-                row = sheet.createRow(rowNo++);
-                row.setHeight((short) 512);
-                for (i = 0; index > i; i++) {
-                    sheet.setColumnWidth((short) i, (short) 7000);
-                    cell = row.createCell(i);
-                    cell.setCellStyle(setHeadStyle(sxssfWorkbook));
-                    cell.setCellValue(data[i]);
-                }
-
-                // (MakeBody) 바디 생성
-                for (i = 0; list.size() > i; i++) {
-                    row = sheet.createRow(rowNo++);
-                    for (v = 0; rows.get(i).size() > v; v++) {
-                        cell = row.createCell(v);
-                        cell.setCellStyle(setBodyStyle(sxssfWorkbook));
-                        cell.setCellValue(String.valueOf(rows.get(i).get(v)));
-                    }
-                }
             } else if (excel.getName().equals("qmsRecvList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("수입검사현황");

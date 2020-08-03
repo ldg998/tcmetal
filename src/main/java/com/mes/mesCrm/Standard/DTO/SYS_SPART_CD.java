@@ -1,9 +1,9 @@
-package com.mes.mesCrm.mesCrm.DTO;
+package com.mes.mesCrm.Standard.DTO;
 
 import lombok.Data;
 
 @Data
-public class CRM_SPART {
+public class SYS_SPART_CD {
 
     private String supp_name;
     private String supp_code;

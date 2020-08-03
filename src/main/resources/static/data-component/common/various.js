@@ -147,9 +147,13 @@ function modal_reset(class_name,readonly) {
 				$(this).removeAttr("readonly");
 			}
 		}
-		$(this).val("").trigger('change');
+
 		if ($(this).hasClass("ynCheck") === true) {
 			$(this).val("Y").trigger('change');
+		} else if ($(this).hasClass("sendDate")){
+			datepicker_makes(this, 0);
+		} else {
+			$(this).val("").trigger('change');
 		}
 	});
 }
@@ -168,7 +172,14 @@ function value_return(class_name) {
 	var objectValue = null;
 	$(class_name).each(function(i){
 		objectName = $(this).attr("name");
-		objectValue = $(this).val();
+		if ($(this).hasClass("qty")){
+			objectValue = $(this).val().replace(/[^0-9]/g,'');
+		} else if($(this).hasClass("sendDate")){
+			objectValue = $(this).val().replace(/\-/g, '');
+		}else {
+			objectValue = $(this).val();
+		}
+
 		modal_objact[objectName] = objectValue;
 	});
 		return modal_objact
@@ -197,7 +208,13 @@ function modal_edits(class_name,readonly,data) {
 				$(this).attr("readonly","readonly");
 			}
 		}
-		$(this).val(data[$(this).attr("name")]).trigger('change');
+		if ($(this).hasClass("qty")){
+			$(this).val((data[$(this).attr("name")]+"").replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")).trigger('change');
+		} else if ($(this).hasClass("sendDate")){
+			$(this).val(formmatterDate2(data[$(this).attr("name")])).trigger('change');
+		}else {
+			$(this).val(data[$(this).attr("name")]).trigger('change');
+		}
 
 	});
 }
@@ -754,5 +771,13 @@ function select_supp_name_code(tag,url,value,text,data,what){
 		$(tag).select2();
 	});
 
+
+}
+
+function disabled_tf(list,what) {
+	var tf = what == "Y" ? true : false;
+	for (var i =0 ; i < list.length; i++){
+		$(list[i]).prop("disabled",tf).trigger('change');
+	}
 
 }

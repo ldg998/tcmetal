@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%> <!-- 페이지 언어, 인코딩 설정 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- JSTL 태그 라이브러리 -->
 <%@ page session="false" %> <!-- 응답 HTTP 헤더에 세션 쿠키가 존재함을 확인할 수 있습니다. -->
-<script type="text/javascript" src="/data-component/mesCRM/mesCrm/crmOrderRecp/crmOrderRecp_modal1.js" charset="UTF-8"></script> <!-- 스크립트 파일 import -->
+<script type="text/javascript" src="/data-component/mesCRM/orders/crmOrderRecp/crmOrderRecp_modal1.js" charset="UTF-8"></script> <!-- 스크립트 파일 import -->
 
 
 <div id="addDialog" title="수주등록" style="display:none">
@@ -11,9 +11,10 @@
             <div class="profile-info-name">수주일자</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
-                    <input name="" id="datepicker_modal1" type="text" class="form-control keyword modal_value" readonly style="width: 100%" autocomplete="off">
+                    <input name="work_date" id="datepicker_modal1" type="text" class="form-control keyword modal_value sendDate" readonly style="width: 100%" autocomplete="off">
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                     <input type="hidden" autofocus>
+                    <input type="hidden" name="ord_no" class="modal_value">
                 </div>
             </div>
 
@@ -60,12 +61,12 @@
         <div class="profile-info-row">
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
-                <input name="part_weight" type="text" class="form-control keyword modal_value"  style="width: 100%; text-align: right;" autocomplete="off">
+                <input name="part_weight" type="text" class="form-control keyword modal_value qty" onkeyup="num_keyup_comma_crm3(this);"  style="width: 100%; text-align: right;" autocomplete="off">
 
             </div>
             <div class="profile-info-name">단가(원)</div>
             <div class="profile-info-value">
-                <input name="unit_cost" type="text" class="form-control keyword modal_value"   style="width: 100%; text-align: right;" autocomplete="off">
+                <input name="unit_cost" type="text" class="form-control keyword modal_value qty" onkeyup="num_keyup_comma_crm(this)"   style="width: 100%; text-align: right;" autocomplete="off">
 
             </div>
         </div>
@@ -74,12 +75,12 @@
             <div class="profile-info-row">
                 <div class="profile-info-name">수량</div>
                 <div class="profile-info-value">
-                    <input name="qty" type="text" class="form-control keyword modal_value" style="width: 100%; text-align: right;" autocomplete="off">
+                    <input name="qty" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_crm2(this)" autocomplete="off">
 
                 </div>
                 <div class="profile-info-name">총금액(원)</div>
                 <div class="profile-info-value">
-                    <input name="price_amount" type="text" class="form-control keyword modal_value" placeholder="자동생성" readonly style="width: 100%; text-align: right;" autocomplete="off">
+                    <input name="price_amount" type="text" class="form-control keyword modal_value qty" placeholder="자동생성" readonly style="width: 100%; text-align: right;" autocomplete="off">
 
                 </div>
             </div>

@@ -30,7 +30,7 @@ $(document).ready(function () {
 // 조회 버튼
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysDeptGet',
+        url: '/crmOrderRecpGet',
         datatype: "json",
         page: page
     }).trigger("reloadGrid");

@@ -28,23 +28,24 @@
             <div class="profile-info-value">
                 <input name="" type="text" class="form-control keyword modal_value" placeholder="자동생성" readonly style="width: 100%" autocomplete="off">
             </div>
-
-            <div class="profile-info-name">PO</div>
+            <div class="profile-info-name">품명</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%" autofocus autocomplete="off">
+                <input name="" type="text" class="form-control keyword modal_value" placeholder="자동생성" readonly style="width: 100%" autocomplete="off">
             </div>
+
         </div>
 
         <%--3--%>
         <div class="profile-info-row">
+            <div class="profile-info-name">PO</div>
+            <div class="profile-info-value">
+                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%" autofocus autocomplete="off">
+            </div>
+
             <div class="profile-info-name">품번</div>
             <div class="profile-info-value">
                 <input name="" type="text" class="form-control keyword modal_value" placeholder="별도창검색" readonly style="width: 100%" autocomplete="off">
 
-            </div>
-            <div class="profile-info-name">품명</div>
-            <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" placeholder="자동생성" readonly style="width: 100%" autocomplete="off">
             </div>
         </div>
 

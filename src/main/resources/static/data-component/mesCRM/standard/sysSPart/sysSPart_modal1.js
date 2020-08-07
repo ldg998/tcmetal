@@ -124,7 +124,7 @@ function datepicker_modal1() {
 }
 function select_modal_start(){
 
-    select_makes_base("#supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'});
+    select_makes_base("#supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'});
     select_makes_base("#select_modal1", "/sysCommonAllGet","code_value","code_name1",{keyword:'CURRENCY_TYPE'});
     $('#select_modal2').select2();
     select_makes_base("#select_modal3","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'},"N");

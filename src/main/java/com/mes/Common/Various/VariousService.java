@@ -6,8 +6,7 @@ import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.Function.ReturnFunction;
 import com.mes.Common.Various.DTO.*;
 import com.mes.Mapper.Various.VariousMapper;
-import com.mes.mesCrm.mesCrm.DTO.CRM_ORD_RECP;
-import com.mes.mesCrm.mesCrm.DTO.SYS_ASSY_CABLE;
+import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
 import com.mes.mesManager.Authority.DTO.SYSAuthProgram;
 import com.mes.mesManager.Master.DTO.SYSCargo;
 import com.mes.mesManager.Master.DTO.SYSCommon;
@@ -113,41 +112,13 @@ public class VariousService extends ReturnFunction {
     }
 
 
-    public List<SYSProdLine> sysProdLineAllGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        return variousMapper.sysProdLineAllGet(p);
-    }
+
 
     public List<POP_LINE_USER_CD> popLineUserAllGet(HttpServletRequest req, Page p) {
         p.setSite_code(getSessionData(req).getSite_code());
         return variousMapper.popLineUserAllGet(p);
     }
 
-    public WMS_STOCK_TOTAL wmsStockTotalOneGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        Calendar c1 = Calendar.getInstance();
-        String strToday = sdf.format(c1.getTime());
-        p.setKeyword(strToday);
-        WMS_STOCK_TOTAL wst =  variousMapper.wmsStockTotalOneGet(p);
-        if (wst == null){
-            wst = new WMS_STOCK_TOTAL();
-            wst.setQty(0);
-        }
-        return wst;
-    }
-
-    public List<SYSCargo> sysCargoAllGet(HttpServletRequest req, Page p) {
-        return variousMapper.sysCargoAllGet(p);
-    }
-
-    public List<SYS_PROD_TYPE> sysProdTypeAllGet(HttpServletRequest req, Page p) {
-        return variousMapper.sysProdTypeAllGet(p);
-    }
-
-    public List<SYS_PROD_CD> sysProdAllGet(HttpServletRequest req, Page p) {
-        return variousMapper.sysProdAllGet(p);
-    }
 
     public List<SYS_PART_CD> sysPartAllGet(HttpServletRequest req, Page p) {
         return variousMapper.sysPartAllGet(p);
@@ -170,5 +141,9 @@ public class VariousService extends ReturnFunction {
     }
 
     public List<SYSSupp> suppAllGet(Page p) { return variousMapper.suppAllGet(p);
+    }
+
+    public List<SYSSupp> suppDeliveryPlaceGet(Page p) {
+        return variousMapper.suppDeliveryPlaceGet(p);
     }
 }

@@ -3,7 +3,7 @@ package com.mes.Mapper.Various;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.Various.DTO.*;
-import com.mes.mesCrm.mesCrm.DTO.CRM_ORD_RECP;
+import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
 import com.mes.mesManager.Authority.DTO.SYSAuthProgram;
 import com.mes.mesManager.Master.DTO.SYSCargo;
 import com.mes.mesManager.Master.DTO.SYSCommon;
@@ -55,17 +55,7 @@ public interface VariousMapper {
     List<POP_ROUTE_CD> popRouteGroupAllGet(Page p);
 
 
-    List<SYSProdLine> sysProdLineAllGet(Page p);
-
     List<POP_LINE_USER_CD> popLineUserAllGet(Page p);
-
-    WMS_STOCK_TOTAL wmsStockTotalOneGet(Page p);
-
-    List<SYSCargo> sysCargoAllGet(Page p);
-
-    List<SYS_PROD_TYPE> sysProdTypeAllGet(Page p);
-
-    List<SYS_PROD_CD> sysProdAllGet(Page p);
 
     List<SYS_PART_CD> sysPartAllGet(Page p);
 
@@ -76,4 +66,6 @@ public interface VariousMapper {
     List<SYS_MENU_FAVORITES_CD> sysMenuFavoritesGet(SYS_MENU_FAVORITES_CD m);
 
     List<SYSSupp> suppAllGet(Page p);
+
+    List<SYSSupp> suppDeliveryPlaceGet(Page p);
 }

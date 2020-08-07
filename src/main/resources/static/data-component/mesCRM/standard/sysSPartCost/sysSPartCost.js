@@ -81,7 +81,16 @@ function update_btn(jqgrid_data) {
         alert(msg_object.TBMES_A003.msg_name1);
     }
 }
-
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
+}
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
@@ -117,8 +126,8 @@ function jqGrid_main() {
             {name:'currency_code',index:'currency_code',sortable: false,width:80,fixed: true},
             {name:'start_date',index:'start_date',sortable: false,width:80,fixed: true,formatter:formmatterDate2},
             {name:'unit_cost',index:'unit_cost',sortable: false,width:80,fixed: true,formatter: 'integer'},
-            {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
-            {name:'create_date',index:'update_date',sortable: false,width:180,fixed: true,formatter:formmatterDate2}// formatter 사용을 통해 데이터 형식 가공
+            {name:'cost_user_name',index:'cost_user_name',sortable: false,width:80,fixed: true},
+            {name:'cost_create_date',index:'cost_create_date',sortable: false,width:180,fixed: true,formatter:formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "제품단가관리 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
@@ -148,8 +157,12 @@ function jqGrid_main() {
 
 
 function selectBox() {
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'},"N");
-    select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:''},"N");
+    select_makes_base("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    });
 }
 //
 // function supp_select_change() {

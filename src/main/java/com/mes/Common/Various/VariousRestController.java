@@ -104,23 +104,9 @@ public class VariousRestController {
     public List<POP_ROUTE_CD> popRouteGroupAllGet(HttpServletRequest req, Page p){ return variousService.popRouteGroupAllGet(req, p);}
 
 
-    @RequestMapping(value ="/sysProdLineAllGet",method = RequestMethod.POST)
-    public List<SYSProdLine> sysProdLineAllGet(HttpServletRequest req, Page p){ return variousService.sysProdLineAllGet(req, p);}
-
     @RequestMapping(value ="/popLineUserAllGet",method = RequestMethod.POST)
     public List<POP_LINE_USER_CD> popLineUserAllGet(HttpServletRequest req, Page p){ return variousService.popLineUserAllGet(req, p);}
 
-    @RequestMapping(value ="/wmsStockTotalOneGet",method = RequestMethod.POST)
-    public WMS_STOCK_TOTAL wmsStockTotalOneGet(HttpServletRequest req, Page p){ return variousService.wmsStockTotalOneGet(req, p);}
-
-    @RequestMapping(value ="/sysCargoAllGet",method = RequestMethod.POST)
-    public List<SYSCargo> sysCargoAllGet(HttpServletRequest req, Page p){ return variousService.sysCargoAllGet(req, p);}
-
-    @RequestMapping(value ="/sysProdTypeAllGet",method = RequestMethod.POST)
-    public List<SYS_PROD_TYPE> sysProdTypeAllGet(HttpServletRequest req, Page p){ return variousService.sysProdTypeAllGet(req, p);}
-
-    @RequestMapping(value ="/sysProdAllGet",method = RequestMethod.POST)
-    public List<SYS_PROD_CD> sysProdAllGet(HttpServletRequest req, Page p){ return variousService.sysProdAllGet(req, p);}
 
     @RequestMapping(value ="/sysPartAllGet",method = RequestMethod.POST)
     public List<SYS_PART_CD> sysPartAllGet(HttpServletRequest req, Page p){ return variousService.sysPartAllGet(req, p);}
@@ -137,6 +123,9 @@ public class VariousRestController {
 
     @RequestMapping(value ="/suppAllGet",method = RequestMethod.POST)
     public List<SYSSupp> suppAllGet(HttpServletRequest req,Page p){ return variousService.suppAllGet(p);}
+
+    @RequestMapping(value ="/suppDeliveryPlaceGet",method = RequestMethod.POST)
+    public List<SYSSupp> suppDeliveryPlaceGet(Page p){ return variousService.suppDeliveryPlaceGet(p);}
 
 
 }

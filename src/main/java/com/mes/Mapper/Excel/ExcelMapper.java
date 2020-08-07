@@ -1,9 +1,7 @@
 package com.mes.Mapper.Excel;
 
 import com.mes.Common.Excel.DTO.Excel;
-import com.mes.mesCrm.mesCrm.DTO.CRM_ORD_RECP;
-import com.mes.mesCrm.mesCrm.DTO.CRM_OUT_SUB;
-import com.mes.mesCrm.mesCrm.DTO.CRM_PLAN;
+import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
 import com.mes.mesManager.Master.DTO.SYSSupp;
 import com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB;
 import com.mes.mesOut.mesOut.DTO.OUTS_IO_CD;
@@ -45,11 +43,10 @@ public interface ExcelMapper {
 
     List<SCM_STOCK_SUM_MONTH> scmStockSumMonthListDbList(Excel excel);
 
-    List<CRM_ORD_RECP> crmWorkListDbList(Excel excel);
+
 
     List<QMS_RECV_SUB> qmsRecvDbList(Excel excel);
 
-    List<QMS_PROD_SUB> qmsProdDbList(Excel excel);
 
     List<OUTS_OUT_SUB> outsOutDbList(Excel excel);
 
@@ -69,7 +66,7 @@ public interface ExcelMapper {
 
     List<CRM_ORD_RECP> crmProdOrderDbList(Excel excel);
 
-    List<CRM_OUT_SUB> crmOutListDbList(Excel excel);
+
 
     List<SCM_IO> scmIOListDbList(Excel excel);
 
@@ -81,7 +78,7 @@ public interface ExcelMapper {
 
     List<WMS_STOCK> wmsStockIOSumMonthDbList(Excel excel);
 
-    List<CRM_PLAN> crmPlanDbList(Excel excel);
+
 
     List<QMS_RECV_SUB> qmsRecvErrorDbList(Excel excel);
 

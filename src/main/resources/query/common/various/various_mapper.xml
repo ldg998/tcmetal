@@ -41,7 +41,7 @@
    </select>
 
 
-    <select id="crmOrderModalGet" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_ORD_RECP">
+    <select id="crmOrderModalGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
 		EXEC [SP_CRM_ORD_RECP_DIALOG_GET]  #{page},#{rows}, #{start_date},#{end_date} ,''
    </select>
 
@@ -50,9 +50,7 @@
     </select>
 
 
-    <select id="crmAssyCableAllGet" resultType="com.mes.mesCrm.mesCrm.DTO.SYS_ASSY_CABLE">
-		EXEC SP_SYS_ASSY_CABLE_GET 0, 0, #{keyword}
-	</select>
+
 
     <select id="popRouteGroupAllGet" resultType="com.mes.mesPop.Standard.DTO.POP_ROUTE_CD">
         EXEC SP_POP_ROUTE_GET 0,0,''
@@ -60,33 +58,8 @@
 
 
 
-    <select id="sysProdLineAllGet" resultType="com.mes.mesManager.Master.DTO.SYSProdLine">
-    	EXEC SP_SYS_LINE_GET 0, 0, '',''
-    </select>
-
-
     <select id="popLineUserAllGet" resultType="com.mes.mesPop.Standard.DTO.POP_LINE_USER_CD">
         EXEC SP_POP_LINE_USER_GET 0,0,#{keyword}
-    </select>
-
-    <select id="wmsStockTotalOneGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK_TOTAL">
-        EXEC SP_WMS_STOCK_TOTAL_GET #{keyword},#{keyword2}
-    </select>
-
-
-
-
-    <select id="sysCargoAllGet" resultType="com.mes.mesManager.Master.DTO.SYSCargo">
-        EXEC SP_SYS_CARGO_GET 0,0,'','Y'
-    </select>
-
-    <select id="sysProdTypeAllGet" resultType="com.mes.Common.Various.DTO.SYS_PROD_TYPE">
-        EXEC SP_SYS_PROD_TYPE_GET 0,0,''
-    </select>
-
-
-    <select id="sysProdAllGet" resultType="com.mes.Common.Various.DTO.SYS_PROD_CD">
-        EXEC SP_SYS_PROD_GET 0,0,#{keyword},''
     </select>
 
     <select id="sysPartAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
@@ -119,7 +92,9 @@
     <select id="suppAllGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
         EXEC SP_SYS_SUPP_SELECT_GET #{keyword},#{keyword2}
     </select>
-
+    <select id="suppDeliveryPlaceGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
+        EXEC SP_SUPP_DELIVERY_PLACE_GET #{keyword}
+    </select>
 
 </mapper>
 

@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  <!-- JSTL 태그 라이브러리 -->
 <%@ page session="false" %> <!-- 응답 HTTP 헤더에 세션 쿠키가 존재함을 확인할 수 있습니다. -->
 
-<script type="text/javascript" src="/data-component/mesCRM/mesCrm/crmOrderRecp/crmOrderRecp.js" charset="UTF-8"></script> <!-- 스크립트 파일 import -->
+<script type="text/javascript" src="/data-component/mesCRM/orders/crmOrderRecp/crmOrderRecp.js" charset="UTF-8"></script> <!-- 스크립트 파일 import -->
 
 <div class="main-content-inner">
     <div class="page-content">
@@ -16,7 +16,7 @@
                         <td class="wt-px-200">
                             <div class="input-icon input-icon-right">
                                 <input type="text" name="start_date" id="datepicker"
-                                       class="form-control h-25 condition_main" readonly>
+                                       class="form-control h-25 condition_main sendDate" readonly>
                                 <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                             </div>
                         </td>
@@ -26,7 +26,7 @@
                         <td class="wt-px-200">
                             <div class="input-icon input-icon-right">
                                 <input type="text" name="end_date" id="datepicker2"
-                                       class="form-control h-25 condition_main" readonly>
+                                       class="form-control h-25 condition_main sendDate" readonly>
                                 <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                             </div>
                         </td>
@@ -34,7 +34,7 @@
                         <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                         <td class="wt-px-200">
                             <div class="input-icon input-icon-right">
-                                <input type="text" name="supp_name" class="form-control h-25 condition_main">
+                                <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%"  ></select>
 <%--                                <input type="text" name="supp_name" class="form-control h-25 condition_main"--%>
 <%--                                       id="supp_name_main" onclick="supp_btn('A');" readonly>--%>
 <%--                                <input type="hidden" name="keyword" class="form-control h-25 condition_main"--%>
@@ -85,6 +85,3 @@
 <!-- 모달창 import -->
 <%@include file="crmOrderRecp_modal1.jsp"%>
 
-
-
-<%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>

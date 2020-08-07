@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesCrm.Orders.CrmOrdersMapper">
+
+	<select id="crmOrderRecpGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
+		EXEC SP_CRM_ORD_RECP_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword},''
+    </select>
+
+	<select id="crmOrderRecpOneGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
+		EXEC SP_CRM_ORD_RECP_GET 1, 1,'', '','' ,#{keyword}
+    </select>
+
+	<select id="crmOrderRecpAdd" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_CRM_ORD_RECP_ADD #{ord_no},#{work_date},#{supp_code},#{part_kind},#{part_code},#{part_weight},#{unit_cost},
+						#{qty},#{price_amount},#{user_code},#{keyword}
+	</select>
+
+	<select id="crmOrderRecpDel" resultType="com.mes.Common.DataTransferObject.Message">
+	   	EXEC SP_CRM_ORD_RECP_DEL  #{keyword}
+	</select>
+	<select id="crmOrderRecpModalGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
+		EXEC SP_CRM_ORD_RECP_MODAL_GET 0, 0,#{start_date}, #{end_date}, #{keyword}
+    </select>
+	<select id="wmsOutOrderAdd" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_WMS_OUT_ORD_ADD #{req_no},#{work_date},#{supp_code},#{delivery_place},#{keyword2},#{keyword},#{user_code}
+	</select>
+	<select id="wmsOutOrderGet" resultType="com.mes.mesCrm.Orders.DTO.WMS_OUT_ORD_SUB">
+		EXEC SP_WMS_OUT_ORD_SUB_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword},''
+    </select>
+</mapper>

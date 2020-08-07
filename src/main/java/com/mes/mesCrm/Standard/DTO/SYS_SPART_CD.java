@@ -1,9 +1,9 @@
-package com.mes.mesCrm.mesCrm.DTO;
+package com.mes.mesCrm.Standard.DTO;
 
 import lombok.Data;
 
 @Data
-public class CRM_SPART {
+public class SYS_SPART_CD {
 
     private String supp_name;
     private String supp_code;
@@ -40,6 +40,10 @@ public class CRM_SPART {
     private String start_date;
     private String create_date;
     private String user_name;
+    private String cost_user_name;
     private String user_code;
+
+    private String update_date;
+    private String cost_create_date;
 
 }

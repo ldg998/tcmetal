@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
-<script type="text/javascript" src="/data-component/mesCRM/mesCrm/crmShipping/crmShipping.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesCRM/orders/crmShipping/crmShipping.js" charset="UTF-8"></script>
 
 <style>
     #gview_mes_grid>.ui-jqgrid-hdiv {

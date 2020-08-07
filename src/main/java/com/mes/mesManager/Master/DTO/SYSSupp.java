@@ -32,6 +32,7 @@ public class SYSSupp {
     private String delivery_place1;
     private String delivery_place2;
     private String delivery_place3;
+    private String delivery_place;
     private String keyword;
     private String keyword2;
     private String site_code;

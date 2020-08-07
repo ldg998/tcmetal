@@ -72,15 +72,15 @@
 <!--        EXEC SP_SCM_STOCK_GET_MONTH 0,0,#{row0},#{row1},''-->
 <!--    </select>-->
 
-<!--    <select id="crmWorkListDbList" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_ORD_RECP">-->
+<!--    <select id="crmWorkListDbList" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">-->
 <!--        EXEC SP_CRM_ORD_RECP_PROFIT_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4},#{row5},''-->
 <!--    </select>-->
 
-<!--    <select id="crmProdOrderDbList" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_ORD_RECP">-->
+<!--    <select id="crmProdOrderDbList" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">-->
 <!--        EXEC SP_CRM_ORD_RECP_GET 0,0,#{row0},#{row1},''-->
 <!--    </select>-->
 
-<!--    <select id="crmOutListDbList" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_OUT_SUB">-->
+<!--    <select id="crmOutListDbList" resultType="com.mes.mesCrm.Orders.DTO.CRM_OUT_SUB">-->
 <!--        EXEC SP_CRM_OUT_SUB_GET 0,0,#{row0},#{row1},#{row2}-->
 <!--    </select>-->
 
@@ -124,7 +124,7 @@
 <!--        EXEC SP_WMS_STOCK_GET_MONTH 0,0,#{row0},#{row1},#{row2},#{row3},''-->
 <!--    </select>-->
 
-<!--    <select id="crmPlanDbList" resultType="com.mes.mesCrm.mesCrm.DTO.CRM_PLAN">-->
+<!--    <select id="crmPlanDbList" resultType="com.mes.mesCrm.Orders.DTO.CRM_PLAN">-->
 <!--        EXEC SP_CRM_PLAN_GET  0, 0,#{row0},#{row1},#{row2},'','G'-->
 <!--    </select>-->
 

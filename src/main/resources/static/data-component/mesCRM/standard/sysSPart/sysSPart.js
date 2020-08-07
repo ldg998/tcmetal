@@ -70,13 +70,14 @@ function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
-        console.log(jqgrid_data)
-        main_data.send_data.keyword = jqgrid_data.supp_code;
-        main_data.send_data.keyword2 = jqgrid_data.part_kind;
-        main_data.send_data.keyword3 = jqgrid_data.part_code;
-        ccn_ajax('/sysSpartGet',  main_data.send_data).then(function (data) {
-            data.rows[0].startup_date = formmatterDate2(data.rows[0].startup_date);
-            modal_edits('.modal_value', main_data.readonly, data.rows[0]); // response 값 출력
+
+        var send_data = {};
+        send_data.keyword = jqgrid_data.supp_code;
+        send_data.keyword2 = jqgrid_data.part_kind;
+        send_data.keyword3 = jqgrid_data.part_code;
+        ccn_ajax('/sysSpartOneGet',  send_data).then(function (data) {
+            data.startup_date = formmatterDate2(data.startup_date);
+            modal_edits('.modal_value', main_data.readonly,data); // response 값 출력
 
             $("#addDialog").dialog('open');// 모달 열기
 
@@ -124,7 +125,16 @@ function delete_btn() {
         alert(msg_object.TBMES_A002.msg_name1);
     }
 }
-
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'',keyword2:value},"Y");
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
+}
 
 ////////////////////////////호출 함수//////////////////////////////////
 //호출함수
@@ -150,8 +160,8 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['','','업체','기종','품명','품번','품명(생산지시용)','단중','사이즈','포장무게','단가','화폐단위','공정라우팅','외주','외주(열처리)업체','사용유무','초도품생산일','목재1','목재2','목재3','출장검사','등록자','수정일'],
         colModel: [
-            {name: 'rownum', index: 'rownum',hidden:true,fixed: true,key:true},
-            {name: 'supp_code', index: 'supp_code',hidden:true,fixed: true},
+            {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
+            {name: 'supp_code', index: 'supp_code',hidden:true, width: 80,fixed: true},
             {name: 'supp_name', index: 'supp_name',sortable: false, width: 80,fixed: true},//업체
             {name: 'part_kind', index: 'part_kind',sortable: false, width: 80,fixed: true},//기종
             {name: 'part_name', index: 'part_name',sortable: false, width: 80,fixed: true},//품명
@@ -172,7 +182,7 @@ function jqGrid_main() {
             {name: 'wood_code3', index: 'wood_code3',sortable: false, width: 80,fixed: true},
             {name: 'outs_qc', index: 'outs_qc',sortable: false, width: 80,fixed: true},
             {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
-            {name: 'update_date', index: 'update_date',sortable: false, width: 80,fixed: true,formatter:formmatterDate}
+            {name: 'update_date', index: 'update_date',sortable: false, width: 150,fixed: true,formatter:formmatterDate}
 
         ],
         caption: "제품품목 | MES",
@@ -203,9 +213,14 @@ function jqGrid_main() {
 }
 
 function selectBox() {
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE4'},"N");
-  //  $('#part_kind_select').select2();
-    select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'',keyword2:''},"N");
+    select_makes_base("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    });
+
+    // select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'',keyword2:''},"Y");
 }
 //
 // function supp_select_change() {

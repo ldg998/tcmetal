@@ -35,10 +35,7 @@ public class WmsInOutRestController {
         return wmsInOutService.wmsOutReadyGet(req, p);
     }
 
-    @RequestMapping(value="/wmsOutOrderGet" , method = RequestMethod.POST)
-    public RESTful wmsOutOrderGet(HttpServletRequest req, Page p){
-        return wmsInOutService.wmsOutOrderGet(req, p);
-    }
+
 
     @RequestMapping(value="/wmsOutOrderSubGet" , method = RequestMethod.POST)
     public RESTful wmsOutOrderSubGet(HttpServletRequest req, Page p){
@@ -49,10 +46,7 @@ public class WmsInOutRestController {
         return wmsInOutService.wmsOutOrderSubOneGet(req, p);
     }
 
-    @RequestMapping(value="/wmsOutOrderAdd" , method = RequestMethod.POST)
-    public Message wmsOutOrderAdd(HttpServletRequest req, WMS_OUT_ORD_SUB woos){
-        return wmsInOutService.wmsOutOrderAdd(req, woos);
-    }
+
     @RequestMapping(value="/wmsOutOrderDel" , method = RequestMethod.POST)
     public Message wmsOutOrderDel(HttpServletRequest req,  Page p){
         return wmsInOutService.wmsOutOrderDel(req, p);

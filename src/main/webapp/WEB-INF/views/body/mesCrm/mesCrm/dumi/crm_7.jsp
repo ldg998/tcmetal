@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
-<script type="text/javascript" src="/data-component/mesCRM/mesCrm/crm_7/crm_7.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/data-component/mesCRM/orders/crm_7/crm_7.js" charset="UTF-8"></script>
 
 <style>
     #gview_mes_grid>.ui-jqgrid-hdiv {

@@ -1,9 +1,9 @@
-package com.mes.mesCrm.mesCrm.DTO;
+package com.mes.mesCrm.Standard.DTO;
 
 import lombok.Data;
 
 @Data
-public class CRM_WOOD {
+public class SYS_WOOD_CD {
 
     private String wood_code;
     private int unit_cost;

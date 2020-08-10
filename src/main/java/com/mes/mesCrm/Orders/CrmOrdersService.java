@@ -61,4 +61,12 @@ public class CrmOrdersService extends ReturnFunction {
         List<WMS_OUT_ORD_SUB> rows = crmOrdersMapper.wmsOutOrderGet(p);
         return getListData(rows , p);
     }
+
+    public List<WMS_OUT_ORD_SUB> wmsOutOrderOneGet(Page p) {
+        return crmOrdersMapper.wmsOutOrderOneGet(p);
+    }
+
+    public Message wmsOutOrderDel(Page p) {
+        return crmOrdersMapper.wmsOutOrderDel(p);
+    }
 }

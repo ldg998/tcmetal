@@ -26,4 +26,8 @@ public interface CrmOrdersMapper {
     Message wmsOutOrderAdd(WMS_OUT_ORD_SUB woos);
 
     List<WMS_OUT_ORD_SUB> wmsOutOrderGet(Page p);
+
+    List<WMS_OUT_ORD_SUB> wmsOutOrderOneGet(Page p);
+
+    Message wmsOutOrderDel(Page p);
 }

@@ -47,18 +47,12 @@ public class WmsInOutRestController {
     }
 
 
-    @RequestMapping(value="/wmsOutOrderDel" , method = RequestMethod.POST)
-    public Message wmsOutOrderDel(HttpServletRequest req,  Page p){
-        return wmsInOutService.wmsOutOrderDel(req, p);
-    }
+
 
     @RequestMapping(value = "/wmsOrdPlanGet", method = RequestMethod.POST)
     public List<POP_PLAN> wmsOrdPlanGet(HttpServletRequest req, Page p) { return wmsInOutService.wmsOrdPlanGet(req, p); }
 
-    @RequestMapping(value = "/wmsOutOrderOneGet", method = RequestMethod.POST)
-    public List<WMS_OUT_ORD> wmsOutOrderOneGet(HttpServletRequest req, WMS_OUT_ORD woo) {
-        return wmsInOutService.wmsOutOrderOneGet(req,woo);
-    }
+
     @RequestMapping(value = "/wmsOrdPlanUpGet", method = RequestMethod.POST)
     public List<POP_PLAN> wmsOrdPlanUpGet(HttpServletRequest req, POP_PLAN pp) {
         return wmsInOutService.wmsOrdPlanUpGet(req,pp);

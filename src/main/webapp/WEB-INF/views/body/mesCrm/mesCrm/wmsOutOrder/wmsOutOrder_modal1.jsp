@@ -45,7 +45,13 @@
                             <option value="">성우</option>
                         </select>
                     </td>
-
+                    <td class="wt-px-50 td-title t-align-c padding-a-0">선적일자</td>
+                    <td class="wt-px-125">
+                        <div class="input-icon input-icon-right">
+                            <input type="text" name="ship_date" id="datepicker4_modal" class="form-control h-25 modal_value sendDate" readonly>
+                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                        </div>
+                    </td>
 
 
                     <td></td>
@@ -72,7 +78,7 @@
                                             <span>저장</span>
                                         </span>
                     </a>
-                    <a id="delete_btn" class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="partModal_close();">
+                    <a id="delete_btn" class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="modal1_close_btn();">
                                 <span>
                                     <i class="fa fa-times bigger-110 blue"></i>
                                     <span>취소</span>

@@ -28,7 +28,7 @@ function addUdate_btn() {
             var list2 = [];
             jdata.forEach(function (data, j) {
                 if (data.qty !== '' && data.qty > 0) {
-                    list.push(data.ord_no + gu4 + data.qty + gu4 + data.outs_supp_code  + gu4 + data.ship_date.replace(/\-/g, ''));
+                    list.push(data.ord_no + gu4 + data.qty + gu4 + data.outs_supp_code );
                 } else {
                     list2.push(data.ord_no);
                 }
@@ -45,7 +45,6 @@ function addUdate_btn() {
                     wrapWindowByMask2();
                     add_data.keyword2 = list.join(gu5);
                     add_data.keyword = main_data.check;
-                    console.log(add_data);
                     ccn_ajax("/wmsOutOrderAdd", add_data).then(function (data) {
                         if (data.result === 'NG') {
                             alert(data.message);
@@ -107,7 +106,9 @@ function select_change_modal1(value) {
     $('#mes_modal1_grid1').jqGrid('clearGridData');
 }
 
-
+function modal1_close_btn() {
+    $("#addDialog").dialog('close');
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 //메세지 받아오는 함수
 function msg_get_modal1() {
@@ -156,8 +157,9 @@ function jqGrid_main_modal() {
     $("#mes_modal1_grid1").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['수주번호','수주일자','업체','PO','기종','품번','품명','단중','수주수량','기납품수량','납품수량','외주(열처리)','선적일자'],// grid 헤더 설정
+        colNames : ['저장수량','수주번호','수주일자','업체','PO','기종','품번','품명','단중','수주수량','기납품수량','납품수량','외주(열처리)'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
+            {name: 'qty2', index: 'qty2', sortable: false, hidden:true},
             {name:'ord_no',index:'ord_no',hidden:true,key:true,sortable: false,width:110,fixed: true},
             {name:'work_date',index:'work_date',sortable: false,width:110,fixed: true, formatter: formmatterDate2},
             {name:'supp_name',index:'supp_name',sortable: false,width:125,fixed: true},
@@ -197,12 +199,21 @@ function jqGrid_main_modal() {
                                     var data = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
                                     var value = e.target.value;
 
+                                    var check;
+                                    if (main_data.check === "I"){
+                                        check =  parseInt_change((parseInt(data.ord_qty) - parseInt(data.prev_qty))) < parseInt_change(value);
+                                    } else {
+                                        check =  parseInt_change((parseInt(data.ord_qty) - parseInt(data.prev_qty) + parseInt(data.qty2))) < parseInt_change(value);
+                                    }
+
+
+
                                     if (isNaN(value)) {
                                         alert("숫자만 입력가능합니다.");
                                         e.target.value = 0;
                                         $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
                                         return false;
-                                    } else if (parseFloat_change((parseFloat(data.ord_qty) - parseFloat(data.prev_qty))) < parseFloat_change(value)) {
+                                    } else if (check) {
                                         alert("납품 가능 수량이 초과 하였습니다.");
                                         e.target.value = 0;
                                         $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
@@ -224,12 +235,20 @@ function jqGrid_main_modal() {
                                 var data = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
                                 var value = e.target.value;
 
+
+                                var check;
+                                if (main_data.check === "I"){
+                                    check =  parseInt_change((parseInt(data.ord_qty) - parseInt(data.prev_qty))) < parseInt_change(value);
+                                } else {
+                                    check =  parseInt_change((parseInt(data.ord_qty) - parseInt(data.prev_qty) + parseInt(data.qty2))) < parseInt_change(value);
+                                }
+
                                 if (isNaN(value)) {
                                     alert("숫자만 입력가능합니다.");
                                     e.target.value = 0;
                                     $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
                                     return false;
-                                } else if (parseFloat_change((parseFloat(data.ord_qty) - parseFloat(data.prev_qty))) < parseFloat_change(value)) {
+                                } else if (check) {
                                     alert("납품 가능 수량이 초과 하였습니다.");
                                     e.target.value = 0;
                                     $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
@@ -273,29 +292,8 @@ function jqGrid_main_modal() {
 
 
                 }
-            },
-            {name:'ship_date',index:'ship_date', width: 100, sortable: false,formatter: formmatterDate2, editable: true,fixed:true,
-                editoptions: {
-                    dataInit: function (element) {
-                        $(element).attr("readonly","readonly").datepicker({
-                            format: 'yyyymmdd',
-                            autoclose: true,
-                            language:   "kr",
-                            widgetPositioning:{
-                                horizontal: 'auto',
-                                vertical: 'bottom'
-                            }
-
-                        }).on('changeDate', function(e) {
-                            $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
-
-                        }).on('hide', function(ev) {
-                            $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
-                        });
-                    }
-
-                }
             }
+
         ],
         // caption: "자재단가 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
@@ -316,7 +314,7 @@ function jqGrid_main_modal() {
             return (cm[i].name === 'cb');
         },
         loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
-            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
+            if ($("#mes_modal1_grid1").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
                 $(".jqgfirstrow").css("height","1px");
             else
                 $(".jqgfirstrow").css("height","0px");
@@ -328,6 +326,7 @@ function datepickerInput_modal1() {
     datepicker_makes("#datepicker_modal", -30);
     datepicker_makes("#datepicker2_modal", 0);
     datepicker_makes("#datepicker3_modal", 0);
+    datepicker_makes("#datepicker4_modal", 0);
 }
 
 function selectBox_modal1() {

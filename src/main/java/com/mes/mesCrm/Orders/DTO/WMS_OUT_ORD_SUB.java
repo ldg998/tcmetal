@@ -16,6 +16,7 @@ public class WMS_OUT_ORD_SUB {
     private int ord_qty;
     private int prev_qty;
     private int qty;
+    private int qty2;
     private String outs_supp_code;
     private String outs_supp_name;
     private String ship_date;

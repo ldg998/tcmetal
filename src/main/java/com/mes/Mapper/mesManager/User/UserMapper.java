@@ -8,6 +8,7 @@ import com.mes.mesManager.User.DTO.SYSUser;
 import com.mes.mesManager.User.DTO.SYSUserSupp;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.List;
 @Repository
 public interface UserMapper {

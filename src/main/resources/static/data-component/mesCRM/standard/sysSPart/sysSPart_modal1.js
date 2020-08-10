@@ -19,6 +19,8 @@ function modal_start1() {
 function addUdate_btn() {
     var modal_objact = value_return(".modal_value");
     modal_objact.startup_date = modal_objact.startup_date.replace(/\-/g, '');
+    modal_objact.part_weight = modal_objact.part_weight.replace(/\,/g, '');
+    modal_objact.gross_weight = modal_objact.gross_weight.replace(/\,/g, '');
 
     if (effectiveness1(modal_objact)) {
         var text = msg_object.TBMES_Q002.msg_name1;

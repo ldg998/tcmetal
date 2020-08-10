@@ -64,37 +64,6 @@ function excel_download() {
 }
 
 
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014");
@@ -117,16 +86,16 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['입고일자', '전표번호', '업체', '기종', '품명', '품번','단중', '제품LOT', '등록자', '등록일시'],
         colModel: [
-            {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true, formatter: formmatterDate2},
-            {name: 'in_no', index: 'in_no', sortable: false, width: 150,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 150,fixed:true},
+            {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true, formatter: formmatterDate2}, //WMS_IN
+            {name: 'in_no', index: 'in_no', sortable: false, width: 150,fixed:true}, //WMS_IN
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true}, //USER_CODE
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 150,fixed:true}, //
             {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
-            {name: 'part_no', index: 'part_no', sortable: false, width: 150,fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 150,fixed:true,formatter: 'integer'},
+            {name: 'part_code', index: 'part_no', sortable: false, width: 150,fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 150,fixed:true,formatter: 'integer',align: 'right'},
             {name: 'lot_no', index: 'lot', sortable: false, width: 150,fixed:true},
             {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed:true},
-            {name: 'update_date', index: 'update_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate}
+            {name: 'update_date', index: 'update_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2}
         ],
         caption: "입고현황 | MES",
         autowidth: true,
@@ -143,7 +112,19 @@ function jqGrid_main() {
         }
     });
 }
+
 function selectBox() {
-    $('#select_1').select2();
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")
+    $('#part_kind_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+}
+
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
 }

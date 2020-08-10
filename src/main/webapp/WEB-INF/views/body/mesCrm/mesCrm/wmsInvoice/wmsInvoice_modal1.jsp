@@ -75,13 +75,13 @@
         <div class="profile-info-row">
             <div class="profile-info-name">Seller</div>
             <div class="profile-info-value">
-                <textarea cols="18" rows="7">
+                <textarea cols="36" rows="7">
 
                 </textarea>
             </div>
             <div class="profile-info-name">Consignee</div>
             <div class="profile-info-value">
-              <textarea cols="18" rows="7">
+              <textarea cols="36" rows="7">
 
                 </textarea>
             </div>
@@ -92,14 +92,14 @@
         <div class="profile-info-row">
             <div class="profile-info-name">Buyer NOTIFY</div>
             <div class="profile-info-value">
-               <textarea cols="18" rows="7">
+               <textarea cols="36" rows="7">
 
                 </textarea>
             </div>
 
             <div class="profile-info-name">Vessel/VOY</div>
             <div class="profile-info-value">
-                <textarea cols="18" rows="7">
+                <textarea cols="36" rows="7">
 
                 </textarea>
             </div>
@@ -109,13 +109,13 @@
             <div class="profile-info-row">
                 <div class="profile-info-name">Terms of Delivery<br>and Payment </div>
                 <div class="profile-info-value">
-                   <textarea cols="18" rows="7">
+                   <textarea cols="36" rows="7">
 
                 </textarea>
                 </div>
                 <div class="profile-info-name">Remark</div>
                 <div class="profile-info-value">
-                    <textarea cols="18" rows="7">
+                    <textarea cols="36" rows="7">
 
                 </textarea>
                 </div>

@@ -107,8 +107,9 @@ function jqGrid_main_modal() {
             {name:'part_code',index:'part_code',sortable: false,hidden:true},
             {name:'part_kind',index:'part_kind',sortable: false,hidden:true},
             {name:'start_date',index:'start_date',sortable: false,width:100,fixed: true,formatter:formmatterDate2},
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:130,fixed: true,formatter: 'integer'}
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:130,fixed: true,formatter: 'integer',align: 'right'}
         ],
+        caption: "제품단가관리 | MES",
         multiselect: true,
         autowidth: true,// 그리드 자동 가로 길이 설정
         height: 100, // 그리드 세로 길이 설정

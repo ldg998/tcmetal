@@ -85,9 +85,9 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['입고일자','전표번호','외주업체','업체','기종','품번','품명','단중','수량','출장검사','등록자','수정일'],
         colModel: [
-            {name: 'work_date', index: 'work_date',sortable: false, width: 80,fixed: true},
+            {name: 'work_date', index: 'work_date',sortable: false, width: 100,fixed: true,formatter:formmatterDate2},
             {name: 'in_no', index: 'in_no',sortable: false, width: 80,fixed: true},
-            {name: 'supp_name2', index: 'supp_name2',sortable: false, width: 80,fixed: true},
+            {name: 'outs_supp_name', index: 'outs_supp_name',sortable: false, width: 80,fixed: true},
             {name: 'supp_name', index: 'supp_name',sortable: false, width: 80,fixed: true},
             {name: 'part_kind', index: 'part_kind',sortable: false, width: 80,fixed: true},
             {name: 'part_code', index: 'part_code',sortable: false, width: 80,fixed: true},
@@ -96,7 +96,7 @@ function jqGrid_main() {
             {name: 'qty', index: 'qty',sortable: false, width: 80,fixed: true},
             {name: 'outs_qc', index: 'outs_qc',sortable: false, width: 80,fixed: true},
             {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
-            {name: 'update_date', index: 'update_date',sortable: false, width: 80,fixed: true}
+            {name: 'update_date', index: 'update_date',sortable: false, width: 100,fixed: true,formatter:formmatterDate2}
 
         ],
         caption: "외주입고현황 | MES",

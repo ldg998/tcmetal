@@ -44,7 +44,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">환율</div>
             <div class="profile-info-value">
-                <input type="text" name="exch_rate" id="exch_rate" class="form-control modal_value" onkeyup="num_keyup_float(this)"
+                <input type="text" name="exch_rate" id="exch_rate" class="form-control modal_value" style="text-align: right" onkeyup="num_keyup_comma_crm4(this)"
                        autocomplete="off">
             </div>
         </div>

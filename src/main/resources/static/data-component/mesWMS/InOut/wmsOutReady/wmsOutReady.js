@@ -26,7 +26,6 @@ $(document).ready(function () {
 function get_btn(page) {
 
     main_data.send_data = value_return2(".condition_main");
-    console.log(value_return2(".condition_main"));
 
     $("#mes_grid").setGridParam({
         url: '/wmsOutReadyGet',
@@ -35,38 +34,6 @@ function get_btn(page) {
         postData: main_data.send_data
     }).trigger("reloadGrid");
 }
-
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
 
 function excel_download() {
     if (confirm(msg_object.TBMES_Q014.msg_name1)) {
@@ -122,9 +89,9 @@ function jqGrid_main() {
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 150, fixed:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 150, fixed:true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 150, fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 150, fixed:true},
-            {name: 'qty', index: 'qty', sortable: false, width: 150, fixed:true},
-            {name: 'weight', index: 'weight', sortable: false, width: 150, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 150, fixed:true,formatter:'integer',align: 'right'},
+            {name: 'qty', index: 'qty', sortable: false, width: 150, fixed:true,formatter:'integer',align: 'right'},
+            {name: 'weight', index: 'weight', sortable: false, width: 150, fixed:true,formatter:'integer',align: 'right'},
             {name: 'user_name', index: 'user_name', sortable: false, width: 150, fixed:true},
             {name: 'update_date', index: 'update_date', sortable: false, width: 150, fixed:true,formatter:formmatterDate2}
         ],
@@ -144,7 +111,19 @@ function jqGrid_main() {
 
     });
 }
+
 function selectBox() {
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
-    $('#part_kind').select2();
+    $('#part_kind_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
+}
+
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
 }

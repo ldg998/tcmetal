@@ -4,7 +4,7 @@
 <mapper namespace="com.mes.Mapper.mesCrm.Orders.CrmOrdersMapper">
 
 	<select id="crmOrderRecpGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
-		EXEC SP_CRM_ORD_RECP_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword},''
+		EXEC SP_CRM_ORD_RECP_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},''
     </select>
 
 	<select id="crmOrderRecpOneGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">

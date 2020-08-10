@@ -34,13 +34,13 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <%--조회할 업채명--%>
                     <td class="wt-px-200">
-                        <select class="form-control condition_main" name="supp_code" id="supp_select" style="width: 100%"></select>
+                        <select class="form-control condition_main" name="supp_code" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
                     </td>
 
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <select name="part_kind" id="select_1" class="form-control condition_main" style="width: 100%;">
+                            <select name="part_kind" id="part_kind_select" class="form-control condition_main" style="width: 100%;">
                                 <option value="">전체</option>
                             </select>
                         </div>

@@ -112,7 +112,7 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['','출고일자','품번','품명','규격','단위','수량','등록자','수정일'],// grid 헤더 설정
+        colNames : ['','출고일자','품번','품명','규격','단위','수량','등록자','등록일시'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'out_no',index:'out_no',sortable: false,hidden:true, key:true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name:'work_date',index:'work_date' ,sortable: false,width:100,fixed: true,formatter: formmatterDate2},

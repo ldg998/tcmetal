@@ -25,7 +25,7 @@ public class OUTS_IN_SUB {
     private String supp_name2;
     private String part_kind;
     private String outs_qc;
-
+    private String outs_supp_name;
     private int part_weight;
     private int rownum;
     private int rownum_page;

@@ -7,7 +7,7 @@
     </select>
 
     <select id="outsInListGet" resultType="com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB">
-            EXEC SP_OUTS_IN_LIST_GET #{page}, #{rows}, #{start_date}, #{end_date} ,#{keyword} ,#{keyword2},#{keyword3}
+            EXEC SP_OUTS_IN_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword} ,#{keyword2},#{keyword3}
     </select>
 
 

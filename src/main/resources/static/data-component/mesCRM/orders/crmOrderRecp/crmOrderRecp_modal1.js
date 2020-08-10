@@ -144,11 +144,14 @@ function num_keyup_comma_crm2(e) {
     $("input[name=qty]").val($(e).val()).trigger("change");
     sum_qty_keyup();
 }
+
 function num_keyup_comma_crm3(e) {
     $(e).val($(e).val().replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     $("input[name=part_weight]").val($(e).val()).trigger("change");
-
 }
+
+
+
 
 function sum_qty_keyup() {
     var qty =  $('input[name=qty]').val();

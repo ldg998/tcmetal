@@ -24,7 +24,7 @@ function Udate_btn() {
 function modal_make1() {
     $("#addDialog").dialog({
         modal: true,
-        width: 'auto',
+        width: 800,
         height: 'auto',
         autoOpen: false,
         resizable: false,

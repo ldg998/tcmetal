@@ -159,6 +159,7 @@ function jqGrid_main() {
             {name: 'auth_name', index: 'auth_name', align: 'center', sortable: false},
         ],
         caption: "권한그룹별 프로그램관리 | MES",
+        rowNum:100,
         autowidth: true,
         height: 620,
         jsonReader: {cell: ""},

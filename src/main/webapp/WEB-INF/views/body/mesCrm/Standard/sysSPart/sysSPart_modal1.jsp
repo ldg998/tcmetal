@@ -3,6 +3,7 @@
 <%@ page session="false" %> <!-- 응답 HTTP 헤더에 세션 쿠키가 존재함을 확인할 수 있습니다. -->
 <script type="text/javascript" src="/data-component/mesCRM/standard/sysSPart/sysSPart_modal1.js" charset="UTF-8"></script> <!-- 스크립트 파일 import -->
 
+
 <!-- dialog 모달창 설정 -->
 <div id="addDialog" title="제품품목정보관리" style="display: none">
     <div class="profile-user-info profile-user-info-striped">
@@ -36,7 +37,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
-                <input type="text"  name="part_weight" class="form-control modal_value"  onkeyup="num_keyup_hyphen(this)" autocomplete="off" >
+                <input type="text"  name="part_weight" class="form-control modal_value"  onkeyup="num_keyup_comma_crm4(this);" autocomplete="off" style="text-align: right">
             </div>
         </div>
         <div class="profile-info-row">
@@ -48,7 +49,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">포장무게</div>
             <div class="profile-info-value">
-                <input type="text"  name="gross_weight" class="form-control modal_value"  onkeyup="num_keyup_hyphen(this)" autocomplete="off" >
+                <input type="text"  name="gross_weight" class="form-control modal_value"  onkeyup="num_keyup_comma_crm4(this);" autocomplete="off" style="text-align: right">
             </div>
         </div>
 

@@ -6,7 +6,7 @@ var main_data = {
     check: 'I',
     send_data: {},
     send_data_post: {},
-    readonly:['code_value'],
+    readonly:['supp_code','part_kind','part_name','part_code'],
     auth:{}
 }
 
@@ -55,7 +55,7 @@ function add_btn() {
         $('#select_modal7 option:eq(0)').prop("selected", true).trigger("change");
         $('#select_modal8 option:eq(0)').prop("selected", true).trigger("change");
         $('#select_modal9 option:eq(0)').prop("selected", true).trigger("change");
-
+        $("#supp_modal_select").prop("disabled",false).trigger("change");
 
 
         main_data.check = 'I'; // 추가인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
@@ -78,7 +78,7 @@ function update_btn(jqgrid_data) {
         ccn_ajax('/sysSpartOneGet',  send_data).then(function (data) {
             data.startup_date = formmatterDate2(data.startup_date);
             modal_edits('.modal_value', main_data.readonly,data); // response 값 출력
-
+            $("#supp_modal_select").prop("disabled",true).trigger("change");
             $("#addDialog").dialog('open');// 모달 열기
 
 
@@ -167,10 +167,10 @@ function jqGrid_main() {
             {name: 'part_name', index: 'part_name',sortable: false, width: 80,fixed: true},//품명
             {name: 'part_code', index: 'part_code',sortable: false, width: 80,fixed: true},//품번
             {name: 'part_name2', index: 'part_name2',sortable: false, width: 120,fixed: true},//품명(생산지용)
-            {name: 'part_weight', index: 'part_weight',sortable: false, width: 120,fixed: true},//단중
+            {name: 'part_weight', index: 'part_weight',sortable: false, width: 120,fixed: true,formatter: 'integer',align: 'right'},//단중
             {name: 'part_size', index: 'part_size',sortable: false, width: 120,fixed: true},//사이즈
-            {name: 'gross_weight', index: 'gross_weight',sortable: false, width: 120,fixed: true},//포장무게
-            {name: 'unit_cost', index: 'unit_cost',sortable: false, width: 80,fixed: true,formatter: 'integer'},//단가
+            {name: 'gross_weight', index: 'gross_weight',sortable: false, width: 120,fixed: true,formatter: 'integer',align: 'right'},//포장무게
+            {name: 'unit_cost', index: 'unit_cost',sortable: false, width: 80,fixed: true,formatter: 'integer',align: 'right'},//단가
             {name: 'currency_code', index: 'currency_code',sortable: false, width: 120,fixed: true},//화폐단위
             {name: 'route_name', index: 'route_name',sortable: false, width: 120,fixed: true},//공정라우팅
             {name: 'outs', index: 'outs',sortable: false, width: 120,fixed: true},//외주

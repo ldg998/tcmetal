@@ -17,6 +17,7 @@ function modal_start1() {
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
     var modal_objact = value_return(".modal_value");
+    modal_objact.unit_cost = modal_objact.unit_cost.replace(/\,/g, '');
     if (effectiveness1(modal_objact)) {
         var text = msg_object.TBMES_Q002.msg_name1;
         if (main_data.check === "U") {

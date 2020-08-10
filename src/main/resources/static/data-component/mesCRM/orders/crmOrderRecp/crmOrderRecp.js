@@ -31,6 +31,9 @@ $(document).ready(function () {
 // 조회 버튼
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
+    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, ''); //가져온 날짜데이터 가공 2020-06-01 = 20200601
+    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, ''); //가져온 날짜데이터 가공 2020-06-01 = 20200601
+
     $("#mes_grid").setGridParam({ // 그리드 조회
         url: '/crmOrderRecpGet',
         datatype: "json",
@@ -42,6 +45,7 @@ function get_btn(page) {
 // 추가 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") {
+        main_data.check = 'I'; // 수정인지 체크
         modal_reset(".modal_value", []);
         $("#modal_select1").val($("#supp_select").val()).trigger("change");
         disabled_tf(["#modal_select1","#modal_select2","#modal_select3"],"N");

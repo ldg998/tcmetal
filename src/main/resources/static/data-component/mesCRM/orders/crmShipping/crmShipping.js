@@ -133,26 +133,26 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['선적일자', '전표번호', '업체','운송수단', '해상운임','터미널 핸들링비용','환경','쇼링비','부두이용료','서류발급비','하역료','보험료','항만시설보안료','국내운송비','관세대행수수료','목재비','순중량','운송단가','등록자','등록일시'],
         colModel: [
-            {name:'1', index: '1', width: 150, fixed:true},
-            {name:'2', index: '2',  width: 150, fixed:true},
-            {name:'3', index: '3',  width: 150, fixed:true},
-            {name:'4', index: '4',  width: 150, fixed:true},
-            {name:'5', index: '5',  width: 150, fixed:true},
-            {name:'6', index: '6',  width: 150, fixed:true},
-            {name:'7', index: '7',  width: 150, fixed:true},
-            {name:'8', index: '8',  width: 150, fixed:true},
-            {name:'9', index: '9',  width: 150, fixed:true},
-            {name:'10', index: '10',  width: 150, fixed:true},
-            {name:'11', index: '11', width: 150, fixed:true},
-            {name:'12', index: '12', width: 150, fixed:true},
-            {name:'13', index: '13', width: 150, fixed:true},
-            {name:'14', index: '14', width: 150, fixed:true},
-            {name:'15', index: '15',  width: 150, fixed:true},
-            {name:'16', index: '16', width: 150, fixed:true},
-            {name:'17', index: '17', width: 150, fixed:true},
-            {name:'18', index: '18', width: 150, fixed:true},
-            {name:'19', index: '19', width: 150, fixed:true},
-            {name:'20', index: '20',  width: 150, fixed:true}
+            {name:'ship_date', index: '1', width: 150, fixed:true},
+            {name:'req_no', index: '2',  width: 150, fixed:true},
+            {name:'supp_name', index: '3',  width: 150, fixed:true},
+            {name:'trans_code', index: '4',  width: 150, fixed:true},
+            {name:'ship_cost', index: '5',  width: 150, fixed:true},
+            {name:'port_cost1', index: '6',  width: 150, fixed:true},
+            {name:'port_cost2', index: '7',  width: 150, fixed:true},
+            {name:'port_cost3', index: '8',  width: 150, fixed:true},
+            {name:'port_cost4', index: '9',  width: 150, fixed:true},
+            {name:'port_cost5', index: '10',  width: 150, fixed:true},
+            {name:'unloading_cost', index: '11', width: 150, fixed:true},
+            {name:'landing_ost', index: '12', width: 150, fixed:true},
+            {name:'harbor_facility', index: '13', width: 150, fixed:true},
+            {name:'local_cost', index: '14', width: 150, fixed:true},
+            {name:'customs_fee', index: '15',  width: 150, fixed:true},
+            {name:'wood_cost1', index: '16', width: 150, fixed:true},
+            {name:'weight', index: '17', width: 150, fixed:true},
+            {name:'unit_cost', index: '18', width: 150, fixed:true},
+            {name:'user_name', index: '19', width: 150, fixed:true},
+            {name:'create_date', index: '20',  width: 150, fixed:true}
 
         ],
         multiselect: true,
@@ -179,7 +179,7 @@ function header_make() {
     $("#mes_grid").jqGrid('setGroupHeaders',{
         useColSpanStyle: true,
         groupHeaders: [
-            {startColumnName: '6', numberOfColumns: 5, titleText: '<center>항구비용</center>'}
+            {startColumnName: 'PORT_COST1', numberOfColumns: 5, titleText: '<center>항구비용</center>'}
 
             ]
     })

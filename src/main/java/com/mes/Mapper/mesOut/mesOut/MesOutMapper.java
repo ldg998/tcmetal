@@ -17,4 +17,6 @@ public interface MesOutMapper {
     List<OUTS_IO_CD> outsInReadyGet(Page p);
 
     List<OUTS_IO_CD> outsIOListGet(Page p);
+
+    List<OUTS_IN_SUB> outsOutModalListGet(Page p);
 }

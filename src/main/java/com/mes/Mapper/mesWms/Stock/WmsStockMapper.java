@@ -13,4 +13,6 @@ public interface WmsStockMapper {
     List<WMS_STOCK> wmsStockSumDayListGet(Page p);
 
     List<WMS_STOCK> wmsStockSumMonthListGet(Page p);
+
+    List<WMS_STOCK> wmsStockSumGet(Page p);
 }

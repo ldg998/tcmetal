@@ -19,9 +19,15 @@ public class WmsStockRestController {
         return wmsStockService.wmsStockListGet(req, p);
     }
 
+ @RequestMapping(value = "/wmsStockSumGet" , method = RequestMethod.POST)
+    public RESTful wmsStockSumGet(HttpServletRequest req, Page p) {
+        return wmsStockService.wmsStockSumGet(req, p);
+    }
+
     @RequestMapping(value = "/wmsStockSumDayListGet", method = RequestMethod.POST)
     public RESTful wmsStockSumDayListGet(HttpServletRequest req, Page p) { return wmsStockService.wmsStockSumDayListGet(req, p); }
 
     @RequestMapping(value = "/wmsStockSumMonthListGet", method = RequestMethod.POST)
     public RESTful wmsStockSumMonthListGet(HttpServletRequest req, Page p) { return wmsStockService.wmsStockSumMonthListGet(req, p); }
+
 }

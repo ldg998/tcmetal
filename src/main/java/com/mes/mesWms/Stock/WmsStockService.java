@@ -35,4 +35,9 @@ public class WmsStockService extends ReturnFunction {
         List<WMS_STOCK> rows = wmsStockMapper.wmsStockSumMonthListGet(p);
         return getListData(rows, p);
     }
+
+    public RESTful wmsStockSumGet(HttpServletRequest req, Page p) {
+        List<WMS_STOCK> rows = wmsStockMapper.wmsStockSumGet(p);
+        return getListData(rows, p);
+    }
 }

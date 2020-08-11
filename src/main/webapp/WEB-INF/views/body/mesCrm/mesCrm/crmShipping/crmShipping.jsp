@@ -100,3 +100,4 @@
 </div>
 
 <%@include file="crmShipping_modal1.jsp"%>
+<%@include file="crmShipping_modal2.jsp"%>

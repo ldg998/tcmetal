@@ -58,6 +58,46 @@ function add_click_btn() {
     });
 }
 
+function num_keyup_comma_ship(e) {
+    $(e).val($(e).val().replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")).trigger("change");
+    // $(e).val($(e).val()).trigger("change");
+    // sum_qty_keyup();
+    sum_unit_cost();
+}
+
+function wood_select_btn(value,num) {
+    if (value !== ""){
+        ccn_ajax('/sysWoodOneGet', {keyword:value}).then(function (data) { // user의 하나 출력
+            $("input[name=wood_cost"+num+"]").val(data[0].unit_cost);
+            sum_unit_cost();
+        });
+    } else {
+        $("input[name=wood_cost"+num+"]").val("");
+        sum_unit_cost();
+    }
+}
+
+function sum_unit_cost() {
+    var value_data = value_return(".modal_value");
+    var sum_cost =
+        parseInt(value_data.ship_cost)+
+        parseInt(value_data.port_cost1)+
+        parseInt(value_data.port_cost2)+
+        parseInt(value_data.port_cost3)+
+        parseInt(value_data.port_cost4)+
+        parseInt(value_data.port_cost5)+
+        parseInt(value_data.unloading_cost)+
+        parseInt(value_data.landing_ost)+
+        parseInt(value_data.harbor_facility)+
+        parseInt(value_data.local_cost)+
+        parseInt(value_data.customs_fee)+
+        (parseInt(value_data.wood_qty1)*parseInt(value_data.wood_cost1))+
+        (parseInt(value_data.wood_qty2)*parseInt(value_data.wood_cost2))+
+        (parseInt(value_data.wood_qty3)*parseInt(value_data.wood_cost3));
+
+    $("input[name=unit_cost]").val((sum_cost+"").replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+}
 
 ////////////////////////////호출 함수/////////////////////////////////////
 
@@ -127,9 +167,9 @@ function modal_make1() {
 }
 
 function selectBox_modal1() {
-    $('#_select').select2();
-    $('#_select2').select2();
-    $('#_select3').select2();
+    select_makes_base("#modal1_select1", "/sysWoodAllGet","wood_code","wood_code",{keyword:''},'N');
+    select_makes_base("#modal1_select2", "/sysWoodAllGet","wood_code","wood_code",{keyword:''},'N');
+    select_makes_base("#modal1_select3", "/sysWoodAllGet","wood_code","wood_code",{keyword:''},'N');
 
 }
 

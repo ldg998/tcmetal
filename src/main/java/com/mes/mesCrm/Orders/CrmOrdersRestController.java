@@ -5,6 +5,7 @@ import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.mesCrm.Orders.DTO.*;
 
+import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -67,9 +68,15 @@ public class CrmOrdersRestController {
         return crmOrdersService.wmsOutOrderDel( p);
     }
 
+    @RequestMapping(value = "/crmShippingWmsOutGet", method = RequestMethod.POST)
+    public RESTful crmShippingWmsOutGet( Page p) {
+        return crmOrdersService.crmShippingWmsOutGet(p);
+    }
 
-
-
+    @RequestMapping(value = "/crmShippingWmsOutOneGet", method = RequestMethod.POST)
+    public WMS_OUT_SUB crmShippingWmsOutOneGet(Page p) {
+        return crmOrdersService.crmShippingWmsOutOneGet(p);
+    }
 
 
 

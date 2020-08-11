@@ -37,6 +37,7 @@ public class WMS_OUT_SUB {
     private String req_no;
     private String create_date;
     private String in_date;
+    private String ship_date;
 
 
 }

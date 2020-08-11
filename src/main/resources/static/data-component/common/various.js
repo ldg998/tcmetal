@@ -173,7 +173,11 @@ function value_return(class_name) {
 	$(class_name).each(function(i){
 		objectName = $(this).attr("name");
 		if ($(this).hasClass("qty")){
-			objectValue = $(this).val().replace(/[^0-9]/g,'');
+			var qty_send = $(this).val();
+			if($(this).val() == ""){
+				qty_send = "0";
+			}
+			objectValue = qty_send.replace(/[^0-9]/g,'');
 		} else if($(this).hasClass("sendDate")){
 			objectValue = $(this).val().replace(/\-/g, '');
 		}else {

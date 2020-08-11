@@ -6,6 +6,7 @@ import com.mes.Common.DataTransferObject.Page;
 import com.mes.mesCrm.Orders.DTO.*;
 import com.mes.mesCrm.Standard.DTO.SYS_SPART_CD;
 import com.mes.mesCrm.Standard.DTO.SYS_WOOD_CD;
+import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,4 +31,8 @@ public interface CrmOrdersMapper {
     List<WMS_OUT_ORD_SUB> wmsOutOrderOneGet(Page p);
 
     Message wmsOutOrderDel(Page p);
+
+    List<WMS_OUT_SUB> crmShippingWmsOutGet(Page p);
+
+    WMS_OUT_SUB crmShippingWmsOutOneGet(Page p);
 }

@@ -8,6 +8,7 @@ import com.mes.Mapper.mesCrm.Orders.CrmOrdersMapper;
 import com.mes.mesCrm.Orders.DTO.*;
 import com.mes.mesCrm.Standard.DTO.SYS_SPART_CD;
 import com.mes.mesCrm.Standard.DTO.SYS_WOOD_CD;
+import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -68,5 +69,14 @@ public class CrmOrdersService extends ReturnFunction {
 
     public Message wmsOutOrderDel(Page p) {
         return crmOrdersMapper.wmsOutOrderDel(p);
+    }
+
+    public RESTful crmShippingWmsOutGet(Page p) {
+        List<WMS_OUT_SUB> rows = crmOrdersMapper.crmShippingWmsOutGet(p);
+        return getListData(rows , p);
+    }
+
+    public WMS_OUT_SUB crmShippingWmsOutOneGet(Page p) {
+        return crmOrdersMapper.crmShippingWmsOutOneGet(p);
     }
 }

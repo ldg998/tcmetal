@@ -17,11 +17,12 @@ $(document).ready(function () {
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     datepickerInput();
     authcheck();
-    jqgridPagerIcons();
     suppModal_start();
     header_make();
     selectBox();
     modal_start1();
+    modal2_start();
+    jqgridPagerIcons();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -33,7 +34,7 @@ function test() {
 function get_btn(page) {
 
     main_data.send_data = value_return2(".condition_main");
-    console.log(value_return2(".condition_main"));
+    // console.log(value_return2(".condition_main"));
 
     $("#mes_grid").setGridParam({
         url: '/wmsOutReadyGet',
@@ -42,6 +43,12 @@ function get_btn(page) {
         postData: main_data.send_data
     }).trigger("reloadGrid");
 }
+
+function modal2_btn() {
+    $("#addDialog2").dialog('open');
+    jqGridResize2("#mes_modal2_grid1", $('#mes_modal2_grid1').closest('[class*="col-"]'));
+}
+
 
 function supp_btn(what) {
     main_data.supp_check = what;

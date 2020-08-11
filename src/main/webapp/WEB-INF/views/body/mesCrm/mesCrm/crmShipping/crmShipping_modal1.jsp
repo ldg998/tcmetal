@@ -55,14 +55,15 @@
             <div class="profile-info-name">출하번호</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
-                    <input name="" id="datepicker_modal" type="text" class="form-control keyword modal_value"
-                           placeholder="별도창검색" readonly style="width: 100%" autocomplete="off">
+                    <input name="out_no"  type="text" class="form-control keyword modal_value"
+                           placeholder="별도창검색" readonly style="width: 100%" autocomplete="off" onclick="modal2_btn();">
+                    <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
                 </div>
             </div>
 
             <div class="profile-info-name">출고일자</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" placeholder="자동표시" readonly
+                <input name="out_date" type="text" class="form-control keyword modal_value sendDate" placeholder="자동표시" readonly
                        style="width: 100%" autocomplete="off">
             </div>
         </div>
@@ -71,12 +72,12 @@
         <div class="profile-info-row">
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" placeholder="자동표시" readonly
+                <input name="supp_name" type="text" class="form-control keyword modal_value" placeholder="자동표시" readonly
                        style="width: 100%" autocomplete="off">
             </div>
             <div class="profile-info-name">납품(선적)일자</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" placeholder="자동표시" readonly
+                <input name="ship_date" type="text" class="form-control keyword modal_value sendDate" placeholder="자동표시" readonly
                        style="width: 100%" autocomplete="off">
             </div>
         </div>
@@ -97,7 +98,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name ">해상운임</div>
             <div class="profile-info-value ">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%"
+                <input name="ship_cost" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);"
                        autocomplete="off">
             </div>
         </div>
@@ -107,31 +108,31 @@
 
             <div class="name_lee a2">터미널 핸들링비용</div>
             <div class="profile-info-value a3">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%"
+                <input name="port_cost1" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);"
                        autocomplete="off">
             </div>
 
             <div class="name_lee a4">환경</div>
             <div class="profile-info-value a5">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%"
+                <input name="port_cost2" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);"
                        autocomplete="off">
             </div>
 
             <div class="name_lee a6">쇼링비</div>
             <div class="profile-info-value a7">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%"
+                <input name="port_cost3" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);"
                        autocomplete="off">
             </div>
 
             <div class="name_lee a8">부두이용료</div>
             <div class="profile-info-value a9">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%"
+                <input name="port_cost4" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);"
                        autocomplete="off">
             </div>
 
             <div class="name_lee a10">서류발급비</div>
             <div class="profile-info-value a11">
-                <input name="" type="text" class="form-control keyword modal_value" style="width: 100%"
+                <input name="port_cost5" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);"
                        autocomplete="off">
             </div>
         </div>
@@ -139,50 +140,50 @@
         <div class="profile-info-row">
             <div class="profile-info-name">하역료</div>
             <div class="profile-info-value">
-                <div class="input-icon input-icon-right">
-                    <input name="" type="text" class="form-control keyword modal_value"
-                           style="width: 100%" autocomplete="off">
-                </div>
+
+                    <input name="unloading_cost" type="text" class="form-control keyword modal_value qty"
+                           style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);" autocomplete="off">
+
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">보험료</div>
             <div class="profile-info-value">
-                <div class="input-icon input-icon-right">
-                    <input name="" type="text" class="form-control keyword modal_value"
-                           style="width: 100%" autocomplete="off">
-                </div>
+
+                    <input name="landing_ost" type="text" class="form-control keyword modal_value qty"
+                           style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);" autocomplete="off">
+
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">항만시설보안료</div>
             <div class="profile-info-value">
-                <div class="input-icon input-icon-right">
-                    <input name="" type="text" class="form-control keyword modal_value"
-                           style="width: 100%" autocomplete="off">
-                </div>
+
+                    <input name="harbor_facility" type="text" class="form-control keyword modal_value qty"
+                           style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);" autocomplete="off">
+
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">국내운송비</div>
             <div class="profile-info-value">
-                <div class="input-icon input-icon-right">
-                    <input name="" type="text" class="form-control keyword modal_value"
-                           style="width: 100%" autocomplete="off">
-                </div>
+
+                    <input name="local_cost" type="text" class="form-control keyword modal_value qty"
+                           style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);" autocomplete="off">
+
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">관세대행수수료</div>
             <div class="profile-info-value">
-                <div class="input-icon input-icon-right">
-                    <input name="" type="text" class="form-control keyword modal_value"
-                           style="width: 100%" autocomplete="off">
-                </div>
+
+                    <input name="customs_fee" type="text" class="form-control keyword modal_value qty"
+                           style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);" autocomplete="off">
+
             </div>
         </div>
 
@@ -192,27 +193,31 @@
 
                 <div class="name_lee b1">목재비1</div>
                 <div class="profile-info-value b2">
-                    <select id="_select" class="form-control h-25 condition_main" name="keyword2" style="width: 100%">
+                    <select id="modal1_select1" class="form-control h-25 modal_value" name="wood_code1" style="width: 100%" onchange="wood_select_btn(this.value,1);">
                         <option value="">440</option>
                         <option value="0"></option>
                         <option value="1"></option>
                     </select>
                 </div>
                 <div class="profile-info-value b7 text-center" >
-                    <input name="" type="text" class="form-control keyword modal_value" style="width: 100%"
+                    <input name="wood_qty1" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);"
+                           autocomplete="off">
+                    <input name="wood_cost1" type="hidden" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;"
                            autocomplete="off">
                 </div>
 
                 <div class="name_lee b3">목재비2</div>
                 <div class="profile-info-value b4">
-                    <select id="_select2" class="form-control h-25 condition_main" name="keyword2" style="width: 100%">
+                    <select id="modal1_select2" class="form-control h-25 modal_value" name="wood_code2" style="width: 100%" onchange="wood_select_btn(this.value,2);">
                         <option value="">1090</option>
                         <option value="0"></option>
                         <option value="1"></option>
                     </select>
                 </div>
                 <div class="profile-info-value b8 text-center">
-                    <input name="" type="text" class="form-control keyword modal_value" style="width: 100%"
+                    <input name="wood_qty2" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);"
+                           autocomplete="off">
+                    <input name="wood_cost2" type="hidden" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;"
                            autocomplete="off">
                 </div>
 
@@ -220,14 +225,16 @@
 
                 <div class="name_lee b5">목재비3</div>
                 <div class="profile-info-value b6">
-                    <select  id="_select3" class="form-control h-25 condition_main" name="keyword2" style="width: 100%">
+                    <select  id="modal1_select3" class="form-control h-25 modal_value" name="wood_code3" style="width: 100%" onchange="wood_select_btn(this.value,3);">
                         <option value="">파렛트</option>
                         <option value="0"></option>
                         <option value="1"></option>
                     </select>
                 </div>
                 <div class="profile-info-value b9 text-center">
-                    <input name="" type="text" class="form-control keyword modal_value" style="width: 100%"
+                    <input name="wood_qty3" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_ship(this);"
+                           autocomplete="off">
+                    <input name="wood_cost3" type="hidden" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;"
                            autocomplete="off">
                 </div>
 
@@ -236,20 +243,20 @@
         <div class="profile-info-row">
             <div class="profile-info-name">순중량</div>
             <div class="profile-info-value">
-                <div class="input-icon input-icon-right">
-                    <input name="" type="text" class="form-control keyword modal_value"
-                           style="width: 100%" autocomplete="off">
-                </div>
+
+                    <input name="weight" type="text" class="form-control keyword modal_value qty"
+                           style="width: 100%; text-align: right;" autocomplete="off" onkeyup="num_keyup_comma_ship(this);">
+
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">단가</div>
             <div class="profile-info-value">
-                <div class="input-icon input-icon-right">
-                    <input name="" type="text" class="form-control keyword modal_value" placeholder="자동계산" readonly
-                           style="width: 100%" autocomplete="off">
-                </div>
+
+                    <input name="unit_cost" type="text" class="form-control keyword modal_value qty" placeholder="자동계산" readonly
+                           style="width: 100%; text-align: right;" autocomplete="off">
+
             </div>
         </div>
 

@@ -57,8 +57,15 @@ public class CrmOrdersRestController {
         return crmOrdersService.wmsOutOrderGet( p);
     }
 
+    @RequestMapping(value = "/wmsOutOrderOneGet", method = RequestMethod.POST)
+    public List<WMS_OUT_ORD_SUB> wmsOutOrderOneGet(Page p) {
+        return crmOrdersService.wmsOutOrderOneGet(p);
+    }
 
-
+    @RequestMapping(value="/wmsOutOrderDel" , method = RequestMethod.POST)
+    public Message wmsOutOrderDel(Page p){
+        return crmOrdersService.wmsOutOrderDel( p);
+    }
 
 
 

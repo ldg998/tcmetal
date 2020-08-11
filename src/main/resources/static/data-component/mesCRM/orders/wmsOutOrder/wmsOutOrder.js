@@ -63,18 +63,28 @@ function add_btn() {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         main_data.check = 'U';
+        main_data.check2 = 'N';
         modal_reset(".modal_value", []);
-        datepicker_makes("#datepicker_modal", -30);
-        datepicker_makes("#datepicker_modal2", 0);
         $('#mes_modal1_grid1').jqGrid('clearGridData');
         ccn_ajax('/wmsOutOrderOneGet', {keyword: jqgrid_data.req_no}).then(function (data) {
+            modal_edits(".modal_value",[],data[0]);
+            datepicker_makes("#datepicker_modal", -30);
+            datepicker_makes("#datepicker2_modal", 0);
             disabled_tf(["#modal1_select1"],"Y");
 
             $("#modal1_select1").val(data[0].supp_code).trigger("change");
-            $("#modal1_select2").val(data[0].delivery_place).trigger("change");
+            select_makes_base("#modal1_select2","/suppDeliveryPlaceGet","delivery_place","delivery_place",{keyword:data[0].supp_code},"N").then(function (data2) {
 
-            $("#addDialog").dialog('open');
-            jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
+                $("#modal1_select2").val(data[0].delivery_place).trigger("change");
+                $("#mes_modal1_grid1").setGridParam({
+                    datatype: "local",
+                    data: data
+                }).trigger("reloadGrid");
+                main_data.check2 = 'Y';
+                $("#addDialog").dialog('open');
+                jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
+            });
+
         });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
@@ -97,15 +107,15 @@ function delete_btn() {
                 main_data.check = 'D';
                 for(i=0;i<ids.length;i++){
                     var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
-                    keywords.push(data.line_code+gu4+data.machine_code);
+                    keywords.push(data.req_no+gu4+data.ord_no);
                 }//11|12|13|
                 code_list=keywords.join(gu5);
                 wrapWindowByMask2();
-                ccn_ajax("/tpmMachineErrorDelete", {keyword:code_list}).then(function (data) {
+                ccn_ajax("/wmsOutOrderDel", {keyword:code_list}).then(function (data) {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page'));
+                        $('#mes_grid').trigger('reloadGrid');
                     }
                     closeWindowByMask();
                 }).catch(function (err) {
@@ -193,10 +203,11 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['rownum','출고일자', '출고지시번호','수주일자','업체','PO','기종','품번','품명','단중','수량','외주(열처리)','상태','등록자','등록일시'],
+        colNames: ['rownum','ord_no','출고일자', '출고지시번호','수주일자','업체','PO','기종','품번','품명','단중','수량','외주(열처리)','상태','등록자','등록일시'],
         colModel: [
 
             {name: 'rownum', index: 'rownum', sortable: false,hidden:true,key:true, width: 80,fixed:true},
+            {name: 'ord_no', index: 'ord_no', sortable: false,hidden:true, width: 80,fixed:true},
             {name: 'work_date', index: 'work_date', sortable: false, width: 80, formatter: formmatterDate2,fixed:true},
             {name: 'req_no', index: 'req_no', sortable: false, width: 140,fixed:true},
             {name: 'ord_date', index: 'ord_date', sortable: false, width: 80,formatter: formmatterDate2,fixed:true  },

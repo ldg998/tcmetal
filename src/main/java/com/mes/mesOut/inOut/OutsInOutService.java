@@ -41,4 +41,8 @@ public class OutsInOutService extends ReturnFunction {
         return getListData(rows , p);
     }
 
+    public RESTful outsOutModalListGet(Page p, HttpServletRequest req) {
+        List<OUTS_IN_SUB> rows = mesOutMapper.outsOutModalListGet(p);
+        return getListData(rows , p);
+    }
 }

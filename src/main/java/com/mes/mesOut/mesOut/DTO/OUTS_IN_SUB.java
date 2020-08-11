@@ -30,4 +30,5 @@ public class OUTS_IN_SUB {
     private int rownum;
     private int rownum_page;
     private int rec_count;
+    private String delivery_place;
 }

@@ -19,6 +19,11 @@ public class OutsInOutRestController {
         return outsOutService.outsOutListGet(p, req);
     }
 
+     @RequestMapping(value = "/outsOutModalListGet", method = RequestMethod.POST)
+    public RESTful outsOutModalListGet(Page p, HttpServletRequest req) {
+        return outsOutService.outsOutModalListGet(p, req);
+    }
+
     @RequestMapping(value = "/outsInListGet", method = RequestMethod.POST)
     public RESTful outsInListGet(Page p, HttpServletRequest req) {
         return outsOutService.outsInListGet(p, req);

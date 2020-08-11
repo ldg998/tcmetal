@@ -34,22 +34,17 @@
                     <!-- 구분 select 창 -->
                     <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">업체</td>
                     <td class="wt-px-200">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main">
+                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%"></select>
                     </td>
                     <!-- 품목코드 검색창 -->
                     <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">기종</td>
                     <td class="wt-px-200">
-                        <input type="text" name="keyword"  class="form-control h-25 condition_main" autocomplete="off" />
+                        <input type="text" name="keyword2"  class="form-control h-25 condition_main" autocomplete="off" />
                     </td>
 
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">외주(열처리)업체</td>
-                    <td class="wt-px-200">
-                       <select id="select1" style="width: 100%;">
-                           <option>제인산업</option>
-                           <option></option>
-
-                       </select>
-
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">외주업체</td>
+                    <td class="wt-px-150">
+                        <select class="form-control condition_main" name="keyword3" id="outs_supp_select" style="width: 100%"></select>
                     </td>
                     <td></td>
                 </tr>

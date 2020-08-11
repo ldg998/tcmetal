@@ -84,7 +84,7 @@ function jqGrid_main() {
         colNames: ['출고요청일자', '전표번호', '업체','기종', '품명', '품번','단중','수량','중량','등록자','수정일'],
         colModel: [
             {name: 'work_date', index: 'work_date', sortable: false, width: 150, fixed:true,formatter:formmatterDate2},
-            {name: 'out_no', index: 'out_no', sortable: false, width: 150, fixed:true},
+            {name: 'ord_no', index: 'ord_no', sortable: false, width: 150, fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150, fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 150, fixed:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 150, fixed:true},

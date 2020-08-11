@@ -28,7 +28,7 @@ $(document).ready(function () {
 function get_btn(page) {
     main_data.send_data = value_return2(".condition_main");
     $("#mes_grid").setGridParam({
-        url: '/wmsOutReadyGet',
+        url: '/wmsStockSumGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -94,21 +94,21 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['업체', '기종', '품번','품명', '단중','수량','중량','수량','중량','수량','중량','수량','중량','수량','중량'],
         colModel: [
-            {name:'1', index: '1', width: 150, fixed:true},
-            {name:'2', index: '2',  width: 150, fixed:true},
-            {name:'3', index: '3',  width: 150, fixed:true},
-            {name:'4', index: '4',  width: 150, fixed:true},
-            {name:'5', index: '5',  width: 150, fixed:true},
-            {name:'as', index: 'as',  width: 150, fixed:true},
-            {name:'as1', index: 'as1',  width: 150, fixed:true},
-            {name:'as2', index: 'as2',  width: 150, fixed:true},
-            {name:'9', index: '9',  width: 150, fixed:true},
-            {name:'as3', index: 'as3',  width: 150, fixed:true},
-            {name:'11', index: '11', width: 150, fixed:true},
-            {name:'as4', index: 'as4', width: 150, fixed:true},
-            {name:'13', index: '13', width: 150, fixed:true},
-            {name:'as5', index: 'as5', width: 150, fixed:true},
-            {name:'15', index: '15',  width: 150, fixed:true}
+            {name:'supp_name', index: 'supp_name', width: 150, fixed:true},
+            {name:'part_kind', index: 'part_kind',  width: 150, fixed:true},
+            {name:'part_code', index: 'part_code',  width: 150, fixed:true},
+            {name:'part_name', index: 'part_name',  width: 150, fixed:true},
+            {name:'part_weight', index: 'part_weight',  width: 150, fixed:true},
+            {name:'qty', index: 'qty',  width: 150, fixed:true},
+            {name:'weight', index: 'weight',  width: 150, fixed:true},
+            {name:'qty2', index: 'qty2',  width: 150, fixed:true},
+            {name:'weight2', index: 'weight2',  width: 150, fixed:true},
+            {name:'qty3', index: 'qty3',  width: 150, fixed:true},
+            {name:'weight3', index: 'weight3', width: 150, fixed:true},
+            {name:'qty4', index: 'qty4', width: 150, fixed:true},
+            {name:'weight4', index: 'weight4', width: 150, fixed:true},
+            {name:'qty5', index: 'qty5', width: 150, fixed:true},
+            {name:'weight5', index: 'weight5',  width: 150, fixed:true}
 
         ],
         caption: '제품재고현황 | MES',
@@ -149,11 +149,11 @@ function header_make() {
     $("#mes_grid").jqGrid('setGroupHeaders',{
         useColSpanStyle: true,
         groupHeaders: [
-            {startColumnName: 'as', numberOfColumns: 2, titleText: '<center>전일재고</center>'},
-            {startColumnName: 'as2', numberOfColumns: 2, titleText: '<center>금일입고</center>'},
-            {startColumnName: 'as3', numberOfColumns: 2, titleText: '<center>금일출고</center>'},
-            {startColumnName: 'as4', numberOfColumns: 2, titleText: '<center>자체불량</center>'},
-            {startColumnName: 'as5', numberOfColumns: 2, titleText: '<center>재고</center>'}
+            {startColumnName: 'qty', numberOfColumns: 2, titleText: '<center>전일재고</center>'},
+            {startColumnName: 'qty2', numberOfColumns: 2, titleText: '<center>금일입고</center>'},
+            {startColumnName: 'qty3', numberOfColumns: 2, titleText: '<center>금일출고</center>'},
+            {startColumnName: 'qty4', numberOfColumns: 2, titleText: '<center>자체불량</center>'},
+            {startColumnName: 'qty5', numberOfColumns: 2, titleText: '<center>재고</center>'}
 
             ]
     })

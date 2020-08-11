@@ -22,17 +22,17 @@
                     <!-- 구분 select 창 -->
                     <td class="wt-px-75 t-align-c td-title padding-a-0" id="part_type">업체</td>
                     <td class="wt-px-100">
-                        <input type="text" name="supp_name" class="form-control h-25 condition_main">
+                        <input type="text" name="supp_name" class="form-control h-25 modal_value">
                     </td>
                     <!-- 품목코드 검색창 -->
                     <td class="wt-px-75 t-align-c td-title padding-a-0" id="part_group1">기종</td>
                     <td class="wt-px-150">
-                        <input type="text" name="keyword"  class="form-control h-25 condition_main" autocomplete="off" />
+                        <input type="text" name="keyword"  class="form-control h-25 modal_value" autocomplete="off" />
                     </td>
 
                     <td class="wt-px-75 t-align-c td-title padding-a-0">외주업체</td>
                     <td class="wt-px-150">
-                    <input type="text" class="form-control h-25 condition_main" readonly placeholder="자동표시">
+                    <input type="text" class="form-control h-25 modal_value" readonly placeholder="자동표시">
                     </td>
                     <td></td>
                 </tr>
@@ -45,7 +45,7 @@
             <div class="dt-buttons btn-overlap btn-group modal_btn">
                 <!-- 조회버튼 -->
                 <a class="dt-button btn btn-white btn-primary btn-mini btn-bold"
-                   tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1)">
+                   tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="modal_get_btn(1)">
                         <span>
                             <i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
@@ -68,7 +68,7 @@
     <div class="row">
         <div class="col-xs-12 table-responsive">
             <!-- grid영역 -->
-            <table id="mes_modal_grid"></table>
+            <table id="mes_add_grid2"></table>
             <!-- grid-pager 영역 -->
         </div>
     </div>

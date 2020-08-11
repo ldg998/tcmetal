@@ -18,4 +18,9 @@
     <select id="outsIOListGet" resultType="com.mes.mesOut.mesOut.DTO.OUTS_IO_CD">
             EXEC [SP_OUTS_IO_SUB_DATE_GET]  #{page}, #{rows}, #{start_date}, #{end_date} ,#{keyword},#{keyword2}
     </select>
+
+    <select id="outsOutModalListGet" resultType="com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB">
+            EXEC [SP_OUTS_OUT_IN_LIST_GET] #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
+    </select>
+
 </mapper>

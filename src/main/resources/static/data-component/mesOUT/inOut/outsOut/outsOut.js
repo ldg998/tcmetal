@@ -5,6 +5,7 @@
 ////////////////////////////데이터/////////////////////////////////////
 
 var main_data = {
+    status:'N',
     check: 'I',// 수정,추가 판단용
     send_data: {},// 조회시 data 담는 용도
     readonly: [],// 설정시 해당 name의 readonly 옵션
@@ -30,10 +31,7 @@ $(document).ready(function () {
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 //모달 확인 조회 btn
-function test(){
-    $("#addDialog").dialog('open'); // 모달 열기
-    jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]'));
-}
+
 // 조회 버튼
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
@@ -54,7 +52,11 @@ function add_btn() {
     if (main_data.auth.check_add !="N"){
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
         main_data.check = 'I'; // 저장인지 체크
+        main_data.status = 'N'
+
+
         $("#addDialog").dialog('open'); // 모달 열기
+        jqGridResize("#mes_add_grid2" , $('#mes_add_grid2').closest('[class*="col-"]'));
     } else {
         alert(msg_object.TBMES_A001.msg_name1); // 경고메세지 출력
     }
@@ -116,7 +118,7 @@ function msg_get() {
 
 //권한체크
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "outsOut"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword:"outsOut"}).then(function (data) {
         main_data.auth = data;
     });
 }
@@ -171,7 +173,9 @@ function jqGrid_main() {
 
 
 function selectBox() {
-    $('#select1').select2();
+    select_makes_sub("#outs_supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'})
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'})
+
 }
 
 function datepickerInput() {

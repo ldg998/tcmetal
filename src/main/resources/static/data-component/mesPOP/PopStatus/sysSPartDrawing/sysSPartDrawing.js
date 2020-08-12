@@ -22,7 +22,7 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     modal_start1();
-    suppModal_start();
+    selectBox();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -103,14 +103,14 @@ function jqGrid_main() {
         caption: "도면관리 | MES",
         colNames: ['업체','기종','품번','품명','단중','제품도면','비고','등록자','수정일'],
         colModel: [
-            {name: '', index: '', sortable:false, width: 60,  key: true,fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
+            {name: '', index: '', sortable:false, width: 100,  key: true,fixed:true},
             {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
+            {name: '', index: '', sortable:false, width: 120, fixed:true},
+            {name: '', index: '', sortable:false, width: 100, fixed:true},
+            {name: '', index: '', sortable:false, width: 100, fixed:true},
+            {name: '', index: '', sortable:false, width: 100, fixed:true},
+            {name: '', index: '', sortable:false, width: 100, fixed:true},
+            {name: '', index: '', sortable:false, width: 80, fixed:true},
             {name: '', index: '', sortable:false, width: 100, fixed:true}
         ],
         autowidth: true,
@@ -135,4 +135,20 @@ function jqGrid_main() {
 
     });
 
+}
+
+function selectBox() {
+    $('#part_kind_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+}
+
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
 }

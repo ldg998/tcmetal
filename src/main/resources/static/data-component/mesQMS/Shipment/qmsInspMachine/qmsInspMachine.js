@@ -16,9 +16,11 @@ $(document).ready(function () {
     /*----모달----*/
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정
+    modal_start1();
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////
+
 
 
 function get_btn(page) {
@@ -36,7 +38,8 @@ function get_btn(page) {
 function add_btn() {
     if (main_data.auth.check_add !="N") {
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 명을 가진 항목들의 내용을 리셋,비워줌 main_data readonly 에 추가한 name의 항목에 readonly 옵션을 추가
-        modalValuePush("#group_select","#group_code","#group_name"); // name1의 값을 name2,name3 에 넣어줌
+        datepicker_makes("#datepicker_modal", 0);
+        datepicker_makes("#datepicker_modal2", 330);
         main_data.check = 'I'; // 추가인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
         $("#addDialog").dialog('open'); // 모달 열기
     } else {

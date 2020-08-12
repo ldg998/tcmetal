@@ -20,14 +20,12 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정
     modal_start1();
-    suppModal_start();
     selectBox();
 
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////
 function test(){
-
     $("#addDialog").dialog('open'); // 모달 열기
     jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]'));
     jqGridResize('#mes_modal_grid2', $('#mes_modal_grid2').closest('[class*="col-"]')); // 그리드 리사이즈
@@ -37,9 +35,9 @@ function test(){
 // 조회버튼
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
-    main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
+
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysCommonGet',
+        url: '/qmsMeltSpecGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -54,51 +52,31 @@ function update_btn(jqgrid_data) {
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
 
         var send_data = {};
-        send_data.keyword = jqgrid_data.code_type;
-        send_data.keyword2 = jqgrid_data.code_value; // data에 값을 추가하여 파라미터로 사용
-
-        ccn_ajax('/sysCommonOneGet', send_data).then(function (data) {
-            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
-            $('#group_name').val(data.cn); // 해당 id에 값을 부여
-            $('#group_code').val(data.code_type); // 해당 id에 값을 부여
+        send_data.keyword = jqgrid_data.supp_code;
+        send_data.keyword2 = 'M';
+        send_data.part_kind = jqgrid_data.part_kind;
+        send_data.part_code = jqgrid_data.part_code;
+        ccn_ajax('/qmsMeltSpecOneGet',send_data).then(function (data) {
+            if(data.length >0){
+           modal_reset('.modal_value',main_data.readonly);
+            modal_edits('.modal_value', main_data.readonly,data[0]); // response 값 출력
             $("#addDialog").dialog('open');// 모달 열기
+            jqGridResize("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
+            jqGridResize("#mes_modal_grid2", $('#mes_modal_grid2').closest('[class*="col-"]'));
+            }else {
+                modal_reset('.modal_value',main_data.readonly);
+                modal_edits('.modal_value', main_data.readonly,jqgrid_data); // response 값 출력
+             $("#addDialog").dialog('open');// 모달 열기
+             jqGridResize("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
+             jqGridResize("#mes_modal_grid2", $('#mes_modal_grid2').closest('[class*="col-"]'));
+
+            }
         });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
     }
 }
 
-
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
 
 ////////////////////////////호출 함수//////////////////////////////////
 //호출함수
@@ -122,16 +100,18 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['업체','기종','품번','품명','단중','상태','등록자','수정일'],
+        colNames: ['','','업체','기종','품번','품명','단중','상태','등록자','수정일'],
         colModel: [
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true}
+            {name: 'rownum', index: 'rownum',sortable: false,fixed: true,hidden:true,key:true},
+            {name: 'supp_code', index: 'supp_code',sortable: false,fixed: true,hidden:true},
+            {name: 'supp_name', index: 'supp_name',sortable: false, width: 100,fixed: true},
+            {name: 'part_kind', index: 'part_kind',sortable: false, width: 100,fixed: true},
+            {name: 'part_code', index: 'part_code',sortable: false, width: 100,fixed: true},
+            {name: 'part_name', index: 'part_name',sortable: false, width: 100,fixed: true},
+            {name: 'part_weight', index: 'part_weight',sortable: false, width: 100,fixed: true,align: 'right', formatter: 'integer'},
+            {name: 'status', index: 'status',sortable: false, width: 100,fixed: true},
+            {name: 'user_name', index: 'user_name',sortable: false, width: 100,fixed: true},
+            {name: 'update_date', index: 'update_date',sortable: false, width: 100,fixed: true,formatter: formmatterDate2}
 
         ],
         caption: "용해규격관리 | MES",
@@ -161,5 +141,18 @@ function jqGrid_main() {
 }
 
 function selectBox() {
-    $("#_select").select2();
+    $('#status').select2();
+    $('#part_kind_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")
+}
+
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
 }

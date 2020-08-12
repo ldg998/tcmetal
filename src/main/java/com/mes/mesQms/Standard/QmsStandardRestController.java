@@ -1,19 +1,22 @@
 package com.mes.mesQms.Standard;
 
-import com.mes.Common.DataTransferObject.Page;
-import lombok.extern.slf4j.Slf4j;
 import com.mes.Common.DataTransferObject.Message;
+import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.Vaild.ValidFunction;
 import com.mes.mesQms.Standard.DTO.SYS_QC_DIAMETER;
 import com.mes.mesQms.Standard.DTO.SYS_QC_ITEM;
+import com.mes.mesQms.Standard.DTO.SYS_SPART_MELT;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -68,4 +71,18 @@ public class QmsStandardRestController extends ValidFunction {
     public Message qmsTestStdDelete(Page p, HttpServletRequest req) {
         return qmsStandardService.qmsTestStdDelete(p, req);
     }
+
+    @RequestMapping(value = "/qmsMeltSpecGet", method = RequestMethod.POST)
+    public RESTful qmsMeltSpecGet(Page p, HttpServletRequest req) {
+        return qmsStandardService.qmsMeltSpecGet(p, req);
+    }
+
+ @RequestMapping(value = "/qmsMeltSpecOneGet", method = RequestMethod.POST)
+    public List<SYS_SPART_MELT> qmsMeltSpecOneGet(SYS_SPART_MELT ssm, HttpServletRequest req) {
+        System.out.println(ssm);
+        return qmsStandardService.qmsMeltSpecOneGet(ssm, req);
+    }
+
+
+
 }

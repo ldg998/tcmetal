@@ -1,6 +1,5 @@
 package com.mes.mesQms.Standard;
 
-import lombok.extern.slf4j.Slf4j;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
@@ -8,6 +7,8 @@ import com.mes.Common.Function.ReturnFunction;
 import com.mes.Mapper.mesQms.Standard.QmsStandardMapper;
 import com.mes.mesQms.Standard.DTO.SYS_QC_DIAMETER;
 import com.mes.mesQms.Standard.DTO.SYS_QC_ITEM;
+import com.mes.mesQms.Standard.DTO.SYS_SPART_MELT;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,5 +63,15 @@ public class QmsStandardService extends ReturnFunction {
     public Message qmsTestStdDelete(Page p, HttpServletRequest req) {
         p.setSite_code(getSessionData(req).getSite_code());
         return qmsStandardMapper.qmsTestStdDelete(p);
+    }
+
+    public RESTful qmsMeltSpecGet(Page p, HttpServletRequest req) {
+
+        List<SYS_SPART_MELT> rows = qmsStandardMapper.qmsMeltSpecGet(p);
+        return getListData(rows, p);
+    }
+
+    public List<SYS_SPART_MELT> qmsMeltSpecOneGet(SYS_SPART_MELT ssm, HttpServletRequest req) {
+        return qmsStandardMapper.qmsMeltSpecOneGet(ssm);
     }
 }

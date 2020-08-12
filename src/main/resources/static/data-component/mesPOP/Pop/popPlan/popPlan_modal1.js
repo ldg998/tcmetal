@@ -27,7 +27,7 @@ function msg_get_modal1() {
 function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설정해준다
     $("#addDialog").dialog({
         modal: true, // 모달 설정 ( 뒷배경 클릭 방지 마스크로 덮음)
-        width: 550, // 가로 설정
+        width: 600, // 가로 설정
         height: 'auto', //세로 설정
         autoOpen: false, //자동 오픈 해제
         resizable: false, // 크기 조절 불가설정
@@ -41,7 +41,9 @@ function jqGrid_main_modal() {
     $("#mes_modal_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
+        caption: "생산계획 | MES",
         colNames : ['업체','기종','품명','단중','수량','중량','제품LOT','작업자','삽입/삭제','이동'],// grid 헤더 설정
+
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'',index:'',sortable: false,width:110,fixed: true},
             {name:'',index:'',sortable: false,width:110,fixed: true},
@@ -57,7 +59,7 @@ function jqGrid_main_modal() {
         ],
         // caption: "자재단가 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
-        height: 250, // 그리드 세로 길이 설정
+        height: 350, // 그리드 세로 길이 설정
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

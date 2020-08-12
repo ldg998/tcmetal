@@ -16,7 +16,66 @@ function modal_start1() {
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
+    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+    var gu5 = String.fromCharCode(5);
+    var gu4 = String.fromCharCode(4);
+    var add_data = value_return(".modal_value");
+    add_data.save_type = main_data.check;
+    var jdata = $("#mes_modal1_grid1").getRowData();
 
+    if (jdata.length > 0) {
+        var list = [];
+        var list2 = [];
+        jdata.forEach(function (data, j) {
+            if (data.supp_code !== '' && data.supp_code !== ' ' && data.part_kind !== '' && data.part_kind !== ' ' && data.part_code !== '' && data.part_code !== ' ' && data.plan_qty > 0 && data.lot_no !== '' && data.work_user_code !== '' && data.work_user_code !== ' ') {
+                list.push(data.supp_code + gu4 + data.part_kind + gu4 + data.part_code + gu4 + data.plan_qty +gu4 + data.weight+ gu4 + data.lot_no+ gu4 + data.work_user_code);
+
+            } else {
+                list2.push(j+1);
+            }
+        });
+        callback(function () {
+            if (list2.length > 0) {
+                alert(list2[0] + "번 다시 확인해주세요");
+            } else {
+                console.log(list.join(gu5));
+                console.log(add_data);
+
+                // var text = msg_object.TBMES_Q002.msg_name1;
+                // if (main_data.check === "U") {
+                //     text = msg_object.TBMES_Q003.msg_name1;
+                // }
+                //
+                // if (confirm(text)) {
+                //     wrapWindowByMask2();
+                //     add_data.ord_sub = list.join(gu5);
+                //
+                //     ccn_ajax("/scmOrderAdd", add_data).then(function (data) {
+                //         if (data.result === 'NG') {
+                //             alert(data.message);
+                //         } else {
+                //             if (main_data.check === "I") {
+                //                 get_btn(1);
+                //             } else {
+                //                 $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
+                //                 $('#mes_grid2').trigger("reloadGrid"); //화면 리로딩
+                //             }
+                //         }
+                //         $('#mes_add_grid').jqGrid('clearGridData');
+                //         $('#mes_add_grid2').jqGrid('clearGridData');
+                //         closeWindowByMask();
+                //         $("#addDialog").dialog('close');
+                //     }).catch(function (err) {
+                //         closeWindowByMask();
+                //         alert(msg_object.TBMES_E008.msg_name1);
+                //     });
+                // }
+            }
+
+        });
+    } else {
+        alert("저장 목록을 넣어주세요");
+    }
 }
 function modal_close(){
     $("#addDialog").dialog("close");
@@ -28,7 +87,18 @@ function modal1_select_change1(value) {
         select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (data2) {
 
         });
+        modal1_select_change2();
     }
+}
+
+function modal1_select_change2() {
+
+    var jdata = $("#mes_modal1_grid1").getRowData();
+    for (var i = 0; i <jdata.length; i++){
+        $('#mes_modal1_grid1').jqGrid('setCell', jdata[i].seq, 'work_user_name', '선택안함');
+        $('#mes_modal1_grid1').jqGrid('setCell', jdata[i].seq, 'work_user_code', ' ');
+    }
+
 }
 
 function makeNewRowId(jdata){ //그리드 rowid배열을 파라메터로 받는다
@@ -79,7 +149,10 @@ function modal1_rowAdd(rowId) {
 }
 
 function modal1_rowDel(rowId) {
-    $("#mes_modal1_grid1").jqGrid("delRowData",rowId);
+    var count =  $("#mes_modal1_grid1").getGridParam("reccount");
+    if (count !== 1) {
+        $("#mes_modal1_grid1").jqGrid("delRowData",rowId);
+    }
 }
 
 
@@ -299,11 +372,11 @@ function jqGrid_main_modal() {
 
                             var row = $(e.target).closest('tr.jqgrow');
                             var rowid = row.attr('id');
-                            var rowdata = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
                             var value = e.target.value;
                             var text = $(e.target).find("option:selected").text();
                             $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
                             $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_code', value);
+                            var rowdata = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
                             if (value === ''){
                                 $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_code', ' ');
                                 $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_weight', 0);
@@ -315,7 +388,7 @@ function jqGrid_main_modal() {
                                 send_data.keyword3 = rowdata.part_code;
                                 ccn_ajax('/sysSpartOneGet',  send_data).then(function (data) {
                                     $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_weight', data.part_weight);
-                                    $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'weight', data.weight*rowdata.plan_qty);
+                                    $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'weight', data.part_weight*rowdata.plan_qty);
                                 });
                             }
                             $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_name', text);
@@ -329,11 +402,11 @@ function jqGrid_main_modal() {
                             fn: function (e) {
                                 var row = $(e.target).closest('tr.jqgrow');
                                 var rowid = row.attr('id');
-                                var rowdata = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
                                 var value = e.target.value;
                                 var text = $(e.target).find("option:selected").text();
                                 $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
                                 $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_code', value);
+                                var rowdata = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
                                 if (value === ''){
                                     $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_code', ' ');
                                     $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_weight', 0);
@@ -345,7 +418,7 @@ function jqGrid_main_modal() {
                                     send_data.keyword3 = rowdata.part_code;
                                     ccn_ajax('/sysSpartOneGet',  send_data).then(function (data) {
                                         $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_weight', data.part_weight);
-                                        $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'weight', data.weight*rowdata.plan_qty);
+                                        $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'weight', data.part_weight*rowdata.plan_qty);
                                     });
                                 }
                                 $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'part_name', text);
@@ -359,10 +432,148 @@ function jqGrid_main_modal() {
             },
             {name:'part_code',index:'part_code',sortable: false,width:110,fixed: true,hidden:true},
             {name:'part_weight',index:'part_weight',sortable: false,width:110,fixed: true, align: 'right',formatter:'integer'},
-            {name:'plan_qty',index:'plan_qty',sortable: false,width:110,fixed: true, align: 'right',formatter:'integer'},
+            {name:'plan_qty',index:'plan_qty',sortable: false,width:110,fixed: true, align: 'right',formatter:'integer',
+                editable: true,
+                editoptions: {
+                    dataEvents: [
+                        {
+                            type: 'focus',
+                            fn: function (e) {
+                                if (e.target.value === '0'){
+                                    e.target.value = '';
+                                }
+
+                                $(e.target).attr('autocomplete', 'off');
+                            }
+                        },
+                        {
+                            type: 'keydown',
+                            fn: function (e) {
+                                if (e.keyCode === 13) {
+                                    var row = $(e.target).closest('tr.jqgrow');
+                                    var rowid = row.attr('id');
+                                    var value = e.target.value;
+                                    if (isNaN(value)){
+                                        alert("숫자만 입력가능합니다.");
+                                        e.target.value = 0;
+                                        $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                        var rowdata = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
+                                        $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'weight', rowdata.part_weight*rowdata.plan_qty);
+                                        return false;
+                                    } else if(value === ''){
+                                        e.target.value = 0;
+                                    }
+                                    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                    var rowdata = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
+                                    $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'weight', rowdata.part_weight*rowdata.plan_qty);
+                                }
+                            }
+
+                        },
+                        {
+                            type: 'focusout',
+                            fn: function (e) {
+                                var row = $(e.target).closest('tr.jqgrow');
+                                var rowid = row.attr('id');
+                                var value = e.target.value;
+                                if (isNaN(value)){
+                                    alert("숫자만 입력가능합니다.");
+                                    e.target.value = 0;
+                                    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                    var rowdata = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
+                                    $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'weight', rowdata.part_weight*rowdata.plan_qty);
+                                    return false;
+                                } else if(value === ''){
+                                    e.target.value = 0;
+                                }
+                                $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                var rowdata = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
+                                $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'weight', rowdata.part_weight*rowdata.plan_qty);
+
+                            }
+                        }
+                    ]
+                }
+            },
             {name:'weight',index:'weight',sortable: false,width:110,fixed: true, align: 'right',formatter:'integer'},
-            {name:'lot_no',index:'lot_no',sortable: false,width:110,fixed: true},
-            {name:'work_user_name',index:'work_user_name',sortable: false,width:110,fixed: true},
+            {name:'lot_no',index:'lot_no',sortable: false,width:110,fixed: true,editable: true,
+                editoptions: {
+                    dataEvents: [
+                        {
+                            type: 'focus',
+                            fn: function (e) {
+                                if(main_data.status === 'Y') {
+                                    $(e.target).prop('readonly',true);
+                                }else {
+                                    $(e.target).prop('readonly',false);
+                                }
+
+                                $(e.target).attr('autocomplete','off');
+                            }
+                        },
+                        {
+                            type: 'focusout',
+                            fn: function() {
+                                $("#mes_modal1_grid1").jqGrid("saveCell",saverow, savecol);
+                            }
+                        }
+                    ]
+                }
+            },
+            {name:'work_user_name',index:'work_user_name',sortable: false,width:110,fixed: true,editable: true,                                       // 수정가능 여부
+                // SELECT 포매터
+                edittype: 'select',                                    // EDIT타입 : SELECT
+                editoptions: {
+                    dataUrl:"popLineUserAllGet",
+                    postData: function (rowid, value, cmName) {
+                        var data = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
+                        return {keyword:$("#modal1_select2").val()}
+
+                    },
+                    buildSelect:setSelectCombo4,
+                    dataInit: function ss(elem){
+
+                        $(elem).css('height','18px');
+                        $(elem).css('width','100%');
+
+                    },
+                    dataEvents: [{
+                        type: 'change',
+                        fn: function (e) {                // 값 : this.value || e.target.val()
+
+                            var row = $(e.target).closest('tr.jqgrow');
+                            var rowid = row.attr('id');
+                            var value = e.target.value;
+                            var text = $(e.target).find("option:selected").text();
+                            $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                            $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'work_user_code', value);
+                            if (value === ''){
+                                $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'work_user_code', ' ');
+                            }
+                            $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'work_user_name', text);
+                        },
+                    },
+                        {
+                            type: 'focusout',
+                            fn: function (e) {
+                                var row = $(e.target).closest('tr.jqgrow');
+                                var rowid = row.attr('id');
+                                var value = e.target.value;
+                                var text = $(e.target).find("option:selected").text();
+                                $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'work_user_code', value);
+                                if (value === ''){
+                                    $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'work_user_code', ' ');
+                                }
+                                $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'work_user_name', text);
+
+                            }
+                        }
+                    ]
+
+
+                }
+            },
             {name:'work_user_code',index:'work_user_code',sortable: false,width:110,fixed: true,hidden:true},
             {name:'a',index:'a',sortable: false,width:110,fixed: true,formatter:addDel_formatter},
 
@@ -459,6 +670,17 @@ function setSelectCombo3(data) {
     result += '<option value="">' + '선택안함' + '</option>';
     for(var idx=0; idx < data.length; idx++) {
         result += '<option value="' + data[idx].part_code + '">' + data[idx].part_name + '</option>';
+    }
+    result += '</select>';
+    return result;
+}
+
+function setSelectCombo4(data) {
+    data = jQuery.parseJSON(data);
+    var result = '<select name="work_user_name">';
+    result += '<option value="">' + '선택안함' + '</option>';
+    for(var idx=0; idx < data.length; idx++) {
+        result += '<option value="' + data[idx].user_code + '">' + data[idx].user_name + '</option>';
     }
     result += '</select>';
     return result;

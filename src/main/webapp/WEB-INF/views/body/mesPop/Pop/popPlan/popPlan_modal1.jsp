@@ -23,15 +23,24 @@
                     <td class="wt-px-75 t-align-c td-title padding-a-0" id="part_type">생산일자</td>
                     <td class="wt-px-100">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="end_date" id="datepicker_modal1"
+                            <input type="text" name="start_date" id="datepicker_modal1"
                                    class="form-control h-25 condition_main" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
                     <input type="hidden" autofocus>
-                    <td class="wt-px-75 t-align-c td-title padding-a-0">구분</td>
+                    <td class="wt-px-75 t-align-c td-title padding-a-0">라인그룹</td>
                     <td class="wt-px-100">
-                        <select id="select_modal1" class="form-control h-25 condition_main" name="keyword2"
+                        <select id="modal1_select1" class="form-control h-25 condition_main" name="keyword" onchange="modal1_select_change1(this.value);"
+                                style="width: 100%">
+                            <option value="">합형1</option>
+                            <option value="0">합형2</option>
+                            <option value="1">합형3</option>
+                        </select>
+                    </td>
+                    <td class="wt-px-75 t-align-c td-title padding-a-0">라인명</td>
+                    <td class="wt-px-100">
+                        <select id="modal1_select2" class="form-control h-25 condition_main" name="keyword2"
                                 style="width: 100%">
                             <option value="">합형1</option>
                             <option value="0">합형2</option>
@@ -71,7 +80,7 @@
     <div class="row">
         <div class="col-xs-12 table-responsive">
             <!-- grid영역 -->
-            <table id="mes_modal_grid"></table>
+            <table id="mes_modal1_grid1"></table>
             <!-- grid-pager 영역 -->
         </div>
     </div>

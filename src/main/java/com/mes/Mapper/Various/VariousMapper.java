@@ -68,4 +68,6 @@ public interface VariousMapper {
     List<SYSSupp> suppAllGet(Page p);
 
     List<SYSSupp> suppDeliveryPlaceGet(Page p);
+
+    List<sysLoc> syslineAllGroupGet(Page p);
 }

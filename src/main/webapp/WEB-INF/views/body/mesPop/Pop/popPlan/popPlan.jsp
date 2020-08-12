@@ -62,7 +62,7 @@
 
                     <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
                        id="btn-excel" tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                       onclick="excel_download">
+                       onclick="add_btn();">
                                         <span><i class="fa fa-download bigger-110 blue"></i>
                                             <span>저장</span>
                                         </span>

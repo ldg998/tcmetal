@@ -61,27 +61,38 @@ function under_get_btn(value) {
 
 function add_btn() {
     if(main_data.auth.check_add != "N") {
-        var checkid =  $("#mes_grid").getGridParam( "selrow" );
-        if (checkid !== null){
-            $('#mes_modal1_grid1').jqGrid('clearGridData');
+        main_data.check = 'I';
+        datepicker_makes("#datepicker_modal1", 0);
+        $("#modal1_select1 option:eq(0)").prop("selected", true).trigger("change");
+        // $("#modal1_select2 option:eq(0)").prop("selected", true).trigger("change");
+        $('#mes_modal1_grid1').jqGrid('clearGridData');
+        modal1_rowAdd('');
 
-            ccn_ajax('/crmOrderRecpOneGet', {keyword:checkid}).then(function (data) { // user의 하나 출력
-                modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
-                modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
-                main_data.check = 'I'; // 저장인지 체크
-                part_name_reset();
-                datepicker_makes("#datepicker3", 0);
-                $("#prod_type1_modal1_select option:eq(0)").prop("selected", true).trigger("change");
-                $("#prod_type_modal1_select").prop("disabled",false).trigger('change');
-                $("#prod_code_modal1_select").prop("disabled",false).trigger('change');
+        $("#addDialog").dialog('open');
+        jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
 
-                $("#addDialog").dialog('open');
-                jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
-            });
 
-        } else {
-            alert("수주정보를 선택해주세요.");
-        }
+        // var checkid =  $("#mes_grid").getGridParam( "selrow" );
+        // if (checkid !== null){
+        //     $('#mes_modal1_grid1').jqGrid('clearGridData');
+        //
+        //     ccn_ajax('/crmOrderRecpOneGet', {keyword:checkid}).then(function (data) { // user의 하나 출력
+        //         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
+        //         modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
+        //         main_data.check = 'I'; // 저장인지 체크
+        //         part_name_reset();
+        //         datepicker_makes("#datepicker3", 0);
+        //         $("#prod_type1_modal1_select option:eq(0)").prop("selected", true).trigger("change");
+        //         $("#prod_type_modal1_select").prop("disabled",false).trigger('change');
+        //         $("#prod_code_modal1_select").prop("disabled",false).trigger('change');
+        //
+        //         $("#addDialog").dialog('open');
+        //         jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
+        //     });
+        //
+        // } else {
+        //     alert("수주정보를 선택해주세요.");
+        // }
     } else {
         alert(msg_object.TBMES_A001.msg_name1);
     }

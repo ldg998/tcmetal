@@ -22,6 +22,7 @@ $(document).ready(function () {
     jqGridResize('#mes_grid2', $('#mes_grid2').closest('[class*="col-"]'));
     selectBox();
     authcheck();
+    user_get(1);
     jqgridPagerIcons();
 
 });
@@ -37,23 +38,24 @@ function get_btn(page) {
         url: '/popLineUserGet',
         datatype: "json",
         page: page,
-        postData: main_data.send_data
+        postData: {keyword: main_data.send_data.keyword2}
     }).trigger("reloadGrid");
 }
 
 
 
+//등록 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") {
         var gu5 = String.fromCharCode(5);
-       var data = value_return(".condition_main");
-       var ids = $("#mes_grid2").getGridParam('selarrrow').slice();
+        var data = value_return(".condition_main");
+        var ids = $("#mes_grid2").getGridParam('selarrrow').slice();
         if (ids.length === 0 ){
             alert("옮길 데이터를 선택해주세요");
             return false;
         }else {
             var send_data = {};
-            send_data.line_code = data.keyword;
+            send_data.line_code = data.keyword2;
             send_data.keyword = ids.join(gu5);
 
             var text = msg_object.TBMES_Q002.msg_name1;
@@ -93,7 +95,7 @@ function delete_btn() {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page'));
+                        $("#mes_grid").trigger("reloadGrid");
                     }
                     closeWindowByMask();
                 }).catch(function (err) {
@@ -107,7 +109,19 @@ function delete_btn() {
     }
 }
 
+function main_select_change1(value) {
+    select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (data2) {
 
+    });
+}
+function user_get(page) {
+    $("#mes_grid2").setGridParam({ // 그리드 조회
+        url: '/sysUserGet',
+        datatype: "json",
+        page: page,
+        postData: {keyword:'D9000',keyword2:'Y'}
+    }).trigger("reloadGrid");
+}
 
 ////////////////////////////호출 함수//////////////////////////////////
 function msg_get() {
@@ -130,16 +144,21 @@ function authcheck() {
 
 
 function selectBox() {
-    $('#select1').select2();
-    $('#select2').select2();
+    select_makes_base("#main_select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
+        select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
+
+        });
+    });
+    // $('#main_select2').select2();
 }
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['공정', '사용자코드', '사용자명'],
+        colNames: ['line_code','공정', '사용자코드', '사용자명'],
         colModel: [
+            {name: 'line_code', index: 'line_code',hidden:true, sortable: false},
             {name: 'line_name', index: 'line_name', sortable: false, width: 100,fixed:true},
             {name: 'user_code', index: 'user_code',key:true, sortable: false, width: 150,fixed:true},
             {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed:true}

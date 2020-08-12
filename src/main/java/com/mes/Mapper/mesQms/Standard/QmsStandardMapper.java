@@ -4,6 +4,7 @@ import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.mesQms.Standard.DTO.SYS_QC_DIAMETER;
 import com.mes.mesQms.Standard.DTO.SYS_QC_ITEM;
+import com.mes.mesQms.Standard.DTO.SYS_SPART_MELT;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,4 +23,8 @@ public interface QmsStandardMapper {
     SYS_QC_DIAMETER qmsTestStdOneGet(SYS_QC_DIAMETER vo);
 
     Message qmsTestStdDelete(Page p);
+
+    List<SYS_SPART_MELT> qmsMeltSpecGet(Page p);
+
+    List<SYS_SPART_MELT> qmsMeltSpecOneGet(SYS_SPART_MELT ssm);
 }

@@ -58,3 +58,5 @@
         </div>
     </div>
 </div>
+
+<%@include file="qmsInspMachine_modal1.jsp"%>

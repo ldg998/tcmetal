@@ -18,7 +18,6 @@ $(document).ready(function () {
     datepickerInput();
     authcheck();
     jqgridPagerIcons();
-
     header_make();
     selectBox();
 });

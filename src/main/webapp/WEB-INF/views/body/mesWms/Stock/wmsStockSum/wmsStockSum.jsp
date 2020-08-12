@@ -42,10 +42,10 @@
                         </div>
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
-                    <%--조회할 업채명--%>
                     <td class="wt-px-200">
                         <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
                     </td>
+
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
                        <select id="part_kind_select" name="keyword2" style="width: 100%;">

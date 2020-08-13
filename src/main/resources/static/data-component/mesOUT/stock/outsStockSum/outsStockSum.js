@@ -135,7 +135,19 @@ function suppModal_close_bus() {
     $("#SuppSearchGrid").jqGrid('clearGridData');
 }
 
+function main_select_change1(value) {
 
+        if (value !== ""){
+            select_makes_base("#main_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y").then(function (data) {
+            });
+        } else {
+            $('#main_select2').empty();
+            var option = $("<option></option>").text('전체').val('');
+            $('#main_select2').append(option);
+            $('#main_select2').select2();
+        }
+
+}
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
@@ -198,6 +210,14 @@ function jqGrid_main() {
 
 function selectBox() {
     $('#select1').select2();
+    select_makes_base("#main_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
+        $('#main_select2').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#main_select2').append(option);
+        $('#main_select2').select2();
+    });
+
+    select_makes_base("#main_select3","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'},"");
 }
 
 function datepickerInput() {

@@ -131,7 +131,7 @@ function jqGrid_main() {
             {name:'work_date',index:'work_date' ,sortable: false,width:80,fixed: true,formatter:formmatterDate2},
             {name:'ord_no',index:'ord_no',sortable: false,key: true,width:200,fixed: true},
             {name:'supp_name',index:'supp_name',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
+            {name:'po_no',index:'po_no',sortable: false,width:150,fixed: true},
             {name:'part_kind',index:'part_kind',sortable: false,width:100,fixed: true},
             {name:'part_code',index:'part_code',sortable: false,width:100,fixed: true},
             {name:'part_name',index:'part_name',sortable: false,width:100,fixed: true},

@@ -71,56 +71,7 @@
     </select>
 
 
-    <select id="popPlanAdd" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC SP_POP_PLAN_ADD
-        #{plan_no},
-        #{ord_no},
-        #{place_name},
-        #{prod_type},
-        #{prod_code},
 
-        #{part_name_code},
-        #{plan_name},
-        #{prod_type1},
-        #{route_code},
-        #{plan_date},
-        #{remark},
-
-
-        #{part_name1},
-        #{part_code1},
-
-        #{part_name2},
-        #{part_code2},
-
-        #{part_name3},
-        #{part_code3},
-
-        #{part_name4},
-        #{part_code4},
-
-        #{part_name5},
-        #{part_code5},
-
-        #{part_name6},
-        #{part_code6},
-
-        #{part_name7},
-        #{part_code7},
-
-        #{part_name8},
-        #{part_code8},
-
-        #{part_name9},
-        #{part_code9},
-
-        #{part_name10},
-        #{part_code10},
-
-        #{user_code},
-        #{keyword},
-        #{keyword2}
-    </select>
 
     <update id="popPlanImage5Update">
         UPDATE POP_PLAN SET IMAGE5 = #{keyword2} WHERE PLAN_NO = #{keyword}
@@ -130,9 +81,7 @@
         EXEC SP_POP_PLAN_GET 1,1,'',#{keyword}
     </select>
 
-    <select id="popPlanGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
-        EXEC SP_POP_PLAN_GET #{page},#{rows},#{keyword},''
-    </select>
+
 
     <select id="popPlanSubGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN_SUB">
         EXEC SP_POP_PLAN_SUB_GET 0,0,#{keyword}
@@ -148,6 +97,12 @@
         EXEC SP_POP_PLAN_CHECK #{status},#{plan_no}
     </select>
 
+    <select id="popPlanAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_ADD #{work_date}, #{line_code},#{keyword2},#{user_code},#{keyword}
+    </select>
 
+    <select id="popPlanGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_POP_PLAN_GET #{page},#{rows},#{start_date},#{end_date},#{keyword2}
+    </select>
 
 </mapper>

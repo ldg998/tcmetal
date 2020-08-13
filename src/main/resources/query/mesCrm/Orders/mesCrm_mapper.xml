@@ -12,7 +12,7 @@
     </select>
 
 	<select id="crmOrderRecpAdd" resultType="com.mes.Common.DataTransferObject.Message">
-		EXEC SP_CRM_ORD_RECP_ADD #{ord_no},#{work_date},#{supp_code},#{part_kind},#{part_code},#{part_weight},#{unit_cost},
+		EXEC SP_CRM_ORD_RECP_ADD #{ord_no},#{work_date},#{supp_code},#{part_kind},#{part_code},#{po_no},#{part_weight},#{unit_cost},
 						#{qty},#{price_amount},#{user_code},#{keyword}
 	</select>
 

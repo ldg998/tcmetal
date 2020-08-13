@@ -49,7 +49,11 @@ function get_btn(page) {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
-        main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
+      if (jqgrid_data.status == '등록'){
+          main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
+      }else {
+          main_data.check = 'I';
+      }
 
         var send_data = {};
         send_data.keyword = jqgrid_data.supp_code;
@@ -57,17 +61,33 @@ function update_btn(jqgrid_data) {
         send_data.part_kind = jqgrid_data.part_kind;
         send_data.part_code = jqgrid_data.part_code;
         ccn_ajax('/qmsMeltSpecOneGet',send_data).then(function (data) {
+           var dataList={};
             if(data.length >0){
+                    dataList.keyword =data[0].supp_code
+                    dataList.part_kind=data[0].part_kind
+                    dataList.part_code=data[0].part_code
+                    dataList.keyword2 = 'S'
            modal_reset('.modal_value',main_data.readonly);
             modal_edits('.modal_value', main_data.readonly,data[0]); // response 값 출력
+                $("#mes_modal_grid2").setGridParam({ // 그리드 조회
+                    url: '/qmsMeltSpecOneGet',
+                    datatype: "json",
+                    postData: dataList
+                }).trigger("reloadGrid");
             $("#addDialog").dialog('open');// 모달 열기
-            jqGridResize("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
             jqGridResize("#mes_modal_grid2", $('#mes_modal_grid2').closest('[class*="col-"]'));
+
             }else {
+                dataList.keyword2 = 'N'
+                $("#mes_modal_grid2").jqGrid('clearGridData');
                 modal_reset('.modal_value',main_data.readonly);
                 modal_edits('.modal_value', main_data.readonly,jqgrid_data); // response 값 출력
+                $("#mes_modal_grid2").setGridParam({ // 그리드 조회
+                    url: '/qmsMeltSpecOneGet',
+                    datatype: "json",
+                    postData: dataList
+                }).trigger("reloadGrid");
              $("#addDialog").dialog('open');// 모달 열기
-             jqGridResize("#mes_modal_grid", $('#mes_modal_grid').closest('[class*="col-"]'));
              jqGridResize("#mes_modal_grid2", $('#mes_modal_grid2').closest('[class*="col-"]'));
 
             }

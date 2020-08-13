@@ -27,4 +27,6 @@ public interface QmsStandardMapper {
     List<SYS_SPART_MELT> qmsMeltSpecGet(Page p);
 
     List<SYS_SPART_MELT> qmsMeltSpecOneGet(SYS_SPART_MELT ssm);
+
+    Message qmsMeltSpecAdd(SYS_SPART_MELT ssm);
 }

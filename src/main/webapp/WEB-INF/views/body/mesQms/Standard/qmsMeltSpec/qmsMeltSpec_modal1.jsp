@@ -9,25 +9,20 @@
         text-align: center;
     }
 
-    .w_100 {
-        width: 100%;
+    .w_100 {width: 100%; height: 18px !important;}
+    .w_20 {width: 20%;}
+    .right {text-align: right !important;}
+    .left {text-align: left !important;}
+    #addDialog::-webkit-scrollbar {display: none;}
+
+    input[type=text][name="range2"] {
+        height: 18px !important;
     }
-
-    .w_20 {
-        width: 20%;
+    input[type=text][name="remark"] {
+        height: 18px !important;
     }
-
-
-    .right {
-        text-align: right !important;
-    }
-
-    .left {
-        text-align: left !important;
-    }
-
-    #addDialog::-webkit-scrollbar {
-        display: none;
+    input[type=text][name="range1"] {
+        height: 18px !important;
     }
 </style>
 
@@ -36,24 +31,24 @@
         <div class="profile-info-row">
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
-                <input type="text" name="supp_name" class="form-control modal_value" autocomplete="off" autofocus>
+                <input type="text" name="supp_name" class="form-control modal_value" autocomplete="off" autofocus readonly>
                 <input type="hidden" name="supp_code" class="form-control modal_value">
 
             </div>
             <div class="profile-info-name"> 품번</div>
             <div class="profile-info-value">
-                <input type="text" name="part_code" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_code" class="form-control modal_value" autocomplete="off" readonly>
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name"> 기종</div>
             <div class="profile-info-value">
-                <input type="text" name="part_kind" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_kind" class="form-control modal_value" autocomplete="off" readonly>
             </div>
             <div class="profile-info-name"> 품명</div>
             <div class="profile-info-value">
-                <input type="text" name="part_name" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_name" class="form-control modal_value" autocomplete="off" readonly>
             </div>
         </div>
     </div>

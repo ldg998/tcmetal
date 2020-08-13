@@ -785,6 +785,10 @@ function disabled_tf(list,what) {
 	}
 
 }
+function num_keyup_integer(e) {
+	$(e).val($(e).val().replace(/[^0-9]/g,''));
+	$("input[name="+e.name+"]").val($(e).val()).trigger("change");
+}
 function num_keyup_comma_crm4(e) {
 	$(e).val($(e).val().replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 	$("input[name="+e.name+"]").val($(e).val()).trigger("change");

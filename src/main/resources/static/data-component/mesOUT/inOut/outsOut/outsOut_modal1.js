@@ -7,20 +7,80 @@ function modal_start1() {
     msg_get_modal1();// 모달 메세지 설정
     modal_make1(); // 모달 생성
     jqGrid_main_modal();
+    select_modal_Box();
+
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
 
+    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+    var gu5 = String.fromCharCode(5);
+    var gu4 = String.fromCharCode(4);
+    var jdata = $("#mes_add_grid2").getRowData();
+    var add_data = value_return(".modal_value");
+
+
+    if (jdata.length > 0) {
+        if (qty_chck(jdata)) {
+        var list = [];
+        var list2 = [];
+        jdata.forEach(function (data, j) {
+            if (data.outs_qty !== '' && data.outs_qty > 0) {
+                list.push(data.supp_code + gu4 + data.outs_supp_code + gu4 + data.part_kind + gu4 + data.part_code + gu4 + data.part_weight + gu4 + data.outs_qty);
+            } else {
+                list2.push(data.supp_code);
+            }
+        });
+        callback(function () {
+            var text = msg_object.TBMES_Q002.msg_name1;
+            if (main_data.check === "U") {
+                text = msg_object.TBMES_Q003.msg_name1;
+            }
+            console.log(list);
+            if (confirm(text)) {
+                wrapWindowByMask2();
+                add_data.code_list = list.join(gu5);
+
+                ccn_ajax("/outsOutAdd", add_data).then(function (data) {
+                    if (data.result === 'NG') {
+                        alert(data.message);
+                    } else {
+                        if (main_data.check === "I") {
+                            get_btn(1);
+                        } else {
+                            $('#mes_grid').trigger("reloadGrid");
+                        }
+                    }
+                    $('#mes_modal_grid2').jqGrid('clearGridData');
+                    closeWindowByMask();
+                    $("#addDialog").dialog('close');
+                }).catch(function (err) {
+                    closeWindowByMask();
+                    alert(msg_object.TBMES_E008.msg_name1);
+                });
+            }
+
+
+        });
+    }else {
+            alert("출고수량을 확인해주세요.");
+        }
+    } else {
+        alert("저장할 데이터가 없습니다.");
+    }
+
+
 
 }
 
+
+
 function modal_get_btn(page) {
     main_data.send_data = value_return(".modal_value"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
-
     $("#mes_add_grid2").setGridParam({ // 그리드 조회
-        url: '/outsOutModalListGet',
+        url:'/outsStockSumAllGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -53,8 +113,10 @@ function jqGrid_main_modal() {
     $("#mes_add_grid2").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames: ['업체', '기종', '품번', '품명', '단중', '재고수량', '출장검사', '출고수량', '납품처'],// grid 헤더 설정
+        colNames: ['','','업체', '기종', '품번', '품명', '단중', '재고수량', '출장검사', '출고수량', '납품처'],// grid 헤더 설정
         colModel: [// grid row 의 설정할 데이터 설정
+            {name: 'supp_code', index: 'supp_code', sortable: false, fixed: true,hidden:true},
+            {name: 'outs_supp_code', index: 'outs_supp_code', sortable: false, fixed: true,hidden:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 110, fixed: true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 110, fixed: true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 110, fixed: true},
@@ -94,7 +156,7 @@ function jqGrid_main_modal() {
                                         $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
                                         return false;
                                     } else if(parseFloat_change(value) <= 0) {
-                                        alert("발주수량이 0보다 커야합니다.");
+                                        alert("출고량이 0보다 커야합니다.");
                                         e.target.value = '';
                                         $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
                                         return false;
@@ -115,7 +177,7 @@ function jqGrid_main_modal() {
                                     $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
                                     return false;
                                 } else if(parseInt_change(value) <= 0) {
-                                    alert("발주수량이 0보다 커야합니다.");
+                                    alert("출고량이 0보다 커야합니다.");
                                     e.target.value = '';
                                     $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
                                     return false;
@@ -152,4 +214,37 @@ function jqGrid_main_modal() {
                 $(".jqgfirstrow").css("height", "0px");
         }
     })//.navGrid("mes_modal_grid_pager", {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정
+}
+
+
+function select_modal_Box() {
+    $('#part_kind_modal_select').select2();
+    select_makes_sub("#supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+    select_makes_sub("#outs_supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'})
+
+}
+
+function select_modal_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_modal_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        $('#part_kind_modal_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_modal_select').append(option);
+        $('#part_kind_modal_select').select2();
+    }
+}
+
+function datepickerInput_modal() {
+    datepicker_makes("#datepicker_modal1", 0);
+}
+function qty_chck(data){
+    var ck = true;
+    data.forEach(function(id) {
+        if(id.outs_qty == '' || id.outs_qty == 0 ){
+            ck = false
+            return
+        }
+    }); //반복문
+    return ck
 }

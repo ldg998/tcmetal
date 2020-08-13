@@ -6,7 +6,7 @@
             EXEC [SP_OUTS_OUT_SUB_DATE_GET]  #{page}, #{rows}, #{start_date}, #{end_date} ,#{keyword}
     </select>
 
-    <select id="outsInListGet" resultType="com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB">
+    <select id="outsInListGet" resultType="com.mes.mesOut.inOut.DTO.OUTS_IO_SUB">
             EXEC SP_OUTS_IN_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword} ,#{keyword2},#{keyword3}
     </select>
 
@@ -19,8 +19,10 @@
             EXEC [SP_OUTS_IO_SUB_DATE_GET]  #{page}, #{rows}, #{start_date}, #{end_date} ,#{keyword},#{keyword2}
     </select>
 
-    <select id="outsOutModalListGet" resultType="com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB">
-            EXEC [SP_OUTS_OUT_IN_LIST_GET] #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
+     <select id="outsOutAdd" resultType="com.mes.Common.DataTransferObject.Message">
+            EXEC [SP_OUTS_OUT_ADD] #{work_date},#{user_code},#{code_list}
     </select>
+
+
 
 </mapper>

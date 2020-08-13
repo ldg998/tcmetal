@@ -35,13 +35,9 @@ $(document).ready(function () {
 // 조회 버튼
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
-        // URL -> RESTCONTROLLER 호출
-        url: '/sysPartNameGet',
-        // JSON 데이터 형식으로
+        url: '/outsOutGet',
         datatype: "json",
-        // PAGE는 받은 파라미터로 설정
         page: page,
-        // 매개변수 전달
         postData: main_data.send_data
         // trigger 그리드 reload 실행 / 해당이벤트를 강제발생시키는 개념
     }).trigger("reloadGrid");
@@ -51,10 +47,11 @@ function get_btn(page) {
 function add_btn() {
     if (main_data.auth.check_add !="N"){
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
+        $("#mes_add_grid2").jqGrid('clearGridData');// 그리드 삭제 및 업데이트
         main_data.check = 'I'; // 저장인지 체크
         main_data.status = 'N'
-
-
+        datepickerInput_modal();
+        $('#outs_supp_modal_select option:eq(0)').prop("selected", true).trigger("change"); //셀렉트 0번째 아이템으로 할당
         $("#addDialog").dialog('open'); // 모달 열기
         jqGridResize("#mes_add_grid2" , $('#mes_add_grid2').closest('[class*="col-"]'));
     } else {

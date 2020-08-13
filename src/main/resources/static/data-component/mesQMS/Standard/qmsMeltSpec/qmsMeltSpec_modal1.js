@@ -18,10 +18,9 @@ function addUdate_btn() {
     var gu4 = String.fromCharCode(4);
     var add_data = value_return(".modal_value");
     var jdata = $("#mes_modal_grid2").getRowData();
-
-    console.log(jdata);
-
     add_data.check = main_data.check;
+
+
     if (jdata.length > 0) {
         var list = [];
         var list2 = [];
@@ -118,14 +117,14 @@ function jqGrid_main_modal() {
             {name:'seq',index:'seq',sortable: false,fixed: true,hidden:true},
             {name:'chem_name',index:'chem_name',sortable: false,width:110,fixed: true},
 
-            {name:'range1',index:'range1',sortable: false,width:125,fixed: true,editable: true,
+            {name:'range1',index:'range1',sortable: false,width:125,fixed: true,align:'right',formatter:'number',editable: true,
                 editoptions: {
                     dataEvents: [
                         {
                             type: 'focus',
                             fn: function (e) {
 
-                                if (e.target.value === '0'){
+                                if (e.target.value === '0.00'){
                                     e.target.value = '';
                                 }
                                 $(e.target).attr('autocomplete', 'off');
@@ -141,10 +140,10 @@ function jqGrid_main_modal() {
                                     if (isNaN(value)){
                                         alert("숫자만 입력가능합니다.");
                                         e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
-                                        $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                        $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
                                         return false;
                                     }
-                                    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
 
 
                                 }
@@ -159,10 +158,10 @@ function jqGrid_main_modal() {
                                 if (isNaN(value)){
                                     alert("숫자만 입력가능합니다.");
                                     e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
-                                    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
                                     return false;
                                 }
-                                $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
 
                             }
                         }
@@ -171,7 +170,7 @@ function jqGrid_main_modal() {
                 }
             },
 
-            {name:'range2',index:'range2',sortable: false,width:125,fixed: true,editable: true,
+            {name:'range2',index:'range2',sortable: false,width:125,fixed: true,align:'right',formatter:'number', editable: true,
                 editoptions: {
                     dataEvents: [
                         {
@@ -192,10 +191,10 @@ function jqGrid_main_modal() {
                                     if (isNaN(value)){
                                         alert("숫자만 입력가능합니다.");
                                         e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
-                                        $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                        $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
                                         return false;
                                     }
-                                    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
 
 
                                 }
@@ -210,10 +209,10 @@ function jqGrid_main_modal() {
                                 if (isNaN(value)){
                                     alert("숫자만 입력가능합니다.");
                                     e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
-                                    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
                                     return false;
                                 }
-                                $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
 
                             }
                         }

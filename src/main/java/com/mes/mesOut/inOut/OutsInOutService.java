@@ -1,12 +1,13 @@
 package com.mes.mesOut.inOut;
 
+import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.Function.ReturnFunction;
 import com.mes.Mapper.mesOut.mesOut.MesOutMapper;
+import com.mes.mesOut.inOut.DTO.OUTS_IO_SUB;
 import com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB;
 import com.mes.mesOut.mesOut.DTO.OUTS_IO_CD;
-import com.mes.mesOut.mesOut.DTO.OUTS_OUT_SUB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class OutsInOutService extends ReturnFunction {
 
     public RESTful outsOutListGet(Page p, HttpServletRequest req) {
         p.setSite_code(getSessionData(req).getSite_code());
-        List<OUTS_OUT_SUB> rows = mesOutMapper.outsOutListGet(p);
+        List<OUTS_IO_SUB> rows = mesOutMapper.outsOutListGet(p);
         return getListData(rows , p);
     }
 
@@ -42,7 +43,17 @@ public class OutsInOutService extends ReturnFunction {
     }
 
     public RESTful outsOutModalListGet(Page p, HttpServletRequest req) {
-        List<OUTS_IN_SUB> rows = mesOutMapper.outsOutModalListGet(p);
+        List<OUTS_IO_SUB> rows = mesOutMapper.outsOutModalListGet(p);
         return getListData(rows , p);
+    }
+
+    public RESTful outsOutGet(Page p, HttpServletRequest req) {
+        List<OUTS_IO_SUB> rows = mesOutMapper.outsOutGet(p);
+        return getListData(rows , p);
+    }
+
+    public Message outsOutAdd(OUTS_IO_SUB ois, HttpServletRequest req) {
+        ois.setUser_code(getSessionData(req).getUser_code());
+        return mesOutMapper.outsOutAdd(ois);
     }
 }

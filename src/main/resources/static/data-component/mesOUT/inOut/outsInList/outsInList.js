@@ -83,20 +83,20 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['입고일자','전표번호','외주업체','업체','기종','품번','품명','단중','수량','출장검사','등록자','수정일'],
+        colNames: ['입고일자','전표번호','외주업체','업체','기종','품번','품명','단중','수량','출장검사','등록자','입고일시'],
         colModel: [
             {name: 'work_date', index: 'work_date',sortable: false, width: 100,fixed: true,formatter:formmatterDate2},
-            {name: 'in_no', index: 'in_no',sortable: false, width: 80,fixed: true},
-            {name: 'outs_supp_name', index: 'outs_supp_name',sortable: false, width: 80,fixed: true},
-            {name: 'supp_name', index: 'supp_name',sortable: false, width: 80,fixed: true},
-            {name: 'part_kind', index: 'part_kind',sortable: false, width: 80,fixed: true},
-            {name: 'part_code', index: 'part_code',sortable: false, width: 80,fixed: true},
-            {name: 'part_name', index: 'part_name',sortable: false, width: 80,fixed: true},
-            {name: 'part_weight', index: 'part_weight',sortable: false, width: 80,fixed: true},
-            {name: 'qty', index: 'qty',sortable: false, width: 80,fixed: true},
+            {name: 'in_no', index: 'in_no',sortable: false, width: 150,fixed: true},
+            {name: 'outs_supp_name', index: 'outs_supp_name',sortable: false, width: 120,fixed: true},
+            {name: 'supp_name', index: 'supp_name',sortable: false, width: 120,fixed: true},
+            {name: 'part_kind', index: 'part_kind',sortable: false, width: 120,fixed: true},
+            {name: 'part_code', index: 'part_code',sortable: false, width: 120,fixed: true},
+            {name: 'part_name', index: 'part_name',sortable: false, width: 120,fixed: true},
+            {name: 'part_weight', index: 'part_weight',sortable: false, width: 80,fixed: true,align: 'right', formatter: 'integer'},
+            {name: 'qty', index: 'qty',sortable: false, width: 80,fixed: true,align: 'right', formatter: 'integer'},
             {name: 'outs_qc', index: 'outs_qc',sortable: false, width: 80,fixed: true},
             {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
-            {name: 'update_date', index: 'update_date',sortable: false, width: 100,fixed: true,formatter:formmatterDate2}
+            {name: 'work_date', index: 'work_date',sortable: false, width: 140,fixed: true,formatter:formmatterDate}
 
         ],
         caption: "외주입고현황 | MES",

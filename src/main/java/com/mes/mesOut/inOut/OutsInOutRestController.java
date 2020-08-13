@@ -1,7 +1,9 @@
 package com.mes.mesOut.inOut;
 
+import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
+import com.mes.mesOut.inOut.DTO.OUTS_IO_SUB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,5 +38,13 @@ public class OutsInOutRestController {
 
     @RequestMapping(value = "/outsIOListGet", method = RequestMethod.POST)
     public RESTful outsIOListGet(Page p, HttpServletRequest req ) {return outsOutService.outsIOListGet(p,req);}
+
+    @RequestMapping(value = "/outsOutGet", method = RequestMethod.POST)
+    public RESTful outsOutGet(Page p, HttpServletRequest req ) {return outsOutService.outsOutGet(p,req);}
+
+    @RequestMapping(value = "/outsOutAdd", method = RequestMethod.POST)
+    public Message outsOutAdd(OUTS_IO_SUB ois, HttpServletRequest req ) {return outsOutService.outsOutAdd(ois,req);}
+
+
 
 }

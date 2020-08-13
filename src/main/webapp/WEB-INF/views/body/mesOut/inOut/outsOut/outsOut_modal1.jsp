@@ -20,20 +20,38 @@
                 <tbody>
                 <tr>
                     <!-- 구분 select 창 -->
-                    <td class="wt-px-75 t-align-c td-title padding-a-0" id="part_type">업체</td>
-                    <td class="wt-px-100">
-                        <input type="text" name="supp_name" class="form-control h-25 modal_value">
-                    </td>
-                    <!-- 품목코드 검색창 -->
-                    <td class="wt-px-75 t-align-c td-title padding-a-0" id="part_group1">기종</td>
+
+                    <td class="wt-px-75 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-150">
-                        <input type="text" name="keyword"  class="form-control h-25 modal_value" autocomplete="off" />
+                        <select class="form-control modal_value" name="keyword" id="supp_modal_select" style="width: 100%" onchange="select_modal_change1(this.value)" ></select>
+                    </td>
+
+                    <td class="wt-px-75 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-150">
+                        <select class="modal_value" id="part_kind_modal_select" name="keyword2" style="width: 100%;">
+                            <option value="">전체</option>
+
+                        </select>
                     </td>
 
                     <td class="wt-px-75 t-align-c td-title padding-a-0">외주업체</td>
                     <td class="wt-px-150">
-                    <input type="text" class="form-control h-25 modal_value" readonly placeholder="자동표시">
+                        <select class="modal_value" id="outs_supp_modal_select" name="keyword3" style="width: 100%;">
+                            <option value="">전체</option>
+
+                        </select>
+
                     </td>
+                    <td class="wt-px-75 t-align-c td-title padding-a-0">출고일짜</td>
+                    <td class="wt-px-150">
+                        <div class="input-icon input-icon-right">
+                            <input type="text" name="work_date" id="datepicker_modal1"
+                                   class="form-control h-25 modal_value" readonly>
+                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                        </div>
+                    </td>
+
+
                     <td></td>
                 </tr>
                 </tbody>
@@ -53,10 +71,10 @@
                 </a>
                 <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
                    id="btn-excel" tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                   onclick="excel_download">
-                                        <span><i class="fa fa-download bigger-110 blue"></i>
-                                            <span>저장</span>
-                                        </span>
+                   onclick="addUdate_btn()">
+                         <span><i class="fa fa-download bigger-110 blue"></i>
+                             <span>저장</span>
+                         </span>
                 </a>
 
             </div>

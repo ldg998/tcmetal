@@ -12,8 +12,6 @@
             <table class="table wt-100 board_line">
                 <tbody>
                 <tr>
-
-
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
                         <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
@@ -21,12 +19,10 @@
 
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
-                        <select id="part_kind_select" name="keyword2" style="width: 100%;">
+                        <select id="part_kind_select" name="keyword2" class="form-control condition_main" style="width: 100%;">
                             <option value="">전체</option>
-
                         </select>
                     </td>
-
                     <td></td>
                 </tr>
                 </tbody>
@@ -38,7 +34,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                       onclick=" test();">
+                       onclick="get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>
@@ -59,4 +55,3 @@
 </div>
 
 <%@include file="sysSPartDrawing_modal1.jsp"%>
-<%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>

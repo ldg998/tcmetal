@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesOut.Stock.OutsStockMapper">
+    <select id="outsStockSumGet" resultType="com.mes.mesOut.stock.DTO.OUTS_STOCK">
+            EXEC [SP_OUTS_STOCK_SUM_GET]  #{page}, #{rows},#{keyword},#{keyword2},#{keyword3}
+    </select>
+    <select id="outsStockSumAllGet" resultType="com.mes.mesOut.stock.DTO.OUTS_STOCK">
+            EXEC [SP_OUTS_STOCK_SUM_GET]  0, 0,#{keyword},#{keyword2},#{keyword3}
+    </select>
+</mapper>

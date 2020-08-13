@@ -26,16 +26,27 @@ function addUdate_btn() {
 
             var list = [];
             var list2 = [];
+            var transCheck = "Y";
+            var trans_code = "";
             jdata.forEach(function (data, j) {
                 if (data.qty !== '' && data.qty > 0) {
                     list.push(data.ord_no + gu4 + data.qty + gu4 + data.outs_supp_code );
-                } else {
-                    list2.push(data.ord_no);
+                    if (j !== 0) {
+                        if (trans_code !== data.trans_code) {
+                            transCheck = "N";
+                        }
+                    }
+                }
+
+                if (j == 0){
+                    trans_code = data.trans_code;
                 }
             });
-            if (list2.length > 0) {
-                alert(list2[0] + "를 다시 확인해주세요");
-            } else {
+            if (list.length === 0) {
+                alert("수량을 다시 확인해주세요");
+            } else if(transCheck === 'N') {
+                alert("운송수단을 다시 확인해주세요");
+            }else {
                 var text = msg_object.TBMES_Q002.msg_name1;
                 if (main_data.check === "U") {
                     text = msg_object.TBMES_Q003.msg_name1;
@@ -157,17 +168,19 @@ function jqGrid_main_modal() {
     $("#mes_modal1_grid1").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['저장수량','수주번호','수주일자','업체','PO','기종','품번','품명','단중','수주수량','기납품수량','납품수량','외주(열처리)'],// grid 헤더 설정
+        colNames : ['저장수량','수주번호','수주일자','업체','PO','기종','품번','품명','단중','trans_code','운송수단','수주수량','기납품수량','납품수량','외주(열처리)'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name: 'qty2', index: 'qty2', sortable: false, hidden:true},
             {name:'ord_no',index:'ord_no',hidden:true,key:true,sortable: false,width:110,fixed: true},
             {name:'work_date',index:'work_date',sortable: false,width:110,fixed: true, formatter: formmatterDate2},
             {name:'supp_name',index:'supp_name',sortable: false,width:125,fixed: true},
-            {name:'',index:'',sortable: false,width:110,fixed: true},
+            {name:'po_no',index:'po_no',sortable: false,width:110,fixed: true},
             {name:'part_kind',index:'part_kind',sortable: false,width:125,fixed: true},
             {name:'part_code',index:'part_code',sortable: false,width:110,fixed: true},
             {name:'part_name',index:'part_name',sortable: false,width:125,fixed: true},
             {name:'part_weight',index:'part_weight',sortable: false,width:110,fixed: true, formatter:'integer', align:'right'},
+            {name:'trans_code',index:'trans_code',sortable: false,width:110,fixed: true,hidden:true},
+            {name:'trans_name',index:'trans_name',sortable: false,width:110,fixed: true},
             {name:'ord_qty',index:'ord_qty',sortable: false,width:125,fixed: true, formatter:'integer', align:'right'},
             {name:'prev_qty',index:'prev_qty',sortable: false,width:110,fixed: true, formatter:'integer', align:'right'},
             {name:'qty',index:'qty',sortable: false,width:125,fixed: true, formatter:'integer', align:'right',

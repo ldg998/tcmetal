@@ -20,7 +20,7 @@ function addUdate_btn() {
     var gu5 = String.fromCharCode(5);
     var gu4 = String.fromCharCode(4);
     var add_data = value_return(".modal_value");
-    add_data.save_type = main_data.check;
+
     var jdata = $("#mes_modal1_grid1").getRowData();
 
     if (jdata.length > 0) {
@@ -28,7 +28,7 @@ function addUdate_btn() {
         var list2 = [];
         jdata.forEach(function (data, j) {
             if (data.supp_code !== '' && data.supp_code !== ' ' && data.part_kind !== '' && data.part_kind !== ' ' && data.part_code !== '' && data.part_code !== ' ' && data.plan_qty > 0 && data.lot_no !== '' && data.work_user_code !== '' && data.work_user_code !== ' ') {
-                list.push(data.supp_code + gu4 + data.part_kind + gu4 + data.part_code + gu4 + data.plan_qty +gu4 + data.weight+ gu4 + data.lot_no+ gu4 + data.work_user_code);
+                list.push(data.supp_code + gu4 + data.part_kind + gu4 + data.part_code +gu4 + data.part_weight + gu4 + data.plan_qty +gu4 + data.weight+ gu4 + data.lot_no+ gu4 + data.work_user_code);
 
             } else {
                 list2.push(j+1);
@@ -38,38 +38,37 @@ function addUdate_btn() {
             if (list2.length > 0) {
                 alert(list2[0] + "번 다시 확인해주세요");
             } else {
-                console.log(list.join(gu5));
-                console.log(add_data);
+                // console.log(list.join(gu5));
+                add_data.work_date = add_data.start_date;
+                add_data.line_code = add_data.keyword2;
+                add_data.keyword = main_data.check;
+                add_data.keyword2 = list.join(gu5);
 
-                // var text = msg_object.TBMES_Q002.msg_name1;
-                // if (main_data.check === "U") {
-                //     text = msg_object.TBMES_Q003.msg_name1;
-                // }
-                //
-                // if (confirm(text)) {
-                //     wrapWindowByMask2();
-                //     add_data.ord_sub = list.join(gu5);
-                //
-                //     ccn_ajax("/scmOrderAdd", add_data).then(function (data) {
-                //         if (data.result === 'NG') {
-                //             alert(data.message);
-                //         } else {
-                //             if (main_data.check === "I") {
-                //                 get_btn(1);
-                //             } else {
-                //                 $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
-                //                 $('#mes_grid2').trigger("reloadGrid"); //화면 리로딩
-                //             }
-                //         }
-                //         $('#mes_add_grid').jqGrid('clearGridData');
-                //         $('#mes_add_grid2').jqGrid('clearGridData');
-                //         closeWindowByMask();
-                //         $("#addDialog").dialog('close');
-                //     }).catch(function (err) {
-                //         closeWindowByMask();
-                //         alert(msg_object.TBMES_E008.msg_name1);
-                //     });
-                // }
+
+                var text = msg_object.TBMES_Q002.msg_name1;
+                if (main_data.check === "U") {
+                    text = msg_object.TBMES_Q003.msg_name1;
+                }
+
+                if (confirm(text)) {
+                    wrapWindowByMask2();
+                    ccn_ajax("/popPlanAdd", add_data).then(function (data) {
+                        if (data.result === 'NG') {
+                            alert(data.message);
+                        } else {
+                            if (main_data.check === "I") {
+                                get_btn(1);
+                            } else {
+                                $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
+                            }
+                            $("#addDialog").dialog('close');
+                        }
+                        closeWindowByMask();
+                    }).catch(function (err) {
+                        closeWindowByMask();
+                        alert(msg_object.TBMES_E008.msg_name1);
+                    });
+                }
             }
 
         });
@@ -142,10 +141,6 @@ function modal1_rowAdd(rowId) {
 
     }
 
-    // $('#mes_modal1_grid1').jqGrid("resetSelection");
-    // $("#dialog_footer").text("보기 1-"+$("#mes_modal1_grid1").getGridParam("reccount"));
-    // $("#mes_modal1_grid1").closest(".ui-jqgrid-bdiv").scrollTop($("#mes_modal1_grid1").css("height").replace(/px/g, ""));
-
 }
 
 function modal1_rowDel(rowId) {
@@ -199,12 +194,6 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
 }
 
 function jqGrid_main_modal() {
-    // $('#mes_modal1_grid1').jqGrid('sortableRows', { update: function( e, html ){
-    //     // 순서가 바뀌면 발생되는 event
-    //         console.log( html.item[0].id ); // row id 확인
-    // } });
-
-
     $("#mes_modal1_grid1").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
@@ -586,7 +575,7 @@ function jqGrid_main_modal() {
             saverow = IRow;
             savecol = ICol;
         },
-        // rownumbers: true,
+        rownumbers: true,
         caption: "생산계획 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
         height: 250, // 그리드 세로 길이 설정
@@ -596,10 +585,15 @@ function jqGrid_main_modal() {
                 cm = $myGrid.jqGrid('getGridParam', 'colModel');
             return (cm[i].name === 'cb');
         },
-        // ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
-        //     var data = $('#mes_grid').jqGrid('getRowData', rowid);
-        //     update_btn(data);
-        // },
+        afterSaveCell: function (rowid, name, val, iRow, iCol) {
+            var rowdata = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
+            if (rowdata.plan_qty === ""){
+                $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'plan_qty', 0);
+            }
+
+            $('#mes_modal1_grid1').jqGrid('setCell', rowid, 'weight', rowdata.part_weight*rowdata.plan_qty);
+
+        },
         loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
                 $(".jqgfirstrow").css("height","1px");
@@ -609,8 +603,7 @@ function jqGrid_main_modal() {
     }).jqGrid('sortableRows', { update: function( e, html ){
             // 순서가 바뀌면 발생되는 event
 
-        } });
-    //.navGrid("mes_modal_grid_pager", {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정
+    } });
 }
 function datepickerInput_modal() {
 
@@ -622,7 +615,6 @@ function select_box_modal() {
 
         });
     });
-    // $('#select_modal1').select2();
 }
 
 function addDel_formatter(cellvalue, options, rowObject) {

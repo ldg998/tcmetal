@@ -47,7 +47,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">PO</div>
             <div class="profile-info-value">
-                <input name="po" type="text" class="form-control keyword modal_value"  style="width: 100%" autocomplete="off">
+                <input name="po_no" type="text" class="form-control keyword modal_value"  style="width: 100%" autocomplete="off">
 
             </div>
             <div class="profile-info-name">품번</div>

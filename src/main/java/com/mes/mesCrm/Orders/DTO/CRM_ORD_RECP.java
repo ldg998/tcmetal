@@ -25,6 +25,9 @@ public class CRM_ORD_RECP  {
     private String keyword;
     private String user_name;
     private String supp_name;
+    private String po_no;
+    private String trans_code;
+    private String trans_name;
     private int rownum;
     private int rownum_page;
     private int rec_count;

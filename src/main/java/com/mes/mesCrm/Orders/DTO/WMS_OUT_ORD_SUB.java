@@ -13,6 +13,7 @@ public class WMS_OUT_ORD_SUB {
     private String part_code;
     private String part_name;
     private String part_weight;
+    private String po_no;
     private int ord_qty;
     private int prev_qty;
     private int qty;
@@ -31,6 +32,8 @@ public class WMS_OUT_ORD_SUB {
     private String keyword2;
     private String  ord_date;
     private String status_name;
+    private String trans_code;
+    private String trans_name;
     private int rownum;
     private int rownum_page;
     private int rec_count;

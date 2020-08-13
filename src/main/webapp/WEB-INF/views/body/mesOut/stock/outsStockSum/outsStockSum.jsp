@@ -13,25 +13,21 @@
                 <tr>
 
                     <!-- 구분 select 창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">업체</td>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                    <%--조회할 업채명--%>
                     <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" onclick="supp_btn('A');" readonly>
-                            <input type="hidden" name="keyword" class="form-control h-25 condition_main"
-                                   id="supp_code_main">
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
-                        </div>
-                    </td>
-                    <!-- 품목코드 검색창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">기종</td>
-                    <td class="wt-px-200">
-                        <input type="text" name="keyword"  class="form-control h-25 condition_main" autocomplete="off" />
+                        <select class="form-control condition_main" name="keyword" id="main_select1" style="width: 100%" onchange="main_select_change1(this.value)" ></select>
                     </td>
 
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-200">
+                        <select name="keyword2" id="main_select2" class="form-control condition_main" style="width: 100%;">
+                            <option value="">전체</option>
+                        </select>
+                    </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">외주업체</td>
                     <td class="wt-px-200">
-                       <select id="select1" style="width: 100%;">
+                       <select name="keyword3" id="main_select3" class="form-control condition_main" style="width: 100%;">
                            <option>제인산업</option>
                            <option></option>
 

@@ -864,31 +864,7 @@ public class MakeBody {
         return content;
     }
 
-    public List<List<Object>> popPlanList_Body(List<POP_PLAN> list) {
-        List<List<Object>> content = new ArrayList<>();
-        try {
-            if (list.size() != 0) {
-                for (POP_PLAN data : list) {
-                    obj = new ArrayList<>();
-                    obj.add(dateFormat(data.getPlan_date()));
-                    obj.add(data.getPlan_no());
-                    obj.add(data.getSupp_name());
-                    obj.add(data.getPlace_name());
-                    obj.add(data.getProd_type_name());
-                    obj.add(data.getProd_name());
-                    obj.add(data.getPlan_name());
-                    obj.add(data.getStatus_name());
-                    obj.add(data.getRoute_name());
-                    obj.add(data.getUser_name());
-                    obj.add(dateFormat2(data.getCreate_date()));
-                    content.add(obj);
-                }
-            }
-        } catch (Exception e) {
-            log.info("error code : " + e);
-        }
-        return content;
-    }
+
 
     public List<List<Object>> qmsRecvErrorListSum_Body(List<QMS_RECV_NG_SUM> list) {
         List<List<Object>> content = new ArrayList<>();

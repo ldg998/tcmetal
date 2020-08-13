@@ -6,8 +6,40 @@ function modal_start1() {
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
-function addUdate_btn() {
+function addUpdate_btn() {
+    if (confirm('내용을 수정하시겠습니까?')) {
+        var add_data = value_return(".modal_value");
+        var formData = new FormData();
+        var check;
 
+        formData.append("supp_code", add_data.supp_code);
+        formData.append("part_kind", add_data.part_kind);
+        formData.append("part_code", add_data.part_code);
+        formData.append("remark2", add_data.remark2);
+
+        if ($("#file_02").prop("files")[0] == null) {
+            check = 0;
+            formData.append("check", check);
+        } else {
+            check = 1;
+            formData.append("file2", $("#file_02").prop("files")[0]);
+            formData.append("check", check);
+        }
+        if(confirm("등록 하시겠습니까?")){
+            wrapWindowByMask2();
+            ccn_file_ajax("/sysSPartDrawingAdd", formData).then(function (data) {
+                if (data.result === 'NG') {
+                    alert(data.message);
+                }
+                closeWindowByMask();
+                $('#mes_grid').trigger('reloadGrid')
+
+            }).catch(function (err) {
+                closeWindowByMask();
+            });
+        }
+
+    }
 }
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get_modal1() {
@@ -16,7 +48,16 @@ function msg_get_modal1() {
     msgGet_auth("TBMES_E008");// 데이터 등록 실패
 }
 
+function file_change(e) {
+    var filename = $(e).val().split('\\');
+    var data = $(e).val().split('.'); // 확장자
+    if ( $(e).val() !== ''){
 
+        $(e).closest("div")
+            .children(".file_labal")
+            .text("업로드완료");
+    }
+}
 
 function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설정해준다
     $("#addDialog").dialog({
@@ -30,17 +71,15 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
                 text: '저장',
                 'class': 'btn btn-primary btn-minier',
                 click: function () {
-                    $(this).dialog("close");
-
+                    addUpdate_btn();
                 }
 
             },
             {
-                text: '삭제',
-                'class': 'btn btn-primary btn-minier',
+                text: '취소',
+                'class': 'btn btn-minier',
                 click: function () {
                     $(this).dialog("close");
-
                 }
 
             }

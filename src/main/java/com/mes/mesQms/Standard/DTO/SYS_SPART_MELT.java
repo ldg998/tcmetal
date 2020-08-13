@@ -25,6 +25,9 @@ public class SYS_SPART_MELT {
     private String remark;
     private String keyword;
     private String keyword2;
+    private String check;
+    private String melt_sub;
+    private int seq;
 
 
 

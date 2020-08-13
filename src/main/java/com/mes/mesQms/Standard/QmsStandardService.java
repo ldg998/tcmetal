@@ -74,4 +74,8 @@ public class QmsStandardService extends ReturnFunction {
     public List<SYS_SPART_MELT> qmsMeltSpecOneGet(SYS_SPART_MELT ssm, HttpServletRequest req) {
         return qmsStandardMapper.qmsMeltSpecOneGet(ssm);
     }
+
+    public Message qmsMeltSpecAdd(SYS_SPART_MELT ssm, HttpServletRequest req) {
+        return qmsStandardMapper.qmsMeltSpecAdd(ssm);
+    }
 }

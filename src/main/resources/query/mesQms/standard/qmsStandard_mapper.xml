@@ -33,6 +33,9 @@
     <select id="qmsMeltSpecOneGet" resultType="com.mes.mesQms.Standard.DTO.SYS_SPART_MELT">
         EXEC SP_QMS_MELT_SPEC_ONE_GET  #{keyword} ,#{keyword2} ,#{part_kind} ,#{part_code}
     </select>
+    <select id="qmsMeltSpecAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_MELT_SPEC_ADD  #{supp_code} ,#{part_code} ,#{part_kind} ,#{iron1_value},#{iron1_remark},#{iron2_value},#{iron2_remark},#{iron3_value},#{iron3_remark},#{melt_sub},#{check}
+    </select>
 
 
 

@@ -43,6 +43,11 @@ public class VariousRestController {
         return variousService.sysLocAllGet(p, req);
 
     }
+    @RequestMapping(value = "/syslineAllGroupGet", method = RequestMethod.POST)
+    public List<sysLoc> syslineAllGroupGet(Page p, HttpServletRequest req) {
+        return variousService.syslineAllGroupGet(p, req);
+
+    }
 
     @RequestMapping(value = "/sysCommonUnitGet", method = RequestMethod.POST)
     public List<SYSCommon> sysCommonUnitGet(Page p, HttpServletRequest req) {

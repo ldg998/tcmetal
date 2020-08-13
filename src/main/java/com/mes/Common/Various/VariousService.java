@@ -146,4 +146,8 @@ public class VariousService extends ReturnFunction {
     public List<SYSSupp> suppDeliveryPlaceGet(Page p) {
         return variousMapper.suppDeliveryPlaceGet(p);
     }
+
+    public List<sysLoc> syslineAllGroupGet(Page p, HttpServletRequest req) {
+        return variousMapper.syslineAllGroupGet(p);
+    }
 }

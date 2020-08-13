@@ -7,6 +7,9 @@
     <select id="sysLocAllGet" resultType="com.mes.mesScm.Standard.DTO.sysLoc">
 		EXEC [SP_SYS_LOC_GET]  0,0,'',#{keyword}
    </select>
+    <select id="syslineAllGroupGet" resultType="com.mes.mesManager.Master.DTO.SYSProdLine">
+		EXEC [SP_SYS_LINE_GET2]  0,0,'','',#{keyword}
+   </select>
     <select id="sysCommonUnitGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
 		EXEC [SP_SYS_COMMON_GET]  0,0,'UNIT','','Y'
    </select>

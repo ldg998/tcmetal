@@ -9,19 +9,16 @@
             <table class="table wt-100">
                 <tbody>
                 <tr>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">공정</td>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0">라인그룹</td>
                     <td class="wt-px-200">
-                        <select name="keyword" id="select1" class="form-control keyword condition_main" style="width: 100%">
+                        <select name="keyword" id="main_select1" class="form-control keyword condition_main" onchange="main_select_change1(this.value);" style="width: 100%">
                         <option>중자</option>
                         </select>
                     </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">세부</td>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0">라인명</td>
                     <td class="wt-px-200">
-                        <select name="keyword" id="select2" class="form-control keyword condition_main" style="width: 100%">
-                       <option>중자(1)</option>
+                        <select name="keyword2" id="main_select2" class="form-control keyword condition_main" style="width: 100%">
+                            <option>중자(1)</option>
                         </select>
                     </td>
                     <td></td>

@@ -20,7 +20,7 @@ function addUdate_btn() {
     var gu4 = String.fromCharCode(4);
     var jdata = $("#mes_add_grid2").getRowData();
     var add_data = value_return(".modal_value");
-
+    add_data.work_date = add_data.work_date.replace(/\-/g, '');
 
     if (jdata.length > 0) {
         if (qty_chck(jdata)) {
@@ -38,11 +38,11 @@ function addUdate_btn() {
             if (main_data.check === "U") {
                 text = msg_object.TBMES_Q003.msg_name1;
             }
-            console.log(list);
+
             if (confirm(text)) {
                 wrapWindowByMask2();
                 add_data.code_list = list.join(gu5);
-
+                add_data.keyword = main_data.check;
                 ccn_ajax("/outsOutAdd", add_data).then(function (data) {
                     if (data.result === 'NG') {
                         alert(data.message);
@@ -79,8 +79,12 @@ function addUdate_btn() {
 
 function modal_get_btn(page) {
     main_data.send_data = value_return(".modal_value"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
+    main_data.send_data.keyword =main_data.send_data.supp_code
+    main_data.send_data.keyword2 =main_data.send_data.part_kind
+    main_data.send_data.keyword3 =main_data.send_data.outs_supp_code
+
     $("#mes_add_grid2").setGridParam({ // 그리드 조회
-        url:'/outsStockSumAllGet',
+        url:'/outsOutModalListGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -113,7 +117,7 @@ function jqGrid_main_modal() {
     $("#mes_add_grid2").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames: ['','','업체', '기종', '품번', '품명', '단중', '재고수량', '출장검사', '출고수량', '납품처'],// grid 헤더 설정
+        colNames: ['','','업체', '기종', '품번', '품명', '단중', '재고수량', '출장검사', '출고수량'],// grid 헤더 설정
         colModel: [// grid row 의 설정할 데이터 설정
             {name: 'supp_code', index: 'supp_code', sortable: false, fixed: true,hidden:true},
             {name: 'outs_supp_code', index: 'outs_supp_code', sortable: false, fixed: true,hidden:true},

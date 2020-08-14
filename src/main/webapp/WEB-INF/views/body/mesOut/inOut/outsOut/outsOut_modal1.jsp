@@ -23,12 +23,12 @@
 
                     <td class="wt-px-75 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-150">
-                        <select class="form-control modal_value" name="keyword" id="supp_modal_select" style="width: 100%" onchange="select_modal_change1(this.value)" ></select>
+                        <select class="form-control modal_value" name="supp_code" id="supp_modal_select" style="width: 100%" onchange="select_modal_change1(this.value)" ></select>
                     </td>
 
                     <td class="wt-px-75 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-150">
-                        <select class="modal_value" id="part_kind_modal_select" name="keyword2" style="width: 100%;">
+                        <select class="modal_value" id="part_kind_modal_select" name="part_kind" style="width: 100%;">
                             <option value="">전체</option>
 
                         </select>
@@ -36,7 +36,7 @@
 
                     <td class="wt-px-75 t-align-c td-title padding-a-0">외주업체</td>
                     <td class="wt-px-150">
-                        <select class="modal_value" id="outs_supp_modal_select" name="keyword3" style="width: 100%;">
+                        <select class="modal_value" id="outs_supp_modal_select" name="outs_supp_code" style="width: 100%;">
                             <option value="">전체</option>
 
                         </select>
@@ -45,6 +45,7 @@
                     <td class="wt-px-75 t-align-c td-title padding-a-0">출고일짜</td>
                     <td class="wt-px-150">
                         <div class="input-icon input-icon-right">
+                            <input type="hidden" name="in_no" class="modal_value" value="">
                             <input type="text" name="work_date" id="datepicker_modal1"
                                    class="form-control h-25 modal_value" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>

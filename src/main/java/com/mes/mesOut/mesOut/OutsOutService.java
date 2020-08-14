@@ -37,7 +37,7 @@ public class OutsOutService extends ReturnFunction {
     }
 
     public RESTful outsIOListGet(Page p, HttpServletRequest req) {
-        List<OUTS_IO_CD> rows = mesOutMapper.outsIOListGet(p);
+        List<OUTS_IO_SUB> rows = mesOutMapper.outsIOListGet(p);
         return getListData(rows , p);
     }
 

@@ -25,7 +25,6 @@ public class OutsInOutRestController {
     public RESTful outsOutModalListGet(Page p, HttpServletRequest req) {
         return outsOutService.outsOutModalListGet(p, req);
     }
-
     @RequestMapping(value = "/outsInListGet", method = RequestMethod.POST)
     public RESTful outsInListGet(Page p, HttpServletRequest req) {
         return outsOutService.outsInListGet(p, req);
@@ -44,6 +43,12 @@ public class OutsInOutRestController {
 
     @RequestMapping(value = "/outsOutAdd", method = RequestMethod.POST)
     public Message outsOutAdd(OUTS_IO_SUB ois, HttpServletRequest req ) {return outsOutService.outsOutAdd(ois,req);}
+
+    @RequestMapping(value = "/outsIOGet", method = RequestMethod.POST)
+    public RESTful outsIOGet(Page p, HttpServletRequest req ) {return outsOutService.outsIOGet(p,req);}
+
+  @RequestMapping(value = "/outsOutDel", method = RequestMethod.POST)
+    public Message outsOutDel(OUTS_IO_SUB ois, HttpServletRequest req ) {return outsOutService.outsOutDel(ois,req);}
 
 
 

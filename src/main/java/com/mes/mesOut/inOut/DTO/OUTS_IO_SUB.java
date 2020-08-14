@@ -26,6 +26,7 @@ public class OUTS_IO_SUB {
     private String part_kind;
     private String outs_qc;
     private String outs_supp_name;
+    private String outs_supp_code;
     private int part_weight;
     private int rownum;
     private int rownum_page;
@@ -34,6 +35,8 @@ public class OUTS_IO_SUB {
     private String user_code;
     private int qty2;
     private String code_list;
+    private String keyword;
+    private String remark;
 
 
 }

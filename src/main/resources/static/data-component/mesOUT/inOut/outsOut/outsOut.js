@@ -34,6 +34,8 @@ $(document).ready(function () {
 
 // 조회 버튼
 function get_btn(page) {
+    main_data.send_data =value_return(".condition_main")
+
     $("#mes_grid").setGridParam({ // 그리드 조회
         url: '/outsOutGet',
         datatype: "json",
@@ -63,10 +65,11 @@ function add_btn() {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
-
         main_data.check = 'U'; // 수정인지 체크
-        ccn_ajax('/sysPartNameOneGet', {keyword: jqgrid_data.part_name_code}).then(function (data) { // user의 하나 출력
+
+        ccn_ajax('/sysPartNameOneGet', {keyword: jqgrid_data.in_no}).then(function (data) { // user의 하나 출력
             modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
+
             $("#addDialog").dialog('open'); //모달창열기
         });
     } else {
@@ -76,20 +79,30 @@ function update_btn(jqgrid_data) {
 
 // 삭제 버튼
 function delete_btn() {
+
     if(main_data.auth.check_del != "N") {  //권한체크
         var gu5 = String.fromCharCode(5); //아스키코드 5 담기
+        var gu4 = String.fromCharCode(4); //아스키코드 4 담기
         var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
+
+        var list =[];
+
+        for(var i=0;i<ids.length;i++){
+            var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
+            list.push(data.in_no+ gu4 +data.qty+ gu4 +data.supp_code + gu4 + data.part_code + gu4 + data.part_kind + gu4 + data.outs_supp_code);
+        }
+
         if (ids.length === 0) {      //선택여부 체크  선택이안되어 0이라면
             alert(msg_object.TBMES_A004.msg_name1); // 경고메세지 출력
         } else {
             if (confirm(msg_object.TBMES_A005.msg_name1)) { //시행 여부메세지 출력
                 main_data.check = 'D'; // 삭제권한 부여
                 wrapWindowByMask2();  //마스크로 덥고 삭제 진행동안 다른작업 방지하기
-                ccn_ajax("/sysPartNameDel", {keyword: ids.join(gu5)}).then(function (data) { // 체크된 그리드 로우에 아스키코드를 넣어 1|2|3| 이런식으로 데이터전달
+                ccn_ajax("/outsOutDel", {keyword:list.join(gu5)}).then(function (data) { // 체크된 그리드 로우에 아스키코드를 넣어 1|2|3| 이런식으로 데이터전달
                     if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
                         alert(data.message);   //해당 오류메세지 출력
                     } else {
-                        get_btn($("#mes_grid").getGridParam('page'));// 성공시 기존에 조회했던 조건 그대로 grid를 조회
+                        $('#mes_grid').trigger("reloadGrid");
                     }
                     closeWindowByMask(); //마스크 종료
                 }).catch(function (err) { //에러발생시
@@ -125,21 +138,23 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['출고일자','출고전표','외주업체','업체','기종','품번','품명','단중','수량','납품처','출장검사','등록자','수정일'],// grid 헤더 설정
+        colNames : ['','','출고일자','출고전표','외주업체','업체','기종','품번','품명','단중','수량','출장검사','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'',index:'',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'',index:'',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:180,fixed: true}// formatter 사용을 통해 데이터 형식 가공
+            {name:'supp_code',index:'supp_code',sortable: false,fixed: true,hidden:true},
+            {name:'outs_supp_code',index:'outs_supp_code',sortable: false,fixed: true,hidden:true},
+            {name:'work_date',index:'work_date',key: true ,sortable: false,width:100,fixed: true,formatter: formmatterDate2},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'in_no',index:'in_no',sortable: false,width:150,fixed: true,key:true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'outs_supp_name',index:'outs_supp_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true},
+            {name:'part_kind',index:'part_kind',sortable: false,width:80,fixed: true},
+            {name:'part_code',index:'part_code',sortable: false,width:80,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:80,fixed: true},
+            {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
+            {name:'qty',index:'qty',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
+
+            {name:'outs_qc',index:'outs_qc',sortable: false,width:80,fixed: true},
+            {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
+            {name:'update_date',index:'update_date',sortable: false,width:180,fixed: true}// formatter 사용을 통해 데이터 형식 가공
         ],
         multiselect: true,
         caption: "외주출고 관리 | MES",// grid 제목

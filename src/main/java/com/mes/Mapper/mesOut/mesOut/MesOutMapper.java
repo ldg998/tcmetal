@@ -17,11 +17,15 @@ public interface MesOutMapper {
 
     List<OUTS_IO_CD> outsInReadyGet(Page p);
 
-    List<OUTS_IO_CD> outsIOListGet(Page p);
+    List<OUTS_IO_SUB> outsIOListGet(Page p);
 
     List<OUTS_IO_SUB> outsOutModalListGet(Page p);
 
     List<OUTS_IO_SUB> outsOutGet(Page p);
 
     Message outsOutAdd(OUTS_IO_SUB ois);
+
+    List<OUTS_IO_SUB> outsIOGet(Page p);
+
+    Message outsOutDel(OUTS_IO_SUB ois);
 }

@@ -38,7 +38,7 @@ public class OutsInOutService extends ReturnFunction {
     }
 
     public RESTful outsIOListGet(Page p, HttpServletRequest req) {
-        List<OUTS_IO_CD> rows = mesOutMapper.outsIOListGet(p);
+        List<OUTS_IO_SUB> rows = mesOutMapper.outsIOListGet(p);
         return getListData(rows , p);
     }
 
@@ -55,5 +55,13 @@ public class OutsInOutService extends ReturnFunction {
     public Message outsOutAdd(OUTS_IO_SUB ois, HttpServletRequest req) {
         ois.setUser_code(getSessionData(req).getUser_code());
         return mesOutMapper.outsOutAdd(ois);
+    }
+
+    public RESTful outsIOGet(Page p, HttpServletRequest req) {
+        List<OUTS_IO_SUB> rows = mesOutMapper.outsIOGet(p);
+        return getListData(rows , p);
+    }
+
+    public Message outsOutDel(OUTS_IO_SUB ois, HttpServletRequest req) { return mesOutMapper.outsOutDel(ois);
     }
 }

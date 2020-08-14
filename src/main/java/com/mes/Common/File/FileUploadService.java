@@ -33,4 +33,9 @@ public class FileUploadService extends ReturnFunction {
         files.setUser_code(getSessionData(req).getUser_code());
         fileMapper.setOneFile(files);
     }
+
+    public void setSysSPartDrawingFile(Files files, MultipartHttpServletRequest req) {
+        files.setUser_code(getSessionData(req).getUser_code());
+        fileMapper.setOneFile2(files);
+    }
 }

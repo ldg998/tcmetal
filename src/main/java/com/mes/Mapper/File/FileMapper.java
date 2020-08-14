@@ -9,4 +9,6 @@ public interface FileMapper {
     Message setOneFile(Files files);
 
     Files FileDownloads(Files files);
+
+    Message setOneFile2(Files files);
 }

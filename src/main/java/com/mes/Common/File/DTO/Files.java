@@ -23,4 +23,5 @@ public class Files {
     private String name;
     private String board_code;
     private String board_idx;
+    private String remark2;
 }

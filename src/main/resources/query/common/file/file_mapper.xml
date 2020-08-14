@@ -5,6 +5,10 @@
         EXEC SP_SYS_FILE_ADD  #{user_code}, #{key_value}, #{file_name},
         #{file_og_name}, #{file_size}, #{file_volume}, #{upload_path}, #{url}
     </select>
+    <select id="setOneFile2" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_SYS_FILE_ADD2  #{user_code}, #{key_value}, #{file_name},
+        #{file_og_name}, #{file_size}, #{file_volume}, #{upload_path}, #{url}
+    </select>
     <select id="FileDownloads" resultType="com.mes.Common.File.DTO.Files">
         SELECT * FROM SYS_FILE_CD WHERE key_value = #{key_value}
     </select>

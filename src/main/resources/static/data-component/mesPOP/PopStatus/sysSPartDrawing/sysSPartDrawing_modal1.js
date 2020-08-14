@@ -25,19 +25,21 @@ function addUpdate_btn() {
             formData.append("file2", $("#file_02").prop("files")[0]);
             formData.append("check", check);
         }
-        if(confirm("등록 하시겠습니까?")){
+        // if(confirm("등록 하시겠습니까?")){
             wrapWindowByMask2();
             ccn_file_ajax("/sysSPartDrawingAdd", formData).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 }
                 closeWindowByMask();
+                $("#addDialog").dialog('close');
                 $('#mes_grid').trigger('reloadGrid')
 
             }).catch(function (err) {
                 closeWindowByMask();
+                $("#addDialog").dialog('close');
             });
-        }
+        // }
 
     }
 }

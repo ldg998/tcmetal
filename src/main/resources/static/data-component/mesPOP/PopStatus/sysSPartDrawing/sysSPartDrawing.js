@@ -80,7 +80,7 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "도면관리 | MES",
-        colNames: ['','','업체','기종','품번','품명','단중','제품도면','비고','등록자','수정일'],
+        colNames: ['','','업체','기종','품번','품명','단중','제품도면','file2','비고','등록자','수정일'],
         colModel: [
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
             {name: 'supp_code', index: 'supp_code',hidden:true, sortable:false, width: 100,fixed:true},
@@ -89,7 +89,8 @@ function jqGrid_main() {
             {name: 'part_code', index: 'part_code', sortable:false, width: 130, fixed:true},
             {name: 'part_name', index: 'part_name', sortable:false, width: 130, fixed:true},
             {name: 'part_weight', index: 'part_weight',sortable: false, width: 100,fixed: true,formatter: 'integer',align: 'right'},
-            {name: 'file2', index: 'file2', sortable: false, width: 80, align: 'center', formatter: file2_formatter,fixed:true},
+            {name: 'file2_name', index: 'file2_name', sortable: false, width: 80, align: 'center', formatter: file2_formatter,fixed:true},
+            {name: 'file2', index: 'file2', sortable: false,hidden: true},
             {name: 'remark2', index: 'remark2', sortable:false, width: 350, fixed:true},
             {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
             {name: 'update_date', index: 'update_date',sortable: false, width: 150,fixed: true,formatter:formmatterDate}

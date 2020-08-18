@@ -35,9 +35,12 @@ function test(){
 }
 // 조회 버튼
 function get_btn(page) {
+    main_data.send_data = value_return('.condition_main')
+
+
     $("#mes_grid").setGridParam({ // 그리드 조회
         // URL -> RESTCONTROLLER 호출
-        url: '/sysPartNameGet',
+        url: '/outsStockSumMonthGet',
         // JSON 데이터 형식으로
         datatype: "json",
         // PAGE는 받은 파라미터로 설정
@@ -48,16 +51,6 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
-// 추가 버튼
-function add_btn() {
-    if (main_data.auth.check_add !="N"){
-        modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
-        main_data.check = 'I'; // 저장인지 체크
-        $("#addDialog").dialog('open'); // 모달 열기
-    } else {
-        alert(msg_object.TBMES_A001.msg_name1); // 경고메세지 출력
-    }
-}
 
 // 그리드 내용 더블 클릭 시 실행
 function update_btn(jqgrid_data) {
@@ -104,38 +97,6 @@ function delete_btn() {
 
 }
 
-function supp_btn(what) {
-    main_data.supp_check = what;
-
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
-
-
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
@@ -160,17 +121,17 @@ function jqGrid_main() {
         mtype: 'POST',// post 방식 데이터 전달
         colNames : ['외주업체','업체','기종','품번','품명','단중','전월재고','금월입고','금월출고','자체불량','재고'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'',index:'',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'',index:'',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'',index:'',sortable: false,width:150,fixed: true},
+            {name:'outs_supp_name',index:'outs_supp_name',key: true ,sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'part_kind',index:'part_kind',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'part_code',index:'part_code',sortable: false,width:150,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:80,fixed: true},
+            {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
+            {name:'prev_qty',index:'prev_qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
+            {name:'in_qty',index:'in_qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
+            {name:'out_qty',index:'out_qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
             {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:180,fixed: true}// formatter 사용을 통해 데이터 형식 가공
+            {name:'qty',index:'qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'}// formatter 사용을 통해 데이터 형식 가공
         ],
 
         caption: "외주재고 월원장 | MES",// grid 제목
@@ -187,9 +148,7 @@ function jqGrid_main() {
                 return (cm[i].name === 'cb');
         },
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
-            var data = $('#mes_grid').jqGrid('getRowData', rowid);
-            update_btn(data);
-        },
+            },
         loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
                 $(".jqgfirstrow").css("height","1px");
@@ -202,9 +161,28 @@ function jqGrid_main() {
 
 function selectBox() {
     $('#select1').select2();
-}
+    select_makes_base("#main_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
+        $('#main_select2').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#main_select2').append(option);
+        $('#main_select2').select2();
+    });
 
+    select_makes_base("#main_select3","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'},"");
+}
 function datepickerInput() {
     datepicker_makes("#datepicker", 0);
+
+}
+function main_select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#main_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y").then(function (data) {
+        });
+    } else {
+        $('#main_select2').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#main_select2').append(option);
+        $('#main_select2').select2();
+    }
 
 }

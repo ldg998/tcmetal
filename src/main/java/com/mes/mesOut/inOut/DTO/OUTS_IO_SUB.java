@@ -11,6 +11,7 @@ public class OUTS_IO_SUB {
     private int out_loss;
     private int qc_loss;
     private int qty;
+    private int outs_qty;
     private String part_grp_name;
     private String part_name;
     private String spec;
@@ -37,6 +38,8 @@ public class OUTS_IO_SUB {
     private String code_list;
     private String keyword;
     private String remark;
+    private int qty_ck;
+
 
 
 }

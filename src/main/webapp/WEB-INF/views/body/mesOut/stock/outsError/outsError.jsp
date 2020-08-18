@@ -16,7 +16,7 @@
                         <td class="wt-px-200">
                             <div class="input-icon input-icon-right">
                                 <input type="text" name="start_date" id="datepicker"
-                                       class="form-control h-25 condition_main" readonly>
+                                       class="form-control h-25 condition_main sendDate" readonly>
                                 <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                             </div>
                         </td>
@@ -26,14 +26,14 @@
                         <td class="wt-px-200">
                             <div class="input-icon input-icon-right">
                                 <input type="text" name="end_date" id="datepicker2"
-                                       class="form-control h-25 condition_main" readonly>
+                                       class="form-control h-25 condition_main sendDate" readonly>
                                 <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                             </div>
                         </td>
 
                         <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
                         <td class="wt-px-200">
-                            <select name="keyword2" id="select1" class="form-control condition_main"  style="width:100%">
+                            <select name="keyword" id="select1" class="form-control condition_main"  style="width:100%">
                                 <option value="">전체</option>
                                 <option value="0">수정</option>
                                 <option value="1">폐기</option>
@@ -41,7 +41,7 @@
                         </td>
                         <td class="wt-px-100 td-title t-align-c padding-a-0">외주업체</td>
                         <td class="wt-px-200">
-                            <select name="keyword2" id="select2" class="form-control condition_main"  style="width:100%">
+                            <select name="keyword2" id="main_select3" class="form-control condition_main"  style="width:100%">
                                 <option value="">반드시 선택</option>
                                 <option value="0"></option>
                                 <option value="1"></option>
@@ -57,18 +57,24 @@
                 <div class="dt-buttons btn-overlap btn-group">
 
                     <a class="dt-button btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="test();">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1);">
                         <span>
                             <i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>
                     </a>
-                    <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
-                       id="btn-excel" tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                       onclick="excel_download">
-                                        <span><i class="fa fa-download bigger-110 blue"></i>
-                                            <span>저장</span>
-                                        </span>
+                    <a id="add_btn" class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="add_btn();">
+                        <span><i class="fa fa-plus bigger-110 blue"></i>
+                            <span>추가</span>
+                        </span>
+                    </a>
+                    <a class="dt-button btn btn-white btn-primary btn-mini btn-bold"
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="delete_btn()">
+                        <span>
+                            <i class="fa fa-trash bigger-110 blue"></i>
+                            <span>삭제</span>
+                        </span>
                     </a>
 
                 </div>

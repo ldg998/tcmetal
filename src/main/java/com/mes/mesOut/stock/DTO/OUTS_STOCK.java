@@ -16,6 +16,11 @@ public class OUTS_STOCK {
     private String supp_name;
     private String outs_supp_name;
     private String outs_qc;
+
+    private int out_qty;
+    private int in_qty;
+    private int prev_qty;
+
     private int rownum;
     private int rownum_page;
     private int rec_count;

@@ -50,4 +50,9 @@
     <select id="sysLocDelete" resultType="com.mes.Common.DataTransferObject.Message">
     	EXEC SP_SYS_LOC_DEL #{keyword}
     </select>
+	 <select id="sysPartListGet" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_LIST_GET #{page},#{rows},#{keyword} ,#{keyword2}
+    </select>
+
+
 </mapper>

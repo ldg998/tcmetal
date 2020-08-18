@@ -28,9 +28,6 @@
                     <td class="wt-px-100 t-align-c td-title padding-a-0">외주업체</td>
                     <td class="wt-px-200">
                        <select name="keyword3" id="main_select3" class="form-control condition_main" style="width: 100%;">
-                           <option>제인산업</option>
-                           <option></option>
-
                        </select>
 
                     </td>
@@ -47,7 +44,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <!-- 조회버튼 -->
                     <a  id="get_btn" class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="test();">
+                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="get_btn(1);">
                         <span>
                             <i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>

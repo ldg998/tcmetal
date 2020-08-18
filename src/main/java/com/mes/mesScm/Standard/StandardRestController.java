@@ -43,7 +43,6 @@ public class StandardRestController {
     @RequestMapping(value = "/sysLocDelete", method = RequestMethod.POST)
     public Message sysLocDelete(Page p, HttpServletRequest req) {
         return standardService.sysLocDelete(p, req);
-
     }
 
 
@@ -80,6 +79,13 @@ public class StandardRestController {
     public Message sysPartDel(HttpServletRequest req, SYS_PART_CD spc) {
         return standardService.sysPartDel(req, spc);
     }
+
+@RequestMapping(value = "/sysPartListGet", method = RequestMethod.POST)
+    public RESTful sysPartListGet(Page p) {
+        return standardService.sysPartListGet(p);
+    }
+
+
 
 
 }

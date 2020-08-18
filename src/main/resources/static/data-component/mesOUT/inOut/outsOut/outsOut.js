@@ -53,6 +53,7 @@ function add_btn() {
         main_data.check = 'I'; // 저장인지 체크
         main_data.status = 'N'
         datepickerInput_modal();
+        false_change();
         $('#outs_supp_modal_select option:eq(0)').prop("selected", true).trigger("change"); //셀렉트 0번째 아이템으로 할당
         $("#addDialog").dialog('open'); // 모달 열기
         jqGridResize("#mes_add_grid2" , $('#mes_add_grid2').closest('[class*="col-"]'));
@@ -67,11 +68,25 @@ function update_btn(jqgrid_data) {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
         main_data.check = 'U'; // 수정인지 체크
 
-        ccn_ajax('/sysPartNameOneGet', {keyword: jqgrid_data.in_no}).then(function (data) { // user의 하나 출력
-            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
+          modal_edits('.modal_value', main_data.readonly, jqgrid_data); // response 값 출력
+        true_change();
 
-            $("#addDialog").dialog('open'); //모달창열기
-        });
+        main_data.send_data.keyword =jqgrid_data.supp_code
+        main_data.send_data.keyword2 =jqgrid_data.part_kind
+        main_data.send_data.keyword3 =jqgrid_data.outs_supp_code
+        main_data.send_data.keyword4  = jqgrid_data.in_no
+
+        $("#mes_add_grid2").setGridParam({ // 그리드 조회outsOutModalListGet
+            url:'/outsOutModalListGet',
+            datatype: "json",
+            postData: main_data.send_data
+        }).trigger("reloadGrid");
+
+
+
+        $("#addDialog").dialog('open'); // 모달 열기
+        jqGridResize("#mes_add_grid2" , $('#mes_add_grid2').closest('[class*="col-"]'));
+
     } else {
         alert(msg_object.TBMES_A003.msg_name1); //경고메세지 출력
     }
@@ -140,9 +155,10 @@ function jqGrid_main() {
         mtype: 'POST',// post 방식 데이터 전달
         colNames : ['','','출고일자','출고전표','외주업체','업체','기종','품번','품명','단중','수량','출장검사','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
+
             {name:'supp_code',index:'supp_code',sortable: false,fixed: true,hidden:true},
             {name:'outs_supp_code',index:'outs_supp_code',sortable: false,fixed: true,hidden:true},
-            {name:'work_date',index:'work_date',key: true ,sortable: false,width:100,fixed: true,formatter: formmatterDate2},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'work_date',index:'work_date' ,sortable: false,width:100,fixed: true,formatter: formmatterDate2},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name:'in_no',index:'in_no',sortable: false,width:150,fixed: true,key:true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name:'outs_supp_name',index:'outs_supp_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
             {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true},
@@ -151,10 +167,9 @@ function jqGrid_main() {
             {name:'part_name',index:'part_name',sortable: false,width:80,fixed: true},
             {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
             {name:'qty',index:'qty',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
-
             {name:'outs_qc',index:'outs_qc',sortable: false,width:80,fixed: true},
             {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
-            {name:'update_date',index:'update_date',sortable: false,width:180,fixed: true}// formatter 사용을 통해 데이터 형식 가공
+            {name:'update_date',index:'update_date',sortable: false,width:180,fixed: true,formatter: formmatterDate2}// formatter 사용을 통해 데이터 형식 가공
         ],
         multiselect: true,
         caption: "외주출고 관리 | MES",// grid 제목
@@ -185,12 +200,50 @@ function jqGrid_main() {
 
 
 function selectBox() {
-    select_makes_sub("#outs_supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'})
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'})
+    $('#select1').select2();
+    select_makes_base("#main_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
+        $('#main_select2').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#main_select2').append(option);
+        $('#main_select2').select2();
+    });
 
+    select_makes_base("#main_select3","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'},"");
 }
+
 
 function datepickerInput() {
     datepicker_makes("#datepicker", -30);
     datepicker_makes("#datepicker2", 0);
+}
+
+function true_change(){
+$("#supp_modal_select").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+$("#part_kind_modal_select").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+$("#outs_supp_modal_select").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+$("#datepicker_modal1").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+}
+
+function false_change(){
+    $("#supp_modal_select").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+    $("#part_kind_modal_select").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+    $("#outs_supp_modal_select").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+    $("#datepicker_modal1").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+}
+
+
+
+
+
+function main_select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#main_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y").then(function (data) {
+        });
+    } else {
+        $('#main_select2').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#main_select2').append(option);
+        $('#main_select2').select2();
+    }
+
 }

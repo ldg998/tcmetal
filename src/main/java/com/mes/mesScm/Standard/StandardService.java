@@ -73,4 +73,10 @@ public class StandardService extends ReturnFunction {
     public Message sysPartDel(HttpServletRequest req, SYS_PART_CD spc) {
         return scmStandardMapper.sysPartDel(spc);
     }
+
+    public RESTful sysPartListGet(Page p) {
+
+        List<SYS_PART_CD> rows = scmStandardMapper.sysPartListGet(p);
+        return getListData(rows ,p);
+    }
 }

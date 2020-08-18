@@ -28,14 +28,11 @@ $(document).ready(function () {
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-function test() {
-$("#addDialog").dialog("open");
 
-}
 // 조회 버튼
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysDeptGet',
+        url: '/outsErrorGet',
         datatype: "json",
         page: page
     }).trigger("reloadGrid");
@@ -44,7 +41,8 @@ function get_btn(page) {
 // 추가 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") {
-
+        modal_reset('.modal_value',[])
+        datepickerInput_modal();
         $("#addDialog").dialog('open'); // 모달 열기
 
     }
@@ -115,19 +113,20 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames : ['불량등록일자','업체','기종','품번','품명','단중','제품LOT','불량유형','수정','폐기','등록','등록일시'],
         colModel : [
-            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:200,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:100,fixed: true},
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',formatter:formmatterDate,sortable: false,width:180,fixed: true}
+            {name:'create_date',index:'create_date',key: true ,sortable: false,width:100,fixed: true,formatter:formmatterDate2},
+            {name:'supp_name',index:'supp_name',sortable: false,width:100,fixed: true},
+            {name:'part_kind',index:'part_kind',sortable: false,width:100,fixed: true},
+            {name:'part_code',index:'part_code',sortable: false,width:150,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:100,fixed: true},
+            {name:'part_weight',index:'part_weight',sortable: false,width:150,fixed: true},
+            {name:'lot_no',index:'lot_no',sortable: false,width:200,fixed: true},
+            {name:'qc_result',index:'qc_result',sortable: false,width:100,fixed: true},
+            {name:'result_code2',index:'result_code2',sortable: false,width:150,fixed: true},
+            {name:'result_code3',index:'result_code3',sortable: false,width:100,fixed: true},
+            {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
+            {name:'create_date',index:'create_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
         ],
+        multiselect: true,
         caption: "외주불량 | MES",
         autowidth: true,
         height: 600,
@@ -157,7 +156,7 @@ function jqGrid_main() {
 
 function selectBox() {
     $('#select1').select2();
-    $('#select2').select2();
+    select_makes_base("#main_select3","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'},"");
 
 }
 function datepickerInput() {

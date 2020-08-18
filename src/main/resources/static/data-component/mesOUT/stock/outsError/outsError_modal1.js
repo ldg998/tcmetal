@@ -9,6 +9,7 @@ function modal_start1() {
     msg_get_modal1();
     selectBox_modal1();
     modal_make1();
+
 }
 
 
@@ -111,8 +112,98 @@ function modal_make1() {
 function selectBox_modal1() {
     $('#select_modal1').select2();
     $('#select_modal2').select2();
+/* 키워드
+* KEYWORD:  사용유무
+* KEYWORD2: 업체
+* KEYWORD3: 기종
+* KEYWORD4: 제품코드
+*  */
+    select_makes_base("#modal_select1","/outsSelectGet","supp_code","supp_name",{keyword:'Y',keyword2:'',keyword3:'',keyword4:''},"N").then(function (data) {
+
+        $('#modal_select2').empty();
+        var option = $("<option></option>").text('선택안함').val('');
+        $('#modal_select2').append(option);
+        $('#modal_select2').select2();
+
+        $('#modal_select3').empty();
+        var option2 = $("<option></option>").text('선택안함').val('');
+        $('#modal_select3').append(option2);
+        $('#modal_select3').select2();
+        main_data.check2 = 'Y'
+    });
+}
+
+function datepickerInput_modal() {
+    datepicker_makes("#datepicker_modal1", 0);
 
 }
 
 
+function select_change_modal1(value) {
+    if (main_data.check2 === 'Y'){
+        if (value !== ""){
+            select_makes_base("#modal_select2","/outsSelectGet","part_kind","part_kind",{keyword:'Y',keyword2:value,keyword3:'',keyword4:''},"N").then(function (data) {
+                $('#modal_select3').empty();
+                var option2 = $("<option></option>").text('선택안함').val('');
+                $('#modal_select3').append(option2);
+                $('#modal_select3').select2();
+            });
+        } else {
 
+            $('#modal_select2').empty();
+            var option = $("<option></option>").text('선택안함').val('');
+            $('#modal_select2').append(option);
+            $('#modal_select2').select2();
+
+            $('#modal_select3').empty();
+            var option2 = $("<option></option>").text('선택안함').val('');
+            $('#modal_select3').append(option2);
+            $('#modal_select3').select2();
+            $("input[name=part_code]").val("");
+            $("input[name=part_weight]").val("");
+        }
+
+
+    }
+}
+
+
+function select_change_modal2(value) {
+    if (main_data.check2 === 'Y') {
+        if (value !== "") {
+            var supp_code = $('#modal_select1').val();
+            select_makes_base("#modal_select3", "/outsSelectGet", "part_code", "part_name", {keyword:'Y',keyword2:supp_code,keyword3:value,keyword4:''}, "N").then(function (data) {
+            });
+        } else {
+            $('#modal_select3').empty();
+            var option2 = $("<option></option>").text('선택안함').val('');
+            $('#modal_select3').append(option2);
+            $('#modal_select3').select2();
+        }
+        $("input[name=part_code]").val("");
+        $("input[name=part_weight]").val("");
+
+    }
+}
+
+function select_change_modal3(value) {
+    if (main_data.check2 === 'Y') {
+        if (value !== "") {
+            ccn_ajax('/outsSelectGet', {
+                keyword: 'Y',
+                keyword2: $("#modal_select1").val(),
+                keyword3: $("#modal_select2").val(),
+                keyword4: value
+            }).then(function (data) {
+               console.log(data)
+                $("input[name=part_code]").val(data[0].part_code);
+                $("input[name=part_weight]").val((data[0].part_weight + "").replace(/[^0-9]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+
+            });
+        } else {
+            $("input[name=part_code]").val("");
+            $("input[name=part_weight]").val("");
+        }
+    }
+}

@@ -28,4 +28,5 @@ public interface ScmStandardMapper {
 
     List<SYS_PART_CD> sysPartSuppGet(Page p);
 
+    List<SYS_PART_CD> sysPartListGet(Page p);
 }

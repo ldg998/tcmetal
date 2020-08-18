@@ -2,14 +2,12 @@ package com.mes.mesOut.stock;
 
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
-import com.mes.mesOut.mesOut.OutsOutService;
 import com.mes.mesOut.stock.DTO.OUTS_STOCK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -27,4 +25,22 @@ public class OutStockRestContoller {
     public List<OUTS_STOCK> outsStockSumAllGet(Page p){
         return outStockService.outsStockSumAllGet( p);
     }
+
+    @RequestMapping(value="/outsStockSumMonthGet", method = RequestMethod.POST)
+    public RESTful outsStockSumMonthGet(Page p){
+        return outStockService.outsStockSumMonthGet(p);
+    }
+
+    @RequestMapping(value="/outsErrorGet", method = RequestMethod.POST)
+    public RESTful outsErrorGet(Page p){
+        return outStockService.outsErrorGet(p);
+    }
+
+    @RequestMapping(value="/outsSelectGet", method = RequestMethod.POST)
+    public List<OUTS_STOCK> outsSelectGet(Page p){
+        return outStockService.outsSelectGet(p);
+    }
+
+
+
 }

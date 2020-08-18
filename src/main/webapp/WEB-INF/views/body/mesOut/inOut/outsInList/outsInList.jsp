@@ -30,23 +30,23 @@
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">고객사</td>
-                    <td class="wt-px-150">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="keyword" class="form-control h-25 condition_main"
-                                   autocomplete="off" placeholder="별도창검색" readonly>
-                        </div>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">고객사</td>
+                    <%--조회할 업채명--%>
+                    <td class="wt-px-200">
+                        <select class="form-control condition_main" name="keyword" id="main_select1" style="width: 100%" onchange="main_select_change1(this.value)" ></select>
                     </td>
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">기종</td>
-                    <td class="wt-px-150">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="keyword2" class="form-control h-25 condition_main"
-                                   autocomplete="off" >
-                        </div>
+
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-200">
+                        <select name="keyword2" id="main_select2" class="form-control condition_main" style="width: 100%;">
+                            <option value="">전체</option>
+                        </select>
                     </td>
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">외주업체</td>
-                    <td class="wt-px-150">
-                        <select class="form-control condition_main" name="keyword3" id="supp_select" style="width: 100%"></select>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0">외주업체</td>
+                    <td class="wt-px-200">
+                        <select name="keyword3" id="main_select3" class="form-control condition_main" style="width: 100%;">
+                        </select>
+
                     </td>
                     <td></td>
                 </tr>

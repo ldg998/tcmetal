@@ -39,7 +39,7 @@ function test(){
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
         // URL -> RESTCONTROLLER 호출
-        url: '/sysPartNameGet',
+        url: '/sysPartListGet',
         // JSON 데이터 형식으로
         datatype: "json",
         // PAGE는 받은 파라미터로 설정
@@ -50,16 +50,6 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
-// 추가 버튼
-function add_btn() {
-    if (main_data.auth.check_add !="N"){
-        modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
-        main_data.check = 'I'; // 저장인지 체크
-        $("#addDialog").dialog('open'); // 모달 열기
-    } else {
-        alert(msg_object.TBMES_A001.msg_name1); // 경고메세지 출력
-    }
-}
 
 // 그리드 내용 더블 클릭 시 실행
 function update_btn(jqgrid_data) {
@@ -75,37 +65,6 @@ function update_btn(jqgrid_data) {
         alert(msg_object.TBMES_A003.msg_name1); //경고메세지 출력
     }
 }
-
-// 삭제 버튼
-function delete_btn() {
-    if(main_data.auth.check_del != "N") {  //권한체크
-        var gu5 = String.fromCharCode(5); //아스키코드 5 담기
-        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
-        if (ids.length === 0) {      //선택여부 체크  선택이안되어 0이라면
-            alert(msg_object.TBMES_A004.msg_name1); // 경고메세지 출력
-        } else {
-            if (confirm(msg_object.TBMES_A005.msg_name1)) { //시행 여부메세지 출력
-                main_data.check = 'D'; // 삭제권한 부여
-                wrapWindowByMask2();  //마스크로 덥고 삭제 진행동안 다른작업 방지하기
-                ccn_ajax("/sysPartNameDel", {keyword: ids.join(gu5)}).then(function (data) { // 체크된 그리드 로우에 아스키코드를 넣어 1|2|3| 이런식으로 데이터전달
-                    if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
-                        alert(data.message);   //해당 오류메세지 출력
-                    } else {
-                        get_btn($("#mes_grid").getGridParam('page'));// 성공시 기존에 조회했던 조건 그대로 grid를 조회
-                    }
-                    closeWindowByMask(); //마스크 종료
-                }).catch(function (err) { //에러발생시
-                    closeWindowByMask(); // 마스크종료
-                    console.error(err); // Error 출력
-                });
-            }
-        }
-    } else {
-        alert(msg_object.TBMES_A002.msg_name1);// 권한 이 없을 경우 해당 메세지 출력
-    }
-
-}
-
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {

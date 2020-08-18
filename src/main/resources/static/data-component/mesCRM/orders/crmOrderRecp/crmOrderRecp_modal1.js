@@ -264,6 +264,7 @@ function selectBox_modal1() {
 function datepickerInput_modal() {
     datepicker_makes("#datepicker_modal1", 0);
 }
+
 function selectBox_modal1() {
     select_makes_base("#modal_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N").then(function (data) {
         $('#modal_select2').empty();

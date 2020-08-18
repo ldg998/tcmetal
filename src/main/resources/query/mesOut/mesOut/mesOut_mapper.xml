@@ -24,7 +24,7 @@
     </select>
 
      <select id="outsOutModalListGet" resultType="com.mes.mesOut.inOut.DTO.OUTS_IO_SUB">
-            EXEC [SP_OUTS_OUT_MODAL_GET] 0,0,#{keyword},#{keyword2},#{keyword3}
+            EXEC [SP_OUTS_OUT_MODAL_GET] 0,0,#{keyword},#{keyword2},#{keyword3},#{keyword4}
     </select>
 
     <select id="outsOutGet" resultType="com.mes.mesOut.inOut.DTO.OUTS_IO_SUB">

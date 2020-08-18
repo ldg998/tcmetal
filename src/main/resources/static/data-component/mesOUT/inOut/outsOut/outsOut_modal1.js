@@ -14,7 +14,6 @@ function modal_start1() {
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
-
     $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
     var gu5 = String.fromCharCode(5);
     var gu4 = String.fromCharCode(4);
@@ -28,7 +27,7 @@ function addUdate_btn() {
         var list2 = [];
         jdata.forEach(function (data, j) {
             if (data.outs_qty !== '' && data.outs_qty > 0) {
-                list.push(data.supp_code + gu4 + data.outs_supp_code + gu4 + data.part_kind + gu4 + data.part_code + gu4 + data.part_weight + gu4 + data.outs_qty);
+                list.push(data.supp_code + gu4 + data.outs_supp_code + gu4 + data.part_kind + gu4 + data.part_code + gu4 +data.part_weight + gu4 + data.qty + gu4 + data.outs_qty);
             } else {
                 list2.push(data.supp_code);
             }
@@ -79,6 +78,7 @@ function addUdate_btn() {
 
 function modal_get_btn(page) {
     main_data.send_data = value_return(".modal_value"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
+    main_data.send_data.keyword4  ="";
     main_data.send_data.keyword =main_data.send_data.supp_code
     main_data.send_data.keyword2 =main_data.send_data.part_kind
     main_data.send_data.keyword3 =main_data.send_data.outs_supp_code
@@ -117,8 +117,10 @@ function jqGrid_main_modal() {
     $("#mes_add_grid2").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames: ['','','업체', '기종', '품번', '품명', '단중', '재고수량', '출장검사', '출고수량'],// grid 헤더 설정
+        colNames: ['','','','','업체', '기종', '품번', '품명', '단중', '재고수량', '출장검사', '출고수량'],// grid 헤더 설정
         colModel: [// grid row 의 설정할 데이터 설정
+            {name:'qty_ck',index:'qty_ck',sortable: false,fixed: true,hidden:true},
+            {name: 'in_no', index: 'in_no', sortable: false, fixed: true,hidden:true},
             {name: 'supp_code', index: 'supp_code', sortable: false, fixed: true,hidden:true},
             {name: 'outs_supp_code', index: 'outs_supp_code', sortable: false, fixed: true,hidden:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 110, fixed: true},
@@ -191,8 +193,7 @@ function jqGrid_main_modal() {
                         }
                     ]
                 }
-            },
-            {name: 'delivery_place', index: 'delivery_place', sortable: false, width: 125, fixed: true}
+            }
 
         ],
         caption: "외주출고 관리 | MES",// grid 제목
@@ -223,7 +224,7 @@ function jqGrid_main_modal() {
 
 function select_modal_Box() {
     $('#part_kind_modal_select').select2();
-    select_makes_sub("#supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+    select_makes_sub("#supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
     select_makes_sub("#outs_supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'})
 
 }
@@ -244,11 +245,22 @@ function datepickerInput_modal() {
 }
 function qty_chck(data){
     var ck = true;
+
+
     data.forEach(function(id) {
-        if(id.outs_qty == '' || id.outs_qty == 0 ){
+        if(id.qty_ck >= id.outs_qty ){
+        if(id.in_no =='' || id.in_no == null ) {
+            if (id.outs_qty == '' || id.outs_qty == 0) {
+                ck = false
+                return
+            }
+        }
+    }else {
             ck = false
-            return
         }
     }); //반복문
+
+
+
     return ck
 }

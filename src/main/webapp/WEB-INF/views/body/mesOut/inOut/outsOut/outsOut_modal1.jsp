@@ -24,6 +24,7 @@
                     <td class="wt-px-75 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-150">
                         <select class="form-control modal_value" name="supp_code" id="supp_modal_select" style="width: 100%" onchange="select_modal_change1(this.value)" ></select>
+                    <input type="hidden" autofocus>
                     </td>
 
                     <td class="wt-px-75 td-title t-align-c padding-a-0">기종</td>

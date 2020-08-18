@@ -27,6 +27,7 @@ public class WMS_OUT_SUB {
     private String prod_name;
     private String prod_type_name;
     private String out_date;
+    private String prod_date;
     private String part_kind;
     private String part_no;
     private int part_weight;

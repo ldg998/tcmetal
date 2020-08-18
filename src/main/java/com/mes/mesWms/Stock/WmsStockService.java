@@ -31,7 +31,6 @@ public class WmsStockService extends ReturnFunction {
     }
 
     public RESTful wmsStockSumMonthListGet(HttpServletRequest req, Page p) {
-        p.setSite_code(getSessionData(req).getSite_code());
         List<WMS_STOCK> rows = wmsStockMapper.wmsStockSumMonthListGet(p);
         return getListData(rows, p);
     }

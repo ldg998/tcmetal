@@ -624,78 +624,7 @@ public class MakeBody {
     }
 
 
-    public List<List<Object>> wmsStockList_Body(List<WMS_STOCK> list) {
-        List<List<Object>> content = new ArrayList<>();
-        try {
-            if (list.size() != 0) {
-                for (WMS_STOCK data : list) {
-                    obj = new ArrayList<>();
 
-                    obj.add(data.getPlan_date());
-                    obj.add(data.getOrd_no());
-                    obj.add(data.getSupp_name());
-                    obj.add(data.getPlace_name());
-                    obj.add(data.getProd_type_name());
-                    obj.add(data.getProd_name());
-                    obj.add(data.getPlan_name());
-                    obj.add(data.getPlan_no());
-                    obj.add(data.getWork_date());
-                    content.add(obj);
-                }
-            }
-        } catch (Exception e) {
-            log.info("error code : " + e);
-        }
-        return content;
-    }
-
-    public List<List<Object>> wmsStockIOSumDayList_Body(List<WMS_STOCK> list) {
-        List<List<Object>> content = new ArrayList<>();
-        try {
-            if (list.size() != 0) {
-                for (WMS_STOCK data : list) {
-                    obj = new ArrayList<>();
-                    obj.add(data.getPart_type_name());
-                    obj.add(data.getPart_code());
-                    obj.add(data.getPart_name());
-                    obj.add(data.getSpec());
-                    obj.add(data.getUnit_name());
-                    obj.add(doubleFormat(data.getPrev_qty()));
-                    obj.add(doubleFormat(data.getIn_qty()));
-                    obj.add(doubleFormat(data.getOut_qty()));
-                    obj.add(doubleFormat(data.getQty()));
-                    content.add(obj);
-                }
-            }
-        } catch (Exception e) {
-            log.info("error code : " + e);
-        }
-        return content;
-    }
-
-    public List<List<Object>> wmsStockIOSumMonthList_Body(List<WMS_STOCK> list) {
-        List<List<Object>> content = new ArrayList<>();
-        try {
-            if (list.size() != 0) {
-                for (WMS_STOCK data : list) {
-                    obj = new ArrayList<>();
-                    obj.add(data.getPart_type_name());
-                    obj.add(data.getPart_code());
-                    obj.add(data.getPart_name());
-                    obj.add(data.getSpec());
-                    obj.add(data.getUnit_name());
-                    obj.add(doubleFormat(data.getPrev_qty()));
-                    obj.add(doubleFormat(data.getIn_qty()));
-                    obj.add(doubleFormat(data.getOut_qty()));
-                    obj.add(doubleFormat(data.getQty()));
-                    content.add(obj);
-                }
-            }
-        } catch (Exception e) {
-            log.info("error code : " + e);
-        }
-        return content;
-    }
 
 
 

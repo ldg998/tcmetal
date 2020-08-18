@@ -17,6 +17,7 @@ public class CRM_ORD_RECP  {
     private int price_amount;
     private int ord_qty;
     private int  prev_qty;
+    private String outs_supp_name;
     private String outs_supp_code;
     private String ship_date;
     private String user_code;

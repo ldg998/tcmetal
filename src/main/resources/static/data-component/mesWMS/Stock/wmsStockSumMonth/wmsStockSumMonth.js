@@ -14,7 +14,7 @@ var main_data = {
 $(document).ready(function () {
     msg_get();
     jqGrid_main();
-    jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
+    // jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     datepickerInput();
     authcheck();
     jqgridPagerIcons();
@@ -27,11 +27,10 @@ $(document).ready(function () {
 
 function get_btn(page) {
 
-    main_data.send_data = value_return2(".condition_main");
-    console.log(value_return2(".condition_main"));
+    main_data.send_data = value_return(".condition_main");
 
     $("#mes_grid").setGridParam({
-        url: '/wmsOutReadyGet',
+        url: '/wmsStockSumMonthListGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -128,26 +127,27 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['업체', '기종', '품번','품명', '단중','수량','중량','수량','중량','수량','중량','수량','중량','수량','중량'],
         colModel: [
-            {name:'1', index: '1', width: 150, fixed:true},
-            {name:'2', index: '2',  width: 150, fixed:true},
-            {name:'3', index: '3',  width: 150, fixed:true},
-            {name:'4', index: '4',  width: 150, fixed:true},
-            {name:'5', index: '5',  width: 150, fixed:true},
-            {name:'as', index: 'as',  width: 150, fixed:true},
-            {name:'as1', index: 'as1',  width: 150, fixed:true},
-            {name:'as2', index: 'as2',  width: 150, fixed:true},
-            {name:'9', index: '9',  width: 150, fixed:true},
-            {name:'as3', index: 'as3',  width: 150, fixed:true},
-            {name:'11', index: '11', width: 150, fixed:true},
-            {name:'as4', index: 'as4', width: 150, fixed:true},
-            {name:'13', index: '13', width: 150, fixed:true},
-            {name:'as5', index: 'as5', width: 150, fixed:true},
-            {name:'15', index: '15',  width: 150, fixed:true}
+            {name:'supp_name', index: 'supp_name', width: 100, fixed:true},
+            {name:'part_kind', index: 'part_kind',  width: 100, fixed:true},
+            {name:'part_code', index: 'part_code',  width: 100, fixed:true},
+            {name:'part_name', index: 'part_name',  width: 100, fixed:true},
+            {name:'part_weight', index: 'part_weight',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'prev_qty', index: 'prev_qty',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'prev_weight', index: 'prev_weight',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'in_qty', index: 'in_qty',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'in_weight', index: 'in_weight',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'out_qty', index: 'out_qty',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'out_weight', index: 'out_weight', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'qty4', index: 'qty4', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'weight4', index: 'weight4', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'qty', index: 'qty', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'weight', index: 'weight',  width: 100, fixed:true,formatter:'integer', align:'right'}
 
         ],
         caption: '제품재고 월원장 | MES',
         autowidth: true,
-        height: 562,
+        shrinkToFit:false,
+        height: 532,
         pager: '#mes_grid_pager',
         rowNum: 100,
         overflow:'visible',
@@ -160,7 +160,7 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height","0px");
         }
 
-        });
+    });
 
 
     // $("#mes_grid").jqGrid('setGroupHeaders', {
@@ -183,19 +183,19 @@ function header_make() {
     $("#mes_grid").jqGrid('setGroupHeaders',{
         useColSpanStyle: true,
         groupHeaders: [
-            {startColumnName: 'as', numberOfColumns: 2, titleText: '<center>전월재고</center>'},
-            {startColumnName: 'as2', numberOfColumns: 2, titleText: '<center>금월입고</center>'},
-            {startColumnName: 'as3', numberOfColumns: 2, titleText: '<center>금월출고</center>'},
-            {startColumnName: 'as4', numberOfColumns: 2, titleText: '<center>자체불량</center>'},
-            {startColumnName: 'as5', numberOfColumns: 2, titleText: '<center>재고</center>'}
+            {startColumnName: 'prev_qty', numberOfColumns: 2, titleText: '<center>전일재고</center>'},
+            {startColumnName: 'in_qty', numberOfColumns: 2, titleText: '<center>금일입고</center>'},
+            {startColumnName: 'out_qty', numberOfColumns: 2, titleText: '<center>금일출고</center>'},
+            {startColumnName: 'qty4', numberOfColumns: 2, titleText: '<center>자체불량</center>'},
+            {startColumnName: 'qty', numberOfColumns: 2, titleText: '<center>재고</center>'}
 
-            ]
+        ]
     })
 }
 
 function selectBox() {
     $('#part_kind_select').select2();
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
 }
 
 function select_change1(value) {

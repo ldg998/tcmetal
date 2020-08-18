@@ -27,7 +27,10 @@ function addUdate_btn() {
             var list = [];
             var list2 = [];
             var transCheck = "Y";
+            var partCheck = "Y";
             var trans_code = "";
+            var part_object = {supp_code:"",part_kind:"",part_code:""};
+            var part_object2 = {supp_code:"",part_kind:"",part_code:""};
             jdata.forEach(function (data, j) {
                 if (data.qty !== '' && data.qty > 0) {
                     list.push(data.ord_no + gu4 + data.qty + gu4 + data.outs_supp_code );
@@ -35,17 +38,29 @@ function addUdate_btn() {
                         if (trans_code !== data.trans_code) {
                             transCheck = "N";
                         }
+
+                        if (JSON.stringify(part_object) !== JSON.stringify({supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code})) {
+                            partCheck = "N";
+                        }
+
+
                     }
+
+
                 }
 
                 if (j == 0){
                     trans_code = data.trans_code;
+                    part_object = {supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code};
                 }
+
             });
             if (list.length === 0) {
                 alert("수량을 다시 확인해주세요");
             } else if(transCheck === 'N') {
                 alert("운송수단을 다시 확인해주세요");
+            }else if(partCheck === 'N') {
+                alert("같은 제품인지 다시 확인해주세요");
             }else {
                 var text = msg_object.TBMES_Q002.msg_name1;
                 if (main_data.check === "U") {
@@ -168,11 +183,12 @@ function jqGrid_main_modal() {
     $("#mes_modal1_grid1").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['저장수량','수주번호','수주일자','업체','PO','기종','품번','품명','단중','trans_code','운송수단','수주수량','기납품수량','납품수량','외주(열처리)'],// grid 헤더 설정
+        colNames : ['저장수량','수주번호','수주일자','업체','업체','PO','기종','품번','품명','단중','trans_code','운송수단','수주수량','기납품수량','납품수량','외주(열처리)','외주(열처리)'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name: 'qty2', index: 'qty2', sortable: false, hidden:true},
             {name:'ord_no',index:'ord_no',hidden:true,key:true,sortable: false,width:110,fixed: true},
             {name:'work_date',index:'work_date',sortable: false,width:110,fixed: true, formatter: formmatterDate2},
+            {name:'supp_code',index:'supp_code',sortable: false,width:125,fixed: true,hidden:true},
             {name:'supp_name',index:'supp_name',sortable: false,width:125,fixed: true},
             {name:'po_no',index:'po_no',sortable: false,width:110,fixed: true},
             {name:'part_kind',index:'part_kind',sortable: false,width:125,fixed: true},
@@ -277,35 +293,8 @@ function jqGrid_main_modal() {
                     ]
                 }
             },
-            {name:'outs_supp_code',index:'outs_supp_code',sortable: false,width:110,fixed: true,
-                editable: true,                                       // 수정가능 여부
-                // SELECT 포매터
-                formatter: 'select',                                 // SELECT 포매터
-                edittype: 'select',                                    // EDIT타입 : SELECT
-
-                editoptions: {
-                    value: ":선택안함;" + main_data.supp_list_string.join(";"),
-
-                    defaultValue: '',
-                    dataEvents: [{
-                        type: 'change',
-                        fn: function (e) {                // 값 : this.value || e.target.val()
-
-                            $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
-                        },
-                    },
-                        {
-                            type: 'focusout',
-                            fn: function (e) {
-                                $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
-
-                            }
-                        }
-                    ]
-
-
-                }
-            }
+            {name:'outs_supp_code',index:'outs_supp_code',sortable: false,width:110,fixed: true,hidden:true},
+            {name:'outs_supp_name',index:'outs_supp_name',sortable: false,width:110,fixed: true}
 
         ],
         // caption: "자재단가 | MES",// grid 제목

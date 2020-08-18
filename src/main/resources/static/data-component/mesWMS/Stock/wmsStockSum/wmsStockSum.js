@@ -14,7 +14,7 @@ var main_data = {
 $(document).ready(function () {
     msg_get();
     jqGrid_main();
-    jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
+    // jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     datepickerInput();
     authcheck();
     jqgridPagerIcons();
@@ -25,7 +25,7 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수/////////////////////////////////////
 
 function get_btn(page) {
-    main_data.send_data = value_return2(".condition_main");
+    main_data.send_data = value_return(".condition_main");
     $("#mes_grid").setGridParam({
         url: '/wmsStockSumGet',
         datatype: "json",
@@ -70,7 +70,7 @@ function datepickerInput() {
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "wmsStockReady"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "wmsStockSum"}).then(function (data) {
         main_data.auth = data;
     });
 }
@@ -93,26 +93,27 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['업체', '기종', '품번','품명', '단중','수량','중량','수량','중량','수량','중량','수량','중량','수량','중량'],
         colModel: [
-            {name:'supp_name', index: 'supp_name', width: 150, fixed:true},
-            {name:'part_kind', index: 'part_kind',  width: 150, fixed:true},
-            {name:'part_code', index: 'part_code',  width: 150, fixed:true},
-            {name:'part_name', index: 'part_name',  width: 150, fixed:true},
-            {name:'part_weight', index: 'part_weight',  width: 150, fixed:true},
-            {name:'qty', index: 'qty',  width: 150, fixed:true},
-            {name:'weight', index: 'weight',  width: 150, fixed:true},
-            {name:'qty2', index: 'qty2',  width: 150, fixed:true},
-            {name:'weight2', index: 'weight2',  width: 150, fixed:true},
-            {name:'qty3', index: 'qty3',  width: 150, fixed:true},
-            {name:'weight3', index: 'weight3', width: 150, fixed:true},
-            {name:'qty4', index: 'qty4', width: 150, fixed:true},
-            {name:'weight4', index: 'weight4', width: 150, fixed:true},
-            {name:'qty5', index: 'qty5', width: 150, fixed:true},
-            {name:'weight5', index: 'weight5',  width: 150, fixed:true}
+            {name:'supp_name', index: 'supp_name', width: 100, fixed:true},
+            {name:'part_kind', index: 'part_kind',  width: 100, fixed:true},
+            {name:'part_code', index: 'part_code',  width: 100, fixed:true},
+            {name:'part_name', index: 'part_name',  width: 100, fixed:true},
+            {name:'part_weight', index: 'part_weight',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'prev_qty', index: 'prev_qty',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'prev_weight', index: 'prev_weight',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'in_qty', index: 'in_qty',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'in_weight', index: 'in_weight',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'out_qty', index: 'out_qty',  width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'out_weight', index: 'out_weight', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'qty4', index: 'qty4', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'weight4', index: 'weight4', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'qty', index: 'qty', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'weight', index: 'weight',  width: 100, fixed:true,formatter:'integer', align:'right'}
 
         ],
         caption: '제품재고현황 | MES',
         autowidth: true,
-        height: 562,
+        shrinkToFit:false,
+        height: 532,
         pager: '#mes_grid_pager',
         rowNum: 100,
         overflow:'visible',
@@ -148,11 +149,11 @@ function header_make() {
     $("#mes_grid").jqGrid('setGroupHeaders',{
         useColSpanStyle: true,
         groupHeaders: [
-            {startColumnName: 'qty', numberOfColumns: 2, titleText: '<center>전일재고</center>'},
-            {startColumnName: 'qty2', numberOfColumns: 2, titleText: '<center>금일입고</center>'},
-            {startColumnName: 'qty3', numberOfColumns: 2, titleText: '<center>금일출고</center>'},
+            {startColumnName: 'prev_qty', numberOfColumns: 2, titleText: '<center>전일재고</center>'},
+            {startColumnName: 'in_qty', numberOfColumns: 2, titleText: '<center>금일입고</center>'},
+            {startColumnName: 'out_qty', numberOfColumns: 2, titleText: '<center>금일출고</center>'},
             {startColumnName: 'qty4', numberOfColumns: 2, titleText: '<center>자체불량</center>'},
-            {startColumnName: 'qty5', numberOfColumns: 2, titleText: '<center>재고</center>'}
+            {startColumnName: 'qty', numberOfColumns: 2, titleText: '<center>재고</center>'}
 
             ]
     })
@@ -160,7 +161,7 @@ function header_make() {
 
 function selectBox() {
     $('#part_kind_select').select2();
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
 }
 
 function select_change1(value) {

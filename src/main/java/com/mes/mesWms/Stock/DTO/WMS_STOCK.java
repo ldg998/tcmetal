@@ -4,28 +4,20 @@ import lombok.Data;
 
 @Data
 public class WMS_STOCK {
-    private String part_grp_name;
     private String part_code;
+    private int prev_qty;
+    private int in_qty;
+    private int out_qty;
+    private int qty;
+    private int prev_weight;
+    private int in_weight;
+    private int out_weight;
+    private int weight;
     private String part_name;
-    private String spec;
-    private String unit_name;
-    private double qty;
-    private String part_desc;
-    private int rec_count;
-
-    private double prev_qty;
-    private double in_qty;
-    private double out_qty;
-
-    private String part_type_name;
-
-    private String plan_date;
-    private String ord_no;
+    private int part_weight;
     private String supp_name;
-    private String place_name;
-    private String prod_name;
-    private String plan_name;
-    private String plan_no;
-    private String work_date;
-    private String prod_type_name;
+    private String part_kind;
+    private int rownum;
+    private int rownum_page;
+    private int rec_count;
 }

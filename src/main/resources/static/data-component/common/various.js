@@ -411,6 +411,34 @@ function select_makes_base(tag,url,value,text,data,what){
 	});
 }
 
+function select_makes_base_tc(tag,url,value,text,data,what){
+	return new Promise(function (resolve, reject) {
+		$(tag).empty();
+		
+		$(tag).append($("<option></option>").text("태창").val(""));
+		
+		$.ajax({
+			url: url,
+			type: 'POST',
+			async: true,
+			dataType: "json",
+			data:data,
+			success: function (data2) {
+				var option = null
+				for (var j = 0; j < data2.length; j++) {
+					option = $("<option></option>").text(data2[j][text]).val(data2[j][value]);
+					$(tag).append(option);
+				}
+				$(tag).select2();
+				resolve(data2);
+			},
+			error: function () {
+				reject(new Error("Request is failed"));
+			}
+		});
+	});
+}
+
 function select_makes_base2(tag,url,value,text,data,what){
 	return new Promise(function (resolve, reject) {
 		$(tag).empty();
@@ -618,6 +646,15 @@ function modalValuePush(name1,name2,name3) {
 		} else {
 			$(name3).val($(name1 + " option:selected").text().trim());
 		}
+
+
+}
+
+function modalValuePush2(name1,name2,name3) {
+	$(name2).val($(name1).val());
+
+	$(name3).val($(name1 + " option:selected").text().trim());
+
 
 
 }

@@ -24,53 +24,20 @@ $(document).ready(function () {
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 
-function test(){
-    $("#addDialog").dialog('open'); // 모달 열기
-}
 
 function get_btn(page) {
 
-    main_data.send_data = value_return2(".condition_main");
-    console.log(value_return2(".condition_main"));
-
+    main_data.send_data = value_return(".condition_main");
+    main_data.send_data.keyword3 = ""; // 상태 빈값
     $("#mes_grid").setGridParam({
-        url: '/wmsOutReadyGet',
+        url: '/wmsStockRevGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid");
 }
 
-function supp_btn(what) {
-    main_data.supp_check = what;
 
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
 
 
 function excel_download() {
@@ -121,17 +88,17 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['조정일자','조정번호','업체','기종','품명','품번','단중','상태','조정사유','등록자','등록일시'],
         colModel: [
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true},
-            {name: '', index: '', sortable: false, width: 150, fixed:true}
+            {name: 'work_date', index: 'work_date', sortable: false, width: 100, fixed:true,formatter: formmatterDate2},
+            {name: 'rev_no', index: 'rev_no', sortable: false, width: 150, fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 120, fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 120, fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 120, fixed:true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 120, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 100, fixed:true,align:'right',formatter:'integer'},
+            {name: 'status_name', index: 'status_name', sortable: false, width: 70, fixed:true},
+            {name: 'rev_name', index: 'rev_name', sortable: false, width: 150, fixed:true},
+            {name: 'user_name', index: 'user_name', sortable: false, width: 70, fixed:true},
+            {name: 'update_date', index: 'update_date', sortable: false, width: 150, fixed:true,formatter: formmatterDate}
 
         ],
         caption: '제품재고 조정현황 | MES',
@@ -153,7 +120,7 @@ function jqGrid_main() {
 
 function selectBox() {
     $('#part_kind_select').select2();
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
 }
 
 function select_change1(value) {

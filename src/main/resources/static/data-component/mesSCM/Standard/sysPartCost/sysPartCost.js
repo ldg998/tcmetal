@@ -29,14 +29,9 @@ $(document).ready(function () {
 
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-//모달 확인 조회 btn
-function test(){
-
-    $("#addDialog").dialog('open'); // 모달 열기
-    jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]'));
-}
 // 조회 버튼
 function get_btn(page) {
+    main_data.send_data = value_return('.condition_main')
     $("#mes_grid").setGridParam({ // 그리드 조회
         // URL -> RESTCONTROLLER 호출
         url: '/sysPartListGet',
@@ -55,12 +50,21 @@ function get_btn(page) {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
-
         main_data.check = 'U'; // 수정인지 체크
-        ccn_ajax('/sysPartNameOneGet', {keyword: jqgrid_data.part_name_code}).then(function (data) { // user의 하나 출력
-            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
-            $("#addDialog").dialog('open'); //모달창열기
-        });
+        jqgrid_data.unit_cost = integer(jqgrid_data.unit_cost);
+            modal_edits('.modal_value',[],jqgrid_data); // response 값 출력
+        $("#mes_modal_grid").setGridParam({ // 그리드 조회
+            url: '/sysPartCostGet',
+            datatype: "json",
+            postData: {keyword:jqgrid_data.part_code}
+
+        }).trigger("reloadGrid");
+
+
+           $("#addDialog").dialog('open'); //모달창열기
+           jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]')); //그리드 리 사이즈
+
+
     } else {
         alert(msg_object.TBMES_A003.msg_name1); //경고메세지 출력
     }
@@ -87,18 +91,19 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['구분','품번','품명','규격','단위','업체','변경일자','금액','등록자','수정일'],// grid 헤더 설정
+        colNames : ['','구분','품번','품명','규격','단위','업체','변경일자','금액','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'',index:'',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'',index:'',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
-            {name:'',index:'',sortable: false,width:180,fixed: true}// formatter 사용을 통해 데이터 형식 가공
+            {name:'unit_code',index:'unit_code' ,sortable: false,fixed: true,hidden:true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'part_type_name',index:'part_type_name',sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'part_code',index:'part_code',key: true ,sortable: false,width:80,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'part_name',index:'part_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'spec',index:'spec',sortable: false,width:150,fixed: true},
+            {name:'unit_name',index:'unit_name',sortable: false,width:80,fixed: true},
+            {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true},
+            {name:'start_date',index:'start_date',sortable: false,width:120,fixed: true,formatter: formmatterDate2},
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
+            {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
+            {name:'update_date',index:'update_date',sortable: false,width:120,fixed: true,formatter: formmatterDate2}// formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "자재단가 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
@@ -131,3 +136,6 @@ function selectBox() {
     $('#1_select').select2();
 }
 
+function integer(e){
+return e.replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

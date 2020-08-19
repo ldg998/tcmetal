@@ -1,5 +1,6 @@
 package com.mes.mesOut.stock;
 
+import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.mesOut.stock.DTO.OUTS_STOCK;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -40,6 +42,12 @@ public class OutStockRestContoller {
     public List<OUTS_STOCK> outsSelectGet(Page p){
         return outStockService.outsSelectGet(p);
     }
+
+    @RequestMapping(value="/outsErrorAdd", method = RequestMethod.POST)
+    public Message outsErrorAdd(HttpServletRequest req,OUTS_STOCK os){ System.out.println(os);
+        return outStockService.outsErrorAdd(req,os);
+    }
+
 
 
 

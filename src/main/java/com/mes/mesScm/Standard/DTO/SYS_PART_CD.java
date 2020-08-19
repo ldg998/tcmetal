@@ -33,9 +33,13 @@ public class SYS_PART_CD {
     private String user_name;
     private String part_name;
     private String qc_level_name;
+    private String start_date;
+
+    private int unit_cost;
     private int rownum;
     private int rownum_page;
     private int rec_count;
+
     private String keyword;
     private String keyword2;
 

@@ -38,8 +38,6 @@ $(document).ready(function () {
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
-    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
     main_data.send_data.keyword = $('#supp_code').val();
     $("#mes_grid").setGridParam({
         url: "/qmsRecvListGet",
@@ -111,7 +109,7 @@ function jqGrid_main() {
             {name: 'work_date', index: 'work_date', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
             {name: 'in_no', index: 'in_no',sortable: false, width: 130,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
-            {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 130,fixed:true},
+            {name: '', index: '', sortable: false, width: 130,fixed:true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 130,fixed:true},         //품번
             {name: 'part_name', index: 'part_name', sortable: false, width: 130,fixed:true},        //품명
             {name: 'spec', index: 'spec', sortable: false, width: 130,fixed:true},                  //규격

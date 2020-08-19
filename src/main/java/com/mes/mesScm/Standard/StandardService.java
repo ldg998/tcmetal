@@ -79,4 +79,18 @@ public class StandardService extends ReturnFunction {
         List<SYS_PART_CD> rows = scmStandardMapper.sysPartListGet(p);
         return getListData(rows ,p);
     }
+
+
+    public List<SYS_PART_CD> sysPartCostGet(HttpServletRequest req,Page p) {
+        p.setUser_code(getSessionData(req).getUser_code());
+        return scmStandardMapper.sysPartCostGet(p);
+    }
+
+    public Message sysPartCostAdd(HttpServletRequest req,SYS_PART_CD spc) {
+        spc.setUser_code(getSessionData(req).getUser_code());
+        return scmStandardMapper.sysPartCostAdd(spc);
+    }
+
+    public Message sysPartCostDel(HttpServletRequest req, SYS_PART_CD spc) { return scmStandardMapper.sysPartCostDel(spc);
+    }
 }

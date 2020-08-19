@@ -17,16 +17,26 @@ function modal_start1() {
 
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
+
     var modal_objact = value_return(".modal_value");
-    if (effectiveness1(modal_objact)) {
+    modal_objact.part_weight = modal_objact.part_weight.replace(/\,/g, '');
+
         var text = msg_object.TBMES_Q002.msg_name1;
         if (main_data.check === "U") {
             text = msg_object.TBMES_Q003.msg_name1;
         }
+    if(modal_objact.result_code2 == ''){
+    modal_objact.qc_result = 3
+    }else {
+    modal_objact.qc_result = 2
+    }
+
+    console.log(modal_objact)
         if (confirm(text)) {
             wrapWindowByMask2();
             modal_objact.keyword = main_data.check;
-            ccn_ajax("/sysDeptAdd", modal_objact).then(function (data) {
+
+            ccn_ajax("/outsErrorAdd",modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
@@ -35,7 +45,7 @@ function addUdate_btn() {
                         get_btn(1);
                     } else {
                         $("#addDialog").dialog('close');
-                        get_btn($("#mes_grid").getGridParam('page'));
+                        $('#mes_grid').trigger("reloadGrid");
                     }
                 }
                 closeWindowByMask();
@@ -45,7 +55,7 @@ function addUdate_btn() {
                 alert(msg_object.TBMES_E008.msg_name1);
             });
         }
-    }
+
 
 }
 
@@ -112,12 +122,20 @@ function modal_make1() {
 function selectBox_modal1() {
     $('#select_modal1').select2();
     $('#select_modal2').select2();
-/* 키워드
-* KEYWORD:  사용유무
-* KEYWORD2: 업체
-* KEYWORD3: 기종
-* KEYWORD4: 제품코드
-*  */
+
+    select_makes_base('#select_modal1','/sysQcItemCdAll','qc_code','qc_name',{keyword:5,keyword2:1},'N').then(function(data){
+    console.log("수정:" +data)
+    });
+    select_makes_base('#select_modal2','/sysQcItemCdAll','qc_code','qc_name',{keyword:2,keyword2:2},'N').then(function(data){
+        console.log("패기:" +data)
+    });
+
+    /* 키워드
+    * KEYWORD:  사용유무
+    * KEYWORD2: 업체
+    * KEYWORD3: 기종
+    * KEYWORD4: 제품코드
+    *  */
     select_makes_base("#modal_select1","/outsSelectGet","supp_code","supp_name",{keyword:'Y',keyword2:'',keyword3:'',keyword4:''},"N").then(function (data) {
 
         $('#modal_select2').empty();
@@ -207,3 +225,25 @@ function select_change_modal3(value) {
         }
     }
 }
+
+
+/*
+
+function select_change_modal4(value) {
+
+    if(value == '') {
+
+    }else {
+        $("#select_modal2").prop("disabled", true).trigger("change");//셀렉트박스 잠금으로 체인지
+    }
+
+}
+
+function select_change_modal5(value) {
+    if(value == ''){
+
+    }else {
+        $("#select_modal1").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+    }
+}
+*/

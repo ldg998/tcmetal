@@ -29,25 +29,26 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 품번</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off" autofocus>
+                <input type="text" name="part_code" class="form-control modal_value" autocomplete="off" autofocus readonly>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name"> 품명</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_name" class="form-control modal_value" autocomplete="off" readonly>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name"> 규격</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="spec" class="form-control modal_value" autocomplete="off" readonly>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name"> 단위</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="unit_name" class="form-control modal_value" autocomplete="off" readonly >
+                <input type="hidden" name="unit_code" class="modal_value">
             </div>
         </div>
         <div class="profile-info-row">
@@ -56,15 +57,15 @@
 
                 <div class="input-icon input-icon-right">
                     <input type="text" name="start_date" id="datepicker"
-                           class="form-control h-25 condition_main" readonly>
+                           class="form-control h-25 modal_value sendDate " readonly>
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-name"> 단위</div>
+            <div class="profile-info-name"> 단가</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="unit_cost" class="form-control modal_value" onkeyup="num_keyup_comma(this)" autocomplete="off" style="text-align: right">
             </div>
         </div>
 
@@ -80,14 +81,14 @@
             <div class="dt-buttons btn-overlap btn-group modal_btn">
                 <!-- 조회버튼 -->
                 <a class="btn btn-secondary btn-lg"
-                   tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
+                   tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="add_modal1_btn()">
                         <span>
                             <span>저장</span>
                         </span>
                 </a>
 
                 <a class="btn btn-secondary btn-lg"
-                   tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
+                   tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="delete_modal_btn()">
                         <span>
                             <span>삭제</span>
                         </span>

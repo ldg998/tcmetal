@@ -74,6 +74,10 @@
         EXEC SP_MESSAGE_GET #{keyword}
     </select>
 
+    <select id="sysProdLineAllGet" resultType="com.mes.mesManager.Master.DTO.SYSProdLine">
+    	EXEC SP_SYS_LINE_GET 0, 0, '',''
+    </select>
+
     <select id="sysPartNamePartAllGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
         EXEC SP_SYS_PART_NAME_PART_GET 0 , 0 , #{keyword}
     </select>
@@ -98,6 +102,11 @@
     <select id="suppDeliveryPlaceGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
         EXEC SP_SUPP_DELIVERY_PLACE_GET #{keyword}
     </select>
+
+    <select id="sysQcItemCdAll" resultType="com.mes.Common.Various.DTO.SYS_QC_ITEM_CD">
+        EXEC SP_SYS_QC_ITEM_CD_ALL #{keyword} ,#{keyword2}
+    </select>
+
 
 </mapper>
 

@@ -110,6 +110,9 @@ var array =
         {code: "tpmMachineRegItem", title: '설비관리', sub: '예방정검', name:'예방점검항목관리'},
         {code: "tpmMachineRegCycle", title: '설비관리', sub: '예방정검', name:'예방점검주기설정'},
         {code: "tpmMachineRegComp", title: '설비관리', sub: '예방정검', name:'예방점검관리'},
+        {code: "tpmMachineRegAlarm", title: '설비관리', sub: '예방정검', name:'예방점검 알림설정'},
+
+
     //사후보전
         {code: "tpmMachineError", title: '설비관리', sub: '사후보전', name:'사후보전관리'},
 

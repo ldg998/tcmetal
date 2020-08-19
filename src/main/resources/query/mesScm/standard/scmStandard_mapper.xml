@@ -50,9 +50,22 @@
     <select id="sysLocDelete" resultType="com.mes.Common.DataTransferObject.Message">
     	EXEC SP_SYS_LOC_DEL #{keyword}
     </select>
-	 <select id="sysPartListGet" resultType="com.mes.Common.DataTransferObject.Message">
+	 <select id="sysPartListGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
     	EXEC SP_SYS_PART_LIST_GET #{page},#{rows},#{keyword} ,#{keyword2}
     </select>
+
+	 <select id="sysPartCostGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
+    	EXEC SP_SYS_PART_COST_GET #{keyword}
+    </select>
+
+	<select id="sysPartCostAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_COST_ADD #{part_code} ,#{start_date},#{unit_cost},#{user_code}
+    </select>
+
+	<select id="sysPartCostDel" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_SYS_PART_COST_DEL #{keyword}
+    </select>
+
 
 
 </mapper>

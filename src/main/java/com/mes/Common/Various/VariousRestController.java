@@ -3,9 +3,11 @@ package com.mes.Common.Various;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
-import com.mes.Common.Various.DTO.*;
+import com.mes.Common.Various.DTO.SYSPartType;
+import com.mes.Common.Various.DTO.SYSSupp;
+import com.mes.Common.Various.DTO.SYS_MENU_FAVORITES_CD;
+import com.mes.Common.Various.DTO.SYS_QC_ITEM_CD;
 import com.mes.mesManager.Authority.DTO.SYSAuthProgram;
-import com.mes.mesManager.Master.DTO.SYSCargo;
 import com.mes.mesManager.Master.DTO.SYSCommon;
 import com.mes.mesManager.Master.DTO.SYSMsg;
 import com.mes.mesManager.Master.DTO.SYSProdLine;
@@ -16,7 +18,6 @@ import com.mes.mesScm.Standard.DTO.SYS_PART_CD;
 import com.mes.mesScm.Standard.DTO.sysLoc;
 import com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD;
 import com.mes.mesTpm.RegItem.DTO.TPM_REG_ITEM_CD;
-import com.mes.mesWms.Stock.DTO.WMS_STOCK_TOTAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,6 +56,9 @@ public class VariousRestController {
 
     }
 
+    @RequestMapping(value ="/sysProdLineAllGet",method = RequestMethod.POST)
+    public List<SYSProdLine> sysProdLineAllGet(HttpServletRequest req, Page p){
+        return variousService.sysProdLineAllGet(req, p);}
 
 
     @RequestMapping(value = "/sysCommonAllGet", method = RequestMethod.POST)
@@ -115,6 +119,9 @@ public class VariousRestController {
 
     @RequestMapping(value ="/sysPartAllGet",method = RequestMethod.POST)
     public List<SYS_PART_CD> sysPartAllGet(HttpServletRequest req, Page p){ return variousService.sysPartAllGet(req, p);}
+
+     @RequestMapping(value ="/sysQcItemCdAll",method = RequestMethod.POST)
+    public List<SYS_QC_ITEM_CD> sysQcItemCdAll(HttpServletRequest req, Page p){ return variousService.sysQcItemCdAll(req, p);}
 
     @RequestMapping(value ="/msgGet")
     public SYSMsg msgGet(HttpServletRequest req, Page p) {return variousService.msgGet(req,p);}

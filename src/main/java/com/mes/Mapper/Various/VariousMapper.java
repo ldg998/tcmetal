@@ -2,10 +2,12 @@ package com.mes.Mapper.Various;
 
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
-import com.mes.Common.Various.DTO.*;
+import com.mes.Common.Various.DTO.SYSPartType;
+import com.mes.Common.Various.DTO.SYSSupp;
+import com.mes.Common.Various.DTO.SYS_MENU_FAVORITES_CD;
+import com.mes.Common.Various.DTO.SYS_QC_ITEM_CD;
 import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
 import com.mes.mesManager.Authority.DTO.SYSAuthProgram;
-import com.mes.mesManager.Master.DTO.SYSCargo;
 import com.mes.mesManager.Master.DTO.SYSCommon;
 import com.mes.mesManager.Master.DTO.SYSMsg;
 import com.mes.mesManager.Master.DTO.SYSProdLine;
@@ -16,7 +18,6 @@ import com.mes.mesScm.Standard.DTO.SYS_PART_CD;
 import com.mes.mesScm.Standard.DTO.sysLoc;
 import com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD;
 import com.mes.mesTpm.RegItem.DTO.TPM_REG_ITEM_CD;
-import com.mes.mesWms.Stock.DTO.WMS_STOCK_TOTAL;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -70,4 +71,8 @@ public interface VariousMapper {
     List<SYSSupp> suppDeliveryPlaceGet(Page p);
 
     List<sysLoc> syslineAllGroupGet(Page p);
+
+    List<SYSProdLine> sysProdLineAllGet(Page p);
+
+    List<SYS_QC_ITEM_CD> sysQcItemCdAll(Page p);
 }

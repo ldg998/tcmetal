@@ -150,4 +150,12 @@ public class VariousService extends ReturnFunction {
     public List<sysLoc> syslineAllGroupGet(Page p, HttpServletRequest req) {
         return variousMapper.syslineAllGroupGet(p);
     }
+
+    public List<SYSProdLine> sysProdLineAllGet(HttpServletRequest req, Page p) {
+        p.setSite_code(getSessionData(req).getSite_code());
+        return variousMapper.sysProdLineAllGet(p);
+    }
+
+    public List<SYS_QC_ITEM_CD> sysQcItemCdAll(HttpServletRequest req, Page p) { return variousMapper.sysQcItemCdAll(p);
+    }
 }

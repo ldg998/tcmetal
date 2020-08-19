@@ -146,8 +146,7 @@ function authcheck() {
 function selectBox() {
     select_makes_base("#main_select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
         select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
-
-        });
+ });
     });
     // $('#main_select2').select2();
 }

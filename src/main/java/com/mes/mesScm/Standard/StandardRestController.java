@@ -80,10 +80,17 @@ public class StandardRestController {
         return standardService.sysPartDel(req, spc);
     }
 
-@RequestMapping(value = "/sysPartListGet", method = RequestMethod.POST)
-    public RESTful sysPartListGet(Page p) {
-        return standardService.sysPartListGet(p);
-    }
+    @RequestMapping(value = "/sysPartListGet", method = RequestMethod.POST)
+    public RESTful sysPartListGet(Page p) { return standardService.sysPartListGet(p); }
+
+    @RequestMapping(value = "/sysPartCostGet", method = RequestMethod.POST)
+    public List<SYS_PART_CD> sysPartCostGet(HttpServletRequest req,Page p) { return standardService.sysPartCostGet(req,p); }
+
+    @RequestMapping(value = "/sysPartCostAdd", method = RequestMethod.POST)
+    public Message sysPartCostAdd(HttpServletRequest req,SYS_PART_CD spc) { return standardService.sysPartCostAdd(req,spc); }
+
+     @RequestMapping(value = "/sysPartCostDel", method = RequestMethod.POST)
+     public Message sysPartCostDel(HttpServletRequest req,SYS_PART_CD spc) { return standardService.sysPartCostDel(req,spc); }
 
 
 

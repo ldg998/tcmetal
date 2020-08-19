@@ -42,6 +42,8 @@ function get_btn(page) {
 function add_btn() {
     if (main_data.auth.check_add !="N") {
         modal_reset('.modal_value',[])
+        $("#select_modal1").prop("disabled", false).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#select_modal2").prop("disabled", false).trigger("change");//셀렉트박스 잠금으로 체인지
         datepickerInput_modal();
         $("#addDialog").dialog('open'); // 모달 열기
 

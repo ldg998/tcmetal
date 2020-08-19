@@ -29,4 +29,10 @@ public interface ScmStandardMapper {
     List<SYS_PART_CD> sysPartSuppGet(Page p);
 
     List<SYS_PART_CD> sysPartListGet(Page p);
+
+    List<SYS_PART_CD> sysPartCostGet(Page p);
+
+    Message sysPartCostAdd(SYS_PART_CD spc);
+
+    Message sysPartCostDel(SYS_PART_CD spc);
 }

@@ -24,19 +24,19 @@
             </div>
             <div class="profile-info-name">검사번호</div>
             <div class="profile-info-value">
-                <input type="text" class="form-control modal_value" autocomplete="off" autofocus>
+                <input type="text" name="ng_no" class="form-control modal_value" autocomplete="off" autofocus>
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
-                <select class="form-control modal_value" name="keyword" id="modal_select1" style="width: 100%" onchange="select_change_modal1(this.value)" ></select>
+                <select class="form-control modal_value" name="supp_code" id="modal_select1" style="width: 100%" onchange="select_change_modal1(this.value)" ></select>
 
             </div>
             <div class="profile-info-name">기종</div>
             <div class="profile-info-value">
-                <select name="keyword2" id="modal_select2" class="form-control modal_value" style="width: 100%;" onchange="select_change_modal2(this.value)">
+                <select name="part_kind" id="modal_select2" class="form-control modal_value" style="width: 100%;" onchange="select_change_modal2(this.value)">
                     <option value="">선택없음</option>
                 </select>
             </div>
@@ -47,7 +47,7 @@
 
             <div class="profile-info-name">품명</div>
             <div class="profile-info-value">
-                <select name="keyword4" id="modal_select3" class="form-control modal_value" style="width: 100%;" onchange="select_change_modal3(this.value)">
+                <select name="part_name" id="modal_select3" class="form-control modal_value" style="width: 100%;" onchange="select_change_modal3(this.value)">
                     <option value="">선택없음</option>
                 </select>
             </div>
@@ -67,26 +67,24 @@
             </div>
             <div class="profile-info-name">제품LOT</div>
             <div class="profile-info-value">
-                <input type="text" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="lot_no" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name"> 수정</div>
             <div class="profile-info-value">
-                <select name="keyword2" id="select_modal1" class="form-control condition_main" style="width: 100%">
+                <select name="result_code2" id="select_modal1" class="form-control modal_value" <%--onchange="select_change_modal4(this.value)" --%> style="width: 100%">
                     <option value="">용접</option>
-                    <option value="0"></option>
-                    <option value="1"></option>
+
                 </select>
             </div>
 
             <div class="profile-info-name"> 폐기</div>
             <div class="profile-info-value">
-                <select name="keyword2" id="select_modal2" class="form-control condition_main" style="width: 100%">
+                <select name="result_code3" id="select_modal2" class="form-control modal_value" <%--onchange="select_change_modal5(this.value)"--%>  style="width: 100%">
                     <option value=""></option>
-                    <option value="0"></option>
-                    <option value="1"></option>
+
                 </select>
             </div>
         </div>

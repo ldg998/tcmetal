@@ -1,5 +1,6 @@
 package com.mes.mesOut.stock;
 
+import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.Function.ReturnFunction;
@@ -8,6 +9,7 @@ import com.mes.mesOut.stock.DTO.OUTS_STOCK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
@@ -37,5 +39,10 @@ public class OutStockService extends ReturnFunction {
 
     public List<OUTS_STOCK> outsSelectGet(Page p) {
         return outsStockMapper.outsSelectGet(p);
+    }
+
+    public Message outsErrorAdd(HttpServletRequest req, OUTS_STOCK os) {
+        os.setUser_code(getSessionData(req).getUser_code());
+        return outsStockMapper.outsErrorAdd(os);
     }
 }

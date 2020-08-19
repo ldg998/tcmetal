@@ -16,35 +16,36 @@
         <div class="profile-info-row">
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off" autofocus>
+                <input type="hidden" name="supp_code" class="form-control modal_value" autofocus>
+                <input type="text" name="supp_name" class="form-control modal_value" autocomplete="off">
             </div>
             <div class="profile-info-name"> 품번</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_code" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">기종</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_kind" class="form-control modal_value" autocomplete="off">
             </div>
             <div class="profile-info-name">품명</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_name" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_weight" class="form-control modal_value" autocomplete="off">
             </div>
             <div class="profile-info-name">제품이력</div>
             <div class="profile-info-value">
                 <div class="filebox_lee">
-                    <label for="ex_file">업로드</label>
-                    <input type="file" id="ex_file">
+                    <label class='file_labal' for="file_01">업로드버튼</label>
+                    <input type='file' id='file_01' name='file1' onchange='file_change(this);' />
                 </div>
             </div>
         </div>

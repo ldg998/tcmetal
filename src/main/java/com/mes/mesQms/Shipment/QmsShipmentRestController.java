@@ -164,4 +164,18 @@ public class QmsShipmentRestController extends UploadFunction {
         return qmsShipmentService.qmsProdListOneGet(req,qps);
     }
 
+    @RequestMapping(value = "/sysSPartFile1Add", method = RequestMethod.POST)
+    public String sysSPartFile1Add(MultipartHttpServletRequest req){
+        Files files = new Files();
+        files.setKey1(req.getParameter("supp_code"));
+        files.setKey2(req.getParameter("part_kind"));
+        files.setKey3(req.getParameter("part_code"));
+
+        int check = Integer.parseInt(req.getParameter("check"));
+        if(check == 1 ) {
+            qmsShipmentService.sysSPartFile1Add(files, req);
+        }
+        return "수정되었습니다.";
+    }
+
 }

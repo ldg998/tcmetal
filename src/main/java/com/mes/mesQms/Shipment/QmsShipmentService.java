@@ -124,4 +124,12 @@ public class QmsShipmentService extends UploadFunction {
     public QMS_PROD_SUB qmsProdListOneGet(HttpServletRequest req, QMS_PROD_SUB qps) {
         return qmsShipmentMapper.qmsProdListOneGet(qps);
     }
+
+    public void sysSPartFile1Add(Files files, MultipartHttpServletRequest req) {
+        files.setUser_code(getSessionData(req).getUser_code());
+        String page_name = "sysSPartFile1Add";
+        Files newFiles = sysSPartFile1Add(page_name,req,"C:/UploadFile/tcmetal/sysSPartFile1Add/");
+        files.setKey_value(newFiles.getKey_value());
+        qmsShipmentMapper.sysSPartFile1Add(files);
+    }
 }

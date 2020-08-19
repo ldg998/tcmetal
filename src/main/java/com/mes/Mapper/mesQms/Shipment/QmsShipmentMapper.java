@@ -43,4 +43,5 @@ public interface QmsShipmentMapper {
     void qmsProdErrorManAdd_AllFile(Files newFiles);
 
 
+    void sysSPartFile1Add(Files files);
 }

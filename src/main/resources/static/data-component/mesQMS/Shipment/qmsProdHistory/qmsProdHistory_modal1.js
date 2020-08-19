@@ -12,42 +12,39 @@ function modal_start1() {
 
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
-function addUdate_btn() {
-    var modal_objact = value_return(".modal_value");
-    if (effectiveness1(modal_objact)) {
-        var text = msg_object.TBMES_Q002.msg_name1;
-        if (main_data.check === "U") {
-            text = msg_object.TBMES_Q003.msg_name1;
-        }
-        if (confirm(text)) {
-            wrapWindowByMask2();
-            modal_objact.keyword = main_data.check;
-            ccn_ajax("/sysDeptAdd", modal_objact).then(function (data) {
-                if (data.result === 'NG') {
-                    alert(data.message);
-                } else {
-                    if (main_data.check === "I") {
-                        $("#addDialog").dialog('close');
-                        get_btn(1);
-                    } else {
-                        $("#addDialog").dialog('close');
-                        get_btn($("#mes_grid").getGridParam('page'));
-                    }
-                }
-                closeWindowByMask();
+function addUpdate_btn() {
+    var add_data = value_return(".modal_value");
+    var formData = new FormData();
+    var check;
+    formData.append("supp_code", add_data.supp_code);
+    formData.append("part_kind", add_data.part_kind);
+    formData.append("part_code", add_data.part_code);
 
-            }).catch(function (err) {
-                closeWindowByMask();
-                alert(msg_object.TBMES_E008.msg_name1);
-            });
-        }
+    if ($("#file_01").prop("files")[0] == null) {
+        check = 0;
+        formData.append("check", check);
+    } else {
+        check = 1;
+        formData.append("file1", $("#file_01").prop("files")[0]);
+        formData.append("check", check);
     }
-
+    if(confirm("등록 하시겠습니까?")) {
+        wrapWindowByMask2();
+        ccn_file_ajax("/sysSPartFile1Add", formData).then(function (data) {
+            if (data.result === 'NG') {
+                alert(data.message);
+            }
+            closeWindowByMask();
+            $("#addDialog").dialog('close');
+            $('#mes_grid').trigger('reloadGrid');
+        }).catch(function (err) {
+            closeWindowByMask();
+            $("#addDialog").dialog('close');
+        });
+    }
 }
 ////////////////////////////호출 함수/////////////////////////////////////
-
 //모달 메세지 설정
 function msg_get_modal1() {
     msgGet_auth("TBMES_Q002");
@@ -55,6 +52,16 @@ function msg_get_modal1() {
     msgGet_auth("TBMES_E008");
 }
 
+function file_change(e) {
+    var filename = $(e).val().split('\\');
+    var data = $(e).val().split('.'); // 확장자
+    if ( $(e).val() !== ''){
+
+        $(e).closest("div")
+            .children(".file_labal")
+            .text("업로드완료");
+    }
+}
 
 function modal_make1() {
     $("#addDialog").dialog({
@@ -66,40 +73,18 @@ function modal_make1() {
         buttons: [
             {
                 text: "저장",
-                "class": "btn btn-minier",
+                'class': 'btn btn-primary btn-minier',
                 click: function () {
-                    $(this).dialog("close");
+                    addUpdate_btn();
                 }
             },
             {
                 text: "취소",
-                "class": "btn btn-minier",
+                'class': 'btn btn-minier',
                 click: function () {
                     $(this).dialog("close");
                 }
             }
-        ],
-        // 모달 창에서의 select2() 의 검색기능을 활성화
-        open: function () {
-            if ($.ui && $.ui.dialog && !$.ui.dialog.prototype._allowInteractionRemapped && $(this).closest(".ui-dialog").length) {
-                if ($.ui.dialog.prototype._allowInteraction) {
-                    $.ui.dialog.prototype._allowInteraction = function (e) {
-                        if ($(e.target).closest('.select2-drop').length) return true;
-                        if (typeof ui_dialog_interaction!="undefined") {
-                            return ui_dialog_interaction.apply(this, arguments);
-                        } else {
-                            return true;
-                        }
-                    };
-                    $.ui.dialog.prototype._allowInteractionRemapped = true;
-                }
-                else {
-                    $.error("You must upgrade jQuery UI or else.");
-                }
-            }
-        },
-        _allowInteraction: function (event) {
-            return !!$(e.target).closest('.ui-dialog, .ui-datepicker, .select2-drop').length;
-        }
+        ]
     });
 }

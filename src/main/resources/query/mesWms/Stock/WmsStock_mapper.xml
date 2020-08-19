@@ -17,4 +17,20 @@
     <select id="wmsStockSumGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
         EXEC SP_WMS_STOCK_GET_DAY #{page},#{rows},#{work_date},#{keyword},#{keyword2},''
     </select>
+
+    <select id="wmsStockRevAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_WMS_STOCK_REV_ADD #{outs_supp_code}, #{supp_code}, #{part_kind}, #{part_code}, #{stock_qty_prev}, #{stock_qty},#{rev_code}, #{user_code}
+    </select>
+
+    <select id="wmsStockRevGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK_REV">
+        EXEC SP_WMS_STOCK_REV_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},''
+    </select>
+
+    <select id="wmsStockRevOneGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK_REV">
+        EXEC SP_WMS_STOCK_REV_GET 1 ,1,'','','','','',#{keyword}
+    </select>
+
+    <select id="wmsOutsStockGet" resultType="Integer">
+       EXEC SP_WMS_OUT_STOCK_ONE_GET #{keyword},#{keyword2},#{keyword3},#{keyword4}
+    </select>
 </mapper>

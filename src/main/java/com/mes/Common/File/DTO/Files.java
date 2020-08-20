@@ -24,4 +24,10 @@ public class Files {
     private String board_code;
     private String board_idx;
     private String remark2;
+    private String wood_type1;
+    private String wood_type2;
+    private String wood_type3;
+    private String wood_supp_name;
+    private String wood_in_date;
+    private String wood_remark;
 }

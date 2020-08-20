@@ -72,12 +72,12 @@
         <div class="profile-info-row">
             <div class="profile-info-name" style="width: 25%">제작업체</div>
             <div class="profile-info-value" style="width: 25%">
-                <select class="form-control condition_main" name="supp_code" id="supp_select_modal" style="width: 100%" onchange="select_change1(this.value)" ></select>
+                <input type="text" name="wood_supp_name" id="wood_supp_name" class="form-control modal_value" autocomplete="off" >
             </div>
             <div class="profile-info-name" style="width: 25%">입고일</div>
             <div class="profile-info-value" style="width: 25%">
                 <div class="input-icon input-icon-right">
-                <input type="text"  id="wood_in_date_modal1" class="form-control h-25 modal_value" readonly>
+                <input type="text" name="wood_in_date" id="wood_in_date_modal1" class="form-control h-25 modal_value sendDate" readonly>
                 <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
@@ -87,7 +87,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name" style="width: 25%;border-top: 1px solid #F7FBFF">비고</div>
             <div class="profile-info-value" style="width: 75%;border-top: 1px dotted #D5E4F1">
-                <textarea id="wood_remark" rows="7" cols="54"></textarea>
+                <textarea name="wood_remark" class="modal_value" rows="7" cols="54"></textarea>
             </div>
         </div>
     </div>

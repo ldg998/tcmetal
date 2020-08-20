@@ -53,16 +53,25 @@ function msg_get_modal1() {
     msgGet_auth("TBMES_E008");// 데이터 등록 실패
 }
 
-function file_change(e) {
+function file_change(e,value) {
     var filename = $(e).val().split('\\');
     var data = $(e).val().split('.'); // 확장자
     if ( $(e).val() !== ''){
 
-        $(e).closest("div")
-            .children(".file_labal")
-            .text("업로드완료");
+        var reg = /(.*?)\.(pdf)$/;
+        if(!value.match(reg)) {
+            alert("해당 파일은 pdf 파일이 아닙니다.");
+            $(e).closest("div")
+                .children(".file_labal")
+                .text("업로드");
+        } else {
+            $(e).closest("div")
+                .children(".file_labal")
+                .text("업로드완료");
+        }
     }
 }
+
 
 function modal_make1() {
     $("#addDialog").dialog({

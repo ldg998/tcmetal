@@ -20,7 +20,7 @@ $(document).ready(function () {
     authcheck();
     datepickerInput();
    // suppModal_start();
-
+    selectBox();
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));
@@ -58,12 +58,8 @@ function excel_download() {
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
-    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
-    main_data.send_data_post = main_data.send_data;
-    main_data.send_data.keyword2 = '2';
     $("#mes_grid").setGridParam({
-        url: "/qmsRecvListGet",
+        url: "/qmsRecvErrorListGet",
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -179,7 +175,7 @@ function jqGrid_main() {
             {name: 'spec', index: 'spec', sortable: false, width: 150,fixed:true},
             {name: 'unit_name', index: 'unit_name', sortable: false, width: 100,fixed:true},
             {name: 'qc_level_name', index: 'qc_level_name', sortable: false, width: 100,fixed:true},
-            {name: 'qty', index: 'qty', sortable: false, width: 100, align: 'right',formatter:'integer',fixed:true},
+            {name: 'in_qty', index: 'in_qty', sortable: false, width: 100, align: 'right',formatter:'integer',fixed:true},
             {name: 'qc_qty', index: 'qc_qty', sortable: false, width: 100, align: 'right',formatter:'integer',fixed:true},
             {name: 'ng_qty', index: 'ng_qty', sortable: false, width: 100, align: 'right',formatter:'integer',fixed:true},
             {name: 'qc_result_name', index: 'qc_result_name', sortable: false, width: 100,fixed:true},
@@ -229,5 +225,10 @@ function jqGrid_main() {
             else
                 $(".jqgfirstrow").css("height","0px");
         }
+    });
+}
+
+function selectBox() {
+    select_makes_base("#main_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"Y").then(function (data) {
     });
 }

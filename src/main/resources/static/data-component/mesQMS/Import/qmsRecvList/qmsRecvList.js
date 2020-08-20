@@ -31,6 +31,7 @@ $(document).ready(function () {
     datepickerInput();
     authcheck();
     jqgridPagerIcons();
+    selectBox();
    // get_btn(1);
 });
 
@@ -38,7 +39,6 @@ $(document).ready(function () {
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.keyword = $('#supp_code').val();
     $("#mes_grid").setGridParam({
         url: "/qmsRecvListGet",
         datatype: "json",
@@ -101,7 +101,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['','','','입고일자','전표번호','업체','구분','품번','품명','규격','단위','입고수량'/*,'검사구분'*/,'검사수량','불량유형','불량상세','조치구분','성적서','성적서 수정','검사자','검사일시'],
+        colNames: ['','','','입고일자','전표번호','업체','구분','품번','품명','규격','단위','입고수량'/*,'검사구분'*/,'검사수량','불량수량','불량유형','불량상세','조치구분','성적서','성적서 수정','검사자','검사일시'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false,hidden:true ,key:true},
             {name: 'upload_path', index: 'upload_path', sortable: false,hidden:true},
@@ -109,19 +109,20 @@ function jqGrid_main() {
             {name: 'work_date', index: 'work_date', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
             {name: 'in_no', index: 'in_no',sortable: false, width: 130,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
-            {name: '', index: '', sortable: false, width: 130,fixed:true},
+            {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 130,fixed:true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 130,fixed:true},         //품번
             {name: 'part_name', index: 'part_name', sortable: false, width: 130,fixed:true},        //품명
             {name: 'spec', index: 'spec', sortable: false, width: 130,fixed:true},                  //규격
             {name: 'unit_name', index: 'unit_name', sortable: false, width: 130,fixed:true},        //단위
-            {name: 'qty', index: 'qty', sortable: false, width: 130,fixed:true,align:'right',formatter:'number' },                    //입고수량
+            {name: 'in_qty', index: 'in_qty', sortable: false, width: 130,fixed:true,align:'right',formatter:'integer' },                    //입고수량
           //  {name: 'qc_level', index: 'qc_level', sortable: false, width: 130,fixed:true},  //검사구분
-            {name: 'qc_qty', index: 'qc_qty', sortable: false, width: 130,fixed:true,align:'right',formatter:'number'},              //검사수령
+            {name: 'qc_qty', index: 'qc_qty', sortable: false, width: 130,fixed:true,align:'right',formatter:'integer'},              //검사수령
+            {name: 'ng_qty', index: 'ng_qty', sortable: false, width: 130,fixed:true,align:'right',formatter:'integer'},              //검사수령
             {name: 'ng_type_name', index: 'ng_type_name', sortable: false, width: 130,fixed:true},   //불량유형
             {name: 'ng_name', index: 'ng_name', sortable: false, width: 130,fixed:true},            //불량상세
             {name: 'act_type_name', index: 'act_type_name', sortable: false, width: 130,fixed:true}, //조치구분
-            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center', formatter: file1_formatter,fixed:true},//성적서
-            {name: 'file_upload', index: 'file1_name', sortable: false, width: 100, align: 'center',formatter: file_upload_formatter,fixed:true},//성적서 수정
+            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true},//성적서
+            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true},//성적서 수정
             {name: 'user_name', index: 'user_name', sortable: false, width: 130,fixed:true},                                //검사자
             {name: 'update_date', index: 'update_date', sortable: false, width: 130,fixed:true,formatter: formmatterDate} //검사일시
 
@@ -266,6 +267,12 @@ function file_download(file_name) {
             }
         });
     }
+}
+
+
+function selectBox() {
+    select_makes_base("#main_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"Y").then(function (data) {
+    });
 }
 
 

@@ -22,7 +22,11 @@
     </select>
 
     <select id="outsErrorAdd" resultType="com.mes.Common.DataTransferObject.Message">
-            EXEC [SP_OUTS_ERROR_ADD]  #{ng_no},#{supp_code},#{part_kind},#{part_code},#{lot_no},#{qc_result},#{result_code2},#{result_code3},#{user_code},#{keyword}
+            EXEC [SP_OUTS_ERROR_ADD] #{work_date},#{ng_no},#{supp_code},#{part_kind},#{part_code},#{lot_no},#{qc_result},#{result_code2},#{result_code3},#{user_code},#{keyword}
+    </select>
+
+ <select id="outsErrorDel" resultType="com.mes.Common.DataTransferObject.Message">
+            EXEC [SP_OUTS_ERROR_DEL]  #{keyword}
     </select>
 
 

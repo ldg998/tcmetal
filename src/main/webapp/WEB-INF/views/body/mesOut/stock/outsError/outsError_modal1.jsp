@@ -17,7 +17,7 @@
             <div class="profile-info-name">검사일자</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
-                    <input type="text" readonly id="datepicker_modal1" class="form-control modal_value"
+                    <input type="text" name="work_date" readonly id="datepicker_modal1" class="form-control modal_value sendDate "
                            autocomplete="off">
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
@@ -63,7 +63,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
-                <input type="text" name="part_weight" class="form-control modal_value" style="width: 100%; text-align: right" placeholder="자동생성" readonly>
+                <input type="text" id="part_weight" name="part_weight" class="form-control modal_value" style="width: 100%; text-align: right" placeholder="자동생성" readonly>
             </div>
             <div class="profile-info-name">제품LOT</div>
             <div class="profile-info-value">

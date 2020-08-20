@@ -21,4 +21,6 @@ public interface OutsStockMapper {
     List<OUTS_STOCK> outsSelectGet(Page p);
 
     Message outsErrorAdd(OUTS_STOCK os);
+
+    Message outsErrorDel(OUTS_STOCK os);
 }

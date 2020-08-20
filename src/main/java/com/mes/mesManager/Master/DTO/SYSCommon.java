@@ -22,6 +22,10 @@ public class SYSCommon {
 	private String create_date;
 	private String update_date;
 
+	private String alarm_code;
+	private String alarm_user_name;
+	private String alarm_user_code;
+
 	//GRID PAGE
 	private int rownum;
 	private int rownum_page;

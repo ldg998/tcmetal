@@ -11,6 +11,7 @@ public class OUTS_STOCK {
     private int part_weight;
     private int qty;
 
+    private String work_date;
     private String create_date;
     private String update_date;
     private String part_name;
@@ -24,7 +25,10 @@ public class OUTS_STOCK {
     private String keyword;
     private String ng_no;
     private String lot_no;
-
+    private String qc_result_name;
+    private String result_code2_name;
+    private String result_code3_name;
+    private String user_name;
 
     private int out_qty;
     private int in_qty;

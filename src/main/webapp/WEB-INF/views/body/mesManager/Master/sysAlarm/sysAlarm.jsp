@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<script type="text/javascript" src="/data-component/mesManager/Master/sysMachineRegAlarm/sysMachineRegAlarm.js"
+<script type="text/javascript" src="/data-component/mesManager/Master/sysAlarm/sysAlarm.js"
         charset="UTF-8"></script>
 <style>
     #mes_modal1_grid1_pager #pg_mes_modal1_grid1_pager table {
@@ -17,7 +17,7 @@
                 <tr>
                     <td class="wt-px-50 t-align-c td-title padding-a-0">구분</td>
                     <td class="wt-px-100">
-                        <select name="keyword" id="select" class="form-control keyword condition_main"
+                        <select name="keyword" id="select1" class="form-control keyword condition_main"
                                 style="width:100%">
                             <option value="">중간점검(폐기)</option>
                         </select>
@@ -65,7 +65,7 @@
     </div>
 </div>
 
-<%@include file="sysMachineRegAlarm_modal1.jsp" %>
+<%@include file="sysAlarm_modal1.jsp" %>
 
 
 

@@ -23,12 +23,27 @@
         EXEC SP_SYS_COMMON_GET 1,1,#{keyword},#{keyword2},''
     </select>
 
-
-
     <select id="sysCommonDutyGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
         SELECT * from sys_common_cd
         WHERE  CODE_TYPE = 'DUTY'
     </select>
+
+    <select id="deptAllGet" resultType="com.mes.mesManager.Master.DTO.DEPT_CD">
+      EXEC SP_DEPT_ALL_GET #{keyword} ,#{keyword2}
+    </select>
+
+    <select id="sysAlarmAdd" resultType="com.mes.Common.DataTransferObject.Message">
+      EXEC SP_SYS_ALARM_ADD #{keyword} ,#{keyword2} ,#{user_code},#{keyword3}
+    </select>
+
+    <select id="sysAlarmGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
+      EXEC SP_SYS_ALARM_GET #{page},#{rows},#{keyword} ,#{keyword2}
+    </select>
+
+    <select id="sysAlarmDel" resultType="com.mes.Common.DataTransferObject.Message">
+      EXEC SP_SYS_ALARM_DEL #{keyword}
+    </select>
+
 
 </mapper>
 

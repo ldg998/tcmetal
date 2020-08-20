@@ -34,7 +34,7 @@ public class MasterController {
 //    @RequestMapping(value="/sysERate")
 //    public String sysERate() { return "mesManager/Master/sysERate/sysERate"; }
 
-    @RequestMapping("/sysMachineRegAlarm")
-    public String sysMachineRegAlarm() { return "mesManager/Master/sysMachineRegAlarm/sysMachineRegAlarm"; }
+    @RequestMapping("/sysAlarm")
+    public String sysMachineRegAlarm() { return "mesManager/Master/sysAlarm/sysAlarm"; }
 
 }

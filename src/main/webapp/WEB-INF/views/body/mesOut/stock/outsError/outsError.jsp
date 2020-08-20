@@ -35,8 +35,8 @@
                         <td class="wt-px-200">
                             <select name="keyword" id="select1" class="form-control condition_main"  style="width:100%">
                                 <option value="">전체</option>
-                                <option value="0">수정</option>
-                                <option value="1">폐기</option>
+                                <option value="2">수정</option>
+                                <option value="3">폐기</option>
                             </select>
                         </td>
                         <td class="wt-px-100 td-title t-align-c padding-a-0">외주업체</td>

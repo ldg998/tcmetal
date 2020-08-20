@@ -17,46 +17,46 @@ function modal_start1() {
 
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
-
     var modal_objact = value_return(".modal_value");
     modal_objact.part_weight = modal_objact.part_weight.replace(/\,/g, '');
-
         var text = msg_object.TBMES_Q002.msg_name1;
         if (main_data.check === "U") {
             text = msg_object.TBMES_Q003.msg_name1;
         }
-    if(modal_objact.result_code2 == ''){
+        if(modal_objact.result_code2 == ''){
     modal_objact.qc_result = 3
     }else {
     modal_objact.qc_result = 2
     }
+        if(select_ck(modal_objact)) {
+            if (result_code_ck(modal_objact)) {
+                if (confirm(text)) {
 
-    console.log(modal_objact)
-        if (confirm(text)) {
-            wrapWindowByMask2();
-            modal_objact.keyword = main_data.check;
+                    wrapWindowByMask2();
+                    modal_objact.keyword = main_data.check;
+                    ccn_ajax("/outsErrorAdd", modal_objact).then(function (data) {
+                        if (data.result === 'NG') {
+                            alert(data.message);
+                        } else {
+                            if (main_data.check === "I") {
+                                $("#addDialog").dialog('close');
+                                get_btn(1);
+                            } else {
+                                $("#addDialog").dialog('close');
+                                $('#mes_grid').trigger("reloadGrid");
+                            }
+                        }
+                        closeWindowByMask();
 
-            ccn_ajax("/outsErrorAdd",modal_objact).then(function (data) {
-                if (data.result === 'NG') {
-                    alert(data.message);
-                } else {
-                    if (main_data.check === "I") {
-                        $("#addDialog").dialog('close');
-                        get_btn(1);
-                    } else {
-                        $("#addDialog").dialog('close');
-                        $('#mes_grid').trigger("reloadGrid");
-                    }
+                    }).catch(function (err) {
+                        closeWindowByMask();
+                        alert(msg_object.TBMES_E008.msg_name1);
+                    });
                 }
-                closeWindowByMask();
-
-            }).catch(function (err) {
-                closeWindowByMask();
-                alert(msg_object.TBMES_E008.msg_name1);
-            });
+            } else {
+                alert('불량유형을 한가지만 선택해주세요.');
+            }
         }
-
-
 }
 
 
@@ -136,7 +136,7 @@ function selectBox_modal1() {
     * KEYWORD3: 기종
     * KEYWORD4: 제품코드
     *  */
-    select_makes_base("#modal_select1","/outsSelectGet","supp_code","supp_name",{keyword:'Y',keyword2:'',keyword3:'',keyword4:''},"N").then(function (data) {
+    select_makes_base("#modal_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N").then(function (data) {
 
         $('#modal_select2').empty();
         var option = $("<option></option>").text('선택안함').val('');
@@ -161,6 +161,8 @@ function select_change_modal1(value) {
     if (main_data.check2 === 'Y'){
         if (value !== ""){
             select_makes_base("#modal_select2","/outsSelectGet","part_kind","part_kind",{keyword:'Y',keyword2:value,keyword3:'',keyword4:''},"N").then(function (data) {
+
+
                 $('#modal_select3').empty();
                 var option2 = $("<option></option>").text('선택안함').val('');
                 $('#modal_select3').append(option2);
@@ -224,6 +226,40 @@ function select_change_modal3(value) {
             $("input[name=part_weight]").val("");
         }
     }
+}
+
+
+function result_code_ck(data){
+    var ck = true;
+    if(data.result_code2 !="" && data.result_code3 !=""){
+        ck =false;
+    }
+    if(data.result_code2 =="" && data.result_code3 ==""){
+        ck =false;
+    }
+    return ck
+}
+
+function select_ck(data){
+   if(data.ng_no ==""){
+       alert('검사번호를 작성해주세요');
+       return false
+   }else if(data.supp_code ==""){
+       alert('업체를 선택해주세요');
+       return false
+    }else if(data.part_kind ==""){
+        alert('기종을 선택해주세요');
+       return false
+    }else if(data.part_code ==""){
+        alert('품명을 선택해주세요');
+       return false
+    }else if(data.lot_no ==""){
+       alert('제품LOT를 작성해주세요');
+       return false
+    }else {
+       return true
+   }
+
 }
 
 

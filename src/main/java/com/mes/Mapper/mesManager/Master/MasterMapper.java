@@ -70,4 +70,12 @@ import java.util.List;
     void sysSuppFileUpdate(Files newFiles);
 
     void fileCdDelete(String file1);
+
+    List<DEPT_CD> deptAllGet(Page p);
+
+    Message sysAlarmAdd(DEPT_CD dc);
+
+    List<SYSCommon> sysAlarmGet(Page p);
+
+    Message sysAlarmDel(Page p);
 }

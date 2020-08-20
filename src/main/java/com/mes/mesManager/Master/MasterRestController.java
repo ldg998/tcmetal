@@ -158,4 +158,19 @@ public class MasterRestController {
     @RequestMapping(value = "/autocomplete_Supp_No",method = RequestMethod.POST)
     public List<?> autocomplete_Supp_No(Page p){ return masterService.autocomplete_Supp_no(p);}
 
+     @RequestMapping(value = "/deptAllGet",method = RequestMethod.POST)
+    public List<DEPT_CD> deptAllGet(Page p){ return masterService.deptAllGet(p);}
+
+    @RequestMapping(value = "/sysAlarmAdd",method = RequestMethod.POST)
+    public Message sysAlarmAdd(HttpServletRequest req,DEPT_CD dc){ return masterService.sysAlarmAdd(req,dc);}
+
+    @RequestMapping(value = "/sysAlarmGet",method = RequestMethod.POST)
+    public RESTful sysAlarmGet(HttpServletRequest req,Page p){ return masterService.sysAlarmGet(p);}
+
+    @RequestMapping(value = "/sysAlarmDel",method = RequestMethod.POST)
+    public Message sysAlarmDel(HttpServletRequest req,Page p){ return masterService.sysAlarmDel(p);}
+
+
+
+
 }

@@ -45,4 +45,7 @@ public class OutStockService extends ReturnFunction {
         os.setUser_code(getSessionData(req).getUser_code());
         return outsStockMapper.outsErrorAdd(os);
     }
+
+    public Message outsErrorDel(HttpServletRequest req, OUTS_STOCK os) {  return outsStockMapper.outsErrorDel(os);
+    }
 }

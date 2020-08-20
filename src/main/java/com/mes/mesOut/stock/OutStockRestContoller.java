@@ -44,9 +44,10 @@ public class OutStockRestContoller {
     }
 
     @RequestMapping(value="/outsErrorAdd", method = RequestMethod.POST)
-    public Message outsErrorAdd(HttpServletRequest req,OUTS_STOCK os){ System.out.println(os);
-        return outStockService.outsErrorAdd(req,os);
-    }
+    public Message outsErrorAdd(HttpServletRequest req,OUTS_STOCK os){ return outStockService.outsErrorAdd(req,os); }
+
+   @RequestMapping(value="/outsErrorDel", method = RequestMethod.POST)
+    public Message outsErrorDel(HttpServletRequest req,OUTS_STOCK os){ return outStockService.outsErrorDel(req,os); }
 
 
 

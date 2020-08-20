@@ -11,8 +11,9 @@ function modal_start1() {
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 function modal1_get_btn(page) {
-    var modal_data = value_return(".modal_value2");
+    var modal_data = value_return(".modal_value");
     modal_data.keyword2='Y';
+
     $("#mes_modal1_grid1").setGridParam({
         url: '/sysUserGet',
         datatype: "json",
@@ -59,9 +60,11 @@ function right_modal1_btn() {
             return false;
         }
         var ids2 = $("#mes_modal1_grid2").jqGrid("getDataIDs");
+
         var overlap = [];
         if (ids2.length != 0) {
             ids.forEach(function (idsfor, s) {
+
                 ids2.forEach(function (ids2for) {
                     if (idsfor === ids2for) {
                         ids.splice(s, 1, '');
@@ -70,12 +73,16 @@ function right_modal1_btn() {
                 });
             });
         }
+
         var list = [];
         ids.forEach(function (idsfor) {
             if (idsfor !== '') {
-                list.push($("#mes_modal1_grid1").getRowData(idsfor));
+                var user_code =  $("#mes_modal1_grid1").getRowData(idsfor).user_code
+                var user_name =   $("#mes_modal1_grid1").getRowData(idsfor).user_name
+                list.push({alarm_user_code:user_code,alarm_user_name:user_name});
             }
         });
+
         callback(function () {
             if (overlap.length !== 0) {
                 alert(overlap.join(", ") + " 중복");
@@ -83,8 +90,9 @@ function right_modal1_btn() {
             ids2 = $("#mes_modal1_grid2").getRowData();
             ids2 = ids2.concat(list);
 
-            $('#mes_modal1_grid2').jqGrid("clearGridData");
 
+
+            $('#mes_modal1_grid2').jqGrid("clearGridData");
             $("#mes_modal1_grid2").setGridParam({
                 datatype: "local",
                 data: ids2
@@ -128,22 +136,19 @@ function add_modal1_btn() {
                         wrapWindowByMask2();
                         var list = [];
                         jdata.forEach(function (j) {
-                            list.push(j.user_code);
+                            list.push(j.alarm_user_code);
                         })
 
 
-                        add_data.alarm_user_code = list.join(gu5);
-                        add_data.keyword = main_data.check;
-                        ccn_ajax("/tpmMachineRegAlarmAdd", add_data).then(function (data) {
+                        add_data.keyword2 = list.join(gu5);
+                        add_data.keyword3 = main_data.check;
+                        ccn_ajax("/sysAlarmAdd", add_data).then(function (data) {
                             if (data.result === 'NG') {
                                 alert(data.message);
                             } else {
                                 if (main_data.check === "I") {
                                     $("#addDialog").dialog('close');
                                     get_btn(1);
-                                } else {
-                                    $("#addDialog").dialog('close');
-                                    get_btn_post($("#mes_grid").getGridParam('page'));
                                 }
                             }
                             closeWindowByMask();
@@ -172,8 +177,8 @@ function msg_get_modal1() {
 }
 
 function selectBox_modal1() {
-    $('#select_modal1').select2();
-    $('#select_modal2').select2();
+    select_makes_base("#select_modal1", "/deptAllGet","dept_code","dept_name",{keyword:'',keyword2:'Y'},'Y');
+    select_makes_base("#select_modal2", "/sysCommonAllGet","code_value","code_name1",{keyword:'ALARM_CD'},'');
 }
 
 function modal_make1() {
@@ -235,8 +240,8 @@ function jqGrid_modal1() {
         caption: "예방점검알림추가 | MES",
         colNames: ['사용자코드', '사용자명'],
         colModel: [
-            {name: 'user_code', index: 'user_code', key:true,sortable: false},
-            {name: 'user_name', index: 'user_name', sortable: false},
+            {name: 'alarm_user_code', index: 'user_code' , sortable: false},
+            {name: 'alarm_user_name', index: 'user_name', sortable: false},
         ],
         autowidth: true,
         height: 340,

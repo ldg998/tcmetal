@@ -180,5 +180,22 @@ public class MasterService extends UploadFunction {
         return masterMapper.sysSuppListDel(p);
     }
 
+    public List<DEPT_CD> deptAllGet(Page p) { return masterMapper.deptAllGet(p);
+    }
+
+    public Message sysAlarmAdd(HttpServletRequest req,DEPT_CD dc) {
+        dc.setUser_code(getSessionData(req).getUser_code());
+        return masterMapper.sysAlarmAdd(dc);
+    }
+
+    public RESTful sysAlarmGet(Page p) {
+        List<SYSCommon> rows = masterMapper.sysAlarmGet(p);
+        return getListData(rows , p);
+    }
+
+    public Message sysAlarmDel(Page p) { return masterMapper.sysAlarmDel(p);
+    }
+
+
 }
 

@@ -30,4 +30,14 @@ public class Files {
     private String wood_supp_name;
     private String wood_in_date;
     private String wood_remark;
+    private String machine_code;
+    private String machine_name;
+    private String device_no;
+    private String capa;
+    private String spec;
+    private String correct_corp_name;
+    private String correct_date;
+    private String end_date;
+    private int alarm_day;
+    private String keyword;
 }

@@ -385,13 +385,6 @@ public class UploadFunction extends ReturnFunction {
 
 
 
-
-
-
-
-
-
-
     private Files UploadSetFilePathTpmMC(String page_name,MultipartFile multipartFile, HttpServletRequest req,int index,String code) {
         Files files = new Files();
         String[] name = multipartFile.getOriginalFilename().split("\\.");
@@ -457,6 +450,19 @@ public class UploadFunction extends ReturnFunction {
     }
 
     public Files sysSPartFile1Add(String page_name,MultipartHttpServletRequest req,String ad) {
+        Files files = UploadSetFilePath1(page_name,req.getFile("file1"), req,ad);
+        try {
+            files.getFiles().transferTo(new File(files.getUpload_path()));
+            fileUploadService.setSysSPartDrawingFile(files, req);
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return files;
+    }
+
+    public Files qmsInspMachineAdd(String page_name,MultipartHttpServletRequest req,String ad) {
         Files files = UploadSetFilePath1(page_name,req.getFile("file1"), req,ad);
         try {
             files.getFiles().transferTo(new File(files.getUpload_path()));

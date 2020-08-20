@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
+<script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <script type="text/javascript" src="/data-component/mesQMS/Shipment/qmsInspMachine/qmsInspMachine.js" charset="UTF-8"></script>
 
 <div class="main-content-inner">
@@ -12,7 +13,7 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">설비번호</td>
                     <td class="wt-px-150">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
+                            <input type="text" name="keyword" class="form-control h-25 condition_main"
                                    autocomplete="off">
                         </div>
                     </td>
@@ -26,7 +27,7 @@
             <div class="pull-left tableTools-container">
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>

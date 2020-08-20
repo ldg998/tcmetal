@@ -86,4 +86,21 @@
             SUPP_CODE = #{key1} AND PART_KIND = #{key2} AND PART_CODE = #{key3}
     </update>
 
+    <select id="qmsInspMachineDel" resultType="com.mes.Common.DataTransferObject.Message">
+    	EXEC SP_QMS_INSP_MACHINE_DEL #{keyword}
+    </select>
+
+    <select id="qmsInspMachineGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_INSP_MACHINE">
+        EXEC SP_QMS_INSP_MACHINE_GET  #{page}, #{rows}, #{keyword}
+    </select>
+
+    <select id="qmsInspMachineOneGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_INSP_MACHINE">
+        EXEC SP_QMS_INSP_MACHINE_GET  1,1, #{keyword}
+    </select>
+
+    <select id="qmsInspMachineAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_INSP_MACHINE_ADD #{machine_code}, #{machine_name},#{device_no},#{capa},#{spec},#{correct_corp_name},
+        #{correct_date},#{end_date},#{alarm_day},#{key_value},#{user_code},#{keyword}
+    </select>
+
 </mapper>

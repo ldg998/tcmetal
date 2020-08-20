@@ -35,4 +35,12 @@ public interface CrmOrdersMapper {
     List<WMS_OUT_SUB> crmShippingWmsOutGet(Page p);
 
     WMS_OUT_SUB crmShippingWmsOutOneGet(Page p);
+
+    Message crmShippingAdd(CRM_SHIPPING cs);
+
+    List<CRM_SHIPPING> crmShippingGet(Page p);
+
+    CRM_SHIPPING crmShippingOneGet(Page p);
+
+    Message crmShippingDel(Page p);
 }

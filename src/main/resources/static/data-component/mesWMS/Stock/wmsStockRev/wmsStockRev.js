@@ -33,10 +33,8 @@ function test() {
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.start_date="";
-    main_data.send_data.end_date="";
     $("#mes_grid").setGridParam({
-        url: "/wmsStockRevGet",
+        url: "/wmsStockGet",
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -59,18 +57,25 @@ function add_btn() {
     }
 }
 
-function update_btn(rowid) {
+function update_btn(jq_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
         main_data.check = 'U'; // 수정인지 체크
         main_data.check2 = 'N'; // 수정인지 체크
-        ccn_ajax('/wmsStockRevOneGet', {keyword: rowid}).then(function (data) { // user의 하나 출력
+        var send_data = {
+            keyword:jq_data.supp_code,
+            keyword2:jq_data.part_kind,
+            keyword3:jq_data.outs_supp_code,
+            keyword4:jq_data.part_code,
+        }
+        ccn_ajax('/wmsStockOneGet', send_data).then(function (data) { // user의 하나 출력
             disabled_tf(["#modal_select1","#modal_select2","#modal_select3"],"Y");
             modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
             select_makes_base("#modal_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:data.supp_code},"N").then(function (data2) {
                 $("#modal_select2").val(data.part_kind).trigger("change");
                 select_makes_base("#modal_select3","/sysSpartAllGet","part_code","part_name",{keyword:data.supp_code,keyword2:data.part_kind},"N").then(function (data3) {
                     $("#modal_select3").val(data.part_code).trigger("change");
+                    $("#modal_select5 option:eq(0)").prop("selected", true).trigger("change");
                     main_data.check2 = 'Y';
                     $("#addDialog").dialog('open');
                 });
@@ -105,17 +110,17 @@ function jqGrid_main() {
         multiselect: true,
         // 타이틀
        caption: "제품재고조정 | MES",
-       colNames: ['rev_no','업체','기종','품명','품번','단중','제품LOT','등록자','등록일시'],
+       colNames: ['rownum','outs_supp_code','업체','업체','기종','품명','품번','단중','재고'],
        colModel: [
-           {name: 'rev_no', index: 'rev_no', sortable: false,fixed:true,width:150, key:true,hidden:true},
+           {name: 'rownum', index: 'rownum', sortable: false,fixed:true,width:150, key:true,hidden:true},
+           {name: 'outs_supp_code', index: 'outs_supp_code', sortable: false,fixed:true,width:120,hidden:true},
+           {name: 'supp_code', index: 'supp_code', sortable: false,fixed:true,width:120,hidden:true},
            {name: 'supp_name', index: 'supp_name', sortable: false,fixed:true,width:120},
            {name: 'part_kind', index: 'part_kind', sortable: false,fixed:true,width:120},
            {name: 'part_name', index: 'part_name', sortable: false,fixed:true,width:120},
            {name: 'part_code', index: 'part_code', sortable: false,fixed:true,width:120},
            {name: 'part_weight', index: 'part_weight', sortable: false,fixed:true,width:100,align:'right',formatter:'integer'},
-           {name: 'lot_no', index: 'lot_no', sortable: false,fixed:true,width:100},
-           {name: 'user_name', index: 'user_name', sortable: false,fixed:true,width:70},
-           {name: 'update_date', index: 'update_date', sortable: false,fixed:true,width:150,formatter: formmatterDate}
+           {name: 'qty', index: 'qty', sortable: false,fixed:true,width:100,align:'right',formatter:'integer'},
        ],
         autowidth: true,
         viewrecords: true,
@@ -136,7 +141,7 @@ function jqGrid_main() {
         },
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
             var data = $('#mes_grid').jqGrid('getRowData', rowid);
-            update_btn(rowid);
+            update_btn(data);
         },
         loadComplete:function(){
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)

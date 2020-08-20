@@ -22,8 +22,8 @@
         <div class="profile-info-row">
             <div class="profile-info-name">위치</div>
             <div class="profile-info-value">
-                <input name="outs_supp_name" id="outs_supp_name" type="text" class="form-control keyword modal_value qty"   style="width: 100%;" autocomplete="off" readonly>
-                <input name="outs_supp_code" id="outs_supp_code" type="hidden" class="form-control keyword modal_value qty"   style="width: 100%; text-align: right;" autocomplete="off" readonly>
+                <input name="outs_supp_name" id="outs_supp_name" type="text" class="form-control keyword modal_value"   style="width: 100%;" autocomplete="off" readonly>
+                <input name="outs_supp_code" id="outs_supp_code" type="hidden" class="form-control keyword modal_value"   style="width: 100%; text-align: right;" autocomplete="off" readonly>
             </div>
            </div>
         <div class="profile-info-row">

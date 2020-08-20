@@ -26,6 +26,7 @@ function modal2_check() {
         var ids = $("#mes_modal2_grid1").getGridParam("selrow");
         var idsdata = $('#mes_modal2_grid1').jqGrid('getRowData', ids);
         ccn_ajax('/crmShippingWmsOutOneGet', {keyword:idsdata.out_no}).then(function (data) {
+            data.weight="";
             modal_edits(".modal_value",[],data);
             modal2_close();
         });
@@ -87,7 +88,7 @@ function modal2_jqGrid() {
         mtype: 'POST',
         // 타이틀
         caption: "출하조회 | MES",
-        colNames: ['','rownum','출고일자','선적일자','출고전표','업체','기종','품명','품번','단중','수량','중량','차량번호'],
+        colNames: ['','rownum','출고일자','선적일자','출고전표','업체','기종','품명','품번','단중','운송수단','수량','중량','차량번호'],
         colModel: [
             {name:'radio',index:'radio',align:"center",width:30 ,sortable: false, formatter: function (cellValue, option,rowObject) {
                     return '<input type="radio" name="radio_' + option.gid + '" onclick="jqGrid_row_check(\'#mes_modal2_grid1\''+','+'\''+rowObject.out_no+'\''+');"/>';
@@ -101,6 +102,7 @@ function modal2_jqGrid() {
             {name: 'part_name', index: 'part_name', sortable: false},
             {name: 'part_code', index: 'part_code', sortable: false},
             {name: 'part_weight', index: 'part_weight', sortable: false, align: 'right', formatter:'integer'},
+            {name: 'trans_name', index: 'trans_name', sortable: false},
             {name: 'qty', index: 'qty', sortable: false, align: 'right', formatter:'integer'},
             {name: 'weight', index: 'weight', sortable: false, align: 'right', formatter:'integer'},
             {name: 'car_no', index: 'car_no', sortable: false},

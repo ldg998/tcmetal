@@ -28,7 +28,6 @@ $(document).ready(function () {
 function get_btn(page) {
 
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.keyword3 = ""; // 상태 빈값
     $("#mes_grid").setGridParam({
         url: '/wmsStockRevGet',
         datatype: "json",
@@ -86,7 +85,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['조정일자','조정번호','업체','기종','품명','품번','단중','상태','조정사유','등록자','등록일시'],
+        colNames: ['조정일자','조정번호','업체','기종','품명','품번','단중','조정전재고','조정후재고','등록자','등록일시'],
         colModel: [
             {name: 'work_date', index: 'work_date', sortable: false, width: 100, fixed:true,formatter: formmatterDate2},
             {name: 'rev_no', index: 'rev_no', sortable: false, width: 150, fixed:true},
@@ -95,8 +94,8 @@ function jqGrid_main() {
             {name: 'part_name', index: 'part_name', sortable: false, width: 120, fixed:true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 120, fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable: false, width: 100, fixed:true,align:'right',formatter:'integer'},
-            {name: 'status_name', index: 'status_name', sortable: false, width: 70, fixed:true},
-            {name: 'rev_name', index: 'rev_name', sortable: false, width: 150, fixed:true},
+            {name: 'stock_qty_prev', index: 'stock_qty_prev', sortable: false, width: 100, fixed:true,align:'right',formatter:'integer'},
+            {name: 'stock_qty', index: 'stock_qty', sortable: false, width: 100, fixed:true,align:'right',formatter:'integer'},
             {name: 'user_name', index: 'user_name', sortable: false, width: 70, fixed:true},
             {name: 'update_date', index: 'update_date', sortable: false, width: 150, fixed:true,formatter: formmatterDate}
 
@@ -121,6 +120,8 @@ function jqGrid_main() {
 function selectBox() {
     $('#part_kind_select').select2();
     select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
+    select_makes_base_tc("#main_select3","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'},"").then(function (data) {});
+
 }
 
 function select_change1(value) {

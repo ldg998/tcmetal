@@ -35,21 +35,31 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="work_date" id="datepicker"
-                                   class="form-control h-25 condition_main" readonly>
+                            <input type="text" name="start_date" id="datepicker"
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">업체</td>
-                    <td class="wt-px-150">
+                    <td class="t-align-c" style="width:25px !important;">
+                        ~
+                    </td>
+                    <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" autocomplete="off" >
+                            <input type="text" name="end_date" id="datepicker2"
+                                   class="form-control h-25 condition_main sendDate" readonly>
+                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                        </div>
+                    </td>
+
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                    <td class="wt-px-200">
+                        <div class="input-icon input-icon-right">
+                            <select class="form-control condition_main" name="keyword" id="main_select1" style="width: 100%"  ></select>
                         </div>
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">운송수단</td>
                     <td class="wt-px-200">
-                       <select id="1_select" style="width: 100%">
+                       <select id="main_select2" name="keyword2" style="width: 100%" class="form-control condition_main">
                            <option value="">전체</option>
                            <option></option>
                            <option></option>
@@ -66,20 +76,20 @@
             <div class="pull-left tableTools-container">
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="test()">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>
                     </a>
                     <a id="add_btn" class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="test();">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="add_btn();">
                         <span><i class="fa fa-plus bigger-110 blue"></i>
                             <span>추가</span>
                         </span>
                     </a>
 
                     <a class="dt-button btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="delete_btn();">
                         <span>
                             <i class="fa fa-trash bigger-110 blue"></i>
                             <span>삭제</span>

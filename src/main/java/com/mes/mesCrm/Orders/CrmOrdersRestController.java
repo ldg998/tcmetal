@@ -79,6 +79,23 @@ public class CrmOrdersRestController {
     }
 
 
+    @RequestMapping(value = "/crmShippingAdd", method = RequestMethod.POST)
+    public Message crmOrderRecpAdd(CRM_SHIPPING cs, HttpServletRequest req) throws IOException {
+        return crmOrdersService.crmShippingAdd(cs,req);
+    }
 
+    @RequestMapping(value = "/crmShippingGet", method = RequestMethod.POST)
+    public RESTful crmShippingGet( Page p) {
+        return crmOrdersService.crmShippingGet(p);
+    }
 
+    @RequestMapping(value = "/crmShippingOneGet", method = RequestMethod.POST)
+    public CRM_SHIPPING crmShippingOneGet( Page p) {
+        return crmOrdersService.crmShippingOneGet(p);
+    }
+
+    @RequestMapping(value="/crmShippingDel" , method = RequestMethod.POST)
+    public Message crmShippingDel(Page p){
+        return crmOrdersService.crmShippingDel( p);
+    }
 }

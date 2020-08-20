@@ -94,9 +94,11 @@ function add_modal1_btn() {
             var list2 = [];
             jdata.forEach(function (data, j) {
                 if (data.in_qty !== '' && data.in_qty > 0) {
-                    list.push(data.ord_no + gu4 + data.part_code + gu4 + data.ord_qty + gu4 + data.qty + gu4 + data.in_qty + gu4 + data.status + gu4 + data.qc_result + gu4 + data.qc_qty + gu4 + data.ng_type + gu4 + data.ng_name + gu4 + data.act_type+ gu4 + data.ng_qty);
-                } else {
-                    list2.push(data.part_code);
+                    if (data.in_qty !== '' && data.in_qty > 0) {
+                        list.push(data.ord_no + gu4 + data.part_code + gu4 + data.ord_qty + gu4 + data.qty + gu4 + data.in_qty + gu4 + data.status + gu4 + data.qc_result + gu4 + data.qc_qty + gu4 + data.ng_type + gu4 + data.ng_name + gu4 + data.act_type+ gu4 + data.ng_qty);
+                    } else {
+                        list2.push(data.part_code);
+                    }
                 }
             });
             callback(function () {

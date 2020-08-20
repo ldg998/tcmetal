@@ -44,4 +44,55 @@
 	<select id="crmShippingWmsOutOneGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_SUB">
 		EXEC SP_WMS_OUT_LIST_CRM_SHIPPING_GET 1,1,'','','',#{keyword}
     </select>
+
+	<select id="crmShippingAdd" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_CRM_SHIPPING_ADD
+		#{out_no},
+	
+		#{ship_cost},
+
+		#{port_cost1},
+		#{port_cost2},
+		#{port_cost3},
+		#{port_cost4},
+		#{port_cost5},
+
+		#{unloading_cost},
+		#{landing_ost},
+		#{harbor_facility},
+		#{local_cost},
+		#{customs_fee},
+
+		#{wood_code1},
+		#{wood_qty1},
+		#{wood_cost1},
+
+		#{wood_code2},
+		#{wood_qty2},
+		#{wood_cost2},
+
+		#{wood_code3},
+		#{wood_qty3},
+		#{wood_cost3},
+
+		#{total_cost},
+		#{weight},
+		#{unit_cost},
+
+		#{user_code},
+		#{keyword}
+	</select>
+
+
+	<select id="crmShippingGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_SHIPPING">
+		EXEC SP_CRM_SHIPPING_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},''
+    </select>
+
+	<select id="crmShippingOneGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_SHIPPING">
+		EXEC SP_CRM_SHIPPING_GET 1,1,'','','','',#{keyword}
+    </select>
+
+	<select id="crmShippingDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_CRM_SHIPPING_DEL #{keyword}
+    </select>
 </mapper>

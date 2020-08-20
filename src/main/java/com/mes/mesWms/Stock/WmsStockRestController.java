@@ -47,4 +47,10 @@ public class WmsStockRestController {
 
     @RequestMapping(value = "/wmsOutsStockGet", method = RequestMethod.POST)
     public int wmsOutsStockGet(Page p) { return wmsStockService.wmsOutsStockGet(p);}
+
+    @RequestMapping(value = "/wmsStockGet", method = RequestMethod.POST)
+    public RESTful wmsStockGet(Page p) { return wmsStockService.wmsStockGet(p); }
+
+    @RequestMapping(value = "/wmsStockOneGet", method = RequestMethod.POST)
+    public WMS_STOCK wmsStockOneGet(Page p) { return wmsStockService.wmsStockOneGet(p); }
 }

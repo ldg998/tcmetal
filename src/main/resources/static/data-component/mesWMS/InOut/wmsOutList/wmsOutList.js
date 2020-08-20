@@ -99,8 +99,8 @@ function jqGrid_main() {
             {name: 'car_no', index: 'car_no', sortable: false, width: 90, fixed:true},
             {name: '', index: '', sortable: false, width: 90, fixed:true},
             {name: 'req_no', index: 'req_no', sortable: false, width: 120, fixed:true},
-            {name: 'prod_date', index: 'prod_date', sortable: false, width: 130, fixed:true,formatter:formmatterDate2},
-            {name: 'work_date', index: 'work_date', sortable: false, width: 90, fixed:true ,formatter:formmatterDate2},
+            {name: 'prod_date', index: 'prod_date', sortable: false, width: 130, fixed:true,hidden:true,formatter:formmatterDate2},
+            {name: 'work_date', index: 'work_date', sortable: false, width: 90, fixed:true,hidden:true,formatter:formmatterDate2},
             {name: 'user_name', index: 'user_name', sortable: false, width: 90, fixed:true},
             {name: 'create_date', index: 'create_date', sortable: false, width: 150, fixed:true,formatter:formmatterDate}
         ],

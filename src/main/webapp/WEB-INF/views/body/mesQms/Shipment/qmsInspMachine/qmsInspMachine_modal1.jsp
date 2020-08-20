@@ -31,53 +31,48 @@
 </style>
 
 <div id="addDialog" title="검사설비관리" style="display: none">
-
     <div class="profile-user-info profile-user-info-striped">
-
         <div class="profile-info-row">
             <div class="profile-info-name">설비번호</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off" autofocus>
+                <input type="text" name="machine_code" class="form-control modal_value" autocomplete="off" autofocus>
             </div>
         </div>
-
         <div class="profile-info-row">
             <div class="profile-info-name">설비명</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="machine_name" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
-
         <div class="profile-info-row">
             <div class="profile-info-name">기기번호</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="device_no" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-name">공칭능력</div>
+            <div class="profile-info-name">공정능력</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="capa" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">제원</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="spec" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">교정기관</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="correct_corp_name" class="form-control modal_value" autocomplete="off">
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">교정일자</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
-
-                <input type="text" id="datepicker_modal" name="" class="form-control modal_value" readonly autocomplete="off">
+                <input type="text" id="datepicker_modal" name="correct_date" class="form-control modal_value sendDate" readonly autocomplete="off">
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
@@ -86,25 +81,23 @@
             <div class="profile-info-name">유효일자</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
-                <input type="text" id="datepicker_modal2" name="" class="form-control modal_value" readonly autocomplete="off">
+                <input type="text" id="datepicker_modal2" name="end_date" class="form-control modal_value sendDate" readonly autocomplete="off">
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-name">사전알림</div>
+            <div class="profile-info-name">사전알림(일)</div>
             <div class="profile-info-value">
-                <input type="text"  name="" class="form-control modal_value"  autocomplete="off">
+                <input type="text" name="alarm_day" class="form-control modal_value" onkeyup="num_keyup(this)" autocomplete="off">
             </div>
         </div>
-
-
         <div class="profile-info-row">
             <div class="profile-info-name">이미지</div>
             <div class="profile-info-value">
                 <div class="filebox">
-                    <label for="ex_file">업로드</label>
-                    <input type="file" id="ex_file">
+                    <label class='file_labal' for="file_01">업로드</label>
+                    <input type='file' id='file_01' name='file1' onchange='file_change(this);' />
                 </div>
             </div>
         </div>

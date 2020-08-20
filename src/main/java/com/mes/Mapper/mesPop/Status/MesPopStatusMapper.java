@@ -21,4 +21,8 @@ public interface MesPopStatusMapper {
     void sysSPartDrawingAdd(Files files);
 
     void sysSPartDrawingAdd2(Files files);
+
+    void sysSPartWoodAdd(Files files);
+
+    void sysSPartWoodAdd2(Files files);
 }

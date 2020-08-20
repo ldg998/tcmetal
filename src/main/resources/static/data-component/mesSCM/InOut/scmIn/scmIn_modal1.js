@@ -394,7 +394,7 @@ function jqGrid_modal1() { // 메인 그리드 설정
                         {
                             type: 'focus',
                             fn: function (e) {
-                                if (e.target.value === '0.00'){
+                                if (e.target.value === '0'){
                                     e.target.value = '';
                                 }
 

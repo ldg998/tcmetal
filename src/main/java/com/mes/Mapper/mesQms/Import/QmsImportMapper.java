@@ -30,7 +30,7 @@ public interface QmsImportMapper {
 
     Message qmsRecvMRBCancel(QMS_RECV_SUB qrs);
 
-    List<SCM_IN_SUB> qmsRecvListGet(Page p);
+    List<QMS_RECV_SUB> qmsRecvListGet(Page p);
 
     int qmsRecvErrorManAdd(Files files);
 
@@ -47,4 +47,6 @@ public interface QmsImportMapper {
     int qmsRecvErrorManAdd1(Files files);
 
     Message qmsRecvList_File_Upload(Files file);
+
+    List<QMS_RECV_SUB> qmsRecvErrorListGet(Page p);
 }

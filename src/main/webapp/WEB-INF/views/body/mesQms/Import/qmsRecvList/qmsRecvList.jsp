@@ -32,11 +32,7 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name" autocomplete="off">
-                            <input type="hidden" name="supp_code" class="form-control h-25 condition_main"
-                                   id="supp_code" autocomplete="off">
-
+                            <select class="form-control condition_main" name="keyword" id="main_select1" style="width: 100%"  ></select>
                         </div>
                     </td>
 

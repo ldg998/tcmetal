@@ -15,7 +15,7 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
@@ -25,27 +25,16 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" autocomplete="off">
-
+                            <select class="form-control condition_main" name="keyword" id="main_select1" style="width: 100%"  ></select>
                         </div>
                     </td>
-
-
-<%--                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회구분</td>--%>
-<%--                    <td class="wt-px-200">--%>
-<%--                        <select id="gubun_select" class="form-control h-25">--%>
-<%--                            <option>주별</option>--%>
-<%--                            <option>월별</option>--%>
-<%--                        </select>--%>
-<%--                    </td>--%>
                     <td></td>
                 </tr>
                 </tbody>

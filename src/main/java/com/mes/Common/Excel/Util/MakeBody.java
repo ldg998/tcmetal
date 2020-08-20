@@ -264,73 +264,9 @@ public class MakeBody {
 //        return content;
 //    }
 
-    public List<List<Object>> qmsRecvList_Body(List<QMS_RECV_SUB> list) {
-        List<List<Object>> content = new ArrayList<>();
-        try {
-            if (list.size() != 0) {
-                for (QMS_RECV_SUB data : list) {
-                    obj = new ArrayList<>();
-                    obj.add(dateFormat(data.getWork_date()));
-                    obj.add(data.getIn_no());
-                    obj.add(data.getSupp_name());
-                    obj.add(data.getPart_type_name());
-                    obj.add(data.getPart_code());
-                    obj.add(data.getPart_name());
-                    obj.add(data.getSpec());
-                    obj.add(data.getUnit_name());
-                    obj.add(integer(data.getQty()));
-                    obj.add(integer(data.getQc_qty()));
-                    obj.add(data.getNg_type_name());
-                    obj.add(data.getNg_name());
-                    obj.add(data.getAct_type_name());
-                    obj.add(data.getFile1_name());
-                    obj.add(data.getFile1_name());
-                    obj.add(data.getUser_name());
-                    obj.add(dateFormat2(data.getUpdate_date()));
-                    content.add(obj);
-                }
-            }
-        } catch (Exception e) {
-            log.info("error code : " + e);
-        }
-        return content;
-    }
 
-    public List<List<Object>> qmsRecvErrorMan_Body(List<QMS_RECV_SUB> list) {
-        List<List<Object>> content = new ArrayList<>();
-        try {
-            if (list.size() != 0) {
-                for (QMS_RECV_SUB data : list) {
-                    obj = new ArrayList<>();
-                    obj.add(dateFormat(data.getWork_date()));
-                    obj.add(data.getIn_no());
-                    obj.add(data.getSupp_name());
-                    obj.add(data.getPart_code());
-                    obj.add(data.getPart_name());
-                    obj.add(data.getSpec());
-                    obj.add(data.getUnit_name());
-                    obj.add(data.getLot());
-                    obj.add(data.getQc_level_name());
-                    obj.add(data.getQc_result_name());
-                    obj.add(integer(data.getQty()));
-                    obj.add(integer(data.getQc_qty()));
-                    obj.add(integer(data.getNg_qty()));
-                    obj.add(data.getNg_type_name());
-                    obj.add(data.getNg_name());
-                    obj.add(data.getAct_type_name());
-                    obj.add(data.getFile1_name());
-                    obj.add(data.getFile2_name());
-                    obj.add(data.getFile3_name());
-                    obj.add(data.getUser_name());
-                    obj.add(dateFormat2(data.getUpdate_date()));
-                    content.add(obj);
-                }
-            }
-        } catch (Exception e) {
-            log.info("error code : " + e);
-        }
-        return content;
-    }
+
+
 
     public List<List<Object>> qmsProdList_Body(List<QMS_PROD_SUB> list) {
         List<List<Object>> content = new ArrayList<>();
@@ -713,36 +649,7 @@ public class MakeBody {
     }
 
 
-    public List<List<Object>> qmsRecvError_Body(List<QMS_RECV_SUB> list) {
-        List<List<Object>> content = new ArrayList<>();
-        try {
-            if (list.size() != 0) {
-                for (QMS_RECV_SUB data : list) {
-                    obj = new ArrayList<>();
-                    obj.add(dateFormat(data.getWork_date()));
-                    obj.add(data.getIn_no());
-                    obj.add(data.getSupp_name());
-                    obj.add(data.getPart_code());
-                    obj.add(data.getPart_name());
-                    obj.add(data.getSpec());
-                    obj.add(data.getUnit_name());
-                    obj.add(data.getQc_level_name());
-                    obj.add(integer(data.getQty()));
-                    obj.add(integer(data.getIn_qty()));
-                    obj.add(integer(data.getNg_qty()));
-                    obj.add(data.getQc_result_name());
-                    obj.add(data.getNg_name());
-                    obj.add(data.getAct_type_name());
-                    obj.add(data.getUser_name());
-                    obj.add(dateFormat2(data.getUpdate_date()));
-                    content.add(obj);
-                }
-            }
-        } catch (Exception e) {
-            log.info("error code : " + e);
-        }
-        return content;
-    }
+
 
     public List<List<Object>> outsIOList_Body(List<OUTS_IO_CD> list) {
         List<List<Object>> content = new ArrayList<>();

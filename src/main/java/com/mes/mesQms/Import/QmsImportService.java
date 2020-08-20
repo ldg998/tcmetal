@@ -49,12 +49,12 @@ public class QmsImportService  extends UploadFunction {
     }
 
     public QMS_RECV_SUB qmsRecvErrorManOneGet(QMS_RECV_SUB qmsRecvSub, HttpServletRequest req) {
-        qmsRecvSub.setSite_code(getSessionData(req).getSite_code());
+
         return qmsImportMapper.qmsRecvErrorManOneGet(qmsRecvSub);
     }
 
     public Message qmsRecvAdd(HttpServletRequest req, QMS_RECV_SUB qrs) {
-        qrs.setSite_code(getSessionData(req).getSite_code());
+
         qrs.setUser_code(getSessionData(req).getUser_code());
         return qmsImportMapper.qmsRecvAdd(qrs);
     }
@@ -93,17 +93,17 @@ public class QmsImportService  extends UploadFunction {
     }
 
     public Message qmsRecvMRBAdd(HttpServletRequest req, QMS_RECV_SUB qrs) {
-        qrs.setSite_code(getSessionData(req).getSite_code());
+
         return qmsImportMapper.qmsRecvMRBAdd(qrs);
     }
 
     public Message qmsRecvMRBCancel(HttpServletRequest req, QMS_RECV_SUB qrs) {
-        qrs.setSite_code(getSessionData(req).getSite_code());
+
         return qmsImportMapper.qmsRecvMRBCancel(qrs);
     }
 
     public RESTful qmsRecvListGet(Page p, HttpServletRequest req) {
-        List<SCM_IN_SUB> rows = qmsImportMapper.qmsRecvListGet(p);
+        List<QMS_RECV_SUB> rows = qmsImportMapper.qmsRecvListGet(p);
         return getListData(rows , p);
     }
 
@@ -158,5 +158,10 @@ public class QmsImportService  extends UploadFunction {
         file.setUser_code(getSessionData(req).getUser_code());
 
         return qmsImportMapper.qmsRecvList_File_Upload(file);
+    }
+
+    public RESTful qmsRecvErrorListGet(Page p, HttpServletRequest req) {
+        List<QMS_RECV_SUB> rows = qmsImportMapper.qmsRecvErrorListGet(p);
+        return getListData(rows , p);
     }
 }

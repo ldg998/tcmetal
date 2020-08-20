@@ -33,4 +33,12 @@
     <select id="wmsOutsStockGet" resultType="Integer">
        EXEC SP_WMS_OUT_STOCK_ONE_GET #{keyword},#{keyword2},#{keyword3},#{keyword4}
     </select>
+
+    <select id="wmsStockGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
+        EXEC SP_WMS_STOCK_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3},''
+    </select>
+
+    <select id="wmsStockOneGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
+        EXEC SP_WMS_STOCK_GET 1,1,#{keyword},#{keyword2},#{keyword3},#{keyword4}
+    </select>
 </mapper>

@@ -26,16 +26,16 @@ function addUdate_btn() {
         if (confirm(text)) {
             wrapWindowByMask2();
             modal_objact.keyword = main_data.check;
-            ccn_ajax("/sysDeptAdd", modal_objact).then(function (data) {
+            ccn_ajax("/crmShippingAdd", modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
                     if (main_data.check === "I") {
-                        $("#addDialog").dialog('close');
                         get_btn(1);
-                    } else {
                         $("#addDialog").dialog('close');
-                        get_btn($("#mes_grid").getGridParam('page'));
+                    } else {
+                        $('#mes_grid').trigger('reloadGrid');
+                        $("#addDialog").dialog('close');
                     }
                 }
                 closeWindowByMask();
@@ -95,7 +95,17 @@ function sum_unit_cost() {
         (parseInt(value_data.wood_qty2)*parseInt(value_data.wood_cost2))+
         (parseInt(value_data.wood_qty3)*parseInt(value_data.wood_cost3));
 
-    $("input[name=unit_cost]").val((sum_cost+"").replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $("input[name=total_cost]").val((sum_cost+"").replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    var weight =  parseInt(value_data.weight);
+    var unit_cost = sum_cost / weight;
+    if (weight === 0){
+        unit_cost = "";
+    }
+    var list = (unit_cost+"").split(".");
+
+
+    $("input[name=unit_cost]").val((list[0]+"").replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
 
 }
 
@@ -109,10 +119,13 @@ function msg_get_modal1() {
 }
 
 function effectiveness1(modal_objact) { // 유효성 검사
-    if (modal_objact.dept_name === '') {
-        alert("부서명을 입력해주세요");
+    if (modal_objact.out_no === '') {
+        alert("출하번호를 선택해주세요");
         return false;
-    }  else {
+    }  else if (modal_objact.unit_cost === '') {
+        alert("비용들을 다시 입력해주세요");
+        return false;
+    }else {
         return true;
     }
 }

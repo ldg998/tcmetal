@@ -2,8 +2,7 @@
 function modal_start1() {
     msg_get_modal1();// 모달 메세지 설정
     modal_make1(); // 모달 생성
-    select_modale_box();
-    datepickerInput();
+    datepickerInput(); //날짜 표현형식
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -17,9 +16,14 @@ function addUpdate_btn() {
         formData.append("supp_code", add_data.supp_code);
         formData.append("part_kind", add_data.part_kind);
         formData.append("part_code", add_data.part_code);
-        formData.append("remark", add_data.remark);
+        formData.append("wood_type1", add_data.wood_type1);
+        formData.append("wood_type2", add_data.wood_type2);
+        formData.append("wood_type3", add_data.wood_type3);
+        formData.append("wood_supp_name", add_data.wood_supp_name);
+        formData.append("wood_in_date", add_data.wood_in_date);
+        formData.append("wood_remark", add_data.wood_remark);
 
-        if ($("#file_02").prop("files")[0] == null) {
+        if ($("#file_03").prop("files")[0] == null) {
             check = 0;
             formData.append("check", check);
         } else {
@@ -27,19 +31,19 @@ function addUpdate_btn() {
             formData.append("file3", $("#file_03").prop("files")[0]);
             formData.append("check", check);
         }
-        // wrapWindowByMask2();
-        // ccn_file_ajax("/sysSPartDrawingAdd", formData).then(function (data) {
-        //     if (data.result === 'NG') {
-        //         alert(data.message);
-        //     }
-        //     closeWindowByMask();
-        //     $("#addDialog").dialog('close');
-        //     $('#mes_grid').trigger('reloadGrid')
-        //
-        // }).catch(function (err) {
-        //     closeWindowByMask();
-        //     $("#addDialog").dialog('close');
-        // });
+        wrapWindowByMask2();
+        ccn_file_ajax("/sysSPartWoodAdd", formData).then(function (data) {
+            if (data.result === 'NG') {
+                alert(data.message);
+            }
+            closeWindowByMask();
+            $("#addDialog").dialog('close');
+            $('#mes_grid').trigger('reloadGrid')
+
+        }).catch(function (err) {
+            closeWindowByMask();
+            $("#addDialog").dialog('close');
+        });
     }
 }
 ////////////////////////////호출 함수/////////////////////////////////////
@@ -49,16 +53,25 @@ function msg_get_modal1() {
     msgGet_auth("TBMES_E008");// 데이터 등록 실패
 }
 
-function file_change(e) {
+function file_change(e,value) {
     var filename = $(e).val().split('\\');
     var data = $(e).val().split('.'); // 확장자
     if ( $(e).val() !== ''){
 
-        $(e).closest("div")
-            .children(".file_labal")
-            .text("업로드완료");
+        var reg = /(.*?)\.(pdf)$/;
+        if(!value.match(reg)) {
+            alert("해당 파일은 pdf 파일이 아닙니다.");
+            $(e).closest("div")
+                .children(".file_labal")
+                .text("업로드");
+        } else {
+            $(e).closest("div")
+                .children(".file_labal")
+                .text("업로드완료");
+        }
     }
 }
+
 
 function modal_make1() {
     $("#addDialog").dialog({
@@ -83,15 +96,6 @@ function modal_make1() {
                 }
             }
         ]
-    });
-}
-
-function select_modale_box(){
-    select_makes_base("#supp_select_modal","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
-        $('#part_kind_select').empty();
-        var option = $("<option></option>").text('전체').val('');
-        $('#part_kind_select').append(option);
-        $('#part_kind_select').select2();
     });
 }
 

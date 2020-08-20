@@ -2,10 +2,7 @@ package com.mes.Mapper.mesQms.Shipment;
 
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD_NG_SUM;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD_RPT;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
+import com.mes.mesQms.Shipment.DTO.*;
 import com.mes.Common.File.DTO.Files;
 import org.springframework.stereotype.Repository;
 
@@ -44,4 +41,9 @@ public interface QmsShipmentMapper {
 
 
     void sysSPartFile1Add(Files files);
+
+    List<QMS_INSP_MACHINE> qmsInspMachineGet(Page p);
+    QMS_INSP_MACHINE qmsInspMachineOneGet(QMS_INSP_MACHINE qms_insp_machine);
+    Message qmsInspMachineAdd(Files files);
+    Message qmsInspMachineDel(Page p);
 }

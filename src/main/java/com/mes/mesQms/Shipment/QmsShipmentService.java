@@ -6,10 +6,7 @@ import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
 import com.mes.Mapper.mesQms.Shipment.QmsShipmentMapper;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD_NG_SUM;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD_RPT;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
+import com.mes.mesQms.Shipment.DTO.*;
 import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -131,5 +128,31 @@ public class QmsShipmentService extends UploadFunction {
         Files newFiles = sysSPartFile1Add(page_name,req,"C:/UploadFile/tcmetal/sysSPartFile1Add/");
         files.setKey_value(newFiles.getKey_value());
         qmsShipmentMapper.sysSPartFile1Add(files);
+    }
+
+
+    public RESTful qmsInspMachineGet(Page p, HttpServletRequest req) {
+        List<QMS_INSP_MACHINE> rows = qmsShipmentMapper.qmsInspMachineGet(p);
+        return getListData(rows, p);
+    }
+
+    public QMS_INSP_MACHINE qmsInspMachineOneGet(QMS_INSP_MACHINE qms_insp_machine, HttpServletRequest req) {
+        return qmsShipmentMapper.qmsInspMachineOneGet(qms_insp_machine);
+    }
+
+    public Message qmsInspMachineAdd(Files files, MultipartHttpServletRequest req) {
+        files.setUser_code(getSessionData(req).getUser_code());
+        String page_name = "qmsInspMachine";
+        int check = Integer.parseInt(req.getParameter("check"));
+        if (check == 1){
+            Files newFiles = qmsInspMachineAdd(page_name,req,"C:/UploadFile/tcmetal/qmsInspMachine/");
+            files.setKey_value(newFiles.getKey_value());
+        }
+        return qmsShipmentMapper.qmsInspMachineAdd(files);
+    }
+
+    public Message qmsInspMachineDel(Page p, HttpServletRequest req) {
+        p.setKeyword(p.getKeyword());
+        return qmsShipmentMapper.qmsInspMachineDel(p);
     }
 }

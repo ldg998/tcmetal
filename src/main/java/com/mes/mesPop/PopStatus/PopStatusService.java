@@ -57,4 +57,17 @@ public class PopStatusService extends UploadFunction {
         files.setUser_code(getSessionData(req).getUser_code());
         mesPopStatusMapper.sysSPartDrawingAdd2(files);
     }
+
+    public void sysSPartWoodAdd(Files files, MultipartHttpServletRequest req) {
+        files.setUser_code(getSessionData(req).getUser_code());
+        String page_name = "sysSPartWood";
+        Files newFiles = setSysSPartWoodAdd(page_name,req,"C:/UploadFile/tcmetal/sysSPartWood/");
+        files.setKey_value(newFiles.getKey_value());
+        mesPopStatusMapper.sysSPartWoodAdd(files);
+    }
+
+    public void sysSPartWoodAdd2(Files files, MultipartHttpServletRequest req) {
+        files.setUser_code(getSessionData(req).getUser_code());
+        mesPopStatusMapper.sysSPartWoodAdd2(files);
+    }
 }

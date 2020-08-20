@@ -6,6 +6,7 @@ import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
+import com.mes.mesQms.Shipment.DTO.QMS_INSP_MACHINE;
 import com.mes.mesQms.Shipment.DTO.QMS_PROD_NG_SUM;
 import com.mes.mesQms.Shipment.DTO.QMS_PROD_RPT;
 import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
@@ -176,6 +177,36 @@ public class QmsShipmentRestController extends UploadFunction {
             qmsShipmentService.sysSPartFile1Add(files, req);
         }
         return "수정되었습니다.";
+    }
+
+
+    @RequestMapping(value ="/qmsInspMachineGet", method = RequestMethod.POST)
+    public RESTful qmsInspMachineGet(Page p, HttpServletRequest req) { return qmsShipmentService.qmsInspMachineGet(p, req); }
+
+    @RequestMapping(value ="/qmsInspMachineOneGet", method = RequestMethod.POST)
+    public QMS_INSP_MACHINE qmsInspMachineOneGet(QMS_INSP_MACHINE qms_insp_machine, HttpServletRequest req){
+        return qmsShipmentService.qmsInspMachineOneGet(qms_insp_machine, req);
+    }
+
+    @RequestMapping(value ="/qmsInspMachineAdd", method = RequestMethod.POST)
+    public Message qmsInspMachineAdd(MultipartHttpServletRequest req){
+        Files files = new Files();
+        files.setMachine_code(req.getParameter("machine_code"));
+        files.setMachine_name(req.getParameter("machine_name"));
+        files.setDevice_no(req.getParameter("device_no"));
+        files.setCapa(req.getParameter("capa"));
+        files.setSpec(req.getParameter("spec"));
+        files.setCorrect_corp_name(req.getParameter("correct_corp_name"));
+        files.setCorrect_date(req.getParameter("correct_date"));
+        files.setEnd_date(req.getParameter("end_date"));
+        files.setAlarm_day(Integer.parseInt(req.getParameter("alarm_day")));
+        files.setKeyword(req.getParameter("keyword"));
+        return qmsShipmentService.qmsInspMachineAdd(files, req);
+    }
+
+    @RequestMapping(value="/qmsInspMachineDel")
+    public Message qmsInspMachineDel(Page p,HttpServletRequest req){
+        return qmsShipmentService.qmsInspMachineDel(p,req);
     }
 
 }

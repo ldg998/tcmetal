@@ -45,4 +45,26 @@ public class PopStatusRestController {
         }
         return "수정되었습니다.";
     }
+
+    @RequestMapping(value = "/sysSPartWoodAdd", method = RequestMethod.POST)
+    public String sysSPartWoodAdd(MultipartHttpServletRequest req){
+        Files files = new Files();
+        files.setKey1(req.getParameter("supp_code"));
+        files.setKey2(req.getParameter("part_kind"));
+        files.setKey3(req.getParameter("part_code"));
+        files.setWood_type1(req.getParameter("wood_type1"));
+        files.setWood_type2(req.getParameter("wood_type2"));
+        files.setWood_type3(req.getParameter("wood_type3"));
+        files.setWood_supp_name(req.getParameter("wood_supp_name"));
+        files.setWood_in_date(req.getParameter("wood_in_date"));
+        files.setWood_remark(req.getParameter("wood_remark"));
+        int check = Integer.parseInt(req.getParameter("check"));
+        if(check == 1 ) {
+            popStatusService.sysSPartWoodAdd(files, req);
+        } else {
+            popStatusService.sysSPartWoodAdd2(files, req);
+        }
+        return "수정되었습니다.";
+    }
+
 }

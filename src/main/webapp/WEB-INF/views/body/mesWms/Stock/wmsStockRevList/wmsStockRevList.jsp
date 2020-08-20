@@ -45,7 +45,14 @@
 
                         </select>
                     </td>
+                    <td class="wt-px-50 td-title t-align-c padding-a-0">위치</td>
+                    <td class="wt-px-200">
+                        <select name="keyword3" id="main_select3" class="form-control condition_main" style="width: 100%;">
+                            <option value="1">등록</option>
+                            <option value="2">삭제</option>
 
+                        </select>
+                    </td>
 
                     <td></td>
                 </tr>

@@ -55,6 +55,7 @@
             <div class="profile-info-name">출하번호</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
+                    <input type="hidden" autofocus>
                     <input name="out_no"  type="text" class="form-control keyword modal_value"
                            placeholder="별도창검색" readonly style="width: 100%" autocomplete="off" onclick="modal2_btn();">
                     <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
@@ -89,7 +90,7 @@
             <div class="profile-info-name " style="width: 50%">운송수단</div>
             <div class="profile-info-value " style="width: 50%">
                 <div class="input-icon input-icon-right">
-                    <input name="" type="text" class="form-control keyword modal_value" placeholder="자동표시" readonly
+                    <input name="trans_name" type="text" class="form-control keyword modal_value" placeholder="자동표시" readonly
                            style="width: 100%" autocomplete="off">
                 </div>
             </div>
@@ -243,7 +244,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">순중량</div>
             <div class="profile-info-value">
-
+                    <input name="total_cost" type="hidden" class="form-control keyword modal_value qty">
                     <input name="weight" type="text" class="form-control keyword modal_value qty"
                            style="width: 100%; text-align: right;" autocomplete="off" onkeyup="num_keyup_comma_ship(this);">
 

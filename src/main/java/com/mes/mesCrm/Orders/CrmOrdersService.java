@@ -79,4 +79,22 @@ public class CrmOrdersService extends ReturnFunction {
     public WMS_OUT_SUB crmShippingWmsOutOneGet(Page p) {
         return crmOrdersMapper.crmShippingWmsOutOneGet(p);
     }
+
+    public Message crmShippingAdd(CRM_SHIPPING cs, HttpServletRequest req) {
+        cs.setUser_code(getSessionData(req).getUser_code());
+        return crmOrdersMapper.crmShippingAdd(cs);
+    }
+
+    public RESTful crmShippingGet(Page p) {
+        List<CRM_SHIPPING> rows = crmOrdersMapper.crmShippingGet(p);
+        return getListData(rows , p);
+    }
+
+    public CRM_SHIPPING crmShippingOneGet(Page p) {
+        return crmOrdersMapper.crmShippingOneGet(p);
+    }
+
+    public Message crmShippingDel(Page p) {
+        return crmOrdersMapper.crmShippingDel(p);
+    }
 }

@@ -25,4 +25,8 @@ public interface WmsStockMapper {
     WMS_STOCK_REV wmsStockRevOneGet(Page p);
 
     int wmsOutsStockGet(Page p);
+
+    List<WMS_STOCK> wmsStockGet(Page p);
+
+    WMS_STOCK wmsStockOneGet(Page p);
 }

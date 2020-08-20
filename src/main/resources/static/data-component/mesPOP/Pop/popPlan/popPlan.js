@@ -61,6 +61,12 @@ function add_btn() {
 
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
+        modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
+        main_data.check = 'U'; // 수정인지 체크
+        main_data.check2 = 'N'; // 수정인지 체크
+        ccn_ajax('/popPlanOneGet', {keyword:jqgrid_data.plan_no}).then(function (data) {
+
+        });
 
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
@@ -111,9 +117,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['rownum','계획일자','순번','업체','기종','품명','단중','수량','중량','제품LOT','작업자'],
+        colNames: ['rownum','plan_no','계획일자','순번','업체','기종','품명','단중','수량','중량','제품LOT','작업자'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false, key:true, width: 150,fixed: true,hidden:true},
+            {name: 'plan_no', index: 'plan_no', sortable: false, width: 150,fixed: true,hidden:true},
             {name: 'work_date', index: 'work_date', sortable: false, width: 100, fixed: true,formatter:formmatterDate2},
             {name: 'seq', index: 'seq', sortable: false, width: 50, fixed: true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150, fixed: true},

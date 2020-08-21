@@ -3,6 +3,7 @@ package com.mes.mesWms.InOut;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
+import com.mes.Common.File.DTO.Files;
 import com.mes.mesPop.Pop.DTO.POP_PLAN;
 import com.mes.mesWms.InOut.DTO.WMS_OUT_ORD;
 import com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -30,12 +32,18 @@ public class WmsInOutRestController {
         return wmsInOutService.wmsOutListGet(req, p);
     }
 
+    @RequestMapping(value = "/wmsOutListAdd", method = RequestMethod.POST)
+    public String wmsOutListAdd (MultipartHttpServletRequest req){
+        Files files = new Files();
+        files.setKey1(req.getParameter("out_no"));
+        wmsInOutService.wmsOutListAdd(files, req);
+        return "수정되었습니다.";
+    }
+
     @RequestMapping(value="/wmsOutReadyGet" , method = RequestMethod.POST)
     public RESTful wmsOutReadyGet(HttpServletRequest req, Page p){
         return wmsInOutService.wmsOutReadyGet(req, p);
     }
-
-
 
     @RequestMapping(value="/wmsOutOrderSubGet" , method = RequestMethod.POST)
     public RESTful wmsOutOrderSubGet(HttpServletRequest req, Page p){

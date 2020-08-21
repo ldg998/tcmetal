@@ -203,6 +203,3 @@ function datepickerInput() {
     datepicker_makes("#datepicker", -30);
     datepicker_makes("#datepicker2", 0);
 }
-function integer(e){
-    return e.replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}

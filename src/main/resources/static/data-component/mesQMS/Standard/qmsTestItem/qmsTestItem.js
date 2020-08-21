@@ -23,7 +23,7 @@ $(document).ready(function () {
     selectBox();
     authcheck();
     jqgridPagerIcons();
- //   get_btn(1);
+
 });
 
 
@@ -45,11 +45,9 @@ function get_btn(page) {
 
 function add_btn() {
     if (main_data.auth.check_add !="N") {
-        modal_reset(".modal_value", main_data.readonly);
+        modal_reset(".modal_value",main_data.readonly);
 
      $('#select_modal1').val($('#check_select').val()).trigger("change");
-     $('#select_modal2').val($('#code_select').val()).trigger("change");
-
         main_data.check = 'I';
         $("#addDialog").dialog('open');
     } else {
@@ -158,4 +156,43 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height","0px");
         }
     });
+}
+
+function select_change(value){
+   if(value == 1){
+       $('#code_select').empty();
+       var option = $("<option></option>").text('불량유형').val(1);
+       $('#code_select').append(option);
+       $('#code_select').select2();
+   }else if(value ==2){
+       $('#code_select').empty();
+       var option = $("<option></option>").text('검사항목').val(1);
+       var option2 = $("<option></option>").text('폐기사유').val(2);
+       $('#code_select').append(option);
+       $('#code_select').append(option2);
+       $('#code_select').select2();
+   }else if(value ==3){
+       $('#code_select').empty();
+       var option = $("<option></option>").text('검사항목').val(1);
+       $('#code_select').append(option);
+       $('#code_select').select2();
+   }else if(value ==4){
+       $('#code_select').empty();
+       var option = $("<option></option>").text('부적합 분류').val(1);
+       $('#code_select').append(option);
+       $('#code_select').select2();
+   }else if(value ==5){
+       $('#code_select').empty();
+       var option = $("<option></option>").text('수정').val(1);
+       $('#code_select').append(option);
+       $('#code_select').select2();
+   }else {
+       $('#code_select').empty();
+       var option = $("<option></option>").text('선택없음').val('');
+       $('#code_select').append(option);
+       $('#code_select').select2();
+   }
+
+
+
 }

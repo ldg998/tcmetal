@@ -16,7 +16,7 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate " readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
@@ -26,25 +26,25 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate " readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
 
                     <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
                     <td class="wt-px-200">
-                        <select id="select1" style="width: 100%">
+                        <select id="select1" style="width: 100%" name="keyword" class="condition_main">
                             <option value="">전체</option>
-                            <option value="">합격</option>
-                            <option value="">수정</option>
-                            <option value="">폐기</option>
+                            <option value="1">합격</option>
+                            <option value="2">수정</option>
+                            <option value="3">폐기</option>
 
                         </select>
                     </td>
 
                     <td class="wt-px-100 td-title t-align-c padding-a-0">제품LOT</td>
                     <td class="wt-px-200">
-                        <input type="text" name=""  class="form-control h-25 condition_main">
+                        <input type="text" name="keyword2"  class="form-control h-25 condition_main">
                     </td>
                     <td></td>
                 </tr>
@@ -57,7 +57,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                       onclick=" test();">
+                       onclick=" get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>
@@ -100,3 +100,5 @@
 </div>
 
 <%@include file="qmsProdList_modal1.jsp"%>
+<%@include file="qmsProdList_modal2.jsp"%>
+

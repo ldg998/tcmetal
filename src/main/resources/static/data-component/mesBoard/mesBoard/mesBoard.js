@@ -177,6 +177,7 @@ function deleteFile(fIndex){
     // 업로드 파일 테이블 목록에서 삭제
     $("#fileTr_" + fIndex).remove();
 }
+
 function fileCk(files){
     var IMG_FORMAT = "\.(bmp|gif|jpg|jpeg|png)$"; //문서만 첨부하게 하려면 이 부분 바꿔주시면 되겠죠? ^^
     files.forEach(function(data){

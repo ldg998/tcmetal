@@ -24,31 +24,24 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     modal_start1();
+    modal_start2();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-function test() {
 
-    $("#addDialog").dialog('open'); // 모달 열기
-}
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
-    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
-    main_data.send_data.keyword = '2';
-    main_data.send_data.keyword2 = '';
-    main_data.send_data.keyword3 = '3';
-    main_data.send_data_post = main_data.send_data;
+
 
     $("#mes_grid").setGridParam({
-        url: "/",
+        url: "/qmsProdListGet",
         datatype: "json",
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid");
 
-    google.setOnLoadCallback(drawChart);
+
 
 }
 
@@ -79,9 +72,98 @@ function excel_download() {
     }
 }
 
+// 그리드 항목 더블클릭시 수정 화면
+function update_btn(jqgrid_data) {
+    if (main_data.auth.check_edit !="N") {
+        modal_reset(".modal_value", []);
+        main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
+        jqgrid_data.part_weight = integer(jqgrid_data.part_weight)
+        modal_edits('.modal_value',[],jqgrid_data)
+
+        $("#mes_modal1_grid2").setGridParam({
+            url: "/qmsProdListModalGet",
+            datatype: "json",
+            postData: {keyword:jqgrid_data.qc_no}
+        }).trigger("reloadGrid");
+
+        $("#addDialog").dialog('open'); // 모달 열기
+        jqGridResize("#mes_modal1_grid2", $('#mes_modal1_grid2').closest('[class*="col-"]'));
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1);
+    }
+}
+
+
+function delete_btn() {
+    if(main_data.auth.check_del != "N") {
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        if (ids.length === 0) {
+            alert(msg_object.TBMES_A004.msg_name1);
+        } else {
+            if (confirm(msg_object.TBMES_A005.msg_name1)) {
+                var gu5 = String.fromCharCode(5);
+                main_data.check = 'D';
+                wrapWindowByMask2();
+                ccn_ajax("/qmsProdListDel", {keyword: ids.join(gu5)}).then(function (data) {
+                    if (data.result === 'NG') {
+                        alert(data.message);
+                    } else {
+                        $('#mes_grid').trigger("reloadGrid");
+                    }
+                    closeWindowByMask();
+                }).catch(function (err) {
+                    closeWindowByMask();
+                    console.error(err); // Error 출력
+                });
+            }
+        }
+    } else {
+        alert(msg_object.TBMES_A002.msg_name1);
+    }
+}
+
+
+
+
+//업데이트 버튼
+function img_btn(data) {
+
+        var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
+        $("#wrapper").append(main_div);
+
+    var div = $(" " +
+        "<div class='swiper-slide'>\n" +
+        "               <div class='swiper-zoom-container'>\n" +
+        "                   <img src='"+data+"' id='addDialog_image'>\n" +
+        "                </div>\n" +
+        "            </div>");
+    $("#wrapper2").append(div);
+
+
+        var div2 = $(" <div class='swiper-pagination swiper-pagination-white rm'></div>\n" +
+            "        <div class='swiper-button-prev rm'></div>\n" +
+            "        <div class='swiper-button-next rm'></div>" +
+            "");
+
+        $("#wrapper2").after(div2);
+        $("#addDialog2").dialog('open');
+        $("#wrapper2").trigger("resize");
+        img_swiper();
+
+
+
+
+
+
+}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
-    msgGet_auth("TBMES_Q014");
+    msgGet_auth("TBMES_A001");
+    msgGet_auth("TBMES_A002");
+    msgGet_auth("TBMES_A003");
+    msgGet_auth("TBMES_A004");
+    msgGet_auth("TBMES_A005");
 }
 
 function datepickerInput() {
@@ -104,19 +186,19 @@ function jqGrid_main() {
         caption: "출하검사현황 | MES",
         colNames: ['검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','검사결과','첨부사진','성적서','검사자','검사일시'],
         colModel: [
-            {name: '', index: '', sortable:false, width: 60,  key: true,fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true}
+            {name: 'work_date', index: 'work_date', sortable:false, width: 100,fixed:true,formatter: formmatterDate2 },
+            {name: 'qc_no', index: 'qc_no', sortable:false, width: 60, key: true,fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable:false, width: 60, fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable:false, width: 60, fixed:true},
+            {name: 'part_code', index: 'part_code', sortable:false, width: 60, fixed:true},
+            {name: 'part_name', index: 'part_name', sortable:false, width: 100, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable:false, width: 100, fixed:true,align: 'right', formatter: 'integer' },
+            {name: 'lot_no', index: 'lot_no', sortable:false, width: 60, fixed:true},
+            {name: 'qc_result_name', index: 'qc_result_name', sortable:false, width: 60, fixed:true},
+            {name: 'file', index: 'file', sortable:false, width: 60, fixed:true ,formatter: file2_formatter},
+            {name: 'file', index: 'file', sortable:false, width: 100, fixed:true, formatter: file3_formatter},
+            {name: 'user_name', index: 'user_name', sortable:false, width: 100, fixed:true},
+            {name: 'create_date', index: 'create_date', sortable:false, width: 140, fixed:true,formatter: formmatterDate }
         ],
         multiselect: true,
         autowidth: true,
@@ -129,8 +211,15 @@ function jqGrid_main() {
         onCellSelect: function (rowid, icol, cellcontent, e) {
 
         },
+        beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
+            var $myGrid = $(this),
+                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                cm = $myGrid.jqGrid('getGridParam', 'colModel');
+            return (cm[i].name === 'cb');
+        },
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
-
+            var data = $('#mes_grid').jqGrid('getRowData', rowid);
+            update_btn(data);
         },
         loadComplete:function(){
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
@@ -142,3 +231,78 @@ function jqGrid_main() {
     });
 
 }
+
+
+function file1_formatter(cellvalue, options, rowObject) {
+    if (cellvalue === "Y") {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file1_Modal(\"" + rowObject.in_no + "\",\"" + rowObject.part_code + "\");'>" +
+            "<span><i class='fa fa-download bigger-110 blue'></i>" +
+            "<span> 조회</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span> 없음</span>" +
+            "</span>" +
+            "</a>";
+    }
+}
+
+function file2_formatter(cellvalue, options, rowObject) {
+    if (cellvalue === "Y") {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='img_btn(\"" + rowObject.file2 + "\");'>" +
+            "<span><i class='fa fa-download bigger-110 blue'></i>" +
+            "<span> 조회</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span> 없음</span>" +
+            "</span>" +
+            "</a>";
+    }
+}
+
+function file3_formatter(cellvalue, options, rowObject) {
+    if (cellvalue === "Y") {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file3 + "\");'>" +
+            "<span><i class='fa fa-download bigger-110 blue'></i>" +
+            "<span> 저장</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span> 없음</span>" +
+            "</span>" +
+            "</a>";
+    }
+}
+
+function file_download(file_name) {
+    if (confirm('파일을 저장하시겠습니까?')) {
+        $.fileDownload('/FileUploads',{
+            httpMethod: "POST",
+            data: { key_value: file_name },
+            successCallback: function(url){
+            },
+            failCallback: function(){
+            }
+        });
+    }
+}
+

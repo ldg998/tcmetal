@@ -209,4 +209,23 @@ public class QmsShipmentRestController extends UploadFunction {
         return qmsShipmentService.qmsInspMachineDel(p,req);
     }
 
+      @RequestMapping(value="/qmsProdListModalGet")
+    public RESTful qmsProdListModalGet(Page p,HttpServletRequest req){
+        return qmsShipmentService.qmsProdListModalGet(p,req);
+    }
+
+     @RequestMapping(value="/qmsProdListDel")
+    public Message qmsProdListDel(Page p){
+        return qmsShipmentService.qmsProdListDel(p);
+    }
+
+
+    @RequestMapping(value = "/qmsProdListUpload", method = RequestMethod.POST)
+    public Message qmsProdListUpload(MultipartHttpServletRequest req,QMS_PROD_SUB qps){
+
+        return qmsShipmentService.qmsProdListUpload(qps);
+    }
+
+
+
 }

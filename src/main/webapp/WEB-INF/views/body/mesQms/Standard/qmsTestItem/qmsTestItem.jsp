@@ -11,17 +11,20 @@
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">검사구분</td>
                     <td class="wt-px-200">
-                        <select id="check_select" name="keyword" class="form-control keyword condition_main" style="width: 100%">
+                        <select id="check_select" name="keyword" class="form-control keyword condition_main" onchange="select_change(this.value)" style="width: 100%">
                             <option value="1">수입검사</option>
                             <option value="2">중간검사</option>
-                            <option value="3">최종검사</option>
+                            <option value="3">출하검사</option>
+                            <option value="4">부적합관리</option>
+                            <option value="5">외주검사</option>
+
+
                         </select>
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">코드그룹</td>
                     <td class="wt-px-200">
                         <select id="code_select" name="keyword2" class="form-control keyword condition_main" style="width: 100%">
                             <option value="1">불량유형</option>
-                            <option value="2">검사항목</option>
                         </select>
                     </td>
                     <td></td>

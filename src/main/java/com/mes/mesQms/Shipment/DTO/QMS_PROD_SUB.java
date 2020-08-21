@@ -1,6 +1,9 @@
 package com.mes.mesQms.Shipment.DTO;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Data
 public class QMS_PROD_SUB {
@@ -52,6 +55,18 @@ public class QMS_PROD_SUB {
     private String plan_no;
     private String place_name;
     private String plan_name;
+    private String part_kind;
+    private int part_weight;
+    private String lot_no;
+    private String create_date;
+    private String result2_name;
 
+    /*파일 영역*/
+    private List<MultipartFile> files;
+    private int index;
+    private String savefile;
+    private long size;
+    private String original_name;
+    private String type;
 
 }

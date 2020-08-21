@@ -1,15 +1,49 @@
+
 ////////////////////////////시작 함수/////////////////////////////////////
 function modal_start1() {
     msg_get_modal1();// 모달 메세지 설정
     modal_make1(); // 모달 생성
     select_modal1();
+    jqGrid_modal();
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
+    var add_data = value_return(".modal_value");
+    var formData = new FormData();
+    var check1;
+
+    formData.append("qc_no", add_data.qc_no);
+    if ($("#file_01").prop("files")[0] == null) {
+        check1 = 0;
+        formData.append("check1", check1);
+    } else {
+        check1 = 1;
+        formData.append("files", $("#file_01").prop("files")[0]);
+        formData.append("check1", check1);
+    }
+
+    ccn_file_ajax('/qmsProdListUpload',formData).then(function (e) {
+
+        alert(e);
+        $('#addDialog').dialog("close");
+    })
+}
+
+function file_change(e) {
+    var filename = $(e).val().split('\\');
+    var data = $(e).val().split('.'); // 확장자
+    if ( $(e).val() !== ''){
+        //var filename2 = filename[2].substr(0,13) + "..";
+
+        $(e).closest("div")
+            .children(".file_labal")
+            .text("업로드완료");
+    }
 
 }
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get_modal1() {
     msgGet_auth("TBMES_Q002");// 저장여부
@@ -31,7 +65,8 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
                 text: '확인',
                 'class': 'btn btn-primary btn-minier',
                 click: function () {
-                    $(this).dialog("close");
+                    addUdate_btn();
+
 
                 }
             }
@@ -42,5 +77,38 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
 
 function select_modal1(){
    $("#select_modal1").select2();
+}
+
+
+
+function jqGrid_modal() {
+    $("#mes_modal1_grid2").jqGrid({
+        mtype:"POST",
+        datatype: "local",
+        caption: "출하검사현황 | MES",
+        colNames: ['검사항목','체크'],
+        colModel: [
+            {name: 'qc_name', index: 'qc_name', sortable:false, width: 300, fixed:true },
+            {name: 'qc_result_name', index: 'qc_result_name', sortable:false, width: 90, fixed:true},
+        ],
+        autowidth: true,
+        viewrecords: true,
+        height: 150,
+        rowNum: 100,
+        rowList: [100, 200, 300, 500, 1000],
+        onCellSelect: function (rowid, icol, cellcontent, e) {
+
+        },
+        beforeSelectRow: function (rowid, e) {  },
+        ondblClickRow: function (rowid, iRow, iCol, e) { },
+        loadComplete:function(){
+            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
+                $(".jqgfirstrow").css("height","1px");
+            else
+                $(".jqgfirstrow").css("height","0px");
+        }
+
+    });
+
 }
 

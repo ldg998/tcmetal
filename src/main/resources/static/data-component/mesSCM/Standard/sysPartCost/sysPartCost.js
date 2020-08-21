@@ -135,7 +135,3 @@ function jqGrid_main() {
 function selectBox() {
     $('#1_select').select2();
 }
-
-function integer(e){
-return e.replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}

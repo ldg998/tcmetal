@@ -10,9 +10,7 @@
             EXEC SP_QMS_PROD_NG_GET  1, 1, '', '',#{in_no},#{part_code}
     </select>
 
-    <select id="qmsProdListGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
-        EXEC SP_QMS_PROD_SUB_DATE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3}
-    </select>
+
 
     <select id="qmsProdMRBGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
             EXEC SP_QMS_PROD_MRB_GET #{page},#{rows},#{start_date},#{end_date},#{keyword}
@@ -102,5 +100,23 @@
         EXEC SP_QMS_INSP_MACHINE_ADD #{machine_code}, #{machine_name},#{device_no},#{capa},#{spec},#{correct_corp_name},
         #{correct_date},#{end_date},#{alarm_day},#{key_value},#{user_code},#{keyword}
     </select>
+
+    <select id="qmsProdListGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+        EXEC SP_QMS_PROD_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+    </select>
+
+     <select id="qmsProdListModalGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+        EXEC SP_QMS_PROD_LIST_MODAL_GET 0,0,#{keyword}
+    </select>
+
+    <select id="qmsProdListDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_PROD_LIST_DEL #{keyword}
+    </select>
+
+    <select id="qmsProdListUpload" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_PROD_LIST_UPLOAD #{qc_no} ,
+    </select>
+
+
 
 </mapper>

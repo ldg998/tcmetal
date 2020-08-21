@@ -138,8 +138,6 @@ function add_modal1_btn() {
                         jdata.forEach(function (j) {
                             list.push(j.alarm_user_code);
                         })
-
-
                         add_data.keyword2 = list.join(gu5);
                         add_data.keyword3 = main_data.check;
                         ccn_ajax("/sysAlarmAdd", add_data).then(function (data) {
@@ -149,6 +147,9 @@ function add_modal1_btn() {
                                 if (main_data.check === "I") {
                                     $("#addDialog").dialog('close');
                                     get_btn(1);
+                                }else{
+                                    $("#addDialog").dialog('close');
+                                    $('#mes_grid').trigger("reloadGrid");
                                 }
                             }
                             closeWindowByMask();

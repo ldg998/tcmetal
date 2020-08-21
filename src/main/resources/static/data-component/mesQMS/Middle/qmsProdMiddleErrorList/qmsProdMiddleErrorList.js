@@ -22,21 +22,17 @@ $(document).ready(function () {
     jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));
     datepickerInput();
     authcheck();
+    selectBox();
     jqgridPagerIcons();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
-    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
-    main_data.send_data.keyword = '2';
-    main_data.send_data.keyword2 = '';
-    main_data.send_data.keyword3 = '3';
-    main_data.send_data_post = main_data.send_data;
+    main_data.send_data.keyword3= '3'
 
     $("#mes_grid").setGridParam({
-        url: "/qmsProdListGet",
+        url: "/qmsProdMiddleListGet",
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -44,7 +40,7 @@ function get_btn(page) {
 
 
     $("#mes_grid2").setGridParam({
-        url: "/qmsProdErrorListSumGet",
+        url: "/qmsProdMiddleErrorListSumGet",
         datatype: "json",
         postData: main_data.send_data
     }).trigger("reloadGrid");
@@ -57,7 +53,7 @@ function get_btn(page) {
 function drawChart() {
 
 
-    ccn_ajax('/qmsProdErrorListSumGet', main_data.send_data).then(function (data2) {
+    ccn_ajax('/qmsProdMiddleErrorListSumGet', main_data.send_data).then(function (data2) {
 
         var dataSet = [['yearMonth', '불량률']];
 
@@ -179,23 +175,23 @@ function jqGrid_main() {
         mtype: "POST",
         datatype: "local",
         caption: "중간검사 불량현황 | MES",
-        colNames: ['검사일자', '검사번호', '업체', '기종', '품번', '품명', '단중', '제품LOT', '검사결과', '수정', '폐기', '조치구분', '부적합보고서', '검사자', '검사일시'],
+        colNames: ['검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','검사결과','수정','폐기','조치구분','부적합보고서','검사자','검사일시'],
         colModel: [
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 100, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 60, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
-            {name: '', index: '', sortable: false, width: 80, fixed: true},
+            {name: 'work_date', index: 'work_date', sortable:false, width: 80, fixed:true,formatter: formmatterDate2},
+            {name: 'qc_no', index: 'qc_no', sortable:false, width: 120, key: true, fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable:false, width: 80, fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable:false, width: 80, fixed:true},
+            {name: 'part_code', index: 'part_code', sortable:false, width: 120, fixed:true},
+            {name: 'part_name', index: 'part_name', sortable:false, width: 120, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable:false, width: 80, fixed:true,align:'right',formatter:'integer'},
+            {name: 'lot_no', index: 'lot_no', sortable:false, width: 80, fixed:true},
+            {name: 'qc_result_name', index: 'qc_result_name', sortable:false, width: 60, fixed:true},
+            {name: 'result2_name', index: 'result2_name', sortable:false, width: 60, fixed:true},
+            {name: 'result3_name', index: 'result3_name', sortable:false, width: 200, fixed:true},
+            {name: 'act_type_name', index: 'act_type_name', sortable:false, width: 60, fixed:true},
+            {name: 'file2_yn', index: 'file2_yn', sortable:false, width: 100, fixed:true},
+            {name: 'user_name', index: 'user_name', sortable:false, width: 60, fixed:true},
+            {name: 'update_date', index: 'update_date', sortable:false, width: 140, fixed:true,formatter: formmatterDate}
 
         ],
         autowidth: true,
@@ -265,4 +261,9 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height", "0px");
         }
     });
+}
+
+function selectBox() {
+    $('#part_kind_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
 }

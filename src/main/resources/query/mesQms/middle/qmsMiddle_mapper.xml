@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mes.Mapper.mesQms.Middle.QmsMiddleMapper">
+    <select id="qmsProdMiddleListGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">
+       EXEC SP_QMS_PROD_MIDDLE_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},''
+    </select>
+
+    <select id="qmsProdMiddleListOneGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">
+       EXEC SP_QMS_PROD_MIDDLE_LIST_GET 1,1,'','','','','',#{keyword}
+    </select>
+
+    <select id="qmsProdMiddleSubGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">
+       EXEC SP_QMS_PROD_MIDDLE_SUB_GET #{keyword}
+    </select>
+
+    <select id="qmsProdMiddleErrorListSumGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD_NG_SUM">
+       EXEC SP_QMS_PROD_NG_SUM_GET #{start_date},#{end_date},#{keyword},#{keyword2}
+    </select>
+</mapper>

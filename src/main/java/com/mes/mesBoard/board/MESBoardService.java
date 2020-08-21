@@ -235,6 +235,7 @@ public class MESBoardService extends ReturnFunction {
     }
 
         public int board_multipart_files(SYS_BOARD_LIST boardList, HttpServletRequest req) {
+
         if(boardList.getFiles() != null) {
             List<MultipartFile> fileList = boardList.getFiles();
             SYS_BOARD_FILE_LEE list = new SYS_BOARD_FILE_LEE();

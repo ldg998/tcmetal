@@ -8,10 +8,12 @@
         <div class="profile-info-row">
             <div class="profile-info-name">검사구분</div>
             <div class="profile-info-value">
-                <select id="select_modal1" style="width: 100%;" name="qc_group"  class="modal_value">
+                <select id="select_modal1" style="width: 100%;" name="qc_group"  onchange="select_change_modal1(this.value)" class="modal_value">
                     <option value="1">수입검사</option>
                     <option value="2">중간검사</option>
-                    <option value="3">최종검사</option>
+                    <option value="3">출하검사</option>
+                    <option value="4">부적합관리</option>
+                    <option value="5">외주검사</option>
                 </select>
 
             </div>
@@ -20,8 +22,7 @@
             <div class="profile-info-name">코드그룹</div>
             <div class="profile-info-value">
                 <select id="select_modal2" style="width: 100%;" name="qc_type" class="modal_value">
-                    <option value="1">불량유형</option>
-                    <option value="2">검사항목</option>
+
                 </select>
             </div>
         </div>

@@ -80,3 +80,39 @@ function effectiveness1(modal_objact) { // 유효성 검사
         return true;
     }
 }
+function select_change_modal1(value){
+    if(value == 1){
+        $('#select_modal2').empty();
+        var option = $("<option></option>").text('불량유형').val(1);
+        $('#select_modal2').append(option);
+        $('#select_modal2').select2();
+    }else if(value ==2){
+        $('#select_modal2').empty();
+        var option = $("<option></option>").text('검사항목').val(1);
+        var option2 = $("<option></option>").text('폐기사유').val(2);
+        $('#select_modal2').append(option);
+        $('#select_modal2').append(option2);
+        $('#select_modal2').select2();
+    }else if(value ==3){
+        $('#select_modal2').empty();
+        var option = $("<option></option>").text('검사항목').val(1);
+        $('#select_modal2').append(option);
+        $('#select_modal2').select2();
+    }else if(value ==4){
+        $('#select_modal2').empty();
+        var option = $("<option></option>").text('부적합 분류').val(1);
+        $('#select_modal2').append(option);
+        $('#select_modal2').select2();
+    }else if(value ==5){
+        $('#select_modal2').empty();
+        var option = $("<option></option>").text('수정').val(1);
+        $('#select_modal2').append(option);
+        $('#select_modal2').select2();
+    }else {
+        $('#select_modal2').empty();
+        var option = $("<option></option>").text('선택없음').val('');
+        $('#select_modal2').append(option);
+        $('#select_modal2').select2();
+    }
+
+}

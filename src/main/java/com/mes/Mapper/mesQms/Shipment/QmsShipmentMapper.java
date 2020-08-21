@@ -46,4 +46,10 @@ public interface QmsShipmentMapper {
     QMS_INSP_MACHINE qmsInspMachineOneGet(QMS_INSP_MACHINE qms_insp_machine);
     Message qmsInspMachineAdd(Files files);
     Message qmsInspMachineDel(Page p);
+
+    List<QMS_PROD_SUB> qmsProdListModalGet(Page p);
+
+    Message qmsProdListDel(Page p);
+
+    Message qmsProdListUpload(QMS_PROD_SUB qps);
 }

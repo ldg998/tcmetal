@@ -7,13 +7,16 @@ import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
 import com.mes.Mapper.mesQms.Shipment.QmsShipmentMapper;
 import com.mes.mesQms.Shipment.DTO.*;
-import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class QmsShipmentService extends UploadFunction {
@@ -155,4 +158,49 @@ public class QmsShipmentService extends UploadFunction {
         p.setKeyword(p.getKeyword());
         return qmsShipmentMapper.qmsInspMachineDel(p);
     }
+
+    public RESTful qmsProdListModalGet(Page p, HttpServletRequest req) {
+        List<QMS_PROD_SUB> rows = qmsShipmentMapper.qmsProdListModalGet(p);
+        return getListData(rows, p);
+    }
+
+
+    public Message qmsProdListDel(Page p) { return qmsShipmentMapper.qmsProdListDel(p);
+    }
+
+    public Message qmsProdListUpload(QMS_PROD_SUB qps) {
+        if(qps.getFiles() != null) {
+            List<MultipartFile> fileList = qps.getFiles();
+            int i = 1;
+            for (MultipartFile mf : fileList) {
+                qps.setIndex(i);
+                qps.setSavefile(saveFile(mf));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
+                qps.setSize(mf.getSize());
+                qps.setOriginal_name(mf.getOriginalFilename());
+                qps.setType(mf.getContentType());
+
+                i++;
+            }
+        }
+        return  qmsShipmentMapper.qmsProdListUpload(qps);
+    }
+
+
+    private String saveFile(MultipartFile file){ //파일 업로드 소스
+        String path = "C:/UploadFile/tcmetal/qmsOutsErrorMan";
+        // 파일 이름 변경
+        UUID uuid = UUID.randomUUID(); //랜덤 uuid
+        String originalFilename = file.getOriginalFilename(); //파일에 진짜이름
+        String saveName = uuid + "_" + originalFilename;
+        // 저장할 File 객체를 생성(껍데기 파일)
+        File saveFile = new File(path,saveName); // 저장할 폴더 이름, 저장할 파일 이름
+        try {
+            file.transferTo(saveFile); // 업로드 파일에 saveFile이라는 껍데기 입힘
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return saveName;
+    }
+
 }

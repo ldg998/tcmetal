@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <script type="text/javascript" src="/data-component/mesQMS/Middle/qmsProdMiddleErrorMan/qmsProdMiddleErrorMan.js" charset="UTF-8"></script>
 
@@ -16,7 +15,7 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
@@ -26,18 +25,19 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
 
                     <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
                     <td class="wt-px-200">
-                        <select id="select1" style="width: 100%">
+                        <select id="main_select1" style="width: 100%" name="keyword3" class="form-control h-25 condition_main">
                             <option value="">전체</option>
-                            <option value="">합격</option>
-                            <option value="">수정</option>
-                            <option value="">폐기</option>
+                            <option value="1">합격</option>
+                            <option value="2">수정</option>
+                            <option value="3">폐기</option>
+                            <option value="4">판정대기</option>
 
                         </select>
                     </td>
@@ -53,7 +53,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                       onclick=" test();">
+                       onclick="get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>

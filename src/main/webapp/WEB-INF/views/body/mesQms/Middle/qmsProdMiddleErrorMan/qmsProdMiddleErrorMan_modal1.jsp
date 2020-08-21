@@ -35,70 +35,54 @@
         <div class="profile-info-row">
             <div class="profile-info-name">검사일자</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off" autofocus>
+                <input type="text" name="work_date" class="form-control modal_value" autocomplete="off" autofocus readonly>
             </div>
             <div class="profile-info-name"> 검사번호</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="qc_no" class="form-control modal_value" autocomplete="off" readonly>
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="supp_name" class="form-control modal_value" autocomplete="off" readonly>
             </div>
             <div class="profile-info-name">기종</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_kind" class="form-control modal_value" autocomplete="off" readonly>
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">품번</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_code" class="form-control modal_value" autocomplete="off" readonly>
             </div>
             <div class="profile-info-name">품명</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_name" class="form-control modal_value" autocomplete="off" readonly>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="part_weight" class="form-control modal_value" autocomplete="off" readonly>
             </div>
             <div class="profile-info-name">제품LOT</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="lot_no" class="form-control modal_value" autocomplete="off" readonly>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">검사결과</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="qc_result" class="form-control modal_value" autocomplete="off">
             </div>
             <div class="profile-info-name">수정</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="result2_code" class="form-control modal_value" autocomplete="off">
             </div>
-        </div>
-        <div class="profile-info-row">
-            <div class="profile-info-name">폐기</div>
-            <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off">
-            </div>
-
-            <div class="profile-info-name">조치구분</div>
-            <div class="profile-info-value">
-               <select id="select_modal1" style="width: 100%;">
-                   <option value="">조치완료</option>
-                   <option></option>
-                   <option></option>
-               </select>
-                </div>
-
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">부적합보고서</div>
@@ -108,9 +92,12 @@
                     <input type="file" id="ex_file">
                 </div>
             </div>
-            <div class="profile-info-name"></div>
-            <div class="profile-info-value"></div>
+            <div class="profile-info-name">폐기</div>
+            <div class="profile-info-value">
+                <input type="text" name="result3_code" class="form-control modal_value" autocomplete="off">
+            </div>
         </div>
+
 
     </div>
 </div>

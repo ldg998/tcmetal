@@ -35,6 +35,8 @@ public class WMS_OUT_SUB {
     private String lot_no;
     private String car_no;
     private String file;
+    private String file1;
+    private String file1_name;
     private String req_no;
     private String create_date;
     private String in_date;

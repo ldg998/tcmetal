@@ -3,6 +3,8 @@ package com.mes.mesWms.InOut;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
+import com.mes.Common.File.DTO.Files;
+import com.mes.Common.File.Function.UploadFunction;
 import com.mes.Common.Function.ReturnFunction;
 import com.mes.Mapper.mesWms.InOut.WmsInOutMapper;
 import com.mes.mesPop.Pop.DTO.POP_PLAN;
@@ -12,12 +14,15 @@ import com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB;
 import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.List;
+import java.util.Random;
 
 @Service
-public class WmsInOutService extends ReturnFunction {
+public class WmsInOutService extends UploadFunction {
     @Autowired
     private WmsInOutMapper wmsInOutMapper;
 
@@ -75,6 +80,15 @@ public class WmsInOutService extends ReturnFunction {
 
     public List<POP_PLAN> wmsOrdPlanUpGet(HttpServletRequest req, POP_PLAN pp) {
         return wmsInOutMapper.wmsOrdPlanUpGet(pp);
+    }
+
+
+    public void wmsOutListAdd(Files files, MultipartHttpServletRequest req) {
+        files.setUser_code(getSessionData(req).getUser_code());
+        String page_name = "wmsOutList";
+        Files newFiles = qmsInspMachineAdd(page_name,req,"C:/UploadFile/tcmetal/wmsOutList/");
+        files.setKey_value(newFiles.getKey_value());
+        wmsInOutMapper.wmsOutListAdd(files);
     }
 
 

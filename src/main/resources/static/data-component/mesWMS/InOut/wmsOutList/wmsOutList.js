@@ -7,7 +7,6 @@
 var main_data = {
     send_data: {},
     auth: {}
-
 };
 
 ////////////////////////////시작 함수/////////////////////////////////////
@@ -23,12 +22,9 @@ $(document).ready(function () {
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-
+//조회버튼
 function get_btn(page) {
     main_data.send_data = value_return2(".condition_main");
-    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
-    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
-    console.log(main_data);
     $("#mes_grid").setGridParam({
         url: '/wmsOutListGet',
         datatype: "json",
@@ -61,8 +57,6 @@ function excel_download() {
     }
 }
 
-
-
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014");
@@ -71,7 +65,6 @@ function msg_get() {
 function datepickerInput() {
     datepicker_makes("#datepicker", -30);
     datepicker_makes("#datepicker2", 0);
-
 }
 
 function authcheck() {
@@ -84,7 +77,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','차량번호','성적서','출고요청번호','생산일자','입고일자','등록자','등록일시'],
+        colNames: ['출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','차량번호','성적서','업로드','출고요청번호','생산일자','입고일자','등록자','등록일시'],
         colModel: [
             {name: 'out_date', index: 'out_date', sortable: false, width: 90, fixed:true, formatter:formmatterDate2},
             {name: 'out_no', index: 'out_no', sortable: false, width: 120, fixed:true},
@@ -97,7 +90,8 @@ function jqGrid_main() {
             {name: 'weight', index: 'weight', sortable: false, width: 80, fixed:true,formatter:'integer',align: 'right'},
             {name: 'lot_no', index: 'lot_no', sortable: false, width: 120, fixed:true },
             {name: 'car_no', index: 'car_no', sortable: false, width: 90, fixed:true},
-            {name: '', index: '', sortable: false, width: 90, fixed:true},
+            {name: 'file1_name', index: 'file1_name', sortable: false, width: 80, align: 'center', formatter: file1_formatter,fixed:true},//성적서
+            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',formatter: filebox,fixed:true},//성적서 수정
             {name: 'req_no', index: 'req_no', sortable: false, width: 120, fixed:true},
             {name: 'prod_date', index: 'prod_date', sortable: false, width: 130, fixed:true,hidden:true,formatter:formmatterDate2},
             {name: 'work_date', index: 'work_date', sortable: false, width: 90, fixed:true,hidden:true,formatter:formmatterDate2},
@@ -133,5 +127,90 @@ function select_change1(value) {
         var option = $("<option></option>").text('전체').val('');
         $('#part_kind_select').append(option);
         $('#part_kind_select').select2();
+    }
+}
+
+function file_download(file_name) {
+    if (confirm('파일을 저장하시겠습니까?')) {
+        $.fileDownload('/FileUploads', {
+            httpMethod: "POST",
+            data: { key_value: file_name },
+            successCallback: function(url){
+            },
+            failCallback: function(){
+            }
+        });
+    }
+}
+
+function file1_formatter(cellvalue, options, rowObject) {
+    if (cellvalue === "Y") {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file1 + "\");'>" +
+            "<span><i class='fa fa-download bigger-110 blue'></i>" +
+            "<span> 저장</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span> 없음</span>" +
+            "</span>" +
+            "</a>";
+    }
+}
+
+function filebox(cellvalue, options, rowObject) {   //업로드null, 그리드, 그리드내용
+    if (cellvalue === null || cellvalue === "") {
+        return "" +
+            "<div class='filebox_lee'>"+
+            "<label class='file_labal' for='file_01'>업로드</label>"+
+            "<input type='file' id='file_01"+"'  onchange='file_change(this"+",this.value,\""+rowObject.out_no+"\"" +");' />" +
+            "</div>";
+    } else {
+        return "" +
+            "<div class='filebox_lee'>"+
+            "<label class='file_labal' for='file_01'>완료</label>"+
+            "<input type='file' id='file_01'  onchange='file_change(this"+",this.value,\""+rowObject.out_no+"\"" +");' />" +
+            "</div>";
+    }
+}
+
+function file_change(e,value,no) {
+    if ( $(e).val() !== ''){
+        var reg = /(.*?)\.(pdf)$/;
+        if(!value.match(reg)) {
+            alert("해당 파일은 pdf 파일이 아닙니다.");
+            $(e).closest("div")
+                .children(".file_labal")
+                .text("업로드");
+        }else {
+            var formData = new FormData();
+            formData.append("out_no", no);
+            // formData.append("file", $("#file_"+no).prop("files")[0]);
+            // formData.append("files", $(e).prop("files")[0]);
+            formData.append("file1", $("#file_01").prop("files")[0]);
+            // formData.append("file3", $("#file_03").prop("files")[0]);
+            if(confirm("등록 하시겠습니까?")){
+                wrapWindowByMask2();
+                ccn_file_ajax("/wmsOutListAdd", formData).then(function (data) {
+                    if (data.result === 'NG') {
+                        alert(data.message);
+                    }
+                    closeWindowByMask();
+                    $('#mes_grid').trigger('reloadGrid')
+                    $(e).closest("div")
+                        .children(".file_labal")
+                        .text("업로드완료");
+                }).catch(function (err) {
+                    closeWindowByMask();
+                });
+            }
+        }
+
+
     }
 }

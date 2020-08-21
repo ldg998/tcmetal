@@ -39,4 +39,12 @@
     <select id="wmsOrdPlanUpGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
         EXEC SP_WMS_OUT_PLAN_UP_GET #{keyword}
     </select>
+
+    <update id="wmsOutListAdd">
+        UPDATE WMS_OUT
+        SET
+            FILE1 = #{key_value}
+            WHERE
+            out_no = #{key1}
+    </update>
 </mapper>

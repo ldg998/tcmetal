@@ -139,6 +139,10 @@ public class PopRestController {
     @RequestMapping(value = "/popPlanCheckStatusUpdate", method = RequestMethod.POST)
     public Message popPlanCheckStatusUpdate(POP_PLAN p) {return popService.popPlanCheckStatusUpdate(p);}
 
+    @RequestMapping(value = "/popPlanWorkDateGet", method = RequestMethod.POST)
+    public List<POP_PLAN> popPlanWorkDateGet(Page p) {
+        return popService.popPlanWorkDateGet(p);
+    }
 
 
 

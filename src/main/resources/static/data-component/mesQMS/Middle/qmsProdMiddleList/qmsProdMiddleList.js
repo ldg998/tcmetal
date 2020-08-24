@@ -152,7 +152,7 @@ function jqGrid_main() {
             {name: 'result2_name', index: 'result2_name', sortable:false, width: 60, fixed:true},
             {name: 'result3_name', index: 'result3_name', sortable:false, width: 200, fixed:true},
             {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: 'file2', index: 'file2', sortable:false, width: 100, fixed:true},
+            {name: 'file2_yn', index: 'file2_yn', sortable:false, width: 100, fixed:true,formatter: file2_formatter},
             {name: 'user_name', index: 'user_name', sortable:false, width: 60, fixed:true},
             {name: 'update_date', index: 'update_date', sortable:false, width: 140, fixed:true,formatter: formmatterDate}
 
@@ -181,4 +181,39 @@ function jqGrid_main() {
 
     });
 
+}
+
+
+function file2_formatter(cellvalue, options, rowObject) {
+    if (cellvalue === "Y") {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file2 + "\");'>" +
+            "<span><i class='fa fa-download bigger-110 blue'></i>" +
+            "<span>저장</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span>없음</span>" +
+            "</span>" +
+            "</a>";
+    }
+}
+
+
+function file_download(file_name) {
+    if (confirm('파일을 저장하시겠습니까?')) {
+        $.fileDownload('/FileUploads', {
+            httpMethod: "POST",
+            data: { key_value: file_name },
+            successCallback: function(url){
+            },
+            failCallback: function(){
+            }
+        });
+    }
 }

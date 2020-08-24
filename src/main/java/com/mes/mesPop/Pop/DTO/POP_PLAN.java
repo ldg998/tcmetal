@@ -25,6 +25,8 @@ public class POP_PLAN {
     private String work_user_name;
     private String keyword;
     private String keyword2;
+    private String line_grp_code;
+    private String part_kind_name;
     private int rownum;
     private int rownum_page;
     private int rec_count;

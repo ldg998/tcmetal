@@ -80,6 +80,8 @@ function update_btn(rowid) {
     ccn_ajax('/qmsProdMiddleListOneGet', {keyword: rowid}).then(function (data) { // user의 하나 출력
         data.work_date = formmatterDate2(data.work_date);
         modal_edits('.modal_value', [], data); // response 값 출력
+        $("#file_01").val("");
+        $(".file_labal").text("업로드");
         $("#addDialog").dialog('open'); // 모달 열기
         jqGridResize2("#mes_modal_grid",$('#mes_modal_grid').closest('[class*="col-"]')); //그리드 리 사이즈
 

@@ -153,4 +153,8 @@ public class PopService extends ReturnFunction {
     }
 
     public Message popPlanCheckStatusUpdate(POP_PLAN p) {return mesPopPopMapper.popPlanCheckStatusUpdate(p);}
+
+    public List<POP_PLAN> popPlanWorkDateGet(Page p) {
+        return mesPopPopMapper.popPlanWorkDateGet(p);
+    }
 }

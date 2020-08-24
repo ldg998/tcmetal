@@ -8,6 +8,7 @@ public class Files {
     private String key1;
     private String key2;
     private String key3;
+    private String key4;
     private String key_value;
     private String key_value2;
     private String site_code;

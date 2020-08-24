@@ -82,22 +82,24 @@ function modal_close(){
 
 
 function modal1_select_change1(value) {
-    if (value !== ""){
-        select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (data2) {
+    if (main_data.check2 === "Y"){
+        if (value !== ""){
+            select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (data2) {
 
-        });
-        modal1_select_change2();
+            });
+            modal1_select_change2();
+        }
     }
 }
 
 function modal1_select_change2() {
-
-    var jdata = $("#mes_modal1_grid1").getRowData();
-    for (var i = 0; i <jdata.length; i++){
-        $('#mes_modal1_grid1').jqGrid('setCell', jdata[i].seq, 'work_user_name', '선택안함');
-        $('#mes_modal1_grid1').jqGrid('setCell', jdata[i].seq, 'work_user_code', ' ');
+    if (main_data.check2 === "Y"){
+        var jdata = $("#mes_modal1_grid1").getRowData();
+        for (var i = 0; i <jdata.length; i++){
+            $('#mes_modal1_grid1').jqGrid('setCell', jdata[i].seq, 'work_user_name', '선택안함');
+            $('#mes_modal1_grid1').jqGrid('setCell', jdata[i].seq, 'work_user_code', ' ');
+        }
     }
-
 }
 
 function makeNewRowId(jdata){ //그리드 rowid배열을 파라메터로 받는다

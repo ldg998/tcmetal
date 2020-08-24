@@ -49,7 +49,7 @@ function add_btn() {
         // $("#modal1_select2 option:eq(0)").prop("selected", true).trigger("change");
         $('#mes_modal1_grid1').jqGrid('clearGridData');
         modal1_rowAdd('');
-
+        disabled_tf(["#datepicker_modal1","#modal1_select1","#modal1_select2"],"N");
         $("#addDialog").dialog('open');
         jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
 
@@ -64,8 +64,24 @@ function update_btn(jqgrid_data) {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
         main_data.check = 'U'; // 수정인지 체크
         main_data.check2 = 'N'; // 수정인지 체크
-        ccn_ajax('/popPlanOneGet', {keyword:jqgrid_data.plan_no}).then(function (data) {
+        ccn_ajax('/popPlanWorkDateGet', {keyword:(jqgrid_data.work_date).replace(/[^0-9]/g,'')}).then(function (data) {
+            select_makes_base("#modal1_select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data2) {
+                $("#modal1_select1").val(data[0].line_grp_code).trigger("change");
+                select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].line_grp_code},'').then(function (data3) {
+                    $("#modal1_select2").val(data[0].line_code).trigger("change");
+                    main_data.check2 = 'Y';
+                    $("#datepicker_modal1").val(formmatterDate2(data[0].work_date));
+                    disabled_tf(["#datepicker_modal1","#modal1_select1","#modal1_select2"],"Y");
+                    $('#mes_modal1_grid1').jqGrid('clearGridData');
+                    $("#mes_modal1_grid1").setGridParam({
+                        datatype: "local",
+                        data: data
+                    }).trigger("reloadGrid");
+                    $("#addDialog").dialog('open');
+                    jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
 
+                });
+            });
         });
 
     } else {
@@ -117,10 +133,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['rownum','plan_no','계획일자','순번','업체','기종','품명','단중','수량','중량','제품LOT','작업자'],
+        colNames: ['rownum','계획일자','순번','업체','기종','품명','단중','수량','중량','제품LOT','작업자'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false, key:true, width: 150,fixed: true,hidden:true},
-            {name: 'plan_no', index: 'plan_no', sortable: false, width: 150,fixed: true,hidden:true},
+
             {name: 'work_date', index: 'work_date', sortable: false, width: 100, fixed: true,formatter:formmatterDate2},
             {name: 'seq', index: 'seq', sortable: false, width: 50, fixed: true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150, fixed: true},
@@ -145,7 +161,11 @@ function jqGrid_main() {
             else
                 $(".jqgfirstrow").css("height","0px");
             $("table#SuppSearchGrid tr.jqgfirstrow").css("height","1px");
-        }
+        },
+        ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
+            var data = $('#mes_grid').jqGrid('getRowData', rowid);
+            update_btn(data);
+        },
 
     });
 

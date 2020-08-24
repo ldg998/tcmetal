@@ -77,24 +77,37 @@
         <div class="profile-info-row">
             <div class="profile-info-name">검사결과</div>
             <div class="profile-info-value">
-                <input type="text" name="qc_result" class="form-control modal_value" autocomplete="off">
+                <select  name="qc_result" class="form-control modal_value" onchange="modal1_select_change1(this.value)" style="width: 100%;">
+                    <option value="1">합격</option>
+                    <option value="2">수정</option>
+                    <option value="3">폐기</option>
+                    <option value="4">판정대기</option>
+                </select>
+<%--                <input type="text" name="qc_result" class="form-control modal_value" autocomplete="off">--%>
             </div>
             <div class="profile-info-name">수정</div>
             <div class="profile-info-value">
-                <input type="text" name="result2_code" class="form-control modal_value" autocomplete="off">
+                <select  name="result2_code" class="form-control modal_value" style="width: 100%;">
+                    <option value="">선택안함</option>
+                    <option value="1">보고</option>
+                    <option value="2">미보고</option>
+                </select>
+<%--                <input type="text" name="result2_code" class="form-control modal_value" autocomplete="off">--%>
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">부적합보고서</div>
             <div class="profile-info-value">
                 <div class="filebox">
-                    <label for="ex_file">업로드</label>
-                    <input type="file" id="ex_file">
+                    <label class='file_labal' for="file_01">업로드</label>
+                    <input type="file" id="file_01" onchange='file_change(this);'>
                 </div>
             </div>
             <div class="profile-info-name">폐기</div>
             <div class="profile-info-value">
-                <input type="text" name="result3_code" class="form-control modal_value" autocomplete="off">
+                <select  name="result3_code" class="form-control modal_value" style="width: 100%;">
+                    <option value="">선택안함</option>
+                </select>
             </div>
         </div>
 

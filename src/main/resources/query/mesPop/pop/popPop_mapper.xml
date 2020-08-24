@@ -104,5 +104,8 @@
     <select id="popPlanGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
         EXEC SP_POP_PLAN_GET #{page},#{rows},#{start_date},#{end_date},#{keyword2}
     </select>
+    <select id="popPlanWorkDateGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_POP_PLAN_WORK_DATE_GET 0,0,#{keyword}
+    </select>
 
 </mapper>

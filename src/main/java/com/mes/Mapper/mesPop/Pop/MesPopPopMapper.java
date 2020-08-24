@@ -62,4 +62,6 @@ public interface MesPopPopMapper {
     List<POP_PLAN> popPlanCheckGet(POP_PLAN p);
 
     Message popPlanCheckStatusUpdate(POP_PLAN p);
+
+    List<POP_PLAN> popPlanWorkDateGet(Page p);
 }

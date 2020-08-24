@@ -49,6 +49,42 @@ function addUdate_btn() {
 
 }
 
+
+function addUdate_btn() {
+    var add_data = value_return(".modal_value");
+    var formData = new FormData();
+    var check;
+    formData.append("qc_no", add_data.qc_no);
+    formData.append("qc_result", add_data.qc_result);
+    formData.append("result2_code", add_data.result2_code);
+    formData.append("result3_code", add_data.result3_code);
+
+
+    if ($("#file_01").prop("files")[0] == null) {
+        check = 0;
+        formData.append("check", check);
+    } else {
+        check = 1;
+        formData.append("file1", $("#file_01").prop("files")[0]);
+        formData.append("check", check);
+    }
+    if(confirm("등록 하시겠습니까?")) {
+        wrapWindowByMask2();
+        ccn_file_ajax("/qmsProdMiddleErrorManAdd", formData).then(function (data) {
+            if (data.result === 'NG') {
+                alert(data.message);
+            }else{
+                $("#addDialog").dialog('close');
+            }
+            closeWindowByMask();
+            $('#mes_grid').trigger('reloadGrid');
+        }).catch(function (err) {
+            closeWindowByMask();
+            $("#addDialog").dialog('close');
+        });
+    }
+}
+
 // 엔터키를 통한 저장버튼 활성화
 function add_click_btn() {
     $(document).on("keypress",'.modal_value',function (e) {
@@ -56,6 +92,29 @@ function add_click_btn() {
             addUdate_btn();
         }
     });
+}
+
+function modal1_select_change1(value) {
+    //disabled_tf
+    if (value === "1"){
+        // $("#machine_select2 option:eq(0)").prop("selected", true).trigger("change");
+        $("select[name=result2_code] option:eq(0)").prop("selected", true).trigger("change");
+        $("select[name=result3_code] option:eq(0)").prop("selected", true).trigger("change");
+        disabled_tf(["select[name=result2_code]","select[name=result3_code]"],"Y");
+    } else if (value === "2"){
+        $("select[name=result3_code] option:eq(0)").prop("selected", true).trigger("change");
+        disabled_tf(["select[name=result3_code]"],"Y");
+        disabled_tf(["select[name=result2_code]"],"N");
+    } else if (value === "3"){
+        $("select[name=result2_code] option:eq(0)").prop("selected", true).trigger("change");
+        disabled_tf(["select[name=result3_code]"],"N");
+        disabled_tf(["select[name=result2_code]"],"Y");
+    } else {
+        $("select[name=result2_code] option:eq(0)").prop("selected", true).trigger("change");
+        $("select[name=result3_code] option:eq(0)").prop("selected", true).trigger("change");
+        disabled_tf(["select[name=result2_code]","select[name=result3_code]"],"Y");
+    }
+
 }
 ////////////////////////////호출 함수/////////////////////////////////////
 
@@ -89,7 +148,7 @@ function modal_make1() {
                 text: "저장",
                 "class": "btn btn-minier",
                 click: function () {
-                    $(this).dialog("close");
+                    addUdate_btn();
                 }
             },
             {
@@ -126,10 +185,25 @@ function modal_make1() {
 }
 
 function selectBox_modal1() {
-    $('#select_modal1').select2();
+    $('select[name=qc_result]').select2();
+    $('select[name=result2_code]').select2();
+
+    select_makes_base('select[name=result3_code]', "/qmsQcItemAllGet","qc_code" ,"qc_name",{keyword: "2",keyword2:"2"},'N').then(function (){
+    });
 }
 
 function datepickerInput_modal() {
     datepicker_makes("#datepicker_modal", -30);
     datepicker_makes("#datepicker_modal2", 30);
+}
+
+function file_change(e) {
+    var filename = $(e).val().split('\\');
+    var data = $(e).val().split('.'); // 확장자
+    if ( $(e).val() !== ''){
+
+        $(e).closest("div")
+            .children(".file_labal")
+            .text("업로드완료");
+    }
 }

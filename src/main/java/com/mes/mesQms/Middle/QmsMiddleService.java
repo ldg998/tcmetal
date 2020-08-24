@@ -1,13 +1,16 @@
 package com.mes.mesQms.Middle;
 
+import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
+import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
 import com.mes.Mapper.mesQms.Middle.QmsMiddleMapper;
 import com.mes.mesQms.Middle.DTO.QMS_PROD;
 import com.mes.mesQms.Middle.DTO.QMS_PROD_NG_SUM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.List;
 
@@ -31,5 +34,19 @@ public class QmsMiddleService extends UploadFunction {
 
     public List<QMS_PROD_NG_SUM> qmsProdMiddleErrorListSumGet(Page p) {
         return qmsMiddleMapper.qmsProdMiddleErrorListSumGet(p);
+    }
+
+    public Message qmsProdMiddleErrorManFileAdd(Files files, MultipartHttpServletRequest req) {
+        files.setUser_code(getSessionData(req).getUser_code());
+        String page_name = "qmsProdMiddleErrorMan";
+        Files newFiles = sysSPartFile1Add(page_name,req,"C:/UploadFile/tcmetal/qmsProdMiddleErrorMan/");
+        files.setKey_value(newFiles.getKey_value());
+        return qmsMiddleMapper.qmsProdMiddleErrorManFileAdd(files);
+    }
+
+    public Message qmsProdMiddleErrorManAdd(Files files, MultipartHttpServletRequest req) {
+        files.setUser_code(getSessionData(req).getUser_code());
+        files.setKey_value("");
+        return qmsMiddleMapper.qmsProdMiddleErrorManAdd(files);
     }
 }

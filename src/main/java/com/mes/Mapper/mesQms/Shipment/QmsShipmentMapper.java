@@ -52,4 +52,8 @@ public interface QmsShipmentMapper {
     Message qmsProdListDel(Page p);
 
     Message qmsProdListUpload(QMS_PROD_SUB qps);
+
+    Message qmsProdErrorReqAdd(QMS_RET qr);
+
+    void qmsFileAdd(QMS_RET qr);
 }

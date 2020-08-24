@@ -6,10 +6,7 @@ import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
-import com.mes.mesQms.Shipment.DTO.QMS_INSP_MACHINE;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD_NG_SUM;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD_RPT;
-import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
+import com.mes.mesQms.Shipment.DTO.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -222,8 +219,13 @@ public class QmsShipmentRestController extends UploadFunction {
 
     @RequestMapping(value = "/qmsProdListUpload", method = RequestMethod.POST)
     public Message qmsProdListUpload(MultipartHttpServletRequest req,QMS_PROD_SUB qps){
+        return qmsShipmentService.qmsProdListUpload(req,qps);
+    }
 
-        return qmsShipmentService.qmsProdListUpload(qps);
+
+     @RequestMapping(value = "/qmsProdErrorReqAdd", method = RequestMethod.POST)
+    public Message qmsProdErrorReqAdd(MultipartHttpServletRequest req, QMS_RET qr){
+        return qmsShipmentService.qmsProdErrorReqAdd(req,qr);
     }
 
 

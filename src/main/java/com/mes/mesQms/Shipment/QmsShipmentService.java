@@ -15,8 +15,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class QmsShipmentService extends UploadFunction {
@@ -166,41 +166,125 @@ public class QmsShipmentService extends UploadFunction {
 
 
     public Message qmsProdListDel(Page p) { return qmsShipmentMapper.qmsProdListDel(p);
+
+
+
     }
 
-    public Message qmsProdListUpload(QMS_PROD_SUB qps) {
+    public Message qmsProdListUpload(MultipartHttpServletRequest req,QMS_PROD_SUB qps) {
+        String path = "C:/UploadFile/tcmetal/qmsOutsErrorMan";
         if(qps.getFiles() != null) {
             List<MultipartFile> fileList = qps.getFiles();
             int i = 1;
             for (MultipartFile mf : fileList) {
                 qps.setIndex(i);
-                qps.setSavefile(saveFile(mf));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
+                qps.setType(mf.getContentType());
+                int pos = qps.getType().lastIndexOf( "/" );
+                String ext = qps.getType().substring( pos + 1 );
+                qps.setSavefile(saveFile(mf,ext,path));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
                 qps.setSize(mf.getSize());
                 qps.setOriginal_name(mf.getOriginalFilename());
-                qps.setType(mf.getContentType());
-
-                i++;
+                qps.setAllpath(path+"/"+qps.getSavefile());
+               if(qps.getFile_ck() == 0) {
+                   qps.setKey_value("Q"+qps.getSavefile());
+               }else {
+                   qps.setKey_value(qps.getFile_key());
+               }
+               i++;
             }
         }
+        qps.setUser_code(getSessionData(req).getUser_code());
         return  qmsShipmentMapper.qmsProdListUpload(qps);
+
     }
 
 
-    private String saveFile(MultipartFile file){ //파일 업로드 소스
-        String path = "C:/UploadFile/tcmetal/qmsOutsErrorMan";
+    private String saveFile(MultipartFile file,String ext,String path){ //파일 업로드 소스
         // 파일 이름 변경
-        UUID uuid = UUID.randomUUID(); //랜덤 uuid
+        SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");
         String originalFilename = file.getOriginalFilename(); //파일에 진짜이름
-        String saveName = uuid + "_" + originalFilename;
+        String saveName =  "qmsProdList_"+ format1.format (System.currentTimeMillis())+"."+ext ;
         // 저장할 File 객체를 생성(껍데기 파일)
         File saveFile = new File(path,saveName); // 저장할 폴더 이름, 저장할 파일 이름
-        try {
-            file.transferTo(saveFile); // 업로드 파일에 saveFile이라는 껍데기 입힘
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+           if(! saveFile.exists())
+           {
+               if(saveFile.getParentFile().mkdirs())
+               {
+                   try {
+                       saveFile.createNewFile();
+                   } catch (IOException e) {
+                       e.printStackTrace();
+                   }
+               }
+           }
+           try {
+               file.transferTo(saveFile);
+           } catch (IllegalStateException e) {
+               e.printStackTrace();
+               return null;
+           } catch (IOException e) {
+               e.printStackTrace();
+               return null;
+           }
+
         return saveName;
     }
 
+
+
+
+    public Message qmsProdErrorReqAdd(MultipartHttpServletRequest req, QMS_RET qr) {
+        qr.setUser_code(getSessionData(req).getUser_code());
+
+       String path = "C:/UploadFile/tcmetal/qmsProdEroorReq";
+        if(qr.getFile1() != null) {
+            List<MultipartFile> fileList = qr.getFile1();
+            int i = 1;
+            for (MultipartFile mf : fileList) {
+                qr.setIndex(i);
+                qr.setType(mf.getContentType());
+                int pos = qr.getType().lastIndexOf( "/" );
+                String ext = qr.getType().substring( pos + 1 );
+                qr.setSavefile(saveFile(mf,ext,path));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
+                qr.setSize(mf.getSize());
+                qr.setOriginal_name(mf.getOriginalFilename());
+                qr.setAllpath(path+"/"+qr.getSavefile());
+                if(qr.getFile_ck1() == 0) {
+                    qr.setKey_value("REQ_"+qr.getSavefile());
+                }else {
+                    qr.setKey_value(qr.getFile_key());
+                }
+                i++;
+            }
+            qmsShipmentMapper.qmsFileAdd(qr);
+        }
+
+
+        if(qr.getFile2() != null) {
+            List<MultipartFile> fileList = qr.getFile2();
+            int i = 1;
+            for (MultipartFile mf : fileList) {
+                qr.setIndex(i);
+                qr.setType(mf.getContentType());
+                int pos = qr.getType().lastIndexOf( "/" );
+                String ext = qr.getType().substring( pos + 1 );
+                qr.setSavefile(saveFile(mf,ext,path));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
+                qr.setSize(mf.getSize());
+                qr.setOriginal_name(mf.getOriginalFilename());
+                qr.setAllpath(path+"/"+qr.getSavefile());
+                if(qr.getFile_ck2() == 0) {
+                    qr.setKey_value("REQ2_"+qr.getSavefile());
+                }else {
+                    qr.setKey_value(qr.getFile_key());
+                }
+                i++;
+            }
+            qmsShipmentMapper.qmsFileAdd(qr);
+        }
+
+
+        return  qmsShipmentMapper.qmsProdErrorReqAdd(qr);
+    }
 }
+
+

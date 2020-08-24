@@ -15,6 +15,8 @@ function addUdate_btn() {
     var check1;
 
     formData.append("qc_no", add_data.qc_no);
+    formData.append("file_ck", main_data.file_ck);
+    formData.append("file_key", add_data.file_key);
     if ($("#file_01").prop("files")[0] == null) {
         check1 = 0;
         formData.append("check1", check1);
@@ -23,11 +25,16 @@ function addUdate_btn() {
         formData.append("files", $("#file_01").prop("files")[0]);
         formData.append("check1", check1);
     }
-
-    ccn_file_ajax('/qmsProdListUpload',formData).then(function (e) {
-
-        alert(e);
-        $('#addDialog').dialog("close");
+    wrapWindowByMask2();
+    ccn_file_ajax('/qmsProdListUpload',formData).then(function (data) {
+        if (data.result === 'NG') {
+            alert(data.message);
+        }else {
+            alert(data.message);
+            $('#mes_grid').trigger('reloadGrid')
+            $('#addDialog').dialog("close");
+            closeWindowByMask();
+        }
     })
 }
 
@@ -66,8 +73,6 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
                 'class': 'btn btn-primary btn-minier',
                 click: function () {
                     addUdate_btn();
-
-
                 }
             }
 

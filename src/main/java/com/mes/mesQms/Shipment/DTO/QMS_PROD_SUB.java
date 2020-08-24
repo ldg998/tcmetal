@@ -50,6 +50,7 @@ public class QMS_PROD_SUB {
     private String keyword2;
     private String file1_name;
     private String file1;
+    private String file_key;
 
     private String qc_no;
     private String plan_no;
@@ -68,5 +69,7 @@ public class QMS_PROD_SUB {
     private long size;
     private String original_name;
     private String type;
-
+    private String allpath;
+    private String key_value;
+    private int  file_ck;
 }

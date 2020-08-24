@@ -66,7 +66,8 @@
             <div class="profile-info-value">
                 <div class="filebox_lee">
                     <label for="file_01" class="file_labal">업로드</label>
-                    <input type="file" id="file_01" onchange='file_change(this);'>
+                    <input type="file"  id="file_01" onchange='file_change(this);'>
+                    <input name="file_key"  type="hidden" class="modal_value">
                 </div>
             </div>
         </div>

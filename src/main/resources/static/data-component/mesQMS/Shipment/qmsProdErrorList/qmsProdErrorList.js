@@ -23,6 +23,7 @@ $(document).ready(function () {
     datepickerInput();
     authcheck();
     jqgridPagerIcons();
+    selectBox();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -265,4 +266,22 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height", "0px");
         }
     });
+}
+
+
+function selectBox() {
+    $('#status').select2();
+    $('#part_kind_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")
+}
+
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
 }

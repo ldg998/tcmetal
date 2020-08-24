@@ -124,10 +124,10 @@ function selectBox_modal1() {
     $('#select_modal2').select2();
 
     select_makes_base('#select_modal1','/sysQcItemCdAll','qc_code','qc_name',{keyword:5,keyword2:1},'N').then(function(data){
-    console.log("수정:" +data)
+
     });
     select_makes_base('#select_modal2','/sysQcItemCdAll','qc_code','qc_name',{keyword:2,keyword2:2},'N').then(function(data){
-        console.log("패기:" +data)
+
     });
 
     /* 키워드

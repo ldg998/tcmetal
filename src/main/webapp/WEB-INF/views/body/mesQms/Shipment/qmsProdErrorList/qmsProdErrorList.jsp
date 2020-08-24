@@ -29,13 +29,16 @@
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
+
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
-                        <input type="text" class="form-control h-25 condition_main">
+                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
-                        <input type="text" class="form-control h-25 condition_main">
+                        <select id="part_kind_select" name="keyword2"  class="condition_main" style="width: 100%;">
+                            <option value="">전체</option>
+                        </select>
                     </td>
 
 

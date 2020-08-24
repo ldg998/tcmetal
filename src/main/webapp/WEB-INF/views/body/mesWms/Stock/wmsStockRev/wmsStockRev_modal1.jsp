@@ -31,7 +31,6 @@
             <div class="profile-info-value">
                 <input type="hidden" name="rev_no"  class="form-control h-25 modal_value" autocomplete="off">
                 <select name="supp_code" id="modal_select1" type="text" class="form-control keyword modal_value" onchange="select_change_modal1(this.value);" style="width: 100%;">
-
                 </select>
             </div>
         </div>

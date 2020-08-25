@@ -135,4 +135,9 @@ public class UserService extends ReturnFunction {
         su.setUpdate_user(getSessionData(req).getUser_code());
         return userMapper.sysUserPwdReset(su);
     }
+
+    public List<SYSDept> sysDeptAllGet2(Page p, HttpServletRequest req) {
+        p.setSite_code(getSessionData(req).getSite_code());
+        return userMapper.sysDeptAllGet2(p);
+    }
 }

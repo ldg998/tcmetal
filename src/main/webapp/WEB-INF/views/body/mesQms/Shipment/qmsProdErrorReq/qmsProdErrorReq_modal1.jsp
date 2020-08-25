@@ -40,7 +40,7 @@
             <div class="profile-info-name" style="width:15%">접수일자</div>
             <div class="profile-info-value" style="width:35%">
                 <div class="input-icon input-icon-right">
-                    <input type="text" name="work_date" id="datepicker_modal1" class="form-control h-25 modal_value" readonly>
+                    <input type="text" name="work_date" id="datepicker_modal1" class="form-control h-25 modal_value sendDate" readonly>
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
@@ -100,7 +100,7 @@
             <div class="profile-info-name" style="width:20%">대책서 송부일</div>
             <div class="profile-info-value" style="width:30%">
                 <div class="input-icon input-icon-right">
-                    <input type="text" name="report_date" id="datepicker_modal2" class="form-control h-25 modal_value" readonly>
+                    <input type="text" name="report_date" id="datepicker_modal2" class="form-control h-25 modal_value sendDate" readonly>
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
@@ -122,15 +122,16 @@
             <div class="profile-info-value" style="width:35%">
 
                 <select id="select_modal2" name="act_type" style="width: 100%;" class="modal_value">
-                    <option value="">수정</option>
-                    <option value="">폐기</option>
+                    <option value="0">빈값</option>
+                    <option value="1">조치중</option>
+                    <option value="2">조치완료</option>
                 </select>
 
             </div>
             <div class="profile-info-name" style="width:15%">처리일자</div>
             <div class="profile-info-value" style="width:35%">
                 <div class="input-icon input-icon-right">
-                    <input type="text" name="act_date" id="datepicker_modal3" class="form-control h-25 modal_value" readonly>
+                    <input type="text" name="act_date" id="datepicker_modal3" class="form-control h-25 modal_value sendDate" readonly>
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
@@ -161,14 +162,14 @@
             <div class="profile-info-name" style="width:15%">부적합부서</div>
             <div class="profile-info-value" style="width:35%">
 
-                <select name="dept_code" class="form-control modal_value"  onchange="select_change_modal4(this.value);" id="dept_select2" style="width: 100%;">
+                <select name="ret_dept_code" class="form-control modal_value"  onchange="select_change_modal4(this.value);" id="dept_select2" style="width: 100%;">
                     <option value="">선택안함</option>
                 </select>
 
             </div>
             <div class="profile-info-name" style="width:15%">담당자</div>
             <div class="profile-info-value" style="width:35%">
-            <select id="select_modal5" style="width: 100%;" name="user_code" class="modal_value">
+            <select id="select_modal5" style="width: 100%;" name="ret_user_code" class="modal_value">
                 <option value="">선택없음</option>
             </select>
             </div>

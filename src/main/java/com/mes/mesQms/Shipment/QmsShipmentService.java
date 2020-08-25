@@ -235,8 +235,22 @@ public class QmsShipmentService extends UploadFunction {
 
     public Message qmsProdErrorReqAdd(MultipartHttpServletRequest req, QMS_RET qr) {
         qr.setUser_code(getSessionData(req).getUser_code());
+            String file_key = "";
+            String file_key2  ="";
 
        String path = "C:/UploadFile/tcmetal/qmsProdEroorReq";
+
+        file_key = file_key_retrun(qr,path);
+        file_key2  = file_key_retrun2(qr,path);
+
+
+
+        return  qmsShipmentMapper.qmsProdErrorReqAdd(qr);
+    }
+
+
+
+    private String file_key_retrun (QMS_RET qr,String path){
         if(qr.getFile1() != null) {
             List<MultipartFile> fileList = qr.getFile1();
             int i = 1;
@@ -256,10 +270,11 @@ public class QmsShipmentService extends UploadFunction {
                 }
                 i++;
             }
-            qmsShipmentMapper.qmsFileAdd(qr);
+            return qmsShipmentMapper.qmsFileAdd(qr);
         }
-
-
+        return "";
+    }
+    private String file_key_retrun2 (QMS_RET qr,String path){
         if(qr.getFile2() != null) {
             List<MultipartFile> fileList = qr.getFile2();
             int i = 1;
@@ -274,17 +289,19 @@ public class QmsShipmentService extends UploadFunction {
                 qr.setAllpath(path+"/"+qr.getSavefile());
                 if(qr.getFile_ck2() == 0) {
                     qr.setKey_value("REQ2_"+qr.getSavefile());
+                    qr.setKey_value2("REQ2_"+qr.getSavefile());
                 }else {
                     qr.setKey_value(qr.getFile_key());
+                    qr.setKey_value2(qr.getFile_key2());
                 }
                 i++;
             }
             qmsShipmentMapper.qmsFileAdd(qr);
         }
-
-
-        return  qmsShipmentMapper.qmsProdErrorReqAdd(qr);
+        return "";
     }
-}
 
+
+
+}
 

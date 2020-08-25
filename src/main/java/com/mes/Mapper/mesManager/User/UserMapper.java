@@ -34,4 +34,6 @@ public interface UserMapper {
     int userInformationCheck(SYSUser u);
 
     Message sysUserPwdReset(SYSUser su);
+
+    List<SYSDept> sysDeptAllGet2(Page p);
 }

@@ -38,12 +38,14 @@ public class QMS_RET {
     private String type;
     private String allpath;
     private String key_value;
+    private String key_value2;
 
 
     private int  file_ck1;
     private int  file_ck2;
 
     private String file_key;
+    private String file_key2;
 
 
 }

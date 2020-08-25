@@ -26,10 +26,6 @@ $(document).ready(function () {
 
 ////////////////////////////클릭 함수//////////////////////////////////
 // 조회버튼
-function test() {
-    $('#addDialog').dialog('open');
-}
-
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
     main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
@@ -47,6 +43,7 @@ function add_btn() {
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 명을 가진 항목들의 내용을 리셋,비워줌 main_data readonly 에 추가한 name의 항목에 readonly 옵션을 추가
         modalValuePush("#group_select","#group_code","#group_name"); // name1의 값을 name2,name3 에 넣어줌
         main_data.check = 'I'; // 추가인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
+        datepickerInput_modal();
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
         alert(msg_object.TBMES_A001.msg_name1);

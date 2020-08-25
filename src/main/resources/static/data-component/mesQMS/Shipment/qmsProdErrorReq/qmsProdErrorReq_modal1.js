@@ -25,13 +25,14 @@ function addUdate_btn() {
         formData.append("part_kind", add_data.part_kind);
         formData.append("part_code", add_data.part_code);
         formData.append("ng_type", add_data.ng_type);
+        formData.append("ng_name", $('#modal_select4').text());
         formData.append("report_type", add_data.report_type);
         formData.append("report_date", add_data.report_date);
         formData.append("measuer_name", add_data.measuer_name);
         formData.append("act_type", add_data.act_type);
         formData.append("act_date", add_data.act_date);
-        formData.append("dept_code", add_data.dept_code);
-        formData.append("user_code", add_data.user_code);
+        formData.append("ret_dept_code", add_data.ret_dept_code);
+        formData.append("ret_user_code", add_data.ret_user_code);
 
         if ($("#file_01").prop("files")[0] == null) {
             check1 = 0;
@@ -89,9 +90,7 @@ function select_change_modal1(value) {
             $('#modal_select3').append(option2);
             $('#modal_select3').select2();
         }
-        $("input[name=part_code]").val("");
-        $("input[name=part_weight]").val("");
-        $("input[name=stock_qty_prev]").val("");
+
     }
 }
 
@@ -111,9 +110,7 @@ function select_change_modal2(value) {
             $('#modal_select3').append(option2);
             $('#modal_select3').select2();
         }
-        $("input[name=part_code]").val("");
-        $("input[name=part_weight]").val("");
-        $("input[name=stock_qty_prev]").val("");
+
     }
 }
 
@@ -138,23 +135,27 @@ function select_change_modal3(value) {
                     $("input[name=stock_qty_prev]").val((data2 + "").replace(/[^0-9]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                 })
             });
-        } else {
-            $("input[name=part_code]").val("");
-            $("input[name=part_weight]").val("");
-            $("input[name=stock_qty_prev]").val("");
-
         }
     }
 }
 
 
 function select_change_modal4(value) {
-        if (value !== "") {
-            console.log(value);
-            select_makes_base('#select_modal5','/sysDeptAllGet','dept_code','user_name',{keyword:value},'')
+        if (value != "") {
+            select_makes_base('#select_modal5','/sysDeptAllGet2','dept_code','user_name',{keyword:value,keyword2:'Y'},'').then(function (e){
+                    if(e[0].user_name == "" || e[0].user_name == null || e[0].user_name == "null") {
+                        $('#select_modal5').empty();
+                        var option = $("<option></option>").text('담당자 없음').val('');
+                        $('#select_modal5').append(option);
+                        $('#select_modal5').select2();
+                    }
+                })
 
         } else {
-            $('#select_modal5').val("");
+            $('#select_modal5').empty();
+            var option = $("<option></option>").text('선택안함').val('');
+            $('#select_modal5').append(option);
+            $('#select_modal5').select2();
 
         }
 
@@ -181,7 +182,7 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
                 text: '저장',
                 'class': 'btn btn-primary btn-minier',
                 click: function () {
-                    $(this).dialog("close");
+                    addUdate_btn();
 
                 }
             },

@@ -15,6 +15,9 @@
     <select id="sysDeptAllGet" resultType="com.mes.mesManager.User.DTO.SYSDept">
     		EXEC SP_SYS_DEPT_GET  #{page}, #{rows}, '','Y'
     </select>
+<select id="sysDeptAllGet2" resultType="com.mes.mesManager.User.DTO.SYSDept">
+    		EXEC SP_SYS_DEPT_ALL_GET  #{keyword},#{keyword2}
+    </select>
 
     <select id="sysDeptOneGet" resultType="com.mes.mesManager.User.DTO.SYSDept">
         	EXEC SP_SYS_DEPT_GET  1, 1, #{keyword},''

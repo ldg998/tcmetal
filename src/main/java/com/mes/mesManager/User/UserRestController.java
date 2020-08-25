@@ -64,6 +64,13 @@ public class UserRestController {
         return userService.sysDeptAllGet(p, req);
     }
 
+    @RequestMapping(value = "/sysDeptAllGet2", method = RequestMethod.POST)
+    public List<SYSDept> sysDeptAllGet2(Page p, HttpServletRequest req) {
+        return userService.sysDeptAllGet2(p, req);
+    }
+
+
+
     @RequestMapping(value = "/sysDeptAdd", method = RequestMethod.POST)
     public Message sysDeptAdd(SYSDept sdv, HttpServletRequest req) {
         return userService.sysDeptAdd(sdv, req);

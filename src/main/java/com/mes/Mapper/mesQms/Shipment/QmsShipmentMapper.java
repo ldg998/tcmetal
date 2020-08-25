@@ -55,5 +55,5 @@ public interface QmsShipmentMapper {
 
     Message qmsProdErrorReqAdd(QMS_RET qr);
 
-    void qmsFileAdd(QMS_RET qr);
+    String qmsFileAdd(QMS_RET qr);
 }

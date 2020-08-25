@@ -15,4 +15,5 @@ public class SYSDept {
 	private int rownum;
 	private int rec_count;
 	private String keyword;
+	private String dept_user_code;
 }

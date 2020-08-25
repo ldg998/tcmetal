@@ -118,7 +118,7 @@
     </select>
 
     <select id="qmsProdErrorReqAdd" resultType="com.mes.Common.DataTransferObject.Message">
-        EXEC SP_QMS_PROD_ERROR_REQ_ADD #{ret_no},#{work_date},#{supp_code},#{part_kind},#{part_code},#{lot_no},#{ng_type},#{ng_name},#{report_type},#{report_date},#{measuer_name},#{act_type},#{act_date},#{ret_dept_code},#{ret_user_code},#{user_code},#{keyword}
+        EXEC SP_QMS_PROD_ERROR_REQ_ADD #{ret_no},#{work_date},#{supp_code},#{part_code},#{part_kind},#{lot_no},#{ng_type},#{ng_name},#{report_type},#{report_date},#{measuer_name},#{act_type},#{act_date},#{key_value},#{key_value2},#{ret_dept_code},#{ret_user_code},#{user_code},#{keyword}
     </select>
 
     <select id="qmsFileAdd" resultType="com.mes.Common.DataTransferObject.Message">

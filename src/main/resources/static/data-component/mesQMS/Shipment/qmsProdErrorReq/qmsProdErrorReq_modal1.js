@@ -34,6 +34,8 @@ function addUdate_btn() {
         formData.append("ret_dept_code", add_data.ret_dept_code);
         formData.append("ret_user_code", add_data.ret_user_code);
 
+
+
         if ($("#file_01").prop("files")[0] == null) {
             check1 = 0;
             formData.append("file_ck1", check1);
@@ -70,29 +72,22 @@ function addUdate_btn() {
 
 
 function select_change_modal1(value) {
-    if (main_data.check2 === 'Y'){
-        if (value !== ""){
-            select_makes_base("#modal_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"N").then(function (data) {
-                $('#modal_select3').empty();
-                var option2 = $("<option></option>").text('선택안함').val('');
-                $('#modal_select3').append(option2);
-                $('#modal_select3').select2();
-            });
-        } else {
+    if (value !== ""){
+        select_makes_base("#modal_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"N");
+    } else {
+        $('#modal_select2').empty();
+        var option = $("<option></option>").text('선택안함').val('');
+        $('#modal_select2').append(option);
+        $('#modal_select2').select2();
 
-            $('#modal_select2').empty();
-            var option = $("<option></option>").text('선택안함').val('');
-            $('#modal_select2').append(option);
-            $('#modal_select2').select2();
-
-            $('#modal_select3').empty();
-            var option2 = $("<option></option>").text('선택안함').val('');
-            $('#modal_select3').append(option2);
-            $('#modal_select3').select2();
-        }
-
+        var option2 = $("<option></option>").text('선택안함').val('');
+        $('#modal_select3').empty();
+        $('#modal_select3').append(option2);
+        $('#modal_select3').select2();
+        $('#part_code').val("");
     }
 }
+
 
 function select_change_modal2(value) {
     if (main_data.check2 === 'Y') {
@@ -104,11 +99,11 @@ function select_change_modal2(value) {
 
             });
         } else {
-
             $('#modal_select3').empty();
             var option2 = $("<option></option>").text('선택안함').val('');
             $('#modal_select3').append(option2);
             $('#modal_select3').select2();
+            $('#part_code').val("");
         }
 
     }
@@ -118,26 +113,14 @@ function select_change_modal3(value) {
     if (main_data.check2 === 'Y') {
 
         if (value !== "") {
-            ccn_ajax('/sysSpartOneGet', {
-                keyword: $("#modal_select1").val(),
-                keyword2: $("#modal_select2").val(),
-                keyword3: value
-            }).then(function (data) {
-
-                $("input[name=part_code]").val(data.part_code);
-                $("input[name=part_weight]").val((data.part_weight + "").replace(/[^0-9]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                ccn_ajax('/wmsOutsStockGet', {
-                    keyword: $("#modal_select1").val(),
-                    keyword2: $("#modal_select2").val(),
-                    keyword3: value,
-                    keyword4: $("#outs_supp_code").val(),
-                }).then(function (data2) {
-                    $("input[name=stock_qty_prev]").val((data2 + "").replace(/[^0-9]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                })
-            });
+            $('#part_code').val(value)
+        } else {
+            $('#part_code').val("");
         }
+
     }
 }
+
 
 
 function select_change_modal4(value) {
@@ -199,7 +182,12 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
     })
 }
 
+
+
+
 function selectBox_modal1() {
+
+
     $('#select_modal1').select2();
     $('#select_modal2').select2();
     $('#select_modal3').select2();

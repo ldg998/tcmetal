@@ -28,9 +28,10 @@ $(document).ready(function () {
 // 조회버튼
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
-    main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
+    main_data.send_data.keyword = main_data.send_data.type_code
+    main_data.send_data.keyword2 = main_data.send_data.supp_code
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysCommonGet',
+        url: '/qmsProdErrorReqGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -43,7 +44,13 @@ function add_btn() {
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 명을 가진 항목들의 내용을 리셋,비워줌 main_data readonly 에 추가한 name의 항목에 readonly 옵션을 추가
         modalValuePush("#group_select","#group_code","#group_name"); // name1의 값을 name2,name3 에 넣어줌
         main_data.check = 'I'; // 추가인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
+        main_data.check2 = 'Y';
         datepickerInput_modal();
+
+        $("#select_modal1  option:eq(0)").prop("selected", true).trigger("change");
+        $("#select_modal2  option:eq(0)").prop("selected", true).trigger("change");
+
+
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
         alert(msg_object.TBMES_A001.msg_name1);
@@ -82,11 +89,11 @@ function delete_btn() {
             if (confirm(msg_object.TBMES_A005.msg_name1)) {
                 main_data.check = 'D'; // 삭제인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
                 wrapWindowByMask2();
-                ccn_ajax("/sysCommonDelete", {keyword: ids.join(gu5)}).then(function (data) {
+                ccn_ajax("/qmsProdErrorReqDel", {keyword: ids.join(gu5)}).then(function (data) {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        get_btn_post($("#mes_grid").getGridParam('page'));
+                            $('#mes_grid').trigger('reloadGrid')
                     }
                     closeWindowByMask();
                 }).catch(function (err) {
@@ -124,24 +131,23 @@ function jqGrid_main() {
         colNames: ['접수일자','등록번호','업체','기종','품번','품명','제품LOT','부적합분류(코드화)','부적합세부','대책서송부일','대책방안','처리일자','처리구분','부적합연락서','대책서','등록자','등록일시'
         ],
         colModel: [
-
-            {name: '', index: '',sortable: false, width: 100,fixed: true},
-            {name: '', index: '',sortable: false, width: 100,fixed: true},
-            {name: '', index: '',sortable: false, width: 100,fixed: true},
-            {name: '', index: '',sortable: false, width: 100,fixed: true},
-            {name: '', index: '',sortable: false, width: 100,fixed: true},
-            {name: '', index: '',sortable: false, width: 100,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 120,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true}
+            {name: 'work_date', index: 'work_date',sortable: false, width: 100,fixed: true , formatter: formmatterDate2},
+            {name: 'ret_no', index: 'ret_no',sortable: false,key:true, width: 150,fixed: true},
+            {name: 'supp_name', index: 'supp_name',sortable: false, width: 100,fixed: true},
+            {name: 'part_kind', index: 'part_kind',sortable: false, width: 100,fixed: true},
+            {name: 'part_code', index: 'part_code',sortable: false, width: 100,fixed: true},
+            {name: 'part_name', index: 'part_name',sortable: false, width: 100,fixed: true},
+            {name: 'lot_no', index: 'lot_no',sortable: false, width: 120,fixed: true},
+            {name: 'ng_type', index: 'ng_type',sortable: false, width: 120,fixed: true},
+            {name: 'ng_name', index: 'ng_name',sortable: false, width: 150,fixed: true},
+            {name: 'report_date', index: 'report_date',sortable: false, width: 120,fixed: true ,formatter: formmatterDate2},
+            {name: 'measuer_name', index: 'measuer_name',sortable: false, width: 120,fixed: true},
+            {name: 'act_date', index: 'act_date',sortable: false, width: 80,fixed: true,formatter: formmatterDate2},
+            {name: 'act_type', index: 'act_type',sortable: false, width: 80,fixed: true},
+            {name: 'file1_code', index: 'file1_code',sortable: false, width: 80,fixed: true,formatter: file1_formatter},
+            {name: 'file2_code', index: 'file2_code',sortable: false, width: 80,fixed: true,formatter: file2_formatter},
+            {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
+            {name: 'create_date', index: 'create_date',sortable: false, width: 130,fixed: true ,formatter: formmatterDate}
 
         ],
         caption: "부적합관리 | MES",
@@ -178,4 +184,63 @@ function datepickerInput() {
 
 function select(){
     $('#select1').select2();
+    select_makes_base("#select2","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+
+    }
+
+
+function file1_formatter(cellvalue, options, rowObject) {
+    if (cellvalue == "" || cellvalue == null) {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span>없음</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file1_code + "\");'>" +
+            "<span><i class='fa fa-download bigger-110 blue'></i>" +
+            "<span>저장</span>" +
+            "</span>" +
+            "</a>";
+
+    }
+}
+
+function file2_formatter(cellvalue, options, rowObject) {
+    if (cellvalue == "" || cellvalue == null) {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span>없음</span>" +
+            "</span>" +
+            "</a>";
+
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file2_code + "\");'>" +
+            "<span><i class='fa fa-download bigger-110 blue'></i>" +
+            "<span>저장</span>" +
+            "</span>" +
+            "</a>";
+    }
+}
+
+
+function file_download(file_name) {
+    if (confirm('파일을 저장하시겠습니까?')) {
+        $.fileDownload('/FileUploads', {
+            httpMethod: "POST",
+            data: { key_value: file_name },
+            successCallback: function(url){
+            },
+            failCallback: function(){
+            }
+        });
+    }
 }

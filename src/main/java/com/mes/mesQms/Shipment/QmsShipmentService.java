@@ -235,15 +235,14 @@ public class QmsShipmentService extends UploadFunction {
 
     public Message qmsProdErrorReqAdd(MultipartHttpServletRequest req, QMS_RET qr) {
         qr.setUser_code(getSessionData(req).getUser_code());
-            String file_key = "";
-            String file_key2  ="";
+
 
        String path = "C:/UploadFile/tcmetal/qmsProdEroorReq";
 
-        file_key = file_key_retrun(qr,path);
-        file_key2  = file_key_retrun2(qr,path);
+        qr.setFile_key(file_key_retrun(qr,path));
+        qr.setFile_key2(file_key_retrun2(qr,path));
 
-
+        System.out.println(qr);
 
         return  qmsShipmentMapper.qmsProdErrorReqAdd(qr);
     }
@@ -263,14 +262,15 @@ public class QmsShipmentService extends UploadFunction {
                 qr.setSize(mf.getSize());
                 qr.setOriginal_name(mf.getOriginalFilename());
                 qr.setAllpath(path+"/"+qr.getSavefile());
-                if(qr.getFile_ck1() == 0) {
+                if(qr.getFile_ck1() == 1) {
                     qr.setKey_value("REQ_"+qr.getSavefile());
                 }else {
                     qr.setKey_value(qr.getFile_key());
                 }
                 i++;
             }
-            return qmsShipmentMapper.qmsFileAdd(qr);
+            qmsShipmentMapper.qmsFileAdd(qr);
+            return qr.getKey_value();
         }
         return "";
     }
@@ -287,7 +287,7 @@ public class QmsShipmentService extends UploadFunction {
                 qr.setSize(mf.getSize());
                 qr.setOriginal_name(mf.getOriginalFilename());
                 qr.setAllpath(path+"/"+qr.getSavefile());
-                if(qr.getFile_ck2() == 0) {
+                if(qr.getFile_ck2() == 1) {
                     qr.setKey_value("REQ2_"+qr.getSavefile());
                     qr.setKey_value2("REQ2_"+qr.getSavefile());
                 }else {
@@ -297,11 +297,19 @@ public class QmsShipmentService extends UploadFunction {
                 i++;
             }
             qmsShipmentMapper.qmsFileAdd(qr);
+           return qr.getKey_value2();
         }
         return "";
     }
 
 
+    public RESTful qmsProdErrorReqGet(Page p, HttpServletRequest req) {
+        List<QMS_RET> rows = qmsShipmentMapper.qmsProdErrorReqGet(p);
+        return getListData(rows, p);
+    }
 
+    public Message qmsProdErrorReqDel(Page p, HttpServletRequest req) {
+        return qmsShipmentMapper.qmsProdErrorReqDel(p);
+    }
 }
 

@@ -149,6 +149,7 @@ function selectBox_modal1() { //현재모달의 셀렉트박스에 데이터 할
 
     select_makes_base("#part_type_modal1", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'').then(function (data) {});
     select_makes_base('#unit_code_modal1','/sysCommonAllGet','code_value','code_name1',{keyword:'UNIT'},'');
+
     select_makes_base('#loc_code_modal1','/sysLocAllGet',"loc_code","loc_name",{keyword:"M0001"},'');
 
     select_makes_sub("#supp_modal_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")

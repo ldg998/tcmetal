@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class QMS_RET {
 
-    private int ret_no ;
+    private String ret_no ;
     private String work_date;
     private String supp_code;
     private String part_kind;
@@ -27,7 +27,14 @@ public class QMS_RET {
     private String create_date;
     private String update_date;
     private String keyword;
+    private String type_code;
+    private String supp_name;
+    private String user_name;
+    private String ret_user_name;
+    private String part_name;
 
+    private String file1_code;
+    private String file2_code;
 
     private List<MultipartFile> file1;
     private List<MultipartFile> file2;

@@ -105,7 +105,6 @@ function jqGrid_main() {
             data.rows.forEach(function (idsfor, s) {
                 if (idsfor.work_date === '소계'){
                     $("#mes_grid").setRowData(idsfor.seq, false, {background:"rgb(155, 185, 239)"}) ;
-
                 }
             });
 
@@ -114,5 +113,6 @@ function jqGrid_main() {
             else
                 $(".jqgfirstrow").css("height","0px");
         },
+
     });
 }

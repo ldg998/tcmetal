@@ -133,5 +133,6 @@ function jqGrid_main() {
 
 
 function selectBox() {
+
     $('#1_select').select2();
 }

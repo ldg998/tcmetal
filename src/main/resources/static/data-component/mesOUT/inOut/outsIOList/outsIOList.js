@@ -125,9 +125,10 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['외주업체','업체','기종','품번','품명','단중','일자','수량','구분'],// grid 헤더 설정
+        colNames : ['','외주업체','업체','기종','품번','품명','단중','일자','수량','구분'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'outs_supp_name',index:'outs_supp_name',key: true ,sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'seq', index: 'seq',sortable: false,key:true,hidden:true},
+            {name:'outs_supp_name',index:'outs_supp_name' ,sortable: false,width:100,fixed: true},
             {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name:'part_kind',index:'part_kind',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
             {name:'part_code',index:'part_code',sortable: false,width:150,fixed: true},
@@ -151,12 +152,16 @@ function jqGrid_main() {
                     cm = $myGrid.jqGrid('getGridParam', 'colModel');
                 return (cm[i].name === 'cb');
         },
-        ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
-            var data = $('#mes_grid').jqGrid('getRowData', rowid);
-            update_btn(data);
+        ondblClickRow: function (rowid, iRow, iCol, e) {
         },
-        loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
-            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
+        loadComplete : function(data) {
+            data.rows.forEach(function (idsfor, s) {
+                if (idsfor.work_date === '소계'){
+                    $("#mes_grid").setRowData(idsfor.seq, false, {background:"rgb(155, 185, 239)"}) ;
+                }
+            });
+
+            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");
             else
                 $(".jqgfirstrow").css("height","0px");

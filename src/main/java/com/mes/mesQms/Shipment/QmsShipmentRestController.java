@@ -229,5 +229,17 @@ public class QmsShipmentRestController extends UploadFunction {
     }
 
 
+     @RequestMapping(value = "/qmsProdErrorReqGet", method = RequestMethod.POST)
+    public RESTful qmsProdErrorReqGet(Page p,HttpServletRequest req){
+        return qmsShipmentService.qmsProdErrorReqGet(p,req);
+    }
+
+ @RequestMapping(value = "/qmsProdErrorReqDel", method = RequestMethod.POST)
+    public Message qmsProdErrorReqDel(Page p,HttpServletRequest req){
+        return qmsShipmentService.qmsProdErrorReqDel(p,req);
+    }
+
+
+
 
 }

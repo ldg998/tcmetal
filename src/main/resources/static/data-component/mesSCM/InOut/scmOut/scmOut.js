@@ -32,7 +32,6 @@ $(document).ready(function () {
 // 조회 버튼
 function get_btn(page) {
     var main_data = value_return('.condition_main')
-    main_data.keyword = main_data.work_date.replace(/\-/g, '');
     main_data.keyword2 = main_data.part_code;
     $("#mes_grid").setGridParam({ // 그리드 조회
         // URL -> RESTCONTROLLER 호출
@@ -154,7 +153,8 @@ function jqGrid_main() {
 
 
 function datepicker() {
-    datepicker_makes("#datepicker",0);
+    datepicker_makes("#datepicker", -30);
+    datepicker_makes("#datepicker2", 0);
 }
 function num_keyup(e) {
     $(e).val($(e).val().replace(/[^0-9]/g,''));

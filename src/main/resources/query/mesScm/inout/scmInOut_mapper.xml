@@ -47,7 +47,8 @@
     </select>
 
     <select id="scmOutGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
-        	EXEC SP_SCM_OUT_GET #{page},#{rows},#{keyword},#{keyword2}
+        	EXEC SP_SCM_OUT_GET #{page},#{rows},#{start_date},#{end_date},#{keyword2}
+
         	/* 수정함 */
     </select>
 

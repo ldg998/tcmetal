@@ -39,6 +39,7 @@ public class OUTS_IO_SUB {
     private String keyword;
     private String remark;
     private int qty_ck;
+    private int seq;
 
 
 

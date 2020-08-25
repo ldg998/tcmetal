@@ -62,6 +62,8 @@
                 </select>
             </div>
         </div>
+
+
         <%--3--%>
         <div class="profile-info-row">
             <div class="profile-info-name" style="width:15%">품명</div>
@@ -73,7 +75,7 @@
 
             <div class="profile-info-name" style="width:15%">품번</div>
             <div class="profile-info-value" style="width:35%">
-                <input name="part_code" type="text" class="form-control keyword modal_value" placeholder="자동생성" readonly style="width: 100%" autocomplete="off">
+                <input name="part_code" id="part_code" type="text" class="form-control keyword modal_value" placeholder="자동생성" readonly style="width: 100%" autocomplete="off">
             </div>
         </div>
         <%--4--%>
@@ -161,7 +163,6 @@
         <div class="profile-info-row">
             <div class="profile-info-name" style="width:15%">부적합부서</div>
             <div class="profile-info-value" style="width:35%">
-
                 <select name="ret_dept_code" class="form-control modal_value"  onchange="select_change_modal4(this.value);" id="dept_select2" style="width: 100%;">
                     <option value="">선택안함</option>
                 </select>

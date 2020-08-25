@@ -15,6 +15,7 @@
                     <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
                     <td class="wt-px-200">
                         <select name="keyword" id="gubun_select" class="form-control keyword condition_main" style="width:100%" >
+                            <option value="">전체</option>
                             <option value="corp_type1">매입</option>
                             <option value="corp_type2">매출</option>
                             <option value="corp_type3">외주</option>

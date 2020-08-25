@@ -46,12 +46,25 @@
             <div class="profile-info-value"><input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
             <div class="profile-info-value"> <input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
             <div class="profile-info-value"> <select id="modal_select2" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
-        </div> <div class="profile-info-row">
+        </div>
+
+        <div class="profile-info-row">
+
         <div class="profile-info-name">3차</div>
         <div class="profile-info-value"><input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
         <div class="profile-info-value"> <input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
         <div class="profile-info-value"> <select id="modal_select3" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
-    </div>
+
+         </div>
+
+        <div class="profile-info-row">
+
+            <div class="profile-info-name">4차</div>
+            <div class="profile-info-value"><input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
+            <div class="profile-info-value"> <input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
+            <div class="profile-info-value"> <select id="modal_select4" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
+
+        </div>
 
     </div>
 </div>

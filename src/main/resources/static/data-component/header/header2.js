@@ -20,7 +20,7 @@ var array =
     //자재관리 -기준정보관리
         {code: "sysPart", title: '자재관리', sub: '기준정보관리', name: '품목정보관리'},
         {code: "sysLoc", title: '자재관리', sub: '기준정보관리', name: '로케이션관리'},
-        {code: "sysPartCost", title: '자재관리', sub: '기준정보관리', name: '단가관리'},
+        {code: "sysPartCost", title: '자재관리', sub: '기준정보관리', name: '자재단가'},
 
     //발주관리
         {code: "scmOrder", title: '자재관리', sub: '발주관리', name: '발주등록'},
@@ -54,6 +54,7 @@ var array =
         {code: "sysSPart", title: '영업관리', sub: '기준정보관리', name: '제품품목정보관리'},
         {code: "sysERate", title: '영업관리', sub: '기준정보관리', name: '환율관리'},
         {code: "sysWood", title: '영업관리', sub: '기준정보관리', name: '목재단가관리'},
+        {code: "sysSPartCost", title: '영업관리', sub: '기준정보관리', name: '제품단가관리'},
 
     //수주관리
         {code: "crmOrderRecp", title: '영업관리', sub: '수주관리', name: '수주정보관리'},

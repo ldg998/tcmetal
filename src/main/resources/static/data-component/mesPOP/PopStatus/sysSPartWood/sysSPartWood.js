@@ -106,7 +106,7 @@ function jqGrid_main() {
             {name: 'part_kind', index: 'part_kind', sortable:false, width: 100, fixed:true},
             {name: 'part_code', index: 'part_code', sortable:false, width: 100, fixed:true},
             {name: 'part_name', index: 'part_name', sortable:false, width: 150, fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable:false, width: 100, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable:false, width: 100, fixed:true,align: 'right', formatter: 'integer'},
             {name: 'wood_type1', index: 'wood_type1', sortable:false, width: 100, fixed:true},
             {name: 'wood_type2', index: 'wood_type2', sortable:false, width: 100, fixed:true},
             {name: 'wood_type3', index: 'wood_type3', sortable:false, width: 100, fixed:true},

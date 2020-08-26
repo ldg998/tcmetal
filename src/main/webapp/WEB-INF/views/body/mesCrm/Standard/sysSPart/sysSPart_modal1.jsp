@@ -8,26 +8,24 @@
 <div id="addDialog" title="제품품목정보관리" style="display: none">
     <div class="profile-user-info profile-user-info-striped">
         <div class="profile-info-row">
+
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
                     <select class="form-control modal_value" name="supp_code" id="supp_modal_select" style="width: 100%"></select>
                 </div>
             </div>
-        </div>
-        <div class="profile-info-row">
             <div class="profile-info-name">기종</div>
             <div class="profile-info-value">
                 <input type="text"  name="part_kind" class="form-control modal_value"  autocomplete="off" >
             </div>
         </div>
+
         <div class="profile-info-row">
             <div class="profile-info-name">품명</div>
             <div class="profile-info-value">
                 <input type="text"  name="part_name" class="form-control modal_value"  autocomplete="off" >
             </div>
-        </div>
-        <div class="profile-info-row">
             <div class="profile-info-name">품번</div>
             <div class="profile-info-value">
                 <input type="text"  name="part_code" class="form-control modal_value"  autocomplete="off" >
@@ -39,27 +37,24 @@
             <div class="profile-info-value">
                 <input type="text"  name="part_weight" class="form-control modal_value"  onkeyup="num_keyup_comma_crm4(this);" autocomplete="off" style="text-align: right">
             </div>
-        </div>
-        <div class="profile-info-row">
             <div class="profile-info-name">사이즈</div>
             <div class="profile-info-value">
                 <input type="text"  name="part_size" class="form-control modal_value"  autocomplete="off" >
             </div>
         </div>
+
         <div class="profile-info-row">
             <div class="profile-info-name">포장무게</div>
             <div class="profile-info-value">
                 <input type="text"  name="gross_weight" class="form-control modal_value"  onkeyup="num_keyup_comma_crm4(this);" autocomplete="off" style="text-align: right">
             </div>
-        </div>
-
-        <div class="profile-info-row">
             <div class="profile-info-name">화폐단위</div>
             <div class="profile-info-value">
                 <select id='select_modal1' name="currency_code" class="form-control h-25 modal_value" style="width: 100%;">
                 </select>
             </div>
         </div>
+
         <div class="profile-info-row">
             <div class="profile-info-name">공정라우팅</div>
             <div class="profile-info-value">
@@ -68,22 +63,19 @@
                 <option value="2">수출</option>
                 </select>
             </div>
-        </div>
-        <div class="profile-info-row">
             <div class="profile-info-name">외주(열처리)업체</div>
             <div class="profile-info-value">
                 <select id='select_modal3' name="outs_supp_code" class="form-control h-25 modal_value" style="width: 100%;">
                 </select>
             </div>
         </div>
+
         <div class="profile-info-row">
             <div class="profile-info-name">운송수단</div>
             <div class="profile-info-value">
                 <select id='select_modal4' name="trans_code" class="form-control h-25 modal_value" style="width: 100%;">
                 </select>
             </div>
-        </div>
-        <div class="profile-info-row">
             <div class="profile-info-name">사용유무</div>
             <div class="profile-info-value">
                 <select id='select_modal5' name="use_yn" class="form-control h-25 modal_value" style="width: 100%;">
@@ -92,6 +84,7 @@
                 </select>
             </div>
         </div>
+
         <div class="profile-info-row">
             <div class="profile-info-name">초도품 생산일</div>
             <div class="profile-info-value">
@@ -101,15 +94,19 @@
                 <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
+
+            <div class="profile-info-name"></div>
+            <div class="profile-info-value"></div>
+
         </div>
+
         <div class="profile-info-row">
+
             <div class="profile-info-name">목재1</div>
             <div class="profile-info-value">
                 <select id='select_modal6' name="wood_code1" class="form-control h-25 modal_value" style="width: 100%;">
-            </select>
+                </select>
             </div>
-        </div>
-        <div class="profile-info-row">
             <div class="profile-info-name">목재2</div>
             <div class="profile-info-value">
                 <select id='select_modal7' name="wood_code2" class="form-control h-25 modal_value" style="width: 100%;">
@@ -117,6 +114,7 @@
                 </select>
             </div>
         </div>
+
         <div class="profile-info-row">
             <div class="profile-info-name">목재3</div>
             <div class="profile-info-value">
@@ -124,8 +122,6 @@
 
                 </select>
             </div>
-        </div>
-        <div class="profile-info-row">
             <div class="profile-info-name">출장검사</div>
             <div class="profile-info-value">
                 <select id='select_modal9' name="outs_qc" class="form-control h-25 modal_value" style="width: 100%;">
@@ -133,6 +129,7 @@
                     <option value="N">N</option>
                 </select>
             </div>
+
         </div>
 
 

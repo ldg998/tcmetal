@@ -75,7 +75,7 @@ function effectiveness1(modal_objact) { // 유효성 검사
 function modal_make1() {
     $("#addDialog").dialog({
         modal: true,
-        width: 350,
+        width: 600,
         height: 'auto',
         autoOpen: false,
         resizable: false,

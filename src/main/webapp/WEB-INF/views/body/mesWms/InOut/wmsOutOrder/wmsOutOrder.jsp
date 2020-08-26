@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <script type="text/javascript" src="/data-component/mesWMS/InOut/wmsOutOrder/wmsOutOrder.js" charset="UTF-8"></script>
 
 <div class="main-content-inner">

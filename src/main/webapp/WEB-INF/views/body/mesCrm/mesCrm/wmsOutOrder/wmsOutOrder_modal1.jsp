@@ -2,7 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="/data-component/mesCRM/orders/wmsOutOrder/wmsOutOrder_modal1.js"
         charset="UTF-8"></script>
+<style>
 
+    input[type=text][name="qty"] {
+        height: 18px !important;
+    }
+
+</style>
 <div id="addDialog" title="출고지시서" style="display:none">
     <div class="col-lg-12">
         <div class="col-lg-12 padding0">

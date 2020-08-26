@@ -85,6 +85,7 @@ function delete_btn() {
         if (ids.length === 0) {
             alert(msg_object.TBMES_A004.msg_name1);
         } else {
+            if(status_ck(ids)) {
             if (confirm(msg_object.TBMES_A005.msg_name1)) {
                 main_data.check = 'D';
                 wrapWindowByMask2();
@@ -100,6 +101,10 @@ function delete_btn() {
                     console.error(err); // Error 출력
                 });
             }
+        }else {
+                $('#mes_grid').jqGrid("resetSelection");    //그리드 전체 선택해제
+                alert('수주완료된 데이터는 삭제할수 없습니다');
+            }
         }
     } else {
         alert(msg_object.TBMES_A002.msg_name1);
@@ -107,6 +112,38 @@ function delete_btn() {
 }
 
 
+//완료처리버튼
+function complete_btn() {
+    if (main_data.auth.check_edit != "N") {
+        var gu5 = String.fromCharCode(5);             //아스키코드5
+        var ids = $("#mes_grid").getGridParam('selarrrow'); //선택한 그리드 로우
+        if (ids.length === 0) {                             //선택여부
+            alert("완료처리하는 데이터를 선택해주세요");
+        } else {
+            if(status_ck(ids)) {
+                if (confirm("완료처리 하시겠습니까?")) {           //시행여부
+                    wrapWindowByMask2();                       //마스크 온
+                    ccn_ajax("/crmOrderRecpComp", {keyword: ids.join(gu5)}).then(function (data) {
+                        if (data.result === 'NG') {
+                            alert(data.message);
+                        } else {
+                            $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
+                        }
+                        closeWindowByMask();                //마스크 오프
+                    }).catch(function (err) {
+                        closeWindowByMask();                //마스크 오프
+                        console.error(err); // Error 출력
+                    });
+                }
+            }else {
+                alert('이미 수주가 완료된 데이터가 있습니다.');
+            }
+            $('#mes_grid').jqGrid("resetSelection");    //그리드 전체 선택해제
+        }
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1);         //오류메세지 출력
+    }
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_A001");
@@ -126,12 +163,14 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames : ['수주일자','전표번호','업체','PO','기종','품번','품명','단중','단가','수량','금액','등록자','등록일시'],
+        colNames : ['','수주일자','전표번호','업체','상태','PO','기종','품번','품명','단중','단가','수량','금액','등록자','등록일시'],
         colModel : [
+            {name:'status',index:'status',sortable: false,fixed: true,hidden:true},
             {name:'work_date',index:'work_date' ,sortable: false,width:80,fixed: true,formatter:formmatterDate2},
-            {name:'ord_no',index:'ord_no',sortable: false,key: true,width:200,fixed: true},
+            {name:'ord_no',index:'ord_no',sortable: false,key: true,width:160,fixed: true},
             {name:'supp_name',index:'supp_name',sortable: false,width:100,fixed: true},
-            {name:'po_no',index:'po_no',sortable: false,width:150,fixed: true},
+            {name:'status_name',index:'status_name',sortable: false,width:100,fixed: true},
+            {name:'po_no',index:'po_no',sortable: false,width:80,fixed: true},
             {name:'part_kind',index:'part_kind',sortable: false,width:100,fixed: true},
             {name:'part_code',index:'part_code',sortable: false,width:100,fixed: true},
             {name:'part_name',index:'part_name',sortable: false,width:100,fixed: true},
@@ -178,4 +217,20 @@ function datepickerInput() {
 function selectBox() {
     select_makes_base("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
     });
+}
+function status_ck(ids){
+    var ck = 0;
+    var ck2 = true;
+    ids.forEach(function (id) {
+        var rowdata = $('#mes_grid').jqGrid('getRowData', id);// 해당 로우아이디 데이터 호출
+       console.log(rowdata)
+        if(rowdata.status == 1){
+            ck++
+        }
+    })
+   if(ck >0){
+       ck2 = false;
+   }
+
+return ck2;
 }

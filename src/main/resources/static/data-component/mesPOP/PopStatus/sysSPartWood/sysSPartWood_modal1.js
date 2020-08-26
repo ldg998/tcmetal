@@ -19,6 +19,8 @@ function addUpdate_btn() {
         formData.append("wood_type1", add_data.wood_type1);
         formData.append("wood_type2", add_data.wood_type2);
         formData.append("wood_type3", add_data.wood_type3);
+        formData.append("wood_type4", add_data.wood_type4);
+
         formData.append("wood_supp_name", add_data.wood_supp_name);
         formData.append("wood_in_date", add_data.wood_in_date);
         formData.append("wood_remark", add_data.wood_remark);

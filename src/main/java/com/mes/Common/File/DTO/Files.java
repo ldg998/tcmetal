@@ -28,6 +28,7 @@ public class Files {
     private String wood_type1;
     private String wood_type2;
     private String wood_type3;
+    private String wood_type4;
     private String wood_supp_name;
     private String wood_in_date;
     private String wood_remark;

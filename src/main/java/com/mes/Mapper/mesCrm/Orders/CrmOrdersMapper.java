@@ -3,9 +3,9 @@ package com.mes.Mapper.mesCrm.Orders;
 
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
-import com.mes.mesCrm.Orders.DTO.*;
-import com.mes.mesCrm.Standard.DTO.SYS_SPART_CD;
-import com.mes.mesCrm.Standard.DTO.SYS_WOOD_CD;
+import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
+import com.mes.mesCrm.Orders.DTO.CRM_SHIPPING;
+import com.mes.mesCrm.Orders.DTO.WMS_OUT_ORD_SUB;
 import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import org.springframework.stereotype.Repository;
 
@@ -43,4 +43,6 @@ public interface CrmOrdersMapper {
     CRM_SHIPPING crmShippingOneGet(Page p);
 
     Message crmShippingDel(Page p);
+
+    Message crmOrderRecpComp(CRM_ORD_RECP crmOrdRecp);
 }

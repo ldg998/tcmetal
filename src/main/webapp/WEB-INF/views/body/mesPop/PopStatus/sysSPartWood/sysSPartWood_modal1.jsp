@@ -48,8 +48,9 @@
         </div>
 
         <div class="profile-info-row">
-            <div class="profile-info-name"></div>
+            <div class="profile-info-name">재질</div>
             <div class="profile-info-value">
+                <input type="text" name="wood_type4" class="form-control modal_value" autocomplete="off" >
             </div>
             <div class="profile-info-name">형종류</div>
             <div class="profile-info-value">

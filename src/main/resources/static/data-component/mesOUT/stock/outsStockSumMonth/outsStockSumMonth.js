@@ -28,11 +28,7 @@ $(document).ready(function () {
 
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-//모달 확인 조회 btn
-function test(){
-    $("#addDialog").dialog('open'); // 모달 열기
-    jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]'));
-}
+
 // 조회 버튼
 function get_btn(page) {
     main_data.send_data = value_return('.condition_main')
@@ -125,12 +121,12 @@ function jqGrid_main() {
             {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name:'part_kind',index:'part_kind',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
             {name:'part_code',index:'part_code',sortable: false,width:150,fixed: true},
-            {name:'part_name',index:'part_name',sortable: false,width:80,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:150,fixed: true},
             {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
             {name:'prev_qty',index:'prev_qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
             {name:'in_qty',index:'in_qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
             {name:'out_qty',index:'out_qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
-            {name:'',index:'',sortable: false,width:80,fixed: true},
+            {name:'ng_qty',index:'ng_qty',sortable: false,width:80,fixed: true},
             {name:'qty',index:'qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'}// formatter 사용을 통해 데이터 형식 가공
         ],
 

@@ -10,6 +10,7 @@ public class OUTS_STOCK {
     private String part_code;
     private int part_weight;
     private int qty;
+    private int ng_qty;
 
     private String work_date;
     private String create_date;

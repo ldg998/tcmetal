@@ -43,6 +43,11 @@ public class CrmOrdersRestController {
         return crmOrdersService.crmOrderRecpDel(crmOrdRecp);
     }
 
+    @RequestMapping(value="/crmOrderRecpComp" , method = RequestMethod.POST)
+    public Message crmOrderRecpComp(HttpServletRequest req, CRM_ORD_RECP crmOrdRecp){
+        return crmOrdersService.crmOrderRecpComp(req, crmOrdRecp);
+    }
+
     @RequestMapping(value = "/crmOrderRecpModalGet", method = RequestMethod.POST)
     public List<CRM_ORD_RECP> crmOrderRecpModalGet( Page p) {
         return crmOrdersService.crmOrderRecpModalGet(p);
@@ -52,6 +57,10 @@ public class CrmOrdersRestController {
     public Message wmsOutOrderAdd(HttpServletRequest req, WMS_OUT_ORD_SUB woos){
         return crmOrdersService.wmsOutOrderAdd(req, woos);
     }
+
+
+
+
 
     @RequestMapping(value="/wmsOutOrderGet" , method = RequestMethod.POST)
     public RESTful wmsOutOrderGet(Page p){
@@ -98,4 +107,6 @@ public class CrmOrdersRestController {
     public Message crmShippingDel(Page p){
         return crmOrdersService.crmShippingDel( p);
     }
+
+
 }

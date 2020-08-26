@@ -55,6 +55,8 @@ public class PopStatusRestController {
         files.setWood_type1(req.getParameter("wood_type1"));
         files.setWood_type2(req.getParameter("wood_type2"));
         files.setWood_type3(req.getParameter("wood_type3"));
+        files.setWood_type4(req.getParameter("wood_type4"));
+
         files.setWood_supp_name(req.getParameter("wood_supp_name"));
         files.setWood_in_date(req.getParameter("wood_in_date"));
         files.setWood_remark(req.getParameter("wood_remark"));

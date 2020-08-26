@@ -72,8 +72,9 @@ var array =
         {code: "qmsRecvErrorList", title: '품질관리', sub: '수입검사', name: '수입검사 불량현황'},
     //중간검사
         {code: "qmsProdList", title: '품질관리', sub: '중간검사', name: '중간검사 현황'},
-        {code: "qmsProdErrorMan", title: '품질관리', sub: '중간검사', name: '중간검사 조치기록'},
+        {code: "qmsProdMiddleErrorMan", title: '품질관리', sub: '중간검사', name: '중간검사 조치기록'},
         {code: "qmsProdErrorList", title: '품질관리', sub: '중간검사', name: '중간검사 불량현황'},
+
     //출하검사
         {code: "qmsProdList", title: '품질관리', sub: '출하검사', name:'출하검사현황'},
         {code: "qmsProdErrorList", title: '품질관리', sub: '출하검사', name:'출하검사 불량현황'},

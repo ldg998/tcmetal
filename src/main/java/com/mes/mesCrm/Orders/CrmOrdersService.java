@@ -97,4 +97,9 @@ public class CrmOrdersService extends ReturnFunction {
     public Message crmShippingDel(Page p) {
         return crmOrdersMapper.crmShippingDel(p);
     }
+
+
+    public Message crmOrderRecpComp(HttpServletRequest req, CRM_ORD_RECP crmOrdRecp) {
+        return crmOrdersMapper.crmOrderRecpComp(crmOrdRecp);
+    }
 }

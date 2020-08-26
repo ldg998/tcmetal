@@ -98,7 +98,7 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "고객지급품관리 | MES",
-        colNames: ['rownum','','업체','기종','품번','품명','단중','첨자','형종류','중자수','지급품도면','file3','제작업체','입고일','비고','등록자','수정일'],
+        colNames: ['rownum','','업체','기종','품번','품명','단중','첨자','재질','형종류','중자수','지급품도면','file3','제작업체','입고일','비고','등록자','수정일'],
         colModel: [
             {name: 'rownum', index: 'rownum',hidden:true, key:true},
             {name: 'supp_code', index: 'supp_code',hidden:true, sortable:false},
@@ -108,6 +108,7 @@ function jqGrid_main() {
             {name: 'part_name', index: 'part_name', sortable:false, width: 150, fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable:false, width: 100, fixed:true,align: 'right', formatter: 'integer'},
             {name: 'wood_type1', index: 'wood_type1', sortable:false, width: 100, fixed:true},
+            {name: 'wood_type4', index: 'wood_type4', sortable:false, width: 100, fixed:true},
             {name: 'wood_type2', index: 'wood_type2', sortable:false, width: 100, fixed:true},
             {name: 'wood_type3', index: 'wood_type3', sortable:false, width: 100, fixed:true},
             {name: 'file3_name', index: 'file3_name', sortable: false, width: 80, align: 'center', formatter: file3_formatter,fixed:true},

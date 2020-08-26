@@ -241,10 +241,7 @@ function result_code_ck(data){
 }
 
 function select_ck(data){
-   if(data.ng_no ==""){
-       alert('검사번호를 작성해주세요');
-       return false
-   }else if(data.supp_code ==""){
+   if(data.supp_code ==""){
        alert('업체를 선택해주세요');
        return false
     }else if(data.part_kind ==""){

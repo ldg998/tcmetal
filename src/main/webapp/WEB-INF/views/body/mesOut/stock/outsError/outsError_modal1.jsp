@@ -24,7 +24,7 @@
             </div>
             <div class="profile-info-name">검사번호</div>
             <div class="profile-info-value">
-                <input type="text" name="ng_no" class="form-control modal_value" autocomplete="off" autofocus>
+                <input type="text" name="ng_no" class="form-control modal_value" value="" autocomplete="off" placeholder="자동생성" readonly >
             </div>
         </div>
 
@@ -67,7 +67,7 @@
             </div>
             <div class="profile-info-name">제품LOT</div>
             <div class="profile-info-value">
-                <input type="text" name="lot_no" class="form-control modal_value" autocomplete="off">
+                <input type="text" name="lot_no" class="form-control modal_value" autofocus autocomplete="off">
             </div>
         </div>
 

@@ -7,7 +7,9 @@
    overflow-x:hidden;
     overflow-y:hidden;
 }
-
+input[type=text][name="outs_qty"] {
+    height: 18px !important;
+}
 </style>
 
 <div id="addDialog" title="외주출고관리" style="display: none">

@@ -45,9 +45,10 @@ function get_btn(page) {
 function add_btn() {
     if (main_data.auth.check_add !="N") {
         main_data.check = 'I'; // 수정인지 체크
-        modal_reset('.modal_value',['ng_no','lot_no'])
+        modal_reset('.modal_value',['lot_no'])
         $("#select_modal1").prop("disabled", false).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#select_modal2").prop("disabled", false).trigger("change");//셀렉트박스 잠금으로 체인지
+        disabled_tf(["#modal_select1","#modal_select2","#modal_select3","#part_weight"],"N");
         datepickerInput_modal();
         $("#addDialog").dialog('open'); // 모달 열기
 

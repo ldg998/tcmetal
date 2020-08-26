@@ -126,7 +126,7 @@ function jqGrid_main() {
             {name:'prev_qty',index:'prev_qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
             {name:'in_qty',index:'in_qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
             {name:'out_qty',index:'out_qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
-            {name:'ng_qty',index:'ng_qty',sortable: false,width:80,fixed: true},
+            {name:'ng_qty',index:'ng_qty',sortable: false,width:60,fixed: true ,align: 'right', formatter: 'integer'},
             {name:'qty',index:'qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'}// formatter 사용을 통해 데이터 형식 가공
         ],
 

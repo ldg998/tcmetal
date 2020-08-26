@@ -86,6 +86,11 @@ public class UserRestController {
         return userService.sysUserGet(p, req);
     }
 
+     @RequestMapping(value = "/sysUserAllGet", method = RequestMethod.POST)
+    public List<SYSUser> sysUserAllGet(Page p, HttpServletRequest req) {
+        return userService.sysUserAllGet(p, req);
+    }
+
     @RequestMapping(value="/sysUserOneGet" , method = RequestMethod.POST)
     public SYSUser sysUserOneGet(HttpServletRequest req, SYSUser su) throws Exception{
         return userService.sysUserOneGet(req, su);

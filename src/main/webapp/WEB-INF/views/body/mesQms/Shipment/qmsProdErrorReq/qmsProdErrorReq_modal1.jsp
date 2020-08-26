@@ -42,6 +42,7 @@
                 <div class="input-icon input-icon-right">
                     <input type="text" name="work_date" id="datepicker_modal1" class="form-control h-25 modal_value sendDate" readonly>
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                    <input type="hidden" name="ret_no" id="ret_no" class="modal_value" value="">
                 </div>
             </div>
             <div class="profile-info-name" style="width:15%">제품LOT</div>
@@ -145,7 +146,7 @@
                 <div class="filebox_lee">
                     <label for="file_01" class="file_labal">업로드</label>
                     <input type="file"  id="file_01" onchange='file_change(this);'>
-                    <input name="file_key"  type="hidden" class="modal_value">
+                    <input name="file1_code" onchange='file_change(this);' type="hidden" class="modal_value">
                 </div>
 
             </div>
@@ -154,7 +155,7 @@
                 <div class="filebox_lee">
                     <label for="file_02" class="file_labal">업로드</label>
                     <input type="file"  id="file_02" onchange='file_change(this);'>
-                    <input name="file_key2"  type="hidden" class="modal_value">
+                    <input name="file2_code"  onchange='file_change(this);' type="hidden" class="modal_value">
                 </div>
             </div>
         </div>

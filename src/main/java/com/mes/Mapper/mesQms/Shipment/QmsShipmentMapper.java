@@ -60,4 +60,10 @@ public interface QmsShipmentMapper {
     List<QMS_RET> qmsProdErrorReqGet(Page p);
 
     Message qmsProdErrorReqDel(Page p);
+
+    Message qmsMoldWashAdd(POP_MOLD_WASH pmw);
+
+    List<POP_MOLD_WASH> qmsMoldWashGet(Page p);
+
+    Message qmsMoldWashDel(Page p);
 }

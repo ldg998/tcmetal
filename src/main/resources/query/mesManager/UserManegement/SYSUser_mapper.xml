@@ -7,6 +7,9 @@
     <select id="sysUserGet" resultType="com.mes.mesManager.User.DTO.SYSUser">
         	EXEC SP_SYS_USER_GET  #{page}, #{rows}, '', #{keyword},#{keyword2}
     </select>
+     <select id="sysUserAllGet" resultType="com.mes.mesManager.User.DTO.SYSUser">
+        	EXEC SP_SYS_USER_GET  0,0,'',#{keyword},#{keyword2}
+    </select>
 
      <select id="sysUserAdd" resultType="com.mes.Common.DataTransferObject.Message">
     	EXEC SP_SYS_USER_ADD #{user_code},#{user_name},#{dept_code},#{duty_code},#{auth_code},#{tel_no},#{email},#{use_yn},#{update_user},#{keyword}

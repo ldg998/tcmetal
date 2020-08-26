@@ -18,8 +18,8 @@
             <div class="profile-info-name"style="width:25%">측정일자</div>
             <div class="profile-info-value" style="width:25%">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="start_date" id="datepicker_modal"
-                                   class="form-control h-25 condition_main" readonly>
+                            <input type="text" name="work_date" id="datepicker_modal"
+                                   class="form-control h-25 modal_value sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
             </div>
@@ -37,32 +37,32 @@
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">1차</div>
-            <div class="profile-info-value"><input type="text" name="" class="form-control modal_value" autofocus autocomplete="off"></div>
-            <div class="profile-info-value"> <input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
-            <div class="profile-info-value"> <select id="modal_select1" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
+            <div class="profile-info-value"><input type="text" maxlength="5" onkeyup="num_keyup_time(this)" name="time1" class="form-control modal_value"  autofocus autocomplete="off" placeholder="09:50"></div>
+            <div class="profile-info-value"> <input type="text" name="value1" class="form-control modal_value" autocomplete="off"></div>
+            <div class="profile-info-value"> <select id="modal_select1" name="user_code1" class="modal_value" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">2차</div>
-            <div class="profile-info-value"><input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
-            <div class="profile-info-value"> <input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
-            <div class="profile-info-value"> <select id="modal_select2" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
+            <div class="profile-info-value"><input type="text" maxlength="5" onkeyup="num_keyup_time(this)" name="time2"  class="form-control modal_value"   autocomplete="off"></div>
+            <div class="profile-info-value"> <input type="text" name="value2" class="form-control modal_value" autocomplete="off"></div>
+            <div class="profile-info-value"> <select id="modal_select2"  name="user_code2"  class="modal_value"style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
         </div>
 
         <div class="profile-info-row">
 
         <div class="profile-info-name">3차</div>
-        <div class="profile-info-value"><input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
-        <div class="profile-info-value"> <input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
-        <div class="profile-info-value"> <select id="modal_select3" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
+        <div class="profile-info-value"><input type="text" maxlength="5" onkeyup="num_keyup_time(this)" name="time3" class="form-control modal_value"  autocomplete="off"></div>
+        <div class="profile-info-value"> <input type="text" name="value3" class="form-control modal_value" autocomplete="off"></div>
+        <div class="profile-info-value"> <select id="modal_select3" name="user_code3"  class="modal_value" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
 
          </div>
 
         <div class="profile-info-row">
 
             <div class="profile-info-name">4차</div>
-            <div class="profile-info-value"><input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
-            <div class="profile-info-value"> <input type="text" name="" class="form-control modal_value" autocomplete="off"></div>
-            <div class="profile-info-value"> <select id="modal_select4" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
+            <div class="profile-info-value"><input type="text" maxlength="5" onkeyup="num_keyup_time(this)" name="time4" class="form-control modal_value"  autocomplete="off"></div>
+            <div class="profile-info-value"> <input type="text" name="value4" class="form-control modal_value" autocomplete="off"></div>
+            <div class="profile-info-value"> <select id="modal_select4"name="user_code4" class="modal_value" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
 
         </div>
 

@@ -133,6 +133,19 @@
         EXEC SP_QMS_PROD_ERROR_REQ_DEL #{keyword}
     </select>
 
+    <select id="qmsMoldWashAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_MOLD_WASH_ADD #{work_date},#{time1},#{value1},#{user_code1},#{time2},#{value2},#{user_code2},#{time3},#{value3},#{user_code3},#{time4},#{value4},#{user_code4},#{keyword}
+    </select>
+
+    <select id="qmsMoldWashGet" resultType="com.mes.mesQms.Shipment.DTO.POP_MOLD_WASH">
+        EXEC SP_QMS_MOLD_WASH_GET #{page},#{rows},#{start_date},#{end_date}
+   </select>
+
+    <select id="qmsMoldWashDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_QMS_MOLD_WASH_DEL #{keyword}
+   </select>
+
+
 
 
 </mapper>

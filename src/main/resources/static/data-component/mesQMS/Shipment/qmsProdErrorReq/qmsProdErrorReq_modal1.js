@@ -18,7 +18,7 @@ function addUdate_btn() {
         var formData = new FormData();
         var check1;
         var check2;
-
+        formData.append("ret_no", add_data.ret_no);
         formData.append("work_date", add_data.work_date);
         formData.append("lot_no", add_data.lot_no);
         formData.append("supp_code", add_data.supp_code);
@@ -33,7 +33,7 @@ function addUdate_btn() {
         formData.append("act_date", add_data.act_date);
         formData.append("ret_dept_code", add_data.ret_dept_code);
         formData.append("ret_user_code", add_data.ret_user_code);
-
+        formData.append("keyword",main_data.check);
 
 
         if ($("#file_01").prop("files")[0] == null) {
@@ -125,7 +125,7 @@ function select_change_modal3(value) {
 
 function select_change_modal4(value) {
         if (value != "") {
-            select_makes_base('#select_modal5','/sysDeptAllGet2','dept_code','user_name',{keyword:value,keyword2:'Y'},'').then(function (e){
+            select_makes_base('#select_modal5','/sysDeptAllGet2','dept_user_code','user_name',{keyword:value,keyword2:'Y'},'').then(function (e){
                     if(e[0].user_name == "" || e[0].user_name == null || e[0].user_name == "null") {
                         $('#select_modal5').empty();
                         var option = $("<option></option>").text('담당자 없음').val('');

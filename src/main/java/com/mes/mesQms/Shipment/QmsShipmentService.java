@@ -265,7 +265,7 @@ public class QmsShipmentService extends UploadFunction {
                 if(qr.getFile_ck1() == 1) {
                     qr.setKey_value("REQ_"+qr.getSavefile());
                 }else {
-                    qr.setKey_value(qr.getFile_key());
+                    qr.setKey_value(qr.getFile1_code());
                 }
                 i++;
             }
@@ -291,8 +291,8 @@ public class QmsShipmentService extends UploadFunction {
                     qr.setKey_value("REQ2_"+qr.getSavefile());
                     qr.setKey_value2("REQ2_"+qr.getSavefile());
                 }else {
-                    qr.setKey_value(qr.getFile_key());
-                    qr.setKey_value2(qr.getFile_key2());
+                    qr.setKey_value(qr.getFile2_code());
+                    qr.setKey_value2(qr.getFile2_code());
                 }
                 i++;
             }
@@ -310,6 +310,20 @@ public class QmsShipmentService extends UploadFunction {
 
     public Message qmsProdErrorReqDel(Page p, HttpServletRequest req) {
         return qmsShipmentMapper.qmsProdErrorReqDel(p);
+    }
+
+    public Message qmsMoldWashAdd(POP_MOLD_WASH pmw, HttpServletRequest req) {
+        return qmsShipmentMapper.qmsMoldWashAdd(pmw);
+    }
+
+    public RESTful qmsMoldWashGet(Page p, HttpServletRequest req) {
+
+        List<POP_MOLD_WASH> rows = qmsShipmentMapper.qmsMoldWashGet(p);
+        return getListData(rows, p);
+    }
+
+    public Message qmsMoldWashDel(Page p, HttpServletRequest req) {
+        return qmsShipmentMapper.qmsMoldWashDel(p);
     }
 }
 

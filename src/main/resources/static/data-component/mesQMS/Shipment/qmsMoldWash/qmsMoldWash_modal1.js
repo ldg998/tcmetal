@@ -26,7 +26,8 @@ function addUdate_btn() {
         if (confirm(text)) {
             wrapWindowByMask2();
             modal_objact.keyword = main_data.check;
-            ccn_ajax("/sysDeptAdd", modal_objact).then(function (data) {
+
+            ccn_ajax("/qmsMoldWashAdd", modal_objact).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
@@ -35,7 +36,7 @@ function addUdate_btn() {
                         get_btn(1);
                     } else {
                         $("#addDialog").dialog('close');
-                        get_btn($("#mes_grid").getGridParam('page'));
+                        $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
                     }
                 }
                 closeWindowByMask();
@@ -49,14 +50,6 @@ function addUdate_btn() {
 
 }
 
-// 엔터키를 통한 저장버튼 활성화
-function add_click_btn() {
-    $(document).on("keypress",'.modal_value',function (e) {
-        if (e.which == 13){
-            addUdate_btn();
-        }
-    });
-}
 ////////////////////////////호출 함수/////////////////////////////////////
 
 //모달 메세지 설정
@@ -67,11 +60,22 @@ function msg_get_modal1() {
 }
 
 function effectiveness1(modal_objact) { // 유효성 검사
-    if (modal_objact.dept_name === '') {
-        alert("부서명을 입력해주세요");
+    var timeRegExp = /^([1-9]|[01][0-9]|2[0-3]):([0-5][0-9])$/;
+
+    if(timeRegExp.test(modal_objact.time1) == false){
+        alert("1차 측정시간을 확인해주세요")
         return false;
-    }  else {
-        return true;
+    }else if(timeRegExp.test(modal_objact.time2)==false){
+        alert("2차 측정시간을 확인해주세요")
+        return false;
+    }else if(timeRegExp.test(modal_objact.time3) == false){
+        alert("3차 측정시간을 확인해주세요")
+        return false;
+    }else if(timeRegExp.test(modal_objact.time4) == false){
+        alert("4차 측정시간을 확인해주세요")
+        return false;
+    }else {
+        return true
     }
 }
 
@@ -89,7 +93,7 @@ function modal_make1() {
                 text: "저장",
                 "class": "btn btn-minier",
                 click: function () {
-                    $(this).dialog("close");
+                    addUdate_btn();
                 }
             },
             {
@@ -126,9 +130,13 @@ function modal_make1() {
 }
 
 function selectBox_modal1() {
-    $('#modal_select1').select2();
-    $('#modal_select2').select2();
-    $('#modal_select3').select2();
+    select_makes_sub("#modal_select1","/sysUserAllGet","user_code","user_name",{keyword:"",keyword2:"Y"},"Y")
+    select_makes_sub("#modal_select2","/sysUserAllGet","user_code","user_name",{keyword:"",keyword2:"Y"},"Y")
+    select_makes_sub("#modal_select3","/sysUserAllGet","user_code","user_name",{keyword:"",keyword2:"Y"},"Y")
+    select_makes_sub("#modal_select4","/sysUserAllGet","user_code","user_name",{keyword:"",keyword2:"Y"},"Y")
+
+
+
 }
 
 function datepickerInput_modal() {

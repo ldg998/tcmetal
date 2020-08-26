@@ -37,7 +37,7 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
@@ -47,7 +47,7 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
@@ -62,13 +62,13 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                       onclick=" test();">
+                       onclick="get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>
                     </a>
                     <a id="add_btn" class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="test();">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="add_btn();">
                         <span><i class="fa fa-plus bigger-110 blue"></i>
                             <span>추가</span>
                         </span>

@@ -32,9 +32,12 @@ public class QMS_RET {
     private String user_name;
     private String ret_user_name;
     private String part_name;
+    private String act_type_name;
 
     private String file1_code;
     private String file2_code;
+    private String file1_ck;
+    private String file2_ck;
 
     private List<MultipartFile> file1;
     private List<MultipartFile> file2;
@@ -53,6 +56,7 @@ public class QMS_RET {
 
     private String file_key;
     private String file_key2;
+
 
 
 }

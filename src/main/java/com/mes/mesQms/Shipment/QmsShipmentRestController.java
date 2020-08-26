@@ -234,9 +234,24 @@ public class QmsShipmentRestController extends UploadFunction {
         return qmsShipmentService.qmsProdErrorReqGet(p,req);
     }
 
- @RequestMapping(value = "/qmsProdErrorReqDel", method = RequestMethod.POST)
+    @RequestMapping(value = "/qmsProdErrorReqDel", method = RequestMethod.POST)
     public Message qmsProdErrorReqDel(Page p,HttpServletRequest req){
         return qmsShipmentService.qmsProdErrorReqDel(p,req);
+    }
+
+     @RequestMapping(value = "/qmsMoldWashAdd", method = RequestMethod.POST)
+    public Message qmsMoldWashAdd(POP_MOLD_WASH pmw,HttpServletRequest req){
+        return qmsShipmentService.qmsMoldWashAdd(pmw,req);
+    }
+
+     @RequestMapping(value = "/qmsMoldWashGet", method = RequestMethod.POST)
+    public RESTful qmsMoldWashGet(Page p,HttpServletRequest req){
+        return qmsShipmentService.qmsMoldWashGet(p,req);
+    }
+
+    @RequestMapping(value = "/qmsMoldWashDel", method = RequestMethod.POST)
+    public Message qmsMoldWashDel(Page p,HttpServletRequest req){
+        return qmsShipmentService.qmsMoldWashDel(p,req);
     }
 
 

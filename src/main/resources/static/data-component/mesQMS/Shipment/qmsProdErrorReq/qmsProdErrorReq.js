@@ -6,7 +6,7 @@ var main_data = {
     check: 'I',
     send_data: {},
     send_data_post: {},
-    readonly:['code_value'],
+    readonly:['lot_no',''],
     auth:{}
 }
 
@@ -42,14 +42,15 @@ function get_btn(page) {
 function add_btn() {
     if (main_data.auth.check_add !="N") {
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 명을 가진 항목들의 내용을 리셋,비워줌 main_data readonly 에 추가한 name의 항목에 readonly 옵션을 추가
+        $('#file_01').closest("div").children(".file_labal").text("업로드")
+        $('#file_02').closest("div").children(".file_labal").text("업로드")
         modalValuePush("#group_select","#group_code","#group_name"); // name1의 값을 name2,name3 에 넣어줌
         main_data.check = 'I'; // 추가인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
         main_data.check2 = 'Y';
         datepickerInput_modal();
-
         $("#select_modal1  option:eq(0)").prop("selected", true).trigger("change");
         $("#select_modal2  option:eq(0)").prop("selected", true).trigger("change");
-
+        disabled_tf(["#modal_select1","#modal_select2","#modal_select3"],"N");
 
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
@@ -61,18 +62,24 @@ function add_btn() {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
+        $('#file_01').closest("div").children(".file_labal").text("업로드")
+        $('#file_02').closest("div").children(".file_labal").text("업로드")
+
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
-
-        var send_data = {};
-        send_data.keyword = jqgrid_data.code_type;
-        send_data.keyword2 = jqgrid_data.code_value; // data에 값을 추가하여 파라미터로 사용
-
-        ccn_ajax('/sysCommonOneGet', send_data).then(function (data) {
-            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
-            $('#group_name').val(data.cn); // 해당 id에 값을 부여
-            $('#group_code').val(data.code_type); // 해당 id에 값을 부여
-            $("#addDialog").dialog('open');// 모달 열기
+            disabled_tf(["#modal_select1","#modal_select2","#modal_select3"],"Y");
+            modal_edits(".modal_value",[],jqgrid_data);
+        select_makes_base("#modal_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:jqgrid_data.supp_code},"N").then(function (data) {
+        $('#modal_select2').val(jqgrid_data.part_kind).trigger("change");
+        select_makes_base("#modal_select3", "/sysSpartAllGet", "part_code", "part_name", {keyword: $("#modal_select1").val(), keyword2: $("#modal_select2").val()}, "N").then(function (data) {
+            $('#modal_select3').val(jqgrid_data.part_code).trigger("change");
+            select_makes_base('#select_modal5','/sysDeptAllGet2','dept_user_code','user_name',{keyword:$('#dept_select2').val(),keyword2:'Y'},'').then(function (e){
+                $('#select_modal5').val(jqgrid_data.ret_user_code).trigger("change");
+                $("#addDialog").dialog('open');// 모달 열기
+            })
+            })
         });
+
+
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
     }
@@ -128,9 +135,18 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['접수일자','등록번호','업체','기종','품번','품명','제품LOT','부적합분류(코드화)','부적합세부','대책서송부일','대책방안','처리일자','처리구분','부적합연락서','대책서','등록자','등록일시'
+        colNames: ['','','','','','','','','','접수일자','등록번호','업체','기종','품번','품명','제품LOT','부적합분류(코드화)','부적합세부','대책서송부일','대책방안','처리일자','처리구분','부적합연락서','대책서','등록자','등록일시'
         ],
         colModel: [
+            {name: 'act_type', index: 'act_type',sortable: false,fixed: true,hidden:true},
+            {name: 'file1_code', index: 'file1_code',sortable: false,fixed: true,hidden:true},
+            {name: 'file2_code', index: 'file2_code',sortable: false,fixed: true,hidden:true},
+            {name: 'supp_code', index: 'supp_code',sortable: false,fixed: true,hidden:true},
+            {name: 'part_code', index: 'part_code',sortable: false,fixed: true,hidden:true},
+            {name: 'part_kind', index: 'part_kind',sortable: false,fixed: true,hidden:true},
+            {name: 'report_type', index: 'report_type',sortable: false,fixed: true,hidden:true},
+            {name: 'ret_user_code', index: 'ret_user_code',sortable: false,fixed: true,hidden:true},
+            {name: 'ret_dept_code', index: 'ret_dept_code',sortable: false,fixed: true,hidden:true},
             {name: 'work_date', index: 'work_date',sortable: false, width: 100,fixed: true , formatter: formmatterDate2},
             {name: 'ret_no', index: 'ret_no',sortable: false,key:true, width: 150,fixed: true},
             {name: 'supp_name', index: 'supp_name',sortable: false, width: 100,fixed: true},
@@ -143,9 +159,9 @@ function jqGrid_main() {
             {name: 'report_date', index: 'report_date',sortable: false, width: 120,fixed: true ,formatter: formmatterDate2},
             {name: 'measuer_name', index: 'measuer_name',sortable: false, width: 120,fixed: true},
             {name: 'act_date', index: 'act_date',sortable: false, width: 80,fixed: true,formatter: formmatterDate2},
-            {name: 'act_type', index: 'act_type',sortable: false, width: 80,fixed: true},
-            {name: 'file1_code', index: 'file1_code',sortable: false, width: 80,fixed: true,formatter: file1_formatter},
-            {name: 'file2_code', index: 'file2_code',sortable: false, width: 80,fixed: true,formatter: file2_formatter},
+            {name: 'act_type_name', index: 'act_type_name',sortable: false, width: 80,fixed: true},
+            {name: 'file1_ck', index: 'file1_code',sortable: false, width: 80,fixed: true,formatter: file1_formatter},
+            {name: 'file2_ck', index: 'file2_code',sortable: false, width: 80,fixed: true,formatter: file2_formatter},
             {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
             {name: 'create_date', index: 'create_date',sortable: false, width: 130,fixed: true ,formatter: formmatterDate}
 

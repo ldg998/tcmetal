@@ -25,15 +25,11 @@ $(document).ready(function () {
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////
-function test() {
-    $('#addDialog').dialog('open')
-}
 // 조회버튼
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
-    main_data.send_data_post = main_data.send_data; // 수정,삭제 시 다시 조회하기 위한 데이터 저장
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysCommonGet',
+        url: '/qmsMoldWashGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -45,22 +41,54 @@ function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
+        modal_edits('.modal_value',[],jqgrid_data)
+        $("#addDialog").dialog('open'); // 모달 열기
 
-        var send_data = {};
-        send_data.keyword = jqgrid_data.code_type;
-        send_data.keyword2 = jqgrid_data.code_value; // data에 값을 추가하여 파라미터로 사용
-
-        ccn_ajax('/sysCommonOneGet', send_data).then(function (data) {
-            modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
-            $('#group_name').val(data.cn); // 해당 id에 값을 부여
-            $('#group_code').val(data.code_type); // 해당 id에 값을 부여
-            $("#addDialog").dialog('open');// 모달 열기
-        });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
     }
 }
 
+
+// 추가 버튼
+function add_btn() {
+    if (main_data.auth.check_add !="N") {
+        main_data.check = 'I'; // 수정인지 체크
+        modal_reset('.modal_value',[])
+        datepickerInput_modal();
+        $("#addDialog").dialog('open'); // 모달 열기
+
+    }
+}
+// 삭제 버튼
+function delete_btn() {
+    if (main_data.auth.check_del != "N") {
+        var gu5 = String.fromCharCode(5);
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        if (ids.length === 0) {
+            alert(msg_object.TBMES_A004.msg_name1);
+        } else {
+            if (confirm(msg_object.TBMES_A005.msg_name1)) {
+                main_data.check = 'D';
+                wrapWindowByMask2();
+                ccn_ajax("/qmsMoldWashDel", {keyword: ids.join(gu5)}).then(function (data) {
+                    if (data.result === 'NG') {
+                        alert(data.message);
+                    } else {
+                        $('#mes_grid').trigger('reloadGrid');
+                    }
+                    closeWindowByMask();
+                }).catch(function (err) {
+                    closeWindowByMask();
+                    console.error(err); // Error 출력
+                });
+            }
+        }
+    } else {
+        alert(msg_object.TBMES_A002.msg_name1);
+    }
+
+}
 
 
 ////////////////////////////호출 함수//////////////////////////////////
@@ -83,21 +111,25 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['일자','측정시간','측정값','작업자','측정시간','측정값','작업자','측정시간','측정값','작업자','측정시간','측정값','작업자'],
+        colNames: ['','','','','일자','측정시간','측정값','작업자','측정시간','측정값','작업자','측정시간','측정값','작업자','측정시간','측정값','작업자'],
         colModel: [
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '1', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '2', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '3', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '4', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true},
-            {name: '', index: '',sortable: false, width: 80,fixed: true}
+            {name: 'user_code1', index: 'user_code1',sortable: false,fixed: true,hidden:true},
+            {name: 'user_code2', index: 'user_code2',sortable: false,fixed: true,hidden:true},
+            {name: 'user_code3', index: 'user_code3',sortable: false,fixed: true,hidden:true},
+            {name: 'user_code4', index: 'user_code4',sortable: false,fixed: true,hidden:true},
+            {name: 'work_date',  index: 'work_date',sortable: false, width: 80,fixed: true,key:true,formatter: formmatterDate2},
+            {name: 'time1', index: 'time1',sortable: false, width: 80,fixed: true ,align: 'right'},
+            {name: 'value1', index: 'value1',sortable: false, width: 80,fixed: true ,align: 'right'},
+            {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
+            {name: 'time2', index: 'time2',sortable: false, width: 80,fixed: true ,align: 'right'},
+            {name: 'value2', index: 'value2',sortable: false, width: 80,fixed: true ,align: 'right'},
+            {name: 'user_name2', index: 'user_name2',sortable: false, width: 80,fixed: true},
+            {name: 'time3', index: 'time3',sortable: false, width: 80,fixed: true ,align: 'right'},
+            {name: 'value3', index: 'value3',sortable: false, width: 80,fixed: true ,align: 'right'},
+            {name: 'user_name3', index: 'user_name3',sortable: false, width: 80,fixed: true},
+            {name: 'time4', index: 'time4',sortable: false, width: 80,fixed: true ,align: 'right'},
+            {name: 'value4', index: 'value4',sortable: false, width: 80,fixed: true ,align: 'right'},
+            {name: 'user_name4', index: 'user_name4',sortable: false, width: 80,fixed: true}
 
         ],
         caption: "도형제관리 | MES",
@@ -136,10 +168,10 @@ function header_make() {
     $("#mes_grid").jqGrid('setGroupHeaders', {
         useColSpanStyle: true,
         groupHeaders: [
-            {startColumnName: '1', numberOfColumns: 3, titleText: '<center>1차</center>'},
-            {startColumnName: '2', numberOfColumns: 3, titleText: '<center>2차</center>'},
-            {startColumnName: '3', numberOfColumns: 3, titleText: '<center>3차</center>'},
-            {startColumnName: '4', numberOfColumns: 3, titleText: '<center>4차</center>'}
+            {startColumnName: 'time1', numberOfColumns: 3, titleText: '<center>1차</center>'},
+            {startColumnName: 'time2', numberOfColumns: 3, titleText: '<center>2차</center>'},
+            {startColumnName: 'time3', numberOfColumns: 3, titleText: '<center>3차</center>'},
+            {startColumnName: 'time4', numberOfColumns: 3, titleText: '<center>4차</center>'}
 
         ]
     })

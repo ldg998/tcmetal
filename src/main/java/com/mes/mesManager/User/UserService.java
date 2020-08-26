@@ -140,4 +140,8 @@ public class UserService extends ReturnFunction {
         p.setSite_code(getSessionData(req).getSite_code());
         return userMapper.sysDeptAllGet2(p);
     }
+
+    public List<SYSUser> sysUserAllGet(Page p, HttpServletRequest req) {
+        return userMapper.sysUserAllGet(p);
+    }
 }

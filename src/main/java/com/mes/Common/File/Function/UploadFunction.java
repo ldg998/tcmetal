@@ -243,7 +243,7 @@ public class UploadFunction extends ReturnFunction {
         String FileName = MakeFileNameNew2(page_name,1) + "." + name[name.length-1];
         String Key = MakeFileName();
 
-        files.setKey_value(Key);
+        files.setKey_value(FileName);
         files.setFiles(multipartFile);
         files.setFile_size(multipartFile.getSize());
         files.setFile_volume(multipartFile.getSize() / 1024);

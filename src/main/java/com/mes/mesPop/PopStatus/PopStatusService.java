@@ -48,7 +48,7 @@ public class PopStatusService extends UploadFunction {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "sysSPartDrawing";
         Files newFiles = setSysSPartDrawingAdd(page_name,req,"C:/UploadFile/tcmetal/sysSPartDrawing/");
-        files.setKey_value(newFiles.getKey_value());
+        files.setKey_value(newFiles.getUrl());
         mesPopStatusMapper.sysSPartDrawingAdd(files);
     }
 
@@ -62,7 +62,7 @@ public class PopStatusService extends UploadFunction {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "sysSPartWood";
         Files newFiles = setSysSPartWoodAdd(page_name,req,"C:/UploadFile/tcmetal/sysSPartWood/");
-        files.setKey_value(newFiles.getKey_value());
+        files.setKey_value(newFiles.getUrl());
         mesPopStatusMapper.sysSPartWoodAdd(files);
     }
 

@@ -76,19 +76,21 @@ function addUdate_btn() {
 
 
 function modal_get_btn(page) {
-    main_data.send_data = value_return(".modal_value"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
-    main_data.send_data.keyword4  ="";
-    main_data.send_data.keyword =main_data.send_data.supp_code
-    main_data.send_data.keyword2 =main_data.send_data.part_kind
-    main_data.send_data.keyword3 =main_data.send_data.outs_supp_code
+    if (main_data.check === "I") {
 
-    $("#mes_add_grid2").setGridParam({ // 그리드 조회
-        url:'/outsOutModalListGet',
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data
-    }).trigger("reloadGrid");
+        main_data.send_data = value_return(".modal_value"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
+        main_data.send_data.keyword4 = "";
+        main_data.send_data.keyword = main_data.send_data.supp_code
+        main_data.send_data.keyword2 = main_data.send_data.part_kind
+        main_data.send_data.keyword3 = main_data.send_data.outs_supp_code
 
+        $("#mes_add_grid2").setGridParam({ // 그리드 조회
+            url: '/outsOutModalListGet',
+            datatype: "json",
+            page: page,
+            postData: main_data.send_data
+        }).trigger("reloadGrid");
+    }
 }
 
 ////////////////////////////호출 함수/////////////////////////////////////

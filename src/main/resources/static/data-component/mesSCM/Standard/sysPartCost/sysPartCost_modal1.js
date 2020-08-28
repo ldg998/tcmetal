@@ -104,8 +104,8 @@ function jqGrid_main_modal() {
         colNames : ['','변경일자','단가'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'part_code',index:'part_code',sortable: false,fixed: true,hidden:true},
-            {name:'start_date',index:'start_date',sortable: false,width:110,fixed: true,formatter: formmatterDate2 },
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:125,fixed: true,align: 'right', formatter: 'integer'}
+            {name:'start_date',index:'start_date',sortable: false,width:90,fixed: true,formatter: formmatterDate2 },
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:100,fixed: true,align: 'right', formatter: 'integer'}
 
         ],
         multiselect: true,

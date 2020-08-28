@@ -163,8 +163,8 @@ function jqGrid_main() {
             {name:'outs_supp_name',index:'outs_supp_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
             {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true},
             {name:'part_kind',index:'part_kind',sortable: false,width:80,fixed: true},
-            {name:'part_code',index:'part_code',sortable: false,width:80,fixed: true},
-            {name:'part_name',index:'part_name',sortable: false,width:80,fixed: true},
+            {name:'part_code',index:'part_code',sortable: false,width:120,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:130,fixed: true},
             {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
             {name:'qty',index:'qty',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
             {name:'outs_qc',index:'outs_qc',sortable: false,width:80,fixed: true},

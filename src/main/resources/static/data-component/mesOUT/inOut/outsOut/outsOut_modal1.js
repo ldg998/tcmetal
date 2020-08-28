@@ -21,16 +21,17 @@ function addUdate_btn() {
     var add_data = value_return(".modal_value");
     add_data.work_date = add_data.work_date.replace(/\-/g, '');
 
+
     if (jdata.length > 0) {
         if (qty_chck(jdata)) {
         var list = [];
         var list2 = [];
         jdata.forEach(function (data, j) {
-            if (data.outs_qty !== '' && data.outs_qty > 0) {
-                list.push(data.supp_code + gu4 + data.outs_supp_code + gu4 + data.part_kind + gu4 + data.part_code + gu4 +data.part_weight + gu4 + data.qty + gu4 + data.outs_qty);
-            } else {
-                list2.push(data.supp_code);
-            }
+               if(data.outs_qty > 0 && data.outs_qty !="" ||  main_data.check =='U') {
+                   list.push(data.supp_code + gu4 + data.outs_supp_code + gu4 + data.part_kind + gu4 + data.part_code + gu4 + data.part_weight + gu4 + data.qty + gu4 + data.outs_qty);
+               }else {
+                   list2.push(data.supp_code + gu4 + data.outs_supp_code + gu4 + data.part_kind + gu4 + data.part_code + gu4 + data.part_weight + gu4 + data.qty + gu4 + data.outs_qty)
+               }
         });
         callback(function () {
             var text = msg_object.TBMES_Q002.msg_name1;
@@ -63,9 +64,7 @@ function addUdate_btn() {
 
 
         });
-    }else {
-            alert("출고수량을 확인해주세요.");
-        }
+    }
     } else {
         alert("저장할 데이터가 없습니다.");
     }
@@ -77,19 +76,21 @@ function addUdate_btn() {
 
 
 function modal_get_btn(page) {
-    main_data.send_data = value_return(".modal_value"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
-    main_data.send_data.keyword4  ="";
-    main_data.send_data.keyword =main_data.send_data.supp_code
-    main_data.send_data.keyword2 =main_data.send_data.part_kind
-    main_data.send_data.keyword3 =main_data.send_data.outs_supp_code
+    if (main_data.check === "I") {
 
-    $("#mes_add_grid2").setGridParam({ // 그리드 조회
-        url:'/outsOutModalListGet',
-        datatype: "json",
-        page: page,
-        postData: main_data.send_data
-    }).trigger("reloadGrid");
+        main_data.send_data = value_return(".modal_value"); // 해당 클래스명을 가진 항목의 name에 맞도록 객체 생성
+        main_data.send_data.keyword4 = "";
+        main_data.send_data.keyword = main_data.send_data.supp_code
+        main_data.send_data.keyword2 = main_data.send_data.part_kind
+        main_data.send_data.keyword3 = main_data.send_data.outs_supp_code
 
+        $("#mes_add_grid2").setGridParam({ // 그리드 조회
+            url: '/outsOutModalListGet',
+            datatype: "json",
+            page: page,
+            postData: main_data.send_data
+        }).trigger("reloadGrid");
+    }
 }
 
 ////////////////////////////호출 함수/////////////////////////////////////
@@ -161,11 +162,6 @@ function jqGrid_main_modal() {
                                         e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
                                         $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
                                         return false;
-                                    } else if(parseFloat_change(value) <= 0) {
-                                        alert("출고량이 0보다 커야합니다.");
-                                        e.target.value = '';
-                                        $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
-                                        return false;
                                     }
                                     $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
                                 }
@@ -180,11 +176,6 @@ function jqGrid_main_modal() {
                                 if (isNaN(value)){
                                     alert("숫자만 입력가능합니다.");
                                     e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
-                                    $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
-                                    return false;
-                                } else if(parseInt_change(value) <= 0) {
-                                    alert("출고량이 0보다 커야합니다.");
-                                    e.target.value = '';
                                     $("#mes_add_grid2").jqGrid("saveCell", saverow, savecol);
                                     return false;
                                 }
@@ -245,22 +236,17 @@ function datepickerInput_modal() {
 }
 function qty_chck(data){
     var ck = true;
-
-
+    var ck_int2 = 0;
     data.forEach(function(id) {
-        if(id.qty_ck >= id.outs_qty ){
-        if(id.in_no =='' || id.in_no == null ) {
-            if (id.outs_qty == '' || id.outs_qty == 0) {
-                ck = false
-                return
-            }
-        }
-    }else {
-            ck = false
+        if(id.outs_qty > id.qty_ck){
+            ck_int2++
         }
     }); //반복문
 
-
+    if(ck_int2 >0){
+        alert("재고수량을 다시 확인해주세요");
+        ck = false
+    }
 
     return ck
 }

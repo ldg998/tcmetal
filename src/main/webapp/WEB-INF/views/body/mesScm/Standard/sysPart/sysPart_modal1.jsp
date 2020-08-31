@@ -115,6 +115,19 @@
                 </div>
             </div>
 
+            <div class="profile-info-row">
+                <div class="profile-info-name">재고관리</div>
+                <div class="profile-info-value">
+                    <select id="stock_yn" name="stock_yn" class="form-control keyword modal_value"
+                            style="width:100%">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+
+
+                    </select>
+                </div>
+            </div>
+
 
     </div>
 </div>

@@ -39,6 +39,8 @@ public class SYS_SPART_CD {
     private String wood_in_date;
     private String wood_remark;
     private String keyword;
+    private String keyword2;
+    private String keyword3;
     private String outs_supp_name;
     private String route_name;
     private String start_date;
@@ -46,8 +48,12 @@ public class SYS_SPART_CD {
     private String user_name;
     private String cost_user_name;
     private String user_code;
-
+    private int max_unit_cost;
     private String update_date;
     private String cost_create_date;
+
+
+
+
 
 }

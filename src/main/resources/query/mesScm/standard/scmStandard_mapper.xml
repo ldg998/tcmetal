@@ -30,7 +30,8 @@
 	#{loc_code},
 	#{user_code},
 	#{qc_level},
-	#{keyword}
+	#{keyword},
+	#{stock_yn}
     </select>
     <select id="sysPartDel" resultType="com.mes.Common.DataTransferObject.Message">
     	EXEC SP_SYS_PART_DEL #{keyword}

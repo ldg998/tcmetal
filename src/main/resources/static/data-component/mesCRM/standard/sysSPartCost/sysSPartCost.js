@@ -22,9 +22,7 @@ $(document).ready(function () {
     authcheck();    // 권한 체크
     jqgridPagerIcons(); // 그리드 아이콘 설정 맨 하단으로
     selectBox();
-
-  //  get_btn(1);// 페이지 load 동시에 그리드 조회
-
+    datepicker()
 });
 
 
@@ -80,16 +78,49 @@ function update_btn(jqgrid_data) {
         alert(msg_object.TBMES_A003.msg_name1);
     }
 }
-function select_change1(value) {
-    if (value !== ""){
-        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+// 삭제 버튼
+function add_part_weight() {
+    if(main_data.auth.check_del != "N") { //권한체크
+        var gu4 = String.fromCharCode(4);
+        var gu5 = String.fromCharCode(5);
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        var keywords = [];
+        var code_list;
+
+        if (ids.length === 0) {
+            alert(msg_object.TBMES_A004.msg_name1);
+        } else {
+            if (confirm('선택 제품의 단가를 변경하시겠습니까?')) {
+                main_data.check = 'I';
+                for(var i=0;i<ids.length;i++){
+                    var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
+                    data.start_date = data.start_date.replace(/\-/g, '')
+                    keywords.push(data.supp_code+ gu4 +data.part_code+ gu4 +data.part_kind + gu4 +data.start_date);
+                }
+                code_list=keywords.join(gu5);
+                var work_date = $('#datepicker1').val().replace(/\-/g, '')
+                var  unit_cost    =$('#part_weight').val().replace(/\,/g, '')
+                wrapWindowByMask2();
+                ccn_ajax("/sysSpartCostAddWeight", {keyword:code_list ,keyword2:work_date,keyword3:unit_cost }).then(function (data) {
+                    if (data.result === 'NG') {
+                        alert(data.message);
+                    } else {
+                        $("#mes_grid").trigger("reloadGrid");
+
+                    }
+                    closeWindowByMask();
+                }).catch(function (err) {
+                    closeWindowByMask();
+                    console.error(err); // Error 출력
+                });
+            }
+        }
     } else {
-        $('#part_kind_select').empty();
-        var option = $("<option></option>").text('전체').val('');
-        $('#part_kind_select').append(option);
-        $('#part_kind_select').select2();
+        alert(msg_object.TBMES_A002.msg_name1);
     }
 }
+
+
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
@@ -124,12 +155,13 @@ function jqGrid_main() {
             {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,formatter: 'integer',align: 'right'},
             {name:'currency_code',index:'currency_code',sortable: false,width:80,fixed: true},
             {name:'start_date',index:'start_date',sortable: false,width:80,fixed: true,formatter:formmatterDate2},
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:80,fixed: true,formatter: 'integer',align: 'right'},
+            {name:'max_unit_cost',index:'max_unit_cost',sortable: false,width:80,fixed: true,formatter: 'integer',align: 'right'},
             {name:'cost_user_name',index:'cost_user_name',sortable: false,width:80,fixed: true},
             {name:'cost_create_date',index:'cost_create_date',sortable: false,width:180,fixed: true,formatter:formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "제품단가관리 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
+        multiselect: true,
         height: 600, // 그리드 세로 길이 설정
         pager: '#mes_grid_pager',// pager 연결
         rowNum: 100, // 1페이지당 데이터 수
@@ -163,6 +195,10 @@ function selectBox() {
         $('#part_kind_select').select2();
     });
 }
+function datepicker() {
+    datepicker_makes("#datepicker1", 0);
+}
+
 //
 // function supp_select_change() {
 //     var supp_code = $('#supp_select').val();
@@ -172,3 +208,15 @@ function selectBox() {
 //         select_makes_sub("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:supp_code},"N");
 //     }
 // }
+
+
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
+}

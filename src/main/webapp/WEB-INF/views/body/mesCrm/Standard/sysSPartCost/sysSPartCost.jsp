@@ -25,6 +25,24 @@
                         <select id='part_kind_select' name="keyword2" class="form-control h-25 condition_main" style="width: 100%;">--%>
                         </select>
                     </td>
+
+                    <td class="wt-px-75 t-align-c td-title padding-a-0">출고일짜</td>
+                    <td class="wt-px-150">
+                        <div class="input-icon input-icon-right">
+                            <input type="text" name="work_date" id="datepicker1"
+                                   class="form-control h-25 condition_main" readonly>
+                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                        </div>
+                    </td>
+
+
+
+                    <td class="wt-px-100 t-align-c td-title padding-a-0">단가</td>
+                    <td class="wt-px-200">
+                        <input type="text" id='part_weight' name="part_weight" class="form-control h-25 condition_main" onkeyup="num_keyup_comma(this)" autocomplete="off" style="width: 100%;">
+
+                    </td>
+
                     <td></td>
                 </tr>
                 </tbody>
@@ -44,7 +62,13 @@
                             <span>조회</span>
                         </span>
                     </a>
-
+                    <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
+                       id="btn-weight" tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
+                       onclick="add_part_weight()">
+                                        <span><i class="fa fa-download bigger-110 blue"></i>
+                                            <span>단가적용</span>
+                                        </span>
+                    </a>
 
                 </div>
             </div>

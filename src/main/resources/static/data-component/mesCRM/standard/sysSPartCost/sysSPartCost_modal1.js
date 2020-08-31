@@ -16,7 +16,7 @@ function add_modal1_btn(){
     modalValue.unit_cost = modalValue.unit_cost.replace(/\,/g, '');
 
         if (confirm('해당 제품의 단가를 저장하시겠습니까?')) {
-            ccn_ajax('sysSpartCostAdd',modalValue).then(function (data) {
+            ccn_ajax('/sysSpartCostAdd',modalValue).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
                 } else {
@@ -32,48 +32,9 @@ function add_modal1_btn(){
 }
 
 
-// 삭제 버튼
-function delete_modal_btn() {
-    if(main_data.auth.check_del != "N") { //권한체크
-        var gu4 = String.fromCharCode(4);
-        var gu5 = String.fromCharCode(5);
-        var ids = $("#mes_modal_grid").getGridParam('selarrrow');
-        var keywords = [];
-        var code_list;
-
-        if (ids.length === 0) {
-            alert(msg_object.TBMES_A004.msg_name1);
-        } else {
-            if (confirm(msg_object.TBMES_A005.msg_name1)) {
-                main_data.check = 'D';
-                for(var i=0;i<ids.length;i++){
-                    var data = $('#mes_modal_grid').jqGrid('getRowData', ids[i]);
-                    data.start_date = data.start_date.replace(/\-/g, '')
-                    console.log(data.start_date)
-                    keywords.push(data.supp_code+ gu4 +data.part_code+ gu4 +data.part_kind + gu4 +data.start_date);
-                }
-                code_list=keywords.join(gu5);
-                wrapWindowByMask2();
-                ccn_ajax("/sysSPartCostDel", {keyword:code_list}).then(function (data) {
-                    if (data.result === 'NG') {
-                        alert(data.message);
-                    } else {
-                        $('#addDialog').dialog('close');
-                        $("#mes_modal_grid").trigger("reloadGrid");
-                        $("#mes_grid").trigger("reloadGrid");
-                    }
-                    closeWindowByMask();
-                }).catch(function (err) {
-                    closeWindowByMask();
-                    console.error(err); // Error 출력
-                });
-            }
-        }
-    } else {
-        alert(msg_object.TBMES_A002.msg_name1);
-    }
+function close_addDialog (){
+$('#addDialog').dialog("close");
 }
-
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get_modal1() {
     msgGet_auth("TBMES_Q002");// 저장여부
@@ -107,7 +68,7 @@ function jqGrid_main_modal() {
             {name:'part_code',index:'part_code',sortable: false,hidden:true},
             {name:'part_kind',index:'part_kind',sortable: false,hidden:true},
             {name:'start_date',index:'start_date',sortable: false,width:100,fixed: true,formatter:formmatterDate2},
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:130,fixed: true,formatter: 'integer',align: 'right'}
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:110,fixed: true,formatter: 'integer',align: 'right'}
         ],
         caption: "제품단가관리 | MES",
         multiselect: true,

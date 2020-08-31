@@ -24,4 +24,5 @@ public class SCM_IN_ORD_MODAL {
     private int rownum;
     private int rownum_page;
     private int rec_count;
+    private String stock_yn;
 }

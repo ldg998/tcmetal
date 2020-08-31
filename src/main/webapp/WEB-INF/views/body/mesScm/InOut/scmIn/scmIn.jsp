@@ -8,6 +8,9 @@
     #mes_add_grid_pager #pg_mes_add_grid_pager table {
         table-layout: auto !important;
     }
+
+
+
 </style>
 
 <!-- body 해당 전체 컨테이너 div 영역 -->

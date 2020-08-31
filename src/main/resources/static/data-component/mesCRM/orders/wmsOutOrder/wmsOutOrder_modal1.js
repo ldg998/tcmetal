@@ -35,13 +35,13 @@ function addUdate_btn() {
                 if (data.qty !== '' && data.qty > 0) {
                     list.push(data.ord_no + gu4 + data.qty + gu4 + data.outs_supp_code );
                     if (j !== 0) {
-                        if (trans_code !== data.trans_code) {
-                            transCheck = "N";
-                        }
+                        // if (trans_code !== data.trans_code) {
+                        //     transCheck = "N";
+                        // }
 
-                        if (JSON.stringify(part_object) !== JSON.stringify({supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code})) {
-                            partCheck = "N";
-                        }
+                        // if (JSON.stringify(part_object) !== JSON.stringify({supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code})) {
+                        //     partCheck = "N";
+                        // }
 
 
                     }

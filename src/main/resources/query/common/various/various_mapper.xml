@@ -24,7 +24,7 @@
         EXEC SP_SYS_PART_TYPE_GET #{keyword},#{keyword2}
     </select>
     <select id="qmsQcItemAllGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_ITEM">
-        EXEC SP_SYS_QC_ITEM_GET #{page},#{rows},#{keyword},#{keyword2},''
+        EXEC SP_SYS_QC_ITEM_GET #{page},#{rows},#{keyword},#{keyword2},'','Y'
     </select>
 
     <select id="tpmMachineAllGet" resultType="com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD">

@@ -16,10 +16,10 @@
     </select>
 
     <select id="qmsQcItemGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_ITEM">
-        	EXEC SP_SYS_QC_ITEM_GET #{page}, #{rows},#{keyword}, #{keyword2},''
+        	EXEC SP_SYS_QC_ITEM_GET #{page}, #{rows},#{keyword}, #{keyword2},'',''
     </select>
     <select id="qmsQcItemOneGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_ITEM">
-        	EXEC SP_SYS_QC_ITEM_GET 1, 1,'', '',#{qc_code}
+        	EXEC SP_SYS_QC_ITEM_GET 1, 1,'', '',#{qc_code},''
     </select>
     <select id="qmsQcItemAdd" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_SYS_QC_ITEM_ADD #{qc_group}, #{qc_type},#{qc_code}, #{qc_name},#{use_yn}, #{user_code}, #{keyword}

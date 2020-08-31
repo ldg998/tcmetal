@@ -59,7 +59,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">비고</div>
             <div class="profile-info-value">
-                <textarea cols="42" rows="7" class="modal_value" name="remark2" autofocus>
+                <textarea cols="42" wrap="off" rows="7" class="modal_value" name="remark2" autofocus>
 
                 </textarea>
             </div>

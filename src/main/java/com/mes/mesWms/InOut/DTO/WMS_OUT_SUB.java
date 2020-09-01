@@ -42,6 +42,10 @@ public class WMS_OUT_SUB {
     private String in_date;
     private String ship_date;
     private String trans_name;
+    private String date1;
+    private String date2;
+    private String date3;
+    private double read_time;
 
 
 }

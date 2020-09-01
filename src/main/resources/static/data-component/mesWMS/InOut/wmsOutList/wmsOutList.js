@@ -77,7 +77,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','차량번호','성적서','업로드','출고요청번호','생산일자','입고일자','등록자','등록일시'],
+        colNames: ['출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','성적서','업로드','출고요청번호','생산일자','중간검사','출하검사','리드타임','등록자','등록일시'],
         colModel: [
             {name: 'out_date', index: 'out_date', sortable: false, width: 90, fixed:true, formatter:formmatterDate2},
             {name: 'out_no', index: 'out_no', sortable: false, width: 120, fixed:true},
@@ -89,12 +89,13 @@ function jqGrid_main() {
             {name: 'qty', index: 'qty', sortable: false, width: 80, fixed:true,formatter:'integer',align: 'right'},
             {name: 'weight', index: 'weight', sortable: false, width: 80, fixed:true,formatter:'integer',align: 'right'},
             {name: 'lot_no', index: 'lot_no', sortable: false, width: 120, fixed:true },
-            {name: 'car_no', index: 'car_no', sortable: false, width: 90, fixed:true},
             {name: 'file1_name', index: 'file1_name', sortable: false, width: 80, align: 'center', formatter: file1_formatter,fixed:true},//성적서
             {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true, formatter: filebox},//성적서 수정
             {name: 'req_no', index: 'req_no', sortable: false, width: 120, fixed:true},
-            {name: 'prod_date', index: 'prod_date', sortable: false, width: 130, fixed:true,hidden:true,formatter:formmatterDate2},
-            {name: 'work_date', index: 'work_date', sortable: false, width: 90, fixed:true,hidden:true,formatter:formmatterDate2},
+            {name: 'date1', index: 'date1', sortable: false, width: 130, fixed:true,formatter:formmatterDate2},
+            {name: 'date2', index: 'date2', sortable: false, width: 130, fixed:true,formatter:formmatterDate2},
+            {name: 'date3', index: 'date3', sortable: false, width: 90, fixed:true,formatter:formmatterDate2},
+            {name: 'read_time', index: 'read_time', sortable: false, width: 80, fixed:true,formatter: {number:{thousandsSeparator:",", decimalPlaces: 1}},align: 'right'},
             {name: 'user_name', index: 'user_name', sortable: false, width: 90, fixed:true},
             {name: 'create_date', index: 'create_date', sortable: false, width: 150, fixed:true,formatter:formmatterDate}
         ],

@@ -104,8 +104,8 @@ function jqGrid_main() {
             {name:'in_weight', index: 'in_weight',  width: 100, fixed:true,formatter:'integer', align:'right'},
             {name:'out_qty', index: 'out_qty',  width: 100, fixed:true,formatter:'integer', align:'right'},
             {name:'out_weight', index: 'out_weight', width: 100, fixed:true,formatter:'integer', align:'right'},
-            {name:'qty4', index: 'qty4', width: 100, fixed:true,formatter:'integer', align:'right'},
-            {name:'weight4', index: 'weight4', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'ng_qty', index: 'ng_qty', width: 100, fixed:true,formatter:'integer', align:'right'},
+            {name:'ng_weight', index: 'ng_weight', width: 100, fixed:true,formatter:'integer', align:'right'},
             {name:'qty', index: 'qty', width: 100, fixed:true,formatter:'integer', align:'right'},
             {name:'weight', index: 'weight',  width: 100, fixed:true,formatter:'integer', align:'right'}
 
@@ -152,7 +152,7 @@ function header_make() {
             {startColumnName: 'prev_qty', numberOfColumns: 2, titleText: '<center>전일재고</center>'},
             {startColumnName: 'in_qty', numberOfColumns: 2, titleText: '<center>금일입고</center>'},
             {startColumnName: 'out_qty', numberOfColumns: 2, titleText: '<center>금일출고</center>'},
-            {startColumnName: 'qty4', numberOfColumns: 2, titleText: '<center>자체불량</center>'},
+            {startColumnName: 'ng_qty', numberOfColumns: 2, titleText: '<center>자체불량</center>'},
             {startColumnName: 'qty', numberOfColumns: 2, titleText: '<center>재고</center>'}
 
             ]

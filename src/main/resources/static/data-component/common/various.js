@@ -69,7 +69,7 @@ function formmatterDate(cellValue) { // 날짜 필터
 function formmatterDate2(cellValue) { // 날짜 필터
 	if (cellValue == null || cellValue === '' ){
 		return '';
-	} if(cellValue === '소계'){
+	} if(cellValue === '소계' || cellValue === '통계'){
 		return cellValue;
 	} else {
 		cellValue = cellValue.replace(/[^0-9]/g,'');

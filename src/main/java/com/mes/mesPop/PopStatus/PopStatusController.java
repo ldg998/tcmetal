@@ -45,6 +45,21 @@ public class PopStatusController {
  @RequestMapping("popLotTracking")
     public String popLotTracking() { return  "mesPop/PopStatus/popLotTracking/popLotTracking";}
 
+    @RequestMapping("popProdAnalysis")
+    public String popProdAnalysis() { return  "mesPop/PopStatus/popProdAnalysis/popProdAnalysis";}
+
+    @RequestMapping("popProdReport1")
+    public String popProdReport1() { return  "mesPop/PopStatus/popProdReport1/popProdReport1";}
+
+    @RequestMapping("popSpectro")
+    public String popSpectro() { return  "mesPop/PopStatus/popSpectro/popSpectro";}
+
+    @RequestMapping("sysProdHR")
+    public String sysProdHR() { return  "mesPop/PopStatus/sysProdHR/sysProdHR";}
+
+    @RequestMapping("sysProdSum")
+    public String sysProdSum() { return  "mesPop/PopStatus/sysProdSum/sysProdSum";}
+
 
 
 }

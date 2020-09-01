@@ -105,7 +105,7 @@ function jqGrid_main() {
             {name: '', index: '', sortable:false, width: 120,  key: true,fixed:true},
             {name: '', index: '', sortable:false, width: 100, fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60,  key: true,fixed:true},
+            {name: '', index: '', sortable:false, width: 60, fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},
             {name: '', index: '', sortable:false, width: 60, fixed:true},

@@ -32,6 +32,9 @@ public class PopController {
     @RequestMapping("popPlanCheck")
     public String popPlanCheck() { return "mesPop/Pop/popPlanCheck/popPlanCheck"; }
 
+    @RequestMapping("popPlanMelt")
+    public String popPlanMelt() { return "mesPop/Pop/popPlanMelt/popPlanMelt"; }
+
 
 
 }

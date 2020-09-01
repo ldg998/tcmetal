@@ -85,6 +85,7 @@ var array =
     //생산관리 -기준정보
         {code: "popLineUser", title: '생산관리', sub: '기준정보', name:'공정별 작업자 관리'},
     //생산관리
+        {code: "popPlanMelt", title: '생산관리', sub: '생산관리', name:'주입계획서'},
         {code: "popPlan", title: '생산관리', sub: '생산관리', name:'생산계획관리'},
     //생산현황
         {code: "popProdList", title: '생산관리', sub: '생산현황', name:'생산진행현황'},
@@ -96,13 +97,20 @@ var array =
         {code: "popLotTracking", title: '생산관리', sub: '생산현황', name:'제조이력관리'},
         {code: "sysSPartDrawing", title: '생산관리', sub: '생산현황', name:'도면관리'},
         {code: "sysSPartWood", title: '생산관리', sub: '생산현황', name:'고객지급품관리'},
+        {code: "popProdAnalysis", title: '생산관리', sub: '생산현황', name:'생산량분석'},
+        {code: "popProdReport1", title: '생산관리', sub: '생산현황', name:'주입일보현황'},
+        {code: "popSpectro", title: '생산관리', sub: '생산현황', name:'성분분석'},
+        {code: "sysProdHR", title: '생산관리', sub: '생산현황', name:'작업공수관리'},
+        {code: "sysProdSum", title: '생산관리', sub: '생산현황', name:'수량집계표'},
+
+
 
     //외주관리 - 입출고관리
         {code: "outsInList", title: '외주관리', sub: '입출고관리', name:'외주입고현황'},
         {code: "outsOut", title: '외주관리', sub: '입출고관리', name:'외주출고관리'},
         {code: "outsIOList", title: '외주관리', sub: '입출고관리', name:'외주입출고 현황'},
     //재고관리
-        {code: "outsStockSum", title: '외주관리', sub: '재고관리', name:'외주재고현황'},
+        {code: "outsStockSum", title: '외주관리', sub: '재고관리', name:'외주재고 일원장'},
         {code: "outsStockSumMonth", title: '외주관리', sub: '재고관리', name:'외주재고 월원장'},
         {code: "outsError", title: '외주관리', sub: '재고관리', name:'외주불량'},
 

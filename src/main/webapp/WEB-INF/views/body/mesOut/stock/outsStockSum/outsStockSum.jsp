@@ -12,6 +12,15 @@
                 <tbody>
                 <tr>
 
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회일자</td>
+                    <td class="wt-px-200">
+                        <div class="input-icon input-icon-right">
+                            <input type="text" name="work_date" id="datepicker"
+                                   class="form-control h-25 condition_main sendDate" readonly>
+                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                        </div>
+                    </td>
+
                     <!-- 구분 select 창 -->
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <%--조회할 업채명--%>

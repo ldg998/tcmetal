@@ -5,15 +5,33 @@
     /*    font-size: 12px!important;*/
     /*    margin-right: 8px;*/
     /*}*/
-    input[type=text][name="ord_qty"] {
+    input[type=text][name="in_qty"] {
         height: 18px !important;
     }
-    input[type=text][name="remark"] {
+    select[name="status"] {
         height: 18px !important;
     }
-    input[type=text][name="direction"] {
+    select[name="qc_result"] {
         height: 18px !important;
     }
+    input[type=text][name="qc_qty"] {
+        height: 18px !important;
+    }
+    input[type=text][name="ng_qty"] {
+        height: 18px !important;
+    }
+    select[name="ng_type"] {
+        height: 18px !important;
+    }
+    input[type=text][name="ng_name"] {
+        height: 18px !important;
+    }
+    select[name="act_type"] {
+        height: 18px !important;
+    }
+
+
+
 </style>
 <div id="addDialog" title="자재입고" style="display: none">
     <div class="col-lg-12">

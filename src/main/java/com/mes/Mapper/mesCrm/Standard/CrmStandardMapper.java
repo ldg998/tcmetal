@@ -50,4 +50,6 @@ public interface CrmStandardMapper {
     List<SYS_SPART_CD> partKindGet(Page p);
 
     List<SYS_SPART_CD> sysSpartCostGet(Page p);
+
+    Message sysSpartCostAddWeight(SYS_SPART_CD ssc);
 }

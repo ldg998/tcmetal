@@ -1,7 +1,5 @@
 package com.mes.mesQms.Import;
 
-import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
-import lombok.extern.slf4j.Slf4j;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
@@ -11,11 +9,17 @@ import com.mes.Mapper.mesQms.Import.QmsImportMapper;
 import com.mes.mesQms.Import.DTO.QMS_RECV;
 import com.mes.mesQms.Import.DTO.QMS_RECV_NG_SUM;
 import com.mes.mesQms.Import.DTO.QMS_RECV_SUB;
+import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service
@@ -164,4 +168,75 @@ public class QmsImportService  extends UploadFunction {
         List<QMS_RECV_SUB> rows = qmsImportMapper.qmsRecvErrorListGet(p);
         return getListData(rows , p);
     }
+
+    public Message qmsRecvListFileAdd(HttpServletRequest req, QMS_RECV_SUB qrs) {
+        String path = "C:/UploadFile/tcmetal/qmsqmsImport";
+        qrs.setUser_code(getSessionData(req).getUser_code());
+        qrs.setKey_value(file_key_retrun(qrs,path));
+        System.out.println(qrs);
+       return qmsImportMapper.qmsRecvListFileAdd(qrs);
+    }
+
+
+
+    private String file_key_retrun (QMS_RECV_SUB qrs, String path){
+        if(qrs.getFiles1() != null) {
+            List<MultipartFile> fileList = qrs.getFiles1();
+            int i = 1;
+            for (MultipartFile mf : fileList) {
+                qrs.setIndex(i);
+                qrs.setType(mf.getContentType());
+                int pos = qrs.getType().lastIndexOf( "/" );
+                String ext = qrs.getType().substring( pos + 1 );
+                qrs.setSavefile(saveFile(mf,ext,path));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
+                qrs.setSize(mf.getSize());
+                qrs.setOriginal_name(mf.getOriginalFilename());
+                qrs.setAllpath(path+"/"+qrs.getSavefile());
+                if(qrs.getFile_ck1() == 1) {
+                    qrs.setKey_value("qms_"+qrs.getSavefile());
+                }else {
+                    qrs.setKey_value(qrs.getFile1_code());
+                }
+                i++;
+            }
+            qmsImportMapper.qmsFileAdd(qrs);
+            return qrs.getKey_value();
+        }
+        return "";
+    }
+
+
+
+    private String saveFile(MultipartFile file,String ext,String path){ //파일 업로드 소스
+        // 파일 이름 변경
+        SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");
+        String originalFilename = file.getOriginalFilename(); //파일에 진짜이름
+        String saveName =  "qmsImport_"+ format1.format (System.currentTimeMillis())+"."+ext ;
+        // 저장할 File 객체를 생성(껍데기 파일)
+        File saveFile = new File(path,saveName); // 저장할 폴더 이름, 저장할 파일 이름
+        if(! saveFile.exists())
+        {
+            if(saveFile.getParentFile().mkdirs())
+            {
+                try {
+                    saveFile.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        try {
+            file.transferTo(saveFile);
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return saveName;
+    }
+
+
 }

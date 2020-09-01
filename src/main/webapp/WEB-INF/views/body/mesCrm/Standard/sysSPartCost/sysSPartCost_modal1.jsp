@@ -62,22 +62,7 @@
         </div>
 
 
-        <div class="profile-info-row">
-            <div class="profile-info-name"> 변경일자</div>
-            <div class="profile-info-value">
-                <div class="input-icon input-icon-right">
-                    <input type="text" name="start_date" id="datepicker1_modal"
-                           class="form-control h-25 modal_value" readonly>
-                    <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                </div>
-            </div>
-        </div>
-        <div class="profile-info-row">
-            <div class="profile-info-name"> 단가</div>
-            <div class="profile-info-value">
-                <input type="text" name="unit_cost" class="form-control modal_value" onkeyup="num_keyup_comma(this)" style="text-align: right" autocomplete="off">
-            </div>
-        </div>
+
     </div>
     <%-- end_input_data --%>
     <br/>
@@ -87,19 +72,12 @@
             <div class="dt-buttons btn-overlap btn-group modal_btn">
                 <!-- 조회버튼 -->
                 <a class="btn btn-secondary btn-lg"
-                   tabindex="0" aria-controls="dynamic-table" onclick="add_modal1_btn()" data-original-title=""
-                   title="">
+                                 tabindex="0" aria-controls="dynamic-table" onclick="close_addDialog()" data-original-title=""
+                                 title="">
                         <span>
-                            <span>저장</span>
+                            <span>닫기</span>
                         </span>
-                </a>
-                <a class="btn btn-secondary btn-lg"
-                   tabindex="0" aria-controls="dynamic-table" onclick="delete_modal_btn()" data-original-title=""
-                   title="">
-                        <span>
-                            <span>삭제</span>
-                        </span>
-                </a>
+            </a>
 
             </div>
         </div>

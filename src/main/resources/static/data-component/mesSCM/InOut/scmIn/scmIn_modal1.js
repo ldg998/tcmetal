@@ -95,7 +95,7 @@ function add_modal1_btn() {
             jdata.forEach(function (data, j) {
                 if (data.in_qty !== '' && data.in_qty > 0) {
                     if (data.in_qty !== '' && data.in_qty > 0) {
-                        list.push(data.ord_no + gu4 + data.part_code + gu4 + data.ord_qty + gu4 + data.qty + gu4 + data.in_qty + gu4 + data.status + gu4 + data.qc_result + gu4 + data.qc_qty + gu4 + data.ng_type + gu4 + data.ng_name + gu4 + data.act_type+ gu4 + data.ng_qty);
+                        list.push(data.ord_no + gu4 + data.part_code + gu4 + data.ord_qty + gu4 + data.qty + gu4 + data.in_qty + gu4 + data.status + gu4 + data.qc_result + gu4 + data.qc_qty + gu4 + data.ng_type + gu4 + data.ng_name + gu4 + data.act_type+ gu4 + data.ng_qty + gu4 +data.stock_yn +gu4 + data.spec);
                     } else {
                         list2.push(data.part_code);
                     }
@@ -159,9 +159,11 @@ function jqGrid_modal1() { // 메인 그리드 설정
         mtype: 'POST',
         datatype: "local",
         caption: "자재입고 | MES",
-        colNames: ['rownum', '발주일자','ord_no', '구분', '품번', '품명', '규격', '단위', '발주수량', '기입고수량', '입고수량', '발주완료', '검사구분', '검사결과', '검사수량','불량수량', '불량유형' ,'불량상세', '조치구분'],
+        colNames: ['','rownum', '발주일자','ord_no', '구분', '품번', '품명', '규격', '단위', '발주수량', '기입고수량', '입고수량', '발주완료', '검사구분', '검사결과', '검사수량','불량수량', '불량유형' ,'불량상세', '조치구분'],
         colModel: [
+            {name: 'stock_yn', index: 'stock_yn', hidden: true, sortable: false},
             {name: 'rownum', index: 'rownum', key: true, hidden: true, sortable: false},
+
             {
                 name: 'work_date',
                 index: 'work_date',

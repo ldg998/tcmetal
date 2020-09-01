@@ -90,7 +90,7 @@ function jqGrid_main() {
             {name: 'weight', index: 'weight', sortable: false, width: 80, fixed:true,formatter:'integer',align: 'right'},
             {name: 'lot_no', index: 'lot_no', sortable: false, width: 120, fixed:true },
             {name: 'file1_name', index: 'file1_name', sortable: false, width: 80, align: 'center', formatter: file1_formatter,fixed:true},//성적서
-            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',formatter: filebox,fixed:true},//성적서 수정
+            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true, formatter: filebox},//성적서 수정
             {name: 'req_no', index: 'req_no', sortable: false, width: 120, fixed:true},
             {name: 'date1', index: 'date1', sortable: false, width: 130, fixed:true,formatter:formmatterDate2},
             {name: 'date2', index: 'date2', sortable: false, width: 130, fixed:true,formatter:formmatterDate2},

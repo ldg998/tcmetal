@@ -79,4 +79,4 @@
 </div>
 
 
-
+<%@include file="qmsRecvList_modal1.jsp"%>

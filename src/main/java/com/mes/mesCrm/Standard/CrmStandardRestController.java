@@ -110,4 +110,12 @@ public class CrmStandardRestController {
     public RESTful sysSpartCostGet(Page p, HttpServletRequest req) {
         return crmService.sysSpartCostGet(p, req);
     }
+
+     @RequestMapping(value = "/sysSpartCostAddWeight", method = RequestMethod.POST)
+    public Message sysSpartCostAddWeight(SYS_SPART_CD ssc, HttpServletRequest req) {
+        return crmService.sysSpartCostAddWeight(ssc, req);
+    }
+
+
+
 }

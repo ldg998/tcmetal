@@ -75,4 +75,10 @@
 		EXEC SP_SYS_SPART_COST_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
 	</select>
 
+     <select id="sysSpartCostAddWeight" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_SYS_SPART_COST_ADD_WEIGHT #{keyword},#{keyword2},#{keyword3},#{user_code}
+	</select>
+
+
+
 </mapper>

@@ -96,4 +96,9 @@ public class CrmStandardService extends ReturnFunction {
         List<SYS_SPART_CD> rows = sm.sysSpartCostGet(p);
         return getListData(rows, p);
     }
+
+    public Message sysSpartCostAddWeight(SYS_SPART_CD ssc, HttpServletRequest req) {
+        ssc.setUser_code(getSessionData(req).getUser_code());
+        return sm.sysSpartCostAddWeight(ssc);
+    }
 }

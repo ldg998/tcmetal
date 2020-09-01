@@ -39,7 +39,7 @@ public class QMS_PROD_SUB {
     private String qc_result;
     private String unit_name;
     private String qc_level_name;
-
+    private String upload_path;
 
     private int rownum;
     private int rownum_page;

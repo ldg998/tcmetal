@@ -94,4 +94,14 @@
         EXEC  SP_SYS_FILE_ADD #{user_code},#{key_value},#{file_name},#{file_og_name},#{file_size},#{file_volume},#{upload_path},#{url},#{key1},#{key2},#{key3}
     </select>
 
+    <select id="qmsFileAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC SP_SYS_FILE_ADD2 #{user_code},#{key_value},#{savefile},#{original_name},#{size},0,#{allpath},#{savefile}
+    </select>
+
+     <select id="qmsRecvListFileAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC SP_QMS_FILE_ADD #{key_value},#{part_code},#{ord_no},#{in_no}
+    </select>
+
+
+
 </mapper>

@@ -24,13 +24,10 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     modal_start1();
+    modal_start2();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-function test() {
-
-    $("#addDialog").dialog('open'); // 모달 열기
-}
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
@@ -90,6 +87,36 @@ function update_btn(rowid) {
     });
 }
 
+
+function img_btn(data) {
+    var path = data.replace(/C:/g, '')
+    $("#wrapper").empty();
+    $( '.rm' ).remove();
+    var imgs = {};
+    var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
+    $("#wrapper").append(main_div);
+    var i = 1;
+
+    var div = $(" " +
+        "<div class='swiper-slide'>\n" +
+        "               <div class='swiper-zoom-container'>\n" +
+        "                   <img src='"+ path +"' id='addDialog_image" + i + "'>\n" +
+        "                </div>\n" +
+        "            </div>");
+    $("#wrapper2").append(div);
+
+    var div2 = $(" <div class='swiper-pagination swiper-pagination-white rm'></div>\n" +
+        "        <div class='swiper-button-prev rm'></div>\n" +
+        "        <div class='swiper-button-next rm'></div>" +
+        "");
+
+    $("#wrapper2").after(div2);
+    $("#addDialog1").dialog('open');
+    $("#wrapper2").trigger("resize");
+    img_swiper();
+
+
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014");
@@ -126,7 +153,7 @@ function jqGrid_main() {
             {name: 'qc_result_name', index: 'qc_result_name', sortable:false, width: 60, fixed:true},
             {name: 'result2_name', index: 'result2_name', sortable:false, width: 60, fixed:true},
             {name: 'result3_name', index: 'result3_name', sortable:false, width: 200, fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
+            {name: 'upload_path', index: 'upload_path', sortable:false, width: 100, fixed:true,formatter: image_formatter},
             {name: 'file2_yn', index: 'file2file2_yn', sortable:false, width: 100, fixed:true},
             {name: 'user_name', index: 'user_name', sortable:false, width: 60, fixed:true},
             {name: 'update_date', index: 'update_date', sortable:false, width: 140, fixed:true,formatter: formmatterDate}
@@ -155,5 +182,41 @@ function jqGrid_main() {
         }
 
     });
+
+}
+
+function image_formatter(cellvalue, options, rowObject) {
+    if (cellvalue == "" ||  cellvalue == null || cellvalue =='null') {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span> 없음</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='img_btn(\"" + cellvalue + "\""+");'>" +
+            "<span><i class='fa fa-download bigger-110 blue'></i>" +
+            "<span> 보기</span>" +
+            "</span>" +
+            "</a>";
+    }
+}
+
+function img_swiper(){
+    var swiper = new Swiper('.swiper-container', {
+        zoom: true,
+        updateOnWindowResize:true,
+        pagination: {
+            el: '.swiper-pagination'
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+    });
+
 
 }

@@ -102,3 +102,4 @@
 </div>
 
 <%@include file="qmsProdMiddleList_modal1.jsp"%>
+<%@include file="qmsProdMiddleList_modal2.jsp"%>

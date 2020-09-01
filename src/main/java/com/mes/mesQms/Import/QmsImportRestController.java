@@ -173,5 +173,10 @@ public class QmsImportRestController extends UploadFunction {
         return qmsImportService.qmsRecvList_File_Upload(req,file);
     }
 
+    @RequestMapping(value = "/qmsRecvListFileAdd", method = RequestMethod.POST)
+    public Message qmsRecvListFileAdd(HttpServletRequest req, QMS_RECV_SUB qrs) {
+        return qmsImportService.qmsRecvListFileAdd(req,qrs);
+    }
+
 
 }

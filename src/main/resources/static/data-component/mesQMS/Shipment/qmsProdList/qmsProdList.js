@@ -32,16 +32,12 @@ $(document).ready(function () {
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-
-
     $("#mes_grid").setGridParam({
         url: "/qmsProdListGet",
         datatype: "json",
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid");
-
-
 
 }
 
@@ -143,35 +139,33 @@ function delete_btn() {
 
 
 
-//업데이트 버튼
-function img_btn(data) {
 
-        var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
-        $("#wrapper").append(main_div);
+function img_btn(data) {
+    var path = data.replace(/C:/g, '')
+    $("#wrapper").empty();
+    $( '.rm' ).remove();
+    var imgs = {};
+    var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
+    $("#wrapper").append(main_div);
+    var i = 1;
 
     var div = $(" " +
         "<div class='swiper-slide'>\n" +
         "               <div class='swiper-zoom-container'>\n" +
-        "                   <img src='"+data+"' id='addDialog_image'>\n" +
+        "                   <img src='"+ path +"' id='addDialog_image" + i + "'>\n" +
         "                </div>\n" +
         "            </div>");
     $("#wrapper2").append(div);
 
+    var div2 = $(" <div class='swiper-pagination swiper-pagination-white rm'></div>\n" +
+        "        <div class='swiper-button-prev rm'></div>\n" +
+        "        <div class='swiper-button-next rm'></div>" +
+        "");
 
-        var div2 = $(" <div class='swiper-pagination swiper-pagination-white rm'></div>\n" +
-            "        <div class='swiper-button-prev rm'></div>\n" +
-            "        <div class='swiper-button-next rm'></div>" +
-            "");
-
-        $("#wrapper2").after(div2);
-        $("#addDialog2").dialog('open');
-        $("#wrapper2").trigger("resize");
-        img_swiper();
-
-
-
-
-
+    $("#wrapper2").after(div2);
+    $("#addDialog2").dialog('open');
+    $("#wrapper2").trigger("resize");
+    img_swiper();
 
 }
 
@@ -214,7 +208,7 @@ function jqGrid_main() {
             {name: 'part_weight', index: 'part_weight', sortable:false, width: 100, fixed:true,align: 'right', formatter: 'integer' },
             {name: 'lot_no', index: 'lot_no', sortable:false, width: 60, fixed:true},
             {name: 'qc_result_name', index: 'qc_result_name', sortable:false, width: 60, fixed:true},
-            {name: 'file2', index: 'file2', sortable:false, width: 60, fixed:true ,formatter: file2_formatter},
+            {name: 'upload_path', index: 'upload_path', sortable:false, width: 60, fixed:true ,formatter:image_formatter},
             {name: 'file1', index: 'file1', sortable:false, width: 100, fixed:true, formatter: file3_formatter},
             {name: 'user_name', index: 'user_name', sortable:false, width: 100, fixed:true},
             {name: 'create_date', index: 'create_date', sortable:false, width: 140, fixed:true,formatter: formmatterDate }
@@ -252,45 +246,6 @@ function jqGrid_main() {
 }
 
 
-function file1_formatter(cellvalue, options, rowObject) {
-    if (cellvalue === "Y") {
-        return "" +
-            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
-            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file1_Modal(\"" + rowObject.in_no + "\",\"" + rowObject.part_code + "\");'>" +
-            "<span><i class='fa fa-download bigger-110 blue'></i>" +
-            "<span> 조회</span>" +
-            "</span>" +
-            "</a>";
-    } else {
-        return "" +
-            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
-            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
-            "<span><i class='fa fa-ban bigger-110 red'></i>" +
-            "<span> 없음</span>" +
-            "</span>" +
-            "</a>";
-    }
-}
-
-function file2_formatter(cellvalue, options, rowObject) {
-    if (cellvalue == null || cellvalue == "" ||cellvalue == "null" ) {
-        return "" +
-            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
-            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
-            "<span><i class='fa fa-ban bigger-110 red'></i>" +
-            "<span> 없음</span>" +
-            "</span>" +
-            "</a>";
-    } else {
-        return "" +
-            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
-            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='img_btn(\"" + rowObject.file2 + "\");'>" +
-            "<span><i class='fa fa-download bigger-110 blue'></i>" +
-            "<span> 조회</span>" +
-            "</span>" +
-            "</a>";
-    }
-}
 
 function file3_formatter(cellvalue, options, rowObject) {
     if (cellvalue == null || cellvalue == "" ||cellvalue == "null" ) {
@@ -302,8 +257,6 @@ function file3_formatter(cellvalue, options, rowObject) {
             "</span>" +
             "</a>";
     } else {
-        console.log(cellvalue);
-        console.log(rowObject.file_key);
         return "" +
             " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
             "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file_key + "\");'>" +
@@ -327,3 +280,23 @@ function file_download(file_name) {
     }
 }
 
+
+function image_formatter(cellvalue, options, rowObject) {
+    if (cellvalue == "" ||  cellvalue == null || cellvalue =='null') {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span> 없음</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='img_btn(\"" + cellvalue + "\""+");'>" +
+            "<span><i class='fa fa-download bigger-110 blue'></i>" +
+            "<span> 보기</span>" +
+            "</span>" +
+            "</a>";
+    }
+}

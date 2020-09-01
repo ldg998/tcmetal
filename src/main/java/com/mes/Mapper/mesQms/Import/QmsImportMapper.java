@@ -49,4 +49,8 @@ public interface QmsImportMapper {
     Message qmsRecvList_File_Upload(Files file);
 
     List<QMS_RECV_SUB> qmsRecvErrorListGet(Page p);
+
+    void qmsFileAdd(QMS_RECV_SUB qrs);
+
+    Message qmsRecvListFileAdd(QMS_RECV_SUB qrs);
 }

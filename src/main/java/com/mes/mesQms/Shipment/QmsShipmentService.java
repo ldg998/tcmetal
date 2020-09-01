@@ -274,6 +274,8 @@ public class QmsShipmentService extends UploadFunction {
         }
         return "";
     }
+
+
     private String file_key_retrun2 (QMS_RET qr,String path){
         if(qr.getFile2() != null) {
             List<MultipartFile> fileList = qr.getFile2();

@@ -1,6 +1,9 @@
 package com.mes.mesQms.Import.DTO;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Data
 public class QMS_RECV_SUB {
@@ -36,5 +39,17 @@ public class QMS_RECV_SUB {
     private String qc_result_name;
     private String qc_level_name;
     private String act_type_name;
+    private String upload_path;
+
+    private List<MultipartFile> files1;
+    private int index;
+    private String type;
+    private String savefile;
+    private long size;
+    private String original_name;
+    private String allpath;
+    private String key_value;
+    private int file_ck1;
+    private String file1_code;
 
 }

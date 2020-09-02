@@ -4,6 +4,28 @@
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <script type="text/javascript" src="/data-component/mesQMS/Import/qmsRecvList/qmsRecvList.js" charset="UTF-8"></script>
 
+<style>
+
+    .filebox_lee label {
+        /*display: unset;*/
+        padding: .0em .0em;
+        color: #000000;
+        border-radius:0px;
+        line-height: unset;
+        vertical-align: unset;
+        background-color: transparent;
+        cursor: pointer;
+        border: 1px solid #000000;
+        /*border-radius: ;*/
+        font-size: 11px;
+        margin-bottom: 0px;
+        padding-left: 6px;
+        padding-right: 6px;
+        box-shadow :0px 1px #000000 ;
+    }
+
+</style>
+
 <div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
     <div class="page-content">

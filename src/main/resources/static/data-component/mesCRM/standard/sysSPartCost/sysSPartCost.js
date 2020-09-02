@@ -55,6 +55,7 @@ function add_btn() {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
+        $("#mes_modal_grid").jqGrid('clearGridData');
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
         main_data.send_data.keyword = jqgrid_data.supp_code;
         main_data.send_data.keyword2 = jqgrid_data.part_kind;
@@ -62,6 +63,7 @@ function update_btn(jqgrid_data) {
         main_data.send_data.use_yn = jqgrid_data.use_yn;
             ccn_ajax('/sysSpartGet',  main_data.send_data).then(function (data) {
                 data.rows[0].start_date = formmatterDate2(data.rows[0].start_date);
+                 data.rows[0].part_weight = integer(String(data.rows[0].part_weight));
                 modal_edits('.modal_value', main_data.readonly, data.rows[0]); // response 값 출력
 
             $("#mes_modal_grid").setGridParam({ // 그리   드 조회
@@ -72,7 +74,6 @@ function update_btn(jqgrid_data) {
             }).trigger("reloadGrid");
             $("#addDialog").dialog('open');// 모달 열기
             jqGridResize2("#mes_modal_grid",$('#mes_modal_grid').closest('[class*="col-"]')); // 그리드 resize
-
         });
     } else {
         alert(msg_object.TBMES_A003.msg_name1);

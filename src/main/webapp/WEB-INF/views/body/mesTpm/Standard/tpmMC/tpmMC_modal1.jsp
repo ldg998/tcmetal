@@ -169,6 +169,7 @@
                             <img style="width: 100%; height: 100%;" id="img1">
                         </div>
                     </div>
+
                 </div>
                 <div class="col-lg-12 ">
                     <span class="sp-title">img2</span>

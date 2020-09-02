@@ -15,10 +15,22 @@
     /*border-top: 1px solid #cccccc !important;*/
 }
 .select_hide{display:none !important;}
+.wt-5{width: 5% !important;}
+.wt-6_5{width: 6.5% !important;}
+.wt-7_5{width: 7.5% !important;}
+.wt-8_5{width: 8.5% !important;}
+
+.wt-10{width: 10% !important;}
+.wt-12_5{width: 12.5% !important;}
+.wt-13{width: 13% !important;}
 .wt-15{width: 15% !important;}
+.wt-17_5{width: 17.5% !important;}
+.wt-20{width: 20% !important;}
 .wt-25{width: 25% !important;}
 .wt-30{width: 30% !important;}
+.wt-35{width: 35% !important;}
 .wt-40{width: 40% !important;}
+.wt-45{width: 45% !important;}
 .wt-50{width: 50% !important;}
 .wt-75{width: 75% !important;}
 .wt-100{width: 100% !important;}

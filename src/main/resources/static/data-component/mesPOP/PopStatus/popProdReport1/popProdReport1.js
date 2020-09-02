@@ -21,10 +21,19 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     select_box();
+    modal_start1();
 });
 
 
 ////////////////////////////클릭 함수//////////////////////////////////
+function test(){
+
+    $("#addDialog").dialog('open'); // 모달 열기
+
+    jqGridResize("#mes_add_grid" , $('#mes_add_grid').closest('[class*="col-"]'));
+    jqGridResize("#mes_add_grid2" , $('#mes_add_grid2').closest('[class*="col-"]'));
+
+}
 
 
 function get_btn(page) {

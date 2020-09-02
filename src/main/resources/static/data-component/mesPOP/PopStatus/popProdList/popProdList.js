@@ -32,22 +32,12 @@ function test() {
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
-    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');
-    main_data.send_data.keyword = '2';
-    main_data.send_data.keyword2 = '';
-    main_data.send_data.keyword3 = '3';
-    main_data.send_data_post = main_data.send_data;
-
     $("#mes_grid").setGridParam({
-        url: "/",
+        url: "/popProdListGet",
         datatype: "json",
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid");
-
-    google.setOnLoadCallback(drawChart);
-
 }
 
 function excel_download() {
@@ -100,25 +90,24 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "생산진행현황 | MES",
-        colNames: ['생산지시일자','지시번호','업체','PO','기종','품번','품명','단중','수량','상태','생산일자','입고일자','출고일자','등록자','등록일시'],
+        colNames: ['','생산지시일자','지시번호','업체','PO','기종','품번','품명','단중','수량','상태','생산일자','입고일자','출고일자','등록자','등록일시'],
         colModel: [
-            {name: '', index: '', sortable:false, width: 120,  key: true,fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 60, fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
-            {name: '', index: '', sortable:false, width: 80, fixed:true},
-            {name: '', index: '', sortable:false, width: 100, fixed:true},
-
-
+            {name: 'rownum', index: 'rownum',key: true, sortable:false,hidden:true,fixed:true},
+            {name: 'work_date', index: 'work_date', sortable:false, width: 120,fixed:true},
+            {name: 'seq', index: 'seq', sortable:false, width: 100, fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable:false, width: 60, fixed:true},
+            {name: 'po', index: 'po', sortable:false, width: 60, fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable:false, width: 60, fixed:true},
+            {name: 'part_code', index: 'part_code', sortable:false, width: 60, fixed:true},
+            {name: 'part_name', index: 'part_name', sortable:false, width: 60, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable:false, width: 60, fixed:true},
+            {name: 'prod_qty', index: 'prod_qty', sortable:false, width: 60, fixed:true},
+            {name: 'status_name', index: 'status_name', sortable:false, width: 60, fixed:true},
+            {name: 'prod_date', index: 'prod_date', sortable:false, width: 100, fixed:true},
+            {name: 'in_date', index: 'in_date', sortable:false, width: 100, fixed:true},
+            {name: 'out_date', index: 'out_date', sortable:false, width: 100, fixed:true},
+            {name: 'user_name', index: 'user_name', sortable:false, width: 80, fixed:true},
+            {name: 'create_date', index: 'create_date', sortable:false, width: 100, fixed:true},
         ],
         autowidth: true,
         viewrecords: true,

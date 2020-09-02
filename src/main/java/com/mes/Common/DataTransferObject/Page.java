@@ -39,4 +39,6 @@ public class Page {
     private String we_no;
     private String supp_no;
     private String use_yn;
+    private String part_kind;
+    private String part_code;
 }

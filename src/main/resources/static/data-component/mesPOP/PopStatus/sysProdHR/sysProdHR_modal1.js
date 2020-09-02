@@ -3,6 +3,7 @@ function modal_start1() {
     msg_get_modal1();// 모달 메세지 설정
     modal_make1(); // 모달 생성
     select_modal_box();
+    datepickerInput_modal();
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -59,4 +60,9 @@ function select_modal_box() {
     $('#select_modal6').select2();
     $('#select_modal7').select2();
     $('#select_modal8').select2();
+}
+
+function datepickerInput_modal() {
+    datepicker_makes("#datepicker_modal1", 0);
+
 }

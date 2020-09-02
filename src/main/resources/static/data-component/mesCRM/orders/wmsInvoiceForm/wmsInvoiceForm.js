@@ -30,7 +30,11 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수/////////////////////////////////////
 //모달 확인 조회 btn
 function test(){
-
+    $('#img1').hide();
+    $('#img2').hide();
+    $('#img3').hide();
+    $('#img4').hide();
+    $('#img5').hide();
     $("#addDialog").dialog('open'); // 모달 열기
     jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]'));
 }

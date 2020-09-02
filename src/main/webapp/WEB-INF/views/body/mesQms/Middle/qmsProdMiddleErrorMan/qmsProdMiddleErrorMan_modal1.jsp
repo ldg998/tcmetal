@@ -5,6 +5,20 @@
 
 <style>
     .filebox {display:inline-block; margin-right: 10px;}
+    .filebox2 label {
+        display: inline-block;
+        padding: .4em 1.2em;
+        color: #999;
+        font-size: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: #fdfdfd;
+        cursor: pointer;
+        border: 1px solid #ebebeb;
+        border-bottom-color: #e2e2e2;
+        border-radius: .25em;
+    }
+
     .filebox label {
         display: inline-block;
         padding: .5em 1.2em;

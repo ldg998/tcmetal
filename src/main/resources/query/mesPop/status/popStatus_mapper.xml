@@ -64,4 +64,32 @@
             SUPP_CODE = #{key1} AND PART_KIND = #{key2} AND PART_CODE = #{key3}
     </update>
 
+
+    <select id="popProdListGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_PROD_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{supp_code},#{keyword}
+    </select>
+
+     <select id="popProdAnalysisGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_PROD_ANALYSIS_GET #{page},#{rows},#{start_date},#{end_date}
+    </select>
+
+     <select id="popProdReport1Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_PROD_REPORT1_GET #{page},#{rows},#{start_date},#{end_date},#{supp_code},#{part_kind}
+    </select>
+
+     <select id="popSpectroGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_SPECTRO_GET #{page},#{rows},#{work_date},#{supp_code},#{part_kind}
+    </select>
+
+     <select id="sysProdHRGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_SYS_PROD_HR_GET #{page},#{rows},#{work_date},#{line_code}
+    </select>
+
+     <select id="sysProdSumGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_SYS_PROD_SUM_GET #{page},#{rows},#{work_date},#{supp_code},#{part_kind}
+    </select>
+
+
+
+
 </mapper>

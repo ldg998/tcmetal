@@ -210,20 +210,15 @@ function file2_formatter(cellvalue, options, rowObject) {
     }
 }
 
+
 function filebox(cellvalue, options, rowObject) {   //업로드null, 그리드, 그리드내용
-    if (cellvalue === null || cellvalue === "") {
         return "" +
-            "<div class='filebox_lee'>"+
-            "<label class='file_labal' for='file_01"+rowObject.rownum+"'>업로드</label>"+
+            "<div class='dt-buttons btn-overlap btn-group filebox_lee'>"+
+            "<label class='file_labal'  " +
+            " for='file_01"+rowObject.rownum+"'><i class=\"fa fa-upload bigger-110 blue\"></i>업로드</label>"+
             "<input type='file' id='file_01"+rowObject.rownum+"'  onchange='file_change(this"+",this.value,\""+rowObject.in_no+"\",\""+rowObject.part_code+"\",\""+rowObject.ord_no+"\" ,\""+rowObject.rownum+"\",\""+rowObject.file1_code+"\" "+");' />" +
             "</div>";
-    } else {
-        return "" +
-            "<div class='filebox_lee'>"+
-            "<label class='file_labal' for='file_01"+rowObject.rownum+"'>완료</label>"+
-            "<input type='file' id='file_01"+rowObject.rownum+"'  onchange='file_change(this"+",this.value,\""+rowObject.in_no+"\",\""+rowObject.part_code+"\",\""+rowObject.ord_no+"\" ,\""+rowObject.rownum+"\",\""+rowObject.file1_code+"\" "+");' />" +
-            "</div>";
-    }
+
 }
 
 function file_change(e,value,no,part_code,ord_no,rownum,file1_code) {

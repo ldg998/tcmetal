@@ -179,6 +179,7 @@ function jqGrid_main() {
 
 
 }
+
 function header_make() {
     $("#mes_grid").jqGrid('setGroupHeaders',{
         useColSpanStyle: true,

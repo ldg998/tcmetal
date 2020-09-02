@@ -200,9 +200,10 @@ function jqGrid_main_modal() {
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
         ajaxSelectOptions: { cache: false, type: 'POST' },
-        colNames : ['seq','업체','supp_code','기종','part_kind','품명','part_code','단중','수량','중량','제품LOT','작업자','work_user_code','삽입/삭제'],// grid 헤더 설정
+        colNames : ['seq','CHARGE','업체','supp_code','기종','part_kind','품명','part_code','단중','수량','중량','재질','작업자','work_user_code','삽입/삭제','이동'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'seq',index:'seq',sortable: false,width:110,fixed: true,key:true,hidden:true},
+            {name:'charge',index:'charge',sortable: false,width:110,fixed: true},
             {name:'supp_name',index:'supp_name',sortable: false,width:110,fixed: true,editable: true,                                       // 수정가능 여부
                 // SELECT 포매터
                 edittype: 'select',                                    // EDIT타입 : SELECT
@@ -487,7 +488,7 @@ function jqGrid_main_modal() {
                 }
             },
             {name:'weight',index:'weight',sortable: false,width:110,fixed: true, align: 'right',formatter:'integer'},
-            {name:'lot_no',index:'lot_no',sortable: false,width:110,fixed: true,editable: true,
+            {name:'wood4',index:'wood4',sortable: false,width:110,fixed: true,editable: true,
                 editoptions: {
                     dataEvents: [
                         {
@@ -567,8 +568,7 @@ function jqGrid_main_modal() {
             },
             {name:'work_user_code',index:'work_user_code',sortable: false,width:110,fixed: true,hidden:true},
             {name:'a',index:'a',sortable: false,width:110,fixed: true,formatter:addDel_formatter},
-
-
+            {name:'',index:'',sortable: false,width:110,fixed: true},
         ],
         cellEdit: true,
         cellsubmit: 'clientArray',

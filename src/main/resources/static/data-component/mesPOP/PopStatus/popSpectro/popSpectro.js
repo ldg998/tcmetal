@@ -25,7 +25,9 @@ $(document).ready(function () {
 
 
 ////////////////////////////클릭 함수//////////////////////////////////
-
+function test(){
+    $("#addDialog").dialog('open'); // 모달 열기
+}
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
@@ -43,7 +45,7 @@ function get_btn(page) {
 ////////////////////////////호출 함수//////////////////////////////////
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "popLotTracking"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "popSpectro"}).then(function (data) {
         main_data.auth = data;
     });
 }

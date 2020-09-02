@@ -15,82 +15,85 @@ function modal_start1() {
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 function addUdate_btn() {
-    var gu5 = String.fromCharCode(5);
-    var gu4 = String.fromCharCode(4);
-    var add_data = value_return(".modal_value");
-    if (effectiveness1(add_data)) {
 
-        var jdata = $("#mes_modal1_grid1").getRowData();
-        if (jdata.length > 0) {
+    if (main_data.check3 === "Y"){
+        var gu5 = String.fromCharCode(5);
+        var gu4 = String.fromCharCode(4);
+        var add_data = value_return(".modal_value");
+        if (effectiveness1(add_data)) {
+
+            var jdata = $("#mes_modal1_grid1").getRowData();
+            if (jdata.length > 0) {
 
 
-            var list = [];
-            var list2 = [];
-            var transCheck = "Y";
-            var partCheck = "Y";
-            var trans_code = "";
-            var part_object = {supp_code:"",part_kind:"",part_code:""};
-            var part_object2 = {supp_code:"",part_kind:"",part_code:""};
-            jdata.forEach(function (data, j) {
-                if (data.qty !== '' && data.qty > 0) {
-                    list.push(data.ord_no + gu4 + data.qty + gu4 + data.outs_supp_code );
-                    if (j !== 0) {
-                        // if (trans_code !== data.trans_code) {
-                        //     transCheck = "N";
-                        // }
+                var list = [];
+                var list2 = [];
+                var transCheck = "Y";
+                var partCheck = "Y";
+                var trans_code = "";
+                var part_object = {supp_code:"",part_kind:"",part_code:""};
+                var part_object2 = {supp_code:"",part_kind:"",part_code:""};
+                jdata.forEach(function (data, j) {
+                    if (data.qty !== '' && data.qty > 0) {
+                        list.push(data.ord_no + gu4 + data.qty + gu4 + data.outs_supp_code );
+                        if (j !== 0) {
+                            // if (trans_code !== data.trans_code) {
+                            //     transCheck = "N";
+                            // }
 
-                        // if (JSON.stringify(part_object) !== JSON.stringify({supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code})) {
-                        //     partCheck = "N";
-                        // }
+                            // if (JSON.stringify(part_object) !== JSON.stringify({supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code})) {
+                            //     partCheck = "N";
+                            // }
+
+
+                        }
 
 
                     }
 
+                    if (j == 0){
+                        trans_code = data.trans_code;
+                        part_object = {supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code};
+                    }
 
-                }
+                });
+                if (list.length === 0) {
+                    alert("수량을 다시 확인해주세요");
+                } else if(transCheck === 'N') {
+                    alert("운송수단을 다시 확인해주세요");
+                }else if(partCheck === 'N') {
+                    alert("같은 제품인지 다시 확인해주세요");
+                }else {
+                    var text = msg_object.TBMES_Q002.msg_name1;
+                    if (main_data.check === "U") {
+                        text = msg_object.TBMES_Q003.msg_name1;
+                    }
 
-                if (j == 0){
-                    trans_code = data.trans_code;
-                    part_object = {supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code};
-                }
-
-            });
-            if (list.length === 0) {
-                alert("수량을 다시 확인해주세요");
-            } else if(transCheck === 'N') {
-                alert("운송수단을 다시 확인해주세요");
-            }else if(partCheck === 'N') {
-                alert("같은 제품인지 다시 확인해주세요");
-            }else {
-                var text = msg_object.TBMES_Q002.msg_name1;
-                if (main_data.check === "U") {
-                    text = msg_object.TBMES_Q003.msg_name1;
-                }
-
-                if (confirm(text)) {
-                    wrapWindowByMask2();
-                    add_data.keyword2 = list.join(gu5);
-                    add_data.keyword = main_data.check;
-                    ccn_ajax("/wmsOutOrderAdd", add_data).then(function (data) {
-                        if (data.result === 'NG') {
-                            alert(data.message);
-                        } else {
-                            if (main_data.check === "I") {
-                                $("#addDialog").dialog('close');
-                                get_btn(1);
+                    if (confirm(text)) {
+                        wrapWindowByMask2();
+                        add_data.keyword2 = list.join(gu5);
+                        add_data.keyword = main_data.check;
+                        ccn_ajax("/wmsOutOrderAdd", add_data).then(function (data) {
+                            if (data.result === 'NG') {
+                                alert(data.message);
                             } else {
-                                $("#addDialog").dialog('close');
-                                $('#mes_grid').trigger('reloadGrid');
+                                if (main_data.check === "I") {
+                                    $("#addDialog").dialog('close');
+                                    get_btn(1);
+                                } else {
+                                    $("#addDialog").dialog('close');
+                                    $('#mes_grid').trigger('reloadGrid');
+                                }
                             }
-                        }
-                        closeWindowByMask()
-                    }).catch(function (err) {
-                        alert(msg_object.TBMES_E008.msg_name1);
-                    });
+                            closeWindowByMask()
+                        }).catch(function (err) {
+                            alert(msg_object.TBMES_E008.msg_name1);
+                        });
+                    }
                 }
+            } else {
+                alert("저장 목록을 조회 해주세요");
             }
-        } else {
-            alert("저장 목록을 조회 해주세요");
         }
     }
 }

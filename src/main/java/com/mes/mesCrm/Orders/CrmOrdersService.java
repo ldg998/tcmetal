@@ -102,4 +102,8 @@ public class CrmOrdersService extends ReturnFunction {
     public Message crmOrderRecpComp(HttpServletRequest req, CRM_ORD_RECP crmOrdRecp) {
         return crmOrdersMapper.crmOrderRecpComp(crmOrdRecp);
     }
+
+    public Message wmsOutOrderComp(Page p) {
+        return crmOrdersMapper.wmsOutOrderComp(p);
+    }
 }

@@ -91,6 +91,4 @@ public class WmsInOutService extends UploadFunction {
         wmsInOutMapper.wmsOutListAdd(files);
     }
 
-
-
 }

@@ -26,7 +26,7 @@
                         </select>
                     </td>
 
-                    <td class="wt-px-75 t-align-c td-title padding-a-0">출고일짜</td>
+                    <td class="wt-px-75 t-align-c td-title padding-a-0">변경일자</td>
                     <td class="wt-px-150">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="work_date" id="datepicker1"

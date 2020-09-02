@@ -44,6 +44,10 @@
         EXEC SP_WMS_OUT_ORD_SUB_DEL #{keyword}
     </select>
 
+	<select id="wmsOutOrderComp" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_WMS_OUT_ORD_SUB_COMP #{keyword}
+    </select>
+
 	<select id="crmShippingWmsOutGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_SUB">
 		EXEC SP_WMS_OUT_LIST_CRM_SHIPPING_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},''
     </select>

@@ -60,6 +60,7 @@ var array =
         {code: "crmOrderRecp", title: '영업관리', sub: '수주관리', name: '수주정보관리'},
         {code: "crmPerform", title: '영업관리', sub: '수주관리', name: '실적현황'},
         {code: "crmShipping", title: '영업관리', sub: '수주관리', name: '운송비용관리'},
+        {code: "crmShippingList", title: '영업관리', sub: '수주관리', name: '운송비용현황'},
         {code: "wmsOutOrder", title: '영업관리', sub: '수주관리', name: '출고지시서'},
         {code: "wmsInvoiceForm", title: '영업관리', sub: '수주관리', name: '인보이스 양식'},
         {code: "wmsInvoice", title: '영업관리', sub: '수주관리', name: '인보이스 관리'},

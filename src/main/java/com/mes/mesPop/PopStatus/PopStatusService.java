@@ -4,7 +4,6 @@ import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
-import com.mes.Common.Function.ReturnFunction;
 import com.mes.Mapper.mesPop.Status.MesPopStatusMapper;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD;
 import com.mes.mesPop.PopStatus.DTO.POP_PROD;
@@ -69,5 +68,31 @@ public class PopStatusService extends UploadFunction {
     public void sysSPartWoodAdd2(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         mesPopStatusMapper.sysSPartWoodAdd2(files);
+    }
+
+    public RESTful popProdAnalysisGet(HttpServletRequest req, Page p) {
+        List<POP_PROD> rows = mesPopStatusMapper.popProdAnalysisGet(p);
+        return getListData(rows, p);
+    }
+
+    public RESTful popProdReport1Get(HttpServletRequest req, Page p) {
+        List<POP_PROD> rows = mesPopStatusMapper.popProdReport1Get(p);
+        return getListData(rows, p);
+    }
+
+    public RESTful popSpectroGet(HttpServletRequest req, Page p) {
+
+        List<POP_PROD> rows = mesPopStatusMapper.popSpectroGet(p);
+        return getListData(rows, p);
+    }
+
+    public RESTful sysProdHRGet(HttpServletRequest req, Page p) {
+        List<POP_PROD> rows = mesPopStatusMapper.sysProdHRGet(p);
+        return getListData(rows, p);
+    }
+
+    public RESTful sysProdSumGet(HttpServletRequest req, Page p) {
+        List<POP_PROD> rows = mesPopStatusMapper.sysProdSumGet(p);
+        return getListData(rows, p);
     }
 }

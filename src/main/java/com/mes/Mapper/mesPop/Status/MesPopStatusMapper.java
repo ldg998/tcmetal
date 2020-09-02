@@ -25,4 +25,14 @@ public interface MesPopStatusMapper {
     void sysSPartWoodAdd(Files files);
 
     void sysSPartWoodAdd2(Files files);
+
+    List<POP_PROD> popProdAnalysisGet(Page p);
+
+    List<POP_PROD> popProdReport1Get(Page p);
+
+    List<POP_PROD> popSpectroGet(Page p);
+
+    List<POP_PROD> sysProdHRGet(Page p);
+
+    List<POP_PROD> sysProdSumGet(Page p);
 }

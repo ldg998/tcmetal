@@ -69,4 +69,30 @@ public class PopStatusRestController {
         return "수정되었습니다.";
     }
 
+
+    @RequestMapping(value = "/popProdAnalysisGet", method = RequestMethod.POST)
+    public RESTful popProdAnalysisGet(HttpServletRequest req, Page p) { return popStatusService.popProdAnalysisGet(req,p);}
+
+
+
+
+    @RequestMapping(value = "/popProdReport1Get", method = RequestMethod.POST)
+    public RESTful popProdReport1Get(HttpServletRequest req, Page p) { return popStatusService.popProdReport1Get(req,p);}
+
+
+
+    @RequestMapping(value = "/popSpectroGet", method = RequestMethod.POST)
+    public RESTful popSpectroGet(HttpServletRequest req, Page p) { return popStatusService.popSpectroGet(req,p);}
+
+
+    @RequestMapping(value = "/sysProdHRGet", method = RequestMethod.POST)
+    public RESTful sysProdHRGet(HttpServletRequest req, Page p) { return popStatusService.sysProdHRGet(req,p);}
+
+
+    @RequestMapping(value = "/sysProdSumGet", method = RequestMethod.POST)
+    public RESTful sysProdSumGet(HttpServletRequest req, Page p) { return popStatusService.sysProdSumGet(req,p);}
+
+
+
+
 }

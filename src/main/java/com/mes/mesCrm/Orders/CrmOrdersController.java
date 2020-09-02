@@ -37,6 +37,9 @@ public class CrmOrdersController {
     @RequestMapping(value = "/crmShipping")
     public String crmShipping(){return "mesCrm/mesCrm/crmShipping/crmShipping";}
 
+    @RequestMapping(value = "/crmShippingList")
+    public String crmShippingList(){return "mesCrm/mesCrm/crmShippingList/crmShippingList";}
+
     @RequestMapping(value = "/crm_7")
     public String crm_7(){return "mesCrm/mesCrm/dumi/crm_7";}
 
@@ -48,6 +51,8 @@ public class CrmOrdersController {
 
     @RequestMapping(value = "/wmsOutOrder")
     public String wmsOutOrder(){return "mesCrm/mesCrm/wmsOutOrder/wmsOutOrder";}
+
+
 
 
 //    @RequestMapping(value = "/crmProdOrder")

@@ -45,4 +45,6 @@ public interface CrmOrdersMapper {
     Message crmShippingDel(Page p);
 
     Message crmOrderRecpComp(CRM_ORD_RECP crmOrdRecp);
+
+    Message wmsOutOrderComp(Page p);
 }

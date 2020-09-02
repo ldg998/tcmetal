@@ -7,6 +7,7 @@
 var main_data = {
     check: 'I',
     check2:"Y",
+    check3:"Y",
     send_data: {},
     send_data_post: {},
     readonly: [],
@@ -46,6 +47,7 @@ function get_btn(page) {
 function add_btn() {
     if(main_data.auth.check_add != "N") {
         main_data.check = 'I';
+        main_data.check3 = "Y";
         modal_reset(".modal_value", main_data.readonly);
         datepicker_makes("#datepicker_modal", -30);
         datepicker_makes("#datepicker_modal2", 0);
@@ -67,6 +69,12 @@ function update_btn(jqgrid_data) {
         modal_reset(".modal_value", []);
         $('#mes_modal1_grid1').jqGrid('clearGridData');
         ccn_ajax('/wmsOutOrderOneGet', {keyword: jqgrid_data.req_no}).then(function (data) {
+            for(var i = 0; i < data.length ;  i++){
+                if (data[i].status === "1"){
+                    main_data.check3 = "N";
+                }
+            }
+
             modal_edits(".modal_value",[],data[0]);
             datepicker_makes("#datepicker_modal", -30);
             datepicker_makes("#datepicker2_modal", 0);
@@ -103,25 +111,88 @@ function delete_btn() {
         if (ids.length === 0) {
             alert(msg_object.TBMES_A004.msg_name1);
         } else {
-            if (confirm(msg_object.TBMES_A005.msg_name1)) {
                 main_data.check = 'D';
+                var check = "Y"
                 for(i=0;i<ids.length;i++){
                     var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
-                    keywords.push(data.req_no+gu4+data.ord_no);
-                }//11|12|13|
-                code_list=keywords.join(gu5);
-                wrapWindowByMask2();
-                ccn_ajax("/wmsOutOrderDel", {keyword:code_list}).then(function (data) {
-                    if (data.result === 'NG') {
-                        alert(data.message);
-                    } else {
-                        $('#mes_grid').trigger('reloadGrid');
+                    keywords.push(data.req_no+gu4+data.ord_no+gu4+data.supp_code+gu4+data.part_kind+gu4+data.part_code);
+
+                    if (data.status === "1"){
+                        check = "N";
                     }
-                    closeWindowByMask();
-                }).catch(function (err) {
-                    closeWindowByMask();
-                    console.error(err); // Error 출력
-                });
+                }//11|12|13|
+
+                if (check === "N"){
+                    alert("출고완료된 지시가 있습니다.");
+                } else {
+                if (confirm(msg_object.TBMES_A005.msg_name1)) {
+                    code_list=keywords.join(gu5);
+                    wrapWindowByMask2();
+                    ccn_ajax("/wmsOutOrderDel", {keyword:code_list}).then(function (data) {
+                        if (data.result === 'NG') {
+                            alert(data.message);
+                        } else {
+                            $('#mes_grid').trigger('reloadGrid');
+                        }
+                        closeWindowByMask();
+                    }).catch(function (err) {
+                        closeWindowByMask();
+                        console.error(err); // Error 출력
+                    });
+                }
+
+
+
+            }
+        }
+    } else {
+        alert(msg_object.TBMES_A002.msg_name1);
+    }
+}
+
+function comp_btn() {
+    if(main_data.auth.check_del != "N") {
+        var gu4 = String.fromCharCode(4);
+        var gu5 = String.fromCharCode(5);
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        var keywords = [];
+        var code_list;
+
+        if (ids.length === 0) {
+            alert(msg_object.TBMES_A004.msg_name1);
+        } else {
+            main_data.check = 'D';
+            var check = "Y"
+            for(i=0;i<ids.length;i++){
+                var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
+                keywords.push(data.req_no+gu4+data.supp_code+gu4+data.part_kind+gu4+data.part_code);
+
+                if (data.status === "1"){
+                    check = "N";
+                }
+            }//11|12|13|
+
+            if (check === "N"){
+                alert("출고완료된 지시가 있습니다.");
+            } else {
+                if (confirm("완료처리 하시겠습니까?")) {
+                    code_list=keywords.join(gu5);
+                    wrapWindowByMask2();
+                    ccn_ajax("/wmsOutOrderComp", {keyword:code_list}).then(function (data) {
+                        if (data.result === 'NG') {
+                            alert(data.message);
+                        } else {
+                            $('#mes_grid').trigger('reloadGrid');
+                        }
+                        closeWindowByMask();
+                    }).catch(function (err) {
+                        closeWindowByMask();
+                        console.error(err); // Error 출력
+                    });
+                }
+
+
+
             }
         }
     } else {
@@ -203,7 +274,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['rownum','ord_no','출고일자', '출고지시번호','수주일자','업체','PO','기종','품번','품명','단중','운송수단','수량','외주(열처리)','상태','등록자','등록일시'],
+        colNames: ['rownum','ord_no','출고일자', '출고지시번호','수주일자','업체','업체코드','PO','기종','품번','품명','단중','운송수단','수량','외주(열처리)','상태','상태','등록자','등록일시'],
         colModel: [
 
             {name: 'rownum', index: 'rownum', sortable: false,hidden:true,key:true, width: 80,fixed:true},
@@ -212,6 +283,7 @@ function jqGrid_main() {
             {name: 'req_no', index: 'req_no', sortable: false, width: 140,fixed:true},
             {name: 'ord_date', index: 'ord_date', sortable: false, width: 80,formatter: formmatterDate2,fixed:true  },
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 80,fixed:true},
+            {name: 'supp_code', index: 'supp_code', sortable: false, width: 80,fixed:true,hidden:true},
             {name: 'po_no', index: 'po_no', sortable: false, width: 80,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 80,fixed:true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 80,fixed:true},
@@ -221,6 +293,7 @@ function jqGrid_main() {
             {name: 'qty', index: 'qty', sortable: false, width: 80,fixed:true, align: 'right',formatter:'integer'},
             {name: 'outs_supp_name', index: 'outs_supp_name', sortable: false, width: 80,fixed:true},
             {name: 'status_name', index: 'status_name', sortable: false, width: 80,fixed:true},
+            {name: 'status', index: 'status', sortable: false, width: 80,fixed:true,hidden:true},
             {name: 'user_name', index: 'user_name', sortable: false, width: 80,fixed:true},
             {name: 'update_date', index: 'update_date', sortable: false, width: 140,formatter: formmatterDate,fixed:true}
 

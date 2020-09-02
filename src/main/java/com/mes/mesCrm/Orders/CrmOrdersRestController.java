@@ -77,6 +77,11 @@ public class CrmOrdersRestController {
         return crmOrdersService.wmsOutOrderDel( p);
     }
 
+    @RequestMapping(value="/wmsOutOrderComp" , method = RequestMethod.POST)
+    public Message wmsOutOrderComp(Page p){
+        return crmOrdersService.wmsOutOrderComp( p);
+    }
+
     @RequestMapping(value = "/crmShippingWmsOutGet", method = RequestMethod.POST)
     public RESTful crmShippingWmsOutGet( Page p) {
         return crmOrdersService.crmShippingWmsOutGet(p);

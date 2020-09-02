@@ -542,6 +542,21 @@ input[type=email], input[type=url], input[type=search], input[type=tel], input[t
     clip:rect(0,0,0,0);
     border: 0;
 }
-
+.filebox_grid {
+    display: inline-block;
+}
+.filebox_grid label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+}
 
 

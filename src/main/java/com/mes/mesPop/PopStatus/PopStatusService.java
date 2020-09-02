@@ -5,6 +5,7 @@ import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
 import com.mes.Mapper.mesPop.Status.MesPopStatusMapper;
+import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD;
 import com.mes.mesPop.PopStatus.DTO.POP_PROD;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,29 +71,36 @@ public class PopStatusService extends UploadFunction {
         mesPopStatusMapper.sysSPartWoodAdd2(files);
     }
 
+    public RESTful popProdListGet(HttpServletRequest req, Page p) {
+        List<POP_PLAN> rows = mesPopStatusMapper.popProdListGet(p);
+        return getListData(rows, p);
+    }
+
     public RESTful popProdAnalysisGet(HttpServletRequest req, Page p) {
-        List<POP_PROD> rows = mesPopStatusMapper.popProdAnalysisGet(p);
+        List<POP_PLAN> rows = mesPopStatusMapper.popProdAnalysisGet(p);
         return getListData(rows, p);
     }
 
     public RESTful popProdReport1Get(HttpServletRequest req, Page p) {
-        List<POP_PROD> rows = mesPopStatusMapper.popProdReport1Get(p);
+        List<POP_PLAN> rows = mesPopStatusMapper.popProdReport1Get(p);
         return getListData(rows, p);
     }
 
     public RESTful popSpectroGet(HttpServletRequest req, Page p) {
 
-        List<POP_PROD> rows = mesPopStatusMapper.popSpectroGet(p);
+        List<POP_PLAN> rows = mesPopStatusMapper.popSpectroGet(p);
         return getListData(rows, p);
     }
 
     public RESTful sysProdHRGet(HttpServletRequest req, Page p) {
-        List<POP_PROD> rows = mesPopStatusMapper.sysProdHRGet(p);
+        List<POP_PLAN> rows = mesPopStatusMapper.sysProdHRGet(p);
         return getListData(rows, p);
     }
 
     public RESTful sysProdSumGet(HttpServletRequest req, Page p) {
-        List<POP_PROD> rows = mesPopStatusMapper.sysProdSumGet(p);
+        List<POP_PLAN> rows = mesPopStatusMapper.sysProdSumGet(p);
         return getListData(rows, p);
     }
+
+
 }

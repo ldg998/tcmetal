@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="/static/ui-component/assets/js/jquery.fileDownload.js"></script>
+
 <script type="text/javascript" src="/data-component/mesPOP/PopStatus/popProdList/popProdList.js" charset="UTF-8"></script>
 
 
@@ -17,7 +16,7 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate " readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
@@ -27,7 +26,7 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate " readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
@@ -36,14 +35,17 @@
                         <div class="input-icon input-icon-right">
                             <input type="text" name="supp_name" class="form-control h-25 condition_main"
                                     autocomplete="off" >
+
+                            <input type="hidden" name="supp_code" class="form-control h-25 condition_main"
+                                   autocomplete="off" >
                         </div>
                     </td>
                     <td class="wt-px-50 td-title t-align-c padding-a-0">상태</td>
                     <td class="wt-px-150">
-                       <select id="select1" style="width: 100%">
-                           <option value="">생산대기</option>
-                           <option value="">생산완료</option>
-                           <option value="">출고완료</option>
+                       <select id="select1" name="keywrod" style="width: 100%" class="condition_main">
+                           <option value="0">생산대기</option>
+                           <option value="1">생산완료</option>
+                           <option value="2">출고완료</option>
                        </select>
                     </td>
                     <td></td>
@@ -57,7 +59,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                       onclick=" test();">
+                       onclick=" get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>

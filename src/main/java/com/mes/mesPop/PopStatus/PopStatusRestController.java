@@ -70,7 +70,12 @@ public class PopStatusRestController {
     }
 
 
-    @RequestMapping(value = "/popProdAnalysisGet", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/popProdListGet", method = RequestMethod.POST)
+    public RESTful popProdListGet(HttpServletRequest req, Page p) { return popStatusService.popProdListGet(req,p);}
+
+
+     @RequestMapping(value = "/popProdAnalysisGet", method = RequestMethod.POST)
     public RESTful popProdAnalysisGet(HttpServletRequest req, Page p) { return popStatusService.popProdAnalysisGet(req,p);}
 
 

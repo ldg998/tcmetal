@@ -21,6 +21,7 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     select_box();
+    modal_start1();
 });
 
 

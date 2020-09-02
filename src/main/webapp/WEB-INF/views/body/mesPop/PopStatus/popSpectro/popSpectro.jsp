@@ -73,4 +73,4 @@
     </div>
 </div>
 
-
+<%@include file="popSpectro_modal1.jsp"%>

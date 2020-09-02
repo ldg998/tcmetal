@@ -106,4 +106,13 @@
 	<select id="crmShippingDel" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_CRM_SHIPPING_DEL #{keyword}
     </select>
+
+	<select id="crmPerformGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
+		EXEC SP_CRM_PERFORM_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+    </select>
+
+	<select id="crmShippingListGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_SHIPPING">
+		EXEC SP_CRM_SHIPPINGLIST_GET #{start_date},#{end_date},#{keyword},#{keyword2}
+    </select>
+
 </mapper>

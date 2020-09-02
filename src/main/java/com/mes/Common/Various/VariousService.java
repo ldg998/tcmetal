@@ -158,4 +158,8 @@ public class VariousService extends ReturnFunction {
 
     public List<SYS_QC_ITEM_CD> sysQcItemCdAll(HttpServletRequest req, Page p) { return variousMapper.sysQcItemCdAll(p);
     }
+
+    public List<SYSCommon> sysLineGroupAllGet(Page p) {
+        return variousMapper.sysLineGroupAllGet(p);
+    }
 }

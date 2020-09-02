@@ -17,6 +17,7 @@ public class POP_PLAN {
     private int plan_qty;
     private int prod_qty;
     private int weight;
+    private String charge;
     private String lot_no;
     private String user_code;
     private String user_name;
@@ -27,6 +28,7 @@ public class POP_PLAN {
     private String keyword2;
     private String line_grp_code;
     private String part_kind_name;
+    private String mat_group;
     private int rownum;
     private int rownum_page;
     private int rec_count;

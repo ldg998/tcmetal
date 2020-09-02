@@ -34,6 +34,15 @@ public class CRM_ORD_RECP  {
     private int rec_count;
     private String status;
     private String status_name;
-
-
+    private String date1;
+    private String date2;
+    private String date3;
+    private String date4;
+    private String date5;
+    private String date6;
+    private String date7;
+    private String date8;
+    private String date9;
+    private String date10;
+    private String money_unit;
 }

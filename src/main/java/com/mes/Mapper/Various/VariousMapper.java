@@ -75,4 +75,6 @@ public interface VariousMapper {
     List<SYSProdLine> sysProdLineAllGet(Page p);
 
     List<SYS_QC_ITEM_CD> sysQcItemCdAll(Page p);
+
+    List<SYSCommon> sysLineGroupAllGet(Page p);
 }

@@ -65,7 +65,7 @@ function update_btn(jqgrid_data) {
         main_data.check = 'U'; // 수정인지 체크
         main_data.check2 = 'N'; // 수정인지 체크
         ccn_ajax('/popPlanWorkDateGet', {keyword:(jqgrid_data.work_date).replace(/[^0-9]/g,'')}).then(function (data) {
-            select_makes_base("#modal1_select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data2) {
+            select_makes_base("#modal1_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'1'},'').then(function (data2) {
                 $("#modal1_select1").val(data[0].line_grp_code).trigger("change");
                 select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].line_grp_code},'').then(function (data3) {
                     $("#modal1_select2").val(data[0].line_code).trigger("change");
@@ -107,7 +107,7 @@ function msg_get() {
 }
 
 function selectBox() {
-    select_makes_base("#main_select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
+    select_makes_base("#main_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'1'},'').then(function (data) {
         select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
 
         });
@@ -133,12 +133,13 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['rownum','계획일자','순번','업체','기종','품명','단중','수량','중량','제품LOT','작업자'],
+        colNames: ['rownum','계획일자','순번','라인','업체','기종','품명','단중','수량','중량','제품LOT','작업자'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false, key:true, width: 150,fixed: true,hidden:true},
 
             {name: 'work_date', index: 'work_date', sortable: false, width: 100, fixed: true,formatter:formmatterDate2},
             {name: 'seq', index: 'seq', sortable: false, width: 50, fixed: true},
+            {name: 'line_name', index: 'line_name', sortable: false, width: 150, fixed: true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150, fixed: true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 150, fixed: true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 150, fixed: true},

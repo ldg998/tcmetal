@@ -23,6 +23,12 @@ public class PopRestController {
     @RequestMapping(value = "/popPlanAdd", method = RequestMethod.POST)
     public Message popPlanAdd(HttpServletRequest req, POP_PLAN pp) { return popService.popPlanAdd(req, pp); }
 
+    @RequestMapping(value = "/popPlanAdd2", method = RequestMethod.POST)
+    public Message popPlanAdd2(HttpServletRequest req, POP_PLAN pp) { return popService.popPlanAdd2(req, pp); }
+
+    @RequestMapping(value = "/popPlanDel", method = RequestMethod.POST)
+    public Message popPlanDel(Page p) { return popService.popPlanDel(p); }
+
     @RequestMapping(value = "/popPlanGet", method = RequestMethod.POST)
     public RESTful popPlanGet(Page p) {
         return popService.popPlanGet(p);

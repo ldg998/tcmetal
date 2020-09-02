@@ -24,7 +24,7 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수/////////////////////////////////////
 //조회버튼
 function get_btn(page) {
-    main_data.send_data = value_return2(".condition_main");
+    main_data.send_data = value_return(".condition_main");
     $("#mes_grid").setGridParam({
         url: '/wmsOutListGet',
         datatype: "json",

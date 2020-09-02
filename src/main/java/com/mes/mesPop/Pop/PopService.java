@@ -157,4 +157,13 @@ public class PopService extends ReturnFunction {
     public List<POP_PLAN> popPlanWorkDateGet(Page p) {
         return mesPopPopMapper.popPlanWorkDateGet(p);
     }
+
+    public Message popPlanDel(Page p) {
+        return mesPopPopMapper.popPlanDel(p);
+    }
+
+    public Message popPlanAdd2(HttpServletRequest req, POP_PLAN pp) {
+        pp.setUser_code(getSessionData(req).getUser_code());
+        return mesPopPopMapper.popPlanAdd2(pp);
+    }
 }

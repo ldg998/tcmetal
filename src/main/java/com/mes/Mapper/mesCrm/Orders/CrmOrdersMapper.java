@@ -47,4 +47,8 @@ public interface CrmOrdersMapper {
     Message crmOrderRecpComp(CRM_ORD_RECP crmOrdRecp);
 
     Message wmsOutOrderComp(Page p);
+
+    List<CRM_ORD_RECP> crmPerformGet(Page p);
+
+    List<CRM_SHIPPING> crmShippingListGet(Page p);
 }

@@ -66,6 +66,12 @@ public class VariousRestController {
         return variousService.sysCommonAllGet(p, req);
 
     }
+
+    @RequestMapping(value = "/sysLineGroupAllGet", method = RequestMethod.POST)
+    public List<SYSCommon> sysLineGroupAllGet(Page p) {
+        return variousService.sysLineGroupAllGet(p);
+
+    }
     @RequestMapping(value = "/sysPartTypeGet", method = RequestMethod.POST)
     public List<SYSPartType> sysPartTypeGet(Page p, HttpServletRequest req) {
         return variousService.sysPartTypeGet(p, req);

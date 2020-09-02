@@ -818,7 +818,7 @@ function select_supp_name_code(tag,url,value,text,data,what){
 function disabled_tf(list,what) {
 	var tf = what == "Y" ? true : false;
 	for (var i =0 ; i < list.length; i++){
-		$(list[i]).prop("disabled",tf).trigger('change');
+		$(list[i]).prop("disabled",tf);
 	}
 
 }

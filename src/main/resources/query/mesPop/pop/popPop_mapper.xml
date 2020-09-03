@@ -108,4 +108,12 @@
         EXEC SP_POP_PLAN_WORK_DATE_GET 0,0,#{keyword}
     </select>
 
+    <select id="popPlanDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_DEL #{keyword},#{keyword2}
+    </select>
+
+    <select id="popPlanAdd2" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_ADD2 #{work_date}, #{line_code},#{keyword2},#{user_code},#{keyword}
+    </select>
+
 </mapper>

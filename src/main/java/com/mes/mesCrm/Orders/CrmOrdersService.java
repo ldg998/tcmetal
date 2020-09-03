@@ -106,4 +106,13 @@ public class CrmOrdersService extends ReturnFunction {
     public Message wmsOutOrderComp(Page p) {
         return crmOrdersMapper.wmsOutOrderComp(p);
     }
+
+    public RESTful crmPerformGet(Page p) {
+        List<CRM_ORD_RECP> rows = crmOrdersMapper.crmPerformGet(p);
+        return getListData(rows , p);
+    }
+
+    public List<CRM_SHIPPING> crmShippingListGet(Page p) {
+        return crmOrdersMapper.crmShippingListGet(p);
+    }
 }

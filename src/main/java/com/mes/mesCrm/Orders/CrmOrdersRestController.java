@@ -113,5 +113,13 @@ public class CrmOrdersRestController {
         return crmOrdersService.crmShippingDel( p);
     }
 
+    @RequestMapping(value = "/crmPerformGet", method = RequestMethod.POST)
+    public RESTful crmPerformGet( Page p) {
+        return crmOrdersService.crmPerformGet(p);
+    }
 
+    @RequestMapping(value = "/crmShippingListGet", method = RequestMethod.POST)
+    public List<CRM_SHIPPING> crmShippingListGet( Page p) {
+        return crmOrdersService.crmShippingListGet(p);
+    }
 }

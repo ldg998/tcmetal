@@ -37,6 +37,8 @@ function get_btn(page) {
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid");
+
+    drawChart();
 }
 
 function modal2_btn() {
@@ -144,9 +146,9 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['선적일자', '전표번호', '업체','운송수단', '해상운임','터미널 핸들링비용','환경','쇼링비','부두이용료','서류발급비','하역료','보험료','항만시설보안료','국내운송비','관세대행수수료','목재비1','목재비2','목재비3','순중량','운송단가','등록자','등록일시'],
+        colNames: ['출고일자', '전표번호', '업체','운송수단', '해상운임','터미널 핸들링비용','환경','쇼링비','부두이용료','서류발급비','하역료','보험료','항만시설보안료','국내운송비','관세대행수수료','목재비1','목재비2','목재비3','순중량','운송단가','선적일자','등록자','등록일시'],
         colModel: [
-            {name:'ship_date', index: 'ship_date', width: 100, fixed:true,formatter:formmatterDate2},
+            {name:'out_date', index: 'out_date', width: 100, fixed:true,formatter:formmatterDate2},
             {name:'out_no', index: 'out_no',  width: 150,key:true, fixed:true},
             {name:'supp_name', index: 'supp_name',  width: 150, fixed:true},
             {name:'trans_name', index: 'trans_name',  width: 100, fixed:true},
@@ -166,8 +168,9 @@ function jqGrid_main() {
             {name:'wood_cost3', index: 'wood_cost3', width: 100, fixed:true, align: 'right',formatter:'integer'},
             {name:'weight', index: 'weight', width: 100, fixed:true, align: 'right',formatter:'integer'},
             {name:'unit_cost', index: 'unit_cost', width: 100, fixed:true, align: 'right',formatter:'integer'},
+            {name:'ship_date', index: 'ship_date', width: 100, fixed:true,formatter:formmatterDate2},
             {name:'user_name', index: 'user_name', width: 100, fixed:true},
-            {name:'update_date', index: 'update_date',  width: 150, fixed:true,formatter:formmatterDate}
+            {name:'update_date', index: 'update_date',  width: 150, fixed:true,formatter:formmatterDate},
 
         ],
         multiselect: true,
@@ -213,7 +216,7 @@ function selectBox() {
 }
 
 function drawChart() {
-    ccn_ajax('/qmsRecvErrorListSumGet', main_data.send_data).then(function (data2) {
+    ccn_ajax('/crmShippingListGet', main_data.send_data).then(function (data2) {
         var dataSet =  [ ['yearMonth', '']];
         if (data2.length> 0) {
             list = [];
@@ -221,8 +224,9 @@ function drawChart() {
             var bad;
             data2.forEach(function (d) {
 
-                date = formatterDate4(d.work_date);
-                bad = parseInt(d.qc_ratio.replace("%"));
+                // date = formatterDate4(d.work_date);
+                date = d.out_no;
+                bad = parseInt(d.unit_cost);
                 dataSet.push([date,bad]);
             })
 
@@ -230,11 +234,11 @@ function drawChart() {
             var options = {
                 title: '운송비용 그래프',
                 hAxis: {
-                    title: '기간'
+                    title: '전표번호'
                 },
                 vAxis: {
                     title: ''
-                    ,ticks:[0,25,50,75,100]
+                    ,ticks:[0,1000,2000,3000,4000,5000]
                 },
                 series:{
                     0:{lineWidth:2,pointSize:8,color:'4444FF',pointShape:'circle'}
@@ -261,12 +265,12 @@ function drawBasic() {
     var options = {
         title: '운송비용 그래프',
         hAxis: {
-            title: '기간',
+            title: '전표번호',
             textPosition : 'none'
         },
         vAxis: {
             title: ''
-            ,ticks:[0,25,50,75,100]
+            ,ticks:[0,1000,2000,3000,4000,5000]
         },
 
     };

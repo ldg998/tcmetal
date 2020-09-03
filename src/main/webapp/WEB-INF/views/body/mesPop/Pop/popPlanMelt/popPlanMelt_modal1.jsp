@@ -10,7 +10,10 @@
     input[type=text][name="plan_qty"] {
         height: 18px !important;
     }
-    input[type=text][name="lot_no"] {
+    input[type=text][name="charge"] {
+        height: 18px !important;
+    }
+    input[type=text][name="mat_group"] {
         height: 18px !important;
     }
 </style>

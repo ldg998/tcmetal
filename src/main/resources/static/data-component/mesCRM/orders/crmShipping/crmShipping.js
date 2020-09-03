@@ -159,9 +159,9 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['선적일자', '전표번호', '업체','운송수단', '해상운임','터미널 핸들링비용','환경','쇼링비','부두이용료','서류발급비','하역료','보험료','항만시설보안료','국내운송비','관세대행수수료','목재비1','목재비2','목재비3','순중량','운송단가','등록자','등록일시'],
+        colNames: ['출고일자', '전표번호', '업체','운송수단', '해상운임','터미널 핸들링비용','환경','쇼링비','부두이용료','서류발급비','하역료','보험료','항만시설보안료','국내운송비','관세대행수수료','목재비1','목재비2','목재비3','순중량','운송단가','선적일자','등록자','등록일시'],
         colModel: [
-            {name:'ship_date', index: 'ship_date', width: 100, fixed:true,formatter:formmatterDate2},
+            {name:'out_date', index: 'out_date', width: 100, fixed:true,formatter:formmatterDate2},
             {name:'out_no', index: 'out_no',  width: 150,key:true, fixed:true},
             {name:'supp_name', index: 'supp_name',  width: 150, fixed:true},
             {name:'trans_name', index: 'trans_name',  width: 100, fixed:true},
@@ -181,8 +181,9 @@ function jqGrid_main() {
             {name:'wood_cost3', index: 'wood_cost3', width: 100, fixed:true, align: 'right',formatter:'integer'},
             {name:'weight', index: 'weight', width: 100, fixed:true, align: 'right',formatter:'integer'},
             {name:'unit_cost', index: 'unit_cost', width: 100, fixed:true, align: 'right',formatter:'integer'},
+            {name:'ship_date', index: 'ship_date', width: 100, fixed:true,formatter:formmatterDate2},
             {name:'user_name', index: 'user_name', width: 100, fixed:true},
-            {name:'update_date', index: 'update_date',  width: 150, fixed:true,formatter:formmatterDate}
+            {name:'update_date', index: 'update_date',  width: 150, fixed:true,formatter:formmatterDate},
 
         ],
         multiselect: true,

@@ -27,8 +27,8 @@ function addUdate_btn() {
         var list = [];
         var list2 = [];
         jdata.forEach(function (data, j) {
-            if (data.supp_code !== '' && data.supp_code !== ' ' && data.part_kind !== '' && data.part_kind !== ' ' && data.part_code !== '' && data.part_code !== ' ' && data.plan_qty > 0 && data.lot_no !== '' && data.work_user_code !== '' && data.work_user_code !== ' ') {
-                list.push(data.supp_code + gu4 + data.part_kind + gu4 + data.part_code +gu4 + data.part_weight + gu4 + data.plan_qty +gu4 + data.weight+ gu4 + data.lot_no+ gu4 + data.work_user_code);
+            if (data.supp_code !== '' && data.supp_code !== ' ' && data.part_kind !== '' && data.part_kind !== ' ' && data.part_code !== '' && data.part_code !== ' ' && data.plan_qty > 0 && data.work_user_code !== '' && data.work_user_code !== ' ') {
+                list.push(data.charge + gu4 +data.supp_code + gu4 + data.part_kind + gu4 + data.part_code +gu4 + data.part_weight + gu4 + data.plan_qty +gu4 + data.weight+ gu4 + data.mat_group+ gu4 + data.work_user_code);
 
             } else {
                 list2.push(j+1);
@@ -52,7 +52,7 @@ function addUdate_btn() {
 
                 if (confirm(text)) {
                     wrapWindowByMask2();
-                    ccn_ajax("/popPlanAdd", add_data).then(function (data) {
+                    ccn_ajax("/popPlanAdd2", add_data).then(function (data) {
                         if (data.result === 'NG') {
                             alert(data.message);
                         } else {
@@ -122,6 +122,7 @@ function modal1_rowAdd(rowId) {
 
     var add_data = {
         seq:seq,
+        charge:"",
         supp_name:'선택안함',
         supp_code:'',
         part_kind_name:'선택안함',
@@ -131,7 +132,7 @@ function modal1_rowAdd(rowId) {
         plan_qty:'0',
         weight:'0',
         part_weight:'0',
-        lot_no:'',
+        mat_group:'',
         work_user_name:'선택안함',
         work_user_code:'',
     }
@@ -149,6 +150,25 @@ function modal1_rowDel(rowId) {
     var count =  $("#mes_modal1_grid1").getGridParam("reccount");
     if (count !== 1) {
         $("#mes_modal1_grid1").jqGrid("delRowData",rowId);
+    }
+
+    if (count === 1 && main_data.check === "U"){
+        if (confirm(msg_object.TBMES_A005.msg_name1)) {
+            var sendData = value_return(".modal_value");
+            wrapWindowByMask2();
+            ccn_ajax("/popPlanDel", {keyword:sendData.start_date,keyword2:sendData.keyword2}).then(function (data) {
+                if (data.result === 'NG') {
+                    alert(data.message);
+                } else {
+                    $('#mes_grid').trigger('reloadGrid');
+                    $("#addDialog").dialog("close");
+                }
+                closeWindowByMask();
+            }).catch(function (err) {
+                closeWindowByMask();
+                console.error(err); // Error 출력
+            });
+        }
     }
 }
 
@@ -200,10 +220,64 @@ function jqGrid_main_modal() {
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
         ajaxSelectOptions: { cache: false, type: 'POST' },
-        colNames : ['seq','CHARGE','업체','supp_code','기종','part_kind','품명','part_code','단중','수량','중량','재질','작업자','work_user_code','삽입/삭제','이동'],// grid 헤더 설정
+        colNames : ['seq','CHARGE','업체','supp_code','기종','part_kind','품명','part_code','단중','수량','중량','재질','작업자','work_user_code','삽입/삭제'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'seq',index:'seq',sortable: false,width:110,fixed: true,key:true,hidden:true},
-            {name:'charge',index:'charge',sortable: false,width:110,fixed: true},
+            {name:'charge',index:'charge',sortable: false,width:60,fixed: true, align: 'right',
+                editable: true,
+                editoptions: {
+                    dataEvents: [
+                        {
+                            type: 'focus',
+                            fn: function (e) {
+                                if (e.target.value === ' '){
+                                    e.target.value = '';
+                                }
+
+                                $(e.target).attr('autocomplete', 'off');
+                            }
+                        },
+                        {
+                            type: 'keydown',
+                            fn: function (e) {
+                                if (e.keyCode === 13) {
+                                    var row = $(e.target).closest('tr.jqgrow');
+                                    var rowid = row.attr('id');
+                                    var value = e.target.value;
+                                    if (isNaN(value)){
+                                        alert("숫자만 입력가능합니다.");
+                                        e.target.value = '';
+                                        $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                        return false;
+                                    } else if(value === ''){
+                                        e.target.value = '';
+                                    }
+                                    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                }
+                            }
+
+                        },
+                        {
+                            type: 'focusout',
+                            fn: function (e) {
+                                var row = $(e.target).closest('tr.jqgrow');
+                                var rowid = row.attr('id');
+                                var value = e.target.value;
+                                if (isNaN(value)){
+                                    alert("숫자만 입력가능합니다.");
+                                    e.target.value = '';
+                                    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                    return false;
+                                } else if(value === ''){
+                                    e.target.value = '';
+                                }
+                                $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+
+                            }
+                        }
+                    ]
+                }
+            },
             {name:'supp_name',index:'supp_name',sortable: false,width:110,fixed: true,editable: true,                                       // 수정가능 여부
                 // SELECT 포매터
                 edittype: 'select',                                    // EDIT타입 : SELECT
@@ -488,7 +562,7 @@ function jqGrid_main_modal() {
                 }
             },
             {name:'weight',index:'weight',sortable: false,width:110,fixed: true, align: 'right',formatter:'integer'},
-            {name:'wood4',index:'wood4',sortable: false,width:110,fixed: true,editable: true,
+            {name:'mat_group',index:'mat_group',sortable: false,width:110,fixed: true,editable: true,
                 editoptions: {
                     dataEvents: [
                         {
@@ -512,7 +586,7 @@ function jqGrid_main_modal() {
                     ]
                 }
             },
-            {name:'work_user_name',index:'work_user_name',sortable: false,width:110,fixed: true,editable: true,                                       // 수정가능 여부
+            {name:'work_user_name',index:'work_user_name',sortable: false,width:80,fixed: true,editable: true,                                       // 수정가능 여부
                 // SELECT 포매터
                 edittype: 'select',                                    // EDIT타입 : SELECT
                 editoptions: {
@@ -568,7 +642,6 @@ function jqGrid_main_modal() {
             },
             {name:'work_user_code',index:'work_user_code',sortable: false,width:110,fixed: true,hidden:true},
             {name:'a',index:'a',sortable: false,width:110,fixed: true,formatter:addDel_formatter},
-            {name:'',index:'',sortable: false,width:110,fixed: true},
         ],
         cellEdit: true,
         cellsubmit: 'clientArray',
@@ -612,7 +685,7 @@ function datepickerInput_modal() {
     datepicker_makes("#datepicker_modal1", 0);
 }
 function select_box_modal() {
-    select_makes_base("#modal1_select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
+    select_makes_base("#modal1_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'2'},'').then(function (data) {
         select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
 
         });

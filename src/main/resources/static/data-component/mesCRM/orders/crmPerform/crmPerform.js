@@ -15,6 +15,7 @@ var main_data = {
 $(document).ready(function () {
     authcheck();
     datepickerInput();
+    selectBox();
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
@@ -25,7 +26,13 @@ $(document).ready(function () {
 
 ////////////////////////////클릭 함수////////////////////////////////
 function get_btn(page) {
-
+    main_data.send_data = value_return(".condition_main");
+    $("#mes_grid").setGridParam({
+        url: '/crmPerformGet',
+        datatype: "json",
+        page: page,
+        postData: main_data.send_data
+    }).trigger("reloadGrid");
 }
 
 
@@ -33,6 +40,17 @@ function get_btn(page) {
 
 function add_btn() {
     $("#addDialog").dialog('open');
+}
+
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
 }
 
 ////////////////////////////호출 함수////////////////////////////////
@@ -44,9 +62,16 @@ function authcheck() {
 }
 
 function datepickerInput() {
-    datepicker_makes("#datepicker", 0);
+    datepicker_makes("#datepicker", -30);
     datepicker_makes("#datepicker2", 0);
+}
 
+
+
+
+function selectBox() {
+    $('#part_kind_select').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
 }
 
 function jqGrid_main() {
@@ -56,28 +81,28 @@ function jqGrid_main() {
         caption: '실적현황 | MES',
         colNames: ['수주일자','전표번호','업체','PO','기종','품번','품명','단중','화폐단위','단가','수량','총금액','납품(선적)1','납품(선적)2','납품(선적)3','납품(선적)4','납품(선적)5','납품(선적)6','납품(선적)7','납품(선적)8','납품(선적)9','납품(선적)10',],
         colModel: [
-            {name: 'work_date', index: '', sortable: false, fixed:true, width:130},
-            {name: 'ord_no', index: '', sortable: false, fixed:true, width:150},
-            {name: 'supp_name', index: '', sortable: false, fixed:true, width:150},
-            {name: 'po', index: '', sortable: false, fixed:true, width:130},
-            {name: 'part_kind', index: '', sortable: false, fixed:true, width:150},
-            {name: 'part_no', index: '', sortable: false, fixed:true, width:130},
-            {name: 'part_name', index: '', sortable: false, fixed:true, width:130},
-            {name: 'part_weight', index: '', sortable: false, fixed:true, width:130},
-            {name: 'currency_code', index: '', sortable: false, fixed:true, width:130},
-            {name: 'unit_cost', index: '', sortable: false, fixed:true, width:130},
-            {name: 'qty', index: '', sortable: false, fixed:true, width:130},
-            {name: 'price_amount', index: '', sortable: false, fixed:true, width:130},
-            {name: '', index: '', sortable: false, fixed:true, width:150},
-            {name: '', index: '', sortable: false, fixed:true, width:150},
-            {name: '', index: '', sortable: false, fixed:true, width:150},
-            {name: '', index: '', sortable: false, fixed:true, width:150},
-            {name: '', index: '', sortable: false, fixed:true, width:150},
-            {name: '', index: '', sortable: false, fixed:true, width:150},
-            {name: '', index: '', sortable: false, fixed:true, width:150},
-            {name: '', index: '', sortable: false, fixed:true, width:150},
-            {name: '', index: '', sortable: false, fixed:true, width:150},
-            {name: '', index: '', sortable: false, fixed:true, width:150}
+            {name:'work_date',index:'work_date' ,sortable: false,width:80,fixed: true,formatter:formmatterDate2},
+            {name:'ord_no',index:'ord_no',sortable: false,key: true,width:160,fixed: true},
+            {name:'supp_name',index:'supp_name',sortable: false,width:100,fixed: true},
+            {name:'po_no',index:'po_no',sortable: false,width:80,fixed: true},
+            {name:'part_kind',index:'part_kind',sortable: false,width:100,fixed: true},
+            {name:'part_code',index:'part_code',sortable: false,width:100,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:100,fixed: true},
+            {name:'part_weight',index:'part_weight',sortable: false,width:100,fixed: true, align: 'right',formatter:'integer'},
+            {name:'money_unit',index:'money_unit',sortable: false,width:60,fixed: true},
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:100,fixed: true, align: 'right',formatter:'integer'},
+            {name:'qty',index:'qty',sortable: false,width:100,fixed: true, align: 'right',formatter:'integer'},
+            {name: 'price_amount', index: 'price_amount', sortable: false,fixed: true, width: 100, align: 'right',formatter:'integer'},
+            {name: 'date1', index: 'date1', sortable: false, fixed:true, width:110},
+            {name: 'date2', index: 'date2', sortable: false, fixed:true, width:110},
+            {name: 'date3', index: 'date3', sortable: false, fixed:true, width:110},
+            {name: 'date4', index: 'date4', sortable: false, fixed:true, width:110},
+            {name: 'date5', index: 'date5', sortable: false, fixed:true, width:110},
+            {name: 'date6', index: 'date6', sortable: false, fixed:true, width:110},
+            {name: 'date7', index: 'date7', sortable: false, fixed:true, width:110},
+            {name: 'date8', index: 'date8', sortable: false, fixed:true, width:110},
+            {name: 'date9', index: 'date9', sortable: false, fixed:true, width:110},
+            {name: 'date10', index: 'date10', sortable: false, fixed:true, width:110}
 
         ],
         autowidth: true,

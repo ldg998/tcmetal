@@ -4,21 +4,9 @@
 <script type="text/javascript" src="/data-component/mesCRM/orders/crmPerform/crmPerform.js" charset="UTF-8"></script>
 
 <style>
-    .td-title {
-        border-left: none !important;
-        font-size: 11px !important;
-    }
 
-    .crmWorkInput {
-        height: 30px !important;
-        text-align: right !important;
-    }
-
-    .crmWorkTd {
-        vertical-align: middle !important;
-    }
 </style>
-
+<div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0">
@@ -29,7 +17,7 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
@@ -37,18 +25,24 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main" readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                                   class="form-control h-25 condition_main sendDate" readonly>
+                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;" ></i>
                         </div>
                     </td>
+
+
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-200">
-                        <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                               id="supp_name_main">
+                        <select class="form-control condition_main" name="keyword" id="supp_select" onchange="select_change1(this.value)" style="width: 100%"></select>
                     </td>
+
+
+
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
-                        <input type="text" name="" class="form-control h-25 condition_main">
+                        <select name="keyword2" id="part_kind_select" class="form-control condition_main" style="width: 100%;">
+                            <option value="">전체</option>
+                        </select>
                     </td>
                     <td></td>
                 </tr>

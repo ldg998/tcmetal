@@ -17,6 +17,10 @@
     <select id="sysCommonAllGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
         EXEC SP_SYS_COMMON_GET 0,0,#{keyword}, '','Y'
     </select>
+    <select id="sysLineGroupAllGet" resultType="com.mes.mesManager.Master.DTO.SYSCommon">
+        EXEC SP_SYS_COMMON_LINE_GROUP_GET #{keyword}
+    </select>
+
     <select id="sysPartTypeGet" resultType="com.mes.Common.Various.DTO.SYSPartType">
         EXEC SP_SYS_PART_TYPE_GET #{keyword}
     </select>

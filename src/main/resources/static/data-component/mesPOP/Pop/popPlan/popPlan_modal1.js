@@ -83,7 +83,7 @@ function modal_close(){
 
 function modal1_select_change1(value) {
     if (main_data.check2 === "Y"){
-        if (value !== ""){
+        if (value !== null && value !== ""){
             select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (data2) {
 
             });
@@ -149,6 +149,25 @@ function modal1_rowDel(rowId) {
     var count =  $("#mes_modal1_grid1").getGridParam("reccount");
     if (count !== 1) {
         $("#mes_modal1_grid1").jqGrid("delRowData",rowId);
+    }
+
+    if (count === 1 && main_data.check === "U"){
+        if (confirm(msg_object.TBMES_A005.msg_name1)) {
+            var sendData = value_return(".modal_value");
+            wrapWindowByMask2();
+            ccn_ajax("/popPlanDel", {keyword:sendData.start_date,keyword2:sendData.keyword2}).then(function (data) {
+                if (data.result === 'NG') {
+                    alert(data.message);
+                } else {
+                    $('#mes_grid').trigger('reloadGrid');
+                    $("#addDialog").dialog("close");
+                }
+                closeWindowByMask();
+            }).catch(function (err) {
+                closeWindowByMask();
+                console.error(err); // Error 출력
+            });
+        }
     }
 }
 
@@ -612,7 +631,7 @@ function datepickerInput_modal() {
     datepicker_makes("#datepicker_modal1", 0);
 }
 function select_box_modal() {
-    select_makes_base("#modal1_select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
+    select_makes_base("#modal1_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'1'},'').then(function (data) {
         select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
 
         });

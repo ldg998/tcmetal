@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
-
+<%--생산진핸형환 2020-09-03 삭제 --%>
 <script type="text/javascript" src="/data-component/mesPOP/PopStatus/popProdList/popProdList.js" charset="UTF-8"></script>
-
-
 <div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
     <div class="page-content">
@@ -42,10 +40,11 @@
                     </td>
                     <td class="wt-px-50 td-title t-align-c padding-a-0">상태</td>
                     <td class="wt-px-150">
-                       <select id="select1" name="keywrod" style="width: 100%" class="condition_main">
-                           <option value="0">생산대기</option>
-                           <option value="1">생산완료</option>
-                           <option value="2">출고완료</option>
+                       <select id="select1" name="keyword" style="width: 100%" class="condition_main">
+                           <option value="DATE">생산대기</option>
+                           <option value="DATE1">생산완료</option>
+                           <option value="DATE2">입고완료</option>
+                           <option value="DATE3">출고완료</option>
                        </select>
                     </td>
                     <td></td>

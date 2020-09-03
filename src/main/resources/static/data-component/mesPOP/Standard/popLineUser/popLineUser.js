@@ -111,9 +111,10 @@ function delete_btn() {
 
 function main_select_change1(value) {
     select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (data2) {
-
     });
 }
+
+
 function user_get(page) {
     $("#mes_grid2").setGridParam({ // 그리드 조회
         url: '/sysUserGet',
@@ -148,6 +149,8 @@ function selectBox() {
         select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
  });
     });
+
+
     // $('#main_select2').select2();
 }
 

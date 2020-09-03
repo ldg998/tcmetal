@@ -10,12 +10,12 @@
         EXEC SP_POP_PLAN_ORD_ORD #{keyword},#{user_code}
     </select>
 
-    <select id="popProdRangeGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PROD">
-        EXEC SP_POP_PROD_RANGE_GET #{page},#{rows},#{start_date},#{stop_date},#{keyword}
+    <select id="popProdRangeGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+        EXEC SP_POP_PROD_RANGE_GET #{page},#{rows},#{start_date},#{stop_date},#{supp_code},#{part_kind},#{keyword}
     </select>
 
-    <select id="popProdList1Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PROD">
-        EXEC SP_POP_PROD_LIST1_GET #{page},#{rows},#{start_date},#{stop_date},#{keyword},#{keyword2},#{keyword3},#{keyword4}
+    <select id="popProdList1Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+        EXEC SP_POP_PROD_LIST1_GET #{page},#{rows},#{start_date},#{stop_date},#{supp_code},#{part_kind},#{keyword}
     </select>
 
     <update id="sysSPartDrawingAdd">
@@ -87,6 +87,10 @@
 
      <select id="sysProdSumGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
     EXEC SP_SYS_PROD_SUM_GET #{page},#{rows},#{work_date},#{supp_code},#{part_kind}
+    </select>
+
+    <select id="popProdList2Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_PROD_LIST2_GET #{page},#{rows},#{work_date},#{keyword},#{keyword2}
     </select>
 
 

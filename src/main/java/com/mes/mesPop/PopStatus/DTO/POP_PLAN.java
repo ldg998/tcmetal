@@ -29,7 +29,13 @@ public class POP_PLAN {
     private String work_user_name;
     private String prod_date;
     private String status_name;
-        private int rownum;
+    private int qty;
+    private String plan_code;
+    private String line_name;
+    private String dept_name;
+
+
+    private int rownum;
     private int rownum_page;
     private int rec_count;
 

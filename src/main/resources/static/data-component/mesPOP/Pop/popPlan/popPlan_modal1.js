@@ -22,7 +22,9 @@ function addUdate_btn() {
     var add_data = value_return(".modal_value");
 
     var jdata = $("#mes_modal1_grid1").getRowData();
-
+    var part_object = {supp_code:"",part_kind:"",part_code:""};
+    var part_object2 = {supp_code:"",part_kind:"",part_code:""};
+    var partCheck = "Y";
     if (jdata.length > 0) {
         var list = [];
         var list2 = [];
@@ -33,10 +35,21 @@ function addUdate_btn() {
             } else {
                 list2.push(j+1);
             }
+
+            part_object =  {supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code};
+            for (var i = 1+j ; i < jdata.length; i++){
+                part_object2 =  {supp_code:jdata[i].supp_code,part_kind:jdata[i].part_kind,part_code:jdata[i].part_code};
+                if (JSON.stringify(part_object) === JSON.stringify(part_object2)) {
+                            partCheck = "N";
+                }
+            }
+
         });
         callback(function () {
-            if (list2.length > 0) {
+            if(list2.length > 0){
                 alert(list2[0] + "번 다시 확인해주세요");
+            }else if (partCheck === 'N') {
+                alert("같은 제품이 있는지 확인해주세요");
             } else {
                 // console.log(list.join(gu5));
                 add_data.work_date = add_data.start_date;

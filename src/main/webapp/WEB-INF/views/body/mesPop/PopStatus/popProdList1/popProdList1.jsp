@@ -14,29 +14,42 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="start_date" id="datepicker" class="form-control h-25 condition_main" readonly>
+                            <input type="text" name="start_date" id="datepicker" class="form-control h-25 condition_main sendDate " readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
                     <td class="t-align-c" style="width:25px !important;">~</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="stop_date" id="datepicker2" class="form-control h-25 condition_main" readonly>
+                            <input type="text" name="stop_date" id="datepicker2" class="form-control h-25 condition_main sendDate " readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main">
-                        </div>
+                    <td class="wt-px-75 t-align-c td-title padding-a-0">업체</td>
+                    <td class="wt-px-150">
+                        <select id="supp_code_select" name="supp_code" class="condition_main" onchange="select_change_modal1(this.value)" style="width: 100%">
+                            <option></option>
+                        </select>
+
                     </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">기종</td>
-                    <td class="wt-px-200 border_no">
-                        <div class="input-icon input-icon-right">
-                            <input id="place_name" class="form-control h-25 condition_main" name="keyword2" autocomplete="off">
-                        </div>
+                    <td class="wt-px-75 t-align-c td-title padding-a-0">기종</td>
+                    <td class="wt-px-150">
+                        <select id="part_kind_select" name="part_kind" class="condition_main" style="width: 100%">
+                            <option></option>
+                        </select>
+
                     </td>
+                    <td class="wt-px-75 td-title t-align-c padding-a-0 border_no">공정</td>
+                    <td class="wt-px-100 border_no">
+
+                        <select id='select1' name="keyword"  class="form-control h-25 condition_main">--%>
+                            <option value="">합형</option>
+                            <option value="1"></option>
+                            <option value="2"></option>
+                        </select>
+
+                    </td>
+
                     <td></td>
                 </tr>
                 </tbody>

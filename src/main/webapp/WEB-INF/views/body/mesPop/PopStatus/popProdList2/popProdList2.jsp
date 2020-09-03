@@ -14,13 +14,13 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">조회일자</td>
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="" id="datepicker" class="form-control h-25 condition_main" readonly>
+                            <input type="text" name="work_date" id="datepicker" class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">공정</td>
                     <td class="wt-px-200">
-                        <select id='select1' name="keyword2" class="form-control h-25 condition_main">--%>
+                        <select id='select1' name="keyword" onchange="main_select_change1(this.value);" class="form-control h-25 condition_main">--%>
                             <option value="">합형</option>
                             <option value="1"></option>
                             <option value="2"></option>
@@ -40,6 +40,7 @@
                 </tbody>
             </table>
         </div>
+
         <div class="clearfix">
             <div class="pull-left tableTools-container">
                 <div class="dt-buttons btn-overlap btn-group">

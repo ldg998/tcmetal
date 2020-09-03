@@ -30,6 +30,11 @@ public class PopStatusRestController {
     @RequestMapping(value = "/popProdList1Get", method = RequestMethod.POST)
     public RESTful popProdList1Get(HttpServletRequest req, Page p) { return popStatusService.popProdList1Get(req,p);}
 
+    @RequestMapping(value = "/popProdList2Get", method = RequestMethod.POST)
+    public RESTful popProdList2Get(HttpServletRequest req, Page p) { return popStatusService.popProdList2Get(req,p);}
+
+
+
     @RequestMapping(value = "/sysSPartDrawingAdd", method = RequestMethod.POST)
     public String sysSPartDrawingAdd(MultipartHttpServletRequest req){
         Files files = new Files();
@@ -72,7 +77,9 @@ public class PopStatusRestController {
 
 
     @RequestMapping(value = "/popProdListGet", method = RequestMethod.POST)
-    public RESTful popProdListGet(HttpServletRequest req, Page p) { return popStatusService.popProdListGet(req,p);}
+    public RESTful popProdListGet(HttpServletRequest req, Page p) {
+        System.out.println(p);
+        return popStatusService.popProdListGet(req,p);}
 
 
      @RequestMapping(value = "/popProdAnalysisGet", method = RequestMethod.POST)

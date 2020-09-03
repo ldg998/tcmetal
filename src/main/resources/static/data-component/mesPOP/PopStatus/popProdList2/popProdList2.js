@@ -53,11 +53,8 @@ function excel_download() {
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
-    main_data.send_data.stop_date = main_data.send_data.stop_date.replace(/\-/g, '');
-    main_data.send_data.keyword = 'B'
     $("#mes_grid").setGridParam({
-        url: '/popProdList1Get',
+        url: '/popProdList2Get',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -72,6 +69,12 @@ function authcheck() {
     });
 }
 
+function main_select_change1(value) {
+    select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (data2) {
+    });
+}
+
+
 function datepickerInput() {
     datepicker_makes("#datepicker", 0);
 }
@@ -82,17 +85,17 @@ function jqGrid_main() {
         datatype: "local",
         colNames: ['작업일자','공정','업체','기종','품번','품명','단중','지시수량','생산수량','등록자','등록일시'],
         colModel: [
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true}
+            {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2 },
+            {name: 'line_name', index: 'dept_name', sortable: false, width: 150,fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 150,fixed:true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 150,fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 150,fixed:true,align: 'right', formatter: 'integer' },
+            {name: 'plan_qty', index: 'plan_qty', sortable: false, width: 150,fixed:true,align: 'right', formatter: 'integer' },
+            {name: 'prod_qty', index: 'prod_qty', sortable: false, width: 150,fixed:true,align: 'right', formatter: 'integer' },
+            {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed:true},
+            {name: 'create_date', index: 'create_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate }
 
         ],
         caption: "공정별 생산현황 | MES",
@@ -106,7 +109,10 @@ function jqGrid_main() {
 }
 
 function select_box() {
-    $('#select1').select2();
-    $('#select2').select2();
+    select_makes_base("#select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
+        select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
+        });
+    });
+
 
 }

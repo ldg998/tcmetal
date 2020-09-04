@@ -9,7 +9,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">사이즈</div>
             <div class="profile-info-value">
-                <input type="text" id="wood_code" name="wood_code" class="form-control  modal_value" onkeyup="num_keyup(this);" autofocus autocomplete="off" >
+                <input type="text" id="wood_code" name="wood_code" class="form-control  modal_value"  autofocus autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">

@@ -76,9 +76,12 @@ function update_btn(rowid) {
     modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할 항목 설정
     ccn_ajax('/qmsProdMiddleListOneGet', {keyword: rowid}).then(function (data) { // user의 하나 출력
         data.work_date = formmatterDate2(data.work_date);
+
         modal_edits('.modal_value', [], data); // response 값 출력
+        result_ck(data.qc_result);
         $("#file_01").val("");
         $(".file_labal").text("업로드");
+
         $("#addDialog").dialog('open'); // 모달 열기
         jqGridResize2("#mes_modal_grid",$('#mes_modal_grid').closest('[class*="col-"]')); //그리드 리 사이즈
 
@@ -219,4 +222,24 @@ function img_swiper(){
     });
 
 
+}
+
+function result_ck(qc_result){
+    if(qc_result == '1'){
+        $("#result_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result2_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result3_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+    }else if(qc_result == '2'){
+        $("#result_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result2_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result3_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+    }else if(qc_result == '3'){
+        $("#result_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result2_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result3_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+    }else if(qc_result == '4'){
+        $("#result_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result2_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result3_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+    }
 }

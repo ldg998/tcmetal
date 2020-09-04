@@ -1,9 +1,11 @@
 package com.mes.mesPop.PopStatus;
 
+import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD;
+import com.mes.mesPop.PopStatus.DTO.POP_PROD_MHR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -103,6 +105,21 @@ public class PopStatusRestController {
 
     @RequestMapping(value = "/sysProdSumGet", method = RequestMethod.POST)
     public RESTful sysProdSumGet(HttpServletRequest req, Page p) { return popStatusService.sysProdSumGet(req,p);}
+
+    @RequestMapping(value = "/popProdReportGet", method = RequestMethod.POST)
+    public RESTful popProdReportGet(HttpServletRequest req, Page p) { return popStatusService.popProdReportGet(req,p);}
+
+    @RequestMapping(value = "/popMonitoringGet", method = RequestMethod.POST)
+    public RESTful popMonitoringGet(HttpServletRequest req, Page p) { return popStatusService.popMonitoringGet(req,p);}
+
+     @RequestMapping(value = "/popLotTrackingGet", method = RequestMethod.POST)
+     public RESTful popLotTrackingGet(HttpServletRequest req, Page p) { return popStatusService.popLotTrackingGet(req,p);}
+
+     @RequestMapping(value = "/sysProdHrAdd", method = RequestMethod.POST)
+     public Message sysProdHrAdd(HttpServletRequest req, POP_PROD_MHR ppm) { return popStatusService.sysProdHrAdd(req,ppm);}
+
+
+
 
 
 

@@ -30,10 +30,7 @@ $(document).ready(function () {
 
 ////////////////////////////클릭 함수//////////////////////////////////
 function get_btn(page) {
-    main_data.excel_check ="Y";
     main_data.send_data = value_return(".condition_main");
-    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
-    main_data.send_data.stop_date = main_data.send_data.stop_date.replace(/\-/g, '');
     $("#mes_grid").setGridParam({
         url: '/popProdReportGet',
         datatype: "json",
@@ -114,19 +111,22 @@ function datepickerInput() {
 
 function selectBox() {
  $('#line_select').select2();
+    $('#line_select2').select2();
+
 }
 
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['row_num','plan_no','line_code','생산일자','공정','작업시간','비가동시간'],
+        colNames: ['row_num','plan_no','line_code','생산일자','공정','생산량','작업시간','비가동시간'],
         colModel: [
             {name: 'rownum', index: 'rownum',key:true, sortable: false,hidden:true, width: 150,fixed:true},
             {name: 'plan_no', index: 'plan_no', sortable: false,hidden:true, width: 150,fixed:true},
             {name: 'line_code', index: 'line_code', sortable: false,hidden:true, width: 150,fixed:true},
             {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2},
             {name: 'line_name', index: 'line_name', sortable: false, width: 150,fixed:true},
+            {name: '', index: '', sortable: false, width: 150,fixed:true},
             {name: 'oper_time', index: 'oper_time', sortable: false, width: 150,fixed:true,align:'right'},
             {name: 'downtime', index: 'downtime', sortable: false, width: 150,fixed:true}
         ],
@@ -167,7 +167,7 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height","0px");
         }
 
-    });
+    }).navGrid("#mes_grid_pager", {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정;
 
 }
 

@@ -13,7 +13,7 @@
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
                     <input type="text" name="work_date" id="datepicker_modal1"
-                           class="form-control h-25 condition_main" readonly>
+                           class="form-control h-25 modal_value sendDate " readonly>
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
             </div>
@@ -22,7 +22,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">공정</div>
             <div class="profile-info-value">
-                <select id="select_modal2" style="width: 100%">
+                <select name="line_code" id="line_select_modal" class="modal_value"  style="width: 100%">
                     <option value="">합형</option>
                     <option value=""></option>
                     <option value=""></option>
@@ -32,33 +32,39 @@
         <div class="profile-info-row">
             <div class="profile-info-name">작업인원</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autofocus autocomplete="off" >
+                <input type="text" name="wk_qty" class="form-control modal_value" autofocus autocomplete="off" >
+            </div>
+        </div>
+        <div class="profile-info-row">
+            <div class="profile-info-name">결근/휴가</div>
+            <div class="profile-info-value">
+                <input type="text" name="wk_qty1" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">조퇴(시간)</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off" >
+                <input type="text" name="wk_qty2" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">지각(시간)</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off" >
+                <input type="text" name="wk_qty3" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">잔업(시간)</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off" >
+                <input type="text" name="wk_qty4" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">특근(시간)</div>
             <div class="profile-info-value">
-                <input type="text" name="" class="form-control modal_value" autocomplete="off" >
+                <input type="text" name="wk_qty5" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
 

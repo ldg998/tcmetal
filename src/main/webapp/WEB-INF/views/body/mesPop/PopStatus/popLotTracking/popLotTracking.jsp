@@ -13,7 +13,7 @@
                 <tr>
                     <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">제품LOT</td>
                     <td class="wt-px-200 border_no">
-                        <input type="text" name="" class="form-control h-25 condition_main">
+                        <input type="text" name="lot" class="form-control h-25 condition_main">
                     </td>
                     <td></td>
                 </tr>

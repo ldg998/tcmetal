@@ -1,5 +1,6 @@
 package com.mes.mesPop.PopStatus;
 
+import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
@@ -8,6 +9,7 @@ import com.mes.Mapper.mesPop.Status.MesPopStatusMapper;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD;
 import com.mes.mesPop.PopStatus.DTO.POP_PROD;
+import com.mes.mesPop.PopStatus.DTO.POP_PROD_MHR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -93,7 +95,7 @@ public class PopStatusService extends UploadFunction {
     }
 
     public RESTful sysProdHRGet(HttpServletRequest req, Page p) {
-        List<POP_PLAN> rows = mesPopStatusMapper.sysProdHRGet(p);
+        List<POP_PROD_MHR> rows = mesPopStatusMapper.sysProdHRGet(p);
         return getListData(rows, p);
     }
 
@@ -106,5 +108,25 @@ public class PopStatusService extends UploadFunction {
     public RESTful popProdList2Get(HttpServletRequest req, Page p) {
         List<POP_PLAN> rows = mesPopStatusMapper.popProdList2Get(p);
         return getListData(rows, p);
+    }
+
+    public RESTful popProdReportGet(HttpServletRequest req, Page p) {
+        List<POP_PLAN> rows = mesPopStatusMapper.popProdReportGet(p);
+        return getListData(rows, p);
+    }
+
+    public RESTful popMonitoringGet(HttpServletRequest req, Page p) {
+        List<POP_PLAN> rows = mesPopStatusMapper.popMonitoringGet(p);
+        return getListData(rows, p);
+    }
+
+    public RESTful popLotTrackingGet(HttpServletRequest req, Page p) {
+        List<POP_PLAN> rows = mesPopStatusMapper.popLotTrackingGet(p);
+        return getListData(rows, p);
+    }
+
+    public Message sysProdHrAdd(HttpServletRequest req, POP_PROD_MHR ppm) {
+        ppm.setUser_code(getSessionData(req).getUser_code());
+        return mesPopStatusMapper.sysProdHrAdd(ppm);
     }
 }

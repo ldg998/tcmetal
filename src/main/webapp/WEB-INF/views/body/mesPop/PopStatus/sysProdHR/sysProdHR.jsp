@@ -30,7 +30,7 @@
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0">공정</td>
                     <td class="wt-px-200">
-                        <select id='select1' name="keyword2" class="form-control h-25 condition_main">--%>
+                        <select id='select1' name="keyword" class="form-control h-25 condition_main">--%>
                             <option value="">합형</option>
                             <option value="1"></option>
                             <option value="2"></option>
@@ -47,7 +47,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
-                       onclick=" test();">
+                       onclick=" get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>

@@ -81,8 +81,8 @@
     EXEC SP_POP_SPECTRO_GET #{page},#{rows},#{work_date},#{supp_code},#{part_kind}
     </select>
 
-     <select id="sysProdHRGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
-    EXEC SP_SYS_PROD_HR_GET #{page},#{rows},#{work_date},#{line_code}
+     <select id="sysProdHRGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PROD_MHR">
+    EXEC SP_SYS_PROD_HR_GET #{page},#{rows},#{start_date},#{end_date},#{keyword}
     </select>
 
      <select id="sysProdSumGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
@@ -92,6 +92,23 @@
     <select id="popProdList2Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
     EXEC SP_POP_PROD_LIST2_GET #{page},#{rows},#{work_date},#{keyword},#{keyword2}
     </select>
+
+    <select id="popProdReportGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_PROD_REPORT_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+    </select>
+
+    <select id="popMonitoringGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_MONITORING_GET #{page},#{rows}
+    </select>
+
+    <select id="popLotTrackingGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_LOT_TRAC_KING_GET #{page},#{rows},#{keyword}
+    </select>
+
+    <select id="sysProdHrAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC SP_SYS_PROD_HR_ADD #{work_date},#{line_code},#{wk_qty},#{wk_qty1}#{wk_qty2},#{wk_qty3},#{wk_qty4},#{wk_qty5},#{keyword}
+    </select>
+
 
 
 

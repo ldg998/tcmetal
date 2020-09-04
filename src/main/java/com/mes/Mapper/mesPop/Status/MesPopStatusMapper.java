@@ -1,10 +1,12 @@
 package com.mes.Mapper.mesPop.Status;
 
+import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.File.DTO.Files;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD;
 import com.mes.mesPop.PopStatus.DTO.POP_PROD;
+import com.mes.mesPop.PopStatus.DTO.POP_PROD_MHR;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,11 +35,19 @@ public interface MesPopStatusMapper {
 
     List<POP_PLAN> popSpectroGet(Page p);
 
-    List<POP_PLAN> sysProdHRGet(Page p);
+    List<POP_PROD_MHR> sysProdHRGet(Page p);
 
     List<POP_PLAN> sysProdSumGet(Page p);
 
     List<POP_PLAN> popProdListGet(Page p);
 
     List<POP_PLAN> popProdList2Get(Page p);
+
+    List<POP_PLAN> popProdReportGet(Page p);
+
+    List<POP_PLAN> popMonitoringGet(Page p);
+
+    List<POP_PLAN> popLotTrackingGet(Page p);
+
+    Message sysProdHrAdd(POP_PROD_MHR ppm);
 }

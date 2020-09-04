@@ -9,6 +9,27 @@ function modal_start1() {
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
+    var data = value_return('.modal_vale')
+    wrapWindowByMask2();
+    ccn_ajax('/sysProdHrAdd',data).then(function (data2) {
+        if (data.result === 'NG') {
+            alert(data2.message);
+        } else {
+            if (main_data.check === "I") {
+                $("#addDialog").dialog('close');
+                get_btn(1);
+            } else {
+                $("#addDialog").dialog('close');
+                get_btn($("#mes_grid").getGridParam('page'));
+            }
+        }
+        closeWindowByMask();
+    }).catch(function (err) {
+        closeWindowByMask();
+        alert(msg_object.TBMES_E008.msg_name1);
+    });
+
+
 
 }
 ////////////////////////////호출 함수/////////////////////////////////////
@@ -32,7 +53,7 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
                 text: '저장',
                 'class': 'btn btn-primary btn-minier',
                 click: function () {
-                    $(this).dialog("close");
+                    addUdate_btn();
 
                 }
 
@@ -52,14 +73,8 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
 }
 
 function select_modal_box() {
-    $('#select_modal1').select2();
-    $('#select_modal2').select2();
-    $('#select_modal3').select2();
-    $('#select_modal4').select2();
-    $('#select_modal5').select2();
-    $('#select_modal6').select2();
-    $('#select_modal7').select2();
-    $('#select_modal8').select2();
+    select_makes_base("#line_select_modal", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {});
+
 }
 
 function datepickerInput_modal() {

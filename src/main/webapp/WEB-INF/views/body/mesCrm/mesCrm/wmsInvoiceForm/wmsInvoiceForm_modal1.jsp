@@ -38,7 +38,7 @@
 
 </style>
 
-<div id="addDialog" title="수주등록" style="display:none">
+<div id="addDialog" title="인보이스 양식" style="display:none">
 
     <div class="profile-user-info profile-user-info-striped">
         <%--1--%>

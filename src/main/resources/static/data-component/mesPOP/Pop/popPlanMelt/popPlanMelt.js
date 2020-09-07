@@ -127,7 +127,6 @@ function jqGrid_main() {
         colNames: ['rownum','계획일자','CHARGE','라인','업체','기종','품명','단중','수량','중량','재질','작업자'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false, key:true, width: 150,fixed: true,hidden:true},
-
             {name: 'work_date', index: 'work_date', sortable: false, width: 100, fixed: true,formatter:formmatterDate2},
             {name: 'charge', index: 'charge', sortable: false, width: 100, fixed: true,align:'right',formatter:'integer'},
             {name: 'line_name', index: 'line_name', sortable: false, width: 150, fixed: true},

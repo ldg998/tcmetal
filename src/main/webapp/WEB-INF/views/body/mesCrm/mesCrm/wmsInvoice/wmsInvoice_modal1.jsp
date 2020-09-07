@@ -9,7 +9,7 @@
     }
 </style>
 
-<div id="addDialog" title="수주등록" style="display:none">
+<div id="addDialog" title="인보이스 관리" style="display:none">
     <div class="profile-user-info profile-user-info-striped">
         <%--1--%>
         <div class="profile-info-row">
@@ -121,8 +121,23 @@
                 </div>
             </div>
 
-
-
+    </div>
+    <br>
+    <div class="profile-user-info profile-user-info-striped">
+        <div class="profile-info-row">
+            <div class="profile-info-name">SHIPPING MARK#1</div>
+            <div class="profile-info-name">SHIPPING MARK#2</div>
+            <div class="profile-info-name">SHIPPING MARK#3</div>
+            <div class="profile-info-name">SHIPPING MARK#4</div>
+            <div class="profile-info-name">SHIPPING MARK#5</div>
+        </div>
+        <div class="profile-info-row">
+            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
+        </div>
 
     </div>
 </div>

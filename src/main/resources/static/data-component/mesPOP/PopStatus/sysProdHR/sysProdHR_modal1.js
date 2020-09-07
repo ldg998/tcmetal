@@ -9,10 +9,12 @@ function modal_start1() {
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
-    var data = value_return('.modal_vale')
+    var data = value_return('.modal_value')
+    console.log(data);
+   data.keyword = main_data.check;
     wrapWindowByMask2();
     ccn_ajax('/sysProdHrAdd',data).then(function (data2) {
-        if (data.result === 'NG') {
+        if (data2.result === 'NG') {
             alert(data2.message);
         } else {
             if (main_data.check === "I") {

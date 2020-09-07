@@ -35,6 +35,19 @@
         clip: rect(0, 0, 0, 0);
         border: 0;
     }
+
+
+    .a1 {grid-area: a1;}
+    .a2 {grid-area: a2;}
+    .a3 {grid-area: a3;}
+    .a4 {grid-area: a4;}
+
+    .grid_lee {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 100% 399%);
+        grid-template-areas:"a1 a2";
+    }
 </style>
 <div id="addDialog" title="업체정보추가" style="display:none">
     <div class="profile-user-info profile-user-info-striped" style="border-bottom: none;">
@@ -192,6 +205,12 @@
             <div class="profile-info-value"></div>
         </div>
 
+        <div class="profile-info-row grid_lee">
+            <div class="profile-info-name a1" style="width: 100%">비고</div>
+            <div class="profile-info-value">
+                <input type="text" name="remark" class="form-control modal_value a2" style="width:100%" autocomplete="off" />
+            </div>
+        </div>
     </div>
 
 </div>

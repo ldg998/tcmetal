@@ -6,7 +6,7 @@ var main_data = {
     check: 'I',
     send_data: {},
     send_data_post: {},
-    readonly:['supp_code','part_kind','part_name','part_code'],
+    readonly:['supp_code','part_kind','part_name','part_code','part_name2'],
     auth:{}
 }
 
@@ -125,6 +125,7 @@ function delete_btn() {
         alert(msg_object.TBMES_A002.msg_name1);
     }
 }
+
 function select_change1(value) {
     if (value !== ""){
         select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'',keyword2:value},"Y");

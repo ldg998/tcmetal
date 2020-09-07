@@ -39,6 +39,7 @@
 	#{corp_type4},
 	#{user_code},
 	#{keyword},
+	#{remark},
 	#{use_yn}
     </select>
 

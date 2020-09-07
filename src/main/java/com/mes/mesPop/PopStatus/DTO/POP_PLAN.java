@@ -5,9 +5,12 @@ import lombok.Data;
 @Data
 public class POP_PLAN {
 
-
+    private int idx;
+    private String work_name;
+    private String work_no;
     private String work_date;
     private String line_code;
+    private String charge;
     private int seq;
     private String supp_code;
     private String part_kind;
@@ -33,6 +36,17 @@ public class POP_PLAN {
     private String plan_code;
     private String line_name;
     private String dept_name;
+    private String ck;
+
+    private double test_value1;
+    private double test_value2;
+    private double test_value3;
+    private double test_value4;
+    private double test_value5;
+    private double test_value6;
+    private double test_value7;
+    private double test_value8;
+    private double test_value9;
 
 
     private int rownum;

@@ -4,6 +4,7 @@ import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
+import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD;
 import com.mes.mesPop.PopStatus.DTO.POP_PROD_MHR;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,7 +108,9 @@ public class PopStatusRestController {
     public RESTful sysProdSumGet(HttpServletRequest req, Page p) { return popStatusService.sysProdSumGet(req,p);}
 
     @RequestMapping(value = "/popProdReportGet", method = RequestMethod.POST)
-    public RESTful popProdReportGet(HttpServletRequest req, Page p) { return popStatusService.popProdReportGet(req,p);}
+    public RESTful popProdReportGet(HttpServletRequest req, Page p) {
+        System.out.println(p);
+        return popStatusService.popProdReportGet(req,p);}
 
     @RequestMapping(value = "/popMonitoringGet", method = RequestMethod.POST)
     public RESTful popMonitoringGet(HttpServletRequest req, Page p) { return popStatusService.popMonitoringGet(req,p);}
@@ -118,9 +121,14 @@ public class PopStatusRestController {
      @RequestMapping(value = "/sysProdHrAdd", method = RequestMethod.POST)
      public Message sysProdHrAdd(HttpServletRequest req, POP_PROD_MHR ppm) { return popStatusService.sysProdHrAdd(req,ppm);}
 
+     @RequestMapping(value = "/sysProdHrDel", method = RequestMethod.POST)
+     public Message sysProdHrDel(HttpServletRequest req, POP_PROD_MHR ppm) { return popStatusService.sysProdHrDel(req,ppm);}
 
+     @RequestMapping(value = "/popDownTimeGet", method = RequestMethod.POST)
+     public RESTful popDownTimeGet(HttpServletRequest req, Page p) { return popStatusService.popDownTimeGet(req,p);}
 
-
+     @RequestMapping(value = "/popSpectroAdd", method = RequestMethod.POST)
+     public Message popSpectroAdd(HttpServletRequest req, POP_PLAN pp) { return popStatusService.popSpectroAdd(req,pp);}
 
 
 

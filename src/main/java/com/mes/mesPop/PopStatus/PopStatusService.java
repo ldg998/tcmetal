@@ -111,7 +111,7 @@ public class PopStatusService extends UploadFunction {
     }
 
     public RESTful popProdReportGet(HttpServletRequest req, Page p) {
-        List<POP_PLAN> rows = mesPopStatusMapper.popProdReportGet(p);
+        List<POP_PROD> rows = mesPopStatusMapper.popProdReportGet(p);
         return getListData(rows, p);
     }
 
@@ -129,4 +129,17 @@ public class PopStatusService extends UploadFunction {
         ppm.setUser_code(getSessionData(req).getUser_code());
         return mesPopStatusMapper.sysProdHrAdd(ppm);
     }
+
+    public Message sysProdHrDel(HttpServletRequest req, POP_PROD_MHR ppm) {
+        return mesPopStatusMapper.sysProdHrDel(ppm);
+    }
+
+    public RESTful popDownTimeGet(HttpServletRequest req, Page p) {
+        List<POP_PROD> rows = mesPopStatusMapper.popDownTimeGet(p);
+        return getListData(rows, p);
+    }
+
+    public Message popSpectroAdd(HttpServletRequest req, POP_PLAN pp) {
+        pp.setUser_code(getSessionData(req).getUser_code());
+        return mesPopStatusMapper.popSpectroAdd(pp); }
 }

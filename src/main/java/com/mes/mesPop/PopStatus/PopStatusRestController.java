@@ -118,10 +118,10 @@ public class PopStatusRestController {
      @RequestMapping(value = "/sysProdHrAdd", method = RequestMethod.POST)
      public Message sysProdHrAdd(HttpServletRequest req, POP_PROD_MHR ppm) { return popStatusService.sysProdHrAdd(req,ppm);}
 
-
-
-
-
+     @RequestMapping(value = "/sysProdHrDel", method = RequestMethod.POST)
+     public Message sysProdHrDel(HttpServletRequest req, POP_PROD_MHR ppm) {
+        System.out.println(ppm);
+        return popStatusService.sysProdHrDel(req,ppm);}
 
 
 }

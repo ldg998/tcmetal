@@ -21,6 +21,7 @@ public class POP_PROD_MHR {
     private String update_date;
     private String line_name;
     private String user_name;
+    private String keyword;
 
     private int rownum;
     private int rownum_page;

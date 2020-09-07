@@ -129,4 +129,8 @@ public class PopStatusService extends UploadFunction {
         ppm.setUser_code(getSessionData(req).getUser_code());
         return mesPopStatusMapper.sysProdHrAdd(ppm);
     }
+
+    public Message sysProdHrDel(HttpServletRequest req, POP_PROD_MHR ppm) {
+        return mesPopStatusMapper.sysProdHrDel(ppm);
+    }
 }

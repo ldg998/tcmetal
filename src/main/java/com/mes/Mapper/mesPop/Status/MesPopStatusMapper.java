@@ -50,4 +50,6 @@ public interface MesPopStatusMapper {
     List<POP_PLAN> popLotTrackingGet(Page p);
 
     Message sysProdHrAdd(POP_PROD_MHR ppm);
+
+    Message sysProdHrDel(POP_PROD_MHR ppm);
 }

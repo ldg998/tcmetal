@@ -3,6 +3,7 @@ package com.mes.Mapper.mesCrm.Orders;
 
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
+import com.mes.mesCrm.Orders.DTO.CRM_INVOICE_REPORT;
 import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
 import com.mes.mesCrm.Orders.DTO.CRM_SHIPPING;
 import com.mes.mesCrm.Orders.DTO.WMS_OUT_ORD_SUB;
@@ -51,4 +52,8 @@ public interface CrmOrdersMapper {
     List<CRM_ORD_RECP> crmPerformGet(Page p);
 
     List<CRM_SHIPPING> crmShippingListGet(Page p);
+
+    Message wmsInvoiceFormAdd(CRM_INVOICE_REPORT cir);
+
+    List<CRM_INVOICE_REPORT> wmsInvoiceFormGet(Page p);
 }

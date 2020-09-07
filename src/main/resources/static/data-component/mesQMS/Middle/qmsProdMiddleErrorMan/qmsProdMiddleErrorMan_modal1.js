@@ -15,39 +15,6 @@ function modal_start1() {
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 
-// 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
-function addUdate_btn() {
-    var modal_objact = value_return(".modal_value");
-    if (effectiveness1(modal_objact)) {
-        var text = msg_object.TBMES_Q002.msg_name1;
-        if (main_data.check === "U") {
-            text = msg_object.TBMES_Q003.msg_name1;
-        }
-        if (confirm(text)) {
-            wrapWindowByMask2();
-            modal_objact.keyword = main_data.check;
-            ccn_ajax("/sysDeptAdd", modal_objact).then(function (data) {
-                if (data.result === 'NG') {
-                    alert(data.message);
-                } else {
-                    if (main_data.check === "I") {
-                        $("#addDialog").dialog('close');
-                        get_btn(1);
-                    } else {
-                        $("#addDialog").dialog('close');
-                        get_btn($("#mes_grid").getGridParam('page'));
-                    }
-                }
-                closeWindowByMask();
-
-            }).catch(function (err) {
-                closeWindowByMask();
-                alert(msg_object.TBMES_E008.msg_name1);
-            });
-        }
-    }
-
-}
 
 
 function addUdate_btn() {

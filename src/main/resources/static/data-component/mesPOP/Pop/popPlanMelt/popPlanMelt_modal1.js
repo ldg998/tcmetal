@@ -29,7 +29,7 @@ function addUdate_btn() {
         var list = [];
         var list2 = [];
         jdata.forEach(function (data, j) {
-            if (data.supp_code !== '' && data.supp_code !== ' ' && data.part_kind !== '' && data.part_kind !== ' ' && data.part_code !== '' && data.part_code !== ' ' && data.plan_qty > 0 && data.work_user_code !== '' && data.work_user_code !== ' ') {
+            if (data.charge !== '' && data.charge !== ' ' &&data.supp_code !== '' && data.supp_code !== ' ' && data.part_kind !== '' && data.part_kind !== ' ' && data.part_code !== '' && data.part_code !== ' ' && data.plan_qty > 0 && data.work_user_code !== '' && data.work_user_code !== ' ') {
                 list.push(data.charge + gu4 +data.supp_code + gu4 + data.part_kind + gu4 + data.part_code +gu4 + data.part_weight + gu4 + data.plan_qty +gu4 + data.weight+ gu4 + data.mat_group+ gu4 + data.work_user_code);
 
             } else {

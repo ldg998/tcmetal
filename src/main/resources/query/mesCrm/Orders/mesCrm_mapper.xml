@@ -115,4 +115,24 @@
 		EXEC SP_CRM_SHIPPINGLIST_GET #{start_date},#{end_date},#{keyword},#{keyword2}
     </select>
 
+	<select id="wmsInvoiceFormAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_CRM_INVOICE_REPORT_ADD 
+		#{supp_code} , 
+		#{rpt_name} ,
+		#{trans_code} ,
+		#{notice1},
+		#{notice2},
+		#{notice3},
+		#{notice4},
+		#{notice5},
+		#{notice6},
+		#{signed_file},
+		#{mark1},
+		#{mark2},
+		#{mark3},
+		#{mark4},
+		#{mark5},
+		#{user_code},
+		#{keyword}
+    </select>
 </mapper>

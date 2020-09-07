@@ -45,30 +45,29 @@
         <div class="profile-info-row">
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value"  style="width: 100%" autocomplete="off">
+                <select name="supp_code" id="modal_select1" type="text" class="form-control keyword modal_value" style="width: 100%;">
+
+                </select>
             </div>
 
-            <div class="profile-info-name">명칭</div>
+            <div class="profile-info-name">관리명칭</div>
             <div class="profile-info-value">
-                <input name="" type="text" class="form-control keyword modal_value" placeholder="요코하마(수동입력)"  style="width: 100%" autocomplete="off">
+                <input name="rpt_name" type="text" class="form-control keyword modal_value"   style="width: 100%" autocomplete="off">
             </div>
         </div>
 
         <%--2--%>
         <div class="profile-info-row">
-            <div class="profile-info-value"></div>
-            <div class="profile-info-value"></div>
 
             <div class="profile-info-name">운송수단</div>
             <div class="profile-info-value">
-               <select id="_select_modal1" style="width: 100%">
-                   <option value="">벌크</option>
-                   <option></option>
-                   <option></option>
-
-               </select>
+                <select id='modal_select2' name="trans_code" class="form-control h-25 modal_value" style="width: 100%;">
+                </select>
 
             </div>
+            <div class="profile-info-value"></div>
+            <div class="profile-info-value"></div>
+
         </div>
 
             <br/>
@@ -76,15 +75,11 @@
         <div class="profile-info-row">
             <div class="profile-info-name">Seller</div>
             <div class="profile-info-value">
-                <textarea cols="36" rows="7">
-
-                </textarea>
+                <textarea name="notice1" cols="36" rows="7" class="modal_value"></textarea>
             </div>
             <div class="profile-info-name">Consignee</div>
             <div class="profile-info-value">
-              <textarea cols="36" rows="7">
-
-                </textarea>
+              <textarea name="notice2" cols="36" rows="7" class="modal_value"></textarea>
             </div>
         </div>
 
@@ -93,16 +88,12 @@
         <div class="profile-info-row">
             <div class="profile-info-name">Buyer NOTIFY</div>
             <div class="profile-info-value">
-               <textarea cols="36" rows="7">
-
-                </textarea>
+               <textarea name="notice3" cols="36" rows="7" class="modal_value"></textarea>
             </div>
 
             <div class="profile-info-name">Vessel/VOY</div>
             <div class="profile-info-value">
-                <textarea cols="36" rows="7">
-
-                </textarea>
+                <textarea name="notice4" cols="36" rows="7" class="modal_value"></textarea>
             </div>
         </div>
 
@@ -110,15 +101,11 @@
             <div class="profile-info-row">
                 <div class="profile-info-name">Terms of Delivery<br>and Payment </div>
                 <div class="profile-info-value">
-                   <textarea cols="36" rows="7">
-
-                </textarea>
+                   <textarea name="notice5" cols="36" rows="7" class="modal_value"></textarea>
                 </div>
                 <div class="profile-info-name">Remark</div>
                 <div class="profile-info-value">
-                    <textarea cols="36" rows="7">
-
-                </textarea>
+                    <textarea name="notice6" cols="36" rows="7" class="modal_value"></textarea>
                 </div>
             </div>
 
@@ -126,8 +113,8 @@
                 <div class="profile-info-name">Signed By </div>
                 <div class="profile-info-value">
                     <div class="filebox">
-                        <label for="ex_file">사진첨부</label>
-                        <input type="file" id="ex_file">
+                        <label for="ex_file" class="file_labal">사진첨부</label>
+                        <input type="file" name="file_signed" class="modal_value" id="ex_file" onchange="file_change(this);">
                     </div>
                 </div>
                 <div class="profile-info-value"></div>
@@ -145,124 +132,24 @@
             <div class="profile-info-name">SHIPPING MARK#5</div>
 
         </div>
-
-            <div class="profile-info-row">
-                <div class="profile-info-value">
-
-                    <div class="col-lg-12" style=" padding-left: 0px;">
-                        <div class="img-wrap" id="img_div1" style="border: 2px solid #1d1d1d; width: 100%; height: 150px; margin-top: 5px; margin-bottom: 5px;">
-                            <div class="img-text" id="img-text1">미리보기가 표시됩니다.</div>
-                            <img style="width: 100%; height: 100%;" id="img1">
-                        </div>
-                    </div>
-                    <div class="dt-buttons btn-overlap btn-group filebox">
-                        <label for="xlsUploads1" class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" >
-                            <i class="fa fa-upload bigger-110 blue"></i>
-                            파일찾기
-                        </label>
-                        <input type="file" id="xlsUploads1" name="files1" class="upload-hidden" onchange="readURL(this,1)">
-                        <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" onclick="readURLRemove(1)">
-                            <span>
-                                <i class="fa fa-trash bigger-110 blue"></i>
-                                <span id="del1">삭제</span>
-                            </span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="profile-info-value">
-                    <div class="col-lg-12" style=" padding-left: 0px;">
-                        <div class="img-wrap" id="img_div2" style="border: 2px solid #1d1d1d; width: 100%; height: 150px; margin-top: 5px; margin-bottom: 5px;">
-                            <div class="img-text" id="img-text2">미리보기가 표시됩니다.</div>
-                            <img style="width: 100%; height: 100%;" id="img2">
-                        </div>
-                    </div>
-                    <div class="dt-buttons btn-overlap btn-group filebox">
-                        <label for="xlsUploads1" class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" >
-                            <i class="fa fa-upload bigger-110 blue"></i>
-                            파일찾기
-                        </label>
-                        <input type="file" id="xlsUploads2" name="files1" class="upload-hidden" onchange="readURL(this,1)">
-                        <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" onclick="readURLRemove(1)">
-                            <span>
-                                <i class="fa fa-trash bigger-110 blue"></i>
-                                <span id="del2">삭제</span>
-                            </span>
-                        </label>
-                    </div>
-
-                </div>
-
-                <div class="profile-info-value">
-
-                    <div class="col-lg-12" style=" padding-left: 0px;">
-                        <div class="img-wrap" id="img_div3" style="border: 2px solid #1d1d1d; width: 100%; height: 150px; margin-top: 5px; margin-bottom: 5px;">
-                            <div class="img-text" id="img-text3">미리보기가 표시됩니다.</div>
-                            <img style="width: 100%; height: 100%;" id="img3">
-                        </div>
-                    </div>
-                    <div class="dt-buttons btn-overlap btn-group filebox">
-                        <label for="xlsUploads1" class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" >
-                            <i class="fa fa-upload bigger-110 blue"></i>
-                            파일찾기
-                        </label>
-                        <input type="file" id="xlsUploads3" name="files1" class="upload-hidden" onchange="readURL(this,1)">
-                        <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" onclick="readURLRemove(1)">
-                            <span>
-                                <i class="fa fa-trash bigger-110 blue"></i>
-                                <span id="del3">삭제</span>
-                            </span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="profile-info-value">
-
-                    <div class="col-lg-12" style=" padding-left: 0px;">
-                        <div class="img-wrap" id="img_div4" style="border: 2px solid #1d1d1d; width: 100%; height: 150px; margin-top: 5px; margin-bottom: 5px;">
-                            <div class="img-text" id="img-text4">미리보기가 표시됩니다.</div>
-                            <img style="width: 100%; height: 100%;" id="img4">
-                        </div>
-                    </div>
-                    <div class="dt-buttons btn-overlap btn-group filebox">
-                        <label for="xlsUploads1" class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" >
-                            <i class="fa fa-upload bigger-110 blue"></i>
-                            파일찾기
-                        </label>
-                        <input type="file" id="xlsUploads4" name="files1" class="upload-hidden" onchange="readURL(this,1)">
-                        <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" onclick="readURLRemove(1)">
-                            <span>
-                                <i class="fa fa-trash bigger-110 blue"></i>
-                                <span id="del4">삭제</span>
-                            </span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="profile-info-value">
-
-                    <div class="col-lg-12" style=" padding-left: 0px;">
-                        <div class="img-wrap" id="img_div5" style="border: 2px solid #1d1d1d; width: 100%; height: 150px; margin-top: 5px; margin-bottom: 5px;">
-                            <div class="img-text" id="img-text5">미리보기가 표시됩니다.</div>
-                            <img style="width: 100%; height: 100%;" id="img5">
-                        </div>
-                    </div>
-                    <div class="dt-buttons btn-overlap btn-group filebox">
-                        <label for="xlsUploads1" class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" >
-                            <i class="fa fa-upload bigger-110 blue"></i>
-                            파일찾기
-                        </label>
-                        <input type="file" id="xlsUploads5" name="files1" class="upload-hidden" onchange="readURL(this,1)">
-                        <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold delm" onclick="readURLRemove(1)">
-                            <span>
-                                <i class="fa fa-trash bigger-110 blue"></i>
-                                <span id="del5">삭제</span>
-                            </span>
-                        </label>
-                    </div>
-                </div>
-
+        <div class="profile-info-row">
+            <div class="profile-info-value">
+                   <textarea name="mark1" cols="18" rows="7" class="modal_value"></textarea>
             </div>
+            <div class="profile-info-value">
+                   <textarea name="mark2" cols="18" rows="7" class="modal_value"></textarea>
+            </div>
+            <div class="profile-info-value">
+                   <textarea name="mark3" cols="18" rows="7" class="modal_value"></textarea>
+            </div>
+            <div class="profile-info-value">
+                   <textarea name="mark4" cols="18" rows="7" class="modal_value"></textarea>
+            </div>
+            <div class="profile-info-value">
+                   <textarea name="mark5" cols="18" rows="7" class="modal_value"></textarea>
+            </div>
+        </div>
+
     </div>
 
 </div>

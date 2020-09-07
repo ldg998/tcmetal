@@ -115,4 +115,50 @@ public class CrmOrdersService extends ReturnFunction {
     public List<CRM_SHIPPING> crmShippingListGet(Page p) {
         return crmOrdersMapper.crmShippingListGet(p);
     }
+
+    public Message wmsInvoiceFormAdd(MultipartHttpServletRequest req, CRM_INVOICE_REPORT cir) throws IOException {
+            cir.setUser_code(getSessionData(req).getUser_code());
+
+            MultipartFile uploadedFile = null;
+            File file = null;
+            String FileName2 = "";
+            String FileName3 = "";
+            uploadedFile = req.getFile("file" );
+        if (uploadedFile != null) {
+
+            Date now = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss" );
+            String FileName = format.format(now) + "_wmsInvoiceForm";
+            String[] name = uploadedFile.getOriginalFilename().split("\\." );
+            FileName2 = FileName + "." + name[name.length - 1];
+            FileName3 = "/uploadFile/tcmetal/" + FileName2;
+
+        }
+        cir.setSigned_file(FileName3);
+
+            Message m = crmOrdersMapper.wmsInvoiceFormAdd(cir);
+            if (uploadedFile != null){
+                if (!m.getResult().equals("NG")) {
+
+                    File dir = new File("C:/UploadFile/tcmetal/wmsInvoiceForm" );
+                    if (!dir.exists()) {
+                        dir.mkdirs();
+                    }
+
+
+                    file = new File("C:/UploadFile/tcmetal/wmsInvoiceForm", FileName2);
+                    //uploadedFile 을 file로 저장한다.
+                    //물리적인 공간에 저장.
+                    uploadedFile.transferTo(file);
+
+
+                }
+            }
+            return m;
+    }
+
+    public RESTful wmsInvoiceFormGet(Page p) {
+        List<CRM_INVOICE_REPORT> rows = crmOrdersMapper.wmsInvoiceFormGet(p);
+        return getListData(rows , p);
+    }
 }

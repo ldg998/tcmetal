@@ -12,16 +12,10 @@
                 <tbody>
                 <tr>
 
-                    <!-- 구분 select 창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">업체</td>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                    <%--조회할 업채명--%>
                     <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main" onclick="supp_btn('A');" readonly>
-                            <input type="hidden" name="keyword" class="form-control h-25 condition_main"
-                                   id="supp_code_main">
-                            <i class="ace-icon fa fa-search dark" style="top: -2px;" id="SuppSearch"></i>
-                        </div>
+                        <select class="form-control condition_main" name="supp_code" id="supp_select" style="width: 100%" ></select>
                     </td>
                     <!-- 품목코드 검색창 -->
                     <td></td>
@@ -44,6 +38,15 @@
                             <span>조회</span>
                         </span>
                     </a>
+                    <a id="add_btn" class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
+                       tabindex="0" aria-controls="dynamic-table" onclick="add_btn();">
+                        <span><i class="fa fa-plus bigger-110 blue"></i><span>추가</span></span>
+                    </a>
+                    <!-- 삭제버튼 -->
+                    <a id="delete_btn" class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
+                       tabindex="0" aria-controls="dynamic-table" onclick="delete_btn();">
+                        <span><i class="fa fa-trash bigger-110 blue"></i><span>삭제</span></span>
+                    </a>
 
 
                 </div>
@@ -62,4 +65,4 @@
 </div>
 <!-- 모달창 import -->
 <%@include file="wmsInvoiceForm_modal1.jsp"%>
-<%@include file="/WEB-INF/views/body/common/modal/supp_modal.jsp" %>
+

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -56,6 +57,16 @@ public class CrmOrdersRestController {
     @RequestMapping(value="/wmsOutOrderAdd" , method = RequestMethod.POST)
     public Message wmsOutOrderAdd(HttpServletRequest req, WMS_OUT_ORD_SUB woos){
         return crmOrdersService.wmsOutOrderAdd(req, woos);
+    }
+
+    @RequestMapping(value = "/wmsInvoiceFormGet", method = RequestMethod.POST)
+    public RESTful wmsInvoiceFormGet( Page p) {
+        return crmOrdersService.wmsInvoiceFormGet(p);
+    }
+
+    @RequestMapping(value="/wmsInvoiceFormAdd" , method = RequestMethod.POST)
+    public Message wmsInvoiceFormAdd(MultipartHttpServletRequest req, CRM_INVOICE_REPORT cir) throws IOException {
+        return crmOrdersService.wmsInvoiceFormAdd(req, cir);
     }
 
 

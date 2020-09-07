@@ -21,23 +21,14 @@ $(document).ready(function () {
     modal_start1(); // 모달1 시작 함수
     authcheck();    // 권한 체크
     jqgridPagerIcons(); // 그리드 아이콘 설정 맨 하단으로
-    suppModal_start();
+    selectBox();
   //  get_btn(1);// 페이지 load 동시에 그리드 조회
 
 });
 
 
 ////////////////////////////클릭 함수/////////////////////////////////////
-//모달 확인 조회 btn
-function test(){
-    $('#img1').hide();
-    $('#img2').hide();
-    $('#img3').hide();
-    $('#img4').hide();
-    $('#img5').hide();
-    $("#addDialog").dialog('open'); // 모달 열기
-    jqGridResize("#mes_modal_grid" , $('#mes_modal_grid').closest('[class*="col-"]'));
-}
+
 // 조회 버튼
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
@@ -58,6 +49,14 @@ function add_btn() {
     if (main_data.auth.check_add !="N"){
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
         main_data.check = 'I'; // 저장인지 체크
+
+
+        $('#modal_select1 option:eq(0)').prop("selected", true).trigger("change");
+        $('#modal_select2 option:eq(0)').prop("selected", true).trigger("change");
+        if($("#supp_select").val() !== ""){
+            $('#modal_select1').val($("#supp_select").val()).trigger("change");
+        }
+
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
         alert(msg_object.TBMES_A001.msg_name1); // 경고메세지 출력
@@ -80,40 +79,15 @@ function update_btn(jqgrid_data) {
 }
 
 
-function supp_btn(what) {
-    main_data.supp_check = what;
 
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-    $("#supp-search-dialog").dialog('open');
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change");
-    $('#supp_code_search').val('').trigger("change");
-
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]'));
-}
-
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-
-}
-
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData');
-}
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
-    msgGet_auth("TBMES_A003"); //수정권한없음
+    msgGet_auth("TBMES_A001"); // 추가권한 없음
+    msgGet_auth("TBMES_A002"); // 삭제권한 없음
+    msgGet_auth("TBMES_A003"); // 수정권한 없음
+    msgGet_auth("TBMES_A004"); // 삭제 데이터 선택 요청
+    msgGet_auth("TBMES_A005"); // 삭제여부
 }
 
 //권한체크
@@ -138,11 +112,12 @@ function jqGrid_main() {
         ],
         caption: "인보이스양식 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
-        height: 600, // 그리드 세로 길이 설정
+        height: 562, // 그리드 세로 길이 설정
         pager: '#mes_grid_pager',// pager 연결
         rowNum: 100, // 1페이지당 데이터 수
         rowList: [100, 200, 300, 400], // 페이지당 데이터 수 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
+        multiselect: true,
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
                 var $myGrid = $(this),
                     i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
@@ -160,4 +135,8 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height","0px");
         }
     }).navGrid("#mes_grid_pager", {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정
+}
+
+function selectBox() {
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
 }

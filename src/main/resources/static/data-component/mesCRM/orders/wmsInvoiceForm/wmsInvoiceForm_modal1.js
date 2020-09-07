@@ -7,7 +7,8 @@
 ////////////////////////////시작 함수/////////////////////////////////////
 function modal_start1() {
     modal_make1();
-    selectBox_modal1()
+    msg_get_modal1();
+    select_modal_start();
 }
 
 
@@ -16,8 +17,57 @@ function modal_start1() {
 
 ////////////////////////////호출 함수/////////////////////////////////////
 
-function Udate_btn() {
+function addUdate_btn() {
+    var add_data = value_return(".modal_value");
+    var formData = new FormData();
+    var check;
+    if (effectiveness1(add_data)){
+    formData.append("supp_code", add_data.supp_code);
+    formData.append("rpt_name", add_data.rpt_name);
+    formData.append("trans_code", add_data.trans_code);
+    formData.append("notice1", add_data.notice1);
+    formData.append("notice2", add_data.notice2);
+    formData.append("notice3", add_data.notice3);
+    formData.append("notice4", add_data.notice4);
+    formData.append("notice5", add_data.notice5);
+    formData.append("notice6", add_data.notice6);
+    formData.append("mark1", add_data.mark1);
+    formData.append("mark2", add_data.mark2);
+    formData.append("mark3", add_data.mark3);
+    formData.append("mark4", add_data.mark4);
+    formData.append("mark5", add_data.mark5);
+    formData.append("file", $("#ex_file").prop("files")[0]);
 
+    if ($("#ex_file").prop("files")[0] == null) {
+        check = 0;
+        formData.append("check", check);
+    } else {
+        check = 1;
+        formData.append("file", $("#ex_file").prop("files")[0]);
+        formData.append("check", check);
+    }
+
+        var text = msg_object.TBMES_Q002.msg_name1;
+        if (main_data.check === "U") {
+            text = msg_object.TBMES_Q003.msg_name1;
+        }
+        if (confirm(text)) {
+        wrapWindowByMask2();
+            formData.append("keyword", main_data.check);
+        ccn_file_ajax("/wmsInvoiceFormAdd", formData).then(function (data) {
+            if (data.result === 'NG') {
+                alert(data.message);
+            }else{
+                $("#addDialog").dialog('close');
+            }
+            closeWindowByMask();
+            $('#mes_grid').trigger('reloadGrid');
+        }).catch(function (err) {
+            closeWindowByMask();
+            $("#addDialog").dialog('close');
+        });
+    }
+    }
 }
 
 //모달 메세지 설정
@@ -33,7 +83,7 @@ function modal_make1() {
                 text: "저장",
                 "class": "btn btn-primary btn-minier",
                 click: function () {
-                    Udate_btn();
+                    addUdate_btn();
                 }
             },
             {
@@ -76,33 +126,62 @@ function selectBox_modal1() {
 }
 
 
-function readURL(input,index) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
 
-        reader.onload = function (e) {
-            $('#img-text'+index).hide();
+function msg_get_modal1() {
+    msgGet_auth("TBMES_Q002"); // 저장여부
+    msgGet_auth("TBMES_Q003"); // 수정여부
+    msgGet_auth("TBMES_E008"); // 데이터 등록 실패
+}
 
-            //var img = $('<img style="width: 100%; height: 100%;" id="img'+index+'\">')
-            //$('#img_div'+index).prepend(img);
-            $('#img'+index).attr('src', e.target.result);
-            $('#img'+index).show();
+function select_modal_start(){
+
+    select_makes_base("#modal_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'});
+    select_makes_base("#modal_select2", "/sysCommonAllGet","code_value","code_name1",{keyword:'TRANS_TYPE'});
+
+}
+function confirmFileExtension(e) {
+    var fileNm = $("#ex_file").val();
+
+    if (fileNm != "") {
+
+        var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();
+        if (!(ext == "gif" || ext == "jpg" || ext == "png")) {
+            alert("이미지파일 (.jpg, .png, .gif ) 만 업로드 가능합니다.");
+            $(e).prev().text("사진첨부");
+            $(e).val("");
+            return false;
+        } else {
+            return true;
         }
-        reader.readAsDataURL(input.files[0]);
+
+    }
+
+
+}
+
+function file_change(e) {
+    var filename = $(e).val().split('\\');
+    var data = $(e).val().split('.'); // 확장자
+
+
+    if (confirmFileExtension(e)){
+        $(e).prev().text("업로드완료");
     }
 }
 
-
-function readURLRemove(index) {
-    $('#img'+index).removeAttr('src');
-    //if (!$("#img-text"+index).text()){
-    $("#img-text"+index).show();
-    var div = $('<div class="img-text" id="img-text'+index+'\">미리보기가 표시됩니다.</div>');
-    //$('#img_div'+index).prepend(div);
-    $('#img'+index).hide();
-    //}
-    if (main_data.check = 'U'){
-        main_data["delCheck"+index] = 1;
+function effectiveness1(modal_objact) { // 유효성 검사
+    if (modal_objact.rpt_name === '') {
+        alert("관리명칭을 입력해주세요");
+        return false;
     }
-    $("#xlsUploads"+index).val("");
+      if (main_data.check === 'I'){
+          if (modal_objact.file_signed === '') {
+              alert("사진을 첨부해주세요");
+              return false;
+          }
+      }
+
+
+    return true;
+
 }

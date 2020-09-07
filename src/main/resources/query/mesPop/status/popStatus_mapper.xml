@@ -106,7 +106,7 @@
     </select>
 
     <select id="popLotTrackingGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
-    EXEC SP_POP_LOT_TRAC_KING_GET #{page},#{rows},#{keyword}
+    EXEC SP_POP_TRACK_GET #{page},#{rows},#{supp_code},#{part_kind},#{part_code},#{lot_no}
     </select>
 
     <select id="sysProdHrAdd" resultType="com.mes.Common.DataTransferObject.Message">

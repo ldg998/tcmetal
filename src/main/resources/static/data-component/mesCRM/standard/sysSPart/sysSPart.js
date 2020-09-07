@@ -125,6 +125,7 @@ function delete_btn() {
         alert(msg_object.TBMES_A002.msg_name1);
     }
 }
+
 function select_change1(value) {
     if (value !== ""){
         select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'',keyword2:value},"Y");

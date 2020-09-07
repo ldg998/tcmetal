@@ -6,7 +6,7 @@ var main_data = {
     check: 'I',
     send_data: {},
     send_data_post: {},
-    readonly:['supp_code','part_kind','part_name','part_code'],
+    readonly:['supp_code','part_kind','part_name','part_code','part_name2'],
     auth:{}
 }
 

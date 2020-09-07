@@ -10,6 +10,7 @@ public class SYS_SPART_CD {
     private String part_kind;
     private String part_code;
     private String part_name;
+    private String part_name2;
     private int part_weight;
     private int gross_weight;
     private String part_size;

@@ -138,4 +138,8 @@ public class PopStatusService extends UploadFunction {
         List<POP_PROD> rows = mesPopStatusMapper.popDownTimeGet(p);
         return getListData(rows, p);
     }
+
+    public Message popSpectroAdd(HttpServletRequest req, POP_PLAN pp) {
+        pp.setUser_code(getSessionData(req).getUser_code());
+        return mesPopStatusMapper.popSpectroAdd(pp); }
 }

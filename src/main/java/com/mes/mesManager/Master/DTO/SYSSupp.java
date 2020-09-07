@@ -28,6 +28,7 @@ public class SYSSupp {
     private String use_yn;
     private String create_date;
     private String update_date;
+    private String remark;
 
     private String delivery_place1;
     private String delivery_place2;

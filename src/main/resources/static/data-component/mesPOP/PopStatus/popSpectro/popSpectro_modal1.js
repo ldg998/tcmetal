@@ -8,6 +8,36 @@ function modal_start1() {
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
+    var modal_objact = value_return(".modal_value");
+        var text = msg_object.TBMES_Q002.msg_name1;
+        if (main_data.check === "U") {
+            text = msg_object.TBMES_Q003.msg_name1;
+        }
+        if (confirm(text)) {
+            wrapWindowByMask2();
+            modal_objact.work_date = modal_objact.work_date.replace(/\-/g, ''); ;
+            modal_objact.part_weight = modal_objact.part_weight.replace(/\,/g, ''); ;
+            modal_objact.keyword =  main_data.check
+
+            ccn_ajax("/popSpectroAdd", modal_objact).then(function (data) {
+                if (data.result === 'NG') {
+                    alert(data.message);
+                } else {
+                    if (main_data.check === "I") {
+                        $("#addDialog").dialog('close');
+                        get_btn(1);
+                    } else {
+                        $("#addDialog").dialog('close');
+                        $('#mes_grid').trigger("reloadGrid");
+                    }
+                }
+                closeWindowByMask();
+
+            }).catch(function (err) {
+                closeWindowByMask();
+                alert(msg_object.TBMES_E008.msg_name1);
+            });
+        }
 
 }
 ////////////////////////////호출 함수/////////////////////////////////////
@@ -31,7 +61,7 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
                 text: '저장',
                 'class': 'btn btn-primary btn-minier',
                 click: function () {
-                    $(this).dialog("close");
+                    addUdate_btn();
 
                 }
 

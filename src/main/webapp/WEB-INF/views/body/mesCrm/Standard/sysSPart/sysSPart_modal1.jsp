@@ -26,22 +26,36 @@
             <div class="profile-info-value">
                 <input type="text"  name="part_name" class="form-control modal_value"  autocomplete="off" >
             </div>
+
+            <div class="profile-info-name">품명(한글)</div>
+            <div class="profile-info-value">
+                <input type="text"  name="part_name2" class="form-control modal_value"  autocomplete="off" >
+            </div>
+
+
+        </div>
+
+        <div class="profile-info-row">
             <div class="profile-info-name">품번</div>
             <div class="profile-info-value">
                 <input type="text"  name="part_code" class="form-control modal_value"  autocomplete="off" >
             </div>
-        </div>
 
-        <div class="profile-info-row">
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
                 <input type="text"  name="part_weight" class="form-control modal_value"  onkeyup="num_keyup_comma_crm4(this);" autocomplete="off" style="text-align: right">
             </div>
-            <div class="profile-info-name">사이즈</div>
-            <div class="profile-info-value">
-                <input type="text"  name="part_size" class="form-control modal_value"  autocomplete="off" >
-            </div>
+
         </div>
+            <div class="profile-info-row">
+                <div class="profile-info-name">사이즈</div>
+                <div class="profile-info-value">
+                    <input type="text"  name="part_size" class="form-control modal_value"  autocomplete="off" >
+                </div>
+                <div class="profile-info-name"></div>
+                <div class="profile-info-value"></div>
+
+            </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">포장무게</div>

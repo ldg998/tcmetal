@@ -15,7 +15,7 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <%--조회할 업채명--%>
                     <td class="wt-px-200">
-                        <select class="form-control condition_main" name="supp_code" id="supp_select" style="width: 100%" ></select>
+                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" ></select>
                     </td>
                     <!-- 품목코드 검색창 -->
                     <td></td>
@@ -32,7 +32,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <!-- 조회버튼 -->
                     <a  id="get_btn" class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="test();">
+                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="get_btn(1);">
                         <span>
                             <i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>

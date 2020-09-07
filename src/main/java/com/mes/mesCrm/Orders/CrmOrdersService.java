@@ -161,4 +161,12 @@ public class CrmOrdersService extends ReturnFunction {
         List<CRM_INVOICE_REPORT> rows = crmOrdersMapper.wmsInvoiceFormGet(p);
         return getListData(rows , p);
     }
+
+    public CRM_INVOICE_REPORT wmsInvoiceFormOneGet(Page p) {
+        return crmOrdersMapper.wmsInvoiceFormOneGet(p);
+    }
+
+    public Message wmsInvoiceFormDel(Page p) {
+        return crmOrdersMapper.wmsInvoiceFormDel(p);
+    }
 }

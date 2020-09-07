@@ -64,9 +64,19 @@ public class CrmOrdersRestController {
         return crmOrdersService.wmsInvoiceFormGet(p);
     }
 
+    @RequestMapping(value = "/wmsInvoiceFormOneGet", method = RequestMethod.POST)
+    public CRM_INVOICE_REPORT wmsInvoiceFormOneGet( Page p) {
+        return crmOrdersService.wmsInvoiceFormOneGet(p);
+    }
+
     @RequestMapping(value="/wmsInvoiceFormAdd" , method = RequestMethod.POST)
     public Message wmsInvoiceFormAdd(MultipartHttpServletRequest req, CRM_INVOICE_REPORT cir) throws IOException {
         return crmOrdersService.wmsInvoiceFormAdd(req, cir);
+    }
+
+    @RequestMapping(value="/wmsInvoiceFormDel" , method = RequestMethod.POST)
+    public Message wmsInvoiceFormDel( Page p)  {
+        return crmOrdersService.wmsInvoiceFormDel( p);
     }
 
 

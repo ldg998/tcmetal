@@ -31,9 +31,12 @@ $(document).ready(function () {
 
 // 조회 버튼
 function get_btn(page) {
+
+    main_data.send_data = value_return(".condition_main");
+
     $("#mes_grid").setGridParam({ // 그리드 조회
         // URL -> RESTCONTROLLER 호출
-        url: '/sysPartNameGet',
+        url: '/wmsInvoiceFormGet',
         // JSON 데이터 형식으로
         datatype: "json",
         // PAGE는 받은 파라미터로 설정
@@ -56,7 +59,7 @@ function add_btn() {
         if($("#supp_select").val() !== ""){
             $('#modal_select1').val($("#supp_select").val()).trigger("change");
         }
-
+        $("#ex_file").prev().text("사진첨부");
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
         alert(msg_object.TBMES_A001.msg_name1); // 경고메세지 출력
@@ -69,12 +72,54 @@ function update_btn(jqgrid_data) {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
 
         main_data.check = 'U'; // 수정인지 체크
-        ccn_ajax('/sysPartNameOneGet', {keyword: jqgrid_data.part_name_code}).then(function (data) { // user의 하나 출력
+        ccn_ajax('/wmsInvoiceFormOneGet', {keyword: jqgrid_data.supp_code,keyword2:jqgrid_data.rpt_name,keyword3:jqgrid_data.trans_code}).then(function (data) { // user의 하나 출력
             modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
+            $("#ex_file").prev().text("사진첨부");
             $("#addDialog").dialog('open'); //모달창열기
         });
     } else {
         alert(msg_object.TBMES_A003.msg_name1); //경고메세지 출력
+    }
+}
+
+// 삭제 버튼
+function delete_btn() {
+    if(main_data.auth.check_del != "N") { // 권한체크
+        var gu5 = String.fromCharCode(5);
+        var gu4 = String.fromCharCode(4);
+        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
+
+        if (ids.length === 0) { // 선택된 그리드 row가 없을 경우
+            alert(msg_object.TBMES_A004.msg_name1); // 경고문 출력
+        } else {
+
+
+            var list = [];
+            var jdata = {};
+            for(var i = 0; i < ids.length; i ++){
+                jdata = $('#mes_grid').jqGrid('getRowData', ids[i]);
+                list.push(jdata.supp_code +gu4+jdata.rpt_name +gu4+ jdata.trans_code);
+            }
+
+
+            if (confirm(msg_object.TBMES_A005.msg_name1)) { // 삭제여부 확인 메세지 출력
+                wrapWindowByMask2(); // 마스크로 화면 덮음 / 삭제중 다른 작업을 할 수 없도록 방지
+                // ajax 통신 함수 url과 data 를 전달하여 promise로 실행 후 가공 data를 사용할 수 있도록 설정
+                ccn_ajax("/wmsInvoiceFormDel", {keyword: list.join(gu5)}).then(function (data) {
+                    if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
+                        alert(data.message); // 해당 오류 메세지 출력
+                    } else {
+                        $('#mes_grid').trigger('reloadGrid'); // 성공시 기존에 조회했던 조건 그대로 grid를 조회
+                    }
+                    closeWindowByMask(); // 마스크 종료
+                }).catch(function (err) { // 에러 발생 시
+                    closeWindowByMask(); // 마스크 종료
+                    console.error(err); // Error 출력
+                });
+            }
+        }
+    } else {
+        alert(msg_object.TBMES_A002.msg_name1); // 권한 이 없을 경우 해당 메세지 출력
     }
 }
 
@@ -102,13 +147,16 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['업체','명칭','운송수단','등록자','수정일'],// grid 헤더 설정
+        colNames : ['rownum','업체','업체','명칭','운송수단','운송수단','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'',index:'',key: true ,sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'',index:'',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'',index:'',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'',index:'',sortable: false,width:150,fixed: true},
-            {name:'',index:'',sortable: false,width:80,fixed: true}
+            {name:'rownum',index:'rownum',key: true ,sortable: false,width:100,hidden:true,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'supp_code',index:'supp_code',hidden:true,sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'rpt_name',index:'rpt_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'trans_name',index:'trans_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'trans_code',index:'trans_code',hidden:true,sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
+            {name:'update_date',index:'update_date',sortable: false,width:150,fixed: true,formatter: formmatterDate}
         ],
         caption: "인보이스양식 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정

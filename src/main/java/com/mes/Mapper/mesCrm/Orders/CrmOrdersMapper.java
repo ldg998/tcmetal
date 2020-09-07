@@ -56,4 +56,8 @@ public interface CrmOrdersMapper {
     Message wmsInvoiceFormAdd(CRM_INVOICE_REPORT cir);
 
     List<CRM_INVOICE_REPORT> wmsInvoiceFormGet(Page p);
+
+    CRM_INVOICE_REPORT wmsInvoiceFormOneGet(Page p);
+
+    Message wmsInvoiceFormDel(Page p);
 }

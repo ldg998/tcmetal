@@ -30,7 +30,20 @@ public class POP_PROD {
     private String remark;
     private String remark1;
     private String bcr_no;
+    private String line_code;
+    private int downtime;
+    private String downtime_code;
+    private String downtime_name;
+
+    private int run_time;
+    private String create_date;
+    private String update_date;
+
+
+
     private int rownum;
     private int rownum_page;
     private int rec_count;
+
+
 }

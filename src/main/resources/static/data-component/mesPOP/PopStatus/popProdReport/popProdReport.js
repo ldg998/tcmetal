@@ -77,13 +77,11 @@ function msg_get() {
 }
 
 function under_get(data) {
-    console.log(data.plan_no);
-    console.log(data.line_code);
     $("#mes_grid2").setGridParam({
         url: '/popDownTimeGet',
         datatype: "json",
         page: 1,
-        postData: {keyword: data.plan_no, keyword2: data.line_code}
+        postData: {keyword:data.work_date.replace(/-/gi, ""),keyword2:data.line_code}
     }).trigger("reloadGrid");
 }
 
@@ -110,25 +108,26 @@ function datepickerInput() {
 }
 
 function selectBox() {
- $('#line_select').select2();
-    $('#line_select2').select2();
+    select_makes_base("#main_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:''},'').then(function (data) {
+        select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
+
+        });
+    });
 
 }
-
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['row_num','plan_no','line_code','생산일자','공정','생산량','작업시간','비가동시간'],
+        colNames: ['row_num','line_code','생산일자','공정','생산량','작업시간','비가동시간'],
         colModel: [
             {name: 'rownum', index: 'rownum',key:true, sortable: false,hidden:true, width: 150,fixed:true},
-            {name: 'plan_no', index: 'plan_no', sortable: false,hidden:true, width: 150,fixed:true},
             {name: 'line_code', index: 'line_code', sortable: false,hidden:true, width: 150,fixed:true},
             {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2},
             {name: 'line_name', index: 'line_name', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: 'oper_time', index: 'oper_time', sortable: false, width: 150,fixed:true,align:'right'},
-            {name: 'downtime', index: 'downtime', sortable: false, width: 150,fixed:true}
+            {name: 'work_qty', index: 'work_qty', sortable: false, width: 150,fixed:true,align:'right'},
+            {name: 'run_time', index: 'run_time', sortable: false, width: 150,fixed:true,align:'right'},
+            {name: 'downtime', index: 'downtime', sortable: false, width: 150,fixed:true,align:'right'}
         ],
         caption: "작업일보현황 | MES",
         autowidth: true,
@@ -152,7 +151,7 @@ function jqGrid_main() {
             {name: 'start_date', index: 'start_date', width: 150, sortable: false,fixed:true},
             {name: 'stop_date', index: 'stop_date', width: 150, sortable: false,fixed:true},
             {name: 'downtime', index: 'downtime', width: 150, sortable: false,fixed:true},
-            {name: 'downtime_code', index: 'downtime_code', width: 150, sortable: false,fixed:true}
+            {name: 'downtime_name', index: 'downtime_name', width: 150, sortable: false,fixed:true}
         ],
         autowidth: true,
         viewrecords: true,

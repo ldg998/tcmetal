@@ -43,7 +43,7 @@ public interface MesPopStatusMapper {
 
     List<POP_PLAN> popProdList2Get(Page p);
 
-    List<POP_PLAN> popProdReportGet(Page p);
+    List<POP_PROD> popProdReportGet(Page p);
 
     List<POP_PLAN> popMonitoringGet(Page p);
 
@@ -52,4 +52,6 @@ public interface MesPopStatusMapper {
     Message sysProdHrAdd(POP_PROD_MHR ppm);
 
     Message sysProdHrDel(POP_PROD_MHR ppm);
+
+    List<POP_PROD> popDownTimeGet(Page p);
 }

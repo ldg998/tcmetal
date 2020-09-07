@@ -93,8 +93,12 @@
     EXEC SP_POP_PROD_LIST2_GET #{page},#{rows},#{work_date},#{keyword},#{keyword2}
     </select>
 
-    <select id="popProdReportGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
-    EXEC SP_POP_PROD_REPORT_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+    <select id="popProdReportGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PROD">
+    EXEC SP_POP_PROD_REPORT_GET #{page},#{rows},#{start_date},#{stop_date},#{keyword},#{keyword2}
+    </select>
+
+     <select id="popDownTimeGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PROD">
+    EXEC SP_POP_DOWN_TIME_GET 0,0,#{keyword},#{keyword2}
     </select>
 
     <select id="popMonitoringGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">

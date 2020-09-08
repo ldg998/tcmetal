@@ -169,4 +169,26 @@ public class CrmOrdersService extends ReturnFunction {
     public Message wmsInvoiceFormDel(Page p) {
         return crmOrdersMapper.wmsInvoiceFormDel(p);
     }
+
+    public RESTful wmsInvoiceGet(Page p) {
+        List<CRM_INVOICE> rows = crmOrdersMapper.wmsInvoiceGet(p);
+        return getListData(rows , p);
+    }
+
+    public List<CRM_INVOICE_REPORT> invoiceRptNameGet(Page p) {
+        return crmOrdersMapper.invoiceRptNameGet(p);
+    }
+
+    public List<CRM_INVOICE_REPORT> invoiceTransGet(Page p) {
+        return crmOrdersMapper.invoiceTransGet(p);
+    }
+
+    public Message wmsInvoiceAdd(CRM_INVOICE ci, HttpServletRequest req) {
+        ci.setUser_code(getSessionData(req).getUser_code());
+        return crmOrdersMapper.wmsInvoiceAdd(ci);
+    }
+
+    public CRM_INVOICE wmsInvoiceOneGet(Page p) {
+        return crmOrdersMapper.wmsInvoiceOneGet(p);
+    }
 }

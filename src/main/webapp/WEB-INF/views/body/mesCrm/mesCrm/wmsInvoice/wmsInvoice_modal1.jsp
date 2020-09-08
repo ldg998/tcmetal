@@ -16,16 +16,17 @@
             <div class="profile-info-name">업체</div>
             <div class="profile-info-value">
                 <div class="input-icon input-icon-right">
-                    <input name="" type="text" class="form-control keyword modal_value"  style="width: 100%" autocomplete="off">
+                    <select name="supp_code" id="modal_select1" type="text" class="form-control keyword modal_value" onchange="select_change_modal1(this.value);" style="width: 100%;">
+
+                    </select>
+                    <input type="hidden" class="modal_value" name="req_no" >
+                    <input type="hidden" class="modal_value modal_value2" name="signed_file" >
                 </div>
             </div>
 
             <div class="profile-info-name">명칭</div>
             <div class="profile-info-value">
-                <select id="_select_modal2" style="width: 100%">
-                    <option value="">요코하마</option>
-                    <option></option>
-                    <option></option>
+                <select name="rpt_name" id="modal_select2" type="text" class="form-control keyword modal_value" onchange="select_change_modal2(this.value);" style="width: 100%;">
 
                 </select>
             </div>
@@ -33,57 +34,51 @@
 
         <%--2--%>
         <div class="profile-info-row">
-            <div class="profile-info-value"></div>
-            <div class="profile-info-value"></div>
+
 
             <div class="profile-info-name">운송수단</div>
             <div class="profile-info-value">
-               <select id="_select_modal1" style="width: 100%">
-                   <option value="">벌크</option>
-                   <option></option>
-                   <option></option>
+                <select name="trans_code" id="modal_select3" type="text" class="form-control keyword modal_value" onchange="select_change_modal3(this.value);" style="width: 100%;">
 
-               </select>
+                </select>
 
             </div>
+            <div class="profile-info-value"></div>
+            <div class="profile-info-value"></div>
         </div>
 
             <br/>
             <div class="profile-info-row">
                 <div class="profile-info-name">No. & Date  of  Invoice</div>
                 <div class="profile-info-value">
-                    <input type="text" name="" class="form-control">
+                    <input type="text" name="item1" class="form-control modal_value">
                 </div>
 
                 <div class="profile-info-name">No. & Date of  L/C</div>
                 <div class="profile-info-value">
-                    <input type="text" name="" class="form-control">
+                    <input type="text" name="item2" class="form-control modal_value">
                 </div>
             </div>
             <div class="profile-info-row">
                 <div class="profile-info-name">L/C  Issuing  Bank</div>
                 <div class="profile-info-value">
-                    <input type="text" name="" class="form-control">
+                    <input type="text" name="item3" class="form-control modal_value">
                 </div>
 
                 <div class="profile-info-name">Departure  Date </div>
                 <div class="profile-info-value">
-                    <input type="text" name="" class="form-control">
+                    <input type="text" name="item4" class="form-control modal_value">
                 </div>
             </div>
         <%--3--%>
         <div class="profile-info-row">
             <div class="profile-info-name">Seller</div>
             <div class="profile-info-value">
-                <textarea cols="36" rows="7">
-
-                </textarea>
+                <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice1"></textarea>
             </div>
             <div class="profile-info-name">Consignee</div>
             <div class="profile-info-value">
-              <textarea cols="36" rows="7">
-
-                </textarea>
+              <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice2"></textarea>
             </div>
         </div>
 
@@ -92,16 +87,12 @@
         <div class="profile-info-row">
             <div class="profile-info-name">Buyer NOTIFY</div>
             <div class="profile-info-value">
-               <textarea cols="36" rows="7">
-
-                </textarea>
+               <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice3"></textarea>
             </div>
 
             <div class="profile-info-name">Vessel/VOY</div>
             <div class="profile-info-value">
-                <textarea cols="36" rows="7">
-
-                </textarea>
+                <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice4"></textarea>
             </div>
         </div>
 
@@ -109,15 +100,11 @@
             <div class="profile-info-row">
                 <div class="profile-info-name">Terms of Delivery<br>and Payment </div>
                 <div class="profile-info-value">
-                   <textarea cols="36" rows="7">
-
-                </textarea>
+                   <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice5"></textarea>
                 </div>
                 <div class="profile-info-name">Remark</div>
                 <div class="profile-info-value">
-                    <textarea cols="36" rows="7">
-
-                </textarea>
+                    <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice6"></textarea>
                 </div>
             </div>
 
@@ -132,11 +119,11 @@
             <div class="profile-info-name">SHIPPING MARK#5</div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
-            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
-            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
-            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
-            <div class="profile-info-value"> <textarea cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark1" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark2" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark3" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark4" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark5" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
         </div>
 
     </div>

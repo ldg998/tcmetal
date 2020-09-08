@@ -75,11 +75,11 @@
         <div class="profile-info-row">
             <div class="profile-info-name">Seller</div>
             <div class="profile-info-value">
-                <textarea name="notice1" cols="36" rows="7" class="modal_value"></textarea>
+                <textarea  wrap="off" name="notice1" cols="36" rows="7" class="modal_value"></textarea>
             </div>
             <div class="profile-info-name">Consignee</div>
             <div class="profile-info-value">
-              <textarea name="notice2" cols="36" rows="7" class="modal_value"></textarea>
+              <textarea  wrap="off" name="notice2" cols="36" rows="7" class="modal_value"></textarea>
             </div>
         </div>
 
@@ -88,12 +88,12 @@
         <div class="profile-info-row">
             <div class="profile-info-name">Buyer NOTIFY</div>
             <div class="profile-info-value">
-               <textarea name="notice3" cols="36" rows="7" class="modal_value"></textarea>
+               <textarea  wrap="off" name="notice3" cols="36" rows="7" class="modal_value"></textarea>
             </div>
 
             <div class="profile-info-name">Vessel/VOY</div>
             <div class="profile-info-value">
-                <textarea name="notice4" cols="36" rows="7" class="modal_value"></textarea>
+                <textarea  wrap="off" name="notice4" cols="36" rows="7" class="modal_value"></textarea>
             </div>
         </div>
 
@@ -101,11 +101,11 @@
             <div class="profile-info-row">
                 <div class="profile-info-name">Terms of Delivery<br>and Payment </div>
                 <div class="profile-info-value">
-                   <textarea name="notice5" cols="36" rows="7" class="modal_value"></textarea>
+                   <textarea  wrap="off" name="notice5" cols="36" rows="7" class="modal_value"></textarea>
                 </div>
                 <div class="profile-info-name">Remark</div>
                 <div class="profile-info-value">
-                    <textarea name="notice6" cols="36" rows="7" class="modal_value"></textarea>
+                    <textarea  wrap="off" name="notice6" cols="36" rows="7" class="modal_value"></textarea>
                 </div>
             </div>
 
@@ -134,19 +134,19 @@
         </div>
         <div class="profile-info-row">
             <div class="profile-info-value">
-                   <textarea name="mark1" cols="18" rows="7" class="modal_value"></textarea>
+                   <textarea  wrap="off" name="mark1" cols="17.8" rows="7" class="modal_value"></textarea>
             </div>
             <div class="profile-info-value">
-                   <textarea name="mark2" cols="18" rows="7" class="modal_value"></textarea>
+                   <textarea  wrap="off" name="mark2" cols="17.8" rows="7" class="modal_value"></textarea>
             </div>
             <div class="profile-info-value">
-                   <textarea name="mark3" cols="18" rows="7" class="modal_value"></textarea>
+                   <textarea  wrap="off" name="mark3" cols="17.8" rows="7" class="modal_value"></textarea>
             </div>
             <div class="profile-info-value">
-                   <textarea name="mark4" cols="18" rows="7" class="modal_value"></textarea>
+                   <textarea  wrap="off" name="mark4" cols="17.8" rows="7" class="modal_value"></textarea>
             </div>
             <div class="profile-info-value">
-                   <textarea name="mark5" cols="18" rows="7" class="modal_value"></textarea>
+                   <textarea  wrap="off" name="mark5" cols="17.8" rows="7" class="modal_value"></textarea>
             </div>
         </div>
 

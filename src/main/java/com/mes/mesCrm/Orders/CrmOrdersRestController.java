@@ -143,4 +143,28 @@ public class CrmOrdersRestController {
     public List<CRM_SHIPPING> crmShippingListGet( Page p) {
         return crmOrdersService.crmShippingListGet(p);
     }
+
+    @RequestMapping(value = "/wmsInvoiceGet", method = RequestMethod.POST)
+    public RESTful wmsInvoiceGet( Page p) {
+        return crmOrdersService.wmsInvoiceGet(p);
+    }
+
+    @RequestMapping(value = "/invoiceRptNameGet", method = RequestMethod.POST)
+    public List<CRM_INVOICE_REPORT> invoiceRptNameGet( Page p) {
+        return crmOrdersService.invoiceRptNameGet(p);
+    }
+    @RequestMapping(value = "/invoiceTransGet", method = RequestMethod.POST)
+    public List<CRM_INVOICE_REPORT> invoiceTransGet( Page p) {
+        return crmOrdersService.invoiceTransGet(p);
+    }
+
+    @RequestMapping(value = "/wmsInvoiceAdd", method = RequestMethod.POST)
+    public Message wmsInvoiceAdd(CRM_INVOICE ci, HttpServletRequest req) {
+        return crmOrdersService.wmsInvoiceAdd(ci,req);
+    }
+
+    @RequestMapping(value = "/wmsInvoiceOneGet", method = RequestMethod.POST)
+    public CRM_INVOICE wmsInvoiceOneGet( Page p) {
+        return crmOrdersService.wmsInvoiceOneGet(p);
+    }
 }

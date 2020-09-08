@@ -145,4 +145,48 @@
 	<select id="wmsInvoiceFormDel" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_CRM_INVOICE_REPORT_DEL #{keyword}
     </select>
+	<select id="wmsInvoiceGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_INVOICE">
+		EXEC SP_CRM_INVOICE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},''
+	</select>
+
+	<select id="invoiceRptNameGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_INVOICE_REPORT">
+		SELECT RPT_NAME FROM CRM_INVOICE_REPORT WHERE SUPP_CODE = #{keyword} GROUP BY RPT_NAME
+	</select>
+
+	<select id="invoiceTransGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_INVOICE_REPORT">
+		SELECT A.TRANS_CODE,H.TRANS_NAME
+		FROM CRM_INVOICE_REPORT A
+		LEFT JOIN (SELECT CODE_VALUE as TRANS_CODE,CODE_NAME1 TRANS_NAME FROM SYS_COMMON_CD WHERE CODE_TYPE ='TRANS_TYPE') H ON  A.TRANS_CODE = H.TRANS_CODE
+		WHERE A.SUPP_CODE = #{keyword}
+		AND A.RPT_NAME = #{keyword2}
+	</select>
+
+	<select id="wmsInvoiceAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_CRM_INVOICE_ADD
+		#{req_no},
+		#{supp_code},
+		#{rpt_name},
+		#{trans_code},
+		#{item1},
+		#{item2},
+		#{item3},
+		#{item4},
+		#{notice1},
+		#{notice2},
+		#{notice3},
+		#{notice4},
+		#{notice5},
+		#{notice6},
+		#{signed_file},
+		#{mark1},
+		#{mark2},
+		#{mark3},
+		#{mark4},
+		#{mark5},
+		#{user_code},
+        #{keyword}
+    </select>
+	<select id="wmsInvoiceOneGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_INVOICE">
+		EXEC SP_CRM_INVOICE_GET 1,1,'','','',#{keyword2}
+	</select>
 </mapper>

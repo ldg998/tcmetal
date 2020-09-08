@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%><!-- 페이지 언어, 인코딩 설정 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><!-- JSTL 태그 라이브러리 -->
 <%@ page session="false" %> <!-- 응답 HTTP 헤더에 세션 쿠키가 존재함을 확인할 수 있습니다. -->
+
+<!-- JSTL 태그 라이브러리 -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/pdfmake.min.js"
+        charset="UTF-8"></script>
+<!-- 스크립트 파일 import -->
+<script type="text/javascript" src="/data-component/common/pdf_ex/js/pdfmake/vfs_fonts.js" charset="UTF-8"></script>
+
 <script type="text/javascript" src="/data-component/mesCRM/orders/wmsInvoice/wmsInvoice.js" charset="UTF-8"></script> <%--스크립트 파일 import--%>
 <!-- body 해당 전체 컨테이너 div 영역 -->
 <div class="main-content-inner">
@@ -15,7 +22,7 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
@@ -23,17 +30,14 @@
                     <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
                             <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main" readonly>
+                                   class="form-control h-25 condition_main sendDate" readonly>
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
                     <!-- 구분 select 창 -->
                     <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">업체</td>
                     <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   id="supp_name_main">
-                        </div>
+                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" ></select>
                     </td>
                     <td></td>
                 </tr>
@@ -48,7 +52,7 @@
                 <div class="dt-buttons btn-overlap btn-group">
                     <!-- 조회버튼 -->
                     <a  class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="test();">
+                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="get_btn(1);">
                         <span>
                             <i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
@@ -56,7 +60,7 @@
                     </a>
 
                     <a   class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" >
+                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="invoice_btn();">
                         <span>
 
                             <span>인보이스</span>

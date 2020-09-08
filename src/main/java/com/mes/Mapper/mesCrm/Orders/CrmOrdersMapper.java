@@ -3,10 +3,7 @@ package com.mes.Mapper.mesCrm.Orders;
 
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
-import com.mes.mesCrm.Orders.DTO.CRM_INVOICE_REPORT;
-import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
-import com.mes.mesCrm.Orders.DTO.CRM_SHIPPING;
-import com.mes.mesCrm.Orders.DTO.WMS_OUT_ORD_SUB;
+import com.mes.mesCrm.Orders.DTO.*;
 import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import org.springframework.stereotype.Repository;
 
@@ -60,4 +57,14 @@ public interface CrmOrdersMapper {
     CRM_INVOICE_REPORT wmsInvoiceFormOneGet(Page p);
 
     Message wmsInvoiceFormDel(Page p);
+
+    List<CRM_INVOICE> wmsInvoiceGet(Page p);
+
+    List<CRM_INVOICE_REPORT> invoiceRptNameGet(Page p);
+
+    List<CRM_INVOICE_REPORT> invoiceTransGet(Page p);
+
+    Message wmsInvoiceAdd(CRM_INVOICE ci);
+
+    CRM_INVOICE wmsInvoiceOneGet(Page p);
 }

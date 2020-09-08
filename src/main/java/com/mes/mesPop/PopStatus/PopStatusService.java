@@ -6,10 +6,7 @@ import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
 import com.mes.Mapper.mesPop.Status.MesPopStatusMapper;
-import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
-import com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD;
-import com.mes.mesPop.PopStatus.DTO.POP_PROD;
-import com.mes.mesPop.PopStatus.DTO.POP_PROD_MHR;
+import com.mes.mesPop.PopStatus.DTO.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -142,4 +139,23 @@ public class PopStatusService extends UploadFunction {
     public Message popSpectroAdd(HttpServletRequest req, POP_PLAN pp) {
         pp.setUser_code(getSessionData(req).getUser_code());
         return mesPopStatusMapper.popSpectroAdd(pp); }
+
+    public POP_PLAN popProdMeltGet(HttpServletRequest req, POP_PLAN pp) {
+        POP_PLAN vo = new POP_PLAN();
+        List<List<Object>> datas = mesPopStatusMapper.popProdMeltGet(pp);
+        List<POP_PROD_MELT> dataset1 =  getDataset( datas , 0 );
+        List<POP_PROD_MELT_SUB1> dataset2 =  getDataset( datas , 1 );
+        List<POP_PROD_MELT_SUB2> dataset3 =  getDataset( datas , 2 );
+        List<POP_PROD_MELT_SUB3> dataset4 =  getDataset( datas , 3 );
+
+        vo.setPop_prod_melt(dataset1);
+        vo.setPop_prod_melt_sub1(dataset2);
+        vo.setPop_prod_melt_sub2(dataset3);
+        vo.setPop_prod_melt_sub3(dataset4);
+        return vo;
+    }
+
+    private <T> List<T> getDataset(List<List<Object>> datasets, int index){
+        return (List<T>) datasets.get(index);
+    }
 }

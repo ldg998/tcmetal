@@ -2,22 +2,24 @@ package com.mes.test;
 
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
-import com.mes.mesManager.Master.DTO.SYSProdLine;
 import com.mes.mesManager.User.DTO.SYSUser;
-import com.mes.mesPop.Standard.DTO.SYS_PROD_REPORT_SPEC;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.UUID;
 
 @RestController
 public class TestRestController {
@@ -134,10 +136,10 @@ public class TestRestController {
         return testService.mobileLogin(u);
     }
 
-    @RequestMapping(value = "/test0609", method = RequestMethod.POST,produces = "application/json")
-    public List<?> test0609()  {
-        return testService.test0609();
-    }
+//    @RequestMapping(value = "/test0609", method = RequestMethod.POST,produces = "application/json")
+//    public List<?> test0609()  {
+//        return testService.test0609();
+//    }
 
 
 

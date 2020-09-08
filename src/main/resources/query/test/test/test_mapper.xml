@@ -13,15 +13,15 @@
     	EXEC SP_SYS_LINE_GET 0, 0, '',''
     </select>
 
-    <resultMap id="myId1" type="com.mes.mesManager.Authority.DTO.SYSAuth"></resultMap>
+<!--    <resultMap id="myId1" type="com.mes.mesManager.Authority.DTO.SYSAuth"></resultMap>-->
 
-    <resultMap id="myId2" type="Integer"></resultMap>
+<!--    <resultMap id="myId2" type="Integer"></resultMap>-->
 
-    <select id="test0609" resultMap="myId1, myId2">
+<!--    <select id="test0609" resultMap="myId1, myId2">-->
 
-	    EXEC SP_TEST_GET
+<!--	    EXEC SP_TEST_GET-->
 
-    </select>
+<!--    </select>-->
 
 </mapper>
 

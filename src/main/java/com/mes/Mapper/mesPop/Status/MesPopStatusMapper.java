@@ -56,4 +56,6 @@ public interface MesPopStatusMapper {
     List<POP_PROD> popDownTimeGet(Page p);
 
     Message popSpectroAdd(POP_PLAN pp);
+
+    List<List<Object>> popProdMeltGet(POP_PLAN pp);
 }

@@ -2,6 +2,8 @@ package com.mes.mesPop.PopStatus.DTO;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class POP_PLAN {
 
@@ -52,5 +54,11 @@ public class POP_PLAN {
     private int rownum;
     private int rownum_page;
     private int rec_count;
+
+    List<POP_PROD_MELT> pop_prod_melt;
+    List<POP_PROD_MELT_SUB1> pop_prod_melt_sub1;
+    List<POP_PROD_MELT_SUB2> pop_prod_melt_sub2;
+    List<POP_PROD_MELT_SUB3> pop_prod_melt_sub3;
+
 
 }

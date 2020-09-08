@@ -121,6 +121,17 @@
     EXEC SP_POP_SPECTRO_ADD #{work_date},#{line_code},#{seq},#{supp_code},#{part_kind},#{part_code},#{part_weight} ,#{test_value1},#{test_value2},#{test_value3},#{test_value4},#{test_value5},#{test_value6},#{test_value7},#{test_value8},#{test_value9},#{user_code},#{keyword}
     </select>
 
+    <resultMap id="myId1" type="com.mes.mesPop.PopStatus.DTO.POP_PROD_MELT"></resultMap>
+
+    <resultMap id="myId2" type="com.mes.mesPop.PopStatus.DTO.POP_PROD_MELT_SUB1"></resultMap>
+
+    <resultMap id="myId3" type="com.mes.mesPop.PopStatus.DTO.POP_PROD_MELT_SUB2"></resultMap>
+
+    <resultMap id="myId4" type="com.mes.mesPop.PopStatus.DTO.POP_PROD_MELT_SUB3"></resultMap>
+    <select id="popProdMeltGet" resultMap="myId1, myId2, myId3, myId4">
+    EXEC SP_POP_PROD_MELT_GET #{work_date},#{line_code},#{charge}
+    </select>
+
 
 
 

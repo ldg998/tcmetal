@@ -90,3 +90,4 @@ function select_modal_box() {
     $('#select_modal7').select2();
     $('#select_modal8').select2();
 }
+

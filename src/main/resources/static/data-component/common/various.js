@@ -836,9 +836,41 @@ function integer(e){
 }
 
 function num_keyup_time(e){
-
 	$(e).val($(e).val().replace(/[^0-9]/g,'').replace(/\B(?=(\d{2})+(?!\d))/g, ":"));
 
+}
 
 
+function keyup_formmatterDate(e) { // 날짜 필터
+
+		var y = $(e).val().substring(0,4);
+		var m = $(e).val().substring(4,6);
+		var d = $(e).val().substring(6,8);
+		var h = $(e).val().substring(8,10);
+		var mm = $(e).val().substring(10,12);
+		var s = $(e).val().substring(12,14);
+		var date = y+"-"+m+"-"+d+" "+h+":"+mm+":"+s;
+
+	$(e).val(date)
+}
+
+
+function keyup_formmatterDate2(e) { // 날짜 필터
+	var y = $(e).val().substring(0,4);
+	var m = $(e).val().substring(4,6);
+	var d = $(e).val().substring(6,8);
+	var h = $(e).val().substring(8,10);
+	var date = y+"-"+m+"-"+d+" "+h;
+	$(e).val(date)
+}
+
+
+function keyup_formmatterDate3(e) { // 날짜 필터
+	var y = $(e).val().substring(0,4);
+	var m = $(e).val().substring(4,6);
+	var d = $(e).val().substring(6,8);
+	var h = $(e).val().substring(8,10);
+	var mm = $(e).val().substring(10,12);
+	var date = y+"-"+m+"-"+d+" "+h+":00";
+	$(e).val(date)
 }

@@ -88,7 +88,7 @@ function msg_get_modal1() {
 }
 
 function selectBox_modal1() {
-    select_makes_sub_ajax2("#line_select2", "/sysProdLineAllGet", "line_code", "line_name",{keyword:''},'Y').then(function (data){
+    select_makes_sub_ajax2("#line_select2", "/syslineAllGroupGet", "line_code", "line_name",{keyword:'L9000'},'Y').then(function (data){
 
         //select_makes_sub("#machine_select2","/tpmMachineAllGet","machine_code","machine_name",{keyword:data},"N");
     });

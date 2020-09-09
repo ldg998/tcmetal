@@ -182,7 +182,7 @@ function authcheck() {
 }
 
 function selectBox() {
-    part_type_select_ajax_all("#line_select", "/sysProdLineAllGet", "line_code", "line_name",{keyword:''}).then(function (data){
+    part_type_select_ajax_all("#line_select", "/syslineAllGroupGet", "line_code", "line_name",{keyword:'L9000'}).then(function (data){
         $('#machine_select').empty();
         var option = $("<option></option>").text('전체').val('');
         $('#machine_select').append(option);

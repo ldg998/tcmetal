@@ -34,7 +34,7 @@ function get_btn(page) {
     main_data.send_data.keyword3='';
     main_data.send_data.use_yn='Y';
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/sysSpartGet',
+        url: '/sysSpartCostGet2',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -153,7 +153,7 @@ function jqGrid_main() {
             {name:'supp_name',index:'supp_name',sortable: false,width:120,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name:'part_kind',index:'part_kind',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name:'part_code',index:'part_code',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'part_name',index:'part_name',sortable: false,width:150,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:200,fixed: true},
             {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,formatter: 'integer',align: 'right'},
             {name:'currency_type_name',index:'currency_type_name',sortable: false,width:80,fixed: true},
             {name:'start_date',index:'start_date',sortable: false,width:80,fixed: true,formatter:formmatterDate2},

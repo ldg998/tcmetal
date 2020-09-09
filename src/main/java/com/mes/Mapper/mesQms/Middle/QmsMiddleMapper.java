@@ -5,6 +5,7 @@ import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.File.DTO.Files;
 import com.mes.mesQms.Middle.DTO.QMS_PROD;
+import com.mes.mesQms.Middle.DTO.QMS_PROD_FILE;
 import com.mes.mesQms.Middle.DTO.QMS_PROD_NG_SUM;
 import org.springframework.stereotype.Repository;
 
@@ -24,4 +25,6 @@ public interface QmsMiddleMapper {
     Message qmsProdMiddleErrorManFileAdd(Files files);
 
     Message qmsProdMiddleErrorManAdd(Files files);
+
+    List<QMS_PROD_FILE> qmsProdMiddleFileGet(Page p);
 }

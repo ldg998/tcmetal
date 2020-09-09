@@ -105,36 +105,72 @@ function update_btn(rowid) {
 }
 
 
+function img_btn(qc_no) {
+    ccn_ajax("/qmsProdMiddleFileGet", {keyword:qc_no}).then(function (data) {
+        var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
+        $("#wrapper").append(main_div);
+        var i = 1;
+        while (i <= data.length) {
+            if (data[i].filename == null || data[i].filename == "") {
+            } else {
+                var div = $(" " +
+                    "<div class='swiper-slide'>\n" +
+                    "               <div class='swiper-zoom-container'>\n" +
+                    "                   <img src='" + data[i].filename + "' id='addDialog_image" + i + "'>\n" +
+                    "                </div>\n" +
+                    "            </div>");
+                $("#wrapper2").append(div);
+            }
+            i = i + 1;
+        }/*end while*/
 
-function img_btn(data) {
-    var path = data.replace(/C:/g, '')
-    $("#wrapper").empty();
-    $( '.rm' ).remove();
-    var imgs = {};
-    var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
-    $("#wrapper").append(main_div);
-    var i = 1;
 
-    var div = $(" " +
-        "<div class='swiper-slide'>\n" +
-        "               <div class='swiper-zoom-container'>\n" +
-        "                   <img src='"+ path +"' id='addDialog_image" + i + "'>\n" +
-        "                </div>\n" +
-        "            </div>");
-    $("#wrapper2").append(div);
+        var div2 = $(" <div class='swiper-pagination swiper-pagination-white rm'></div>\n" +
+            "        <div class='swiper-button-prev rm'></div>\n" +
+            "        <div class='swiper-button-next rm'></div>" +
+            "");
 
-    var div2 = $(" <div class='swiper-pagination swiper-pagination-white rm'></div>\n" +
-        "        <div class='swiper-button-prev rm'></div>\n" +
-        "        <div class='swiper-button-next rm'></div>" +
-        "");
+        $("#wrapper2").after(div2);
+        $("#addDialog").dialog('open');
+        $("#wrapper2").trigger("resize");
+        img_swiper();
+        img_data = {};
+        img_list = [];
 
-    $("#wrapper2").after(div2);
-    $("#addDialog1").dialog('open');
-    $("#wrapper2").trigger("resize");
-    img_swiper();
-
+    });
 
 }
+
+
+// function img_btn(data) {
+//     var path = data.replace(/C:/g, '')
+//     $("#wrapper").empty();
+//     $( '.rm' ).remove();
+//     var imgs = {};
+//     var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
+//     $("#wrapper").append(main_div);
+//     var i = 1;
+//
+//     var div = $(" " +
+//         "<div class='swiper-slide'>\n" +
+//         "               <div class='swiper-zoom-container'>\n" +
+//         "                   <img src='"+ path +"' id='addDialog_image" + i + "'>\n" +
+//         "                </div>\n" +
+//         "            </div>");
+//     $("#wrapper2").append(div);
+//
+//     var div2 = $(" <div class='swiper-pagination swiper-pagination-white rm'></div>\n" +
+//         "        <div class='swiper-button-prev rm'></div>\n" +
+//         "        <div class='swiper-button-next rm'></div>" +
+//         "");
+//
+//     $("#wrapper2").after(div2);
+//     $("#addDialog1").dialog('open');
+//     $("#wrapper2").trigger("resize");
+//     img_swiper();
+//
+//
+// }
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
@@ -232,7 +268,7 @@ function file2_formatter(cellvalue, options, rowObject) {
 }
 
 function image_formatter(cellvalue, options, rowObject) {
-    if (cellvalue == "" ||  cellvalue == null || cellvalue =='null') {
+    if (cellvalue == "N") {
         return "" +
             " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
             "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
@@ -243,7 +279,7 @@ function image_formatter(cellvalue, options, rowObject) {
     } else {
         return "" +
             " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
-            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='img_btn(\"" + cellvalue + "\""+");'>" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='img_btn(\"" + rowObject.qc_no + "\""+");'>" +
             "<span><i class='fa fa-download bigger-110 blue'></i>" +
             "<span> 보기</span>" +
             "</span>" +

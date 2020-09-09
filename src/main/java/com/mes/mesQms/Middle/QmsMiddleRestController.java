@@ -6,6 +6,7 @@ import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
 import com.mes.mesQms.Import.DTO.QMS_RECV_NG_SUM;
 import com.mes.mesQms.Middle.DTO.QMS_PROD;
+import com.mes.mesQms.Middle.DTO.QMS_PROD_FILE;
 import com.mes.mesQms.Middle.DTO.QMS_PROD_NG_SUM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,6 +55,11 @@ public class QmsMiddleRestController {
         } else {
             return qmsMiddleService.qmsProdMiddleErrorManAdd(files, req);
         }
+    }
+
+    @RequestMapping(value = "/qmsProdMiddleFileGet", method = RequestMethod.POST)
+    public List<QMS_PROD_FILE> qmsProdMiddleFileGet(Page p) {
+        return qmsMiddleService.qmsProdMiddleFileGet(p);
     }
 
 }

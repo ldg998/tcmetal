@@ -16,6 +16,7 @@ public class OUTS_IN_SUB {
     private String spec;
     private String unit_name;
     private String work_date;
+    private String create_date;
     private String supp_code;
     private String supp_name;
     private String user_name;

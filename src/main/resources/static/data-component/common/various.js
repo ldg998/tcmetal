@@ -759,6 +759,12 @@ function num_keyup_comma(e) {
 	$(e).val($(e).val().replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 }
 
+function num_focus_reset(e) {
+	if ($(e).val() === "0.00"){
+		$(e).val("");
+	}
+}
+
 function ToFloat(number){
 
 	var tmp = number + "";

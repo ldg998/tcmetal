@@ -96,7 +96,7 @@ function jqGrid_main() {
             {name: 'qty', index: 'qty',sortable: false, width: 80,fixed: true,align: 'right', formatter: 'integer'},
             {name: 'outs_qc', index: 'outs_qc',sortable: false, width: 80,fixed: true},
             {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
-            {name: 'work_date', index: 'work_date',sortable: false, width: 140,fixed: true,formatter:formmatterDate}
+            {name: 'create_date', index: 'create_date',sortable: false, width: 140,fixed: true,formatter:formmatterDate}
 
         ],
         caption: "외주입고현황 | MES",

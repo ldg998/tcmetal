@@ -7,6 +7,7 @@ import com.mes.Common.File.DTO.Files;
 import com.mes.Common.File.Function.UploadFunction;
 import com.mes.Mapper.mesQms.Middle.QmsMiddleMapper;
 import com.mes.mesQms.Middle.DTO.QMS_PROD;
+import com.mes.mesQms.Middle.DTO.QMS_PROD_FILE;
 import com.mes.mesQms.Middle.DTO.QMS_PROD_NG_SUM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,5 +49,9 @@ public class QmsMiddleService extends UploadFunction {
         files.setUser_code(getSessionData(req).getUser_code());
         files.setKey_value("");
         return qmsMiddleMapper.qmsProdMiddleErrorManAdd(files);
+    }
+
+    public List<QMS_PROD_FILE> qmsProdMiddleFileGet(Page p) {
+        return qmsMiddleMapper.qmsProdMiddleFileGet(p);
     }
 }

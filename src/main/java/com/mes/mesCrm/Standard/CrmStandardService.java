@@ -101,4 +101,9 @@ public class CrmStandardService extends ReturnFunction {
         ssc.setUser_code(getSessionData(req).getUser_code());
         return sm.sysSpartCostAddWeight(ssc);
     }
+
+    public RESTful sysSpartCostGet2(Page p, HttpServletRequest req) {
+        List<SYS_SPART_CD> rows = sm.sysSpartCostGet2(p);
+        return getListData(rows, p);
+    }
 }

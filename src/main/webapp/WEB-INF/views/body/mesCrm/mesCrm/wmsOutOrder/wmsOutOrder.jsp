@@ -43,7 +43,7 @@
             <div class="pull-left tableTools-container">
                 <div class="dt-buttons btn-overlap btn-group">
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_btn(1);">
+                       tabindex="0" aria-controls="dynamic-table" id="" data-original-title="" title="" onclick="get_btn(1);">
                         <span><i class="fa fa-search bigger-110 blue"></i>
                             <span>조회</span>
                         </span>
@@ -61,13 +61,13 @@
                         <span>삭제</span>
                         </span>
                     </a>
-                    <a  class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
+                    <%--<a  class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="comp_btn();">
                         <span>
                         <i class="menu-icon fa fa-truck bigger-110 blue"></i>
                         <span>출고완료</span>
                         </span>
-                    </a>
+                    </a>--%>
                 </div>
             </div>
         </div>

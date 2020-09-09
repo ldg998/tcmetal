@@ -52,6 +52,7 @@ public class SYS_SPART_CD {
     private int max_unit_cost;
     private String update_date;
     private String cost_create_date;
+    private String currency_type_name;
     private int rownum_page;
     private int rownum;
     private int rec_count;

@@ -144,17 +144,18 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['','','','업체','기종','품번','품명','단중','화폐단위','변경일자','금액','등록자','수정일'],// grid 헤더 설정
+        colNames : ['','','','','업체','기종','품번','품명','단중','화폐단위','변경일자','금액','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
+            {name:'currency_code',index:'currency_code',hidden:true,sortable: false,fixed: true},
             {name: 'rownum', index: 'rownum',hidden:true,fixed: true,key:true},
             {name: 'use_yn', index: 'use_yn',hidden:true,fixed: true},
             {name: 'supp_code', index: 'supp_code',hidden:true,fixed: true},
-            {name:'supp_name',index:'supp_name',sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'supp_name',index:'supp_name',sortable: false,width:120,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name:'part_kind',index:'part_kind',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name:'part_code',index:'part_code',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
             {name:'part_name',index:'part_name',sortable: false,width:150,fixed: true},
             {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,formatter: 'integer',align: 'right'},
-            {name:'currency_code',index:'currency_code',sortable: false,width:80,fixed: true},
+            {name:'currency_type_name',index:'currency_type_name',sortable: false,width:80,fixed: true},
             {name:'start_date',index:'start_date',sortable: false,width:80,fixed: true,formatter:formmatterDate2},
             {name:'max_unit_cost',index:'max_unit_cost',sortable: false,width:80,fixed: true,formatter: 'integer',align: 'right'},
             {name:'cost_user_name',index:'cost_user_name',sortable: false,width:80,fixed: true},

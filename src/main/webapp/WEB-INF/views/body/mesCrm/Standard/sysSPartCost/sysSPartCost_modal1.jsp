@@ -57,7 +57,9 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 화폐단위</div>
             <div class="profile-info-value">
-                <input type="text" name="currency_code" class="form-control modal_value" readonly autocomplete="off">
+                <input type="text" name="currency_type_name" class="form-control modal_value" readonly autocomplete="off">
+                <input type="hidden" name="currency_code" class="form-control modal_value" >
+
             </div>
         </div>
 

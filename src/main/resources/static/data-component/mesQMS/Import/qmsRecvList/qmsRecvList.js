@@ -154,7 +154,7 @@ function jqGrid_main() {
             {name: 'ng_type_name', index: 'ng_type_name', sortable: false, width: 130,fixed:true},   //불량유형
             {name: 'ng_name', index: 'ng_name', sortable: false, width: 130,fixed:true},            //불량상세
             {name: 'act_type_name', index: 'act_type_name', sortable: false, width: 130,fixed:true}, //조치구분
-            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true,formatter: image_formatter,fixed:true },//성적서
+            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true,formatter: file2_formatter,fixed:true },//성적서
             {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true,formatter: filebox,fixed:true },//성적서 수정
             {name: 'user_name', index: 'user_name', sortable: false, width: 130,fixed:true},                                //검사자
             {name: 'update_date', index: 'update_date', sortable: false, width: 130,fixed:true,formatter: formmatterDate} //검사일시
@@ -191,10 +191,10 @@ function jqGrid_main() {
 
 
 function file2_formatter(cellvalue, options, rowObject) {
-    if (cellvalue === "Y") {
+    if (cellvalue !== "" &&  cellvalue !== null && cellvalue !=='null') {
         return "" +
             " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
-            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file2 + "\");'>" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file1 + "\");'>" +
             "<span><i class='fa fa-download bigger-110 blue'></i>" +
             "<span>저장</span>" +
             "</span>" +

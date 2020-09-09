@@ -129,7 +129,7 @@ function authcheck() {
 
 //select box
 function selectBox() {
-    select_makes_sub("#line_select", "/sysProdLineAllGet", "line_code", "line_name",{},'Y');   //ajax 통신을 통해 line 데이터를 받아옴
+    select_makes_sub("#line_select", "/syslineAllGroupGet", "line_code", "line_name",{keyword:"L9000"},'Y');   //ajax 통신을 통해 line 데이터를 받아옴
 }
 
 // jqGrid 설정

@@ -170,7 +170,7 @@ function msg_get_modal1() {
 }
 
 function selectBox_modal1() {
-    select_makes_sub_ajax2("#line_select2", "/sysProdLineAllGet", "line_code", "line_name",{keyword:''},'Y').then(function (data){ });
+    select_makes_sub_ajax2("#line_select2", "/syslineAllGroupGet", "line_code", "line_name",{keyword:'L9000'},'Y').then(function (data){ });
     select_makes_sub("#dept_select", "/sysDeptAllGet", "dept_code", "dept_name",'','Y');
 }
 

@@ -22,19 +22,20 @@
                         </div>
                     </td>
 
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">업체</td>
-                    <td class="wt-px-150">
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                    <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                    autocomplete="off" >
+                            <select class="form-control condition_main" name="supp_code" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
+
                         </div>
                     </td>
 
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">기종</td>
-                    <td class="wt-px-150">
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
+                    <td class="wt-px-200">
                         <div class="input-icon input-icon-right">
-                            <input type="text" name="supp_name" class="form-control h-25 condition_main"
-                                   autocomplete="off" >
+                            <select id="part_kind_select" name="part_kind" class="form-control condition_main"  style="width: 100%;">
+                                <option value="">전체</option>
+                            </select>
                         </div>
                     </td>
                     <td></td>

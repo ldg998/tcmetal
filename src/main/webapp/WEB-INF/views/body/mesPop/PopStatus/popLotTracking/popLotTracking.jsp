@@ -19,14 +19,14 @@
                     <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-200">
                         <select id="part_kind_select" name="part_kind" class="form-control condition_main" onchange="select_change2(this.value)" style="width: 100%;">
-                            <option value="">선택안함</option>
+                            <option value="">전체</option>
 
                         </select>
                     </td>
                     <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">품명</td>
                     <td class="wt-px-200 border_no">
                         <select id="part_code_select" name="part_code" class="form-control condition_main" style="width: 100%;">
-                            <option value="">선택안함</option>
+                            <option value="">전체</option>
 
                         </select>
 

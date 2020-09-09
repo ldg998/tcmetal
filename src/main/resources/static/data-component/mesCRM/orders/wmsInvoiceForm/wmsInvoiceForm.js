@@ -52,6 +52,9 @@ function add_btn() {
     if (main_data.auth.check_add !="N"){
         modal_reset(".modal_value", main_data.readonly); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
         main_data.check = 'I'; // 저장인지 체크
+        $("#modal_select1").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#modal_select2").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#rpt_name").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
 
 
         $('#modal_select1 option:eq(0)').prop("selected", true).trigger("change");
@@ -70,6 +73,10 @@ function add_btn() {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
+        $("#modal_select1").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#modal_select2").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#rpt_name").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+
 
         main_data.check = 'U'; // 수정인지 체크
         ccn_ajax('/wmsInvoiceFormOneGet', {keyword: jqgrid_data.supp_code,keyword2:jqgrid_data.rpt_name,keyword3:jqgrid_data.trans_code}).then(function (data) { // user의 하나 출력

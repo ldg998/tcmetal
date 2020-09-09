@@ -51,34 +51,34 @@
             <div class="profile-info-row">
                 <div class="profile-info-name">No. & Date  of  Invoice</div>
                 <div class="profile-info-value">
-                    <input type="text" name="item1" class="form-control modal_value">
+                    <input type="text" name="item1" class="form-control modal_value" autocomplete="off">
                 </div>
 
                 <div class="profile-info-name">No. & Date of  L/C</div>
                 <div class="profile-info-value">
-                    <input type="text" name="item2" class="form-control modal_value">
+                    <input type="text" name="item2" class="form-control modal_value" autocomplete="off">
                 </div>
             </div>
             <div class="profile-info-row">
                 <div class="profile-info-name">L/C  Issuing  Bank</div>
                 <div class="profile-info-value">
-                    <input type="text" name="item3" class="form-control modal_value">
+                    <input type="text" name="item3" class="form-control modal_value" autocomplete="off">
                 </div>
 
                 <div class="profile-info-name">Departure  Date </div>
                 <div class="profile-info-value">
-                    <input type="text" name="item4" class="form-control modal_value">
+                    <input type="text" name="item4" class="form-control modal_value" autocomplete="off">
                 </div>
             </div>
         <%--3--%>
         <div class="profile-info-row">
             <div class="profile-info-name">Seller</div>
             <div class="profile-info-value">
-                <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice1"></textarea>
+                <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice1" autocomplete="off"></textarea>
             </div>
             <div class="profile-info-name">Consignee</div>
             <div class="profile-info-value">
-              <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice2"></textarea>
+              <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice2" autocomplete="off"></textarea>
             </div>
         </div>
 
@@ -87,12 +87,12 @@
         <div class="profile-info-row">
             <div class="profile-info-name">Buyer NOTIFY</div>
             <div class="profile-info-value">
-               <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice3"></textarea>
+               <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice3" autocomplete="off"></textarea>
             </div>
 
             <div class="profile-info-name">Vessel/VOY</div>
             <div class="profile-info-value">
-                <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice4"></textarea>
+                <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice4" autocomplete="off"></textarea>
             </div>
         </div>
 
@@ -100,11 +100,11 @@
             <div class="profile-info-row">
                 <div class="profile-info-name">Terms of Delivery<br>and Payment </div>
                 <div class="profile-info-value">
-                   <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice5"></textarea>
+                   <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice5 autocomplete="off""></textarea>
                 </div>
                 <div class="profile-info-name">Remark</div>
                 <div class="profile-info-value">
-                    <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice6"></textarea>
+                    <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice6" autocomplete="off"></textarea>
                 </div>
             </div>
 
@@ -119,11 +119,11 @@
             <div class="profile-info-name">SHIPPING MARK#5</div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-value"> <textarea wrap="off"  name="mark1" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
-            <div class="profile-info-value"> <textarea wrap="off"  name="mark2" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
-            <div class="profile-info-value"> <textarea wrap="off"  name="mark3" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
-            <div class="profile-info-value"> <textarea wrap="off"  name="mark4" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
-            <div class="profile-info-value"> <textarea wrap="off"  name="mark5" class="modal_value modal_value2" cols="17.8" rows="7"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark1" class="modal_value modal_value2" cols="17.8" rows="7" autocomplete="off"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark2" class="modal_value modal_value2" cols="17.8" rows="7" autocomplete="off"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark3" class="modal_value modal_value2" cols="17.8" rows="7" autocomplete="off"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark4" class="modal_value modal_value2" cols="17.8" rows="7" autocomplete="off"></textarea></div>
+            <div class="profile-info-value"> <textarea wrap="off"  name="mark5" class="modal_value modal_value2" cols="17.8" rows="7" autocomplete="off"></textarea></div>
         </div>
 
     </div>

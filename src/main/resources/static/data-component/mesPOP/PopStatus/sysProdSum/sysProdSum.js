@@ -38,6 +38,17 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+    } else {
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').empty();
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    }
+}
+
 ////////////////////////////호출 함수//////////////////////////////////
 
 function authcheck() {
@@ -116,7 +127,7 @@ function jqGrid_main() {
 }
 
 function select_box() {
-    $('#select1').select2();
-    $('#select2').select2();
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
+    $('#part_kind_select').select2();
 
 }

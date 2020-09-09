@@ -40,9 +40,9 @@ function get_btn(page) {
 
 function select_change1(value) {
     if (value !== ""){
-        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"N");
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
     } else {
-        var option = $("<option></option>").text('선택안함').val('');
+        var option = $("<option></option>").text('전체').val('');
         $('#part_kind_select').empty();
         $('#part_kind_select').append(option);
         $('#part_kind_select').select2();
@@ -138,7 +138,7 @@ function jqGrid_main() {
 }
 
 function select_box() {
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
     $('#part_kind_select').select2();
 
     select_makes_base("#main_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'1'},'').then(function (data) {

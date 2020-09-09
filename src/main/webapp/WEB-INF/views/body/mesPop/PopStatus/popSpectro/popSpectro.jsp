@@ -55,7 +55,7 @@
                     <td class="wt-px-75 td-title t-align-c padding-a-0">기종</td>
                     <td class="wt-px-150">
                         <select id="part_kind_select" name="part_kind" class="form-control condition_main"  style="width: 100%;">
-                            <option value="">선택안함</option>
+                            <option value="">전체</option>
                         </select>
                     </td>
 

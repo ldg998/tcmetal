@@ -52,7 +52,7 @@
 
             <div class="profile-info-name">관리명칭</div>
             <div class="profile-info-value">
-                <input name="rpt_name" type="text" class="form-control keyword modal_value"   style="width: 100%" autocomplete="off">
+                <input name="rpt_name" id="rpt_name" type="text" class="form-control keyword modal_value"   style="width: 100%" autocomplete="off">
             </div>
         </div>
 

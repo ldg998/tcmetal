@@ -398,8 +398,10 @@ function select_makes_base(tag,url,value,text,data,what){
 			success: function (data2) {
 				var option = null
 				for (var j = 0; j < data2.length; j++) {
+					if(data2[j][value] !='' && data2[j][value] !=null && data2[j][value] !='null'){
 					option = $("<option></option>").text(data2[j][text]).val(data2[j][value]);
 					$(tag).append(option);
+					}
 				}
 				$(tag).select2();
 				resolve(data2);

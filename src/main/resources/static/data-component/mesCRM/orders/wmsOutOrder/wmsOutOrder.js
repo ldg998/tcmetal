@@ -46,6 +46,8 @@ function get_btn(page) {
 
 function add_btn() {
     if(main_data.auth.check_add != "N") {
+        $("#modal_get_btn").show();
+        $("#modal_add_btn").show();
         main_data.check = 'I';
         main_data.check3 = "Y";
         modal_reset(".modal_value", main_data.readonly);
@@ -64,10 +66,19 @@ function add_btn() {
 
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
+        $("#modal_get_btn").show();
+        $("#modal_add_btn").show();
         main_data.check = 'U';
         main_data.check2 = 'N';
         modal_reset(".modal_value", []);
         $('#mes_modal1_grid1').jqGrid('clearGridData');
+
+        if(jqgrid_data.status == 1){
+        $("#modal_get_btn").hide();
+        $("#modal_add_btn").hide();
+        }else {
+            $("#modal_get_btn").hide();
+        }
         ccn_ajax('/wmsOutOrderOneGet', {keyword: jqgrid_data.req_no}).then(function (data) {
             for(var i = 0; i < data.length ;  i++){
                 if (data[i].status === "1"){
@@ -82,7 +93,6 @@ function update_btn(jqgrid_data) {
 
             $("#modal1_select1").val(data[0].supp_code).trigger("change");
             select_makes_base("#modal1_select2","/suppDeliveryPlaceGet","delivery_place","delivery_place",{keyword:data[0].supp_code},"N").then(function (data2) {
-
                 $("#modal1_select2").val(data[0].delivery_place).trigger("change");
                 $("#mes_modal1_grid1").setGridParam({
                     datatype: "local",
@@ -282,12 +292,12 @@ function jqGrid_main() {
             {name: 'work_date', index: 'work_date', sortable: false, width: 80, formatter: formmatterDate2,fixed:true},
             {name: 'req_no', index: 'req_no', sortable: false, width: 140,fixed:true},
             {name: 'ord_date', index: 'ord_date', sortable: false, width: 80,formatter: formmatterDate2,fixed:true  },
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 80,fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 100,fixed:true},
             {name: 'supp_code', index: 'supp_code', sortable: false, width: 80,fixed:true,hidden:true},
-            {name: 'po_no', index: 'po_no', sortable: false, width: 80,fixed:true},
+            {name: 'po_no', index: 'po_no', sortable: false, width: 120,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 80,fixed:true},
-            {name: 'part_code', index: 'part_code', sortable: false, width: 80,fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 80,fixed:true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 120,fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 120,fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable: false, width: 80,fixed:true, align: 'right',formatter:'integer'},
             {name: 'trans_name', index: 'trans_name', sortable: false, width: 80,fixed:true},
             {name: 'qty', index: 'qty', sortable: false, width: 80,fixed:true, align: 'right',formatter:'integer'},

@@ -6,7 +6,7 @@ var main_data = {
     check: 'I',
     send_data: {},
     send_data_post: {},
-    readonly:['supp_code','part_kind','part_name','part_code','part_name2'],
+    readonly:['supp_code','part_kind','part_code'],
     auth:{}
 }
 
@@ -159,13 +159,14 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['','','업체','기종','품명','품번','단중','사이즈','포장무게','단가','화폐단위','공정라우팅','외주(열처리)업체','사용유무','초도품생산일','목재1','목재2','목재3','출장검사','등록자','수정일'],
+        colNames: ['','','업체','기종','품명','품명(한글)','품번','단중','사이즈','포장무게','단가','화폐단위','공정라우팅','외주(열처리)업체','사용유무','초도품생산일','목재1','목재2','목재3','출장검사','등록자','수정일'],
         colModel: [
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
             {name: 'supp_code', index: 'supp_code',hidden:true, width: 80,fixed: true},
             {name: 'supp_name', index: 'supp_name',sortable: false, width: 80,fixed: true},//업체
-            {name: 'part_kind', index: 'part_kind',sortable: false, width: 80,fixed: true},//기종
-            {name: 'part_name', index: 'part_name',sortable: false, width: 120,fixed: true},//품명
+            {name: 'part_kind', index: 'part_kind',sortable: false, width: 100,fixed: true},//기종
+            {name: 'part_name', index: 'part_name',sortable: false, width: 150,fixed: true},//품명
+            {name: 'part_name2', index: 'part_name',sortable: false, width: 120,fixed: true},//품명
             {name: 'part_code', index: 'part_code',sortable: false, width: 120,fixed: true},//품번
             // {name: 'part_name2', index: 'part_name2',sortable: false, width: 120,fixed: true},//품명(생산지용)
             {name: 'part_weight', index: 'part_weight',sortable: false, width: 120,fixed: true,formatter: 'integer',align: 'right'},//단중

@@ -95,7 +95,7 @@ function jqGrid_main() {
             {name: 'part_weight', index: 'part_weight', sortable: false, width: 150,fixed:true,formatter: 'integer',align: 'right'},
             {name: 'lot_no', index: 'lot', sortable: false, width: 150,fixed:true},
             {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed:true},
-            {name: 'update_date', index: 'update_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2}
+            {name: 'update_date', index: 'update_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate}
         ],
         caption: "입고현황 | MES",
         autowidth: true,

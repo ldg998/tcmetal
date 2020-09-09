@@ -63,10 +63,19 @@ function msg_get_modal1() {
 }
 
 function effectiveness1(modal_objact) { // 유효성 검사
-    if (modal_objact.dept_name === '') {
-        alert("부서명을 입력해주세요");
+    if (modal_objact.part_kind === '') {
+        alert("기종을 입력해주세요");
         return false;
-    }  else {
+    } else if (modal_objact.part_name === '') {
+        alert("품명을 입력해주세요");
+        return false;
+    }  else if (modal_objact.part_name === '') {
+        alert("품명을 입력해주세요");
+        return false;
+    } else if (modal_objact.part_code === '') {
+        alert("품번을 입력해주세요");
+        return false;
+    }else {
         return true;
     }
 }

@@ -144,7 +144,8 @@
             <div class="profile-info-name" style="width:15%">부적합연락서</div>
             <div class="profile-info-value" style="width:35%">
                 <div class="filebox_lee">
-                    <label for="file_01" class="file_labal">업로드</label>
+                    <label for="file_01" class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'
+                    tabindex='0' aria-controls='dynamic-table' data-original-title='' title=''>업로드</label>
                     <input type="file"  id="file_01" onchange='file_change(this);'>
                     <input name="file1_code" onchange='file_change(this);' type="hidden" class="modal_value">
                 </div>
@@ -153,7 +154,8 @@
             <div class="profile-info-name" style="width:15%">대책서</div>
             <div class="profile-info-value" style="width:35%">
                 <div class="filebox_lee">
-                    <label for="file_02" class="file_labal">업로드</label>
+                    <label for="file_02" class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'
+                           tabindex='0' aria-controls='dynamic-table' data-original-title='' title=''>업로드</label>
                     <input type="file"  id="file_02" onchange='file_change(this);'>
                     <input name="file2_code"  onchange='file_change(this);' type="hidden" class="modal_value">
                 </div>

@@ -254,6 +254,11 @@ public class QmsShipmentRestController extends UploadFunction {
         return qmsShipmentService.qmsMoldWashDel(p,req);
     }
 
+@RequestMapping(value = "/qmsProdlistFileGet", method = RequestMethod.POST)
+    public List<QMS_PROD_SUB> qmsProdlistFileGet(QMS_PROD_SUB qps,HttpServletRequest req){
+        return qmsShipmentService.qmsProdlistFileGet(qps,req);
+    }
+
 
 
 

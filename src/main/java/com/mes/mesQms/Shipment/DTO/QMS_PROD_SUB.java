@@ -40,6 +40,8 @@ public class QMS_PROD_SUB {
     private String unit_name;
     private String qc_level_name;
     private String upload_path;
+    private String filename;
+
 
     private int rownum;
     private int rownum_page;

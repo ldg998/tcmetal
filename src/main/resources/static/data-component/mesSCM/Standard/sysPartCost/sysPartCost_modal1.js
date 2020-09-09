@@ -10,8 +10,9 @@ function modal_start1() {
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function add_modal1_btn(){
     var modalValue = value_return('.modal_value');
-    modalValue.unit_cost = modalValue.unit_cost.replace(/\,/g, '');
+    if(modalValue.start_date !='' &&modalValue.start_date !=null && modalValue.start_date !='null'){
 
+    modalValue.unit_cost = modalValue.unit_cost.replace(/\,/g, '');
     console.log(modalValue);
     if (confirm('해당 제품의 단가를 저장하시겠습니까?')) {
         ccn_ajax('sysPartCostAdd',modalValue).then(function (data) {
@@ -24,6 +25,9 @@ function add_modal1_btn(){
         }).catch(function (err) {
             alert(msg_object.TBMES_E008.msg_name1);
         });
+    }
+    }else {
+        alert('변경일자를 선택해주세요.')
     }
 }
 
@@ -48,14 +52,11 @@ function delete_modal_btn() {
                     keywords.push(data.part_code + gu4 +data.start_date);
                 }
                 code_list = keywords.join(gu5);
-
-                console.log(code_list);
                 wrapWindowByMask2();
                 ccn_ajax("/sysPartCostDel", {keyword:code_list}).then(function (data) {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
-                        $('#addDialog').dialog('close');
                         $("#mes_modal_grid").trigger("reloadGrid");
                         $("#mes_grid").trigger("reloadGrid");
                     }

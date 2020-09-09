@@ -54,11 +54,10 @@
                 <table class="table wt-100 board_line">
                     <tbody>
                     <tr>
-                        <td class="wt-px-50 t-align-c td-title padding-a-0">구분</td>
-                        <td class="wt-px-100">
+                        <td class="wt-px-75 t-align-c td-title padding-a-0">구분</td>
+                        <td class="wt-px-150">
                             <select name="keyword" id="select_modal2" class="form-control h-25 modal_send_data"
                                     style="width: 100%">
-                                <option value="">중간검사(폐기)</option>
                             </select>
                         </td>
                         <td></td>

@@ -41,7 +41,7 @@
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">업체</td>
                     <td class="wt-px-140">
-                        <select class="form-control modal_value" name="keyword" id="supp_modal_select" style="width: 100%"></select>
+                        <select class="form-control modal_value" name="keyword" onchange="select_change_modal1(this.value);" id="supp_modal_select" style="width: 100%"></select>
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">입고일자</td>
                     <td class="wt-px-140">

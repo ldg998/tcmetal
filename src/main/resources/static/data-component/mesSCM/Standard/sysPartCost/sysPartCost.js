@@ -91,7 +91,7 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['','구분','품번','품명','규격','단위','업체','변경일자','금액','등록자','수정일'],// grid 헤더 설정
+        colNames : ['','구분','품번','품명','규격','단위','업체','변경일자','금액','등록자','등록일시'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'unit_code',index:'unit_code' ,sortable: false,fixed: true,hidden:true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name:'part_type_name',index:'part_type_name',sortable: false,width:100,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
@@ -103,7 +103,7 @@ function jqGrid_main() {
             {name:'start_date',index:'start_date',sortable: false,width:120,fixed: true,formatter: formmatterDate2},
             {name:'unit_cost',index:'unit_cost',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
             {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
-            {name:'update_date',index:'update_date',sortable: false,width:120,fixed: true,formatter: formmatterDate2}// formatter 사용을 통해 데이터 형식 가공
+            {name:'cost_create_date',index:'cost_create_date',sortable: false,width:140,fixed: true,formatter: formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "자재단가 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정

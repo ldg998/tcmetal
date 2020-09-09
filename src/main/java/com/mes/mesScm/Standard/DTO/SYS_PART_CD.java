@@ -35,6 +35,7 @@ public class SYS_PART_CD {
     private String qc_level_name;
     private String start_date;
     private String stock_yn;
+    private String cost_create_date;
 
     private int unit_cost;
     private int rownum;

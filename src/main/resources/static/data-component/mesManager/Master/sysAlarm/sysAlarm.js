@@ -47,6 +47,12 @@ function add_btn() {
         $('#mes_modal1_grid1').jqGrid('clearGridData');
         $('#mes_modal1_grid2').jqGrid('clearGridData');
 
+        var select_value = $('#select1').val()
+
+        $('#select_modal2').val(select_value);
+        $('#select_modal2').prop("selected",select_value).trigger("change")
+
+
         $("#addDialog").dialog('open');
         jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
         jqGridResize2("#mes_modal1_grid2", $('#mes_modal1_grid2').closest('[class*="col-"]'));
@@ -72,6 +78,8 @@ function select_change1(value) {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         main_data.check = 'U';
+        $('#select_modal2').val(jqgrid_data.alarm_code);
+        $('#select_modal2').prop("selected",jqgrid_data.alarm_code).trigger("change")
         var data = {keyword:jqgrid_data.alarm_code,keyword2:''}
         $("#mes_modal1_grid2").setGridParam({
             url: '/sysAlarmGet',

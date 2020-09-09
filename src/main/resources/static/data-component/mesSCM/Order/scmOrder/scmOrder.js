@@ -251,14 +251,14 @@ function jqGrid_main() {  //메인 jqGrid
         caption: '발주등록 | MES',
         colNames: ['구분', '품번', '품명', '규격', '단위', '발주수량', '입고수량', '미입고'],
         colModel: [
-            {name: 'part_type_name', index: 'part_type_name', sortable: false},
-            {name: 'part_code', index: 'part_code', sortable: false},
-            {name: 'part_name', index: 'part_name', sortable: false},
-            {name: 'spec', index: 'spec', sortable: false},
-            {name: 'unit_name', index: 'unit_name', sortable: false},
-            {name: 'ord_qty', index: 'ord_qty', sortable: false, align: 'right',formatter:'integer'},
-            {name: 'qty', index: 'qty', sortable: false, align: 'right',formatter:'integer'},
-            {name: 'not_qty', index: 'not_qty', sortable: false, align: 'right',formatter:'integer'}
+            {name: 'part_type_name', index: 'part_type_name', width: 120,fixed:  true, sortable: false},
+            {name: 'part_code', index: 'part_code', width: 120,fixed:  true,sortable: false},
+            {name: 'part_name', index: 'part_name', width: 120,fixed:  true,sortable: false},
+            {name: 'spec', index: 'spec',  width: 60,fixed:  true,sortable: false},
+            {name: 'unit_name', index: 'unit_name', width: 60,fixed:  true,sortable: false},
+            {name: 'ord_qty', index: 'ord_qty',width: 60,fixed:  true, sortable: false, align: 'right',formatter:'integer'},
+            {name: 'qty', index: 'qty', width: 60,fixed:  true, sortable: false, align: 'right',formatter:'integer'},
+            {name: 'not_qty', index: 'not_qty',width: 60,fixed:  true, sortable: false, align: 'right',formatter:'integer'}
         ],
         autowidth: true,
         viewrecords: true,

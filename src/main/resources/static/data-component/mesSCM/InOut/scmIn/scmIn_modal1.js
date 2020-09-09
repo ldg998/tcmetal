@@ -142,6 +142,10 @@ function add_modal1_btn() {
     }
 }
 
+function select_change_modal1(value){
+    $("#mes_add_grid").jqGrid('clearGridData');
+}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get_modal1() {
     msgGet_auth("TBMES_Q002"); //저장 여부

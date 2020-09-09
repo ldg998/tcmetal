@@ -14,7 +14,7 @@ var array =
         {code: "sysBoard", title: '관리자', sub: '사용자관리', name: '게시판관리'},
         {code: "sysSupp", title: '관리자', sub: '사용자관리', name: '업체코드관리'},
         {code: "sysProdLine", title: '관리자', sub: '사용자관리', name: '라인정보'},
-        {code: "sysMachineRegAlarm", title: '관리자', sub: '사용자관리', name: '예방점검알림설정'},
+        {code: "sysAlarm", title: '관리자', sub: '사용자관리', name: '예방점검알림설정'},
         //{code: "sysCargo", title: '관리자', sub: '사용자관리', name: '창고관리'},
 
     //자재관리 -기준정보관리

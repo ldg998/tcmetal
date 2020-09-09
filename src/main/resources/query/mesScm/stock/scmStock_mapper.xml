@@ -19,7 +19,7 @@
     </select>
 
     <select id="scmStockRevGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_REV">
-        EXEC SP_SYS_PART_GET #{page},#{rows},#{keyword},#{keyword2},''
+        EXEC SP_SYS_PART_REV_GET #{page},#{rows},#{keyword},#{keyword2},''
     </select>
 
     <select id="scmStockRevOneGet" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_REV_LIST">

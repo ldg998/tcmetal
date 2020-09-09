@@ -164,8 +164,11 @@ function selectBox_modal1() { //현재모달의 셀렉트박스에 데이터 할
 
 
 function effectiveness1(modal_objact) { // 유효성 검사
-    if (modal_objact.spec === '') {
-        alert("규격을 입력해주세요");
+    if (modal_objact.part_code === '') {
+        alert("품번을 입력해주세요");
+        return false;
+    } else if (modal_objact.part_name === '') {
+        alert("품명을 입력해주세요");
         return false;
     }else {
         return true;

@@ -69,6 +69,8 @@ function under_get(rowid) {
 // 추가버튼
 function add_btn() {
     if (main_data.auth.check_add != "N") { //권한 체크
+        $("#modal_get_btn").show();
+        $("#modal_add_btn").show();
         modal_reset(".modal_value", []); //해당 클레스명의 value 리셋 readonly name이있다면 그객체를 leadonly
         $("#mes_add_grid").jqGrid('clearGridData');   //해당 그리드의 데이터삭제 및 업데이트
         var date = new Date();  //날짜데이터 호출

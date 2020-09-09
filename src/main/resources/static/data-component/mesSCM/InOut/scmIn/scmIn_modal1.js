@@ -45,6 +45,9 @@ function close_modal1_btn() {
 function update_btn(rowid) {
     main_data.check3 = 'N';
     if (main_data.auth.check_edit != "N") {
+        $("#modal_get_btn").hide();
+        $("#modal_add_btn").hide();
+
         $("#supp_modal_select").prop("disabled", true);
         $("#datepicker3").prop("disabled", true);
         $("#modal1_remark").prop("disabled", true);

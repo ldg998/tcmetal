@@ -112,7 +112,7 @@ function jqGrid_main() {
             {name: 'unit_name', index: 'unit_name',sortable: false, fixed:true, width:150},
             {name: 'qty', index: 'qty',sortable: false, fixed:true, width:150,formatter:'number'},
             {name: 'user_name', index: 'user_name',sortable: false, fixed:true, width:150},
-            {name: 'update_date', index: 'update_date',sortable: false, fixed:true, width:150,formatter:formmatterDate2}
+            {name: 'update_date', index: 'update_date',sortable: false, fixed:true, width:150,formatter:formmatterDate}
         ],
         caption: "자재출고현황 | MES",
         autowidth: true,

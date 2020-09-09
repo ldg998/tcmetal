@@ -66,4 +66,6 @@ public interface QmsShipmentMapper {
     List<POP_MOLD_WASH> qmsMoldWashGet(Page p);
 
     Message qmsMoldWashDel(Page p);
+
+    List<QMS_PROD_SUB> qmsProdlistFileGet(QMS_PROD_SUB qps);
 }

@@ -145,6 +145,10 @@
         EXEC SP_QMS_MOLD_WASH_DEL #{keyword}
    </select>
 
+ <select id="qmsProdlistFileGet"  resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+        EXEC SP_QMS_PROD_LIST_FILE_GET #{keyword}
+   </select>
+
 
 
 

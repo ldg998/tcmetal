@@ -327,5 +327,8 @@ public class QmsShipmentService extends UploadFunction {
     public Message qmsMoldWashDel(Page p, HttpServletRequest req) {
         return qmsShipmentMapper.qmsMoldWashDel(p);
     }
+
+    public List<QMS_PROD_SUB> qmsProdlistFileGet(QMS_PROD_SUB qps, HttpServletRequest req) {return qmsShipmentMapper.qmsProdlistFileGet(qps);
+    }
 }
 

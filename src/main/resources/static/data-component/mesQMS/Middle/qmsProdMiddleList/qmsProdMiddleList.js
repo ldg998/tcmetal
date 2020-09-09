@@ -25,6 +25,7 @@ $(document).ready(function () {
     jqgridPagerIcons();
     modal_start1();
     modal_start2();
+
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -107,20 +108,20 @@ function update_btn(rowid) {
 
 function img_btn(qc_no) {
     ccn_ajax("/qmsProdMiddleFileGet", {keyword:qc_no}).then(function (data) {
+        $("#wrapper").empty();
         var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
         $("#wrapper").append(main_div);
         var i = 1;
         while (i <= data.length) {
-            if (data[i].filename == null || data[i].filename == "") {
-            } else {
+
                 var div = $(" " +
                     "<div class='swiper-slide'>\n" +
                     "               <div class='swiper-zoom-container'>\n" +
-                    "                   <img src='" + data[i].filename + "' id='addDialog_image" + i + "'>\n" +
+                    "                   <img src='" + data[i-1].filename + "' id='addDialog_image" + i + "'>\n" +
                     "                </div>\n" +
                     "            </div>");
                 $("#wrapper2").append(div);
-            }
+
             i = i + 1;
         }/*end while*/
 
@@ -131,7 +132,7 @@ function img_btn(qc_no) {
             "");
 
         $("#wrapper2").after(div2);
-        $("#addDialog").dialog('open');
+        $("#addDialog2").dialog('open');
         $("#wrapper2").trigger("resize");
         img_swiper();
         img_data = {};

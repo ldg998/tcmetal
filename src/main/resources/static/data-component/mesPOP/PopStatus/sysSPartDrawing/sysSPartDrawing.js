@@ -84,10 +84,10 @@ function jqGrid_main() {
         colModel: [
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
             {name: 'supp_code', index: 'supp_code',hidden:true, sortable:false, width: 100,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable:false, width: 100,fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable:false, width: 120,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable:false, width: 130, fixed:true},
             {name: 'part_code', index: 'part_code', sortable:false, width: 130, fixed:true},
-            {name: 'part_name', index: 'part_name', sortable:false, width: 130, fixed:true},
+            {name: 'part_name', index: 'part_name', sortable:false, width: 200, fixed:true},
             {name: 'part_weight', index: 'part_weight',sortable: false, width: 100,fixed: true,formatter: 'integer',align: 'right'},
             {name: 'file2_name', index: 'file2_name', sortable: false, width: 80, align: 'center', formatter: file2_formatter,fixed:true},
             {name: 'file2', index: 'file2', sortable: false,hidden: true},

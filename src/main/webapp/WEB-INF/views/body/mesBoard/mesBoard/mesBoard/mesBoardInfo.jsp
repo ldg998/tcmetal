@@ -3,17 +3,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <fmt:parseDate value="${InfoData.create_date}" var="c_date" pattern="yyyyMMddHHmmss"/>
 <fmt:parseDate value="${InfoData.update_date}" var="u_date" pattern="yyyyMMddHHmmss"/>
-<script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <%@include file="/WEB-INF/views/body/mesBoard/mesBoard/mesBoard/header.jsp" %>
+<script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <!-- ###실제컨텐츠영역 -->
-<style>
-    .board_lee{
-        style:border: 3px solid #D8D8D8;
-    }
-
-</style>
-<div class="page-content" >
-    <table class="bbs_view board_lee">
+<div class="page-content">
+    <table class="bbs_view">
         <tbody>
         <tr>
             <th class="subject" style="text-align: left">게시명 : ${InfoData.subject}</th>
@@ -38,20 +32,20 @@
             </td>
         </tr>
         <c:if test="${InfoData.file_cnt eq 0}">
-        <tr>
-            <th width="23%"><img name=wiz_target_resize style="margin-top: 3px; vertical-align: top; display: inline-block;" src="https://directsend.co.kr/images/common/icon_bigfile.png"/> 첨부파일
-            </th>
+            <tr>
+                <th width="23%"><img name=wiz_target_resize style="margin-top: 3px; vertical-align: top; display: inline-block;" src="https://directsend.co.kr/images/common/icon_bigfile.png"/> 첨부파일
+                </th>
                 <td>첨부된 파일이 없습니다.</td>
-        </tr>
+            </tr>
         </c:if>
         <c:if test="${InfoData.file_cnt ne 0}">
             <c:forEach items="${fileData}" var="data">
                 <tr>
                     <th width="23%"><img name=wiz_target_resize style="margin-top: 3px; vertical-align: top; display: inline-block;" src="https://directsend.co.kr/images/common/icon_bigfile.png"/> 첨부파일
-                        <td>
-                            <a target="_blank" rel="noreferrer noopener" onclick="file_download('${data.file_name}')">${data.file_og_name}</a>
-                            <span style="color: #e6716b; margin-left: 3px;">${data.file_size}KB</span>
-                        </td>
+                    <td>
+                        <a target="_blank" rel="noreferrer noopener" onclick="file_download('${data.file_name}')">${data.file_og_name}</a>
+                        <span style="color: #e6716b; margin-left: 3px;">${data.file_size}KB</span>
+                    </td>
                 </tr>
             </c:forEach>
         </c:if>
@@ -69,7 +63,7 @@
         </tbody>
     </table>
 
-    <table class="bbs_view board_lee" style="margin-bottom: 50px">
+    <table class="bbs_view" style="margin-bottom: 50px">
         <tr>
             <th width="23%">댓글 작성</th>
             <td style="padding-right:5px;">
@@ -79,24 +73,24 @@
                 <input type="button" value="작성" class="btn_b_s"/>
             </td>
         </tr>
-            <c:choose>
-                <c:when test="${InfoData.reply_cnt == 0}">
-                    <tr>
-                        <td style="border-bottom: 0px;">
-                        </td>
-                        <td class="view_detail" style="text-align: center">
+        <c:choose>
+            <c:when test="${InfoData.reply_cnt == 0}">
+                <tr>
+                    <td style="border-bottom: 0px;">
+                    </td>
+                    <td class="view_detail" style="text-align: center">
                         <span>
                             댓글이 존재하지않습니다.
                         </span>
-                        </td>
-                    </tr>
-                </c:when>
-                <c:otherwise>
-                    <c:forEach items="${replyData}" var="data">
-                        <fmt:parseDate value="${data.create_date}" var="r_date" pattern="yyyyMMddHHmmss"/>
-                        <tr>
-                            <td style="border-bottom: 0px;">
-                            <td class="view_detail">
+                    </td>
+                </tr>
+            </c:when>
+            <c:otherwise>
+                <c:forEach items="${replyData}" var="data">
+                    <fmt:parseDate value="${data.create_date}" var="r_date" pattern="yyyyMMddHHmmss"/>
+                    <tr>
+                        <td style="border-bottom: 0px;">
+                        <td class="view_detail">
                                 <span><i class="fa fa-commenting" style="color:#1453a1"></i>
                                     &nbsp;&nbsp;&nbsp;
                                     <span>${data.reply_desc}</span>
@@ -105,17 +99,17 @@
                                         <a onclick="delReply('${data.reply_idx}');"><i class="fa fa-times" style="color:#e6716b"></i></a>
                                     </c:if>
                                 </span>
-                                <span style="float:right">
+                            <span style="float:right">
                                     <i class="fa fa-user"></i> ${data.user_name} | <i class="fa fa-calendar-o"></i>
                                     <fmt:formatDate value="${r_date}" pattern="yyyy-MM-dd HH:mm"/>
                                 </span>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </c:otherwise>
-            </c:choose>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </c:otherwise>
+        </c:choose>
     </table>
-    <table class="bbs_view board_lee">
+    <table class="bbs_view">
         <tr>
             <th width="23%" style="border-top: 1px solid #ddd;">이전글</th>
             <c:if test="${prev eq null}">
@@ -140,13 +134,13 @@
     <div class="bbs_btn align_right">
 
         <c:if test="${sessionScope.userData.user_code eq InfoData.user_code || sessionScope.userData.user_code eq 'ADMIN' }">
-<%--            <a href='/modBoardList?idx=${InfoData.board_idx}' class='btn_w'>수정</a>--%>
+            <%--            <a href='/modBoardList?idx=${InfoData.board_idx}' class='btn_w'>수정</a>--%>
             <a href='#' class='btn_w' onclick="return delBoardList('${InfoData.board_idx}');">삭제</a>
         </c:if>
         <c:if test="${sessionScope.userData.user_code eq InfoData.user_code}">
             <a href='#' class='btn_w' onclick="return upBoardList('${InfoData.board_code}','${InfoData.board_idx}');">수정</a>
         </c:if>
-    <a href='#' class='btn_w' onclick="window.history.go(-1); return false;">돌아가기</a>
+        <a href='#' class='btn_w' onclick="window.history.go(-1); return false;">돌아가기</a>
     </div>
 </div>
 </div>

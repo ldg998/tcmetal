@@ -21,6 +21,7 @@ public class OUTS_IO_SUB {
     private String supp_name;
     private String user_name;
     private String update_date;
+    private String create_date;
     private String out_date;
     private String in_date;
     private String supp_name2;

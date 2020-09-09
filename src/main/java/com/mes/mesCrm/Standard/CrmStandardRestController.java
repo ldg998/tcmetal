@@ -101,6 +101,11 @@ public class CrmStandardRestController {
         return crmService.sysSpartGet(p, req);
     }
 
+    @RequestMapping(value = "/sysSpartCostGet2", method = RequestMethod.POST)
+    public RESTful sysSpartCostGet2(Page p, HttpServletRequest req) {
+        return crmService.sysSpartCostGet2(p, req);
+    }
+
     @RequestMapping(value = "/partKindGet", method = RequestMethod.POST)
     public List<SYS_SPART_CD> partKindGet(Page p, HttpServletRequest req) {
         return crmService.partKindGet(p, req);

@@ -90,22 +90,22 @@ function modal2_jqGrid() {
         caption: "출하조회 | MES",
         colNames: ['','rownum','출고일자','선적일자','출고전표','업체','기종','품명','품번','단중','운송수단','수량','중량','차량번호'],
         colModel: [
-            {name:'radio',index:'radio',align:"center",width:30 ,sortable: false, formatter: function (cellValue, option,rowObject) {
+            {name:'radio',index:'radio',align:"center",width:30 ,sortable: false,width:30,fixed: true, formatter: function (cellValue, option,rowObject) {
                     return '<input type="radio" name="radio_' + option.gid + '" onclick="jqGrid_row_check(\'#mes_modal2_grid1\''+','+'\''+rowObject.out_no+'\''+');"/>';
             }},
-            {name: 'rownum', index: 'rownum', sortable: false,key:true,hidden:true},
-            {name: 'out_date', index: 'out_date', sortable: false,formatter: formmatterDate2},
-            {name: 'ship_date', index: 'ship_date', sortable: false,formatter: formmatterDate2},
-            {name: 'out_no', index: 'out_no', sortable: false},
-            {name: 'supp_name', index: 'supp_name', sortable: false},
-            {name: 'part_kind', index: 'part_kind', sortable: false},
-            {name: 'part_name', index: 'part_name', sortable: false},
-            {name: 'part_code', index: 'part_code', sortable: false},
-            {name: 'part_weight', index: 'part_weight', sortable: false, align: 'right', formatter:'integer'},
-            {name: 'trans_name', index: 'trans_name', sortable: false},
-            {name: 'qty', index: 'qty', sortable: false, align: 'right', formatter:'integer'},
-            {name: 'weight', index: 'weight', sortable: false, align: 'right', formatter:'integer'},
-            {name: 'car_no', index: 'car_no', sortable: false},
+            {name: 'rownum', index: 'rownum', sortable: false,key:true,hidden:true,width:120,fixed: true},
+            {name: 'out_date', index: 'out_date', sortable: false,formatter: formmatterDate2,width:80,fixed: true},
+            {name: 'ship_date', index: 'ship_date', sortable: false,formatter: formmatterDate2,width:80,fixed: true},
+            {name: 'out_no', index: 'out_no', sortable: false,width:120,fixed: true},
+            {name: 'supp_name', index: 'supp_name', sortable: false,width:120,fixed: true},
+            {name: 'part_kind', index: 'part_kind', sortable: false,width:120,fixed: true},
+            {name: 'part_name', index: 'part_name', sortable: false,width:200,fixed: true},
+            {name: 'part_code', index: 'part_code', sortable: false,width:120,fixed: true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, align: 'right', formatter:'integer',width:100,fixed: true},
+            {name: 'trans_name', index: 'trans_name', sortable: false,width:100,fixed: true},
+            {name: 'qty', index: 'qty', sortable: false, align: 'right', formatter:'integer',width:100,fixed: true},
+            {name: 'weight', index: 'weight', sortable: false, align: 'right', formatter:'integer',width:100,fixed: true},
+            {name: 'car_no', index: 'car_no', sortable: false,width:120,fixed: true,hidden:true},
         ],
         autowidth: true,
         height: 250,
@@ -122,6 +122,12 @@ function modal2_jqGrid() {
         },
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
             modal2_check();
+        },
+        loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
+            if ($("#mes_modal2_grid1").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
+                $(".jqgfirstrow").css("height","1px");
+            else
+                $(".jqgfirstrow").css("height","0px");
         }
     });
 }

@@ -63,6 +63,10 @@
 		EXEC SP_SYS_SPART_ADD #{supp_code},#{part_kind},#{part_code},#{part_name},#{part_name2},#{part_weight},#{gross_weight},#{part_size},#{unit_cost},#{currency_code},#{route_code},#{outs_supp_code},#{trans_code},#{use_yn},#{startup_date},#{wood_code1},#{wood_code2},#{wood_code3},#{keyword},#{outs_qc},#{user_code}
 	</select>
 
+    <select id="sysSpartCostGet2" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
+		EXEC SP_SYS_SPART_COST_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{use_yn}
+	</select>
+
     <select id="sysSpartGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
 		EXEC SP_SYS_SPART_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{use_yn}
 	</select>

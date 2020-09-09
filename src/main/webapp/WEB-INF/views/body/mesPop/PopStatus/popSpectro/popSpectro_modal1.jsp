@@ -55,63 +55,63 @@
         <div class="profile-info-row">
             <div class="profile-info-name">C</div>
             <div class="profile-info-value">
-                <input type="text" name="test_value1" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_float(this)" style="text-align: right">
+                <input type="text" name="test_value1" class="form-control modal_value" autocomplete="off" onfocus="num_focus_reset(this);" onkeyup="num_keyup_float(this)" style="text-align: right">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">Si</div>
             <div class="profile-info-value">
-                <input type="text" name="test_value2" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_float(this)" style="text-align: right">
+                <input type="text" name="test_value2" class="form-control modal_value" autocomplete="off" onfocus="num_focus_reset(this);" onkeyup="num_keyup_float(this)" style="text-align: right">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">Mn</div>
             <div class="profile-info-value">
-                <input type="text" name="test_value3" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_float(this)" style="text-align: right">
+                <input type="text" name="test_value3" class="form-control modal_value" autocomplete="off" onfocus="num_focus_reset(this);" onkeyup="num_keyup_float(this)" style="text-align: right">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">P</div>
             <div class="profile-info-value">
-                <input type="text" name="test_value4" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_float(this)" style="text-align: right">
+                <input type="text" name="test_value4" class="form-control modal_value" autocomplete="off" onfocus="num_focus_reset(this);" onkeyup="num_keyup_float(this)" style="text-align: right">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">S</div>
             <div class="profile-info-value">
-                <input type="text" name="test_value5" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_float(this)" style="text-align: right">
+                <input type="text" name="test_value5" class="form-control modal_value" autocomplete="off" onfocus="num_focus_reset(this);" onkeyup="num_keyup_float(this)" style="text-align: right">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">Cr</div>
             <div class="profile-info-value">
-                <input type="text" name="test_value6" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_float(this)" style="text-align: right">
+                <input type="text" name="test_value6" class="form-control modal_value" autocomplete="off" onfocus="num_focus_reset(this);" onkeyup="num_keyup_float(this)" style="text-align: right">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">Ni</div>
             <div class="profile-info-value">
-                <input type="text" name="test_value7" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_float(this)" style="text-align: right">
+                <input type="text" name="test_value7" class="form-control modal_value" autocomplete="off" onfocus="num_focus_reset(this);" onkeyup="num_keyup_float(this)" style="text-align: right">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">Cu</div>
             <div class="profile-info-value">
-                <input type="text" name="test_value8" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_float(this)" style="text-align: right">
+                <input type="text" name="test_value8" class="form-control modal_value" autocomplete="off" onfocus="num_focus_reset(this);" onkeyup="num_keyup_float(this)" style="text-align: right">
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">Sn</div>
             <div class="profile-info-value">
-                <input type="text" name="test_value9" class="form-control modal_value" autocomplete="off" onkeyup="num_keyup_float(this)" style="text-align: right">
+                <input type="text" name="test_value9" class="form-control modal_value" autocomplete="off" onfocus="num_focus_reset(this);" onkeyup="num_keyup_float(this)" style="text-align: right">
             </div>
         </div>
        

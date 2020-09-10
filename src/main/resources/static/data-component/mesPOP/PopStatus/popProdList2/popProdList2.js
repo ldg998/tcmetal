@@ -109,7 +109,8 @@ function jqGrid_main() {
 }
 
 function select_box() {
-    select_makes_base("#select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
+    select_makes_base("#select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'1'},'').then(function (data){
+
         select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
         });
     });

@@ -79,17 +79,20 @@ function update_btn(rowid) {
             $("#delivery_place").val(data.delivery_place);
 
             main_data.check3 = 'Y';
+
+
+            ccn_ajax("/scmOrderPartOneGet", {keyword: rowid}).then(function (data) {
+                $("#mes_add_grid2").setGridParam({
+                    datatype: "local",
+                    data: data
+                }).trigger("reloadGrid");
+                $("#addDialog").dialog('open');
+                jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]'));
+                jqGridResize2("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]'));
+            });
         });
 
-        ccn_ajax("/scmOrderPartOneGet", {keyword: rowid}).then(function (data) {
-            $("#mes_add_grid2").setGridParam({
-                datatype: "local",
-                data: data
-            }).trigger("reloadGrid");
-            $("#addDialog").dialog('open');
-            jqGridResize2("#mes_add_grid", $('#mes_add_grid').closest('[class*="col-"]'));
-            jqGridResize2("#mes_add_grid2", $('#mes_add_grid2').closest('[class*="col-"]'));
-        });
+
 
     } else {
         alert("수정권한이 없습니다.");

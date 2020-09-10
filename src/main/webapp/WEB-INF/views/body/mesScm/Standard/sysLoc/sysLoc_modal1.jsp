@@ -8,14 +8,14 @@
         <div class="profile-info-row">
             <div class="profile-info-name"> 위치코드</div>
             <div class="profile-info-value">
-                <input type="text" name="loc_code" class="form-control modal_value" autofocus>
+                <input type="text" name="loc_code" class="form-control modal_value" autocomplete="off" autofocus>
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name"> 위치명</div>
             <div class="profile-info-value">
-                <input type="text" name="loc_name" class="form-control modal_value"  autocomplete="off">
+                <input type="text" name="loc_name" class="form-control modal_value" autocomplete="off" autocomplete="off">
             </div>
         </div>
 

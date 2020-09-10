@@ -58,4 +58,6 @@ public interface MesPopStatusMapper {
     Message popSpectroAdd(POP_PLAN pp);
 
     List<List<Object>> popProdMeltGet(POP_PLAN pp);
+
+    Message sysProdHrDel2(POP_PLAN pp);
 }

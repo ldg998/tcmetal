@@ -133,6 +133,9 @@ public class PopStatusRestController {
     @RequestMapping(value = "/popProdMeltGet", method = RequestMethod.POST)
      public POP_PLAN popProdMeltGet(HttpServletRequest req, POP_PLAN pp) { return popStatusService.popProdMeltGet(req,pp);}
 
+    @RequestMapping(value = "/sysProdHrDel2", method = RequestMethod.POST)
+     public Message sysProdHrDel2(HttpServletRequest req, POP_PLAN pp) { return popStatusService.sysProdHrDel2(req,pp);}
+
 
 
 }

@@ -28,14 +28,14 @@
                     </td>
                     <td class="wt-px-75 t-align-c td-title padding-a-0">라인그룹</td>
                     <td class="wt-px-150">
-                        <select name="keyword" id="main_select1" class="form-control  condition_main"  style="width:100%">
+                        <select name="keyword" id="main_select1" class="form-control  condition_main" onchange="main_select_change1(this.value)" style="width:100%">
                             <option value="">전체</option>
                         </select>
                     </td>
 
                     <td class="wt-px-75 t-align-c td-title padding-a-0">라인명</td>
                     <td class="wt-px-150">
-                        <select name="keyword2" id="main_select2" class="form-control  condition_main"  style="width:100%">
+                        <select name="keyword2" id="main_select2" class="form-control  condition_main" onchange="main_select_change2(this.value)" style="width:100%">
                             <option value="">전체</option>
                         </select>
                     </td>

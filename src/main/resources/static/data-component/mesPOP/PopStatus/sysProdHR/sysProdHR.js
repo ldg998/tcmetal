@@ -67,36 +67,77 @@ function update_btn(jqgrid_data) {
     }
 }
 
+
 // 삭제 버튼
 function delete_btn() {
-    if (main_data.auth.check_del != "N") {
-        var gu5 = String.fromCharCode(5);
-        if ( main_data.select.ck ==="N") {
-            alert(msg_object.TBMES_A004.msg_name1);
+
+    if(main_data.auth.check_del != "N") {  //권한체크
+        var gu5 = String.fromCharCode(5); //아스키코드 5 담기
+        var gu4 = String.fromCharCode(4); //아스키코드 4 담기
+        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
+
+        var list =[];
+
+        for(var i=0;i<ids.length;i++){
+            var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
+            list.push( data.work_date.replace(/\-/g, '') + gu4 +data.line_code);
+        }
+
+        if (ids.length === 0) {      //선택여부 체크  선택이안되어 0이라면
+            alert(msg_object.TBMES_A004.msg_name1); // 경고메세지 출력
         } else {
-            if (confirm(msg_object.TBMES_A005.msg_name1)) {
-              console.log(main_data.select);
-                main_data.check = 'D';
-                wrapWindowByMask2();
-                ccn_ajax("/sysProdHrDel", main_data.select).then(function (data) {
-                    if (data.result === 'NG') {
-                        alert(data.message);
+            if (confirm(msg_object.TBMES_A005.msg_name1)) { //시행 여부메세지 출력
+                main_data.check = 'D'; // 삭제권한 부여
+                wrapWindowByMask2();  //마스크로 덥고 삭제 진행동안 다른작업 방지하기
+                ccn_ajax("/sysProdHrDel2", {keyword:list.join(gu5)}).then(function (data) { // 체크된 그리드 로우에 아스키코드를 넣어 1|2|3| 이런식으로 데이터전달
+                    if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
+                        alert(data.message);   //해당 오류메세지 출력
                     } else {
-                        $('#mes_grid').trigger('reloadGrid');
+                        $('#mes_grid').trigger("reloadGrid");
                     }
-                    closeWindowByMask();
-                }).catch(function (err) {
-                    closeWindowByMask();
+                    closeWindowByMask(); //마스크 종료
+                }).catch(function (err) { //에러발생시
+                    closeWindowByMask(); // 마스크종료
                     console.error(err); // Error 출력
                 });
-
             }
         }
     } else {
-        alert(msg_object.TBMES_A002.msg_name1);
+        alert(msg_object.TBMES_A002.msg_name1);// 권한 이 없을 경우 해당 메세지 출력
     }
 
 }
+
+
+//  한로우씩 삭제
+// // 삭제 버튼
+// function delete_btn() {
+//     if (main_data.auth.check_del != "N") {
+//         var gu5 = String.fromCharCode(5);
+//         if ( main_data.select.ck ==="N") {
+//             alert(msg_object.TBMES_A004.msg_name1);
+//         } else {
+//             if (confirm(msg_object.TBMES_A005.msg_name1)) {
+//                 main_data.check = 'D';
+//                 wrapWindowByMask2();
+//                 ccn_ajax("/sysProdHrDel", main_data.select).then(function (data) {
+//                     if (data.result === 'NG') {
+//                         alert(data.message);
+//                     } else {
+//                         $('#mes_grid').trigger('reloadGrid');
+//                     }
+//                     closeWindowByMask();
+//                 }).catch(function (err) {
+//                     closeWindowByMask();
+//                     console.error(err); // Error 출력
+//                 });
+//             }
+//         }
+//     } else {
+//         alert(msg_object.TBMES_A002.msg_name1);
+//     }
+//
+// }
 
 ////////////////////////////호출 함수//////////////////////////////////
 function msg_get() {
@@ -142,6 +183,7 @@ function jqGrid_main() {
         ],
         caption: "작업공수관리 | MES",
         autowidth: true,
+        multiselect: true,
         height: 562,
         pager: '#mes_grid_pager',
         rowNum: 100,

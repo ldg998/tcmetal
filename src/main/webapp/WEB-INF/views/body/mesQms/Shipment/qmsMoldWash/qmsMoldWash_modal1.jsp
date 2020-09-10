@@ -37,7 +37,7 @@
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">1차</div>
-            <div class="profile-info-value"><input type="text" maxlength="5" onkeyup="num_keyup_time(this)" name="time1" class="form-control modal_value"  autofocus autocomplete="off" placeholder="09:50"></div>
+            <div class="profile-info-value"><input type="text" maxlength="5" onkeyup="num_keyup_time(this)" name="time1" class="form-control modal_value"  autofocus autocomplete="off" placeholder=""></div>
             <div class="profile-info-value"> <input type="text" name="value1" class="form-control modal_value" autocomplete="off"></div>
             <div class="profile-info-value"> <select id="modal_select1" name="user_code1" class="modal_value" style="width: 100%"><option value="">▼</option><option></option><option></option></select></div>
         </div>

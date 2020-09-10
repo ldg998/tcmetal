@@ -132,6 +132,10 @@
     EXEC SP_POP_PROD_MELT_GET #{work_date},#{line_code},#{charge}
     </select>
 
+ <select id="sysProdHrDel2" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC SP_SYS_PROD_HR_DEL2 #{keyword}
+    </select>
+
 
 
 

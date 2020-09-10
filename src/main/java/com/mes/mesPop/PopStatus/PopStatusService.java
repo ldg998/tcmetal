@@ -158,4 +158,8 @@ public class PopStatusService extends UploadFunction {
     private <T> List<T> getDataset(List<List<Object>> datasets, int index){
         return (List<T>) datasets.get(index);
     }
+
+    public Message sysProdHrDel2(HttpServletRequest req, POP_PLAN pp) {
+        return mesPopStatusMapper.sysProdHrDel2(pp);
+    }
 }

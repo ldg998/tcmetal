@@ -125,5 +125,6 @@ function select_box() {
         $('#part_kind_select').select2();
     });
 
-    select_makes_base("#select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {});
+    select_makes_base("#select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'4'},'').then(function (data){});
+
 }

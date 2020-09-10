@@ -34,12 +34,14 @@ function addUdate_btn() { // 모든 추가와 업데이트는 여기서 처리�
                 } else {
                     if (main_data.check === "I") { //권한이 I 라면
                         get_btn(1);  // 재조회
+                        $("#addDialog").dialog('close'); //모달 닫기
                     } else {
                         $("#mes_grid").trigger("reloadGrid");
+                        $("#addDialog").dialog('close'); //모달 닫기
                     }
                 }
                 closeWindowByMask(); // 마스크 종료
-                $("#addDialog").dialog('close'); //모달 닫기
+
             }).catch(function (err) {
                 closeWindowByMask(); // 마스크 종료
                 alert(msg_object.TBMES_E008.msg_name1); // 오류메세지 출력

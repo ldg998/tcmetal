@@ -30,6 +30,7 @@ $(document).ready(function () {
 
 ////////////////////////////클릭 함수//////////////////////////////////
 function get_btn(page) {
+    $("#mes_grid2").jqGrid('clearGridData');
     main_data.send_data = value_return(".condition_main");
     $("#mes_grid").setGridParam({
         url: '/popProdReportGet',
@@ -85,6 +86,18 @@ function under_get(data) {
     }).trigger("reloadGrid");
 }
 
+
+function main_select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (d){});
+
+
+    }
+}
+
+
+
+
 ////////////////////////////호출 함수//////////////////////////////////
 function excel_change() {
     main_data.excel_check ="N";
@@ -108,7 +121,7 @@ function datepickerInput() {
 }
 
 function selectBox() {
-    select_makes_base("#main_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:''},'').then(function (data) {
+    select_makes_base("#main_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'3'},'').then(function (data) {
         select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
 
         });
@@ -119,14 +132,13 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['row_num','line_code','생산일자','공정','생산량','작업시간','비가동시간'],
+        colNames: ['row_num','line_code','생산일자','공정','생산량','비가동시간'],
         colModel: [
             {name: 'rownum', index: 'rownum',key:true, sortable: false,hidden:true, width: 150,fixed:true},
             {name: 'line_code', index: 'line_code', sortable: false,hidden:true, width: 150,fixed:true},
             {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2},
             {name: 'line_name', index: 'line_name', sortable: false, width: 150,fixed:true},
             {name: 'work_qty', index: 'work_qty', sortable: false, width: 150,fixed:true,align:'right'},
-            {name: 'run_time', index: 'run_time', sortable: false, width: 150,fixed:true,align:'right'},
             {name: 'downtime', index: 'downtime', sortable: false, width: 150,fixed:true,align:'right'}
         ],
         caption: "작업일보현황 | MES",

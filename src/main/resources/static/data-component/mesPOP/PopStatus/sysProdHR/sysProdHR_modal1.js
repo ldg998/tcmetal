@@ -9,11 +9,17 @@ function modal_start1() {
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
+
+
     var data = value_return('.modal_value')
-    console.log(data);
-   data.keyword = main_data.check;
+    data.keyword = main_data.check;
+    var text = msg_object.TBMES_Q002.msg_name1;
+    if (main_data.check === "U") {
+        text = msg_object.TBMES_Q003.msg_name1;
+    }
+    if (confirm(text)) {
     wrapWindowByMask2();
-    ccn_ajax('/sysProdHrAdd',data).then(function (data2) {
+    ccn_ajax('/sysProdHrAdd', data).then(function (data2) {
         if (data2.result === 'NG') {
             alert(data2.message);
         } else {
@@ -31,7 +37,7 @@ function addUdate_btn() {
         alert(msg_object.TBMES_E008.msg_name1);
     });
 
-
+}
 
 }
 ////////////////////////////호출 함수/////////////////////////////////////
@@ -70,7 +76,27 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
 
             }
 
-        ]
+        ],open: function () {
+            if ($.ui && $.ui.dialog && !$.ui.dialog.prototype._allowInteractionRemapped && $(this).closest(".ui-dialog").length) {
+                if ($.ui.dialog.prototype._allowInteraction) {
+                    $.ui.dialog.prototype._allowInteraction = function (e) {
+                        if ($(e.target).closest('.select2-drop').length) return true;
+                        if (typeof ui_dialog_interaction!="undefined") {
+                            return ui_dialog_interaction.apply(this, arguments);
+                        } else {
+                            return true;
+                        }
+                    };
+                    $.ui.dialog.prototype._allowInteractionRemapped = true;
+                }
+                else {
+                    $.error("You must upgrade jQuery UI or else.");
+                }
+            }
+        },
+        _allowInteraction: function (event) {
+            return !!$(e.target).closest('.ui-dialog, .ui-datepicker, .select2-drop').length;
+        }
     })
 }
 

@@ -67,7 +67,10 @@ function update_btn(jqgrid_data) {
         }else {  main_data.check = 'U'; // 수정인지 체크
         }
         jqgrid_data.part_weight = integer(String(jqgrid_data.part_weight));
+
         modal_edits('.modal_value',[],jqgrid_data)
+
+
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
         alert(msg_object.TBMES_A003.msg_name1);

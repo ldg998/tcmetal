@@ -90,8 +90,6 @@ function under_get(data) {
 function main_select_change1(value) {
     if (value !== ""){
         select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (d){});
-
-
     }
 }
 

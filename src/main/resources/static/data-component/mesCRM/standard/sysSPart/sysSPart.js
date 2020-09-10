@@ -163,9 +163,9 @@ function jqGrid_main() {
         colModel: [
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
             {name: 'supp_code', index: 'supp_code',hidden:true, width: 80,fixed: true},
-            {name: 'supp_name', index: 'supp_name',sortable: false, width: 80,fixed: true},//업체
-            {name: 'part_kind', index: 'part_kind',sortable: false, width: 100,fixed: true},//기종
-            {name: 'part_name', index: 'part_name',sortable: false, width: 150,fixed: true},//품명
+            {name: 'supp_name', index: 'supp_name',sortable: false, width: 140,fixed: true},//업체
+            {name: 'part_kind', index: 'part_kind',sortable: false, width: 120,fixed: true},//기종
+            {name: 'part_name', index: 'part_name',sortable: false, width: 200,fixed: true},//품명
             {name: 'part_name2', index: 'part_name',sortable: false, width: 120,fixed: true},//품명
             {name: 'part_code', index: 'part_code',sortable: false, width: 120,fixed: true},//품번
             // {name: 'part_name2', index: 'part_name2',sortable: false, width: 120,fixed: true},//품명(생산지용)

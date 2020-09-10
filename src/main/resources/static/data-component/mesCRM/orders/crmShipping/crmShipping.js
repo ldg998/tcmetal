@@ -24,6 +24,7 @@ $(document).ready(function () {
     // jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
     jqgridPagerIcons();
     disabled_tf(["input[name=out_date]","input[name=ship_date]","input[name=supp_name]"],"Y");
+
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////

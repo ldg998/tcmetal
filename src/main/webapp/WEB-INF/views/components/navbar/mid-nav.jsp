@@ -16,7 +16,7 @@
             </button>
 
             <a href="/" class="navbar-brand">
-                <img src="/ui-component/assets/images/tclogo3.png" id="main_logo_img" width="180px">
+                <img src="/ui-component/assets/images/tclogo3.png" id="main_logo_img" width="160px">
             </a>
             <div class="form-group">
                 <a href="javascript:void(0);" class="navbar-brand top_m">
@@ -25,8 +25,8 @@
                     <input type="hidden" value="${sessionScope.userData.user_code}" id="huscd">
                     <input type="hidden" value="${sessionScope.userData.user_name}" id="husnm">
                     <br>
-                    <button type="button" class="btn btn-minier btn-dark" onclick="password_add_btn();">암호변경</button>
-                    <button type="button" class="btn btn-minier btn-dark" onclick="logout();">로그아웃</button>
+                    <button type="button" class="btn btn-minier btn-dark btn_tcm" onclick="password_add_btn();">암호변경</button>
+                    <button type="button" class="btn btn-minier btn-dark btn_tcm" onclick="logout();">로그아웃</button>
                 </a>
             </div>
         </div>

@@ -65,8 +65,8 @@
             <div class="profile-info-name">성적서</div>
             <div class="profile-info-value">
                 <div class="filebox_lee">
-                    <label for="file_01" class="file_labal">업로드</label>
-                    <input type="file"  id="file_01" onchange='file_change(this);'>
+                    <label for="file_01" class="file_labal" id="file_labal">업로드</label>
+                    <input type="file"  id="file_01" class="modal_value" onchange='file_change(this);'>
                     <input name="file_key"  type="hidden" class="modal_value">
                 </div>
             </div>

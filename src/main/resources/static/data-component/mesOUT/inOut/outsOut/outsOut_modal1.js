@@ -110,7 +110,28 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
         resizable: false, // 크기 조절 불가설정
         buttons: [ // 모달 하단 버튼 설정
 
-        ]
+        ],
+        open: function () {
+            if ($.ui && $.ui.dialog && !$.ui.dialog.prototype._allowInteractionRemapped && $(this).closest(".ui-dialog").length) {
+                if ($.ui.dialog.prototype._allowInteraction) {
+                    $.ui.dialog.prototype._allowInteraction = function (e) {
+                        if ($(e.target).closest('.select2-drop').length) return true;
+                        if (typeof ui_dialog_interaction!="undefined") {
+                            return ui_dialog_interaction.apply(this, arguments);
+                        } else {
+                            return true;
+                        }
+                    };
+                    $.ui.dialog.prototype._allowInteractionRemapped = true;
+                }
+                else {
+                    $.error("You must upgrade jQuery UI or else.");
+                }
+            }
+        },
+        _allowInteraction: function (event) {
+            return !!$(e.target).closest('.ui-dialog, .ui-datepicker, .select2-drop').length;
+        }
     })
 }
 

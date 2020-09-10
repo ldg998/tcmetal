@@ -13,29 +13,40 @@ function addUdate_btn() {
     var add_data = value_return(".modal_value");
     var formData = new FormData();
     var check1;
+    var text = msg_object.TBMES_Q003.msg_name1;
 
-    formData.append("qc_no", add_data.qc_no);
-    formData.append("file_ck", main_data.file_ck);
-    formData.append("file_key", add_data.file_key);
-    if ($("#file_01").prop("files")[0] == null) {
-        check1 = 0;
-        formData.append("check1", check1);
-    } else {
-        check1 = 1;
-        formData.append("files", $("#file_01").prop("files")[0]);
-        formData.append("check1", check1);
-    }
-    wrapWindowByMask2();
-    ccn_file_ajax('/qmsProdListUpload',formData).then(function (data) {
-        if (data.result === 'NG') {
-            alert(data.message);
+    if (confirm(text)) {
+        formData.append("qc_no", add_data.qc_no);
+        formData.append("file_ck", main_data.file_ck);
+        formData.append("file_key", add_data.file_key);
+        formData.append("key_value",add_data.file_key);
+        if ($("#file_01").prop("files")[0] == null) {
+            check1 = 0;
+            formData.append("check1", check1);
+        } else {
+            check1 = 1;
+            formData.append("files", $("#file_01").prop("files")[0]);
+            formData.append("check1", check1);
+        }
+        wrapWindowByMask2();
+        if ($("#file_01").prop("files")[0] != null) {
+            ccn_file_ajax('/qmsProdListUpload', formData).then(function (data) {
+                if (data.result === 'NG') {
+                    alert(data.message);
+                } else {
+                    $('#mes_grid').trigger('reloadGrid')
+                    $('#addDialog').dialog("close");
+                    closeWindowByMask();
+                }
+            })
         }else {
-            alert(data.message);
             $('#mes_grid').trigger('reloadGrid')
             $('#addDialog').dialog("close");
             closeWindowByMask();
         }
-    })
+
+    }
+
 }
 
 function file_change(e) {
@@ -69,10 +80,17 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
         resizable: false, // 크기 조절 불가설정
         buttons: [ // 모달 하단 버튼 설정
             {
-                text: '확인',
+                text: '저장',
                 'class': 'btn btn-primary btn-minier',
                 click: function () {
                     addUdate_btn();
+                }
+            },
+            {
+                text: '취소',
+                'class': 'btn btn-minier',
+                click: function () {
+                    $(this).dialog("close");
                 }
             }
 

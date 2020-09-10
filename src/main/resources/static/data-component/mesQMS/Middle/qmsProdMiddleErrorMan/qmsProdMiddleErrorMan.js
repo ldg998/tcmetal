@@ -78,6 +78,7 @@ function update_btn(rowid) {
         data.work_date = formmatterDate2(data.work_date);
 
         modal_edits('.modal_value', [], data); // response 값 출력
+
         result_ck(data.qc_result);
         $("#file_01").val("");
         $(".file_labal").text("업로드");

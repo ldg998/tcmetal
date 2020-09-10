@@ -72,14 +72,21 @@ function excel_download() {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
+
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
         jqgrid_data.part_weight = integer(jqgrid_data.part_weight)
         modal_edits('.modal_value',[],jqgrid_data)
 
         if(jqgrid_data.file_key == null || jqgrid_data.file_key == "" || jqgrid_data.file_key =='null'){
         main_data.file_ck =0
+            $('#file_labal').closest("div")
+                .children(".file_labal")
+                .text("업로드");
         }else {
             main_data.file_ck =1
+            $('#file_labal').closest("div")
+                .children(".file_labal")
+                .text("업로드완료");
         }
         $("#mes_modal1_grid2").setGridParam({
             url: "/qmsProdListModalGet",

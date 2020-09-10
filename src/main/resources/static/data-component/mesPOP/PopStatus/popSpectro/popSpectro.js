@@ -141,7 +141,7 @@ function select_box() {
     select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
     $('#part_kind_select').select2();
 
-    select_makes_base("#main_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'1'},'').then(function (data) {
+    select_makes_base("#main_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'2'},'').then(function (data) {
         select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
 
         });

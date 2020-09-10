@@ -32,39 +32,39 @@
         <div class="profile-info-row">
             <div class="profile-info-name">작업인원</div>
             <div class="profile-info-value">
-                <input type="text" name="wk_qty" class="form-control modal_value" autofocus autocomplete="off" >
+                <input type="text" name="wk_qty" onkeyup="num_keyup_float(this)" class="form-control modal_value" autofocus autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">결근/휴가</div>
             <div class="profile-info-value">
-                <input type="text" name="wk_qty1" class="form-control modal_value" autocomplete="off" >
+                <input type="text" name="wk_qty1" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">조퇴(시간)</div>
             <div class="profile-info-value">
-                <input type="text" name="wk_qty2" class="form-control modal_value" autocomplete="off" >
+                <input type="text" name="wk_qty2" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
             <div class="profile-info-name">지각(시간)</div>
             <div class="profile-info-value">
-                <input type="text" name="wk_qty3" class="form-control modal_value" autocomplete="off" >
+                <input type="text" name="wk_qty3" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">잔업(시간)</div>
             <div class="profile-info-value">
-                <input type="text" name="wk_qty4" class="form-control modal_value" autocomplete="off" >
+                <input type="text" name="wk_qty4" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
 
         <div class="profile-info-row">
             <div class="profile-info-name">특근(시간)</div>
             <div class="profile-info-value">
-                <input type="text" name="wk_qty5" class="form-control modal_value" autocomplete="off" >
+                <input type="text" name="wk_qty5" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
 

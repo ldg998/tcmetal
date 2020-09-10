@@ -169,7 +169,7 @@ function jqGrid_main() {
             {name:'qty',index:'qty',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
             {name:'outs_qc',index:'outs_qc',sortable: false,width:80,fixed: true},
             {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
-            {name:'update_date',index:'update_date',sortable: false,width:180,fixed: true,formatter: formmatterDate2}// formatter 사용을 통해 데이터 형식 가공
+            {name:'update_date',index:'update_date',sortable: false,width:180,fixed: true,formatter: formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],
         multiselect: true,
         caption: "외주출고 관리 | MES",// grid 제목

@@ -131,7 +131,7 @@ function jqGrid_main() {
             {name: 'part_weight', index: 'part_weight',sortable: false, width: 100,fixed: true,align: 'right', formatter: 'integer'},
             {name: 'status', index: 'status',sortable: false, width: 100,fixed: true},
             {name: 'user_name', index: 'user_name',sortable: false, width: 100,fixed: true},
-            {name: 'update_date', index: 'update_date',sortable: false, width: 100,fixed: true,formatter: formmatterDate2}
+            {name: 'update_date', index: 'update_date',sortable: false, width: 140,fixed: true,formatter: formmatterDate}
 
         ],
         caption: "용해규격관리 | MES",

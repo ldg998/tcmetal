@@ -57,6 +57,8 @@ public class QMS_RET {
     private String file_key;
     private String file_key2;
 
-
+    private int rownum;
+    private int rownum_page;
+    private int rec_count;
 
 }

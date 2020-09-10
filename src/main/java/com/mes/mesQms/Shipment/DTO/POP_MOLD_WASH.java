@@ -26,6 +26,8 @@ public class POP_MOLD_WASH {
     private String user_name3;
     private String user_name4;
 
-
+    private int rownum;
+    private int rownum_page;
+    private int rec_count;
 
 }

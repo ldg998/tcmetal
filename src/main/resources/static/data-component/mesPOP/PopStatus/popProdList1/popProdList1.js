@@ -99,7 +99,7 @@ function jqGrid_main() {
             {name: 'part_code', index: 'plan_code', sortable: false, width: 150,fixed:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable: false, width: 150,fixed:true,align: 'right', formatter: 'integer' },
-            {name: 'create_date', index: 'create_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2},
+            {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2},
             {name: 'qty', index: 'qty', sortable: false, width: 150,fixed:true,align: 'right', formatter: 'integer' }
 
         ],
@@ -109,7 +109,26 @@ function jqGrid_main() {
         pager: '#mes_grid_pager',
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
-        viewrecords: true
+        viewrecords: true,
+        beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
+            var $myGrid = $(this),
+                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                cm = $myGrid.jqGrid('getGridParam', 'colModel');
+            return (cm[i].name === 'cb');
+        },
+        loadComplete : function(data) {
+            console.log(data);
+            data.rows.forEach(function (idsfor, s) {
+                if (idsfor.work_date == '소계'){
+                    $("#mes_grid").setRowData(idsfor.seq, false, {background:"rgb(155, 185, 239)"}) ;
+                }
+            });
+
+            if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
+                $(".jqgfirstrow").css("height","1px");
+            else
+                $(".jqgfirstrow").css("height","0px");
+        }
     }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
 }
 

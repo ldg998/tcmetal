@@ -150,16 +150,16 @@ function jqGrid_main() {
             {name: 'rownum', index: 'rownum',hidden:true,fixed: true,key:true},
             {name: 'use_yn', index: 'use_yn',hidden:true,fixed: true},
             {name: 'supp_code', index: 'supp_code',hidden:true,fixed: true},
-            {name:'supp_name',index:'supp_name',sortable: false,width:120,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'part_kind',index:'part_kind',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'part_code',index:'part_code',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'part_name',index:'part_name',sortable: false,width:200,fixed: true},
-            {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,formatter: 'integer',align: 'right'},
+            {name:'supp_name',index:'supp_name',sortable: false,width:130,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'part_kind',index:'part_kind',sortable: false,width:110,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'part_code',index:'part_code',sortable: false,width:130,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'part_name',index:'part_name',sortable: false,width:190,fixed: true},
+            {name:'part_weight',index:'part_weight',sortable: false,width:90,fixed: true,formatter: 'integer',align: 'right'},
             {name:'currency_type_name',index:'currency_type_name',sortable: false,width:80,fixed: true},
-            {name:'start_date',index:'start_date',sortable: false,width:80,fixed: true,formatter:formmatterDate2},
-            {name:'max_unit_cost',index:'max_unit_cost',sortable: false,width:80,fixed: true,formatter: 'integer',align: 'right'},
-            {name:'cost_user_name',index:'cost_user_name',sortable: false,width:80,fixed: true},
-            {name:'cost_create_date',index:'cost_create_date',sortable: false,width:180,fixed: true,formatter:formmatterDate}// formatter 사용을 통해 데이터 형식 가공
+            {name:'start_date',index:'start_date',sortable: false,width:90,fixed: true,formatter:formmatterDate2},
+            {name:'max_unit_cost',index:'max_unit_cost',sortable: false,width:90,fixed: true,formatter: 'integer',align: 'right'},
+            {name:'cost_user_name',index:'cost_user_name',sortable: false,width:60,fixed: true},
+            {name:'cost_create_date',index:'cost_create_date',sortable: false,width:140,fixed: true,formatter:formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "제품단가관리 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정

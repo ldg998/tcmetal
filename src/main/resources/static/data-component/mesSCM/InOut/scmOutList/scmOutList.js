@@ -104,15 +104,15 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['출고일자','출고번호','품번','품명','규격','단위','출고수량','등록자','등록일시'],
         colModel: [
-            {name: 'work_date', index: 'work_date',sortable: false,key:true,fixed:true,width:150,formatter:formmatterDate2},
-            {name: 'out_no', index: 'out_no',sortable: false, fixed:true, width:150},
-            {name: 'part_code', index: 'part_code',sortable: false, fixed:true, width:150},
-            {name: 'part_name', index: 'part_name',sortable: false, fixed:true, width:150},
+            {name: 'work_date', index: 'work_date',sortable: false,key:true,fixed:true,width:90,formatter:formmatterDate2},
+            {name: 'out_no', index: 'out_no',sortable: false, fixed:true, width:120},
+            {name: 'part_code', index: 'part_code',sortable: false, fixed:true, width:130},
+            {name: 'part_name', index: 'part_name',sortable: false, fixed:true, width:190},
             {name: 'spec', index: 'spec',sortable: false, fixed:true, width:150},
-            {name: 'unit_name', index: 'unit_name',sortable: false, fixed:true, width:150},
-            {name: 'qty', index: 'qty',sortable: false, fixed:true, width:150,formatter:'number'},
-            {name: 'user_name', index: 'user_name',sortable: false, fixed:true, width:150},
-            {name: 'update_date', index: 'update_date',sortable: false, fixed:true, width:150,formatter:formmatterDate}
+            {name: 'unit_name', index: 'unit_name',sortable: false, fixed:true, width:60},
+            {name: 'qty', index: 'qty',sortable: false, fixed:true, width:110,formatter:'number',align: 'right'},
+            {name: 'user_name', index: 'user_name',sortable: false, fixed:true, width:60},
+            {name: 'update_date', index: 'update_date',sortable: false, fixed:true, width:140,formatter:formmatterDate}
         ],
         caption: "자재출고현황 | MES",
         autowidth: true,

@@ -57,6 +57,7 @@ function update_btn(rowid) {
             var list2 = data1.pop_prod_melt_sub1
             var list3 = data1.pop_prod_melt_sub2
             var list4 = data1.pop_prod_melt_sub3
+
             list.forEach(function (id) {
                 var name = Object.keys(id)
                 name.forEach(function (id2 ){
@@ -81,6 +82,9 @@ function update_btn(rowid) {
                     edits_list[id.seq+id2] = id[id2]
                 })
             });
+            edits_list.work_date = formmatterDate2(edits_list.work_date);
+
+
         modal_edits('.modal_value',[],edits_list)
             $("#addDialog").dialog('open'); // 모달 열기
         }).catch(function (err) {
@@ -124,7 +128,7 @@ function jqGrid_main() {
         colModel: [
             {name: 'rownum', index: 'rownum',key:true ,hidden:true, sortable: false,fixed:true},
             {name: 'line_code', index: 'line_code' ,hidden:true, sortable: false,fixed:true},
-            {name: 'work_date', index: 'work_date', sortable: false, width: 120,fixed:true,formatter: formmatterDate2},
+            {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2},
             {name: 'charge', index: 'charge', sortable: false, width: 100,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 100,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 100,fixed:true},
@@ -133,7 +137,7 @@ function jqGrid_main() {
             {name: 'part_weight', index: 'part_weight', sortable: false, width: 100,fixed:true,align: 'right', formatter: 'integer'},
             {name: 'prod_qty', index: 'prod_qty', sortable: false, width: 80,fixed:true,align: 'right', formatter: 'integer'},
             {name: 'user_name', index: 'user_name', sortable: false, width: 80,fixed:true},
-            {name: 'create_date', index: 'create_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate}
+            {name: 'create_date', index: 'create_date', sortable: false, width: 140,fixed:true,formatter: formmatterDate}
 
         ],
         caption: "주입일보현황 | MES",

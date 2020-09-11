@@ -135,7 +135,7 @@ function jqGrid_main() {
             {name: 'part_code', index: 'part_code', sortable: false, width: 100,fixed:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 100,fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable: false, width: 100,fixed:true,align: 'right', formatter: 'integer'},
-            {name: 'prod_qty', index: 'prod_qty', sortable: false, width: 80,fixed:true,align: 'right', formatter: 'integer'},
+            {name: 'plan_qty', index: 'plan_qty', sortable: false, width: 80,fixed:true,align: 'right', formatter: 'integer'},
             {name: 'user_name', index: 'user_name', sortable: false, width: 80,fixed:true},
             {name: 'create_date', index: 'create_date', sortable: false, width: 140,fixed:true,formatter: formmatterDate}
 

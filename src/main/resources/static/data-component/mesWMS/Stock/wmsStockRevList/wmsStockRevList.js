@@ -87,17 +87,17 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['조정일자','조정번호','업체','기종','품명','품번','단중','조정전재고','조정후재고','등록자','등록일시'],
         colModel: [
-            {name: 'work_date', index: 'work_date', sortable: false, width: 100, fixed:true,formatter: formmatterDate2},
-            {name: 'rev_no', index: 'rev_no', sortable: false, width: 150, fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 120, fixed:true},
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 120, fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 120, fixed:true},
-            {name: 'part_code', index: 'part_code', sortable: false, width: 120, fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 100, fixed:true,align:'right',formatter:'integer'},
-            {name: 'stock_qty_prev', index: 'stock_qty_prev', sortable: false, width: 100, fixed:true,align:'right',formatter:'integer'},
-            {name: 'stock_qty', index: 'stock_qty', sortable: false, width: 100, fixed:true,align:'right',formatter:'integer'},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 70, fixed:true},
-            {name: 'update_date', index: 'update_date', sortable: false, width: 150, fixed:true,formatter: formmatterDate}
+            {name: 'work_date', index: 'work_date', sortable: false, width: 90, fixed:true,formatter: formmatterDate2},
+            {name: 'rev_no', index: 'rev_no', sortable: false, width: 120, fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130, fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 110, fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 190, fixed:true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 130, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90, fixed:true,align:'right',formatter:'integer'},
+            {name: 'stock_qty_prev', index: 'stock_qty_prev', sortable: false, width: 90, fixed:true,align:'right',formatter:'integer'},
+            {name: 'stock_qty', index: 'stock_qty', sortable: false, width: 90, fixed:true,align:'right',formatter:'integer'},
+            {name: 'user_name', index: 'user_name', sortable: false, width: 60, fixed:true},
+            {name: 'update_date', index: 'update_date', sortable: false, width: 140, fixed:true,formatter: formmatterDate}
 
         ],
         caption: '제품재고 조정현황 | MES',

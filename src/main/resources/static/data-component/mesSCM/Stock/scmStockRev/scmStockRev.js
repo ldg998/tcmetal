@@ -107,12 +107,12 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['구분','품번','품명','규격','단위','재고량'],
         colModel: [
-            {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 100,fixed:true},
-            {name: 'part_code', index: 'part_code', sortable: false, width: 100,fixed:true, key:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
+            {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 60,fixed:true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 130,fixed:true, key:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
             {name: 'spec', index: 'spec', sortable: false, width: 150,fixed:true},
-            {name: 'unit_name', index: 'unit_name', sortable: false, width: 150,fixed:true},
-            {name: 'stock_qty', index: 'stock_qty', sortable: false, width: 150,fixed:true,align:'right',formatter:'integer'},
+            {name: 'unit_name', index: 'unit_name', sortable: false, width: 60,fixed:true},
+            {name: 'stock_qty', index: 'stock_qty', sortable: false, width: 90,fixed:true,align:'right',formatter:'integer'},
 
         ],
         caption: "재고조정 | MES",

@@ -86,16 +86,16 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['입고일자', '전표번호', '업체', '기종', '품명', '품번','단중', '제품LOT', '등록자', '등록일시'],
         colModel: [
-            {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true, formatter: formmatterDate2}, //WMS_IN
-            {name: 'in_no', index: 'in_no', sortable: false, width: 150,fixed:true}, //WMS_IN
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true}, //USER_CODE
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 150,fixed:true}, //
-            {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
-            {name: 'part_code', index: 'part_no', sortable: false, width: 150,fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 150,fixed:true,formatter: 'integer',align: 'right'},
+            {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true, formatter: formmatterDate2}, //WMS_IN
+            {name: 'in_no', index: 'in_no', sortable: false, width: 120,fixed:true}, //WMS_IN
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true}, //USER_CODE
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 110,fixed:true}, //
+            {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
+            {name: 'part_code', index: 'part_no', sortable: false, width: 130,fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90,fixed:true,formatter: 'integer',align: 'right'},
             {name: 'lot_no', index: 'lot', sortable: false, width: 150,fixed:true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed:true},
-            {name: 'update_date', index: 'update_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate}
+            {name: 'user_name', index: 'user_name', sortable: false, width: 60,fixed:true},
+            {name: 'update_date', index: 'update_date', sortable: false, width: 140,fixed:true,formatter: formmatterDate}
         ],
         caption: "입고현황 | MES",
         autowidth: true,

@@ -116,10 +116,10 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames : ['사이즈','단가','등록자','수정일'],
         colModel : [
-            {name:'wood_code',index:'wood_code',key: true ,sortable: false,width:100,fixed: true},
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:200,fixed: true,align: 'right',formatter: 'integer'},
-            {name:'user_name',index:'user_name',sortable: false,width:100,fixed: true},
-            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
+            {name:'wood_code',index:'wood_code',key: true ,sortable: false,width:130,fixed: true},
+            {name:'unit_cost',index:'unit_cost',sortable: false,width:90,fixed: true,align: 'right',formatter: 'integer'},
+            {name:'user_name',index:'user_name',sortable: false,width:60,fixed: true},
+            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:140,fixed: true}
         ],
         caption: "목재단가관리 | MES",
         autowidth: true,

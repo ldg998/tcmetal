@@ -136,12 +136,12 @@ function jqGrid_main() {
         colModel : [
             {name:'rownum',index:'rownum',key:true,hidden:true,sortable: false,fixed: true},
             {name:'currency_code',index:'currency_code',hidden:true,sortable: false,fixed: true},
-            {name:'code_name1',index:'code_name1',sortable: false,width:100,fixed: true},
-            {name:'start_date',index:'start_date',sortable: false,width:100,fixed: true,formatter:formmatterDate2},
-            {name:'stop_date',index:'stop_date',sortable: false,width:150,fixed: true,formatter:formmatterDate2},
-            {name:'exch_rate',index:'exch_rate',sortable: false,width:100,fixed: true,align: 'right'},
-            {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
-            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:180,fixed: true}
+            {name:'code_name1',index:'code_name1',sortable: false,width:60,fixed: true},
+            {name:'start_date',index:'start_date',sortable: false,width:90,fixed: true,formatter:formmatterDate2},
+            {name:'stop_date',index:'stop_date',sortable: false,width:90,fixed: true,formatter:formmatterDate2},
+            {name:'exch_rate',index:'exch_rate',sortable: false,width:90,fixed: true,align: 'right'},
+            {name:'user_name',index:'user_name',sortable: false,width:60,fixed: true},
+            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:140,fixed: true}
         ],
         caption: "환율관리 | MES",
         autowidth: true,

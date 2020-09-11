@@ -152,24 +152,21 @@ function jqGrid_main() {
         caption: "중간검사 조치 | MES",
         colNames: ['검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','검사결과','수정','폐기','첨부사진','부적합보고서','검사자','검사일시'],
         colModel: [
-            {name: 'work_date', index: 'work_date', sortable:false, width: 80, fixed:true,formatter: formmatterDate2},
-            {name: 'qc_no', index: 'qc_no', sortable:false, width: 120, key: true, fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable:false, width: 140, fixed:true},
-            {name: 'part_kind', index: 'part_kind', sortable:false, width: 120, fixed:true},
-            {name: 'part_code', index: 'part_code', sortable:false, width: 120, fixed:true},
-            {name: 'part_name', index: 'part_name', sortable:false, width: 200, fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable:false, width: 80, fixed:true,align:'right',formatter:'integer'},
-            {name: 'lot_no', index: 'lot_no', sortable:false, width: 80, fixed:true},
+            {name: 'work_date', index: 'work_date', sortable:false, width: 90, fixed:true,formatter: formmatterDate2},
+            {name: 'qc_no', index: 'qc_no', sortable:false, width: 130, key: true, fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable:false, width: 130, fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable:false, width: 130, fixed:true},
+            {name: 'part_code', index: 'part_code', sortable:false, width: 130, fixed:true},
+            {name: 'part_name', index: 'part_name', sortable:false, width: 190, fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable:false, width: 90, fixed:true,align:'right',formatter:'integer'},
+            {name: 'lot_no', index: 'lot_no', sortable:false, width: 130, fixed:true},
             {name: 'qc_result_name', index: 'qc_result_name', sortable:false, width: 60, fixed:true},
             {name: 'result2_name', index: 'result2_name', sortable:false, width: 60, fixed:true},
             {name: 'result3_name', index: 'result3_name', sortable:false, width: 200, fixed:true},
-            {name: 'upload_path', index: 'upload_path', sortable:false, width: 100, fixed:true,formatter: image_formatter},
+            {name: 'upload_path', index: 'upload_path', sortable:false, width: 70, fixed:true,formatter: image_formatter},
             {name: 'file2_yn', index: 'file2file2_yn', sortable:false, width: 100, fixed:true},
             {name: 'user_name', index: 'user_name', sortable:false, width: 60, fixed:true},
             {name: 'update_date', index: 'update_date', sortable:false, width: 140, fixed:true,formatter: formmatterDate}
-
-
-
         ],
         autowidth: true,
         viewrecords: true,

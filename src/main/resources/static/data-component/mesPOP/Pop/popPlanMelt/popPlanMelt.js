@@ -127,17 +127,17 @@ function jqGrid_main() {
         colNames: ['rownum','계획일자','CHARGE','라인','업체','기종','품명','단중','수량','중량','재질','작업자'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false, key:true, width: 150,fixed: true,hidden:true},
-            {name: 'work_date', index: 'work_date', sortable: false, width: 100, fixed: true,formatter:formmatterDate2},
-            {name: 'charge', index: 'charge', sortable: false, width: 100, fixed: true,align:'right',formatter:'integer'},
-            {name: 'line_name', index: 'line_name', sortable: false, width: 150, fixed: true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150, fixed: true},
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 150, fixed: true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 150, fixed: true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 100, fixed: true,align:'right',formatter:'integer'},
-            {name: 'plan_qty', index: 'plan_qty', sortable: false, width: 100, fixed: true,align:'right',formatter:'integer'},
-            {name: 'weight', index: 'weight', sortable: false, width: 100, fixed: true,align:'right',formatter:'integer'},
-            {name: 'mat_group', index: 'mat_group', sortable: false, width: 150, fixed: true},
-            {name: 'work_user_name', index: 'work_user_name', sortable: false, width: 100, fixed: true}
+            {name: 'work_date', index: 'work_date', sortable: false, width: 90, fixed: true,formatter:formmatterDate2},
+            {name: 'charge', index: 'charge', sortable: false, width: 60, fixed: true,align:'right',formatter:'integer'},
+            {name: 'line_name', index: 'line_name', sortable: false, width: 80, fixed: true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130, fixed: true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 120, fixed: true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 190, fixed: true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90, fixed: true,align:'right',formatter:'integer'},
+            {name: 'plan_qty', index: 'plan_qty', sortable: false, width: 90, fixed: true,align:'right',formatter:'integer'},
+            {name: 'weight', index: 'weight', sortable: false, width: 90, fixed: true,align:'right',formatter:'integer'},
+            {name: 'mat_group', index: 'mat_group', sortable: false, width: 130, fixed: true},
+            {name: 'work_user_name', index: 'work_user_name', sortable: false, width: 70, fixed: true}
 
         ],
         caption: "주입계획서 | MES",

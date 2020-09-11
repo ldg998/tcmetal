@@ -23,7 +23,7 @@
                     </td>
 
                     <td class="wt-px-100 t-align-c td-title padding-a-0">상태</td>
-                    <td class="wt-px-100">
+                    <td class="wt-px-150">
                        <select id="status" style="width: 100%" class="condition_main">
                            <option value="">전체</option>
                            <option value="0">등록</option>

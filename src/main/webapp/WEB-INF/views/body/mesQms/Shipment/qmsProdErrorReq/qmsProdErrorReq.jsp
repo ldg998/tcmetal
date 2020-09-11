@@ -28,8 +28,8 @@
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-                    <td class="wt-px-75 td-title t-align-c padding-a-0">구분</td>
-                    <td class="wt-px-100">
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
+                    <td class="wt-px-150">
                         <select id="select1" style="width: 100%" name="type_code" class="condition_main">
                             <option value="">국내</option>
                             <option value="">수출</option>
@@ -37,7 +37,7 @@
 
                         </select>
                     </td>
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">업체</td>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                     <td class="wt-px-150">
                         <div class="input-icon input-icon-right">
                             <select id="select2" style="width: 100%;" name="supp_code" class="condition_main">

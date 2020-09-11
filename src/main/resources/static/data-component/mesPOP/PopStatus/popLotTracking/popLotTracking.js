@@ -42,10 +42,10 @@ function get_btn(page) {
 
 function select_change1(value) {
     if (value !== ""){
-        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"N");
     } else {
-        var option = $("<option></option>").text('전체').val('');
-        var option2 = $("<option></option>").text('전체').val('');
+        var option = $("<option></option>").text('선택안함').val('');
+        var option2 = $("<option></option>").text('선택안함').val('');
         $('#part_kind_select').empty();
         $('#part_code_select').empty();
 
@@ -65,7 +65,7 @@ function select_change2(value) {
             select_makes_base("#part_code_select", "/sysSpartAllGet", "part_code", "part_name", {
                 keyword: $("#supp_select").val(),
                 keyword2: value
-            }, "Y").then(function (data) {
+            }, "N").then(function (data) {
 
             });
         } else {
@@ -98,14 +98,14 @@ function jqGrid_main() {
         datatype: "local",
         colNames: ['순번','구분','진행일자','처리번호','업체','기종','품명','단중','제품LOT'],
         colModel: [
-            {name: 'idx', index: '', sortable: false, width: 150,fixed:true},
-            {name: 'work_name', index: 'work_name', sortable: false, width: 150,fixed:true},
-            {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2},
-            {name: 'work_no', index: 'work_no', sortable: false, width: 150,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 150,fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 150,fixed:true,align: 'right', formatter: 'integer'},
+            {name: 'idx', index: 'idx', sortable: false, width: 40,fixed:true},
+            {name: 'work_name', index: 'work_name', sortable: false, width: 80,fixed:true},
+            {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2},
+            {name: 'work_no', index: 'work_no', sortable: false, width: 130,fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 120,fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
             {name: 'lot_no', index: 'lot_no', sortable: false, width: 150,fixed:true}
 
         ],
@@ -120,7 +120,7 @@ function jqGrid_main() {
 }
 
 function selectBox() {
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
     $('#part_kind_select').select2();
     $('#part_code_select').select2();
 }

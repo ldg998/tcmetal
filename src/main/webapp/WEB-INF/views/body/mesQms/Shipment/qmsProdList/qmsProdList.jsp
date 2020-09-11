@@ -44,7 +44,7 @@
 
                     <td class="wt-px-100 td-title t-align-c padding-a-0">제품LOT</td>
                     <td class="wt-px-200">
-                        <input type="text" name="keyword2"  class="form-control h-25 condition_main">
+                        <input type="text" name="keyword2"  class="form-control h-25 condition_main" autocomplete="off">
                     </td>
                     <td></td>
                 </tr>

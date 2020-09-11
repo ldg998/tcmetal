@@ -126,15 +126,15 @@ function jqGrid_main() {
         colNames : ['','외주업체','업체','기종','품번','품명','단중','일자','수량','구분'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'seq', index: 'seq',sortable: false,key:true,hidden:true},
-            {name:'outs_supp_name',index:'outs_supp_name' ,sortable: false,width:100,fixed: true},
-            {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'part_kind',index:'part_kind',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'part_code',index:'part_code',sortable: false,width:150,fixed: true},
-            {name:'part_name',index:'part_name',sortable: false,width:80,fixed: true},
-            {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
-            {name:'work_date',index:'work_date',sortable: false,width:80,fixed: true,formatter: formmatterDate2},
-            {name:'qty',index:'qty',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
-            {name:'remark',index:'remark',sortable: false,width:180,fixed: true}// formatter 사용을 통해 데이터 형식 가공
+            {name:'outs_supp_name',index:'outs_supp_name' ,sortable: false,width:130,fixed: true},
+            {name:'supp_name',index:'supp_name',sortable: false,width:130,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'part_kind',index:'part_kind',sortable: false,width:130,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'part_code',index:'part_code',sortable: false,width:130,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:190,fixed: true},
+            {name:'part_weight',index:'part_weight',sortable: false,width:90,fixed: true,align: 'right', formatter: 'integer'},
+            {name:'work_date',index:'work_date',sortable: false,width:90,fixed: true,formatter: formmatterDate2},
+            {name:'qty',index:'qty',sortable: false,width:90,fixed: true,align: 'right', formatter: 'integer'},
+            {name:'remark',index:'remark',sortable: false,width:50,fixed: true}// formatter 사용을 통해 데이터 형식 가공
         ],
 
         caption: "외주입출고현황 | MES",// grid 제목

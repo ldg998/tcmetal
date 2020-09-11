@@ -158,18 +158,18 @@ function jqGrid_main() {
 
             {name:'supp_code',index:'supp_code',sortable: false,fixed: true,hidden:true},
             {name:'outs_supp_code',index:'outs_supp_code',sortable: false,fixed: true,hidden:true},
-            {name:'work_date',index:'work_date' ,sortable: false,width:100,fixed: true,formatter: formmatterDate2},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'in_no',index:'in_no',sortable: false,width:150,fixed: true,key:true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'outs_supp_name',index:'outs_supp_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true},
-            {name:'part_kind',index:'part_kind',sortable: false,width:80,fixed: true},
+            {name:'work_date',index:'work_date' ,sortable: false,width:90,fixed: true,formatter: formmatterDate2},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'in_no',index:'in_no',sortable: false,width:130,fixed: true,key:true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'outs_supp_name',index:'outs_supp_name',sortable: false,width:130,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'supp_name',index:'supp_name',sortable: false,width:130,fixed: true},
+            {name:'part_kind',index:'part_kind',sortable: false,width:110,fixed: true},
             {name:'part_code',index:'part_code',sortable: false,width:120,fixed: true},
-            {name:'part_name',index:'part_name',sortable: false,width:130,fixed: true},
-            {name:'part_weight',index:'part_weight',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
-            {name:'qty',index:'qty',sortable: false,width:80,fixed: true,align: 'right', formatter: 'integer'},
-            {name:'outs_qc',index:'outs_qc',sortable: false,width:80,fixed: true},
-            {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
-            {name:'update_date',index:'update_date',sortable: false,width:180,fixed: true,formatter: formmatterDate}// formatter 사용을 통해 데이터 형식 가공
+            {name:'part_name',index:'part_name',sortable: false,width:190,fixed: true},
+            {name:'part_weight',index:'part_weight',sortable: false,width:90,fixed: true,align: 'right', formatter: 'integer'},
+            {name:'qty',index:'qty',sortable: false,width:60,fixed: true,align: 'right', formatter: 'integer'},
+            {name:'outs_qc',index:'outs_qc',sortable: false,width:60,fixed: true},
+            {name:'user_name',index:'user_name',sortable: false,width:60,fixed: true},
+            {name:'update_date',index:'update_date',sortable: false,width:140,fixed: true,formatter: formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],
         multiselect: true,
         caption: "외주출고 관리 | MES",// grid 제목

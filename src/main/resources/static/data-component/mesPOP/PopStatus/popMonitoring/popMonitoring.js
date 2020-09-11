@@ -55,15 +55,15 @@ function jqGrid_main() {
         colNames: ['공정','업체','기종','품명','품번','단중','제품LOT','등록자','등록일시'],
         colModel: [
 
-            {name: 'line_name', index: 'line_name', sortable: false, width: 150,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 150,fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed:true},
-            {name: 'part_code', index: 'part_code', sortable: false, width: 150,fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 150,fixed:true,align: 'right', formatter: 'integer'},
+            {name: 'line_name', index: 'line_name', sortable: false, width: 70,fixed:true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 120,fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
+            {name: 'part_code', index: 'part_code', sortable: false, width: 130,fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 100,fixed:true,align: 'right', formatter: 'integer'},
             {name: 'lot_no', index: 'lot', sortable: false, width: 150,fixed:true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed:true},
-            {name: 'create_date', index: 'create_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate}
+            {name: 'user_name', index: 'user_name', sortable: false, width: 70,fixed:true},
+            {name: 'create_date', index: 'create_date', sortable: false, width: 140,fixed:true,formatter: formmatterDate}
 
         ],
         caption: "생산모니터링 | MES",

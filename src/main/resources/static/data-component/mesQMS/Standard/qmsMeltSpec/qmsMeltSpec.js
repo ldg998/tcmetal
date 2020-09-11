@@ -124,13 +124,13 @@ function jqGrid_main() {
         colModel: [
             {name: 'rownum', index: 'rownum',sortable: false,fixed: true,hidden:true,key:true},
             {name: 'supp_code', index: 'supp_code',sortable: false,fixed: true,hidden:true},
-            {name: 'supp_name', index: 'supp_name',sortable: false, width: 100,fixed: true},
-            {name: 'part_kind', index: 'part_kind',sortable: false, width: 100,fixed: true},
+            {name: 'supp_name', index: 'supp_name',sortable: false, width: 130,fixed: true},
+            {name: 'part_kind', index: 'part_kind',sortable: false, width: 110,fixed: true},
             {name: 'part_code', index: 'part_code',sortable: false, width: 130,fixed: true},
-            {name: 'part_name', index: 'part_name',sortable: false, width: 140,fixed: true},
+            {name: 'part_name', index: 'part_name',sortable: false, width: 190,fixed: true},
             {name: 'part_weight', index: 'part_weight',sortable: false, width: 100,fixed: true,align: 'right', formatter: 'integer'},
-            {name: 'status', index: 'status',sortable: false, width: 100,fixed: true},
-            {name: 'user_name', index: 'user_name',sortable: false, width: 100,fixed: true},
+            {name: 'status', index: 'status',sortable: false, width: 70,fixed: true},
+            {name: 'user_name', index: 'user_name',sortable: false, width: 60,fixed: true},
             {name: 'update_date', index: 'update_date',sortable: false, width: 140,fixed: true,formatter: formmatterDate}
 
         ],

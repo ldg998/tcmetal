@@ -68,7 +68,7 @@ function update_btn(jqgrid_data) {
         main_data.check = 'U'; // 수정인지 체크
         main_data.check2 = 'N'; // 수정인지 체크
         ccn_ajax('/popPlanWorkDateGet', {keyword:(jqgrid_data.work_date).replace(/[^0-9]/g,''),keyword2:jqgrid_data.line_code}).then(function (data) {
-                    $('#mes_modal1_grid1').jqGrid('clearGridData');
+            $('#mes_modal1_grid1').jqGrid('clearGridData');
             select_makes_base("#modal1_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'1'},'').then(function (data2) {
                 $("#modal1_select1").val(jqgrid_data.line_grp_code).trigger("change");
                 select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:jqgrid_data.line_grp_code},'').then(function (data3) {

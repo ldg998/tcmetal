@@ -65,7 +65,7 @@ function update_btn(jqgrid_data) {
         main_data.check = 'U'; // 수정인지 체크
         main_data.check2 = 'N'; // 수정인지 체크
         ccn_ajax('/popPlanWorkDateGet', {keyword:(jqgrid_data.work_date).replace(/[^0-9]/g,''),keyword2:jqgrid_data.line_code}).then(function (data) {
-                    $('#mes_modal1_grid1').jqGrid('clearGridData');
+            $('#mes_modal1_grid1').jqGrid('clearGridData');
             select_makes_base("#modal1_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'1'},'').then(function (data2) {
                 $("#modal1_select1").val(jqgrid_data.line_grp_code).trigger("change");
                 select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:jqgrid_data.line_grp_code},'').then(function (data3) {
@@ -73,7 +73,6 @@ function update_btn(jqgrid_data) {
                     main_data.check2 = 'Y';
                     $("#datepicker_modal1").val(formmatterDate2((jqgrid_data.work_date).replace(/[^0-9]/g,'')));
                     disabled_tf(["#datepicker_modal1","#modal1_select1","#modal1_select2"],"Y");
-                    $('#mes_modal1_grid1').jqGrid('clearGridData');
                     $("#mes_modal1_grid1").setGridParam({
                         datatype: "local",
                         data: data
@@ -121,7 +120,7 @@ function comp_btn() {
                     if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
                         alert(data.message); // 해당 오류 메세지 출력
                     } else {
-                     $("#mes_grid").trigger("reloadGrid"); // 성공시 기존에 조회했던 조건 그대로 grid를 조회
+                        $("#mes_grid").trigger("reloadGrid"); // 성공시 기존에 조회했던 조건 그대로 grid를 조회
                     }
                     closeWindowByMask(); // 마스크 종료
                 }).catch(function (err) { // 에러 발생 시
@@ -183,18 +182,20 @@ function jqGrid_main() {
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false, key:true, width: 150,fixed: true,hidden:true},
 
-            {name: 'work_date', index: 'work_date', sortable: false, width: 90, fixed: true,formatter:formmatterDate2},
-            {name: 'seq', index: 'seq', sortable: false, width: 40, fixed: true},
-            {name: 'line_name', index: 'line_name', sortable: false, width: 70, fixed: true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130, fixed: true},
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 120, fixed: true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 190, fixed: true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90, fixed: true,align:'right',formatter:'integer'},
-            {name: 'plan_qty', index: 'plan_qty', sortable: false, width: 90, fixed: true,align:'right',formatter:'integer'},
+            {name: 'work_date', index: 'work_date', sortable: false, width: 100, fixed: true,formatter:formmatterDate2},
+            {name: 'seq', index: 'seq', sortable: false, width: 50, fixed: true},
+            {name: 'line_grp_code', index: 'line_grp_code', sortable: false, width: 150, fixed: true,hidden:true},
+            {name: 'line_code', index: 'line_code', sortable: false, width: 150, fixed: true,hidden:true},
+            {name: 'line_name', index: 'line_name', sortable: false, width: 150, fixed: true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150, fixed: true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 150, fixed: true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 150, fixed: true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 100, fixed: true,align:'right',formatter:'integer'},
+            {name: 'plan_qty', index: 'plan_qty', sortable: false, width: 100, fixed: true,align:'right',formatter:'integer'},
             {name: 'weight', index: 'weight', sortable: false, width: 100, fixed: true,align:'right',formatter:'integer'},
             {name: 'status_name', index: 'status_name', sortable: false, width: 50, fixed: true},
             {name: 'lot_no', index: 'lot_no', sortable: false, width: 150, fixed: true},
-            {name: 'work_user_name', index: 'work_user_name', sortable: false, width: 70, fixed: true}
+            {name: 'work_user_name', index: 'work_user_name', sortable: false, width: 100, fixed: true}
         ],
         caption: "생산계획 | MES",
         autowidth: true,

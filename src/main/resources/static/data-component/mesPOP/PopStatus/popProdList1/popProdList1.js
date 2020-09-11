@@ -92,9 +92,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['','업체','기종','품번','품명','단중','생산일자','생산수량'],
+        colNames: ['','공정','업체','기종','품번','품명','단중','생산일자','생산수량'],
         colModel: [
             {name:'seq', index: 'seq',sortable: false,key:true,hidden:true},
+            {name: 'line_name', index: 'line_name', sortable: false, width: 120,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 150,fixed:true},
             {name: 'part_code', index: 'plan_code', sortable: false, width: 150,fixed:true},

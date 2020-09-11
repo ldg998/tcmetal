@@ -146,34 +146,34 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['출고일자', '전표번호', '업체','운송수단', '해상운임','터미널 핸들링비용','환경','쇼링비','부두이용료','서류발급비','하역료','보험료','항만시설보안료','국내운송비','관세대행수수료','목재비1','목재비2','목재비3','순중량','운송단가','선적일자','등록자','등록일시'],
+        colNames: ['선적일자', '전표번호', '업체','운송수단', '해상운임','터미널 핸들링비용','환경','쇼링비','부두이용료','서류발급비','하역료','보험료','항만시설보안료','국내운송비','관세대행수수료','목재비1','목재비2','목재비3','순중량','운송단가','선적일자','등록자','등록일시'],
         colModel: [
-            {name:'out_date', index: 'out_date', width: 100, fixed:true,formatter:formmatterDate2},
-            {name:'out_no', index: 'out_no',  width: 150,key:true, fixed:true},
-            {name:'supp_name', index: 'supp_name',  width: 150, fixed:true},
+            {name:'out_date', index: 'out_date', width: 90, fixed:true,formatter:formmatterDate2},
+            {name:'out_no', index: 'out_no',  width: 120,key:true, fixed:true},
+            {name:'supp_name', index: 'supp_name',  width: 130, fixed:true},
             {name:'trans_name', index: 'trans_name',  width: 100, fixed:true},
-            {name:'ship_cost', index: 'ship_cost',  width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'port_cost1', index: 'port_cost1',  width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'port_cost2', index: 'port_cost2',  width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'port_cost3', index: 'port_cost3',  width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'port_cost4', index: 'port_cost4',  width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'port_cost5', index: 'port_cost5',  width: 100, fixed:true, align: 'right',formatter:'integer'},
+            {name:'ship_cost', index: 'ship_cost',  width: 110, fixed:true, align: 'right',formatter:'integer'},
+            {name:'port_cost1', index: 'port_cost1',  width: 90, fixed:true, align: 'right',formatter:'integer'},
+            {name:'port_cost2', index: 'port_cost2',  width: 90, fixed:true, align: 'right',formatter:'integer'},
+            {name:'port_cost3', index: 'port_cost3',  width: 90, fixed:true, align: 'right',formatter:'integer'},
+            {name:'port_cost4', index: 'port_cost4',  width: 90, fixed:true, align: 'right',formatter:'integer'},
+            {name:'port_cost5', index: 'port_cost5',  width: 90, fixed:true, align: 'right',formatter:'integer'},
             {name:'unloading_cost', index: 'unloading_cost', width: 100, fixed:true, align: 'right',formatter:'integer'},
             {name:'landing_ost', index: 'landing_ost', width: 100, fixed:true, align: 'right',formatter:'integer'},
             {name:'harbor_facility', index: 'harbor_facility', width: 100, fixed:true, align: 'right',formatter:'integer'},
             {name:'local_cost', index: 'local_cost', width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'customs_fee', index: 'customs_fee',  width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'wood_cost1', index: 'wood_cost1', width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'wood_cost2', index: 'wood_cost2', width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'wood_cost3', index: 'wood_cost3', width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'weight', index: 'weight', width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'unit_cost', index: 'unit_cost', width: 100, fixed:true, align: 'right',formatter:'integer'},
-            {name:'ship_date', index: 'ship_date', width: 100, fixed:true,formatter:formmatterDate2},
-            {name:'user_name', index: 'user_name', width: 100, fixed:true},
-            {name:'update_date', index: 'update_date',  width: 150, fixed:true,formatter:formmatterDate},
+            {name:'customs_fee', index: 'customs_fee',  width: 90, fixed:true, align: 'right',formatter:'integer'},
+            {name:'wood_cost1', index: 'wood_cost1', width: 110, fixed:true, align: 'right',formatter:'integer'},
+            {name:'wood_cost2', index: 'wood_cost2', width: 110, fixed:true, align: 'right',formatter:'integer'},
+            {name:'wood_cost3', index: 'wood_cost3', width: 110, fixed:true, align: 'right',formatter:'integer'},
+            {name:'weight', index: 'weight', width: 90, fixed:true, align: 'right',formatter:'integer'},
+            {name:'unit_cost', index: 'unit_cost', width: 90, fixed:true, align: 'right',formatter:'integer'},
+            {name:'ship_date', index: 'ship_date', width: 90, fixed:true,formatter:formmatterDate2},
+            {name:'user_name', index: 'user_name', width: 60, fixed:true},
+            {name:'update_date', index: 'update_date',  width: 140, fixed:true,formatter:formmatterDate},
 
         ],
-        multiselect: true,
+
         caption: '운송비용현황 | MES',
         autowidth: true,
         height: 232,
@@ -189,10 +189,10 @@ function jqGrid_main() {
                 $(".jqgfirstrow").css("height","0px");
         },
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
-            var $myGrid = $(this),
-                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
-                cm = $myGrid.jqGrid('getGridParam', 'colModel');
-            return (cm[i].name === 'cb');
+            // var $myGrid = $(this),
+            //     i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+            //     cm = $myGrid.jqGrid('getGridParam', 'colModel');
+            // return (cm[i].name === 'cb');
         },
 
         });

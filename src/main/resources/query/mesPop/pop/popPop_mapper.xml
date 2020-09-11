@@ -105,7 +105,7 @@
         EXEC SP_POP_PLAN_GET #{page},#{rows},#{start_date},#{end_date},#{keyword2}
     </select>
     <select id="popPlanWorkDateGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
-        EXEC SP_POP_PLAN_WORK_DATE_GET 0,0,#{keyword}
+        EXEC SP_POP_PLAN_WORK_DATE_GET 0,0,#{keyword},#{keyword2}
     </select>
 
     <select id="popPlanDel" resultType="com.mes.Common.DataTransferObject.Message">
@@ -114,6 +114,10 @@
 
     <select id="popPlanAdd2" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_POP_PLAN_ADD2 #{work_date}, #{line_code},#{keyword2},#{user_code},#{keyword}
+    </select>
+
+    <select id="popPlanComp" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_COMP #{keyword}
     </select>
 
 </mapper>

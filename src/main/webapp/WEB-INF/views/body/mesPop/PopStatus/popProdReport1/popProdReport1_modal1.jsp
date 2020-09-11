@@ -52,12 +52,12 @@
                 <td class="wt-7_5 t-align-c td-title padding-a-0">Charge No</td>
                 <td class="wt-15 t-align-c td-title padding-a-0">재질</td>
                 <td class="wt-5 t-align-c td-title padding-a-0">시작시간</td>
-                <td class="wt-6_5"><input type="text" name="start_time" class="form-control  modal_value" autocomplete="off" placeholder="11:30 ▼" ></td>
+                <td class="wt-6_5"><input type="text" name="start_time" class="form-control  modal_value" autocomplete="off" ></td>
                 <td class="wt-5 t-align-c td-title padding-a-0" rowspan="2">사용전력</td>
 
                 <td class="wt-5 t-align-c td-title padding-a-0">시작</td>
-                <td class="wt-13"> <input type="text" name="kwa_start1" class="form-control  modal_value" onchange="keyup_formmatterDate3(this)" autocomplete="off" ></td>
-                <td class="wt-13"><input type="text" name="kwa_start2" class="form-control  modal_value" onchange="keyup_formmatterDate3(this)"autocomplete="off" > </td>
+                <td class="wt-13"> <input type="text" name="kwa_start1" class="form-control  modal_value" autocomplete="off" ></td>
+                <td class="wt-13"><input type="text" name="kwa_start2" class="form-control  modal_value"autocomplete="off" > </td>
                 <td class="wt-13"><input type="text" name="" class="form-control  modal_value" autocomplete="off" placeholder="KWA" ></td>
 
                 <td></td>
@@ -66,7 +66,7 @@
                 <td class="wt-7_5">
                     <div class="input-icon input-icon-right">
                     <input type="text" name="work_date" id="datepicker_modal1"
-                           class="form-control h-25 modal_value" onchange="keyup_formmatterDate2(this)" readonly>
+                           class="form-control h-25 modal_value"  readonly>
                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                 </div>
                 </td>
@@ -74,12 +74,12 @@
                 <td class="wt-7_5"><input type="text" name="charge" class="form-control  modal_value" autocomplete="off" ></td>
                 <td class="wt-15"><input type="text" name="mat_group" class="form-control  modal_value" autocomplete="off" ></td>
                 <td class="wt-5 t-align-c td-title padding-a-0">종료시간</td>
-                <td class="wt-6_5"><input type="text" name="stop_time" class="form-control  modal_value" autocomplete="off" placeholder="11:30 ▼" > </td>
+                <td class="wt-6_5"><input type="text" name="stop_time" class="form-control  modal_value" autocomplete="off" > </td>
 
 
                 <td class="wt-5 t-align-c td-title padding-a-0">종료</td>
-                <td class="wt-13"><input type="text" name="kwa_stop1" class="form-control  modal_value" onchange="keyup_formmatterDate3(this)" autocomplete="off" ></td>
-                <td class="wt-13"><input type="text" name="kwa_stop2" class="form-control  modal_value" onchange="keyup_formmatterDate3(this)" autocomplete="off" ></td>
+                <td class="wt-13"><input type="text" name="kwa_stop1" class="form-control  modal_value" autocomplete="off" ></td>
+                <td class="wt-13"><input type="text" name="kwa_stop2" class="form-control  modal_value"  autocomplete="off" ></td>
                 <td class="wt-13"><input type="text" name="" class="form-control  modal_value" autocomplete="off" placeholder="KWA" ></td>
                 <td></td>
             </tr>

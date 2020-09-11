@@ -16,6 +16,7 @@ public class SYS_SPART_CD {
     private String part_size;
     private int unit_cost;
     private String currency_code;
+    private String currency_name;
     private String route_code;
     private String outs_supp_code;
     private String trans_code;

@@ -123,8 +123,8 @@ function jqGrid_main() {
         colModel: [ // grid row 의 설정할 데이터 설정
             {name: 'loc_code', index: 'loc_code', key:true, width: 150,fixed:true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name: 'loc_name', index: 'loc_name', width: 150,fixed:true},   // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name: 'user_name', index: 'user_name', width: 150,fixed:true}, // fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name: 'update_date', index: 'update_date', width: 180,formatter: formmatterDate,fixed:true} // formatter 사용을 통해 데이터 형식 가공
+            {name: 'user_name', index: 'user_name', width: 60,fixed:true}, // fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name: 'update_date', index: 'update_date', width: 140,formatter: formmatterDate,fixed:true} // formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "로케이션관리 | MES",// grid 제목
         autowidth: true, // 그리드 자동 가로 길이 설정

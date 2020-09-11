@@ -114,14 +114,14 @@ function jqGrid_main() {
         colNames : ['','출고일자','품번','품명','규격','단위','수량','등록자','등록일시'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'out_no',index:'out_no',sortable: false,hidden:true, key:true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'work_date',index:'work_date' ,sortable: false,width:100,fixed: true,formatter: formmatterDate2},
-            {name:'part_code',index:'part_code',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'part_name',index:'part_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'spec',index:'spec',sortable: false,width:150,fixed: true},
-            {name:'unit_name',index:'unit_name',sortable: false,width:80,fixed: true},
-            {name:'qty',index:'qty',sortable: false,width:80,fixed: true,formatter:'integer'},
-            {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
-            {name:'update_date',index:'update_date',sortable: false,width:180,fixed: true,formatter: formmatterDate}// formatter 사용을 통해 데이터 형식 가공
+            {name:'work_date',index:'work_date' ,sortable: false,width:90,fixed: true,formatter: formmatterDate2},
+            {name:'part_code',index:'part_code',sortable: false,width:130,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'part_name',index:'part_name',sortable: false,width:190,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'spec',index:'spec',sortable: false,width:110,fixed: true},
+            {name:'unit_name',index:'unit_name',sortable: false,width:90,fixed: true},
+            {name:'qty',index:'qty',sortable: false,width:90,fixed: true,align: 'right', formatter: 'integer' },
+            {name:'user_name',index:'user_name',sortable: false,width:60,fixed: true},
+            {name:'update_date',index:'update_date',sortable: false,width:140,fixed: true,formatter: formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "자재출고 | MES",// grid 제목
         multiselect: true,  // 다중선택 가능

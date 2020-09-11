@@ -160,20 +160,20 @@ function jqGrid_main() {
         colModel: [
             {name: 'part_type', index: 'part_type',hidden:true, sortable: false},
             {name: 'supp_code', index: 'supp_code',hidden:true, sortable: false},
-            {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 80,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name: 'part_code', index: 'part_code', key:true, sortable: false, width: 100,fixed: true},// sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name: 'part_name', index: 'part_name', sortable: false, width: 150,fixed: true}, // fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name: 'spec', index: 'spec', sortable: false, width: 180,fixed: true},            // formatter 사용을 통해 데이터 형식 가공
-            {name: 'unit_name', index: 'unit_name', sortable: false, width: 100,fixed: true},
-            {name: 'qc_level_name', index: 'user_name_name', sortable: false, width: 100,fixed: true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed: true},
-            {name: 'supp_name2', index: 'supp_name2', sortable: false, width: 150,fixed: true},
-            {name: 'supp_name3', index: 'supp_name3', sortable: false, width: 150,fixed: true},
-            {name: 'supp_name4', index: 'supp_name4', sortable: false, width: 150,fixed: true},
-            {name: 'supp_name5', index: 'supp_name5', sortable: false, width: 150,fixed: true},
+            {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 50,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name: 'part_code', index: 'part_code', key:true, sortable: false, width: 110,fixed: true},// sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed: true}, // fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name: 'spec', index: 'spec', sortable: false, width: 110,fixed: true},            // formatter 사용을 통해 데이터 형식 가공
+            {name: 'unit_name', index: 'unit_name', sortable: false, width: 60,fixed: true},
+            {name: 'qc_level_name', index: 'user_name_name', sortable: false, width: 70,fixed: true},
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed: true},
+            {name: 'supp_name2', index: 'supp_name2', sortable: false, width: 130,fixed: true},
+            {name: 'supp_name3', index: 'supp_name3', sortable: false, width: 130,fixed: true},
+            {name: 'supp_name4', index: 'supp_name4', sortable: false, width: 130,fixed: true},
+            {name: 'supp_name5', index: 'supp_name5', sortable: false, width: 130,fixed: true},
             {name: 'loc_name', index: 'loc_name', sortable: false, width: 100,fixed: true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 100,fixed: true},
-            {name: 'update_date', index: 'update_date', width: 180, sortable: false, formatter: formmatterDate,fixed: true}
+            {name: 'user_name', index: 'user_name', sortable: false, width: 60,fixed: true},
+            {name: 'update_date', index: 'update_date', width: 140, sortable: false, formatter: formmatterDate,fixed: true}
 
 
         ],

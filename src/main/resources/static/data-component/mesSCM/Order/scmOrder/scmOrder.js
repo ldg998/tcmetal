@@ -201,14 +201,14 @@ function jqGrid_main() {  //메인 jqGrid
         colModel: [
             {name: 'supp_code', index: 'supp_code', sortable: false, hidden:true},
             {name: 'status', index: 'status', sortable: false, hidden:true},
-            {name: 'work_date', index: 'work_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 100}, // formatter 사용을 통해 데이터 형식 가공
+            {name: 'work_date', index: 'work_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 90}, // formatter 사용을 통해 데이터 형식 가공
             {name: 'ord_no', index: 'ord_no', sortable: false, key: true, fixed: true, width: 130},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {name: 'supp_name', index: 'supp_name', sortable: false, fixed: true, width: 130},
-            {name: 'status_name', index: 'status_name', sortable: false, fixed: true, width: 100},
-            {name: 'delivery_date', index: 'delivery_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 200},
+            {name: 'status_name', index: 'status_name', sortable: false, fixed: true, width: 70},
+            {name: 'delivery_date', index: 'delivery_date', sortable: false, formatter: formmatterDate2, fixed: true, width: 90},
             {name: 'delivery_place', index: 'delivery_place', sortable: false, fixed: true, width: 150},
-            {name: 'user_name', index: 'user_name', sortable: false, fixed: true, width: 100},
-            {name: 'update_date', index: 'update_date', sortable: false,fixed:  true,width: 150,formatter: formmatterDate}
+            {name: 'user_name', index: 'user_name', sortable: false, fixed: true, width: 60},
+            {name: 'update_date', index: 'update_date', sortable: false,fixed:  true,width: 140,formatter: formmatterDate}
         ],
         autowidth: true, // 그리드 자동 가로 길이 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
@@ -251,10 +251,10 @@ function jqGrid_main() {  //메인 jqGrid
         caption: '발주등록 | MES',
         colNames: ['구분', '품번', '품명', '규격', '단위', '발주수량', '입고수량', '미입고'],
         colModel: [
-            {name: 'part_type_name', index: 'part_type_name', width: 120,fixed:  true, sortable: false},
+            {name: 'part_type_name', index: 'part_type_name', width: 50,fixed:  true, sortable: false},
             {name: 'part_code', index: 'part_code', width: 120,fixed:  true,sortable: false},
-            {name: 'part_name', index: 'part_name', width: 120,fixed:  true,sortable: false},
-            {name: 'spec', index: 'spec',  width: 60,fixed:  true,sortable: false},
+            {name: 'part_name', index: 'part_name', width: 190,fixed:  true,sortable: false},
+            {name: 'spec', index: 'spec',  width: 110,fixed:  true,sortable: false},
             {name: 'unit_name', index: 'unit_name', width: 60,fixed:  true,sortable: false},
             {name: 'ord_qty', index: 'ord_qty',width: 60,fixed:  true, sortable: false, align: 'right',formatter:'integer'},
             {name: 'qty', index: 'qty', width: 60,fixed:  true, sortable: false, align: 'right',formatter:'integer'},

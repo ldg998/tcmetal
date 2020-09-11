@@ -165,11 +165,11 @@ function jqGrid_main() {  //메인 jqGrid
         caption: '자재입고 | MES', // grid 제목
         colNames: ['입고일자','전표번호','업체명','등록자','등록일시'], // grid 헤더 설정
         colModel: [
-            {name: 'work_date', index: "work_date", sortable: false, fixed: true, width: 100, formatter: formmatterDate2}, // formatter 사용을 통해 데이터 형식 가공
-            {name: 'in_no', index: 'in_no', sortable: false, key: true, fixed: true, width: 150},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name: 'supp_name', index: 'supp_name', sortable: false, fixed: true, width: 120},
-            {name: 'user_name', index: 'user_name', sortable: false, fixed: true, width: 80},
-            {name: 'update_date', index: 'update_date', sortable: false, fixed: true, width: 150, formatter: formmatterDate}
+            {name: 'work_date', index: "work_date", sortable: false, fixed: true, width: 90, formatter: formmatterDate2}, // formatter 사용을 통해 데이터 형식 가공
+            {name: 'in_no', index: 'in_no', sortable: false, key: true, fixed: true, width: 120},               // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name: 'supp_name', index: 'supp_name', sortable: false, fixed: true, width: 130},
+            {name: 'user_name', index: 'user_name', sortable: false, fixed: true, width: 60},
+            {name: 'update_date', index: 'update_date', sortable: false, fixed: true, width: 140, formatter: formmatterDate}
         ],
         autowidth: true, // 그리드 자동 가로 길이 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
@@ -208,12 +208,12 @@ function jqGrid_main() {  //메인 jqGrid
         caption: '자재입고 | MES',
         colNames: ['구분', '품번', '품명', '규격', '단위', '입고수량','LOT'],
         colModel: [
-            {name: 'part_type_name', index: 'part_type_name', sortable: false, fixed: true, width: 100},
-            {name: 'part_code', index: 'part_code', sortable: false, fixed: true, width: 100},
-            {name: 'part_name', index: 'part_name', sortable: false, fixed: true, width: 100},
-            {name: 'spec', index: 'spec', sortable: false, fixed: true, width: 100},
-            {name: 'unit_name', index: 'unit_name', sortable: false, fixed: true, width: 100},
-            {name: 'qty', index: 'qty', sortable: false, align: 'right', fixed: true, width: 100 ,formatter:'integer'},
+            {name: 'part_type_name', index: 'part_type_name', sortable: false, fixed: true, width: 50},
+            {name: 'part_code', index: 'part_code', sortable: false, fixed: true, width: 120},
+            {name: 'part_name', index: 'part_name', sortable: false, fixed: true, width: 190},
+            {name: 'spec', index: 'spec', sortable: false, fixed: true, width: 110},
+            {name: 'unit_name', index: 'unit_name', sortable: false, fixed: true, width: 70},
+            {name: 'qty', index: 'qty', sortable: false, align: 'right', fixed: true, width: 90 ,formatter:'integer'},
             {name: 'lot', index: 'lot', sortable: false, align: 'right', fixed: true, width: 100}
         ],
         autowidth: true,

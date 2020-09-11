@@ -150,7 +150,8 @@ public class PopRestController {
         return popService.popPlanWorkDateGet(p);
     }
 
-
+    @RequestMapping(value = "/popPlanComp", method = RequestMethod.POST)
+    public Message popPlanComp(Page p) {return popService.popPlanComp(p);}
 
 }
 

@@ -68,4 +68,6 @@ public interface MesPopPopMapper {
     Message popPlanDel(Page p);
 
     Message popPlanAdd2(POP_PLAN pp);
+
+    Message popPlanComp(Page p);
 }

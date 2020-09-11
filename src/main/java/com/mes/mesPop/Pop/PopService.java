@@ -166,4 +166,8 @@ public class PopService extends ReturnFunction {
         pp.setUser_code(getSessionData(req).getUser_code());
         return mesPopPopMapper.popPlanAdd2(pp);
     }
+
+    public Message popPlanComp(Page p) {
+        return mesPopPopMapper.popPlanComp(p);
+    }
 }

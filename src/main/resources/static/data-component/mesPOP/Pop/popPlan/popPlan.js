@@ -64,13 +64,14 @@ function update_btn(jqgrid_data) {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
         main_data.check = 'U'; // 수정인지 체크
         main_data.check2 = 'N'; // 수정인지 체크
-        ccn_ajax('/popPlanWorkDateGet', {keyword:(jqgrid_data.work_date).replace(/[^0-9]/g,'')}).then(function (data) {
+        ccn_ajax('/popPlanWorkDateGet', {keyword:(jqgrid_data.work_date).replace(/[^0-9]/g,''),keyword2:jqgrid_data.line_code}).then(function (data) {
+                    $('#mes_modal1_grid1').jqGrid('clearGridData');
             select_makes_base("#modal1_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'1'},'').then(function (data2) {
-                $("#modal1_select1").val(data[0].line_grp_code).trigger("change");
-                select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].line_grp_code},'').then(function (data3) {
-                    $("#modal1_select2").val(data[0].line_code).trigger("change");
+                $("#modal1_select1").val(jqgrid_data.line_grp_code).trigger("change");
+                select_makes_base("#modal1_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:jqgrid_data.line_grp_code},'').then(function (data3) {
+                    $("#modal1_select2").val(jqgrid_data.line_code).trigger("change");
                     main_data.check2 = 'Y';
-                    $("#datepicker_modal1").val(formmatterDate2(data[0].work_date));
+                    $("#datepicker_modal1").val(formmatterDate2((jqgrid_data.work_date).replace(/[^0-9]/g,'')));
                     disabled_tf(["#datepicker_modal1","#modal1_select1","#modal1_select2"],"Y");
                     $('#mes_modal1_grid1').jqGrid('clearGridData');
                     $("#mes_modal1_grid1").setGridParam({
@@ -82,10 +83,55 @@ function update_btn(jqgrid_data) {
 
                 });
             });
+
+            if (data.length  === 0){
+                modal1_rowAdd('');
+            }
         });
 
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
+    }
+}
+
+
+
+function comp_btn() {
+    if(main_data.auth.check_edit != "N") { // 권한체크
+        var gu5 = String.fromCharCode(5); // CHAR(5) 구분자 선언
+        var gu4 = String.fromCharCode(4); // CHAR(5) 구분자 선언
+        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
+
+        if (ids.length === 0) { // 선택된 그리드 row가 없을 경우
+            alert("완료처리 데이터를 선택 해주세요"); // 경고문 출력
+        } else {
+
+            var list = [];
+            var jdata  ={};
+            for(var i = 0; i < ids.length; i++){
+                jdata = $('#mes_grid').jqGrid('getRowData', ids[i]);
+                list.push((jdata.work_date).replace(/[^0-9]/g,'')+gu4+jdata.line_code + gu4 +jdata.seq)
+            }
+
+
+            if (confirm("완료처리 하시겠습니까?")) { // 삭제여부 확인 메세지 출력
+                wrapWindowByMask2(); // 마스크로 화면 덮음 / 삭제중 다른 작업을 할 수 없도록 방지
+                // ajax 통신 함수 url과 data 를 전달하여 promise로 실행 후 가공 data를 사용할 수 있도록 설정
+                ccn_ajax("/popPlanComp", {keyword: list.join(gu5)}).then(function (data) {
+                    if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
+                        alert(data.message); // 해당 오류 메세지 출력
+                    } else {
+                     $("#mes_grid").trigger("reloadGrid"); // 성공시 기존에 조회했던 조건 그대로 grid를 조회
+                    }
+                    closeWindowByMask(); // 마스크 종료
+                }).catch(function (err) { // 에러 발생 시
+                    closeWindowByMask(); // 마스크 종료
+                    console.error(err); // Error 출력
+                });
+            }
+        }
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1); // 권한 이 없을 경우 해당 메세지 출력
     }
 }
 
@@ -133,9 +179,9 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['rownum','계획일자','순번','라인','업체','기종','품명','단중','수량','중량','제품LOT','작업자'],
+        colNames: ['rownum','계획일자','순번','라인그룹','라인','라인','업체','기종','품명','단중','수량','중량','상태','제품LOT','작업자'],
         colModel: [
-            {name: 'rownum', index: 'rownum', sortable: false, key:true,fixed: true,hidden:true},
+            {name: 'rownum', index: 'rownum', sortable: false, key:true, width: 150,fixed: true,hidden:true},
 
             {name: 'work_date', index: 'work_date', sortable: false, width: 90, fixed: true,formatter:formmatterDate2},
             {name: 'seq', index: 'seq', sortable: false, width: 40, fixed: true},
@@ -146,6 +192,7 @@ function jqGrid_main() {
             {name: 'part_weight', index: 'part_weight', sortable: false, width: 90, fixed: true,align:'right',formatter:'integer'},
             {name: 'plan_qty', index: 'plan_qty', sortable: false, width: 90, fixed: true,align:'right',formatter:'integer'},
             {name: 'weight', index: 'weight', sortable: false, width: 100, fixed: true,align:'right',formatter:'integer'},
+            {name: 'status_name', index: 'status_name', sortable: false, width: 50, fixed: true},
             {name: 'lot_no', index: 'lot_no', sortable: false, width: 150, fixed: true},
             {name: 'work_user_name', index: 'work_user_name', sortable: false, width: 70, fixed: true}
         ],
@@ -156,6 +203,13 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         rowNum: 100,
         viewrecords: true,
+        multiselect: true, // 다중선택 가능
+        beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
+            var $myGrid = $(this),
+                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                cm = $myGrid.jqGrid('getGridParam', 'colModel');
+            return (cm[i].name === 'cb');
+        },
         loadComplete:function(){
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");

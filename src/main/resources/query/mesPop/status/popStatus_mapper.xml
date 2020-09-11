@@ -136,6 +136,10 @@
     EXEC SP_SYS_PROD_HR_DEL2 #{keyword}
     </select>
 
+<select id="popProdList2SubGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_PROD_LIST2_SUB_GET #{page},#{rows},#{work_date},#{supp_code},#{part_code},#{part_kind},#{line_code}
+    </select>
+
 
 
 

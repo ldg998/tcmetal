@@ -60,4 +60,6 @@ public interface MesPopStatusMapper {
     List<List<Object>> popProdMeltGet(POP_PLAN pp);
 
     Message sysProdHrDel2(POP_PLAN pp);
+
+    List<POP_PLAN> popProdList2SubGet(POP_PLAN pp);
 }

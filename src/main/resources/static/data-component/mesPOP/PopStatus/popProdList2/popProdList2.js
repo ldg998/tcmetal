@@ -52,12 +52,25 @@ function excel_download() {
 }
 
 function get_btn(page) {
+    $("#mes_grid2").jqGrid('clearGridData');
     main_data.send_data = value_return(".condition_main");
     $("#mes_grid").setGridParam({
         url: '/popProdList2Get',
         datatype: "json",
         page: page,
         postData: main_data.send_data
+    }).trigger("reloadGrid");
+}
+
+
+//선택한 그리드의 로우 id를사용해 해당id 와같은 id 를 그리드조회
+function under_get(data) {
+    data.work_date = data.work_date.replace(/\-/g, '');
+    $("#mes_grid2").setGridParam({
+        url: '/popProdList2SubGet',
+        datatype: "json",
+        page: 1,
+        postData: data
     }).trigger("reloadGrid");
 }
 
@@ -83,8 +96,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['작업일자','공정','업체','기종','품번','품명','단중','지시수량','생산수량','등록자','등록일시'],
+        colNames: ['','','작업일자','공정','업체','기종','품번','품명','단중','지시수량','생산수량','등록자','등록일시'],
         colModel: [
+            {name: 'supp_code', index: 'supp_code', hidden:true, sortable: false,fixed:true},
+            {name: 'line_code', index: 'line_code', hidden:true, sortable: false,fixed:true},
             {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2 },
             {name: 'line_name', index: 'dept_name', sortable: false, width: 150,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
@@ -100,12 +115,41 @@ function jqGrid_main() {
         ],
         caption: "공정별 생산현황 | MES",
         autowidth: true,
-        height: 562,
+        height: 230,
         pager: '#mes_grid_pager',
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
-        viewrecords: true
+        viewrecords: true,
+        onCellSelect: function (rowid, icol, cellcontent, e) { //클릭시 이벤트 아래그리드 get
+            var data = $('#mes_grid').jqGrid('getRowData', rowid);
+            under_get(data);
+        }
     }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
+
+    $('#mes_grid2').jqGrid({
+        mtype: 'POST',
+        datatype: "local",
+        colNames: ['생산일자','업체','기종','품번','품명','LOT'],
+        colModel: [
+            {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2 },
+            {name: 'supp_name', index: 'dept_name', sortable: false, width: 130,fixed:true},
+            {name: 'part_kind', index: 'supp_name', sortable: false, width: 120,fixed:true},
+            {name: 'part_code', index: 'part_kind', sortable: false, width: 130,fixed:true},
+            {name: 'part_name', index: 'part_code', sortable: false, width: 190,fixed:true},
+            {name: 'lot_no', index: 'part_name', sortable: false, width: 120,fixed:true},
+
+
+        ],
+        caption: "공정별 생산현황 | MES",
+        autowidth: true,
+        height: 230,
+        pager: '#mes_grid_pager2',
+        rowNum: 100,
+        rowList: [100, 200, 300, 500, 1000],
+        viewrecords: true
+    }).navGrid('#mes_grid_pager2', {search: false, add: false, edit: false, del: false});
+
+
 }
 
 function select_box() {

@@ -92,8 +92,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['업체','기종','품번','품명','단중','생산일자','생산수량'],
+        colNames: ['','공정','업체','기종','품번','품명','단중','생산일자','생산수량'],
         colModel: [
+            {name:'seq', index: 'seq',sortable: false,key:true,hidden:true},
+            {name: 'line_name', index: 'line_name', sortable: false, width: 120,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 150,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 150,fixed:true},
             {name: 'part_code', index: 'plan_code', sortable: false, width: 150,fixed:true},
@@ -111,11 +113,7 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
-            var $myGrid = $(this),
-                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
-                cm = $myGrid.jqGrid('getGridParam', 'colModel');
-            return (cm[i].name === 'cb');
-        },
+            },
         loadComplete : function(data) {
             console.log(data);
             data.rows.forEach(function (idsfor, s) {
@@ -123,7 +121,6 @@ function jqGrid_main() {
                     $("#mes_grid").setRowData(idsfor.seq, false, {background:"rgb(155, 185, 239)"}) ;
                 }
             });
-
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");
             else

@@ -162,4 +162,9 @@ public class PopStatusService extends UploadFunction {
     public Message sysProdHrDel2(HttpServletRequest req, POP_PLAN pp) {
         return mesPopStatusMapper.sysProdHrDel2(pp);
     }
+
+    public RESTful popProdList2SubGet(Page p, POP_PLAN pp) {
+        List<POP_PLAN> rows = mesPopStatusMapper.popProdList2SubGet(pp);
+        return getListData(rows, p);
+    }
 }

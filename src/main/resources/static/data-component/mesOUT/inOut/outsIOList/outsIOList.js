@@ -39,8 +39,6 @@ function get_btn(page) {
     main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, ''); //가져온 날짜데이터 가공 2020-06-01 = 20200601
     main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');   ////가져온 날짜데이터 가공 2020-06-01 = 20200601
 
-
-
     $("#mes_grid").setGridParam({ // 그리드 조회
         url: '/outsIOGet',
         datatype: "json",

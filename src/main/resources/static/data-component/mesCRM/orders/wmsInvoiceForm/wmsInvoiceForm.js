@@ -160,10 +160,10 @@ function jqGrid_main() {
             {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name:'supp_code',index:'supp_code',hidden:true,sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name:'rpt_name',index:'rpt_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'trans_name',index:'trans_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'trans_name',index:'trans_name',sortable: false,width:80,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name:'trans_code',index:'trans_code',hidden:true,sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true},
-            {name:'update_date',index:'update_date',sortable: false,width:150,fixed: true,formatter: formmatterDate}
+            {name:'user_name',index:'user_name',sortable: false,width:60,fixed: true},
+            {name:'update_date',index:'update_date',sortable: false,width:140,fixed: true,formatter: formmatterDate}
         ],
         caption: "인보이스양식 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정

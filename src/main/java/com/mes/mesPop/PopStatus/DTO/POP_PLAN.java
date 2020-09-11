@@ -50,6 +50,8 @@ public class POP_PLAN {
     private double test_value8;
     private double test_value9;
 
+    private int page;
+    private int rows;
 
     private int rownum;
     private int rownum_page;

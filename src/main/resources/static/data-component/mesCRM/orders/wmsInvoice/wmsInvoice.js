@@ -217,22 +217,22 @@ function jqGrid_main() {
         colNames : ['rownum','출고일자','출시번호','수주번호','업체','업체','check','PO','기종','품번','품명','단중','수량','INVOICE','운송수단','등록자','등록일시'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'rownum',index:'rownum',key: true ,sortable: false,width:100,fixed: true,hidden:true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'work_date',index:'work_date',sortable: false,width:80,fixed: true, formatter: formmatterDate2}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'req_no',index:'req_no',sortable: false,width:130,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'ord_no',index:'ord_no',sortable: false,width:130,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'supp_name',index:'supp_name',sortable: false,width:100,fixed: true},
+            {name:'work_date',index:'work_date',sortable: false,width:90,fixed: true, formatter: formmatterDate2}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'req_no',index:'req_no',sortable: false,width:120,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'ord_no',index:'ord_no',sortable: false,width:120,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'supp_name',index:'supp_name',sortable: false,width:130,fixed: true},
             {name:'supp_code',index:'supp_code',sortable: false,width:150,fixed: true,hidden:true},
             {name:'iu_check',index:'iu_check',sortable: false,width:150,fixed: true,hidden:true},
             {name:'po_no',index:'po_no',sortable: false,width:130,fixed: true},
-            {name:'part_kind',index:'part_kind',sortable: false,width:100,fixed: true},
-            {name:'part_code',index:'part_code',sortable: false,width:120,fixed: true},
-            {name:'part_name',index:'part_name',sortable: false,width:120,fixed: true},
-            {name:'part_weight',index:'part_weight',sortable: false,width:100,fixed: true, align: 'right',formatter:'integer'},
-            {name:'qty',index:'qty',sortable: false,width:100,fixed: true, align: 'right',formatter:'integer'},
+            {name:'part_kind',index:'part_kind',sortable: false,width:110,fixed: true},
+            {name:'part_code',index:'part_code',sortable: false,width:130,fixed: true},
+            {name:'part_name',index:'part_name',sortable: false,width:190,fixed: true},
+            {name:'part_weight',index:'part_weight',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
+            {name:'qty',index:'qty',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
             {name:'rpt_name',index:'rpt_name',sortable: false,width:130,fixed: true},
-            {name:'trans_name',index:'trans_name',sortable: false,width:100,fixed: true},
-            {name:'user_name',index:'user_name',sortable: false,width:80,fixed: true},
-            {name:'update_date',index:'update_date',sortable: false,width:150,fixed: true, formatter: formmatterDate}
+            {name:'trans_name',index:'trans_name',sortable: false,width:80,fixed: true},
+            {name:'user_name',index:'user_name',sortable: false,width:60,fixed: true},
+            {name:'update_date',index:'update_date',sortable: false,width:140,fixed: true, formatter: formmatterDate}
         ],
         caption: "인보이스 관리 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정

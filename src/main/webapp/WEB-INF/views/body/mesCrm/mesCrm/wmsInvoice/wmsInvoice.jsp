@@ -7,9 +7,11 @@
         charset="UTF-8"></script>
 <!-- 스크립트 파일 import -->
 <script type="text/javascript" src="/data-component/common/pdf_ex/js/pdfmake/vfs_fonts.js" charset="UTF-8"></script>
-
+<script src="/data-component/common/html2canvas.js"></script>
 <script type="text/javascript" src="/data-component/mesCRM/orders/wmsInvoice/wmsInvoice.js" charset="UTF-8"></script> <%--스크립트 파일 import--%>
 <!-- body 해당 전체 컨테이너 div 영역 -->
+<div id="progressbar1" data-value="0"></div>
+
 <div class="main-content-inner">
     <!-- 전체 컨테이너 div 안 페이지 영역 -->
     <div class="page-content">
@@ -62,13 +64,12 @@
                     <a   class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
                         tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="invoice_btn();">
                         <span>
-
                             <span>인보이스</span>
                         </span>
                     </a>
 
                     <a   class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="">
+                        tabindex="0" aria-controls="dynamic-table" data-original-title=""  title="" onclick="packing_list_btn();">
                         <span>
 
                             <span>패킹리스트</span>

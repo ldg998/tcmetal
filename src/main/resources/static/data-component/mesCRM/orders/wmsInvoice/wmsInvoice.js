@@ -467,8 +467,8 @@ function packing_list_btn() {
         var dataURL = canvas.toDataURL("image/png");
 
         var margin = [23, 0, 0, 0]
-        var margin2 = [-50, 0, 0, 0]
-
+        var margin2 = [0, 0, 100, 0]
+        var margin3 = [0, 0, 0, 0]
 
         var documentDefinition = {
             content: [
@@ -502,7 +502,7 @@ function packing_list_btn() {
                             {
                                 style: 'nomal',
                                 table: {
-                                    widths: ['110%'], heights: [60], body: [
+                                    widths: ['110%'], heights: [70], body: [
                                         [
                                             {
                                                 text: 'Seller \n TAECHANG  METAL  INDUSTRY  CO.,LTD \n 1257, DONGAN-RO, YEONMU-EUP, NONSAN CITY \n CHUNG-NAM,33010,KOREA  \n TEL : 82-41-742-8155 \n FAX : 82-41-742-9343',
@@ -516,7 +516,7 @@ function packing_list_btn() {
                             {
                                 style: 'nomal',
                                 table: {
-                                    widths: ['110%'], heights: [60], body: [
+                                    widths: ['110%'], heights: [70], body: [
                                         [
                                             {
                                                 text: 'Consignee \n SHIBAURA MACHINE CO.,LTD \n 2068-3, OOKA NUMAZU-SHI \n SHIZUOKA-KEN, 410-8510, JAPAN \n TEL : 055-926-5160 \n FAX : 055-925-6502',
@@ -530,7 +530,7 @@ function packing_list_btn() {
                             {
                                 style: 'nomal',
                                 table: {
-                                    widths: ['110%'], heights: [35], body: [
+                                    widths: ['110%'], heights: [45], body: [
                                         [
                                             {
                                                 text: 'Departure  Date :  \n              MAY. 17 ,2020',
@@ -544,7 +544,7 @@ function packing_list_btn() {
                             {
                                 style: 'nomal',
                                 table: {
-                                    widths: ['110%'], heights: [20], body: [
+                                    widths: ['110%'], heights: [25], body: [
                                         [
                                             {
                                                 text: 'Vessel/VOY.: DONGJIN NAGOYA 0020E\n From              BUSAN, KOREA',
@@ -558,7 +558,7 @@ function packing_list_btn() {
                             {
                                 style: 'nomal',
                                 table: {
-                                    widths: ['110%'], heights: [10], body: [
+                                    widths: ['110%'], heights: [15], body: [
                                         [
                                             {
                                                 text: 'To                  YOKOHAMA , JAPAN',
@@ -592,7 +592,7 @@ function packing_list_btn() {
                                 margin: margin,
                                 table: {
 
-                                    widths: ['*'], heights: [15], body: [
+                                    widths: ['*'], heights: [20], body: [
                                         [
                                             {text: 'No. & Date of  L/C', border: [true, true, true, false]},
 
@@ -605,7 +605,7 @@ function packing_list_btn() {
                                 margin: margin,
                                 table: {
 
-                                    widths: ['*'], heights: [20], body: [
+                                    widths: ['*'], heights: [30], body: [
                                         [
                                             {text: 'L/C  Issuing  Bank', border: [true, true, true, false]},
 
@@ -618,7 +618,7 @@ function packing_list_btn() {
                                 margin: margin,
                                 table: {
 
-                                    widths: ['*'], heights: [84], body: [
+                                    widths: ['*'], heights: [99], body: [
                                         [
                                             {
                                                 text: 'Buyer NOTIFY \n 2-2,UCHISAIWAICHOU 2-CHOME, CHIYODA-KU \n KU, TOKYO 100-8503, JAPAN \n SHIBAURA MACHINE CO., LTD \n ATTN. MR. SHIGERU TANAKA \n TEL:03-3509-0230   FAX:03-3509-0336',
@@ -634,7 +634,7 @@ function packing_list_btn() {
                                 margin: margin,
                                 table: {
 
-                                    widths: ['*'], heights: [36], body: [
+                                    widths: ['*'], heights: [46], body: [
                                         [
                                             {
                                                 text: 'Terms of Delivery and Payment \n     CIF   YOKOHAMA, JAPAN',
@@ -651,67 +651,106 @@ function packing_list_btn() {
                 }, //2번째 몸통
                 {
                     style: 'nomal',
-                            table: {
-                                widths: [80, 0, 80, 80, 80, 80, 80],
-                                body: [
-                                    border_all_false([{text: ''}, {text: ''}, {text: 'Description of Goods'}, {text: 'Quantity'}, {text: 'SIZE(cm)/BOX'}, {text: 'Net Weight'}, {text: 'Gross Weight'}]),
-                                    border_all_false([{text: 'Shipping Marks'}, {text: ''}, {text: '\n Parts for Machine Tools'}, {text: ''}, {text: '( W * L * H )'}, {text: ''}, {text: ''}]),
-                                ],//end body
-                            }
+                    table: {
+                        widths: [80, 40, 90, 70, 70, 70, 70],
+                        body: [
+                            border_all_false([{text: 'Shipping Marks'}, {text: ''}, {text: 'Description of Goods'}, {text: 'Quantity'}, {text: 'SIZE(cm)/BOX'}, {text: '  Net Weight'}, {text: 'Gross Weight'}]),
+                            border_all_false([{text: ''}, {text: ''}, {text: ' Parts for Machine Tools'}, {text: ''}, {text: '( W * L * H )'}, {text: ''}, {text: ''}]),
+                        ],//end body
+                    }
 
                 }, //테이블 그리기 테이블표 해더
 
 
-                { alignment: 'justify',
+                {
                     columns: [
-                        [
-                            { style: 'nomal',text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA \n'},
-                            { style: 'nomal',text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA \n'},
-                            { style: 'nomal',text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA \n'},
-                            { style: 'nomal',text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA \n'},
-                            { style: 'nomal',text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA'}
 
-                        ],
+                        {
+                            width: '25%',
+                            margin: margin3,
+                            alignment: 'justify',
+                            columns: [
+                                [
+                                    {
+                                        width: 60,
+                                        style: 'nomal',
+                                        text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA '
+                                    },
+                                    {text: '\n'},
+                                    {
+                                        width: 60,
+                                        style: 'nomal',
+                                        text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA \n'
+                                    },
+                                    {text: '\n'},
+                                    {
+                                        width: 60,
+                                        style: 'nomal',
+                                        text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA \n'
+                                    },
+                                    {text: '\n'},
+                                    {
+                                        width: 60,
+                                        style: 'nomal',
+                                        text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA \n'
+                                    },
+                                    {text: '\n'},
+                                    {
+                                        width: 60,
+                                        style: 'nomal',
+                                        text: 'P/O No: K023936 \n YOKOHAMA,JAPAN\n C/No 1/1 \n MADE IN KOREA \n'
+                                    }]
+                            ]
+                        }, //테이블 그리기 바디
 
-                    [{
-                        style: 'nomal',
-                        table: {
-                            margin: margin2,
-                            widths: [10, 40, 30, 40, 60, 60],
-                            heights: [17, 17, 17, 17, 17, 17, 17, 17, 17],
-                            body: [
-                                border_all_false([{text: '1'}, {text: 'TUE-100 COLUMN A045283'}, {text: '1PC'}, {text: '262*201*106'}, {text: '3,770 KGS'}, {text: '3,790 KGS'}]),
-                                border_all_false([{text: '2'}, {text: 'TUE-100 COLUMN A045283'}, {text: '1PC'}, {text: '262*201*106'}, {text: '3,770 KGS'}, {text: '3,790 KGS'}]),
-                                border_all_false([{text: '3'}, {text: 'TUE-100 COLUMN A045283'}, {text: '1PC'}, {text: '262*201*106'}, {text: '3,770 KGS'}, {text: '3,790 KGS'}]),
-                                border_all_false([{text: '4'}, {text: 'TUE-100 COLUMN A045283'}, {text: '1PC'}, {text: '25*170*24'}, {text: '3,770 KGS'}, {text: '3790 KGS'}]),
-                                border_all_false([{text: '5'}, {text: 'TUE-100 COLUMN A045283'}, {text: '1PC'}, {text: '47*70*69'}, {text: '3,770 KGS'}, {text: '17,480 KGS'}]),
-                                border_all_false([{text: '6'}, {text: 'TUE-100 COLUMN A045283'}, {text: '1PC'}, {text: '237*297*58'}, {text: '3,770 KGS'}, {text: '1,000 KGS'}]),
-                                border_all_false([{text: '7'}, {text: 'TUE-100 COLUMN A045283'}, {text: '1PC'}, {text: '300*36*28'}, {text: '3,770 KGS'}, {text: '1,680 KGS'}]),
-                                [{text: '', border: [false, true, false, false]},
-                                    {text: '', border: [false, true, false, false]},
-                                    {text: '7PC', border: [false, true, false, false]},
-                                    {text: '', border: [false, true, false, false]},
-                                    {text: '27425 KGS', border: [false, true, false, false]},
-                                    {text: '27670 KGS', border: [false, true, false, false]}]
-                            ],//end body
+
+                        {
+                            width: '*',
+                            alignment: 'justify',
+                            columns: [
+                                {
+                                    style: 'nomal',
+                                    margin: margin2,
+                                    table: {
+                                        widths: [10, 90, 70, 68, 68, 68],
+                                        heights: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                        body: [
+                                            border_all_false([{text: '1'}, {text: 'TUE-100 COLUMN\n    A045283'}, {text: '1PC'}, {text: '262*201*106'}, {text: '3,770 KGS'}, {text: '3,790 KGS'}]),
+                                            border_all_false([{text: '2'}, {text: 'TUE-100 COLUMN\n    A045283'}, {text: '1PC'}, {text: '262*201*106'}, {text: '3,770 KGS'}, {text: '3,790 KGS'}]),
+                                            border_all_false([{text: '3'}, {text: 'TUE-100 COLUMN\n    A045283'}, {text: '1PC'}, {text: '262*201*106'}, {text: '3,770 KGS'}, {text: '3,790 KGS'}]),
+                                            border_all_false([{text: '4'}, {text: 'TUE-100 COLUMN\n    A045283'}, {text: '1PC'}, {text: '25*170*24'}, {text: '3,770 KGS'}, {text: '3790 KGS'}]),
+                                            border_all_false([{text: '5'}, {text: 'TUE-100 COLUMN\n    A045283'}, {text: '1PC'}, {text: '47*70*69'}, {text: '3,770 KGS'}, {text: '17,480 KGS'}]),
+                                            border_all_false([{text: '6'}, {text: 'TUE-100 COLUMN\n    A045283'}, {text: '1PC'}, {text: '237*297*58'}, {text: '3,770 KGS'}, {text: '1,000 KGS'}]),
+                                            border_all_false([{text: '7'}, {text: 'TUE-100 COLUMN\n    A045283'}, {text: '1PC'}, {text: '300*36*28'}, {text: '3,770 KGS'}, {text: '1,680 KGS'}]),
+                                            [{bold: true, text: '', border: [false, true, false, false]},
+                                                {bold: true, text: '', border: [false, true, false, false]},
+                                                {bold: true, text: '7PC', border: [false, true, false, false]},
+                                                {bold: true, text: '', border: [false, true, false, false]},
+                                                {bold: true, text: '27,425 KGS', border: [false, true, false, false]},
+                                                {bold: true, text: '27,670 KGS', border: [false, true, false, false]}]
+                                        ],//end body
+                                    }
+                                }
+                            ]
                         }
-                    }]
-                ]
-                }, //테이블 그리기 바디
+                    ]
+                }
+                , //테이블 그리기 바디
 
 
                 {
                     columns: [
-                        [{
-                            margin: [2, 50, 2, 0],
-                            text: 'Bank Details ; \n INDUSTRIAL BANK OF KOREA   SEODAEJEON BRANCH \n 154-4, 1-F Central Officetel, Ohryu-Dong,Joong-Gu\n  Daejeon 301-120 , Korea\n\n BIS Code : IBKOKRSE\n Account Number :  143-066882-56-00017',
 
-                            style: 'foot'
+                        [{
+                            margin: [2, 100, 2, 0],
+                            text: 'TUE-100 COLUMN     1PC      K023802\n TUE-100 COLUMN     1PC      K023802\n TUE-100 COLUMN     1PC      K023802\n TUE-100 COLUMN     1PC      K023802\n TUE-100 COLUMN     1PC      K023802\n TUE-100 COLUMN     1PC      K023802\n TUE-100 COLUMN     1PC      K023802\n',
+
+                            style: 'nomal2'
                         }],
 
                         [{ //컬럼1 옆에 정렬
                             style: 'title',
-                            margin: [40, 30, 0, 0],
+                            margin: [60, 100, 0, 0],
                             table: {
                                 heights: ['*'],
                                 widths: ['*'],
@@ -719,8 +758,8 @@ function packing_list_btn() {
                                 body: [[{
                                     border: [false, false, false, false],
                                     image: dataURL,
-                                    width: 210,
-                                    height: 130,
+                                    width: 160,
+                                    height: 90,
                                     padding: [0.5, 0.5, 0.5, 0.5]
                                 }]]
                             }
@@ -763,6 +802,7 @@ function packing_list_btn() {
                 },
                 title: {bold: true, fontSize: 11, alignment: 'center'},
                 nomal: {fontSize: 7},
+                nomal2: {fontSize: 9},
                 table_style: {border: [false, false, false, false]},
                 foot: {
                     bold: true,

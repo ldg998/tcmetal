@@ -91,7 +91,8 @@
 
 
         </table>
-
+    </div>
+    <div class="col-lg-12">
         <div class="col-lg-6">
             <table class="table wt-100" style=" border: 1px solid #E1E1E1;">
                 <colgroup>
@@ -531,7 +532,7 @@
 
 <%--                </tbody>--%>
 <%--            </table>--%>
-
+        </div>
         </div>
     </div>
 </div>

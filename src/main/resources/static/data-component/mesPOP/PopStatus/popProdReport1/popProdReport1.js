@@ -22,6 +22,8 @@ $(document).ready(function () {
     jqgridPagerIcons();
     select_box();
     modal_start1();
+
+
 });
 
 
@@ -87,6 +89,7 @@ function update_btn(rowid) {
 
         modal_edits('.modal_value',[],edits_list)
             $("#addDialog").dialog('open'); // 모달 열기
+            jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]')); //행당그리드 리사이즈
             jqGridResize2("#mes_modal1_grid2", $('#mes_modal1_grid2').closest('[class*="col-"]')); //행당그리드 리사이즈
             jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]')); //행당그리드 리사이즈
         }).catch(function (err) {

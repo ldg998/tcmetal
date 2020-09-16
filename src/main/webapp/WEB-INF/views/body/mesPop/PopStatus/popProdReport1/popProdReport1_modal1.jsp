@@ -40,6 +40,10 @@
     .right>tr>td>input{
         text-align: right;
     }
+
+
+
+
 </style>
 <div id="addDialog" title="주입일보현황" style="display: none">
     <div class="col-lg-12">

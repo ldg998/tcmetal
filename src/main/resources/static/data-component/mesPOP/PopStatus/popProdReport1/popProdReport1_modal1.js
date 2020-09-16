@@ -9,9 +9,12 @@ function modal_start1() {
     modal_make1();    // 모달생산
     datepicker_modal1(); //모달안 날짜 넣어주기
     selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
+    header_make1();
+    header_make2();
     jqGridResize("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]')); //행당그리드 리사이즈
     jqGridResize("#mes_modal1_grid2", $('#mes_modal1_grid2').closest('[class*="col-"]')); //행당그리드 리사이즈
     readonly_go();
+
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -120,15 +123,19 @@ function jqGrid_main_modal() {
         mtype: 'POST',
         // 타이틀
         caption: "품목조회 | MES",
-        colNames: ['','품번','품명','규격','단위'],
+        colNames: ['','온도','시간','CE','C','Si','CW','PW'],
         colModel: [
             {name:'radio',index:'radio',align:"center",width:30 ,sortable: false,fixed:true, formatter: function (cellValue, option,rowObject) {
                     return '<input type="radio" name="radio_' + option.gid + '" onclick="jqGrid_row_check(\'#partSearchGrid\''+','+'\''+rowObject.part_code+'\''+');"/>';
                 }},
-            {name: 'part_code', index: 'part_code', key: true, sortable: false, width: 200,fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 200,fixed:true},
-            {name: 'spec', index: 'spec', sortable: false, width: 200,fixed:true},
-            {name: 'unit_name', index: 'unit_name', sortable: false, width: 80,fixed:true}
+            {name: '', index: '', key: true, sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: 'cw', index: 'cw', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true}
+
         ],
         autowidth: true,
         height: 145,
@@ -158,15 +165,17 @@ function jqGrid_main_modal() {
         mtype: 'POST',
         // 타이틀
         caption: "품목조회 | MES",
-        colNames: ['','품번','품명','규격','단위'],
+        colNames: ['업체','기종','품명','단중','수량','중량','LOT','작업자'],
         colModel: [
-            {name:'radio',index:'radio',align:"center",width:30 ,sortable: false,fixed:true, formatter: function (cellValue, option,rowObject) {
-                    return '<input type="radio" name="radio_' + option.gid + '" onclick="jqGrid_row_check(\'#partSearchGrid\''+','+'\''+rowObject.part_code+'\''+');"/>';
-                }},
-            {name: 'part_code', index: 'part_code', key: true, sortable: false, width: 200,fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 200,fixed:true},
-            {name: 'spec', index: 'spec', sortable: false, width: 200,fixed:true},
-            {name: 'unit_name', index: 'unit_name', sortable: false, width: 80,fixed:true}
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true},
+            {name: '', index: '', sortable: false, width: 60,fixed:true}
+
         ],
         autowidth: true,
         height: 145,
@@ -191,6 +200,28 @@ function jqGrid_main_modal() {
     }).navGrid('#partSearchGridPager', {search: false, add: false, edit: false, del: false});// grid_
 
 }
+
+
+function header_make1() {
+    $("#mes_modal1_grid1").jqGrid('setGroupHeaders',{
+        useColSpanStyle: true,
+        groupHeaders: [
+            {startColumnName: 'radio', numberOfColumns: 6, titleText: '<center>성 분 조 정</center>'},
+            {startColumnName: 'cw', numberOfColumns: 2, titleText: '<center>WEDGE</center>'}
+
+        ]
+    })
+}
+function header_make2() {
+    $("#mes_modal1_grid2").jqGrid('setGroupHeaders',{
+        useColSpanStyle: true,
+        groupHeaders: [
+            {startColumnName: 'supp_name', numberOfColumns: 8, titleText: '<center>주 입 내 역</center>'}
+
+        ]
+    })
+}
+
 
 function readonly_go() {
     $(".modal_value").each(function(i){

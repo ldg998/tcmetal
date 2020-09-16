@@ -114,7 +114,6 @@ public class UploadFunction extends ReturnFunction {
 
     public void FileDownloads(Files files, HttpServletRequest request, HttpServletResponse response)throws IOException{
         Files fileData = fileUploadService.FileDownloads(files);
-        System.out.println(fileData);
         File file = null;
         InputStream is = null;
         OutputStream os = null;

@@ -4,6 +4,7 @@ import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
+import com.mes.mesCrm.Standard.DTO.SYS_SPART_CD;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD;
 import com.mes.mesPop.PopStatus.DTO.POP_PROD_MHR;
@@ -39,19 +40,9 @@ public class PopStatusRestController {
 
 
     @RequestMapping(value = "/sysSPartDrawingAdd", method = RequestMethod.POST)
-    public String sysSPartDrawingAdd(MultipartHttpServletRequest req){
-        Files files = new Files();
-        files.setKey1(req.getParameter("supp_code"));
-        files.setKey2(req.getParameter("part_kind"));
-        files.setKey3(req.getParameter("part_code"));
-        files.setRemark2(req.getParameter("remark2"));
-        int check = Integer.parseInt(req.getParameter("check"));
-        if(check == 1 ) {
-            popStatusService.sysSPartDrawingAdd(files, req);
-        } else {
-            popStatusService.sysSPartDrawingAdd2(files, req);
-        }
-        return "수정되었습니다.";
+    public Message sysSPartDrawingAdd(MultipartHttpServletRequest req, SYS_SPART_CD ssc){
+
+        return   popStatusService.sysSPartDrawingAdd3(req,ssc);
     }
 
     @RequestMapping(value = "/sysSPartWoodAdd", method = RequestMethod.POST)

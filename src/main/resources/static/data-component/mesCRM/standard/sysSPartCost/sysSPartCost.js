@@ -89,7 +89,7 @@ function add_part_weight() {
         var code_list;
 
         if (ids.length === 0) {
-            alert(msg_object.TBMES_A004.msg_name1);
+            alert('제품을 선택해주세요.');
         } else {
             if (confirm('선택 제품의 단가를 변경하시겠습니까?')) {
                 main_data.check = 'I';
@@ -117,7 +117,7 @@ function add_part_weight() {
             }
         }
     } else {
-        alert(msg_object.TBMES_A002.msg_name1);
+        alert('단가적용 권한이 없습니다(삭제권한)');
     }
 }
 

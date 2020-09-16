@@ -75,6 +75,9 @@ function select_change1(value) {
         $('#machine_select').select2();
     }
 }
+
+
+
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         main_data.check = 'U';

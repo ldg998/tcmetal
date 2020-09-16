@@ -174,7 +174,7 @@ function jqGrid_main() {
             {name: 'part_size', index: 'part_size',sortable: false, width: 90,fixed: true},//사이즈
             {name: 'gross_weight', index: 'gross_weight',sortable: false, width: 120,fixed: true,formatter: 'integer',align: 'right'},//포장무게
             {name: 'unit_cost', index: 'unit_cost',sortable: false, width: 80,fixed: true,formatter: 'integer',align: 'right'},//단가
-            {name: 'currency_name', index: 'currency_name',sortable: false, width: 50,fixed: true},//화폐단위
+            {name: 'currency_type_name', index: 'currency_type_name',sortable: false, width: 50,fixed: true},//화폐단위
             {name: 'route_name', index: 'route_name',sortable: false, width: 120,fixed: true},//공정라우팅
             // {name: 'outs', index: 'outs',sortable: false, width: 120,fixed: true},//외주
             {name: 'outs_supp_name', index: 'outs_supp_name',sortable: false, width: 120,fixed: true},//외주(열처리)

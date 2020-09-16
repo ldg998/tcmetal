@@ -166,7 +166,7 @@ function jqGrid_main() {
             {name: 'create_date', index: 'create_date',sortable: false, width: 140,fixed: true ,formatter: formmatterDate}
 
         ],
-        caption: "부적합관리 | MES",
+        caption: "사회부적합관리 | MES",
         autowidth: true,
         height: 562,
         pager: '#mes_grid_pager',

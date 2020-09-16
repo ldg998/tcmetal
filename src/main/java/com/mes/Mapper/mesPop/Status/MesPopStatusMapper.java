@@ -3,6 +3,7 @@ package com.mes.Mapper.mesPop.Status;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.File.DTO.Files;
+import com.mes.mesCrm.Standard.DTO.SYS_SPART_CD;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN_ORD_CD;
 import com.mes.mesPop.PopStatus.DTO.POP_PROD;
@@ -62,4 +63,8 @@ public interface MesPopStatusMapper {
     Message sysProdHrDel2(POP_PLAN pp);
 
     List<POP_PLAN> popProdList2SubGet(POP_PLAN pp);
+
+    Message sysSPartDrawingAdd3(SYS_SPART_CD ssc);
+
+    void sysFileAdd(SYS_SPART_CD vo);
 }

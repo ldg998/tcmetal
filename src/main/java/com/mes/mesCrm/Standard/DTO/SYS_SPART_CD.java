@@ -1,6 +1,9 @@
 package com.mes.mesCrm.Standard.DTO;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Data
 public class SYS_SPART_CD {
@@ -29,6 +32,8 @@ public class SYS_SPART_CD {
     private String file1;
     private String file2;
     private String file3;
+    private String file4;
+
     private String file1_name;
     private String file2_name;
     private String file3_name;
@@ -55,6 +60,21 @@ public class SYS_SPART_CD {
     private String cost_create_date;
     private String currency_type_name;
 
+
+    private List<MultipartFile> files1;
+    private List<MultipartFile> files2;
+    private List<MultipartFile> files4;
+    private int index;
+    private String savefile;
+    private long size;
+    private String original_name;
+    private String type;
+    private String allpath;
+    private String key_value;
+    private int  file_ck;
+    private int check1;
+    private int check2;
+    private int check4;
 
 
     private int rownum_page;

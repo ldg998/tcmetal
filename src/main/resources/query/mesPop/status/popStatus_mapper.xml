@@ -35,6 +35,16 @@
             SUPP_CODE = #{key1} AND PART_KIND = #{key2} AND PART_CODE = #{key3}
     </update>
 
+    <select id="sysSPartDrawingAdd3" resultType="com.mes.Common.DataTransferObject.Message">
+
+       EXEC SP_SYS_SPART_DRAWING_ADD3 #{supp_code},#{part_code},#{part_kind},#{file1},#{file2},#{file4},#{remark2}
+
+    </select>
+
+    <select id="sysFileAdd" resultType="com.mes.Common.DataTransferObject.Message">
+      EXEC SP_SYS_FILE_ADD2 #{user_code},#{key_value},#{savefile},#{original_name},#{size},0,#{allpath},#{savefile}
+    </select>
+
     <update id="sysSPartWoodAdd">
         UPDATE SYS_SPART_CD
         SET

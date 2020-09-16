@@ -235,16 +235,12 @@ public class QmsShipmentService extends UploadFunction {
 
     public Message qmsProdErrorReqAdd(MultipartHttpServletRequest req, QMS_RET qr) {
         qr.setUser_code(getSessionData(req).getUser_code());
-
-
        String path = "C:/UploadFile/tcmetal/qmsProdEroorReq";
-
         qr.setFile_key(file_key_retrun(qr,path));
         qr.setFile_key2(file_key_retrun2(qr,path));
-
         System.out.println(qr);
-
         return  qmsShipmentMapper.qmsProdErrorReqAdd(qr);
+
     }
 
 

@@ -46,9 +46,13 @@ function get_btn(page) {
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
         modal_reset(".modal_value", []);
-
+        $('#file_01').val('');
+        $('.file_labal').text('업로드');
         $('#file_02').val('');
         $('.file_labal').text('업로드');
+        $('#file_04').val('');
+        $('.file_labal').text('업로드');
+
 
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
         var send_data = {};
@@ -80,7 +84,7 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "도면관리 | MES",
-        colNames: ['','','업체','기종','품번','품명','단중','제품도면','file2','비고','등록자','수정일'],
+        colNames: ['','','업체','기종','품번','품명','단중','제품도면','제품사진','주소방안관리','비고','등록자','수정일'],
         colModel: [
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
             {name: 'supp_code', index: 'supp_code',hidden:true, sortable:false,fixed:true},
@@ -89,8 +93,9 @@ function jqGrid_main() {
             {name: 'part_code', index: 'part_code', sortable:false, width: 130, fixed:true},
             {name: 'part_name', index: 'part_name', sortable:false, width: 190, fixed:true},
             {name: 'part_weight', index: 'part_weight',sortable: false, width: 90,fixed: true,formatter: 'integer',align: 'right'},
-            {name: 'file2_name', index: 'file2_name', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
-            {name: 'file2', index: 'file2', sortable: false,hidden: true},
+            {name: 'file2', index: 'file2', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
+            {name: 'file4', index: 'file4', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
+            {name: 'file1', index: 'file1', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
             {name: 'remark2', index: 'remark2', sortable:false, width: 350, fixed:true},
             {name: 'user_name', index: 'user_name',sortable: false, width: 70,fixed: true},
             {name: 'update_date', index: 'update_date',sortable: false, width: 140,fixed: true,formatter:formmatterDate}
@@ -139,10 +144,10 @@ function select_change1(value) {
 }
 
 function file2_formatter(cellvalue, options, rowObject) {
-    if (cellvalue === "Y") {
+    if (cellvalue != "" && cellvalue != null && cellvalue != "null") {
         return "" +
             " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
-            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file2 + "\");'>" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + cellvalue + "\");'>" +
             "<span><i class='fa fa-download bigger-110 blue'></i>" +
             "<span>저장</span>" +
             "</span>" +

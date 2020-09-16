@@ -81,7 +81,7 @@ var array =
         {code: "qmsProdErrorList", title: '품질관리', sub: '출하검사', name:'출하검사 불량현황'},
         {code: "qmsProdHistory", title: '품질관리', sub: '출하검사', name:'제품이력관리'},
         {code: "qmsMoldWash", title: '품질관리', sub: '출하검사', name:'도형제관리'},
-        {code: "qmsProdErrorReq", title: '품질관리', sub: '출하검사', name:'부적합관리'},
+        {code: "qmsProdErrorReq", title: '품질관리', sub: '출하검사', name:'사회부적합관리'},
         {code: "qmsInspMachine", title: '품질관리', sub: '출하검사', name:'검사설비관리'},
     //생산관리 -기준정보
         {code: "popLineUser", title: '생산관리', sub: '기준정보', name:'공정별 작업자 관리'},
@@ -96,7 +96,7 @@ var array =
         {code: "popProdReport", title: '생산관리', sub: '생산현황', name:'작업일보현황'},
         {code: "popMonitoring", title: '생산관리', sub: '생산현황', name:'생산모니터링'},
         {code: "popLotTracking", title: '생산관리', sub: '생산현황', name:'제조이력관리'},
-        {code: "sysSPartDrawing", title: '생산관리', sub: '생산현황', name:'도면관리'},
+        {code: "sysSPartDrawing", title: '생산관리', sub: '생산현황', name:'제품관리(도면&사진)'},
         {code: "sysSPartWood", title: '생산관리', sub: '생산현황', name:'고객지급품관리'},
         {code: "popProdAnalysis", title: '생산관리', sub: '생산현황', name:'생산량분석'},
         {code: "popProdReport1", title: '생산관리', sub: '생산현황', name:'주입일보현황'},

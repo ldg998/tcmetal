@@ -210,7 +210,7 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "출하검사현황 | MES",
-        colNames: ['','검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','검사결과','첨부사진','성적서','검사자','검사일시'],
+        colNames: ['','검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','경도1','경도2','경도3','검사결과','첨부사진','성적서','검사자','검사일시'],
         colModel: [
             {name: 'file_key', index: 'file_key', sortable:false ,hidden:true},
             {name: 'work_date', index: 'work_date', sortable:false, width: 90,fixed:true,formatter: formmatterDate2 },
@@ -221,6 +221,9 @@ function jqGrid_main() {
             {name: 'part_name', index: 'part_name', sortable:false, width: 190, fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable:false, width: 90, fixed:true,align: 'right', formatter: 'integer' },
             {name: 'lot_no', index: 'lot_no', sortable:false, width: 120, fixed:true},
+            {name: 'hard1', index: 'hard1', sortable:false, width: 40, fixed:true,align: 'right', formatter: 'integer' },
+            {name: 'hard2', index: 'hard3', sortable:false, width: 40, fixed:true,align: 'right', formatter: 'integer' },
+            {name: 'hard2', index: 'hard3', sortable:false, width: 40, fixed:true,align: 'right', formatter: 'integer' },
             {name: 'qc_result_name', index: 'qc_result_name', sortable:false, width: 60, fixed:true},
             {name: 'filename', index: 'filename', sortable:false, width: 70, fixed:true ,formatter:image_formatter},
             {name: 'file1', index: 'file1', sortable:false, width: 70, fixed:true, formatter: file3_formatter},

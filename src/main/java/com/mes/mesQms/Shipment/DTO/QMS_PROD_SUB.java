@@ -14,6 +14,9 @@ public class QMS_PROD_SUB {
     private int in_qty;
     private int qc_qty;
     private int ng_qty;
+    private int hard1;
+    private int hard2;
+    private int hard3;
     private String ng_type;
     private String ng_name;
     private String act_type;

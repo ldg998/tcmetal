@@ -301,189 +301,195 @@
 
 
         <div class="col-lg-6">
-            <table class="table wt-100" style=" border: 1px solid #E1E1E1;">
-                <colgroup>
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                </colgroup>
-                <thead>
-                <tr>
-                    <th colspan="6">성 분 조 정</th>
-                    <th colspan="2">WEDGE</th>
-                </tr>
-                <tr>
-                    <th>No</th>
-                    <th>온도</th>
-                    <th>시간</th>
-                    <th>CE</th>
-                    <th>C</th>
-                    <th>Si</th>
-                    <th>CW</th>
-                    <th>PW</th>
-                </tr>
+            <div class="col-lg-12">
+                <table id="mes_modal1_grid1"></table>
+            </div>
+            <div class="col-lg-12">
+                <table id="mes_modal1_grid2"></table>
+            </div>
+<%--            <table class="table wt-100" style=" border: 1px solid #E1E1E1;">--%>
+<%--                <colgroup>--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                </colgroup>--%>
+<%--                <thead>--%>
+<%--                <tr>--%>
+<%--                    <th colspan="6">성 분 조 정</th>--%>
+<%--                    <th colspan="2">WEDGE</th>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <th>No</th>--%>
+<%--                    <th>온도</th>--%>
+<%--                    <th>시간</th>--%>
+<%--                    <th>CE</th>--%>
+<%--                    <th>C</th>--%>
+<%--                    <th>Si</th>--%>
+<%--                    <th>CW</th>--%>
+<%--                    <th>PW</th>--%>
+<%--                </tr>--%>
 
-                </thead>
+<%--                </thead>--%>
 
-                <tbody class="right">
-                <tr>
-                    <td>1차</td>
-                    <td><input type="text" name="1chg_temp" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1chg_time" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1chg_ce" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1chg_c" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1chg_si" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1wedge_cw" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1wedge_pw" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
+<%--                <tbody class="right">--%>
+<%--                <tr>--%>
+<%--                    <td>1차</td>--%>
+<%--                    <td><input type="text" name="1chg_temp" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1chg_time" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1chg_ce" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1chg_c" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1chg_si" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1wedge_cw" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1wedge_pw" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
 
-                <tr>
-                    <td>2차</td>
-                    <td><input type="text" name="2chg_temp" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2chg_time" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2chg_ce" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2chg_c" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2chg_si" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2wedge_cw" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2wedge_pw" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
-                <tr>
-                    <td>3차</td>
-                    <td><input type="text" name="3chg_temp" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3chg_time" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3chg_ce" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3chg_c" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3chg_si" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3wedge_cw" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3wedge_pw" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
-                <tr>
-                    <td>최종</td>
-                    <td><input type="text" name="4chg_temp" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4chg_time" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4chg_ce" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4chg_c" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4chg_si" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4wedge_cw" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4wedge_pw" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
-                <tr>
-                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
+<%--                <tr>--%>
+<%--                    <td>2차</td>--%>
+<%--                    <td><input type="text" name="2chg_temp" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2chg_time" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2chg_ce" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2chg_c" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2chg_si" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2wedge_cw" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2wedge_pw" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>3차</td>--%>
+<%--                    <td><input type="text" name="3chg_temp" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3chg_time" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3chg_ce" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3chg_c" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3chg_si" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3wedge_cw" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3wedge_pw" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>최종</td>--%>
+<%--                    <td><input type="text" name="4chg_temp" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4chg_time" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4chg_ce" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4chg_c" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4chg_si" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4wedge_cw" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4wedge_pw" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
 
-                <tr>
-                    <td colspan="8">
+<%--                <tr>--%>
+<%--                    <td colspan="8">--%>
 
-                        <input type="text" name="" class="form-control  modal_value" autocomplete="off" >
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <table class="table wt-100" style=" border: 1px solid #E1E1E1;">
-                <colgroup>
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                    <col width="12.5%">
-                </colgroup>
-                <thead>
-                <tr>
-                    <th colspan="8">주 입 내 역</th>
+<%--                        <input type="text" name="" class="form-control  modal_value" autocomplete="off" >--%>
+<%--                    </td>--%>
+<%--                </tr>--%>
+<%--                </tbody>--%>
+<%--            </table>--%>
+<%--            <table class="table wt-100" style=" border: 1px solid #E1E1E1;">--%>
+<%--                <colgroup>--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                    <col width="12.5%">--%>
+<%--                </colgroup>--%>
+<%--                <thead>--%>
+<%--                <tr>--%>
+<%--                    <th colspan="8">주 입 내 역</th>--%>
 
 
-                </tr>
-                <tr>
-                    <th>업체</th>
-                    <th>기종</th>
-                    <th>품명</th>
-                    <th>단중</th>
-                    <th>수량</th>
-                    <th>중량</th>
-                    <th>LOT</th>
-                    <th>작업자</th>
-                </tr>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <th>업체</th>--%>
+<%--                    <th>기종</th>--%>
+<%--                    <th>품명</th>--%>
+<%--                    <th>단중</th>--%>
+<%--                    <th>수량</th>--%>
+<%--                    <th>중량</th>--%>
+<%--                    <th>LOT</th>--%>
+<%--                    <th>작업자</th>--%>
+<%--                </tr>--%>
 
-                </thead>
+<%--                </thead>--%>
 
-                <tbody>
-                <tr>
-                    <td><input type="text" name="1supp_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1part_kind" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1part_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="1qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="1weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="1lot_no" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="1user_name" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
+<%--                <tbody>--%>
+<%--                <tr>--%>
+<%--                    <td><input type="text" name="1supp_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1part_kind" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1part_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="1qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="1weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="1lot_no" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="1user_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
 
-                <tr>
-                    <td><input type="text" name="2supp_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2part_kind" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2part_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="2qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="2weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="2lot_no" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="2user_name" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
-                <tr>
-                    <td><input type="text" name="3supp_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3part_kind" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3part_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="3qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="3weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="3lot_no" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="3user_name" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
-                <tr>
-                    <td><input type="text" name="4supp_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4part_kind" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4part_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="4qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="4weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="4lot_no" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="4user_name" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
-                <tr>
-                    <td><input type="text" name="5supp_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="5part_kind" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="5part_name" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="5part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="5qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="5weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>
-                    <td><input type="text" name="5lot_no" class="form-control  modal_value" autocomplete="off" ></td>
-                    <td><input type="text" name="5user_name" class="form-control  modal_value" autocomplete="off" ></td>
-                </tr>
+<%--                <tr>--%>
+<%--                    <td><input type="text" name="2supp_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2part_kind" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2part_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="2qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="2weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="2lot_no" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="2user_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td><input type="text" name="3supp_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3part_kind" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3part_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="3qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="3weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="3lot_no" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="3user_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td><input type="text" name="4supp_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4part_kind" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4part_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="4qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="4weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="4lot_no" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="4user_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td><input type="text" name="5supp_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="5part_kind" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="5part_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="5part_weight" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="5qty" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="5weigth" class="form-control  modal_value" autocomplete="off" style="text-align: right"></td>--%>
+<%--                    <td><input type="text" name="5lot_no" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                    <td><input type="text" name="5user_name" class="form-control  modal_value" autocomplete="off" ></td>--%>
+<%--                </tr>--%>
 
-                </tbody>
-            </table>
-
+<%--                </tbody>--%>
+<%--            </table>--%>
+            <div class="col-lg-12">
                 <div class="col_lee" >특 이 사 항</div>
 
 
-            <div >
-                <textarea class="modal_value" name="remark" style="width: 100%;height: 130px; resize: none;" > </textarea>
+                <div >
+                    <textarea class="modal_value" name="remark" style="width: 100%;height: 130px; resize: none;" > </textarea>
+                </div>
             </div>
-
 
 <%--            <table class="table wt-100" style=" border: 1px solid #E1E1E1;">--%>
 <%--                <colgroup>--%>

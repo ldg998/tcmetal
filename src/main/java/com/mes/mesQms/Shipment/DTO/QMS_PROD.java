@@ -14,6 +14,9 @@ public class QMS_PROD {
     private String update_date;
     private String supp_code;
     private String supp_name;
+    private int hard1;
+    private int hard2;
+    private int hard3;
     private int rownum;
     private int rownum_page;
     private int rec_count;

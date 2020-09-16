@@ -102,9 +102,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['출고일자','출고번호','품번','품명','규격','단위','출고수량','등록자','등록일시'],
+        colNames: ['','출고일자','출고번호','품번','품명','규격','단위','출고수량','등록자','등록일시'],
         colModel: [
-            {name: 'work_date', index: 'work_date',sortable: false,key:true,fixed:true,width:90,formatter:formmatterDate2},
+            {name: 'rownum', index: 'rownum',sortable: false, fixed:true,hidden:true,key:true},
+            {name: 'work_date', index: 'work_date',sortable: false,fixed:true,width:90,formatter:formmatterDate2},
             {name: 'out_no', index: 'out_no',sortable: false, fixed:true, width:120},
             {name: 'part_code', index: 'part_code',sortable: false, fixed:true, width:130},
             {name: 'part_name', index: 'part_name',sortable: false, fixed:true, width:190},
@@ -128,7 +129,6 @@ function jqGrid_main() {
 
                 }
             });
-
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");
             else

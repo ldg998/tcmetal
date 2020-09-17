@@ -7,22 +7,25 @@
     <!-- 전체 컨테이너 div 안 페이지 영역 -->
     <div class="page-content">
         <!-- 검색 div 영역 -->
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
 
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
-                    <%--조회할 업채명--%>
-                    <td class="wt-px-200">
-                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" ></select>
-                    </td>
-                    <!-- 품목코드 검색창 -->
-                    <td></td>
-                </tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                        <%--조회할 업채명--%>
+                        <td class="wt-px-200">
+                            <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" ></select>
+                        </td>
+                        <!-- 품목코드 검색창 -->
+                        <td class="wt-px-100"></td>
+                        <td class="wt-px-200"></td>
+                    </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- button div 영역 -->

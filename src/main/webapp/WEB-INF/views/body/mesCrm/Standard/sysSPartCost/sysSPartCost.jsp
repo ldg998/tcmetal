@@ -7,46 +7,54 @@
     <!-- 전체 컨테이너 div 안 페이지 영역 -->
     <div class="page-content">
         <!-- 검색 div 영역 -->
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
 
-                    <!-- 구분 select 창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">업체</td>
-                    <td class="wt-px-200">
-                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value);" ></select>
-
-
-                    </td>
-                    <!-- 품목코드 검색창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">기종</td>
-                    <td class="wt-px-200">
-                        <select id='part_kind_select' name="keyword2" class="form-control h-25 condition_main" style="width: 100%;">--%>
-                        </select>
-                    </td>
-
-                    <td class="wt-px-75 t-align-c td-title padding-a-0">변경일자</td>
-                    <td class="wt-px-150">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="work_date" id="datepicker1"
-                                   class="form-control h-25 condition_main" readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
+                        <!-- 구분 select 창 -->
+                        <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">업체</td>
+                        <td class="wt-px-200">
+                            <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value);" ></select>
 
 
+                        </td>
+                        <!-- 품목코드 검색창 -->
+                        <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">기종</td>
+                        <td class="wt-px-200">
+                            <select id='part_kind_select' name="keyword2" class="form-control h-25 condition_main" style="width: 100%;">--%>
+                            </select>
+                        </td>
 
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">단가</td>
-                    <td class="wt-px-200">
-                        <input type="text" id='part_weight' name="part_weight" class="form-control h-25 condition_main" onkeyup="num_keyup_comma(this)" autocomplete="off" style="width: 100%;">
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">변경일자</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="work_date" id="datepicker1"
+                                       class="form-control h-25 condition_main" readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
 
-                    </td>
 
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">단가</td>
+                        <td class="wt-px-200">
+                            <input type="text" id='part_weight' name="part_weight" class="form-control h-25 condition_main" onkeyup="num_keyup_comma(this)" autocomplete="off" style="width: 100%;">
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- button div 영역 -->

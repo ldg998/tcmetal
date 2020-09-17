@@ -5,37 +5,48 @@
 
 <div class="main-content-inner">
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
-                    <td class="wt-px-200">
-                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
-                    </td>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                        <td class="wt-px-200">
+                            <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
+                        </td>
 
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
-                    <td class="wt-px-200">
-                        <select id="part_kind_select" name="keyword2"  class="condition_main" style="width: 100%;">
-                            <option value="">전체</option>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
+                        <td class="wt-px-200">
+                            <select id="part_kind_select" name="keyword2"  class="condition_main" style="width: 100%;">
+                                <option value="">전체</option>
 
-                        </select>
-                    </td>
+                            </select>
+                        </td>
 
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">상태</td>
-                    <td class="wt-px-150">
-                       <select id="status" style="width: 100%" class="condition_main">
-                           <option value="">전체</option>
-                           <option value="0">등록</option>
-                           <option value="1">미등록</option>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">상태</td>
+                        <td class="wt-px-200">
+                            <select id="status" style="width: 100%" class="condition_main">
+                                <option value="">전체</option>
+                                <option value="0">등록</option>
+                                <option value="1">미등록</option>
 
-                       </select>
+                            </select>
 
-                    </td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+                        </td>
+                        <td class="wt-px-100"></td>
+                        <td class="wt-px-200"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="clearfix">
             <div class="pull-left tableTools-container">

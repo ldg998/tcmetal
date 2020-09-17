@@ -44,7 +44,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xs-12 table-responsive">
                 <table id="mes_grid"></table>
                 <div id="mes_grid_pager"></div>
             </div>

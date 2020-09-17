@@ -12,11 +12,11 @@ var main_data = {
 $(document).ready(function () {
     msg_get();
     jqGrid_main(); // main 그리드 생성
-    jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]')); // 그리드 리사이즈
     /*----모달----*/
     authcheck();
     jqgridPagerIcons(); // 그리드 아이콘 설정
     modal_start1();
+    jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]')); // 그리드 리사이즈
 });
 
 ////////////////////////////클릭 함수//////////////////////////////////

@@ -33,7 +33,7 @@
     }
 </style>
 
-<div id="addDialog" title="사회부적합관리" style="display: none">
+<div id="addDialog" title="사외부적합관리" style="display: none">
     <div class="profile-user-info profile-user-info-striped">
         <%--1--%>
         <div class="profile-info-row">

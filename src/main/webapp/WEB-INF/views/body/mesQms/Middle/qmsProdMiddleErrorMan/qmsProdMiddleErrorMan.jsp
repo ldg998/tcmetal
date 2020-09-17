@@ -7,45 +7,55 @@
 <div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main sendDate" readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
-                    <td class="t-align-c" style="width:25px !important;">
-                        ~
-                    </td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main sendDate" readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="start_date" id="datepicker"
+                                       class="form-control h-25 condition_main sendDate" readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="t-align-c" style="width:25px !important;">
+                            ~
+                        </td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="end_date" id="datepicker2"
+                                       class="form-control h-25 condition_main sendDate" readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="border_no display_none" style=" width:80px !important;"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
+                        <td class="wt-px-200">
+                            <select id="main_select1" style="width: 100%" name="keyword3" class="form-control h-25 condition_main">
+                                <option value="">전체</option>
+                                <option value="1">합격</option>
+                                <option value="2">수정</option>
+                                <option value="3">폐기</option>
+                                <option value="4">판정대기</option>
 
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
-                    <td class="wt-px-200">
-                        <select id="main_select1" style="width: 100%" name="keyword3" class="form-control h-25 condition_main">
-                            <option value="">전체</option>
-                            <option value="1">합격</option>
-                            <option value="2">수정</option>
-                            <option value="3">폐기</option>
-                            <option value="4">판정대기</option>
-
-                        </select>
-                    </td>
-
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+                            </select>
+                        </td>
+                        <td class="wt-px-100"></td>
+                        <td class="wt-px-200"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="clearfix">
@@ -71,7 +81,7 @@
 
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xs-12 table-responsive">
                 <table id="mes_grid"></table>
                 <div id="mes_grid_pager"></div>
             </div>

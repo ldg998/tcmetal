@@ -81,7 +81,7 @@ var array =
         {code: "qmsProdErrorList", title: '품질관리', sub: '출하검사', name:'출하검사 불량현황'},
         {code: "qmsProdHistory", title: '품질관리', sub: '출하검사', name:'제품이력관리'},
         {code: "qmsMoldWash", title: '품질관리', sub: '출하검사', name:'도형제관리'},
-        {code: "qmsProdErrorReq", title: '품질관리', sub: '출하검사', name:'사회부적합관리'},
+        {code: "qmsProdErrorReq", title: '품질관리', sub: '출하검사', name:'사외부적합관리'},
         {code: "qmsInspMachine", title: '품질관리', sub: '출하검사', name:'검사설비관리'},
     //생산관리 -기준정보
         {code: "popLineUser", title: '생산관리', sub: '기준정보', name:'공정별 작업자 관리'},

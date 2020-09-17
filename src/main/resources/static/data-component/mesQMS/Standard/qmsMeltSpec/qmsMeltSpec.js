@@ -163,7 +163,7 @@ function jqGrid_main() {
 function selectBox() {
     $('#status').select2();
     $('#part_kind_select').select2();
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"Y")
 }
 
 function select_change1(value) {

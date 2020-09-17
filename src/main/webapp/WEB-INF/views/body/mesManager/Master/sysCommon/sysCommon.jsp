@@ -5,8 +5,9 @@
 
 <div class="main-content-inner">
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100">
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
                 <tbody>
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">코드그룹</td>
@@ -14,11 +15,14 @@
                         <select name="keyword" id="group_select" class="form-control keyword condition_main" style="width:100%" >
                         </select>
                     </td>
-                    <td></td>
+                    <td class="wt-px-100"></td>
+                    <td class="wt-px-200"></td>
                 </tr>
                 </tbody>
             </table>
+            </div>
         </div>
+
         <div class="clearfix">
             <div class="pull-left tableTools-container">
                 <div class="dt-buttons btn-overlap btn-group">

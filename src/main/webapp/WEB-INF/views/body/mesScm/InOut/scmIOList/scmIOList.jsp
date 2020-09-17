@@ -8,39 +8,51 @@
 
 <div class="main-content-inner">
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main" readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
-                    <td class="t-align-c" style="width:25px !important;">
-                        ~
-                    </td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main" readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">품번</td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="keyword" class="form-control h-25 condition_main"
-                                   id="supp_name_main">
-                        </div>
-                    </td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="start_date" id="datepicker"
+                                       class="form-control h-25 condition_main" readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="t-align-c" style="width:25px !important;">
+                            ~
+                        </td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="end_date" id="datepicker2"
+                                       class="form-control h-25 condition_main" readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="border_no display_none" style=" width:80px !important;"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">품번</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="keyword" class="form-control h-25 condition_main"
+                                       id="supp_name_main">
+                            </div>
+                        </td>
+                        <td class="wt-px-100"></td>
+                        <td class="wt-px-200"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="clearfix">

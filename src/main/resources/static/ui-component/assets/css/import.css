@@ -575,3 +575,13 @@ input[type=email], input[type=url], input[type=search], input[type=tel], input[t
     background-color: #000000 !important;
     border-color: #000000 !important;
 }
+
+
+.main_condition {
+    border-top: 1.5px solid #cccccc !important;
+    margin-bottom: 5px;
+}
+
+.main_condition>div>table>tbody>tr>td {
+    border-top: none;
+}

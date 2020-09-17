@@ -72,18 +72,29 @@ function update_btn(rowid) {
                     edits_list[id.seq+id2] = id[id2]
                 })
             });
-            list3.forEach(function (id) {
-                var name = Object.keys(id)
-                name.forEach(function (id2 ){
-                    edits_list[id.seq+id2] = id[id2]
-                })
-            });
-            list4.forEach(function (id) {
-                var name = Object.keys(id)
-                name.forEach(function (id2 ){
-                    edits_list[id.seq+id2] = id[id2]
-                })
-            });
+            // list3.forEach(function (id) {
+            //     var name = Object.keys(id)
+            //     name.forEach(function (id2 ){
+            //         edits_list[id.seq+id2] = id[id2]
+            //     })
+            // });
+            // list4.forEach(function (id) {
+            //     var name = Object.keys(id)
+            //     name.forEach(function (id2 ){
+            //         edits_list[id.seq+id2] = id[id2]
+            //     })
+            // });
+
+            $("#mes_modal1_grid1").setGridParam({
+                datatype: "local",
+                data: list3
+            }).trigger("reloadGrid");
+
+            $("#mes_modal1_grid2").setGridParam({
+                datatype: "local",
+                data: list4
+            }).trigger("reloadGrid");
+
             edits_list.work_date = formmatterDate2(edits_list.work_date);
 
 

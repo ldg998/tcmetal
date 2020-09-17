@@ -8,25 +8,27 @@
 
 <div class="main-content-inner">
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
-                    <td class="wt-px-200">
-                        <select name="keyword" id="part_type_select" class="form-control keyword condition_main" style="width:100%">
-                            <option value="">원자재</option>
-                        </select>
-                    </td>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">품번</td>
-                    <td class="wt-px-200">
-                        <input type="text" name="keyword2" class="form-control h-25 condition_main"
-                               id="part_no"  autocomplete="off" >
-                    </td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
+                        <td class="wt-px-200">
+                            <select name="keyword" id="part_type_select" class="form-control keyword condition_main" style="width:100%">
+                                <option value="">원자재</option>
+                            </select>
+                        </td>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">품번</td>
+                        <td class="wt-px-200">
+                            <input type="text" name="keyword2" class="form-control h-25 condition_main"
+                                   id="part_no"  autocomplete="off" >
+                        </td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="clearfix">

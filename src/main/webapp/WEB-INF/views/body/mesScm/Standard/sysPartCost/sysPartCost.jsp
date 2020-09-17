@@ -7,28 +7,30 @@
     <!-- 전체 컨테이너 div 안 페이지 영역 -->
     <div class="page-content">
         <!-- 검색 div 영역 -->
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
 
-                    <!-- 구분 select 창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">구분</td>
-                    <td class="wt-px-200">
-                        <select id="1_select" name="keyword" class="form-control keyword condition_main"  style="width:100%">
-                        <option value="A">원자재</option>
-                        <option value="B">부자재</option>
-                        </select>
-                    </td>
-                    <!-- 품목코드 검색창 -->
-                    <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">품번</td>
-                    <td class="wt-px-200">
-                        <input type="text" name="keyword2"  class="form-control h-25 condition_main" autocomplete="off" />
-                    </td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+                        <!-- 구분 select 창 -->
+                        <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_type">구분</td>
+                        <td class="wt-px-200">
+                            <select id="1_select" name="keyword" class="form-control keyword condition_main"  style="width:100%">
+                            <option value="A">원자재</option>
+                            <option value="B">부자재</option>
+                            </select>
+                        </td>
+                        <!-- 품목코드 검색창 -->
+                        <td class="wt-px-100 t-align-c td-title padding-a-0" id="part_group1">품번</td>
+                        <td class="wt-px-200">
+                            <input type="text" name="keyword2"  class="form-control h-25 condition_main" autocomplete="off" />
+                        </td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- button div 영역 -->

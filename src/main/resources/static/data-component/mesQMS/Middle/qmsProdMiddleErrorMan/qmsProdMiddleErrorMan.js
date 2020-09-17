@@ -77,9 +77,9 @@ function update_btn(rowid) {
     ccn_ajax('/qmsProdMiddleListOneGet', {keyword: rowid}).then(function (data) { // user의 하나 출력
         data.work_date = formmatterDate2(data.work_date);
 
+        result_ck(data.qc_result);
         modal_edits('.modal_value', [], data); // response 값 출력
 
-        //result_ck(data.qc_result);
 
         $("#file_01").val("");
         $(".file_labal").text("업로드");
@@ -231,13 +231,15 @@ function img_swiper(){
 
 function result_ck(qc_result){
     if(qc_result == '1'){
-        $("#result_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result2_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result3_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("select#result_code option[value='4']").remove();
     }else if(qc_result == '2'){
-        $("#result_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result2_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result3_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("select#result_code option[value='4']").remove();
     }else if(qc_result == '3'){
         $("#result_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result2_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
@@ -246,5 +248,6 @@ function result_ck(qc_result){
         $("#result_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result2_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result3_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("select#result_code").append("<option value='4'>판정대기</option>");
     }
 }

@@ -9,8 +9,8 @@ function modal_start1() {
     modal_make1();    // 모달생산
     datepicker_modal1(); //모달안 날짜 넣어주기
     selectBox_modal1(); // 셀렉트박스 데이터 넣어주기
-    header_make1();
-    header_make2();
+    // header_make1();
+    // header_make2();
     jqGridResize("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]')); //행당그리드 리사이즈
     jqGridResize("#mes_modal1_grid2", $('#mes_modal1_grid2').closest('[class*="col-"]')); //행당그리드 리사이즈
     readonly_go();
@@ -122,82 +122,64 @@ function jqGrid_main_modal() {
         // 다중 select
         mtype: 'POST',
         // 타이틀
-        caption: "품목조회 | MES",
-        colNames: ['','온도','시간','CE','C','Si','CW','PW'],
+        caption: "성분분석",
+        colNames: ['구분','온도','시간','CE','C','Si','CW','PW'],
         colModel: [
-            {name:'radio',index:'radio',align:"center",width:30 ,sortable: false,fixed:true, formatter: function (cellValue, option,rowObject) {
-                    return '<input type="radio" name="radio_' + option.gid + '" onclick="jqGrid_row_check(\'#partSearchGrid\''+','+'\''+rowObject.part_code+'\''+');"/>';
-                }},
-            {name: '', index: '', key: true, sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: 'cw', index: 'cw', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true}
+
+            {name: 'seq', index: 'seq', key: true, sortable: false, width: 60,fixed:true,formatter:seq_formatter},
+            {name: 'chg_temp', index: 'chg_temp', sortable: false, width: 60,fixed:true},
+            {name: 'chg_time', index: 'chg_time', sortable: false, width: 60,fixed:true},
+            {name: 'chg_ce', index: 'chg_ce', sortable: false, width: 60,fixed:true},
+            {name: 'chg_c', index: 'chg_c', sortable: false, width: 60,fixed:true},
+            {name: 'chg_si', index: 'chg_si', sortable: false, width: 60,fixed:true},
+            {name: 'wedge_cw', index: 'wedge_cw', sortable: false, width: 60,fixed:true},
+            {name: 'wedge_pw', index: 'wedge_pw', sortable: false, width: 60,fixed:true}
 
         ],
         autowidth: true,
         height: 145,
         rowNum: 100,
-        pager: '#partSearchGridPager',
         // jsonReader: {cell:""},
         rowList: [100, 200, 300, 400],
         viewrecords: true,
-        beforeSelectRow: function (rowid, e) {
-            var radio = $(e.target).closest('tr').find('input[type="radio"]');
-            $('input[name="radio_SuppSearchGrid"]').removeAttr("checked").trigger('change');
-            radio.prop('checked', true).trigger('change');
-            return true; // allow row selection
-        },
-        ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
-            partModal_check();
-        },
+
         loadComplete:function(){
-            if ($("#partSearchGrid").jqGrid('getGridParam', 'reccount') === 0)
-                $("table#partSearchGrid tr.jqgfirstrow").css("height","1px");
+            if ($("#mes_modal1_grid1").jqGrid('getGridParam', 'reccount') === 0)
+                $("table#mes_modal1_grid1 tr.jqgfirstrow").css("height","1px");
         }
-    }).navGrid('#partSearchGridPager', {search: false, add: false, edit: false, del: false});// grid_
+    })
 
     $('#mes_modal1_grid2').jqGrid({
         datatype: "local",
         // 다중 select
         mtype: 'POST',
         // 타이틀
-        caption: "품목조회 | MES",
-        colNames: ['업체','기종','품명','단중','수량','중량','LOT','작업자'],
+        caption: "주입내역",
+        colNames: ['업체','기종','품명','단중','주입시간','온도1','온도2','LOT','작업자'],
         colModel: [
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true},
-            {name: '', index: '', sortable: false, width: 60,fixed:true}
+            {name: 'supp_name', index: 'supp_name', sortable: false, width: 100,fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable: false, width: 100,fixed:true},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 120,fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 60,fixed:true, align: 'right',formatter:'integer'},
+            {name: 'in_time', index: 'in_time', sortable: false, width: 60,fixed:true, align: 'right',formatter:'integer'},
+            {name: 'temp1', index: 'temp1', sortable: false, width: 60,fixed:true, align: 'right',formatter:'integer'},
+            {name: 'temp2', index: 'temp2', sortable: false, width: 60,fixed:true, align: 'right',formatter:'integer'},
+            {name: 'lot_no', index: 'lot_no', sortable: false, width: 100,fixed:true},
+            {name: 'user_name', index: 'user_name', sortable: false, width: 60,fixed:true}
 
         ],
         autowidth: true,
         height: 145,
         rowNum: 100,
-        pager: '#partSearchGridPager',
         // jsonReader: {cell:""},
         rowList: [100, 200, 300, 400],
         viewrecords: true,
-        beforeSelectRow: function (rowid, e) {
-            var radio = $(e.target).closest('tr').find('input[type="radio"]');
-            $('input[name="radio_SuppSearchGrid"]').removeAttr("checked").trigger('change');
-            radio.prop('checked', true).trigger('change');
-            return true; // allow row selection
-        },
-        ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
-            partModal_check();
-        },
+
         loadComplete:function(){
-            if ($("#partSearchGrid").jqGrid('getGridParam', 'reccount') === 0)
-                $("table#partSearchGrid tr.jqgfirstrow").css("height","1px");
+            if ($("#mes_modal1_grid2").jqGrid('getGridParam', 'reccount') === 0)
+                $("table#mes_modal1_grid2 tr.jqgfirstrow").css("height","1px");
         }
-    }).navGrid('#partSearchGridPager', {search: false, add: false, edit: false, del: false});// grid_
+    });
 
 }
 
@@ -227,4 +209,12 @@ function readonly_go() {
     $(".modal_value").each(function(i){
         $(this).prop("disabled",true);
     });
+}
+
+function seq_formatter(cellValue) {
+    if (cellValue !== 7){
+        return cellValue+"차";
+    } else {
+        return "최종";
+    }
 }

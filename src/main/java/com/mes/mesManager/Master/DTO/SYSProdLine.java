@@ -9,6 +9,7 @@ public class SYSProdLine {
 	private String dept_name;  
 	private String line_code;  
 	private String line_name;  
+	private String line_name2;
 	private String user_code;
 	private String user_name;
 	private String create_date;

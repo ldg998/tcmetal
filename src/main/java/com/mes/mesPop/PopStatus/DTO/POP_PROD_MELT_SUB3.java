@@ -16,6 +16,9 @@ public class POP_PROD_MELT_SUB3 {
     private String part_code;
     private int part_weight;
     private int qty;
+    private int in_time;
+    private int temp1;
+    private int temp2;
     private String lot_no;
     private int weigth;
     private String user_code;

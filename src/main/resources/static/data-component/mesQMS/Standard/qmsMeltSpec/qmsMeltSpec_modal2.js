@@ -1,25 +1,24 @@
-var lastsel;
-var saverow = 0;
-var savecol = 0;
+var lastsel2;
+var saverow2 = 0;
+var savecol2 = 0;
 
 ////////////////////////////시작 함수/////////////////////////////////////
-function modal_start1() {
-    msg_get_modal1();// 모달 메세지 설정
-    modal_make1(); // 모달 생성
-    datepickerInput();
-    jqGrid_main_modal();
+function modal_start2() {
+    modal_make2(); // 모달 생성
+
+    jqGrid_main_modal2();
 }
 
 ////////////////////////////클릭 함수/////////////////////////////////////
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
-function addUdate_btn() {
-    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+function addUdate_btn2() {
+    $("#mes_modal_grid3").jqGrid("saveCell", saverow2, savecol2);
     var gu5 = String.fromCharCode(5);
     var gu4 = String.fromCharCode(4);
-    var add_data = value_return(".modal_value");
-    var jdata = $("#mes_modal_grid2").getRowData();
+    var add_data = value_return(".modal_value2");
+    var jdata = $("#mes_modal_grid3").getRowData();
     add_data.check = main_data.check;
-
+    var ids = $("#mes_grid").getGridParam('selarrrow');
 
     if (jdata.length > 0) {
         var list = [];
@@ -31,17 +30,28 @@ function addUdate_btn() {
                 list2.push(data.seq);
             }
         });
+
+        var list3 = [];
+        var idsdata = {};
+        for (var i = 0 ; i < ids.length; i++){
+            idsdata = $('#mes_grid').jqGrid('getRowData', ids[i]);
+            list3.push(idsdata.supp_code + gu4 + idsdata.part_kind + gu4 + idsdata.part_code);
+        }
+
+
         callback(function () {
                     var text = msg_object.TBMES_Q002.msg_name1;
                     if (main_data.check === "U") {
                         text = msg_object.TBMES_Q003.msg_name1;
                     }
-                     console.log(list);
+                     // console.log(list);
                     if (confirm(text)) {
                         wrapWindowByMask2();
                         add_data.melt_sub = list.join(gu5);
-
-                        ccn_ajax("/qmsMeltSpecAdd", add_data).then(function (data) {
+                        add_data.melt_sub2 = list3.join(gu5);
+                        // console.log(add_data.melt_sub);
+                        // console.log(add_data.melt_sub2);
+                        ccn_ajax("/qmsMeltSpecAllAdd", add_data).then(function (data) {
                             if (data.result === 'NG') {
                                 alert(data.message);
                             } else {
@@ -51,9 +61,9 @@ function addUdate_btn() {
                                 $('#mes_grid').trigger("reloadGrid");
                                 }
                             }
-                            $('#mes_modal_grid2').jqGrid('clearGridData');
+                            $('#mes_modal_grid3').jqGrid('clearGridData');
                             closeWindowByMask();
-                            $("#addDialog").dialog('close');
+                            $("#addDialog2").dialog('close');
                         }).catch(function (err) {
                             closeWindowByMask();
                             alert(msg_object.TBMES_E008.msg_name1);
@@ -71,16 +81,12 @@ function addUdate_btn() {
 }
 
 ////////////////////////////호출 함수/////////////////////////////////////
-function msg_get_modal1() {
-    msgGet_auth("TBMES_Q002");// 저장여부
-    msgGet_auth("TBMES_Q003"); //수정여부
-    msgGet_auth("TBMES_E008");// 데이터 등록 실패
-}
 
 
 
-function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설정해준다
-    $("#addDialog").dialog({
+
+function modal_make2() { //dialog 에 사이즈 및 버튼 기타옵션을 설정해준다
+    $("#addDialog2").dialog({
         modal: true, // 모달 설정 ( 뒷배경 클릭 방지 마스크로 덮음)
         width: 700, // 가로 설정
         height: 'auto', //세로 설정
@@ -91,7 +97,7 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
                 text: '저장',
                 'class': 'btn btn-primary btn-minier',
                 click: function () {
-                    addUdate_btn();
+                    addUdate_btn2();
                 }
             },
             {
@@ -105,10 +111,10 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
     })
 }
 
-function jqGrid_main_modal() {
+function jqGrid_main_modal2() {
 
 
-        $("#mes_modal_grid2").jqGrid({
+        $("#mes_modal_grid3").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         caption: "용해규격관리 | MES",
         mtype: 'POST',// post 방식 데이터 전달
@@ -140,10 +146,10 @@ function jqGrid_main_modal() {
                                     if (isNaN(value)){
                                         alert("숫자만 입력가능합니다.");
                                         e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
-                                        $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+                                        $("#mes_modal_grid3").jqGrid("saveCell", saverow2, savecol2);
                                         return false;
                                     }
-                                    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+                                    $("#mes_modal_grid3").jqGrid("saveCell", saverow2, savecol2);
 
 
                                 }
@@ -158,10 +164,10 @@ function jqGrid_main_modal() {
                                 if (isNaN(value)){
                                     alert("숫자만 입력가능합니다.");
                                     e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
-                                    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+                                    $("#mes_modal_grid3").jqGrid("saveCell", saverow2, savecol2);
                                     return false;
                                 }
-                                $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+                                $("#mes_modal_grid3").jqGrid("saveCell", saverow2, savecol2);
 
                             }
                         }
@@ -191,10 +197,10 @@ function jqGrid_main_modal() {
                                     if (isNaN(value)){
                                         alert("숫자만 입력가능합니다.");
                                         e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
-                                        $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+                                        $("#mes_modal_grid3").jqGrid("saveCell", saverow2, savecol2);
                                         return false;
                                     }
-                                    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+                                    $("#mes_modal_grid3").jqGrid("saveCell", saverow2, savecol2);
 
 
                                 }
@@ -209,10 +215,10 @@ function jqGrid_main_modal() {
                                 if (isNaN(value)){
                                     alert("숫자만 입력가능합니다.");
                                     e.target.value = e.target.value.replace(/[^\.0-9]/g,'');
-                                    $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+                                    $("#mes_modal_grid3").jqGrid("saveCell", saverow2, savecol2);
                                     return false;
                                 }
-                                $("#mes_modal_grid2").jqGrid("saveCell", saverow, savecol);
+                                $("#mes_modal_grid3").jqGrid("saveCell", saverow2, savecol2);
 
                             }
                         }
@@ -238,7 +244,7 @@ function jqGrid_main_modal() {
                         {
                             type: 'focusout',
                             fn: function() {
-                                $("#mes_add_grid2").jqGrid("saveCell",saverow, savecol);
+                                $("#mes_add_grid2").jqGrid("saveCell",saverow2, savecol2);
                             }
                         }
                     ]
@@ -250,9 +256,9 @@ function jqGrid_main_modal() {
             cellEdit: true,
             cellsubmit: 'clientArray',
             beforeEditCell: function (id, name, val, IRow, ICol) {
-                lastsel = id;
-                saverow = IRow;
-                savecol = ICol;
+                lastsel2 = id;
+                saverow2 = IRow;
+                savecol2 = ICol;
             },
 
         // beforeSelectRow: function (rowid, e) { },
@@ -265,8 +271,4 @@ function jqGrid_main_modal() {
         }
     })//.navGrid("mes_modal_grid_pager", {search: false, add: false, edit: false, del: false});// grid_pager 에 검색 삭제 수정 추가 기능 설정
 
-}
-function datepickerInput() {
-
-    datepicker_makes("#datepicker", 0);
 }

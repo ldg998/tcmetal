@@ -18,8 +18,9 @@ $(document).ready(function () {
     jqGridResize('#mes_grid', $('#mes_grid').closest('[class*="col-"]')); // 그리드 리사이즈
     /*----모달----*/
     authcheck();
-    jqgridPagerIcons(); // 그리드 아이콘 설정
     modal_start1();
+    modal_start2();
+    jqgridPagerIcons(); // 그리드 아이콘 설정
     selectBox();
 
 });
@@ -97,6 +98,34 @@ function update_btn(jqgrid_data) {
     }
 }
 
+function all_update_btn() {
+    if (main_data.auth.check_edit !="N") {
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        if (ids.length === 0) {
+            alert("데이터를 선택해주세요");
+        } else {
+            var dataList = {};
+            dataList.keyword = ''
+            dataList.part_kind = ''
+            dataList.part_code = ''
+            dataList.keyword2 = 'N'
+            $("#mes_modal_grid3").jqGrid('clearGridData');
+            modal_reset('.modal_value2', main_data.readonly);
+            // modal_edits('.modal_value', main_data.readonly,jqgrid_data); // response 값 출력
+            $("#mes_modal_grid3").setGridParam({ // 그리드 조회
+                url: '/qmsMeltSpecOneGet',
+                datatype: "json",
+                postData: dataList
+            }).trigger("reloadGrid");
+            $("#addDialog2").dialog('open');// 모달 열기
+            jqGridResize("#mes_modal_grid3", $('#mes_modal_grid3').closest('[class*="col-"]'));
+        }
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1);
+    }
+
+}
+
 
 ////////////////////////////호출 함수//////////////////////////////////
 //호출함수
@@ -141,6 +170,7 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
+        multiselect: true,
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
@@ -163,7 +193,7 @@ function jqGrid_main() {
 function selectBox() {
     $('#status').select2();
     $('#part_kind_select').select2();
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"Y")
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
 }
 
 function select_change1(value) {

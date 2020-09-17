@@ -33,7 +33,7 @@
                     <tr>
                         <td class="wt-px-100 t-align-c td-title padding-a-0">상태</td>
                         <td class="wt-px-200">
-                            <select id="status" style="width: 100%" class="condition_main">
+                            <select id="status" name="keyword3" style="width: 100%" class="condition_main">
                                 <option value="">전체</option>
                                 <option value="0">등록</option>
                                 <option value="1">미등록</option>
@@ -58,6 +58,13 @@
                             <span>조회</span>
                         </span>
                     </a>
+                    <a class="dt-button btn btn-white btn-primary btn-mini btn-bold"
+                       tabindex="0" aria-controls="dynamic-table"  data-original-title="" title="" onclick="all_update_btn()">
+                        <span>
+                            <i class="fa fa-plus bigger-110 blue"></i>
+                            <span>일괄수정</span>
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -75,6 +82,7 @@
 
 
 <%@include file="qmsMeltSpec_modal1.jsp"%>
+<%@include file="qmsMeltSpec_modal2.jsp"%>
 
 
 

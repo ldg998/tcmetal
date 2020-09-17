@@ -7,46 +7,56 @@
 <div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 margin-bottom-3 board_line">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">조회기간</td>
-                    <td class="wt-px-200 border_no">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="start_date" id="datepicker"
-                                   class="form-control h-25 condition_main sendDate" readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
-                    <td class="t-align-c border_no" style="width:20px !important;">
-                        ~
-                    </td>
-                    <td class="wt-px-200 border_no">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="end_date" id="datepicker2"
-                                   class="form-control h-25 condition_main sendDate" readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">라인그룹</td>
-                    <td class="wt-px-200 border_no">
-                        <select id="main_select1" class="form-control h-25 condition_main" name="keyword"
-                                style="width: 100%" onchange="main_select_change1(this.value);">
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">조회기간</td>
+                        <td class="wt-px-200 border_no">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="start_date" id="datepicker"
+                                       class="form-control h-25 condition_main sendDate" readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="t-align-c border_no" style="width:20px !important;">
+                            ~
+                        </td>
+                        <td class="wt-px-200 border_no">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="end_date" id="datepicker2"
+                                       class="form-control h-25 condition_main sendDate" readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="border_no display_none" style=" width:80px !important;"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">라인그룹</td>
+                        <td class="wt-px-200 border_no">
+                            <select id="main_select1" class="form-control h-25 condition_main" name="keyword"
+                                    style="width: 100%" onchange="main_select_change1(this.value);">
 
-                        </select>
-                    </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">라인명</td>
-                    <td class="wt-px-200 border_no">
-                        <select id="main_select2" class="form-control h-25 condition_main" name="keyword2"
-                                style="width: 100%">
+                            </select>
+                        </td>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">라인명</td>
+                        <td class="wt-px-200 border_no">
+                            <select id="main_select2" class="form-control h-25 condition_main" name="keyword2"
+                                    style="width: 100%">
 
-                        </select>
-                    </td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="clearfix">

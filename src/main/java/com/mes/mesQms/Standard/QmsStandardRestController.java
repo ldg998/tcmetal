@@ -86,6 +86,11 @@ public class QmsStandardRestController extends ValidFunction {
         return qmsStandardService.qmsMeltSpecAdd(ssm, req);
     }
 
+    @RequestMapping(value = "/qmsMeltSpecAllAdd", method = RequestMethod.POST)
+    public Message qmsMeltSpecAllAdd(SYS_SPART_MELT ssm, HttpServletRequest req) {
+        return qmsStandardService.qmsMeltSpecAllAdd(ssm, req);
+    }
+
 
 
 }

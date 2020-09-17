@@ -26,7 +26,7 @@
     }
 </style>
 
-<div id="addDialog" title="제품단가관리" style="display: none">
+<div id="addDialog" title="용해규격관리" style="display: none">
     <div class="profile-user-info profile-user-info-striped">
         <div class="profile-info-row">
             <div class="profile-info-name">업체</div>
@@ -63,7 +63,7 @@
         <div class="profile-info-row ">
             <div class="profile-info-value board_line left">고철</div>
             <div class="profile-info-value board_line">
-                <input type="text" name="iron1_value" class="modal_value w_100 right" autocomplete="off" onkeyup="num_keyup_float(this);">
+                <input type="text" name="iron1_value" class="modal_value w_100 right qty" autocomplete="off" onkeyup="num_keyup_float(this);">
             </div>
             <div class="profile-info-value board_line">
                 <input type="text" name="iron1_remark" class="modal_value w_100" autocomplete="off">
@@ -72,7 +72,7 @@
         <div class="profile-info-row">
             <div class="profile-info-value board_line left">선철</div>
             <div class="profile-info-value board_line">
-                <input type="text" name="iron2_value" class="modal_value w_100 right" autocomplete="off" onkeyup="num_keyup_float(this);">
+                <input type="text" name="iron2_value" class="modal_value w_100 right qty" autocomplete="off" onkeyup="num_keyup_float(this);">
             </div>
             <div class="profile-info-value board_line">
                 <input type="text" name="iron2_remark" class="modal_value w_100" autocomplete="off">
@@ -81,7 +81,7 @@
         <div class="profile-info-row">
             <div class="profile-info-value board_line left">회수철</div>
             <div class="profile-info-value board_line">
-                <input type="text" name="iron3_value" class="modal_value w_100 right" autocomplete="off" onkeyup="num_keyup_float(this);"></div>
+                <input type="text" name="iron3_value" class="modal_value w_100 right qty" autocomplete="off" onkeyup="num_keyup_float(this);"></div>
             <div class="profile-info-value board_line">
                 <input type="text" name="iron3_remark" class="modal_value w_100" autocomplete="off">
             </div>

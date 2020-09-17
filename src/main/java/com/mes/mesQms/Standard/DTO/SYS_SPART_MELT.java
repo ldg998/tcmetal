@@ -27,6 +27,7 @@ public class SYS_SPART_MELT {
     private String keyword2;
     private String check;
     private String melt_sub;
+    private String melt_sub2;
     private int seq;
     private int rownum;
     private int rownum_page;

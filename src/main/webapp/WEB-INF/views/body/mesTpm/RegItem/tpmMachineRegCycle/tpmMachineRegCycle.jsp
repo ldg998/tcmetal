@@ -8,25 +8,27 @@
     <!-- 전체 컨테이너 div 안 페이지 영역 -->
     <div class="page-content">
 
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">라인</td>
-                    <td class="wt-px-200">
-                        <select name="keyword" id="line_select" class="form-control keyword condition_main" onchange="select_change1(this.value);" style="width:100%">
-                        </select>
-                    </td>
-                    <td class="wt-px-100 t-align-c td-title padding-a-0">설비명</td>
-                    <td class="wt-px-200">
-                        <select name="keyword2" class="form-control h-25 condition_main" id="machine_select" style="width:100%">
-                            <option value="">전체</option>
-                        </select>
-                    </td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">라인</td>
+                        <td class="wt-px-200">
+                            <select name="keyword" id="line_select" class="form-control keyword condition_main" onchange="select_change1(this.value);" style="width:100%">
+                            </select>
+                        </td>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">설비명</td>
+                        <td class="wt-px-200">
+                            <select name="keyword2" class="form-control h-25 condition_main" id="machine_select" style="width:100%">
+                                <option value="">전체</option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!-- button div 영역 -->
         <div class="clearfix">

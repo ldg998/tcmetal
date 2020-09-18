@@ -9,42 +9,50 @@
 <div class="main-content-inner">
 
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="start_date" id="datepicker" class="form-control h-25 condition_main sendDate"  readonly>                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
-                    <td class="t-align-c" style="width:25px !important;">~</td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="stop_date" id="datepicker2" class="form-control h-25 condition_main sendDate"  readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
-                    <td class="wt-px-75 t-align-c td-title padding-a-0">라인그룹</td>
-                    <td class="wt-px-150">
-                        <select name="keyword" id="main_select1" class="form-control  condition_main" onchange="main_select_change1(this.value)" style="width:100%">
-                            <option value="">전체</option>
-                        </select>
-                    </td>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="start_date" id="datepicker" class="form-control h-25 condition_main sendDate"  readonly>                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="t-align-c" style="width:25px !important;">~</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="stop_date" id="datepicker2" class="form-control h-25 condition_main sendDate"  readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="border_no display_none" style=" width:80px !important;"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">라인그룹</td>
+                        <td class="wt-px-200">
+                            <select name="keyword" id="main_select1" class="form-control  condition_main" onchange="main_select_change1(this.value)" style="width:100%">
+                                <option value="">전체</option>
+                            </select>
+                        </td>
 
-                    <td class="wt-px-75 t-align-c td-title padding-a-0">라인명</td>
-                    <td class="wt-px-150">
-                        <select name="keyword2" id="main_select2" class="form-control  condition_main" style="width:100%">
-                            <option value="">전체</option>
-                        </select>
-                    </td>
-
-
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">라인명</td>
+                        <td class="wt-px-200">
+                            <select name="keyword2" id="main_select2" class="form-control  condition_main" style="width:100%">
+                                <option value="">전체</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="clearfix">
             <div class="pull-left tableTools-container">

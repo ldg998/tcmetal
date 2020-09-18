@@ -6,10 +6,10 @@
 
 <div class="main-content-inner">
     <div class="page-content">
-        <div class="clearfix">
 
-            <div class="col-lg-12 padding0">
-                <table class="table wt-100 board_line">
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
                     <tbody>
                     <tr>
                         <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
@@ -30,7 +30,15 @@
                                 <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                             </div>
                         </td>
-
+                        <td class="border_no display_none" style=" width:80px !important;"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
                         <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
                         <td class="wt-px-200">
                             <select name="keyword" id="select1" class="form-control condition_main"  style="width:100%">
@@ -47,12 +55,13 @@
                                 <option value="1"></option>
                             </select>
                         </td>
-                        <td></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+        </div>
 
+        <div class="clearfix">
             <div class="pull-left tableTools-container">
                 <div class="dt-buttons btn-overlap btn-group">
 

@@ -8,25 +8,27 @@
 <div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
-                    <td class="wt-px-200">
-                        <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
-                    </td>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                        <td class="wt-px-200">
+                            <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
+                        </td>
 
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
-                    <td class="wt-px-200">
-                        <select id="part_kind_select" name="keyword2" class="form-control condition_main" style="width: 100%;">
-                            <option value="">전체</option>
-                        </select>
-                    </td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
+                        <td class="wt-px-200">
+                            <select id="part_kind_select" name="keyword2" class="form-control condition_main" style="width: 100%;">
+                                <option value="">전체</option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="clearfix">

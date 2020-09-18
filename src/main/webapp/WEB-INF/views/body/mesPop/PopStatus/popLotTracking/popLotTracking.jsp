@@ -7,39 +7,47 @@
 <div class="main-content-inner">
 
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
-                    <td class="wt-px-200">
-                        <select class="form-control condition_main" name="supp_code" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
-                    </td>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                        <td class="wt-px-200">
+                            <select class="form-control condition_main" name="supp_code" id="supp_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
+                        </td>
 
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
-                    <td class="wt-px-200">
-                        <select id="part_kind_select" name="part_kind" class="form-control condition_main" onchange="select_change2(this.value)" style="width: 100%;">
-                            <option value="">전체</option>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
+                        <td class="wt-px-200">
+                            <select id="part_kind_select" name="part_kind" class="form-control condition_main" onchange="select_change2(this.value)" style="width: 100%;">
+                                <option value="">전체</option>
 
-                        </select>
-                    </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">품명</td>
-                    <td class="wt-px-200 border_no">
-                        <select id="part_code_select" name="part_code" class="form-control condition_main" style="width: 100%;">
-                            <option value="">전체</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">품명</td>
+                        <td class="wt-px-200 border_no">
+                            <select id="part_code_select" name="part_code" class="form-control condition_main" style="width: 100%;">
+                                <option value="">전체</option>
 
-                        </select>
+                            </select>
 
-                    </td>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">제품LOT</td>
-                    <td class="wt-px-200 border_no">
-                        <input type="text" name="lot_no" id="" class="form-control h-25 condition_main">
-                    </td>
-
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+                        </td>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">제품LOT</td>
+                        <td class="wt-px-200 border_no">
+                            <input type="text" name="lot_no" id="" class="form-control h-25 condition_main">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="clearfix">
             <div class="pull-left tableTools-container">

@@ -7,53 +7,72 @@
 <div class="main-content-inner">
 
     <div class="page-content">
-        <div class="col-lg-12 padding0">
-            <table class="table wt-100 board_line">
-                <tbody>
-                <tr>
-                    <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="start_date" id="datepicker" class="form-control h-25 condition_main sendDate " readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
-                    <td class="t-align-c" style="width:25px !important;">~</td>
-                    <td class="wt-px-200">
-                        <div class="input-icon input-icon-right">
-                            <input type="text" name="stop_date" id="datepicker2" class="form-control h-25 condition_main sendDate " readonly>
-                            <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
-                        </div>
-                    </td>
-                    <td class="wt-px-75 t-align-c td-title padding-a-0">업체</td>
-                    <td class="wt-px-150">
-                        <select id="supp_code_select" name="supp_code" class="condition_main" onchange="select_change_modal1(this.value)" style="width: 100%">
-                            <option></option>
-                        </select>
+        <div class="col-lg-12 padding0 main_condition">
+            <div class="col-lg-4 col-md-12  padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="start_date" id="datepicker" class="form-control h-25 condition_main sendDate " readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="t-align-c" style="width:25px !important;">~</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <input type="text" name="stop_date" id="datepicker2" class="form-control h-25 condition_main sendDate " readonly>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                            </div>
+                        </td>
+                        <td class="border_no display_none" style=" width:80px !important;"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">업체</td>
+                        <td class="wt-px-200">
+                            <select id="supp_code_select" name="supp_code" class="condition_main" onchange="select_change_modal1(this.value)" style="width: 100%">
+                                <option></option>
+                            </select>
 
-                    </td>
-                    <td class="wt-px-75 t-align-c td-title padding-a-0">기종</td>
-                    <td class="wt-px-150">
-                        <select id="part_kind_select" name="part_kind" class="condition_main" style="width: 100%">
-                            <option></option>
-                        </select>
+                        </td>
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">기종</td>
+                        <td class="wt-px-200">
+                            <select id="part_kind_select" name="part_kind" class="condition_main" style="width: 100%">
+                                <option></option>
+                            </select>
 
-                    </td>
-                    <td class="wt-px-75 td-title t-align-c padding-a-0 border_no">공정</td>
-                    <td class="wt-px-100 border_no">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0 border_no">공정</td>
+                        <td class="wt-px-200 border_no">
 
-                        <select id='select1' name="keyword"  class="form-control h-25 condition_main">--%>
-                            <option value="">합형</option>
-                            <option value="1"></option>
-                            <option value="2"></option>
-                        </select>
+                            <select id='select1' name="keyword"  class="form-control h-25 condition_main">--%>
+                                <option value="">합형</option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                            </select>
 
-                    </td>
-
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+                        </td>
+                        <td class="wt-px-100"></td>
+                        <td class="wt-px-200"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="clearfix">
             <div class="pull-left tableTools-container">

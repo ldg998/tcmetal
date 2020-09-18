@@ -23,7 +23,7 @@
 	<select id="crmOrderRecpComp" resultType="com.mes.Common.DataTransferObject.Message">
 	   	EXEC SP_CRM_ORD_RECP_COMP  #{keyword}
 	</select>
-
+	
 	<select id="crmOrderRecpModalGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
 		EXEC SP_CRM_ORD_RECP_MODAL_GET 0, 0,#{start_date}, #{end_date}, #{keyword}
     </select>

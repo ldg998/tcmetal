@@ -230,7 +230,7 @@ function jqGrid_main() {
             {name: 'user_name', index: 'user_name', sortable:false, width: 70, fixed:true},
             {name: 'create_date', index: 'create_date', sortable:false, width: 140, fixed:true,formatter: formmatterDate }
         ],
-        multiselect: true,
+        // multiselect: true,
         autowidth: true,
         viewrecords: true,
         height: 562,

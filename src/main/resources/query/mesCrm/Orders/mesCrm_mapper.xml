@@ -40,6 +40,14 @@
 		EXEC SP_WMS_OUT_ORD_SUB_GET 0, 0,'', '','', #{keyword}
     </select>
 
+	<select id="wmsOutOrderUpdateGet" resultType="com.mes.mesCrm.Orders.DTO.WMS_OUT_ORD_SUB_UPDATE">
+		EXEC SP_WMS_OUT_ORD_SUB_ONE_GET #{req_no},#{ord_no},#{supp_code},#{part_kind},#{part_code}
+    </select>
+
+	<select id="wmsOutOrderUpdate" resultType="com.mes.Common.DataTransferObject.Message">
+		EXEC SP_WMS_OUT_ORD_SUB_UPDATE #{req_no},#{ord_no},#{supp_code},#{part_kind},#{part_code},#{ord_qty},#{prev_qty},#{wms_qty},#{comp_qty},#{qty},#{update_qty},#{user_code}
+    </select>
+
 	<select id="wmsOutOrderDel" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_WMS_OUT_ORD_SUB_DEL #{keyword}
     </select>

@@ -782,6 +782,10 @@ function num_keyup_comma(e) {
 	if ($(e).val() === "0.00"){
 		$(e).val("");
 	}
+
+		if ($(e).val() === "0"){
+			$(e).val("");
+		}
 }
 
 function ToFloat(number){

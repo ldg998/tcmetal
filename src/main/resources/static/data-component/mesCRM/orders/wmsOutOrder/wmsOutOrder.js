@@ -26,6 +26,7 @@ $(document).ready(function () {
     selectBox();
     authcheck();
     jqgridPagerIcons();
+    modal_start2();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -155,6 +156,50 @@ function delete_btn() {
 
             }
         }
+    } else {
+        alert(msg_object.TBMES_A002.msg_name1);
+    }
+}
+
+function one_update_btn() {
+    var ids = $("#mes_grid").getGridParam('selarrrow');
+    if(main_data.auth.check_del != "N") {
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        if (ids.length === 0) {
+            alert("수정데이터를 선택해주세요.");
+        } else  if (ids.length > 1) {
+            alert("하나의 데이터만 선택해주세요.");
+        } else {
+            var send_date = $('#mes_grid').jqGrid('getRowData', ids[0]);
+            if (send_date.status !== '0'){
+                alert("대기상태의 데이터만 수정이 가능합니다.");
+            } else {
+                wrapWindowByMask2();
+                ccn_ajax("/wmsOutOrderUpdateGet", send_date).then(function (data) {
+                    closeWindowByMask();
+                    modal2_data = data;
+                    modal_reset(".modal_value2", []);
+                    modal_edits(".modal_value2",[],data);
+                    
+                    
+                    var max = 0;
+                    var min = 0;
+
+                    max = modal2_data.ord_qty - modal2_data.prev_qty+ modal2_data.qty;
+                    min = modal2_data.wms_qty - modal2_data.comp_qty - modal2_data.qty >= 0 ? 0 : (modal2_data.wms_qty - modal2_data.comp_qty - modal2_data.qty)*-1;
+                    
+                    
+                    $('input[name=update_qty]').val("");
+                    $('input[name=update_qty]').attr("placeholder",min+"부터 "+max+'까지')
+
+                    $("#addDialog2").dialog('open');
+                }).catch(function (err) {
+                    closeWindowByMask();
+                    console.error(err); // Error 출력
+                });
+            }
+        }
+
     } else {
         alert(msg_object.TBMES_A002.msg_name1);
     }

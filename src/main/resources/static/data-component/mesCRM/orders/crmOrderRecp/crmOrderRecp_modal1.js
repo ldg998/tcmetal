@@ -154,10 +154,12 @@ function num_keyup_comma_crm3(e) {
 
 
 function sum_qty_keyup() {
+    var part_weight =  $('input[name=part_weight]').val();
     var qty =  $('input[name=qty]').val();
     var unit_cost = $('input[name=unit_cost]').val();
 
 
+    part_weight = part_weight.replace(/[^\.0-9]/g,'');
     qty = qty.replace(/[^\.0-9]/g,'');
 
 
@@ -169,7 +171,7 @@ function sum_qty_keyup() {
 
 
     if (qty !== '' && unit_cost !=='') {
-        $('input[name=price_amount]').val(((""+(parseInt(qty)*parseInt(unit_cost))).replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")));
+        $('input[name=price_amount]').val(((""+(parseInt(qty)*parseInt(unit_cost)*parseInt(part_weight))).replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")));
     }else {
         $('input[name=price_amount]').val("");
     }

@@ -56,6 +56,7 @@ public class SYS_SPART_CD {
     private String cost_user_name;
     private String user_code;
     private int max_unit_cost;
+    private int total_cost;
     private String update_date;
     private String cost_create_date;
     private String currency_type_name;

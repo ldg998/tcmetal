@@ -159,7 +159,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames: ['','','','업체','기종','품명','품명(한글)','품번','단중','사이즈','포장무게','단가','화폐단위','공정라우팅','외주(열처리)업체','사용유무','초도품생산일','목재1','목재2','목재3','출장검사','등록자','수정일시'],
+        colNames: ['','','','업체','기종','품명','품명(한글)','품번','단중','사이즈','포장무게','단가','총금액','화폐단위','공정라우팅','외주(열처리)업체','사용유무','초도품생산일','목재1','목재2','목재3','출장검사','등록자','수정일시'],
         colModel: [
             {name: 'currency_code', index: 'currency_code',hidden:true,fixed: true},
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
@@ -174,6 +174,7 @@ function jqGrid_main() {
             {name: 'part_size', index: 'part_size',sortable: false, width: 90,fixed: true},//사이즈
             {name: 'gross_weight', index: 'gross_weight',sortable: false, width: 120,fixed: true,formatter: 'integer',align: 'right'},//포장무게
             {name: 'unit_cost', index: 'unit_cost',sortable: false, width: 80,fixed: true,formatter: 'integer',align: 'right'},//단가
+            {name: 'total_cost', index: 'total_cost',sortable: false, width: 80,fixed: true,formatter: 'integer',align: 'right'},//단가
             {name: 'currency_type_name', index: 'currency_type_name',sortable: false, width: 50,fixed: true},//화폐단위
             {name: 'route_name', index: 'route_name',sortable: false, width: 120,fixed: true},//공정라우팅
             // {name: 'outs', index: 'outs',sortable: false, width: 120,fixed: true},//외주

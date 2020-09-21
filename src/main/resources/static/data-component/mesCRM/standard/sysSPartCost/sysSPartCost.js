@@ -144,7 +144,7 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['','','','','업체','기종','품번','품명','단중','화폐단위','변경일자','금액','등록자','수정일'],// grid 헤더 설정
+        colNames : ['','','','','업체','기종','품번','품명','단중','화폐단위','변경일자','단가','총금액','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'currency_code',index:'currency_code',hidden:true,sortable: false,fixed: true},
             {name: 'rownum', index: 'rownum',hidden:true,fixed: true,key:true},
@@ -158,6 +158,7 @@ function jqGrid_main() {
             {name:'currency_type_name',index:'currency_type_name',sortable: false,width:80,fixed: true},
             {name:'start_date',index:'start_date',sortable: false,width:90,fixed: true,formatter:formmatterDate2},
             {name:'max_unit_cost',index:'max_unit_cost',sortable: false,width:90,fixed: true,formatter: 'integer',align: 'right'},
+            {name:'total_cost',index:'total_cost',sortable: false,width:90,fixed: true,formatter: 'integer',align: 'right'},
             {name:'cost_user_name',index:'cost_user_name',sortable: false,width:60,fixed: true},
             {name:'cost_create_date',index:'cost_create_date',sortable: false,width:140,fixed: true,formatter:formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],

@@ -93,6 +93,16 @@ public class CrmOrdersRestController {
         return crmOrdersService.wmsOutOrderOneGet(p);
     }
 
+    @RequestMapping(value = "/wmsOutOrderUpdateGet", method = RequestMethod.POST)
+    public WMS_OUT_ORD_SUB_UPDATE wmsOutOrderUpdateGet(WMS_OUT_ORD_SUB_UPDATE woos) {
+        return crmOrdersService.wmsOutOrderUpdateGet(woos);
+    }
+
+    @RequestMapping(value = "/wmsOutOrderUpdate", method = RequestMethod.POST)
+    public Message wmsOutOrderUpdate(HttpServletRequest req,WMS_OUT_ORD_SUB_UPDATE woos) {
+        return crmOrdersService.wmsOutOrderUpdate(req,woos);
+    }
+
     @RequestMapping(value="/wmsOutOrderDel" , method = RequestMethod.POST)
     public Message wmsOutOrderDel(Page p){
         return crmOrdersService.wmsOutOrderDel( p);

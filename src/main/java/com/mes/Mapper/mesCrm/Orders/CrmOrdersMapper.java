@@ -67,4 +67,8 @@ public interface CrmOrdersMapper {
     Message wmsInvoiceAdd(CRM_INVOICE ci);
 
     CRM_INVOICE wmsInvoiceOneGet(Page p);
+
+    WMS_OUT_ORD_SUB_UPDATE wmsOutOrderUpdateGet(WMS_OUT_ORD_SUB_UPDATE woos);
+
+    Message wmsOutOrderUpdate(WMS_OUT_ORD_SUB_UPDATE woos);
 }

@@ -73,6 +73,12 @@
                         <span>삭제</span>
                         </span>
                     </a>
+                    <a class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
+                       title="" onclick="one_update_btn();">
+                            <span><i class="fa fa-plus bigger-110 blue"></i>
+                            <span>수정</span>
+                            </span>
+                    </a>
                     <%--<a  class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="comp_btn();">
                         <span>
@@ -101,3 +107,4 @@
 </div>
 
 <%@include file="wmsOutOrder_modal1.jsp" %>
+<%@include file="wmsOutOrder_modal2.jsp" %>

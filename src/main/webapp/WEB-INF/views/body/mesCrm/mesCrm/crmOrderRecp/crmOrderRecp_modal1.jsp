@@ -61,7 +61,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
-                <input name="part_weight" type="text" class="form-control keyword modal_value qty" onkeyup="num_keyup_comma_crm3(this);"  style="width: 100%; text-align: right;" autocomplete="off">
+                <input name="part_weight" type="text" class="form-control keyword modal_value qty" onkeyup="num_keyup_comma_crm3(this);"  style="width: 100%; text-align: right;" autocomplete="off" readonly>
 
             </div>
             <div class="profile-info-name">단가(원)</div>

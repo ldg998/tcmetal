@@ -191,4 +191,13 @@ public class CrmOrdersService extends ReturnFunction {
     public CRM_INVOICE wmsInvoiceOneGet(Page p) {
         return crmOrdersMapper.wmsInvoiceOneGet(p);
     }
+
+    public WMS_OUT_ORD_SUB_UPDATE wmsOutOrderUpdateGet(WMS_OUT_ORD_SUB_UPDATE woos) {
+        return crmOrdersMapper.wmsOutOrderUpdateGet(woos);
+    }
+
+    public Message wmsOutOrderUpdate(HttpServletRequest req,WMS_OUT_ORD_SUB_UPDATE woos) {
+        woos.setUser_code(getSessionData(req).getUser_code());
+        return crmOrdersMapper.wmsOutOrderUpdate(woos);
+    }
 }

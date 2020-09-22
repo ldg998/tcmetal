@@ -43,7 +43,7 @@
 
             <div class="profile-info-name">단중</div>
             <div class="profile-info-value">
-                <input type="text"  name="part_weight" class="form-control modal_value"  onkeyup="num_keyup_comma_crm4(this);" autocomplete="off" style="text-align: right">
+                <input type="text"  name="part_weight" class="form-control modal_value qty"  onkeyup="num_keyup_comma_crm4(this);" autocomplete="off" style="text-align: right">
             </div>
 
         </div>
@@ -60,7 +60,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">포장무게</div>
             <div class="profile-info-value">
-                <input type="text"  name="gross_weight" class="form-control modal_value"  onkeyup="num_keyup_comma_crm4(this);" autocomplete="off" style="text-align: right">
+                <input type="text"  name="gross_weight" class="form-control modal_value qty"  onkeyup="num_keyup_comma_crm4(this);" autocomplete="off" style="text-align: right">
             </div>
             <div class="profile-info-name">화폐단위</div>
             <div class="profile-info-value">

@@ -71,4 +71,6 @@ public interface CrmOrdersMapper {
     WMS_OUT_ORD_SUB_UPDATE wmsOutOrderUpdateGet(WMS_OUT_ORD_SUB_UPDATE woos);
 
     Message wmsOutOrderUpdate(WMS_OUT_ORD_SUB_UPDATE woos);
+
+    List<List<Object>> crmInvoicePackingGet(Page p);
 }

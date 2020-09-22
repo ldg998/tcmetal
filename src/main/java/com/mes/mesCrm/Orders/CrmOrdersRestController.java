@@ -177,4 +177,9 @@ public class CrmOrdersRestController {
     public CRM_INVOICE wmsInvoiceOneGet( Page p) {
         return crmOrdersService.wmsInvoiceOneGet(p);
     }
+
+    @RequestMapping(value = "/crmInvoicePackingGet", method = RequestMethod.POST)
+    public LIST_INVOICE crmInvoicePackingGet( Page p) {
+        return crmOrdersService.crmInvoicePackingGet(p);
+    }
 }

@@ -6,8 +6,6 @@ import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.Function.ReturnFunction;
 import com.mes.Mapper.mesCrm.Orders.CrmOrdersMapper;
 import com.mes.mesCrm.Orders.DTO.*;
-import com.mes.mesCrm.Standard.DTO.SYS_SPART_CD;
-import com.mes.mesCrm.Standard.DTO.SYS_WOOD_CD;
 import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -131,7 +129,7 @@ public class CrmOrdersService extends ReturnFunction {
             String FileName = format.format(now) + "_wmsInvoiceForm";
             String[] name = uploadedFile.getOriginalFilename().split("\\." );
             FileName2 = FileName + "." + name[name.length - 1];
-            FileName3 = "/uploadFile/tcmetal/" + FileName2;
+            FileName3 = "/uploadFile/wmsInvoiceForm/" + FileName2;
 
         }
         cir.setSigned_file(FileName3);
@@ -199,5 +197,24 @@ public class CrmOrdersService extends ReturnFunction {
     public Message wmsOutOrderUpdate(HttpServletRequest req,WMS_OUT_ORD_SUB_UPDATE woos) {
         woos.setUser_code(getSessionData(req).getUser_code());
         return crmOrdersMapper.wmsOutOrderUpdate(woos);
+    }
+
+    public LIST_INVOICE crmInvoicePackingGet(Page p) {
+        LIST_INVOICE li = new LIST_INVOICE();
+        List<List<Object>> datas = crmOrdersMapper.crmInvoicePackingGet(p);
+        CRM_INVOICE dataset1 = (CRM_INVOICE) getDataset(datas, 0).get(0);
+        List<CRM_INVOICE_SUB> dataset2 = getDataset(datas, 1);
+        List<CRM_INVOICE_SUB1> dataset3 = getDataset(datas, 2);
+
+
+        li.setCi(dataset1);
+        li.setCis(dataset2);
+        li.setCis1(dataset3);
+
+        return li;
+    }
+
+    private <T> List<T> getDataset(List<List<Object>> datasets, int index) {
+        return (List<T>) datasets.get(index);
     }
 }

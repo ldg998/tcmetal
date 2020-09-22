@@ -29,6 +29,10 @@
     <select id="menuFavoritesCheck" resultType="integer">
         SELECT COUNT(SEQ) FROM SYS_MENU_FAVORITES_CD WHERE USER_CODE = #{user_code} AND MENU_CODE = #{menu_code}
     </select>
+
+    <select id="sysUserLogAdd">
+   		EXEC SP_SYS_USER_LOG_ADD #{user_code},#{keyword}
+   </select>
 </mapper>
 
 

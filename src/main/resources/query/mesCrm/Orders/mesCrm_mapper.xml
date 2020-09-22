@@ -197,4 +197,14 @@
 	<select id="wmsInvoiceOneGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_INVOICE">
 		EXEC SP_CRM_INVOICE_GET 1,1,'','','',#{keyword2}
 	</select>
+
+	<resultMap id="liId1" type="com.mes.mesCrm.Orders.DTO.CRM_INVOICE"></resultMap>
+
+	<resultMap id="liId2" type="com.mes.mesCrm.Orders.DTO.CRM_INVOICE_SUB"></resultMap>
+
+	<resultMap id="liId3" type="com.mes.mesCrm.Orders.DTO.CRM_INVOICE_SUB1"></resultMap>
+
+	<select id="crmInvoicePackingGet" resultMap="liId1, liId2, liId3">
+    EXEC SP_CRM_INVOICE_PACKING_GET #{keyword}
+    </select>
 </mapper>

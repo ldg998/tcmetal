@@ -40,10 +40,10 @@ public class Handler extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
         HttpSession session = request.getSession();
 
-        Session lv = new Session();
-        lv.setUser_code("admin");
-        lv.setUser_name("관리자");
-        request.getSession().setAttribute("userData", lv);
+//        Session lv = new Session();
+//        lv.setUser_code("admin");
+//        lv.setUser_name("관리자");
+//        request.getSession().setAttribute("userData", lv);
 
         Session userData = (Session) session.getAttribute("userData");
         response.setHeader("pragma", "No-cache");
@@ -83,7 +83,7 @@ public class Handler extends HandlerInterceptorAdapter {
                     out.flush();
                     return false;
                 }
-
+                authService.sysUserLogAdd(request, p);
                 ArrayList<List<Auth>> authAllSubSelect = (ArrayList<List<Auth>>) authService.authAllSubSelect(request); // 권한에 맞는 전체 리스트
                 ReturnFunction returnFunction = new ReturnFunction();
 
@@ -112,7 +112,7 @@ public class Handler extends HandlerInterceptorAdapter {
                         out.flush();
                         return false;
                     }
-
+                    authService.sysUserLogAdd(request, p);
                     request.setAttribute("star_check", authService.menuFavoritesCheck(request,request.getServletPath().substring(1)));
                     ArrayList<List<Auth>> authAllSubSelect = (ArrayList<List<Auth>>) authService.authAllSubSelect(request); // 권한에 맞는 전체 리스트
                     ReturnFunction returnFunction = new ReturnFunction();

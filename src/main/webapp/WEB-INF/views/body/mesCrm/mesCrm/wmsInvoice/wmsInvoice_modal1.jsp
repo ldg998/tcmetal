@@ -100,7 +100,7 @@
             <div class="profile-info-row">
                 <div class="profile-info-name">Terms of Delivery<br>and Payment </div>
                 <div class="profile-info-value">
-                   <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice5 autocomplete="off""></textarea>
+                   <textarea wrap="off"  cols="36" rows="7" class="modal_value modal_value2" name="notice5" autocomplete="off"></textarea>
                 </div>
                 <div class="profile-info-name">Remark</div>
                 <div class="profile-info-value">

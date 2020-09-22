@@ -93,4 +93,9 @@ public class AuthService extends AuthFunction {
         smfc.setMenu_code(page_name);
         return authMapper.menuFavoritesCheck(smfc);
     }
+
+    public void sysUserLogAdd(HttpServletRequest req, Page p) {
+        p.setUser_code(getSessionData(req).getUser_code());
+        authMapper.sysUserLogAdd(p);
+    }
 }

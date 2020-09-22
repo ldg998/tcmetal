@@ -18,4 +18,6 @@ public interface AuthMapper {
     List<?> menuFavoritesGet(Session session);
 
     int menuFavoritesCheck(SYS_MENU_FAVORITES_CD smfc);
+
+    void sysUserLogAdd(Page p);
 }

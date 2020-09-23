@@ -32,6 +32,11 @@ public class WmsInOutRestController {
         return wmsInOutService.wmsOutListGet(req, p);
     }
 
+    @RequestMapping(value="/wmsOutListDel" , method = RequestMethod.POST)
+    public Message wmsOutListDel(Page p){
+        return wmsInOutService.wmsOutListDel(p);
+    }
+
     @RequestMapping(value = "/wmsOutListAdd", method = RequestMethod.POST)
     public String wmsOutListAdd (MultipartHttpServletRequest req){
         Files files = new Files();

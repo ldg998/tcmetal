@@ -178,7 +178,7 @@ public class PopStatusService extends UploadFunction {
 
     public Message sysSPartDrawingAdd3(MultipartHttpServletRequest req, SYS_SPART_CD ssc) {
         ssc.setUser_code(getSessionData(req).getUser_code());
-        String path = "C:/UploadFile/tcmetal/sysSPartFile1Add";
+        String path = "C:/UploadFile/tcmetal/sysSPartDrawing";
 
         if (ssc.getCheck1() == 1) {
             ssc.setFile1(file_key_retrun1(ssc.getFiles1(), path,ssc.getUser_code()));
@@ -218,7 +218,7 @@ public class PopStatusService extends UploadFunction {
             vo.setSize(mf.getSize());
             vo.setOriginal_name(mf.getOriginalFilename());
             vo.setAllpath(path + "/" + vo.getSavefile());
-            vo.setKey_value("SSD_" + vo.getSavefile());
+            vo.setKey_value(vo.getSavefile());
             vo.setUser_code(user_code);
             i++;
         }

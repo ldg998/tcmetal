@@ -91,4 +91,7 @@ public class WmsInOutService extends UploadFunction {
         wmsInOutMapper.wmsOutListAdd(files);
     }
 
+    public Message wmsOutListDel(Page p) {
+        return wmsInOutMapper.wmsOutListDel(p);
+    }
 }

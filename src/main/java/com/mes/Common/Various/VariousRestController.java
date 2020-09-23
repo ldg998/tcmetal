@@ -145,5 +145,7 @@ public class VariousRestController {
     @RequestMapping(value ="/suppDeliveryPlaceGet",method = RequestMethod.POST)
     public List<SYSSupp> suppDeliveryPlaceGet(Page p){ return variousService.suppDeliveryPlaceGet(p);}
 
+    @RequestMapping(value ="/procedureLogAdd",method = RequestMethod.POST)
+    public Message procedureLogAdd(HttpServletRequest req, Page p){ return variousService.procedureLogAdd(req,  p);}
 
 }

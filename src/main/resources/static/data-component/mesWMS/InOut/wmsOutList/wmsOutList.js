@@ -57,10 +57,39 @@ function excel_download() {
     }
 }
 
-////////////////////////////호출 함수/////////////////////////////////////
-function msg_get() {
-    msgGet_auth("TBMES_Q014");
+
+// 삭제 버튼
+function delete_btn() {
+    if(main_data.auth.check_del != "N") { // 권한체크
+        var gu5 = String.fromCharCode(5); // CHAR(5) 구분자 선언
+        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
+
+        if (ids.length === 0) { // 선택된 그리드 row가 없을 경우
+            alert(msg_object.TBMES_A004.msg_name1); // 경고문 출력
+        } else {
+            if (confirm(msg_object.TBMES_A005.msg_name1)) { // 삭제여부 확인 메세지 출력
+                wrapWindowByMask2(); // 마스크로 화면 덮음 / 삭제중 다른 작업을 할 수 없도록 방지
+                // ajax 통신 함수 url과 data 를 전달하여 promise로 실행 후 가공 data를 사용할 수 있도록 설정
+                ccn_ajax("/wmsOutListDel", {keyword: ids.join(gu5)}).then(function (data) {
+                    if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
+                        alert(data.message); // 해당 오류 메세지 출력
+                    } else {
+                        get_btn($("#mes_grid").getGridParam('page')); // 성공시 기존에 조회했던 조건 그대로 grid를 조회
+                    }
+                    closeWindowByMask(); // 마스크 종료
+                }).catch(function (err) { // 에러 발생 시
+                    closeWindowByMask(); // 마스크 종료
+                    console.error(err); // Error 출력
+                });
+            }
+        }
+    } else {
+        alert(msg_object.TBMES_A002.msg_name1); // 권한 이 없을 경우 해당 메세지 출력
+    }
 }
+
+////////////////////////////호출 함수/////////////////////////////////////
+
 
 function datepickerInput() {
     datepicker_makes("#datepicker", -30);
@@ -79,9 +108,9 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['rownum','출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','성적서','업로드','파일','출고요청번호','생산일자','중간검사','출하검사','리드타임','등록자','등록일시'],
         colModel: [
-            {name: 'rownum', index: 'rownum', sortable: false, width: 90, fixed:true,key:true,hidden:true},
+            {name: 'rownum', index: 'rownum', sortable: false, width: 90, fixed:true,hidden:true},
             {name: 'out_date', index: 'out_date', sortable: false, width: 90, fixed:true, formatter:formmatterDate2},
-            {name: 'out_no', index: 'out_no', sortable: false, width: 120, fixed:true},
+            {name: 'out_no', index: 'out_no', sortable: false, width: 120,key:true, fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130, fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 110, fixed:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 190, fixed:true},
@@ -108,12 +137,19 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
+        multiselect: true,
         loadComplete:function(){
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");
             else
                 $(".jqgfirstrow").css("height","0px");
-        }
+        },
+        beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
+            var $myGrid = $(this),
+                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                cm = $myGrid.jqGrid('getGridParam', 'colModel');
+            return (cm[i].name === 'cb');
+        },
     });
 }
 
@@ -236,4 +272,13 @@ function file_change(e,value,no,rownum,file1_code) {
 
 
     }
+}
+
+function msg_get() {
+    msgGet_auth("TBMES_A001"); // 추가권한 없음
+    msgGet_auth("TBMES_A002"); // 삭제권한 없음
+    msgGet_auth("TBMES_A003"); // 수정권한 없음
+    msgGet_auth("TBMES_A004"); // 삭제 데이터 선택 요청
+    msgGet_auth("TBMES_A005"); // 삭제여부
+    msgGet_auth("TBMES_Q014");
 }

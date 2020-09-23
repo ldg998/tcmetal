@@ -162,4 +162,9 @@ public class VariousService extends ReturnFunction {
     public List<SYSCommon> sysLineGroupAllGet(Page p) {
         return variousMapper.sysLineGroupAllGet(p);
     }
+
+    public Message procedureLogAdd(HttpServletRequest req, Page p) {
+        p.setUser_code(getSessionData(req).getUser_code());
+        return variousMapper.procedureLogAdd(p);
+    }
 }

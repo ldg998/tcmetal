@@ -92,6 +92,7 @@ function delete_btn() {
                     if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
                         alert(data.message); // 해당 오류 메세지 출력
                     } else {
+                        // ccn_ajax("/procedureLogAdd",{keyword:"SP_SYS_AUTH_GROUP_DEL",keyword2:""})
                         get_btn($("#mes_grid").getGridParam('page')); // 성공시 기존에 조회했던 조건 그대로 grid를 조회
                     }
                 closeWindowByMask(); // 마스크 종료

@@ -38,4 +38,6 @@ public interface WmsInOutMapper {
     List<POP_PLAN> wmsOrdPlanUpGet(POP_PLAN pp);
 
     void wmsOutListAdd(Files files);
+
+    Message wmsOutListDel(Page p);
 }

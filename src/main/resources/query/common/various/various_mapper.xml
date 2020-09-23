@@ -111,6 +111,10 @@
         EXEC SP_SYS_QC_ITEM_CD_ALL #{keyword} ,#{keyword2}
     </select>
 
+    <select id="procedureLogAdd" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_PROCEDURE_LOG_ADD #{keyword},#{keyword2},#{user_code}
+    </select>
+
 
 </mapper>
 

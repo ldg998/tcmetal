@@ -3,8 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <fmt:parseDate value="${InfoData.create_date}" var="c_date" pattern="yyyyMMddHHmmss"/>
 <fmt:parseDate value="${InfoData.update_date}" var="u_date" pattern="yyyyMMddHHmmss"/>
-<%@include file="/WEB-INF/views/body/mesBoard/mesBoard/mesBoard/header.jsp" %>
 <script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
+<%@include file="/WEB-INF/views/body/mesBoard/mesBoard/mesBoard/header.jsp" %>
 <!-- ###실제컨텐츠영역 -->
 <div class="page-content">
     <table class="bbs_view">
@@ -133,13 +133,11 @@
     <br>
     <div class="bbs_btn align_right">
 
-        <c:if test="${sessionScope.userData.user_code eq InfoData.user_code || sessionScope.userData.user_code eq 'ADMIN' }">
-            <%--            <a href='/modBoardList?idx=${InfoData.board_idx}' class='btn_w'>수정</a>--%>
-            <a href='#' class='btn_w' onclick="return delBoardList('${InfoData.board_idx}');">삭제</a>
-        </c:if>
-        <c:if test="${sessionScope.userData.user_code eq InfoData.user_code}">
-            <a href='#' class='btn_w' onclick="return upBoardList('${InfoData.board_code}','${InfoData.board_idx}');">수정</a>
-        </c:if>
+        <%--        <c:if test="${sessionScope.userData.user_code eq InfoData.user_code || sessionScope.userData.user_code eq 'ADMIN' || sessionScope.userData.user_code eq 'admin'}">--%>
+        <%--            <a href='/modBoardList?idx=${InfoData.board_idx}' class='btn_w'>수정</a>--%>
+        <a href='#' class='btn_w' id="del_btn" onclick="return delBoardList('${InfoData.board_idx}');" style="display: none;">삭제</a>
+        <%--        </c:if>--%>
+        <a href='#' class='btn_w' id="mod_btn" style="display: none;" onclick="return upBoardList('${InfoData.board_code}','${InfoData.board_idx}');">수정</a>
         <a href='#' class='btn_w' onclick="window.history.go(-1); return false;">돌아가기</a>
     </div>
 </div>
@@ -153,8 +151,17 @@
     var main_data = {
         auth:{}
     };
-    $(window).load(function () {
+    $(document).ready(function () {
         authcheck();
+        console.log(main_data);
+        setTimeout(function () {
+            del_check_btn();
+            mod_check_btn();
+        }, 100);
+    });
+
+    $(window).load(function () {
+
         $('#sub-t-1').text('게시판');
         $('#sub-t-2').text('홈');
         $('#sub-t-3').text('게시판');
@@ -163,8 +170,24 @@
         $("input[name=file]").each(function (i, item) {
             $(this).attr('id', 'file_' + i).attr('name', 'file_' + i);
         });
-
     });
+
+    function del_check_btn() {
+        if(main_data.auth.check_del === 'Y' || ${sessionScope.userData.user_code eq InfoData.user_code}) {
+            $("#del_btn").show();
+        }else {
+            $("#del_btn").hide();
+        }
+    }
+
+    function mod_check_btn() {
+        if(main_data.auth.check_edit === 'Y' || ${sessionScope.userData.user_code eq InfoData.user_code}) {
+            $("#mod_btn").show();
+        }else {
+            $("#mod_btn").hide();
+        }
+    }
+
 
     function authcheck() {
         ccn_ajax("/menuAuthGet", {keyword: board_code}).then(function (data) {

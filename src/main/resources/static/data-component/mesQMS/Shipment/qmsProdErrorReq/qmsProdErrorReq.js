@@ -36,6 +36,7 @@ function get_btn(page) {
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid");
+    ccn_ajax("/procedureLogAdd",{keyword:"사외부적합관리 조회",keyword2:JSON.stringify(main_data.send_data)})
 }
 
 // 추가 버튼
@@ -74,6 +75,7 @@ function update_btn(jqgrid_data) {
             $('#modal_select3').val(jqgrid_data.part_code).trigger("change");
             select_makes_base('#select_modal5','/sysDeptAllGet2','dept_user_code','user_name',{keyword:$('#dept_select2').val(),keyword2:'Y'},'').then(function (e){
                 $('#select_modal5').val(jqgrid_data.ret_user_code).trigger("change");
+                ccn_ajax("/procedureLogAdd",{keyword:"사외부적합관리 세부조회",keyword2:JSON.stringify({keyword:'Y',keyword2:jqgrid_data.supp_code})})
                 $("#addDialog").dialog('open');// 모달 열기
             })
             })
@@ -100,6 +102,7 @@ function delete_btn() {
                     if (data.result === 'NG') {
                         alert(data.message);
                     } else {
+                        ccn_ajax("/procedureLogAdd",{keyword:"사외부적합관리 삭제",keyword2:JSON.stringify({keyword: ids.join(gu5)})})
                             $('#mes_grid').trigger('reloadGrid')
                     }
                     closeWindowByMask();
@@ -254,6 +257,7 @@ function file_download(file_name) {
             httpMethod: "POST",
             data: { key_value: file_name },
             successCallback: function(url){
+                ccn_ajax("/procedureLogAdd",{keyword:"사외부적합관리 파일저장",keyword2:""})
             },
             failCallback: function(){
             }

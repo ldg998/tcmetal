@@ -41,6 +41,7 @@ function addUdate_btn() {
             if (data.result === 'NG') {
                 alert(data.message);
             }else{
+                ccn_ajax("/procedureLogAdd",{keyword:"중간검사조치기록 저장",keyword2:JSON.stringify({keyword: qc_no})})
                 $("#addDialog").dialog('close');
             }
             closeWindowByMask();

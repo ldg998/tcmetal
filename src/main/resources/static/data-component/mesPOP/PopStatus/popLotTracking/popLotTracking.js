@@ -42,10 +42,10 @@ function get_btn(page) {
 
 function select_change1(value) {
     if (value !== ""){
-        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"N");
     } else {
-        var option = $("<option></option>").text('전체').val('');
-        var option2 = $("<option></option>").text('전체').val('');
+        var option = $("<option></option>").text('선택안함').val('');
+        var option2 = $("<option></option>").text('선택안함').val('');
         $('#part_kind_select').empty();
         $('#part_code_select').empty();
 
@@ -71,7 +71,7 @@ function select_change2(value) {
         } else {
 
             $('#part_code_select').empty();
-            var option2 = $("<option></option>").text('전체').val('');
+            var option2 = $("<option></option>").text('선택안함').val('');
             $('#part_code_select').append(option2);
             $('#part_code_select').select2();
         }
@@ -120,7 +120,7 @@ function jqGrid_main() {
 }
 
 function selectBox() {
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
     $('#part_kind_select').select2();
     $('#part_code_select').select2();
 }

@@ -38,6 +38,7 @@ function get_btn(page) {
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid");
+    ccn_ajax("/procedureLogAdd",{keyword:"출하검사현황 조회",keyword2:JSON.stringify(main_data.send_data)})
 
 }
 
@@ -93,7 +94,7 @@ function update_btn(jqgrid_data) {
             datatype: "json",
             postData: {keyword:jqgrid_data.qc_no}
         }).trigger("reloadGrid");
-
+        ccn_ajax("/procedureLogAdd",{keyword:"출하검사현황 세부조회",keyword2:JSON.stringify(main_data.send_data)})
         $("#addDialog").dialog('open'); // 모달 열기
         jqGridResize("#mes_modal1_grid2", $('#mes_modal1_grid2').closest('[class*="col-"]'));
     } else {
@@ -149,6 +150,7 @@ function delete_btn() {
 
 function img_btn(qc_no) {
     ccn_ajax("/qmsProdlistFileGet", {keyword:qc_no}).then(function (data) {
+        ccn_ajax("/procedureLogAdd",{keyword:"출하검사현황 이미지조회",keyword2:JSON.stringify(main_data.send_data)})
         $("#wrapper").empty();
         var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
         $("#wrapper").append(main_div);
@@ -294,6 +296,7 @@ function file_download(file_name) {
             failCallback: function(){
             }
         });
+                ccn_ajax("/procedureLogAdd",{keyword:"출하검사현황 파일저장",keyword2:""})
     }
 }
 

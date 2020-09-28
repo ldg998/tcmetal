@@ -84,7 +84,8 @@ function update_btn(rowid) {
             //         edits_list[id.seq+id2] = id[id2]
             //     })
             // });
-
+            $('#mes_modal1_grid1').jqGrid('clearGridData');
+            $('#mes_modal1_grid2').jqGrid('clearGridData');
             $("#mes_modal1_grid1").setGridParam({
                 datatype: "local",
                 data: list3

@@ -39,7 +39,7 @@ function get_btn(page) {
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid");
-
+    ccn_ajax("/procedureLogAdd",{keyword:"중간검사조치기록 조회",keyword2:JSON.stringify(main_data.send_data)})
 
 }
 
@@ -75,6 +75,7 @@ function update_btn(rowid) {
 
     modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할 항목 설정
     ccn_ajax('/qmsProdMiddleListOneGet', {keyword: rowid}).then(function (data) { // user의 하나 출력
+        ccn_ajax("/procedureLogAdd",{keyword:"중간검사조치기록 세부조회",keyword2:JSON.stringify({keyword: rowid})})
         data.work_date = formmatterDate2(data.work_date);
 
         result_ck(data.qc_result);
@@ -95,6 +96,7 @@ function update_btn(rowid) {
 
 function img_btn(qc_no) {
     ccn_ajax("/qmsProdMiddleFileGet", {keyword:qc_no}).then(function (data) {
+        ccn_ajax("/procedureLogAdd",{keyword:"중간검사조치기록 이미지조회",keyword2:JSON.stringify({keyword: qc_no})})
         $("#wrapper").empty();
         var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
         $("#wrapper").append(main_div);

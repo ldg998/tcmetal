@@ -71,21 +71,25 @@ function update_btn(jqgrid_data) {
         $("#modal_add_btn").show();
         main_data.check = 'U';
         main_data.check2 = 'N';
+        main_data.check3 = "Y";
         modal_reset(".modal_value", []);
         $('#mes_modal1_grid1').jqGrid('clearGridData');
 
-        if(jqgrid_data.status == 1){
-        $("#modal_get_btn").hide();
-        $("#modal_add_btn").hide();
-        }else {
-            $("#modal_get_btn").hide();
-        }
+
         ccn_ajax('/wmsOutOrderOneGet', {keyword: jqgrid_data.req_no}).then(function (data) {
             for(var i = 0; i < data.length ;  i++){
-                if (data[i].status === "1"){
+                if (data[i].status_name === "출고완료" || data[i].status_name === "진행중"){
                     main_data.check3 = "N";
                 }
             }
+
+            if(main_data.check3 === "N"){
+                $("#modal_get_btn").hide();
+                $("#modal_add_btn").hide();
+            }else {
+                $("#modal_get_btn").hide();
+            }
+
 
             modal_edits(".modal_value",[],data[0]);
             datepicker_makes("#datepicker_modal", -30);
@@ -128,13 +132,13 @@ function delete_btn() {
                     var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
                     keywords.push(data.req_no+gu4+data.ord_no+gu4+data.supp_code+gu4+data.part_kind+gu4+data.part_code);
 
-                    if (data.status === "1"){
+                    if (data.status_name === "출고완료" || data.status_name === "진행중"){
                         check = "N";
                     }
                 }//11|12|13|
 
                 if (check === "N"){
-                    alert("출고완료된 지시가 있습니다.");
+                    alert("진행중/출고완료된 지시가 있습니다.");
                 } else {
                 if (confirm(msg_object.TBMES_A005.msg_name1)) {
                     code_list=keywords.join(gu5);

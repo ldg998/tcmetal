@@ -60,6 +60,7 @@ function addUdate_btn() {
                 alert(data.message);
             }
             closeWindowByMask();
+            ccn_ajax("/procedureLogAdd",{keyword:"사외부적합관리 저장수정",keyword2:JSON.stringify(add_data)})
             $("#addDialog").dialog('close');
             $('#mes_grid').trigger('reloadGrid')
 

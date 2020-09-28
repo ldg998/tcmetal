@@ -77,4 +77,6 @@ public interface VariousMapper {
     List<SYS_QC_ITEM_CD> sysQcItemCdAll(Page p);
 
     List<SYSCommon> sysLineGroupAllGet(Page p);
+
+    Message procedureLogAdd(Page p);
 }

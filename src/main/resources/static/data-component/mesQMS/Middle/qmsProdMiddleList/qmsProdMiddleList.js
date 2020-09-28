@@ -38,7 +38,7 @@ function get_btn(page) {
         postData: main_data.send_data
     }).trigger("reloadGrid");
 
-
+    ccn_ajax("/procedureLogAdd",{keyword:"중간검사현황 조회",keyword2:JSON.stringify(main_data.send_data)})
 
 }
 
@@ -92,7 +92,7 @@ function update_btn(rowid) {
                 datatype: "local",
                 data: data
             }).trigger("reloadGrid");
-
+            ccn_ajax("/procedureLogAdd",{keyword:"중간검사현황 세부조회",keyword2:JSON.stringify({keyword: rowid})})
             $("#addDialog").dialog('open'); // 모달 열기
             jqGridResize2("#mes_modal_grid",$('#mes_modal_grid').closest('[class*="col-"]')); //그리드 리 사이즈
 
@@ -108,6 +108,7 @@ function update_btn(rowid) {
 
 function img_btn(qc_no) {
     ccn_ajax("/qmsProdMiddleFileGet", {keyword:qc_no}).then(function (data) {
+        ccn_ajax("/procedureLogAdd",{keyword:"중간검사현황 이미지조회",keyword2:JSON.stringify({keyword:qc_no})})
         $("#wrapper").empty();
         var main_div = $("<div class='swiper-wrapper' id='wrapper2' ></div>");
         $("#wrapper").append(main_div);
@@ -298,6 +299,7 @@ function file_download(file_name) {
             failCallback: function(){
             }
         });
+                ccn_ajax("/procedureLogAdd",{keyword:"중간검사현황 파일저장",keyword2:""})
     }
 }
 

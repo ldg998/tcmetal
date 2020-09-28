@@ -44,7 +44,7 @@ function get_btn(page) {
         datatype: "json",
         postData: main_data.send_data
     }).trigger("reloadGrid");
-
+    ccn_ajax("/procedureLogAdd",{keyword:"중간검사 불량현황 조회",keyword2:JSON.stringify(main_data.send_data)})
 
     google.setOnLoadCallback(drawChart);
 

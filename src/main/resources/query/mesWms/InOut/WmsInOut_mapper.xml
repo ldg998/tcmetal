@@ -47,4 +47,8 @@
             WHERE
             out_no = #{key1}
     </update>
+
+    <select id="wmsOutListDel" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_WMS_OUT_DEL #{keyword}
+    </select>
 </mapper>

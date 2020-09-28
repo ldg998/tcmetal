@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-name"> 기입고수량 </div>
+            <div class="profile-info-name"> 기납품수량 </div>
             <div class="profile-info-value">
                 <input type="text" name="prev_qty" class="form-control modal_value2 qty"  autocomplete="off" readonly  style="text-align: right;">
             </div>

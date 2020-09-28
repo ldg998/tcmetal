@@ -140,6 +140,7 @@ function add_modal1_btn() {
                         })
                         add_data.keyword2 = list.join(gu5);
                         add_data.keyword3 = main_data.check;
+                        console.log(add_data);
                         ccn_ajax("/sysAlarmAdd", add_data).then(function (data) {
                             if (data.result === 'NG') {
                                 alert(data.message);

@@ -145,10 +145,10 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 400], // 페이지당 데이터 수 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
-                var $myGrid = $(this),
-                    i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
-                    cm = $myGrid.jqGrid('getGridParam', 'colModel');
-                return (cm[i].name === 'cb');
+                // var $myGrid = $(this),
+                //     i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                //     cm = $myGrid.jqGrid('getGridParam', 'colModel');
+                // return (cm[i].name === 'cb');
         },
         ondblClickRow: function (rowid, iRow, iCol, e) {
         },

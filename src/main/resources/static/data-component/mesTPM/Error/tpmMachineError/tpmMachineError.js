@@ -225,9 +225,10 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['seq','점검일', '라인','line_code', '설비','machine_code',  '고장내용','고장분류', '점검결과', '조치사항', '등록자', '점검일시'],
+        colNames: ['','seq','점검일', '라인','line_code', '설비','machine_code',  '고장내용','고장분류', '점검결과', '조치사항', '등록자', '점검일시'],
         colModel: [
-            {name: 'seq', index: 'seq', sortable: false,hidden:true,key:true},
+            {name: 'rownum', index: 'rownum', sortable: false,hidden:true,key:true},
+            {name: 'seq', index: 'seq', sortable: false,hidden:true},
             {name: 'work_date', index: 'work_date', sortable: false, width: 100, formatter: formmatterDate2,fixed:true},
             {name: 'line_name', index: 'line_name', sortable: false, width: 80,fixed:true},
             {name: 'line_code', index: 'line_code', sortable: false, hidden:true},

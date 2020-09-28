@@ -43,6 +43,7 @@ function get_btn(page) {
 function add_btn() {
     if(main_data.auth.check_add != "N") {
         main_data.check = 'I';
+
        modal_reset("modal_value",[])
         $('#mes_modal1_grid1').jqGrid('clearGridData');
         $('#mes_modal1_grid2').jqGrid('clearGridData');

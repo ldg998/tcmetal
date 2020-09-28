@@ -17,7 +17,7 @@
     }
 </style>
 
-<div id="addDialog2" title="생산계획현황" style="display:none; ">
+<div id="addDialog2" title="출하검사현황" style="display:none; ">
     <div class="swiper-container" id="wrapper">
 
 

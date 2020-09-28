@@ -200,7 +200,7 @@ function datepickerInput() {
 
 function select(){
     $('#select1').select2();
-    select_makes_base("#select2","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N")
+    select_makes_base("#select2","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
 
     }
 

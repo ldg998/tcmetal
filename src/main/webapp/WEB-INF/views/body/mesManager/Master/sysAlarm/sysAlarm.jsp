@@ -19,7 +19,7 @@
                     <td class="wt-px-75 t-align-c td-title padding-a-0">구분</td>
                     <td class="wt-px-200">
                         <select name="keyword" id="select1" class="form-control keyword condition_main"
-                               onchange="main_select_change(this.value)" style="width:100%">
+                               onchange="" style="width:100%">
                             <option value="">중간점검(폐기)</option>
                         </select>
                     </td>

@@ -94,8 +94,8 @@ function jqGrid_main() {
             {name: 'part_name', index: 'part_name', sortable:false, width: 190, fixed:true},
             {name: 'part_weight', index: 'part_weight',sortable: false, width: 90,fixed: true,formatter: 'integer',align: 'right'},
             {name: 'file2', index: 'file2', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
-            {name: 'file4', index: 'file4', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
             {name: 'file1', index: 'file1', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
+            {name: 'file4', index: 'file4', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
             {name: 'remark2', index: 'remark2', sortable:false, width: 350, fixed:true},
             {name: 'user_name', index: 'user_name',sortable: false, width: 70,fixed: true},
             {name: 'update_date', index: 'update_date',sortable: false, width: 140,fixed: true,formatter:formmatterDate}

@@ -243,9 +243,10 @@ function result_ck(qc_result){
         $("#result3_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
         $("select#result_code option[value='4']").remove();
     }else if(qc_result == '3'){
-        $("#result_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("#result_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result2_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result3_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
+        $("select#result_code option[value='4']").remove();
     }else if(qc_result == '4'){
         $("#result_code").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result2_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지

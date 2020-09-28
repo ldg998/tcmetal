@@ -163,7 +163,7 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames : ['','수주일자','전표번호','업체','상태','PO','기종','품번','품명','단중','단가','수량','금액','등록자','등록일시'],
+        colNames : ['','수주일자','전표번호','업체','상태','PO','기종','품번','품명','단중','단가','수량','금액','납기일자','등록자','등록일시'],
         colModel : [
             {name:'status',index:'status',sortable: false,fixed: true,hidden:true},
             {name:'work_date',index:'work_date' ,sortable: false,width:90,fixed: true,formatter:formmatterDate2},
@@ -178,6 +178,7 @@ function jqGrid_main() {
             {name:'unit_cost',index:'unit_cost',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
             {name:'qty',index:'qty',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
             {name: 'price_amount', index: 'price_amount', sortable: false,fixed: true, width: 90, align: 'right',formatter:'integer'},
+            {name:'end_date',index:'end_date' ,sortable: false,width:90,fixed: true,formatter:formmatterDate2},
             {name: 'user_name', index: 'user_name', sortable: false, width: 60,fixed:true},
             {name: 'update_date', index: 'update_date', sortable: false, width: 140, formatter: formmatterDate,fixed:true}
         ],

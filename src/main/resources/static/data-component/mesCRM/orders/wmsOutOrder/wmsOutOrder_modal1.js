@@ -119,19 +119,19 @@ function get_modal1_btn() {
 }
 
 function select_change_modal1(value) {
-    if (main_data.check2 === 'Y'){
-        if (value !== ""){
-            select_makes_base("#modal1_select2","/suppDeliveryPlaceGet","delivery_place","delivery_place",{keyword:value},"N").then(function (data) {
-
-            });
-        } else {
-            $('#modal1_select2').empty();
-            var option2 = $("<option></option>").text('선택안함').val('');
-            $('#modal1_select2').append(option2);
-            $('#modal1_select2').select2();
-
-        }
-    }
+    // if (main_data.check2 === 'Y'){
+    //     if (value !== ""){
+    //         select_makes_base("#modal1_select2","/suppDeliveryPlaceGet","delivery_place","delivery_place",{keyword:value},"N").then(function (data) {
+    //
+    //         });
+    //     } else {
+    //         $('#modal1_select2').empty();
+    //         var option2 = $("<option></option>").text('선택안함').val('');
+    //         $('#modal1_select2').append(option2);
+    //         $('#modal1_select2').select2();
+    //
+    //     }
+    // }
     $('#mes_modal1_grid1').jqGrid('clearGridData');
 }
 
@@ -186,7 +186,7 @@ function jqGrid_main_modal() {
     $("#mes_modal1_grid1").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['저장수량','수주번호','수주일자','업체','업체','PO','기종','품번','품명','단중','trans_code','운송수단','수주수량','기납품수량','납품수량','외주(열처리)','외주(열처리)'],// grid 헤더 설정
+        colNames : ['저장수량','수주번호','수주일자','업체','업체','PO','기종','품번','품명','단중','trans_code','운송수단','납기일','수주수량','기납품수량','납품수량','외주(열처리)','외주(열처리)'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name: 'qty2', index: 'qty2', sortable: false, hidden:true},
             {name:'ord_no',index:'ord_no',hidden:true,key:true,sortable: false,width:110,fixed: true},
@@ -200,6 +200,7 @@ function jqGrid_main_modal() {
             {name:'part_weight',index:'part_weight',sortable: false,width:110,fixed: true, formatter:'integer', align:'right'},
             {name:'trans_code',index:'trans_code',sortable: false,width:110,fixed: true,hidden:true},
             {name:'trans_name',index:'trans_name',sortable: false,width:110,fixed: true},
+            {name:'end_date',index:'end_date',sortable: false,width:110,fixed: true, formatter: formmatterDate2},
             {name:'ord_qty',index:'ord_qty',sortable: false,width:125,fixed: true, formatter:'integer', align:'right'},
             {name:'prev_qty',index:'prev_qty',sortable: false,width:110,fixed: true, formatter:'integer', align:'right'},
             {name:'qty',index:'qty',sortable: false,width:125,fixed: true, formatter:'integer', align:'right',
@@ -336,10 +337,10 @@ function datepickerInput_modal1() {
 
 function selectBox_modal1() {
     select_makes_base("#modal1_select1","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"N").then(function (data) {
-        $('#modal1_select2').empty();
-        var option = $("<option></option>").text('선택안함').val('');
-        $('#modal1_select2').append(option);
-        $('#modal1_select2').select2();
+        // $('#modal1_select2').empty();
+        // var option = $("<option></option>").text('선택안함').val('');
+        // $('#modal1_select2').append(option);
+        // $('#modal1_select2').select2();
     });
 
     select_makes_base("#modal1_select3", "/sysCommonAllGet","code_value","code_name1",{keyword:'TRANS_TYPE'});
@@ -351,7 +352,7 @@ function effectiveness1(data) {
         alert("업체를 선택해주세요");
         return false;
     } else if(data.delivery_place === "") {
-        alert("납품장소를 선택해주세요");
+        alert("납품장소를 입력해주세요");
         return false;
     } else {
         return true;

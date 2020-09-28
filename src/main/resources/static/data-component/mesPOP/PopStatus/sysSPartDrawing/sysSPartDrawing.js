@@ -84,7 +84,7 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "도면관리 | MES",
-        colNames: ['','','업체','기종','품번','품명','단중','제품도면','제품사진','주소방안관리','비고','등록자','수정일'],
+        colNames: ['','','업체','기종','품번','품명','단중','제품도면','제품사진','주소방안관리','제품도면(보기)','제품사진(보기)','주소방안관리(보기)','비고','등록자','수정일'],
         colModel: [
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
             {name: 'supp_code', index: 'supp_code',hidden:true, sortable:false,fixed:true},
@@ -96,6 +96,9 @@ function jqGrid_main() {
             {name: 'file2', index: 'file2', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
             {name: 'file1', index: 'file1', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
             {name: 'file4', index: 'file4', sortable: false, width: 70, align: 'center', formatter: file2_formatter,fixed:true},
+            {name: 'file2', index: 'file2', sortable: false, width: 70, align: 'center', formatter: file3_formatter,fixed:true},
+            {name: 'file1', index: 'file1', sortable: false, width: 70, align: 'center', formatter: file3_formatter,fixed:true},
+            {name: 'file4', index: 'file4', sortable: false, width: 70, align: 'center', formatter: file3_formatter,fixed:true},
             {name: 'remark2', index: 'remark2', sortable:false, width: 350, fixed:true},
             {name: 'user_name', index: 'user_name',sortable: false, width: 70,fixed: true},
             {name: 'update_date', index: 'update_date',sortable: false, width: 140,fixed: true,formatter:formmatterDate}
@@ -163,6 +166,41 @@ function file2_formatter(cellvalue, options, rowObject) {
     }
 }
 
+
+function file3_formatter(cellvalue, options, rowObject) {
+    if (cellvalue != "" && cellvalue != null && cellvalue != "null") {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_openPDF(\"" + cellvalue + "\");'>" +
+            "<span><i class='fa fa-search bigger-110 blue'></i>" +
+            "<span>보기</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span>없음</span>" +
+            "</span>" +
+            "</a>";
+    }
+}
+
+var agent = navigator.userAgent.toLowerCase();
+function file_openPDF(cell) {
+
+    if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+        alert("익스플로러 브라우저는 지원되지 않습니다.");
+    }
+    else {
+        window.open("/uploadFile/sysSPartDrawing/"+cell);
+        return false;
+    }
+
+
+
+}
 
 function file_download(file_name) {
     if (confirm('파일을 저장하시겠습니까?')) {

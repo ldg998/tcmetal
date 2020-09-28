@@ -7,6 +7,7 @@ public class WMS_OUT_ORD_SUB {
     private String req_no;
     private String ord_no;
     private String work_date;
+    private String end_date;
     private String supp_code;
     private String supp_name;
     private String part_kind;

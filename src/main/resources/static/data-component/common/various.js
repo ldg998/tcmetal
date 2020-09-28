@@ -197,8 +197,12 @@ function value_return(class_name) {
 				qty_send = "0";
 			}
 			objectValue = qty_send.replace(/[^0-9]/g,'');
-		} else if($(this).hasClass("sendDate")){
-			objectValue = $(this).val().replace(/\-/g, '');
+		} else if($(this).hasClass("sendDate") || $(this).hasClass("sendDate2")){
+			if ($(this).val() !== ""){
+				objectValue = $(this).val().replace(/\-/g, '');
+			} else {
+				objectValue = $(this).val();
+			}
 		}else {
 			objectValue = $(this).val();
 		}
@@ -233,7 +237,7 @@ function modal_edits(class_name,readonly,data) {
 		}
 		if ($(this).hasClass("qty")){
 			$(this).val((data[$(this).attr("name")]+"").replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")).trigger('change');
-		} else if ($(this).hasClass("sendDate")){
+		} else if ($(this).hasClass("sendDate") || $(this).hasClass("sendDate2")){
 			$(this).val(formmatterDate2(data[$(this).attr("name")])).trigger('change');
 		}else {
 			$(this).val(data[$(this).attr("name")]).trigger('change');

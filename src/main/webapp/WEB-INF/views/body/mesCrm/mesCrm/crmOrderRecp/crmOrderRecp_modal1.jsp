@@ -78,6 +78,16 @@
                     <input name="qty" type="text" class="form-control keyword modal_value qty" style="width: 100%; text-align: right;" onkeyup="num_keyup_comma_crm2(this)" autocomplete="off">
 
                 </div>
+                <div class="profile-info-name">납기일</div>
+                <div class="profile-info-value">
+                    <div class="input-icon input-icon-right">
+                        <input name="end_date" id="datepicker_modal2" type="text" class="form-control keyword modal_value sendDate2" readonly style="width: 100%" autocomplete="off">
+                        <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="profile-info-row">
                 <div class="profile-info-name">총금액(원)</div>
                 <div class="profile-info-value">
                     <input name="price_amount" type="text" class="form-control keyword modal_value qty" placeholder="자동생성" readonly style="width: 100%; text-align: right;" autocomplete="off">

@@ -7,6 +7,7 @@ public class CRM_ORD_RECP  {
 
     private String ord_no;
     private String work_date;
+    private String end_date;
     private String supp_code;
     private String part_kind;
     private String part_code;

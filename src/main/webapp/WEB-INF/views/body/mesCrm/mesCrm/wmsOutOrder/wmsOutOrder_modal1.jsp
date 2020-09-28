@@ -47,9 +47,10 @@
 
                     <td class="wt-px-50 td-title t-align-c padding-a-0">납품장소</td>
                     <td class="wt-px-125">
-                        <select name="delivery_place" id="modal1_select2" class="form-control keyword modal_value" style="width:100%">
-                            <option value="">성우</option>
-                        </select>
+                        <input type="text" name="delivery_place" class="form-control h-25 modal_value" autocomplete="off">
+<%--                        <select name="delivery_place" id="modal1_select2" class="form-control keyword modal_value" style="width:100%">--%>
+<%--                            <option value="">성우</option>--%>
+<%--                        </select>--%>
                     </td>
                     <td class="wt-px-50 td-title t-align-c padding-a-0">선적일자</td>
                     <td class="wt-px-125">

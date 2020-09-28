@@ -41,11 +41,11 @@ function addUdate_btn() {
             if (data.result === 'NG') {
                 alert(data.message);
             }else{
-                ccn_ajax("/procedureLogAdd",{keyword:"중간검사조치기록 저장",keyword2:JSON.stringify({keyword: qc_no})})
+                ccn_ajax("/procedureLogAdd",{keyword:"중간검사조치기록 저장",keyword2:JSON.stringify({keyword: add_data.qc_no})})
                 $("#addDialog").dialog('close');
             }
-            closeWindowByMask();
-            $('#mes_grid').trigger('reloadGrid');
+                $('#mes_grid').trigger('reloadGrid');
+                closeWindowByMask();
         }).catch(function (err) {
             closeWindowByMask();
             $("#addDialog").dialog('close');

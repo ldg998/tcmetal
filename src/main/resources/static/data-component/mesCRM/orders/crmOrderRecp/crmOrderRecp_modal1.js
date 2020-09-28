@@ -18,6 +18,7 @@ function modal_start1() {
 // 키워드를 통한 저장,수정  INSERT-I , UPDATE-U
 function addUdate_btn() {
     var modal_objact = value_return(".modal_value");
+    console.log(modal_objact)
     if (effectiveness1(modal_objact)) {
         var text = msg_object.TBMES_Q002.msg_name1;
         if (main_data.check === "U") {
@@ -265,6 +266,7 @@ function selectBox_modal1() {
 
 function datepickerInput_modal() {
     datepicker_makes("#datepicker_modal1", 0);
+    datepicker_makes("#datepicker_modal2", 0);
 }
 
 function selectBox_modal1() {

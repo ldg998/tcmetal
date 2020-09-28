@@ -111,7 +111,7 @@ function jqGrid_main() {
             {name: 'part_name', index: 'part_name',sortable: false, fixed:true, width:190},
             {name: 'spec', index: 'spec',sortable: false, fixed:true, width:150},
             {name: 'unit_name', index: 'unit_name',sortable: false, fixed:true, width:60},
-            {name: 'qty', index: 'qty',sortable: false, fixed:true, width:110,formatter:'number',align: 'right'},
+            {name: 'qty', index: 'qty',sortable: false, fixed:true, width:110,formatter:'integer',align: 'right'},
             {name: 'user_name', index: 'user_name',sortable: false, fixed:true, width:60},
             {name: 'update_date', index: 'update_date',sortable: false, fixed:true, width:140,formatter:formmatterDate}
         ],

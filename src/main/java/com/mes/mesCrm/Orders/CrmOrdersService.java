@@ -217,4 +217,9 @@ public class CrmOrdersService extends ReturnFunction {
     private <T> List<T> getDataset(List<List<Object>> datasets, int index) {
         return (List<T>) datasets.get(index);
     }
+
+    public RESTful crmOrderRecpEndDateGet(Page p) {
+        List<CRM_ORD_RECP> rows = crmOrdersMapper.crmOrderRecpEndDateGet(p);
+        return getListData(rows , p);
+    }
 }

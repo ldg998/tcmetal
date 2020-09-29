@@ -42,6 +42,21 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
+
+// 조회 버튼
+function get_end_date_btn(page) {
+    main_data.send_data = value_return(".condition_main");
+    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, ''); //가져온 날짜데이터 가공 2020-06-01 = 20200601
+    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, ''); //가져온 날짜데이터 가공 2020-06-01 = 20200601
+
+    $("#mes_grid").setGridParam({ // 그리드 조회
+        url: '/crmOrderRecpEndDateGet',
+        datatype: "json",
+        page: page,
+        postData: main_data.send_data
+    }).trigger("reloadGrid");
+}
+
 // 추가 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N") {

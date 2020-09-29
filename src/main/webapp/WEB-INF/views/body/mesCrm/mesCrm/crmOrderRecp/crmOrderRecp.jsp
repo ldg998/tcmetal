@@ -65,6 +65,13 @@
                             <span>조회</span>
                         </span>
                     </a>
+                    <a class="dt-button btn btn-white btn-primary btn-mini btn-bold"
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="get_end_date_btn(1)">
+                        <span>
+                            <i class="fa fa-search bigger-110 blue"></i>
+                            <span>납기조회</span>
+                        </span>
+                    </a>
                     <a id="add_btn" class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
                        tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="add_btn();">
                         <span><i class="fa fa-plus bigger-110 blue"></i>

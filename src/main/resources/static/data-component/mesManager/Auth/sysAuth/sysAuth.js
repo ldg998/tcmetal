@@ -161,3 +161,18 @@ function jqGrid_main() {
         }
     }).navGrid("#mes_grid_pager", {search: false, add: false, edit: false, del: false}); // grid_pager 에 검색 삭제 수정 추가 기능 설정
 }
+// function readExcel() {
+//     var input = event.target;
+//     var reader = new FileReader();
+//     reader.onload = function () {
+//         var data = reader.result;
+//         var workBook = XLSX.read(data, { type: 'binary' });
+//         workBook.SheetNames.forEach(function (sheetName) {
+//             console.log('SheetName: ' + sheetName);
+//             var rows = XLSX.utils.sheet_to_json(workBook.Sheets[sheetName]);
+//             console.log(rows);
+//             console.log(JSON.stringify(rows));
+//         })
+//     };
+//     reader.readAsBinaryString(input.files[0]);
+// }

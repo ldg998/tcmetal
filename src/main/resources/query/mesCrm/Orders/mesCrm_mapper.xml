@@ -7,6 +7,9 @@
 		EXEC SP_CRM_ORD_RECP_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},''
     </select>
 
+	<select id="crmOrderRecpEndDateGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
+		EXEC SP_CRM_ORD_RECP_END_DATE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},''
+    </select>
 	<select id="crmOrderRecpOneGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
 		EXEC SP_CRM_ORD_RECP_GET 1, 1,'', '','' ,#{keyword}
     </select>

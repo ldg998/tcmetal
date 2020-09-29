@@ -36,13 +36,13 @@ function addUdate_btn() {
                 list2.push(j+1);
             }
 
-            part_object =  {supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code};
-            for (var i = 1+j ; i < jdata.length; i++){
-                part_object2 =  {supp_code:jdata[i].supp_code,part_kind:jdata[i].part_kind,part_code:jdata[i].part_code};
-                if (JSON.stringify(part_object) === JSON.stringify(part_object2)) {
-                            partCheck = "N";
-                }
-            }
+            // part_object =  {supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code};
+            // for (var i = 1+j ; i < jdata.length; i++){
+            //     part_object2 =  {supp_code:jdata[i].supp_code,part_kind:jdata[i].part_kind,part_code:jdata[i].part_code};
+            //     if (JSON.stringify(part_object) === JSON.stringify(part_object2)) {
+            //                 partCheck = "N";
+            //     }
+            // }
 
         });
         callback(function () {

@@ -73,4 +73,6 @@ public interface CrmOrdersMapper {
     Message wmsOutOrderUpdate(WMS_OUT_ORD_SUB_UPDATE woos);
 
     List<List<Object>> crmInvoicePackingGet(Page p);
+
+    List<CRM_ORD_RECP> crmOrderRecpEndDateGet(Page p);
 }

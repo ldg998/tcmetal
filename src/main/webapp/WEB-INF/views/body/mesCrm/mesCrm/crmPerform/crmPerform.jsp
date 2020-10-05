@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
 <script type="text/javascript" src="/data-component/mesCRM/orders/crmPerform/crmPerform.js" charset="UTF-8"></script>
-
+<script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <style>
 
 </style>
@@ -27,7 +27,7 @@
                             <div class="input-icon input-icon-right">
                                 <input type="text" name="end_date" id="datepicker2"
                                        class="form-control h-25 condition_main sendDate" readonly>
-                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;" ></i>
+                                <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                             </div>
                         </td>
                         <td class="border_no display_none" style=" width:80px !important;"></td>
@@ -41,14 +41,15 @@
                     <tr>
                         <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                         <td class="wt-px-200">
-                            <select class="form-control condition_main" name="keyword" id="supp_select" onchange="select_change1(this.value)" style="width: 100%"></select>
+                            <select class="form-control condition_main" name="keyword" id="supp_select"
+                                    onchange="select_change1(this.value)" style="width: 100%"></select>
                         </td>
-
 
 
                         <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                         <td class="wt-px-200">
-                            <select name="keyword2" id="part_kind_select" class="form-control condition_main" style="width: 100%;">
+                            <select name="keyword2" id="part_kind_select" class="form-control condition_main"
+                                    style="width: 100%;">
                                 <option value="">전체</option>
                             </select>
                         </td>
@@ -87,6 +88,13 @@
             </div>
         </div>
     </div>
+    <div title="데이터 저장중입니다...." id="preparing-file-modal" style="display: none;">
+        <div id="progressbar" style="width: 100%; height: 22px; margin-top: 20px;"></div>
+    </div>
+    <div title="알림" id="error-modal" style="display: none;">
+        <p>저장 실패. 관리자에게 문의하세요</p>
+    </div>
+
 </div>
 
 </div>

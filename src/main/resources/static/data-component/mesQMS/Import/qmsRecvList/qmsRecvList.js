@@ -56,10 +56,10 @@ function excel_download() {
         $.fileDownload("/excel_download",{
             httpMethod: 'POST',
             data: {
-                "name": "qmsRecvList",
-                "row0": $('#datepicker').val().replace(/\-/g, ''),
-                "row1": $('#datepicker2').val().replace(/\-/g, ''),
-                "row2": $('#supp_code').val(),
+                "name": "qmsRecvListList",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2": main_data.send_data.keyword
 
             },
             successCallback: function (url) {
@@ -139,6 +139,7 @@ function jqGrid_main() {
             {name: 'file1_code', index: 'file1_code', sortable: false,hidden:true },
             {name: 'upload_path', index: 'upload_path', sortable: false,hidden:true},
             {name: 'ord_no', index: 'ord_no', sortable: false,hidden:true},
+
             {name: 'work_date', index: 'work_date', sortable: false, width: 90, formatter: formmatterDate2,fixed:true},
             {name: 'in_no', index: 'in_no',sortable: false, width: 120,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},

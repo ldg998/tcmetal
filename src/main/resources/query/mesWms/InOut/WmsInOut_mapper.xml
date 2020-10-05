@@ -5,6 +5,8 @@
     <select id="wmsInListGet" resultType="com.mes.mesWms.InOut.DTO.WMS_IN_SUB">
         EXEC [SP_WMS_IN_LIST_GET] #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}
     </select>
+
+
     <select id="wmsOutListGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_SUB">
         EXEC [SP_WMS_OUT_LIST_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}
     </select>

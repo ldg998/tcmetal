@@ -57,9 +57,12 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data : {
-                "name": "scmStockRevList",
-                "row0": $('#datepicker').val().replace(/-/gi, ""),
-                "row1": $('#datepicker2').val().replace(/-/gi, "")
+                "name": "scmStockRevListList",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.stop_date,
+                "row2": $('#part_type_select').val().replace(/-/gi, ""),
+                "row3": $('#part_no').val().replace(/-/gi, "")
+
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

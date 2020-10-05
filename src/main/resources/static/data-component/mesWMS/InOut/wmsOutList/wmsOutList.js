@@ -41,9 +41,11 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data : {
-                "name":"wmsOutList",
-                "row0":$('#datepicker').val().replace(/-/gi,""),
-                "row1": $('#datepicker2').val().replace(/-/gi,"")
+                "name":"wmsOutListList",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2": $('#supp_select').val(),
+                "row3": $('#part_kind_select').val(),
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

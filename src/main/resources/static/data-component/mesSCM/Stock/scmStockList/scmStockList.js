@@ -31,7 +31,6 @@ function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
     main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, '');
 
-
     $("#mes_grid").setGridParam({
         url: '/scmStockSumDayListGet',
         datatype: "json",
@@ -48,8 +47,11 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data : {
-                "name":"scmStockList",
-                "row0":$('#part_type_select').val()
+                "name":"scmStockSumDayList",
+                "row0":$('#datepicker').val(),
+            "row1":$('#part_type_select').val(),
+            "row2":$('#part_no').val()
+
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

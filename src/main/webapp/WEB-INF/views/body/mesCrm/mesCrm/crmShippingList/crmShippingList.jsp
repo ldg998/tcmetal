@@ -26,6 +26,7 @@
         border-bottom: 1px solid #E1E1E1 !important;
     }
 </style>
+<div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
 
     <div class="page-content">
@@ -92,7 +93,7 @@
                         </span>
                     </a>
                     <a id="add_btn" class="dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" >
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="excel_download()" >
                         <span><i class="fa fa-plus bigger-110 blue"></i>
                             <span>저장</span>
                         </span>
@@ -117,6 +118,12 @@
             </div>
         </div>
 
+        <div title="데이터 저장중입니다...." id="preparing-file-modal" style="display: none;">
+            <div id="progressbar" style="width: 100%; height: 22px; margin-top: 20px;"></div>
+        </div>
+        <div title="알림" id="error-modal" style="display: none;">
+            <p>저장 실패. 관리자에게 문의하세요</p>
+        </div>
     </div>
 </div>
 

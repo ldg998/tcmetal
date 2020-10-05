@@ -77,10 +77,10 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data : {
-                "name":"wmsOutReady",
-                "row0":$('#datepicker').val().replace(/-/gi,""),
-                "row1": $('#datepicker2').val().replace(/-/gi,""),
-                "row2":$('#supp_code_main').val()
+                "name":"wmsStockSumMonthList",
+                "row0":main_data.send_data.work_date,
+                "row1":main_data.send_data.keyword,
+                "row2":main_data.send_data.keyword2
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

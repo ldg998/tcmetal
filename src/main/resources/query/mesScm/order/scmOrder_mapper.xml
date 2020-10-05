@@ -30,6 +30,7 @@
     <select id="scmOrderReady" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SCM_IN_ORD_READY #{keyword}
     </select>
+
     <select id="scmOrderListGet" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB">
         EXEC SP_SCM_IN_ORD_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword}
     </select>

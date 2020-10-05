@@ -50,8 +50,8 @@ function excel_download() {
             httpMethod: 'POST',             //post 형식으로
             data : {
                 "name":"scmOutListGet", //url
-                "row0":$('#datepicker').val().replace(/\-/g, ''),//넘겨줄 데이터
-                "row1": $('#datepicker2').val().replace(/\-/g, ''),//넘겨줄 데이터
+                "row0":main_data.send_data.start_date,//넘겨줄 데이터
+                "row1": main_data.send_data.end_date,//넘겨줄 데이터
                 "row2":$('#part_code').val()//넘겨줄 데이터
             },
             successCallback: function (url) {

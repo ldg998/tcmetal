@@ -60,6 +60,7 @@ function update_btn(jqgrid_data) {
     }
 }
 
+
 function excel_download() {
     if (confirm(msg_object.TBMES_Q014.msg_name1)) {
         var $preparingFileModal = $("#preparing-file-modal");
@@ -68,9 +69,9 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data : {
-                "name": "scmOutList",
-                "row0": $('#datepicker').val().replace(/-/gi, ""),
-                "row1": $('#datepicker2').val().replace(/-/gi, "")
+                "name": "scmStockRevList",
+                "row0": $('#part_type_select').val(),
+                "row1": $('#part_no').val()
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');
@@ -83,6 +84,8 @@ function excel_download() {
         return false;
     }
 }
+
+
 
 
 ////////////////////////////호출 함수/////////////////////////////////////

@@ -29,7 +29,6 @@ $(document).ready(function () {
 //조회 버튼
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); //해당 클레스이름의 객체를 불러와 NAME VALUE 를 할당
-    main_data.send_data_post = main_data.send_data;
     main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, ''); //날짜 모양 가공 2020-06-06 = 20200606
     main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');//날짜 모양 가공 2020-06-06 = 20200606
     $("#mes_grid").setGridParam({ //그리드 조회
@@ -38,39 +37,6 @@ function get_btn(page) {
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid"); // 그리드 리로드
-}
-
-
-// 업체버튼을 눌러 업체모달 활성화
-function supp_btn(what) {
-    main_data.supp_check = what; // = A
-    $("#SuppSearchGrid").jqGrid('clearGridData');  // 해당 그리드 데이터 삭제 및 업데이트
-    $("#supp-search-dialog").dialog('open');       //그리드 오픈
-    $('#gubun_select option:eq(0)').prop("selected", true).trigger("change"); //셀렉트 0번째 아이템으로 할당
-    $('#supp_code_search').val('').trigger("change"); //해당 값 ''할당
-    $('#supp_no').val('').trigger("change"); //해당 값 ''할당
-    jqGridResize2("#SuppSearchGrid", $('#SuppSearchGrid').closest('[class*="col-"]')); // 해당그리드 리사이즈
-}
-
-// 업체모달  NAME CODE 할당
-function suppModal_bus(code, name) {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val(name);
-        $("#supp_code_main").val(code);
-    } else if (main_data.supp_check === 'B') {
-        $("#supp_name_modal").val(name);
-        $("#supp_code_modal").val(code);
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData'); // 해당그리드 데이터 비우고 업데이트
-
-}
-// 업체모달 업체 name code 비우기
-function suppModal_close_bus() {
-    if (main_data.supp_check === 'A') {
-        $("#supp_name_main").val("");
-        $("#supp_code_main").val("");
-    }
-    $("#SuppSearchGrid").jqGrid('clearGridData'); // 해당그리드 데이터 비우고 업데이트
 }
 
 //엑셀 다운로드
@@ -84,9 +50,9 @@ function excel_download() {
             httpMethod: 'POST', //post 형식으로
             data: {
                 "name":"scmOrderList", //url
-                "row0":$('#datepicker').val().replace(/-/gi,""), //넘겨줄 데이터
-                "row1": $('#datepicker2').val().replace(/-/gi,""),//넘겨줄 데이터
-                "row2":$('#supp_code_main').val() //넘겨줄 데이터
+                "row0":main_data.send_data.start_date, //넘겨줄 데이터
+                "row1": main_data.send_data.end_date,//넘겨줄 데이터
+                "row2":$('#supp_select').val() //넘겨줄 데이터
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close'); //성공하면 모달닫기

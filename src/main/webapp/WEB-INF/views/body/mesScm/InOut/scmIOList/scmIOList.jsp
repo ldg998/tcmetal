@@ -44,7 +44,7 @@
                         <td class="wt-px-200">
                             <div class="input-icon input-icon-right">
                                 <input type="text" name="keyword" class="form-control h-25 condition_main"
-                                       id="supp_name_main">
+                                       id="part_code">
                             </div>
                         </td>
                         <td class="wt-px-100"></td>

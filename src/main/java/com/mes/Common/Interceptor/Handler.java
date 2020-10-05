@@ -45,6 +45,11 @@ public class Handler extends HandlerInterceptorAdapter {
 //        lv.setUser_name("관리자");
 //        request.getSession().setAttribute("userData", lv);
 
+        Session lv = new Session();
+        lv.setUser_code("donggun");
+        lv.setUser_name("이동근사원");
+        request.getSession().setAttribute("userData", lv);
+
         Session userData = (Session) session.getAttribute("userData");
         response.setHeader("pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");

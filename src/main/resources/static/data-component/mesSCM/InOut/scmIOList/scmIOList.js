@@ -48,8 +48,9 @@ function excel_download() {
             httpMethod: 'POST',
             data : {
                 "name": "scmIOList",
-                "row0": $('#datepicker').val().replace(/-/gi, ""),
-                "row1": $('#datepicker2').val().replace(/-/gi, ""),
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2": $('#part_code').val()
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

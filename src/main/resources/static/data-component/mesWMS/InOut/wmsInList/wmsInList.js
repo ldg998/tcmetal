@@ -47,8 +47,11 @@ function excel_download() {
             httpMethod: 'POST',
             data: {
                 "name":"wmsInList",   // 현재 엑셀로 만들어줄 페이지 이름
-                "row0":$('#datepicker').val().replace(/-/gi,""),  // 넘겨줄 파라미터 순서대로
-                "row1": $('#datepicker2').val().replace(/-/gi,""), //
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2": $('#supp_select').val(),
+                "row3": $('#part_kind_select').val(),
+
 
             },
             successCallback: function (url) {

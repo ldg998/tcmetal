@@ -47,10 +47,13 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data : {
-                "name":"wmsOutReady",
-                "row0":$('#datepicker').val().replace(/-/gi,""),
-                "row1": $('#datepicker2').val().replace(/-/gi,""),
-                "row2":$('#supp_code_main').val()
+                "name":"wmsStockRevList",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2":main_data.send_data.keyword,
+                "row3":main_data.send_data.keyword2,
+                "row4":main_data.send_data.keyword3
+
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

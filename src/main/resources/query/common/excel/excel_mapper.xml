@@ -168,6 +168,83 @@
 <!--        EXEC SP_SYS_SUPP_GET2 0,0,#{row0},#{row1},#{row2},''-->
 <!--    </select>-->
 
+
+    <select id="scmOrderDbList" resultType="com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB">
+        EXEC SP_SCM_IN_ORD_LIST_GET 0,0,#{row0},#{row1},#{row2}
+    </select>
+
+    <select id="scmInDbList" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
+        EXEC SP_SCM_IN_LIST_GET 0,0,#{row0},#{row1},#{row2}
+    </select>
+
+    <select id="scmOutDbListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
+        EXEC SP_SCM_OUT_LIST_GET 0,0,#{row0},#{row1},#{row2}
+    </select>
+
+    <select id="scmIODbList" resultType="com.mes.mesScm.InOut.DTO.SCM_IO">
+        EXEC SP_SCM_IO_LIST_GET  0,0,#{row0},#{row1},#{row2}
+    </select>
+
+    <select id="scmStockSumDayDbList" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_DAY">
+        EXEC SP_SCM_STOCK_GET_DAY 0,0,#{row0},#{row1},#{row2}
+    </select>
+
+    <select id="scmStockSumMonthList" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_MONTH">
+        EXEC SP_SCM_STOCK_GET_MONTH 0,0,#{row0},#{row1},#{row2}
+    </select>
+
+    <select id="scmStockRevDbList" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_REV">
+        EXEC SP_SYS_PART_REV_GET 0,0,#{row0},#{row1},''
+    </select>
+
+    <select id="scmStockRevListDbList" resultType="com.mes.mesScm.Stock.DTO.SCM_STOCK_REV_LIST">
+        EXEC SP_SCM_STOCK_REV_GET 0,0,#{row0},#{row1},#{row2},#{row3}
+    </select>
+
+    <select id="wmsInDbList" resultType="com.mes.mesWms.InOut.DTO.WMS_IN_SUB">
+        EXEC [SP_WMS_IN_LIST_GET] 0,0, #{row0},#{row1},#{row2},#{row3}
+    </select>
+
+    <select id="wmsOutListDbList" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_SUB">
+        EXEC [SP_WMS_OUT_LIST_GET]  0,0,#{row0},#{row1},#{row2},#{row3}
+    </select>
+
+    <select id="wmsOutReadyDbList" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB">
+        EXEC [SP_WMS_OUT_READY_GET] 0,0,#{row0},#{row1},#{row2},#{row3}
+    </select>
+
+    <select id="wmsStockSumDbList" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
+        EXEC SP_WMS_STOCK_GET_DAY 0,0,#{row0},#{row1},#{row2},''
+    </select>
+
+    <select id="wmsStockSumMonthDbList" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
+        EXEC SP_WMS_STOCK_GET_MONTH 0,0,#{row0},#{row1},#{row2},''
+    </select>
+
+    <select id="wmsStockRevDbList" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK_REV">
+        EXEC SP_WMS_STOCK_REV_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4},''
+    </select>
+
+    <select id="crmPerformDbList" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
+		EXEC SP_CRM_PERFORM_GET 0,0,#{row0},#{row1},#{row2},#{row3}
+    </select>
+
+    <select id="crmShippingList" resultType="com.mes.mesCrm.Orders.DTO.CRM_SHIPPING">
+		EXEC SP_CRM_SHIPPING_GET 0,0,#{row0},#{row1},#{row2},#{row3},''
+    </select>
+
+    <select id="qmsRecvListDbList" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
+        EXEC [SP_QMS_RECV_LIST_GET]  0,0,#{row0},#{row1},#{row2},''
+    </select>
+
+    <select id="qmsRecvErrorListDbList" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
+        EXEC [SP_QMS_RECV_LIST_GET]  0,0,#{row0},#{row1},#{row2},'2'
+    </select>
+    <select id="qmsProdMiddleDbList" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">
+       EXEC SP_QMS_PROD_MIDDLE_LIST_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4},''
+    </select>
+
+
 </mapper>
 
 

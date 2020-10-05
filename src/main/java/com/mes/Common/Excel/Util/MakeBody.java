@@ -1,26 +1,26 @@
 package com.mes.Common.Excel.Util;
 
+import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
+import com.mes.mesCrm.Orders.DTO.CRM_SHIPPING;
 import com.mes.mesManager.Master.DTO.SYSSupp;
 import com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB;
 import com.mes.mesOut.mesOut.DTO.OUTS_IO_CD;
 import com.mes.mesOut.mesOut.DTO.OUTS_OUT_BCR;
 import com.mes.mesOut.mesOut.DTO.OUTS_OUT_SUB;
-import com.mes.mesPop.Pop.DTO.POP_PLAN;
 import com.mes.mesQms.Import.DTO.QMS_RECV_NG_SUM;
 import com.mes.mesQms.Import.DTO.QMS_RECV_SUB;
 import com.mes.mesQms.Interim.DTO.QMS_ASSY_NG_SUM;
+import com.mes.mesQms.Middle.DTO.QMS_PROD;
 import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
 import com.mes.mesScm.InOut.DTO.*;
 import com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB;
-import com.mes.mesScm.Stock.DTO.SCM_STOCK_LIST;
-import com.mes.mesScm.Stock.DTO.SCM_STOCK_REV_LIST;
-import com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_DAY;
-import com.mes.mesScm.Stock.DTO.SCM_STOCK_SUM_MONTH;
+import com.mes.mesScm.Stock.DTO.*;
 import com.mes.mesTpm.Error.DTO.tpmMachineError;
 import com.mes.mesWms.InOut.DTO.WMS_IN_SUB;
 import com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB;
 import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import com.mes.mesWms.Stock.DTO.WMS_STOCK;
+import com.mes.mesWms.Stock.DTO.WMS_STOCK_REV;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class MakeBody {
     public int integer(double db) {
         return (int) (Math.floor(db));
     }
-    //자재단가
+
 
     //발주현황
     public List<List<Object>> scmOrderList_Body(List<SCM_IN_ORD_SUB> list) {
@@ -73,13 +73,11 @@ public class MakeBody {
                     obj.add(data.getPart_code());
                     obj.add(data.getPart_name());
                     obj.add(data.getSpec());
-                    obj.add(data.getStatus_name());
-                    obj.add(integer(data.getOrd_qty()));
-                    obj.add(integer(data.getQty()));
-                    obj.add(integer(data.getNot_qty())); // 미입고 임시로 입고수량 받을 예정
                     obj.add(data.getUnit_name());
-                    obj.add(data.getUser_name());
-                    obj.add(dateFormat2(data.getUpdate_date()));
+                    obj.add(data.getStatus_name());
+                    obj.add(data.getOrd_qty());
+                    obj.add(data.getQty());
+                    obj.add(data.getNot_qty());
                     content.add(obj);
                 }
             }
@@ -89,20 +87,27 @@ public class MakeBody {
         return content;
     }
 
-    //입고현황
-    public List<List<Object>> scmInList_Body(List<SCM_IN> list) {
+    //자재입고현황
+    public List<List<Object>> scmInList_Body(List<SCM_IN_SUB> list) {
         List<List<Object>> content = new ArrayList<>();
         try {
             if (list.size() != 0) {
-                for (SCM_IN data : list) {
+                for (SCM_IN_SUB data : list) {
                     obj = new ArrayList<>();
                     obj.add(dateFormat(data.getWork_date()));
                     obj.add(data.getIn_no());
                     obj.add(data.getSupp_name());
-
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getSpec());
+                    obj.add(data.getQty());
+                    obj.add(data.getUnit_name());
+                    obj.add(data.getQc_level_name());
+                    obj.add(data.getQc_result_name());
                     obj.add(data.getUser_name());
-                    obj.add(dateFormat2(data.getUpdate_date()));
-                    content.add(obj);
+                    obj.add(dateFormat(data.getUpdate_date()));
+
+                     content.add(obj);
                 }
             }
         } catch (Exception e) {
@@ -110,7 +115,7 @@ public class MakeBody {
         }
         return content;
     }
-    //재입고현황
+
 
     //출고현황
     public List<List<Object>> scmOutList_Body(List<SCM_OUT> list) {
@@ -124,8 +129,8 @@ public class MakeBody {
                     obj.add(data.getPart_code());
                     obj.add(data.getPart_name());
                     obj.add(data.getSpec());
-                    obj.add(integer(data.getQty()));
                     obj.add(data.getUnit_name());
+                    obj.add(data.getQty());
                     obj.add(data.getUser_name());
                     obj.add(dateFormat2(data.getUpdate_date()));
                     content.add(obj);
@@ -196,12 +201,12 @@ public class MakeBody {
                     obj.add(data.getPart_code());
                     obj.add(data.getPart_name());
                     obj.add(data.getSpec());
-                    obj.add(data.getSupp_name());
-                    obj.add(integer(data.getPrev_qty()));
-                    obj.add(integer(data.getIn_qty()));
-                    obj.add(integer(data.getOut_qty()));
-                    obj.add(integer(data.getQty()));
                     obj.add(data.getUnit_name());
+                    obj.add(data.getPrev_qty());
+                    obj.add(data.getIn_qty());
+                    obj.add(data.getOut_qty());
+                    obj.add(data.getQty());
+
                     content.add(obj);
                 }
             }
@@ -221,12 +226,13 @@ public class MakeBody {
                     obj.add(data.getPart_code());
                     obj.add(data.getPart_name());
                     obj.add(data.getSpec());
-                    obj.add(data.getSupp_name());
-                    obj.add(integer(data.getPrev_qty()));
-                    obj.add(integer(data.getIn_qty()));
-                    obj.add(integer(data.getOut_qty()));
-                    obj.add(integer(data.getQty()));
                     obj.add(data.getUnit_name());
+                    obj.add(data.getPrev_qty());
+                    obj.add(data.getIn_qty());
+                    obj.add(data.getOut_qty());
+                    obj.add(data.getQty());
+
+
                     content.add(obj);
                 }
             }
@@ -417,11 +423,11 @@ public class MakeBody {
                     obj.add(dateFormat(data.getWork_date()));
                     obj.add(data.getIn_no());
                     obj.add(data.getSupp_name());
-                    obj.add(data.getPlace_name());
-                    obj.add(data.getProd_type_name());
-                    obj.add(data.getProd_name());
-                    obj.add(data.getPlan_name());
-                    obj.add(data.getPlan_no());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getLot_no());
                     obj.add(data.getUser_name());
                     obj.add(dateFormat2(data.getUpdate_date()));
                     content.add(obj);
@@ -467,11 +473,14 @@ public class MakeBody {
                     obj.add(dateFormat(data.getWork_date()));
                     obj.add(data.getReq_no());
                     obj.add(data.getSupp_name());
-                    obj.add(data.getPlace_name());
-                    obj.add(data.getProd_type_name());
-                    obj.add(data.getProd_name());
-                    obj.add(data.getPlan_no());
-                    obj.add(data.getOrd_no());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getQty());
+                    obj.add(data.getWeight());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getUpdate_date()));
                     content.add(obj);
                 }
             }
@@ -518,12 +527,17 @@ public class MakeBody {
             if (list.size() != 0) {
                 for (SCM_IO data : list) {
                     obj = new ArrayList<>();
+
                     obj.add(data.getPart_code());
                     obj.add(data.getPart_name());
                     obj.add(data.getSpec());
-                    obj.add(data.getWork_date());
-                    obj.add(integer(data.getQty()));
                     obj.add(data.getUnit_name());
+                    if(data.getWork_date().length() >4){
+                    obj.add(dateFormat(data.getWork_date()));
+                    }else {
+                        obj.add(data.getWork_date());
+                    }
+                    obj.add(data.getQty());
                     obj.add(data.getRemark());
                     content.add(obj);
                 }
@@ -793,6 +807,422 @@ public class MakeBody {
                     obj.add(data.getCategory());
                     obj.add(data.getGive_type());
                     obj.add(data.getAddress());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getUpdate_date()));
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> scmStockRev_Body(List<SCM_STOCK_REV> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (SCM_STOCK_REV data : list) {
+                    obj = new ArrayList<>();
+                    obj.add(data.getPart_type_name());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getSpec());
+                    obj.add(data.getUnit_name());
+                    obj.add(data.getStock_qty());
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> scmStockRevListList_Body(List<SCM_STOCK_REV_LIST> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (SCM_STOCK_REV_LIST data : list) {
+                    obj = new ArrayList<>();
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getPart_type_name());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getSpec());
+                    obj.add(data.getUnit_name());
+                    obj.add(data.getStock_qty_prev());
+                    obj.add(data.getStock_qty());
+                    obj.add(data.getRev_name());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getCreate_date()));
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> wmsOutListList_Body(List<WMS_OUT_SUB> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (WMS_OUT_SUB data : list) {
+                    obj = new ArrayList<>();
+                    if(data.getOut_date().length() > 4) {
+                        obj.add(dateFormat(data.getOut_date()));
+                    }else {obj.add(data.getOut_date());}
+                    obj.add(data.getOut_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getQty());
+                    obj.add(data.getWeight());
+                    obj.add(data.getLot_no());
+                    obj.add(data.getFile1_name());
+                    obj.add(data.getReq_no());
+                    if(data.getDate1().length() > 4) {
+                        obj.add(dateFormat(data.getDate1()));
+                    }else {obj.add(data.getDate1());}
+                    if(data.getDate2().length() > 4) {
+                        obj.add(dateFormat(data.getDate2()));
+                    }else {obj.add(data.getDate2());}
+                    if(data.getDate3().length() > 4) {
+                        obj.add(dateFormat(data.getDate3()));
+                    }else {obj.add(data.getDate3());}
+                    obj.add(data.getRead_time());
+                    obj.add(data.getUser_name());
+                    if(data.getCreate_date().length() > 4) {
+                        obj.add(dateFormat2(data.getCreate_date()));
+                    }else { obj.add(data.getCreate_date());}
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> wmsStockSumList_Body(List<WMS_STOCK> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (WMS_STOCK data : list) {
+                    obj = new ArrayList<>();
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getPrev_qty());
+                    obj.add(data.getPrev_weight());
+                    obj.add(data.getIn_qty());
+                    obj.add(data.getIn_weight());
+                    obj.add(data.getOut_qty());
+                    obj.add(data.getOut_weight());
+                    obj.add(data.getNg_qty());
+                    obj.add(data.getNg_weight());
+                    obj.add(data.getQty());
+                    obj.add(data.getWeight());
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> wmsStockSumMonthList_Body(List<WMS_STOCK> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (WMS_STOCK data : list) {
+                    obj = new ArrayList<>();
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getPrev_qty());
+                    obj.add(data.getPrev_weight());
+                    obj.add(data.getIn_qty());
+                    obj.add(data.getIn_weight());
+                    obj.add(data.getOut_qty());
+                    obj.add(data.getOut_weight());
+                    obj.add(data.getNg_qty());
+                    obj.add(data.getNg_weight());
+                    obj.add(data.getQty());
+                    obj.add(data.getWeight());
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> wmsStockRevList_Body(List<WMS_STOCK_REV> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (WMS_STOCK_REV data : list) {
+                    obj = new ArrayList<>();
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getRev_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getStock_qty_prev());
+                    obj.add(data.getStock_qty());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getUpdate_date()));
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> crmPerform_Body(List<CRM_ORD_RECP> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (CRM_ORD_RECP data : list) {
+                    obj = new ArrayList<>();
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getOrd_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPo_no());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getMoney_unit());
+                    obj.add(data.getUnit_cost());
+                    obj.add(data.getQty());
+                    obj.add(data.getPrice_amount());
+                    obj.add(data.getDate1());
+                    obj.add(data.getDate2());
+                    obj.add(data.getDate3());
+                    obj.add(data.getDate4());
+                    obj.add(data.getDate5());
+                    obj.add(data.getDate6());
+                    obj.add(data.getDate7());
+                    obj.add(data.getDate8());
+                    obj.add(data.getDate9());
+                    obj.add(data.getDate10());
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> crmShipping_Body(List<CRM_SHIPPING> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (CRM_SHIPPING data : list) {
+                    obj = new ArrayList<>();
+                    obj.add(dateFormat(data.getOut_date()));
+                    obj.add(data.getOut_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getTrans_name());
+                    obj.add(data.getShip_cost());
+                    obj.add(data.getPort_cost1());
+                    obj.add(data.getPort_cost2());
+                    obj.add(data.getPort_cost3());
+                    obj.add(data.getPort_cost4());
+                    obj.add(data.getPort_cost5());
+                    obj.add(data.getUnloading_cost());
+                    obj.add(data.getLanding_ost());
+                    obj.add(data.getHarbor_facility());
+                    obj.add(data.getLocal_cost());
+                    obj.add(data.getCustoms_fee());
+                    obj.add(data.getWood_cost1());
+                    obj.add(data.getWood_cost2());
+                    obj.add(data.getWood_cost3());
+                    obj.add(data.getWeight());
+                    obj.add(data.getUnit_cost());
+                    obj.add(dateFormat(data.getShip_date()));
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getUpdate_date()));
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> qmsRecvListList_Body(List<QMS_RECV_SUB> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (QMS_RECV_SUB data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getIn_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_type_name());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getSpec());
+                    obj.add(data.getUnit_name());
+                    obj.add(data.getIn_qty());
+                    obj.add(data.getQc_qty());
+                    obj.add(data.getNg_qty());
+                    obj.add(data.getNg_type_name());
+                    obj.add(data.getNg_name());
+                    obj.add(data.getAct_type_name());
+                    obj.add(data.getFile1());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getUpdate_date()));
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> qmsRecvErrorListList_Body(List<QMS_RECV_SUB> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (QMS_RECV_SUB data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getIn_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getSpec());
+                    obj.add(data.getUnit_name());
+                    obj.add(data.getQc_level_name());
+                    obj.add(data.getIn_qty());
+                    obj.add(data.getQc_qty());
+                    obj.add(data.getNg_qty());
+                    obj.add(data.getQc_result_name());
+                    obj.add(data.getNg_name());
+                    obj.add(data.getAct_type_name());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getUpdate_date()));
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> qmsProdMiddleList_Body(List<QMS_PROD> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (QMS_PROD data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getQc_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getLot_no());
+                    obj.add(data.getQc_result_name());
+                    obj.add(data.getResult2_name());
+                    obj.add(data.getResult3_name());
+                    obj.add(data.getFile2_yn());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getUpdate_date()));
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> qmsProdMiddleList2_Body(List<QMS_PROD> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (QMS_PROD data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getQc_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getLot_no());
+                    obj.add(data.getQc_result_name());
+                    obj.add(data.getResult2_name());
+                    obj.add(data.getResult3_name());
+                    obj.add(data.getFile2_yn());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getUpdate_date()));
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> qmsProdMiddleList3_Body(List<QMS_PROD> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (QMS_PROD data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getQc_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getLot_no());
+                    obj.add(data.getQc_result_name());
+                    obj.add(data.getResult2_name());
+                    obj.add(data.getResult3_name());
+                    obj.add(data.getFile2_yn());
                     obj.add(data.getUser_name());
                     obj.add(dateFormat2(data.getUpdate_date()));
                     content.add(obj);

@@ -15,6 +15,7 @@ var main_data = {
 $(document).ready(function () {
     authcheck();
     datepickerInput();
+    msg_get();
     selectBox();
     jqGrid_main();
     jqGridResize("#mes_grid", $('#mes_grid').closest('[class*="col-"]'));
@@ -50,6 +51,33 @@ function select_change1(value) {
         var option = $("<option></option>").text('전체').val('');
         $('#part_kind_select').append(option);
         $('#part_kind_select').select2();
+    }
+}
+
+
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"crmPerform",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2":main_data.send_data.keyword,
+                "row3":main_data.send_data.keyword2
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
     }
 }
 
@@ -134,3 +162,6 @@ function jqGrid_main() {
 
 }
 
+function msg_get() {
+    msgGet_auth("TBMES_Q014");
+}

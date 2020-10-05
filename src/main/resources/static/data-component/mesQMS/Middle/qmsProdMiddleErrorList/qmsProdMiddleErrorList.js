@@ -134,12 +134,12 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data: {
-                "name": "qmsProdErrorList",
+                "name": "qmsProdMiddleList3",
                 "row0": main_data.send_data.start_date,
                 "row1": main_data.send_data.end_date,
                 "row2": main_data.send_data.keyword,
                 "row3": main_data.send_data.keyword2,
-                "row4": main_data.send_data.keyword3
+                "row4": '3'
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

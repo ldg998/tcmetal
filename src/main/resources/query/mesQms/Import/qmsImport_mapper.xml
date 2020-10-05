@@ -24,9 +24,11 @@
     <select id="qmsRecvListGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
         EXEC [SP_QMS_RECV_LIST_GET]  #{page}, #{rows},#{start_date},#{end_date}, #{keyword},''
     </select>
+
     <select id="qmsRecvErrorListGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
         EXEC [SP_QMS_RECV_LIST_GET]  #{page}, #{rows},#{start_date},#{end_date}, #{keyword},'2'
     </select>
+
     <select id="qmsRecvListOneGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
         EXEC [SP_QMS_RECV_LIST_GET] 1,1,'','','','',#{in_no}
     </select>

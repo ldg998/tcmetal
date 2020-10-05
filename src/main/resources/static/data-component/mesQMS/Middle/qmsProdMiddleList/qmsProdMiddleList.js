@@ -50,7 +50,7 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data: {
-                "name": "qmsProdErrorList",
+                "name": "qmsProdMiddleList",
                 "row0":main_data.send_data.start_date,
                 "row1":main_data.send_data.end_date,
                 "row2":main_data.send_data.keyword,

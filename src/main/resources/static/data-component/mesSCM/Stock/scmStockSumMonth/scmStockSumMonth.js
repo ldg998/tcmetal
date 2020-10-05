@@ -21,7 +21,6 @@ $(document).ready(function () {
     datepickerInput();
     selectBox();
     jqgridPagerIcons();
-  //  get_btn(1);
 });
 
 
@@ -58,9 +57,11 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data: {
-                "name": "scmStockSumMonth",
-                "row0": $('#datepicker').val().replace(/-/gi, ""),
-                "row1": $('#part_type_select').val()
+                "name": "scmStockSumMonthList",
+                "row0": $('#datepicker').val(),
+                "row1": $('#part_type').val(),
+                "row2": $('#part_type_select').val()
+
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

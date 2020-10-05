@@ -28,6 +28,7 @@ public class ExcelController {
 
     @RequestMapping(value = "/excel_download", method = RequestMethod.POST)
     public void excel_download(HttpServletRequest req, HttpServletResponse response, Excel excel) throws IOException {
+       System.out.println(excel);
         excelService.ExcelDownload(req, response, excel);
     }
 

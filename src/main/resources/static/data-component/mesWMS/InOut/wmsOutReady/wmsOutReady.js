@@ -24,9 +24,7 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수/////////////////////////////////////
 
 function get_btn(page) {
-
     main_data.send_data = value_return2(".condition_main");
-
     $("#mes_grid").setGridParam({
         url: '/wmsOutReadyGet',
         datatype: "json",
@@ -44,9 +42,10 @@ function excel_download() {
             httpMethod: 'POST',
             data : {
                 "name":"wmsOutReady",
-                "row0":$('#datepicker').val().replace(/-/gi,""),
-                "row1": $('#datepicker2').val().replace(/-/gi,""),
-                "row2":$('#supp_code_main').val()
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2":$('#supp_select').val(),
+                "row3":$('#part_kind_select').val()
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

@@ -44,7 +44,7 @@
     }
 </style>
 
-<div id="addDialog" title="중간검사현황" style="display: none">
+<div id="addDialog" title="중간검사 조치기록" style="display: none">
     <div class="profile-user-info profile-user-info-striped">
         <div class="profile-info-row">
             <div class="profile-info-name">검사일자</div>

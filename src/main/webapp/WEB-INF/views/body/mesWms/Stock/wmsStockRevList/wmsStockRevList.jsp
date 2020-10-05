@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
-<script type="text/javascript" src="/static/ui-component/assets/js/jquery.fileDownload.js"></script>
+<script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <script type="text/javascript" src="/data-component/mesWMS/Stock/wmsStockRevList/wmsStockRevList.js" charset="UTF-8"></script>
 
 <div id="progressbar1" data-value="0"></div>

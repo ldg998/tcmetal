@@ -13,6 +13,8 @@ public class POP_PROD_MELT_SUB1 {
     private int input2;
     private int input3;
     private int input4;
+    private int input5;
+    private int input6;
     private int input_sum;
 
 }

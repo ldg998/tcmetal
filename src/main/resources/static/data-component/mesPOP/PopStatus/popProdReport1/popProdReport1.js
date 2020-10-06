@@ -22,20 +22,11 @@ $(document).ready(function () {
     jqgridPagerIcons();
     select_box();
     modal_start1();
-
-
+    msg_get();
 });
 
 
 ////////////////////////////클릭 함수//////////////////////////////////
-function test(){
-
-    $("#addDialog").dialog('open'); // 모달 열기
-
-    jqGridResize("#mes_add_grid" , $('#mes_add_grid').closest('[class*="col-"]'));
-    jqGridResize("#mes_add_grid2" , $('#mes_add_grid2').closest('[class*="col-"]'));
-
-}
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
     $("#mes_grid").setGridParam({
@@ -45,6 +36,34 @@ function get_btn(page) {
         postData: main_data.send_data
     }).trigger("reloadGrid");
 }
+
+
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"popProdReport1List",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2":main_data.send_data.supp_code,
+                "row3":main_data.send_data.part_kind
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
+}
+
 
 // 그리드 내용 더블 클릭 시 실행 수정버튼
 function update_btn(rowid) {
@@ -137,6 +156,15 @@ function datepickerInput() {
     datepicker_makes("#datepicker2", 0);
 }
 
+function msg_get() {
+    msgGet_auth("TBMES_Q014");
+    msgGet_auth("TBMES_A001"); // 추가권한 없음
+    msgGet_auth("TBMES_A002"); // 삭제권한 없음
+    msgGet_auth("TBMES_A003"); // 수정권한 없음
+    msgGet_auth("TBMES_A004"); // 삭제 데이터 선택 요청
+    msgGet_auth("TBMES_A005"); // 삭제여부
+}
+
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
@@ -145,6 +173,7 @@ function jqGrid_main() {
         colModel: [
             {name: 'rownum', index: 'rownum',key:true ,hidden:true, sortable: false,fixed:true},
             {name: 'line_code', index: 'line_code' ,hidden:true, sortable: false,fixed:true},
+
             {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2},
             {name: 'charge', index: 'charge', sortable: false, width: 60,fixed:true ,align: 'right'},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},

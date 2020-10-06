@@ -22,6 +22,7 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     select_box();
+    msg_get();
 });
 
 
@@ -40,27 +41,31 @@ function get_btn(page) {
 
 
 function excel_download() {
-    // if (confirm(msg_object.TBMES_Q014.msg_name1)) {
-    //     var $preparingFileModal = $("#preparing-file-modal");
-    //     $preparingFileModal.dialog({modal: true});
-    //     $("#progressbar").progressbar({value: false});
-    //     $.fileDownload("/excel_download", {
-    //         httpMethod: 'POST',
-    //         data: {
-    //             "name": "wmsStockIOSumMonth",
-    //             "row0":$('#datepicker').val().replace(/-/gi,""),
-    //             "row0":$('#datepicker2').val().replace(/-/gi,"")
-    //         },
-    //         successCallback: function (url) {
-    //             $preparingFileModal.dialog('close');
-    //         },
-    //         failCallback: function (responseHtml, url) {
-    //             $preparingFileModal.dialog('close');
-    //             $("#error-modal").dialog({modal: true});
-    //         }
-    //     });
-    //     return false;
-    // }
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"popProdRangeList",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.stop_date,
+                "row2":main_data.send_data.supp_code,
+                "row3":main_data.send_data.part_kind,
+                "row4":main_data.send_data.keyword,
+
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
 }
 
 
@@ -84,6 +89,14 @@ function authcheck() {
     ccn_ajax("/menuAuthGet", {keyword: "popProdRange"}).then(function (data) {
         main_data.auth = data;
     });
+}
+function msg_get() {
+    msgGet_auth("TBMES_Q014");
+    msgGet_auth("TBMES_A001"); // 추가권한 없음
+    msgGet_auth("TBMES_A002"); // 삭제권한 없음
+    msgGet_auth("TBMES_A003"); // 수정권한 없음
+    msgGet_auth("TBMES_A004"); // 삭제 데이터 선택 요청
+    msgGet_auth("TBMES_A005"); // 삭제여부
 }
 
 function datepickerInput() {

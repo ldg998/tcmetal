@@ -4,8 +4,12 @@ import com.mes.Common.Excel.DTO.Excel;
 import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
 import com.mes.mesCrm.Orders.DTO.CRM_SHIPPING;
 import com.mes.mesManager.Master.DTO.SYSSupp;
+import com.mes.mesOut.inOut.DTO.OUTS_IO_SUB;
+import com.mes.mesOut.stock.DTO.OUTS_STOCK;
+import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesQms.Import.DTO.QMS_RECV_SUB;
 import com.mes.mesQms.Middle.DTO.QMS_PROD;
+import com.mes.mesQms.Shipment.DTO.POP_MOLD_WASH;
 import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
 import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
 import com.mes.mesScm.InOut.DTO.SCM_IO;
@@ -69,4 +73,26 @@ public interface ExcelMapper {
     List<QMS_RECV_SUB> qmsRecvErrorListDbList(Excel excel);
 
     List<QMS_PROD> qmsProdMiddleDbList(Excel excel);
+
+    List<QMS_PROD_SUB> qmsProdErrorListDbList(Excel excel);
+
+    List<POP_MOLD_WASH> qmsMoldWashDbList(Excel excel);
+
+    List<POP_PLAN> popProdRangeDbList(Excel excel);
+
+    List<POP_PLAN> popProdList1DbList(Excel excel);
+
+    List<POP_PLAN> popProdList2DbList(Excel excel);
+
+    List<POP_PLAN> popProdReport1DbList(Excel excel);
+
+    List<POP_PLAN> popSpectroDbList(Excel excel);
+
+    List<OUTS_IO_SUB> outsInListDbList(Excel excel);
+
+    List<OUTS_IO_SUB> outsIODbList(Excel excel);
+
+    List<OUTS_STOCK> outsStockSumAllDbList(Excel excel);
+
+    List<OUTS_STOCK> outsStockSumMonthDbList(Excel excel);
 }

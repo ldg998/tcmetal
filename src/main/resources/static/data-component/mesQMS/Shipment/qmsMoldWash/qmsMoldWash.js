@@ -36,6 +36,32 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
+//엑셀다운버튼
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"qmsMoldWashList",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
+}
+
+
 // 그리드 항목 더블클릭시 수정 화면
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
@@ -99,6 +125,7 @@ function msg_get() {
     msgGet_auth("TBMES_A003");
     msgGet_auth("TBMES_A004");
     msgGet_auth("TBMES_A005");
+    msgGet_auth("TBMES_Q014");
 }
 
 function authcheck() {
@@ -117,6 +144,7 @@ function jqGrid_main() {
             {name: 'user_code2', index: 'user_code2',sortable: false,fixed: true,hidden:true},
             {name: 'user_code3', index: 'user_code3',sortable: false,fixed: true,hidden:true},
             {name: 'user_code4', index: 'user_code4',sortable: false,fixed: true,hidden:true},
+
             {name: 'work_date',  index: 'work_date',sortable: false, width: 80,fixed: true,key:true,formatter: formmatterDate2},
             {name: 'time1', index: 'time1',sortable: false, width: 80,fixed: true ,align: 'right'},
             {name: 'value1', index: 'value1',sortable: false, width: 80,fixed: true ,align: 'right'},

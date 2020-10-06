@@ -43,6 +43,31 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"outsStockSumAllList",
+                "row0": main_data.send_data.work_date,
+                "row1": main_data.send_data.keyword,
+                "row2":main_data.send_data.keyword2,
+                "row3":main_data.send_data.keyword3
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
+}
 
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
@@ -51,6 +76,7 @@ function msg_get() {
     msgGet_auth("TBMES_A003"); //수정권한없음
     msgGet_auth("TBMES_A004"); //삭제 데이터 선택 요청
     msgGet_auth("TBMES_A005"); //삭제여부
+    msgGet_auth("TBMES_Q014");
 }
 
 //권한체크

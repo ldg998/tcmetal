@@ -47,6 +47,34 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
+
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"outsIOList",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2":main_data.send_data.keyword,
+                "row3":main_data.send_data.keyword2,
+                "row4":main_data.send_data.keyword3
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
+}
+
 // 추가 버튼
 function add_btn() {
     if (main_data.auth.check_add !="N"){
@@ -57,6 +85,7 @@ function add_btn() {
         alert(msg_object.TBMES_A001.msg_name1); // 경고메세지 출력
     }
 }
+
 
 // 그리드 내용 더블 클릭 시 실행
 function update_btn(jqgrid_data) {
@@ -109,6 +138,7 @@ function msg_get() {
     msgGet_auth("TBMES_A003"); //수정권한없음
     msgGet_auth("TBMES_A004"); //삭제 데이터 선택 요청
     msgGet_auth("TBMES_A005"); //삭제여부
+    msgGet_auth("TBMES_Q014"); //삭제여부
 }
 
 //권한체크
@@ -126,6 +156,7 @@ function jqGrid_main() {
         colNames : ['','외주업체','업체','기종','품번','품명','단중','일자','수량','구분'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name:'seq', index: 'seq',sortable: false,key:true,hidden:true},
+
             {name:'outs_supp_name',index:'outs_supp_name' ,sortable: false,width:130,fixed: true},
             {name:'supp_name',index:'supp_name',sortable: false,width:130,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
             {name:'part_kind',index:'part_kind',sortable: false,width:130,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정

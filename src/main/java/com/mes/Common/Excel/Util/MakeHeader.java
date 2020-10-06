@@ -139,4 +139,59 @@ public class MakeHeader {
         String[] data={ "검사일자","검사번호","업체","기종","품번","품명","단중","제품LOT","검사결과","수정","폐기","부적합보고서","검사자","검사일시"};
         return data;
     }
+
+    public String[] qmsProdErrorListList_Header() {
+        String[] data={ "검사일자","검사번호","업체","기종","품번","품명","단중","제품LOT","경도1","경도2","경도3","검사결과","검사자","검사일시"};
+        return data;
+    }
+
+    public String[] qmsMoldWashList_Header() {
+        String[] data={ "일자","측정시간","측정값","작업자","측정시간","측정값","작업자","측정시간","측정값","작업자","측정시간","측정값","작업자"};
+        return data;
+    }
+
+    public String[] popProdRangeList_Header() {
+        String[] data={ "공정","업체","기종","품번","품명","단중","생산수량"};
+        return data;
+    }
+
+    public String[] popProdList1List_Header() {
+        String[] data={"공정","업체","기종","품번","품명","단중","생산일자","생산수량"};
+        return data;
+    }
+
+    public String[] popProdList2List_Header() {
+        String[] data={"작업일자","공정","업체","기종","품번","품명","단중","지시수량","생산수량","등록자","등록일시"};
+        return data;
+    }
+
+    public String[] popProdReport1List_Header() {
+        String[] data={"생산지시일자","CHARGE","업체","기종","품번","품명","단중","수량","등록자","등록일시"};
+        return data;
+    }
+
+    public String[] popSpectroList_Header() {
+        String[] data={"계획일자","CHARGE","업체","기종","품명","단중","C","Si","Mn","P","S","Cr","Ni","Cu","Sn","작업자","등록일시"};
+        return data;
+    }
+
+    public String[] outsInListList_Header() {
+        String[] data={"계획일자","CHARGE","업체","기종","품명","단중","C","Si","Mn","P","S","Cr","Ni","Cu","Sn","작업자","등록일시"};
+        return data;
+    }
+
+    public String[] outsIOList_Header() {
+        String[] data={"외주업체","업체","기종","품번","품명","단중","일자","수량","구분"};
+        return data;
+    }
+
+    public String[] outsStockSumAllList_Header() {
+        String[] data={"외주업체","업체","기종","품번","품명","단중","전일재고","금일입고","금일출고","자체불량","재고"};
+        return data;
+    }
+
+    public String[] outsStockSumMonthList_Header() {
+        String[] data={"외주업체","업체","기종","품번","품명","단중","전월재고","금월입고","금월출고","자체불량","재고"};
+        return data;
+    }
 }

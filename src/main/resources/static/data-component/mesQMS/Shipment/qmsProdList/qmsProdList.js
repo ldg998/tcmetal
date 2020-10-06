@@ -50,12 +50,11 @@ function excel_download() {
         $.fileDownload("/excel_download", {
             httpMethod: 'POST',
             data: {
-                "name": "qmsProdErrorList",
+                "name": "qmsProdErrorListList",
                 "row0":main_data.send_data.start_date,
                 "row1":main_data.send_data.end_date,
                 "row2":main_data.send_data.keyword,
-                "row3":main_data.send_data.keyword2,
-                "row4":main_data.send_data.keyword3
+                "row3":main_data.send_data.keyword2
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');
@@ -192,6 +191,7 @@ function msg_get() {
     msgGet_auth("TBMES_A003");
     msgGet_auth("TBMES_A004");
     msgGet_auth("TBMES_A005");
+    msgGet_auth("TBMES_Q014");
 }
 
 function datepickerInput() {
@@ -215,6 +215,7 @@ function jqGrid_main() {
         colNames: ['','검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','경도1','경도2','경도3','검사결과','첨부사진','성적서','검사자','검사일시'],
         colModel: [
             {name: 'file_key', index: 'file_key', sortable:false ,hidden:true},
+
             {name: 'work_date', index: 'work_date', sortable:false, width: 90,fixed:true,formatter: formmatterDate2 },
             {name: 'qc_no', index: 'qc_no', sortable:false, width: 130, key: true,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable:false, width: 130, fixed:true},
@@ -224,8 +225,8 @@ function jqGrid_main() {
             {name: 'part_weight', index: 'part_weight', sortable:false, width: 90, fixed:true,align: 'right', formatter: 'integer' },
             {name: 'lot_no', index: 'lot_no', sortable:false, width: 120, fixed:true},
             {name: 'hard1', index: 'hard1', sortable:false, width: 40, fixed:true,align: 'right', formatter: 'integer' },
-            {name: 'hard2', index: 'hard3', sortable:false, width: 40, fixed:true,align: 'right', formatter: 'integer' },
-            {name: 'hard2', index: 'hard3', sortable:false, width: 40, fixed:true,align: 'right', formatter: 'integer' },
+            {name: 'hard2', index: 'hard2', sortable:false, width: 40, fixed:true,align: 'right', formatter: 'integer' },
+            {name: 'hard3', index: 'hard3', sortable:false, width: 40, fixed:true,align: 'right', formatter: 'integer' },
             {name: 'qc_result_name', index: 'qc_result_name', sortable:false, width: 60, fixed:true},
             {name: 'filename', index: 'filename', sortable:false, width: 70, fixed:true ,formatter:image_formatter},
             {name: 'file1', index: 'file1', sortable:false, width: 70, fixed:true, formatter: file3_formatter},

@@ -8,8 +8,12 @@ import com.mes.Mapper.Excel.ExcelMapper;
 import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
 import com.mes.mesCrm.Orders.DTO.CRM_SHIPPING;
 import com.mes.mesManager.Master.DTO.SYSSupp;
+import com.mes.mesOut.inOut.DTO.OUTS_IO_SUB;
+import com.mes.mesOut.stock.DTO.OUTS_STOCK;
+import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesQms.Import.DTO.QMS_RECV_SUB;
 import com.mes.mesQms.Middle.DTO.QMS_PROD;
+import com.mes.mesQms.Shipment.DTO.POP_MOLD_WASH;
 import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
 import com.mes.mesScm.InOut.DTO.SCM_IN_SUB;
 import com.mes.mesScm.InOut.DTO.SCM_IO;
@@ -867,6 +871,414 @@ public class ExcelService extends ExcelFunction {
                     List<List<Object>> rows = makeBody.qmsProdMiddleList3_Body(list);
                     int index = makeHeader.qmsProdMiddleList3_Header().length;
                     String[] data = makeHeader.qmsProdMiddleList3_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+
+            else if (excel.getName().equals("qmsProdErrorListList")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("출하검사현황");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("출하검사현황", "UTF-8");
+                // DataTransfer [s]
+                List<QMS_PROD_SUB> list = excelMapper.qmsProdErrorListDbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.qmsProdErrorListList_Body(list);
+                    int index = makeHeader.qmsProdErrorListList_Header().length;
+                    String[] data = makeHeader.qmsProdErrorListList_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("qmsMoldWashList")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("도형제관리");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("도형제관리", "UTF-8");
+                // DataTransfer [s]
+                List<POP_MOLD_WASH> list = excelMapper.qmsMoldWashDbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.qmsMoldWashList_Body(list);
+                    int index = makeHeader.qmsMoldWashList_Header().length;
+                    String[] data = makeHeader.qmsMoldWashList_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("popProdRangeList")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("기가별생산실적");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("기가별생산실적", "UTF-8");
+                // DataTransfer [s]
+                List<POP_PLAN> list = excelMapper.popProdRangeDbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.popProdRangeList_Body(list);
+                    int index = makeHeader.popProdRangeList_Header().length;
+                    String[] data = makeHeader.popProdRangeList_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("popProdList1List")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("제품별생산실적");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("제품별생산실적", "UTF-8");
+                // DataTransfer [s]
+                List<POP_PLAN> list = excelMapper.popProdList1DbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.popProdList1List_Body(list);
+                    int index = makeHeader.popProdList1List_Header().length;
+                    String[] data = makeHeader.popProdList1List_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("popProdList2List")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("공정별작업현황");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("공정별작업현황", "UTF-8");
+                // DataTransfer [s]
+                List<POP_PLAN> list = excelMapper.popProdList2DbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.popProdList2List_Body(list);
+                    int index = makeHeader.popProdList2List_Header().length;
+                    String[] data = makeHeader.popProdList2List_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("popProdReport1List")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("주입일보현황");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("주입일보현황", "UTF-8");
+                // DataTransfer [s]
+                List<POP_PLAN> list = excelMapper.popProdReport1DbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.popProdReport1List_Body(list);
+                    int index = makeHeader.popProdReport1List_Header().length;
+                    String[] data = makeHeader.popProdReport1List_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("popSpectroList")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("성분분석");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("성분분석", "UTF-8");
+                // DataTransfer [s]
+                List<POP_PLAN> list = excelMapper.popSpectroDbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.popSpectroList_Body(list);
+                    int index = makeHeader.popSpectroList_Header().length;
+                    String[] data = makeHeader.popSpectroList_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("outsInListList")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("외주입고현황");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("외주입고현황", "UTF-8");
+                // DataTransfer [s]
+                List<OUTS_IO_SUB> list = excelMapper.outsInListDbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.outsInListList_Body(list);
+                    int index = makeHeader.outsInListList_Header().length;
+                    String[] data = makeHeader.outsInListList_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("outsIOList")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("외주입출고현황");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("외주입출고현황", "UTF-8");
+                // DataTransfer [s]
+                List<OUTS_IO_SUB> list = excelMapper.outsIODbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.outsIOList_Body(list);
+                    int index = makeHeader.outsIOList_Header().length;
+                    String[] data = makeHeader.outsIOList_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("outsStockSumAllList")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("외주재고일원장");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("외주재고일원장", "UTF-8");
+                // DataTransfer [s]
+                List<OUTS_STOCK> list = excelMapper.outsStockSumAllDbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.outsStockSumAllList_Body(list);
+                    int index = makeHeader.outsStockSumAllList_Header().length;
+                    String[] data = makeHeader.outsStockSumAllList_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }
+            else if (excel.getName().equals("outsStockSumMonthList")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("외주재고월원장");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("외주재고월원장", "UTF-8");
+                // DataTransfer [s]
+                List<OUTS_STOCK> list = excelMapper.outsStockSumMonthDbList(excel);
+
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.outsStockSumMonthList_Body(list);
+                    int index = makeHeader.outsStockSumMonthList_Header().length;
+                    String[] data = makeHeader.outsStockSumMonthList_Header();
                     // DataTransfer [e]
 
                     // (MakeHeader) 헤더 생성

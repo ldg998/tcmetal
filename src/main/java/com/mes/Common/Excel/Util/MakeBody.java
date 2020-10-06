@@ -3,14 +3,18 @@ package com.mes.Common.Excel.Util;
 import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
 import com.mes.mesCrm.Orders.DTO.CRM_SHIPPING;
 import com.mes.mesManager.Master.DTO.SYSSupp;
+import com.mes.mesOut.inOut.DTO.OUTS_IO_SUB;
 import com.mes.mesOut.mesOut.DTO.OUTS_IN_SUB;
 import com.mes.mesOut.mesOut.DTO.OUTS_IO_CD;
 import com.mes.mesOut.mesOut.DTO.OUTS_OUT_BCR;
 import com.mes.mesOut.mesOut.DTO.OUTS_OUT_SUB;
+import com.mes.mesOut.stock.DTO.OUTS_STOCK;
+import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesQms.Import.DTO.QMS_RECV_NG_SUM;
 import com.mes.mesQms.Import.DTO.QMS_RECV_SUB;
 import com.mes.mesQms.Interim.DTO.QMS_ASSY_NG_SUM;
 import com.mes.mesQms.Middle.DTO.QMS_PROD;
+import com.mes.mesQms.Shipment.DTO.POP_MOLD_WASH;
 import com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB;
 import com.mes.mesScm.InOut.DTO.*;
 import com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB;
@@ -665,22 +669,25 @@ public class MakeBody {
 
 
 
-    public List<List<Object>> outsIOList_Body(List<OUTS_IO_CD> list) {
+    public List<List<Object>> outsIOList_Body(List<OUTS_IO_SUB> list) {
         List<List<Object>> content = new ArrayList<>();
         try {
             if (list.size() != 0) {
-                for (OUTS_IO_CD data : list) {
+                for (OUTS_IO_SUB data : list) {
                     obj = new ArrayList<>();
-                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getOuts_supp_name());
                     obj.add(data.getSupp_name());
-                    obj.add(data.getPlace_name());
-                    obj.add(data.getProd_type_name());
-                    obj.add(data.getProd_name());
-                    obj.add(data.getBcr_no());
-                    obj.add(data.getOut_user_name());
-                    obj.add(dateFormat2(data.getOut_date()));
-                    obj.add(data.getIn_user_name());
-                    obj.add(dateFormat(data.getIn_date()));
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    if (data.getWork_date().length()>4){
+                    obj.add(dateFormat(data.getWork_date()));
+                    }else {
+                        obj.add(data.getWork_date());
+                    }
+                    obj.add(data.getQty());
+                    obj.add(data.getRemark());
                     content.add(obj);
                 }
             }
@@ -1232,6 +1239,306 @@ public class MakeBody {
             log.info("error code : " + e);
         }
         return content;
+    }
+
+    public List<List<Object>> qmsProdErrorListList_Body(List<QMS_PROD_SUB> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (QMS_PROD_SUB data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getQc_no());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getLot_no());
+                    obj.add(data.getHard1());
+                    obj.add(data.getHard2());
+                    obj.add(data.getHard3());
+                    obj.add(data.getQc_result_name());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getCreate_date()));
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> qmsMoldWashList_Body(List<POP_MOLD_WASH> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (POP_MOLD_WASH data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getTime1());
+                    obj.add(data.getValue1());
+                    obj.add(data.getUser_name());
+                    obj.add(data.getTime2());
+                    obj.add(data.getValue2());
+                    obj.add(data.getUser_name2());
+                    obj.add(data.getTime3());
+                    obj.add(data.getValue3());
+                    obj.add(data.getUser_name3());
+                    obj.add(data.getTime4());
+                    obj.add(data.getValue4());
+                    obj.add(data.getUser_name4());
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> popProdRangeList_Body(List<POP_PLAN> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (POP_PLAN data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(data.getLine_name());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getQty());
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> popProdList1List_Body(List<POP_PLAN> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (POP_PLAN data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(data.getLine_name());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                   if(data.getWork_date().length()>4){
+                    obj.add(dateFormat(data.getWork_date()));
+                   }else {
+                       obj.add(data.getWork_date());
+                   }
+                    obj.add(data.getQty());
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> popProdList2List_Body(List<POP_PLAN> list) {
+
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (POP_PLAN data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getLine_name());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getPlan_qty());
+                    obj.add(data.getProd_qty());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getCreate_date()));
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> popProdReport1List_Body(List<POP_PLAN> list) {
+
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (POP_PLAN data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getCharge());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getPlan_qty());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getCreate_date()));
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> popSpectroList_Body(List<POP_PLAN> list) {
+
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (POP_PLAN data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getCharge());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getTest_value1());
+                    obj.add(data.getTest_value2());
+                    obj.add(data.getTest_value3());
+                    obj.add(data.getTest_value4());
+                    obj.add(data.getTest_value5());
+                    obj.add(data.getTest_value6());
+                    obj.add(data.getTest_value7());
+                    obj.add(data.getTest_value8());
+                    obj.add(data.getTest_value9());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getCreate_date()));
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> outsInListList_Body(List<OUTS_IO_SUB> list) {
+
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (OUTS_IO_SUB data : list) {
+                    obj = new ArrayList<>();
+
+
+                    obj.add(dateFormat(data.getWork_date()));
+                    obj.add(data.getIn_no());
+                    obj.add(data.getOuts_supp_name());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getQty());
+                    obj.add(data.getOuts_qc());
+                    obj.add(data.getUser_name());
+                    obj.add(dateFormat2(data.getCreate_date()));
+
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+    }
+
+    public List<List<Object>> outsStockSumAllList_Body(List<OUTS_STOCK> list) {
+
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (OUTS_STOCK data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(data.getOuts_supp_name());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getPrev_qty());
+                    obj.add(data.getIn_qty());
+                    obj.add(data.getOut_qty());
+                    obj.add(data.getNg_qty());
+                    obj.add(data.getQty());
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> outsStockSumMonthList_Body(List<OUTS_STOCK> list) {
+
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (OUTS_STOCK data : list) {
+                    obj = new ArrayList<>();
+
+                    obj.add(data.getOuts_supp_name());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getPrev_qty());
+                    obj.add(data.getIn_qty());
+                    obj.add(data.getOut_qty());
+                    obj.add(data.getNg_qty());
+                    obj.add(data.getQty());
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
     }
 }
 

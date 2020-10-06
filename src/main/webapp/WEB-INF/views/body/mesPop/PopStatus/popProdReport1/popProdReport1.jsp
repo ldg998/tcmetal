@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false" %>
 <script type="text/javascript" src="data-component/mesPOP/PopStatus/popProdReport1/popProdReport1.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
+<div id="progressbar1" data-value="0"></div>
 <div class="main-content-inner">
     <div class="page-content">
         <div class="col-lg-12 padding0 main_condition">
@@ -82,7 +84,12 @@
             </div>
         </div>
 
-
+    <div title="데이터 저장중입니다...." id="preparing-file-modal" style="display: none;">
+        <div id="progressbar" style="width: 100%; height: 22px; margin-top: 20px;"></div>
+    </div>
+    <div title="알림" id="error-modal" style="display: none;">
+        <p>저장 실패. 관리자에게 문의하세요</p>
+    </div>
 
     </div>
 </div>

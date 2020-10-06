@@ -243,8 +243,49 @@
     <select id="qmsProdMiddleDbList" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">
        EXEC SP_QMS_PROD_MIDDLE_LIST_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4},''
     </select>
+    <select id="qmsProdErrorListDbList" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
+        EXEC SP_QMS_PROD_LIST_GET 0,0,#{row0},#{row1},#{row2},#{row3}
+    </select>
 
+    <select id="qmsMoldWashDbList" resultType="com.mes.mesQms.Shipment.DTO.POP_MOLD_WASH">
+        EXEC SP_QMS_MOLD_WASH_GET 0,0,#{row0},#{row1}
+   </select>
 
+    <select id="popProdRangeDbList" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+        EXEC SP_POP_PROD_RANGE_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4}
+    </select>
+
+    <select id="popProdList1DbList" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+        EXEC SP_POP_PROD_LIST1_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4}
+    </select>
+
+    <select id="popProdList2DbList" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_PROD_LIST2_GET 0,0,#{row0},#{row1},#{row2}
+    </select>
+
+    <select id="popProdReport1DbList" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_PROD_REPORT1_GET 0,0,#{row0},#{row1},#{row2},#{row3}
+    </select>
+
+    <select id="popSpectroDbList" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC SP_POP_SPECTRO_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4},#{row5}
+    </select>
+
+    <select id="outsInListDbList" resultType="com.mes.mesOut.inOut.DTO.OUTS_IO_SUB">
+            EXEC SP_OUTS_IN_LIST_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4}
+    </select>
+
+    <select id="outsIODbList" resultType="com.mes.mesOut.inOut.DTO.OUTS_IO_SUB">
+           EXEC [SP_OUTS_IO_GET] 0,0,#{row0},#{row1},#{row2},#{row3},#{row4}
+    </select>
+
+    <select id="outsStockSumAllDbList" resultType="com.mes.mesOut.stock.DTO.OUTS_STOCK">
+            EXEC [SP_OUTS_STOCK_SUM_GET2]  0,0,#{row0},#{row1},#{row2},#{row3}
+    </select>
+
+    <select id="outsStockSumMonthDbList" resultType="com.mes.mesOut.stock.DTO.OUTS_STOCK">
+            EXEC [SP_OUTS_STOCK_SUM_MONTH_GET] 0,0,#{row0},#{row1},#{row2},#{row3}
+    </select>
 </mapper>
 
 

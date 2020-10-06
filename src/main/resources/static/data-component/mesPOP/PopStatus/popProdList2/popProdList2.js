@@ -21,36 +21,11 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     select_box();
+    msg_get();
 });
 
 
 ////////////////////////////클릭 함수//////////////////////////////////
-function excel_download() {
-    // if (confirm(msg_object.TBMES_Q014.msg_name1)) {
-    //     var $preparingFileModal = $("#preparing-file-modal");
-    //     $preparingFileModal.dialog({modal: true});
-    //     $("#progressbar").progressbar({value: false});
-    //     $.fileDownload("/excel_download", {
-    //         httpMethod: 'POST',
-    //         data: {
-    //             "name": "wmsStockIOSumMonth",
-    //             "row0":$('#datepicker').val().replace(/-/gi,""),
-    //             "row1":$('#part_type_select').val(),
-    //             "row2":$('#part_group1_select').val(),
-    //             "row3":$('#part_group2_select').val()
-    //         },
-    //         successCallback: function (url) {
-    //             $preparingFileModal.dialog('close');
-    //         },
-    //         failCallback: function (responseHtml, url) {
-    //             $preparingFileModal.dialog('close');
-    //             $("#error-modal").dialog({modal: true});
-    //         }
-    //     });
-    //     return false;
-    // }
-}
-
 function get_btn(page) {
     $("#mes_grid2").jqGrid('clearGridData');
     main_data.send_data = value_return(".condition_main");
@@ -62,6 +37,31 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
+
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"popProdList2List",
+                "row0": main_data.send_data.work_date,
+                "row1": main_data.send_data.keyword,
+                "row2":main_data.send_data.keyword2,
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
+}
 
 //선택한 그리드의 로우 id를사용해 해당id 와같은 id 를 그리드조회
 function under_get(data) {
@@ -87,6 +87,14 @@ function main_select_change1(value) {
     });
 }
 
+function msg_get() {
+    msgGet_auth("TBMES_Q014");
+    msgGet_auth("TBMES_A001"); // 추가권한 없음
+    msgGet_auth("TBMES_A002"); // 삭제권한 없음
+    msgGet_auth("TBMES_A003"); // 수정권한 없음
+    msgGet_auth("TBMES_A004"); // 삭제 데이터 선택 요청
+    msgGet_auth("TBMES_A005"); // 삭제여부
+}
 
 function datepickerInput() {
     datepicker_makes("#datepicker", 0);
@@ -100,6 +108,7 @@ function jqGrid_main() {
         colModel: [
             {name: 'supp_code', index: 'supp_code', hidden:true, sortable: false,fixed:true},
             {name: 'line_code', index: 'line_code', hidden:true, sortable: false,fixed:true},
+
             {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2 },
             {name: 'line_name', index: 'dept_name', sortable: false, width: 70,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},

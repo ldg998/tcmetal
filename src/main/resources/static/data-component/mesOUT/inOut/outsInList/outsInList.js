@@ -39,6 +39,33 @@ function get_btn(page) {
     }).trigger("reloadGrid");
 }
 
+//엑셀다운로드
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"outsInListList",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.end_date,
+                "row2":main_data.send_data.keyword,
+                "row3":main_data.send_data.keyword2 ,
+                "row4":main_data.send_data.keyword3
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
+}
 
 // 그리드 항목 더블클릭시 수정 화면
 function update_btn(jqgrid_data) {
@@ -69,6 +96,7 @@ function msg_get() {
     msgGet_auth("TBMES_A003");
     msgGet_auth("TBMES_A004");
     msgGet_auth("TBMES_A005");
+    msgGet_auth("TBMES_Q014");
 }
 
 function authcheck() {

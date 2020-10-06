@@ -21,35 +21,11 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     select_box();
+    msg_get();
 });
 
 
 ////////////////////////////클릭 함수//////////////////////////////////
-function excel_download() {
-    // if (confirm(msg_object.TBMES_Q014.msg_name1)) {
-    //     var $preparingFileModal = $("#preparing-file-modal");
-    //     $preparingFileModal.dialog({modal: true});
-    //     $("#progressbar").progressbar({value: false});
-    //     $.fileDownload("/excel_download", {
-    //         httpMethod: 'POST',
-    //         data: {
-    //             "name": "wmsStockIOSumMonth",
-    //             "row0":$('#datepicker').val().replace(/-/gi,""),
-    //             "row1":$('#part_type_select').val(),
-    //             "row2":$('#part_group1_select').val(),
-    //             "row3":$('#part_group2_select').val()
-    //         },
-    //         successCallback: function (url) {
-    //             $preparingFileModal.dialog('close');
-    //         },
-    //         failCallback: function (responseHtml, url) {
-    //             $preparingFileModal.dialog('close');
-    //             $("#error-modal").dialog({modal: true});
-    //         }
-    //     });
-    //     return false;
-    // }
-}
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
@@ -61,6 +37,34 @@ function get_btn(page) {
         postData: main_data.send_data
     }).trigger("reloadGrid");
 }
+//엑셀다운로드
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"popProdList1List",
+                "row0": main_data.send_data.start_date,
+                "row1": main_data.send_data.stop_date,
+                "row2": main_data.send_data.supp_code,
+                "row3": main_data.send_data.part_kind,
+                "row4": main_data.send_data.keyword
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
+}
+
 
 function select_change_modal1(value) {
     if (value !== ""){
@@ -87,7 +91,14 @@ function datepickerInput() {
     datepicker_makes("#datepicker", -30);
     datepicker_makes("#datepicker2", 0);
 }
-
+function msg_get() {
+    msgGet_auth("TBMES_Q014");
+    msgGet_auth("TBMES_A001"); // 추가권한 없음
+    msgGet_auth("TBMES_A002"); // 삭제권한 없음
+    msgGet_auth("TBMES_A003"); // 수정권한 없음
+    msgGet_auth("TBMES_A004"); // 삭제 데이터 선택 요청
+    msgGet_auth("TBMES_A005"); // 삭제여부
+}
 function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',

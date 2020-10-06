@@ -69,6 +69,7 @@ function update_btn(jq_data) {
             keyword4:jq_data.part_code,
         }
         ccn_ajax('/wmsStockOneGet', send_data).then(function (data) { // user의 하나 출력
+            console.log(data);
             disabled_tf(["#modal_select1","#modal_select2","#modal_select3"],"Y");
             modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
             select_makes_base("#modal_select2","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:data.supp_code},"N").then(function (data2) {
@@ -107,7 +108,7 @@ function jqGrid_main() {
         mtype: 'POST',
         datatype: "local",
         // 다중 select
-        multiselect: true,
+        // multiselect: true,
         // 타이틀
        caption: "제품재고조정 | MES",
        colNames: ['rownum','outs_supp_code','업체','업체','기종','품명','품번','단중','재고'],
@@ -128,17 +129,17 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         pager: '#mes_grid_pager',
-        beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
-            var $myGrid = $(this),
-                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
-                cm = $myGrid.jqGrid('getGridParam', 'colModel');
-
-                $myGrid.setRowData(save_rowid, false, {background:"#FFFFFF"}) ;
-                save_rowid = rowid;
-                $myGrid.setRowData(rowid, false, {background:"rgb(190, 220, 260)"}) ;
-
-            return (cm[i].name === 'cb');
-        },
+        // beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
+        //     var $myGrid = $(this),
+        //         i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+        //         cm = $myGrid.jqGrid('getGridParam', 'colModel');
+        //
+        //         $myGrid.setRowData(save_rowid, false, {background:"#FFFFFF"}) ;
+        //         save_rowid = rowid;
+        //         $myGrid.setRowData(rowid, false, {background:"rgb(190, 220, 260)"}) ;
+        //
+        //     return (cm[i].name === 'cb');
+        // },
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
             var data = $('#mes_grid').jqGrid('getRowData', rowid);
             update_btn(data);

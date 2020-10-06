@@ -196,7 +196,14 @@ function value_return(class_name) {
 			if($(this).val() == ""){
 				qty_send = "0";
 			}
-			objectValue = qty_send.replace(/[^0-9]/g,'');
+
+			var minus = $(this).val().substring(0, 1)
+			if(minus === "-"){
+				objectValue = "-"+qty_send.replace(/[^0-9]/g,'');
+
+			} else {
+				objectValue = qty_send.replace(/[^0-9]/g,'');
+			}
 		} else if($(this).hasClass("sendDate") || $(this).hasClass("sendDate2")){
 			if ($(this).val() !== ""){
 				objectValue = $(this).val().replace(/\-/g, '');
@@ -236,7 +243,14 @@ function modal_edits(class_name,readonly,data) {
 			}
 		}
 		if ($(this).hasClass("qty")){
-			$(this).val((data[$(this).attr("name")]+"").replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")).trigger('change');
+
+			var minus = (data[$(this).attr("name")]+"").substring(0, 1)
+			if(minus === "-"){
+				$(this).val("-"+(data[$(this).attr("name")]+"").replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")).trigger('change');
+			} else {
+				$(this).val((data[$(this).attr("name")]+"").replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")).trigger('change');
+			}
+
 		} else if ($(this).hasClass("sendDate") || $(this).hasClass("sendDate2")){
 			$(this).val(formmatterDate2(data[$(this).attr("name")])).trigger('change');
 		}else {

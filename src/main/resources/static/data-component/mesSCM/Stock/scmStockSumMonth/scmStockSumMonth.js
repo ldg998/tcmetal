@@ -58,9 +58,9 @@ function excel_download() {
             httpMethod: 'POST',
             data: {
                 "name": "scmStockSumMonthList",
-                "row0": $('#datepicker').val(),
-                "row1": $('#part_type').val(),
-                "row2": $('#part_type_select').val()
+                "row0":main_data.send_data.start_date,
+                "row1": main_data.send_data.keyword,
+                "row2": main_data.send_data.keyword2
 
             },
             successCallback: function (url) {

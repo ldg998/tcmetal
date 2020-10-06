@@ -32,6 +32,7 @@ public class WMS_OUT_SUB {
     private String part_no;
     private int part_weight;
     private int weight;
+    private int all_weight;
     private String lot_no;
     private String car_no;
     private String file;

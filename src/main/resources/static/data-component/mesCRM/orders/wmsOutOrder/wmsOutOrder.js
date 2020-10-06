@@ -97,8 +97,8 @@ function update_btn(jqgrid_data) {
             disabled_tf(["#modal1_select1"],"Y");
 
             $("#modal1_select1").val(data[0].supp_code).trigger("change");
-            select_makes_base("#modal1_select2","/suppDeliveryPlaceGet","delivery_place","delivery_place",{keyword:data[0].supp_code},"N").then(function (data2) {
-                $("#modal1_select2").val(data[0].delivery_place).trigger("change");
+            // select_makes_base("#modal1_select2","/suppDeliveryPlaceGet","delivery_place","delivery_place",{keyword:data[0].supp_code},"N").then(function (data2) {
+            //     $("#modal1_select2").val(data[0].delivery_place).trigger("change");
                 $("#mes_modal1_grid1").setGridParam({
                     datatype: "local",
                     data: data
@@ -106,7 +106,7 @@ function update_btn(jqgrid_data) {
                 main_data.check2 = 'Y';
                 $("#addDialog").dialog('open');
                 jqGridResize2("#mes_modal1_grid1", $('#mes_modal1_grid1').closest('[class*="col-"]'));
-            });
+            // });
 
         });
     } else {

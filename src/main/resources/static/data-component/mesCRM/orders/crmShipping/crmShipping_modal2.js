@@ -26,7 +26,7 @@ function modal2_check() {
         var ids = $("#mes_modal2_grid1").getGridParam("selrow");
         var idsdata = $('#mes_modal2_grid1').jqGrid('getRowData', ids);
         ccn_ajax('/crmShippingWmsOutOneGet', {keyword:idsdata.out_no}).then(function (data) {
-            data.weight="";
+            data.weight=data.all_weight;
             modal_edits(".modal_value",[],data);
             modal2_close();
         });
@@ -123,7 +123,34 @@ function modal2_jqGrid() {
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
             modal2_check();
         },
-        loadComplete:function(){// 그리드 LOAD가 완료 되었을 때
+        loadComplete:function(data){// 그리드 LOAD가 완료 되었을 때
+
+            var req_no = "";
+            var background2 =  "rgb(249,253,255)";
+            var check = "Y";
+            data.rows.forEach(function (idsfor, s) {
+                if (s == 0){
+                    req_no = idsfor.req_no;
+                } else {
+                    if (idsfor.req_no !== req_no){
+                        req_no = idsfor.req_no;
+                        if (check === 'Y'){
+                            background2 =  "rgb(254,255,229)";
+                            check = "N";
+                        } else {
+                            background2 =  "rgb(249,253,255)";
+                            check = "Y";
+                        }
+                    }
+                }
+
+                $("#mes_modal2_grid1").setRowData(idsfor.rownum, false, {background:background2}) ;
+
+
+
+            });
+
+
             if ($("#mes_modal2_grid1").jqGrid('getGridParam', 'reccount') === 0)// 데이터 조회 전에도 가로 스크롤이 생성
                 $(".jqgfirstrow").css("height","1px");
             else

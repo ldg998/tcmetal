@@ -98,15 +98,17 @@
                 <colgroup>
                     <col width="15%">
                     <col width="15%">
-                    <col width="14%">
-                    <col width="14%">
-                    <col width="14%">
-                    <col width="14%">
-                    <col width="14%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
                 </colgroup>
                 <thead>
                <tr>
-                <th colspan="7">원부재료 투입량(Kg)</th>
+                <th colspan="9">원부재료 투입량(Kg)</th>
                </tr>
                 <tr>
                     <th colspan="2">항목</th>
@@ -114,6 +116,8 @@
                     <th>2차</th>
                     <th>3차</th>
                     <th>4차</th>
+                    <th>5차</th>
+                    <th>6차</th>
                     <th>합계</th>
                 </tr>
 
@@ -127,6 +131,8 @@
                     <td><input type="text" name="1input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="1input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="1input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="1input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="1input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="1input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -136,6 +142,8 @@
                     <td><input type="text" name="2input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="2input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="2input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="2input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="2input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="2input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -146,6 +154,8 @@
                     <td><input type="text" name="3input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="3input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="3input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="3input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="3input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="3input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -156,6 +166,8 @@
                     <td><input type="text" name="4input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="4input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="4input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="4input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="4input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="4input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -165,6 +177,8 @@
                     <td><input type="text" name="5input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="5input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="5input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="5input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="5input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="5input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -174,6 +188,8 @@
                     <td><input type="text" name="6input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="6input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="6input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="6input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="6input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="6input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -185,6 +201,8 @@
                     <td><input type="text" name="7input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="7input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="7input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="7input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="7input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="7input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -195,6 +213,8 @@
                     <td><input type="text" name="8input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="8input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="8input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="8input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="8input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="8input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -205,6 +225,8 @@
                     <td><input type="text" name="9input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="9input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="9input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="9input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="9input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="9input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -215,6 +237,8 @@
                     <td><input type="text" name="10input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="10input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="10input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="10input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="10input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="10input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -224,6 +248,8 @@
                     <td><input type="text" name="11input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="11input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="11input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="11input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="11input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="11input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -233,6 +259,8 @@
                     <td><input type="text" name="12input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="12input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="12input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="12input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="12input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="12input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -242,6 +270,8 @@
                     <td><input type="text" name="13input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="13input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="13input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="13input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="13input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="13input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -251,6 +281,8 @@
                     <td><input type="text" name="14input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="14input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="14input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="14input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="14input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="14input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -262,6 +294,8 @@
                     <td><input type="text" name="15input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="15input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="15input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="15input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="15input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="15input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -272,6 +306,8 @@
                     <td><input type="text" name="16input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="16input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="16input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="16input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="16input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="16input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
                 <tr>
@@ -280,6 +316,8 @@
                     <td><input type="text" name="17input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="17input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="17input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="17input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="17input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="17input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -289,6 +327,8 @@
                     <td><input type="text" name="18input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="18input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="18input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="18input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="18input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="18input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
 
@@ -298,6 +338,8 @@
                     <td><input type="text" name="19input2" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="19input3" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="19input4" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="19input5" class="form-control  modal_value" autocomplete="off" ></td>
+                    <td><input type="text" name="19input6" class="form-control  modal_value" autocomplete="off" ></td>
                     <td><input type="text" name="19input_sum" class="form-control  modal_value" autocomplete="off" ></td>
                 </tr>
                 </tbody>

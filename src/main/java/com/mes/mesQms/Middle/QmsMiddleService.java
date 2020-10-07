@@ -54,4 +54,8 @@ public class QmsMiddleService extends UploadFunction {
     public List<QMS_PROD_FILE> qmsProdMiddleFileGet(Page p) {
         return qmsMiddleMapper.qmsProdMiddleFileGet(p);
     }
+
+    public Message qmsProdMiddleListDel(Page p) {
+        return qmsMiddleMapper.qmsProdMiddleListDel(p);
+    }
 }

@@ -106,6 +106,54 @@ function update_btn(rowid) {
 }
 
 
+function delete_btn() {
+    if(main_data.auth.check_del != "N") {
+        var gu5 = String.fromCharCode(5);
+        var ids = $("#mes_grid").getGridParam('selarrrow');
+        var code_list;
+
+        if (ids.length === 0) {
+            alert(msg_object.TBMES_A004.msg_name1);
+        } else {
+            main_data.check = 'D';
+            var check = "Y"
+            for(i=0;i<ids.length;i++){
+                var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
+
+                if (data.status === "1" ){
+                    check = "N";
+                }
+            }//11|12|13|
+
+            if (check === "N"){
+                alert("출하검사가 완료된 제품이 있습니다.");
+            } else {
+                if (confirm(msg_object.TBMES_A005.msg_name1)) {
+                    code_list=ids.join(gu5);
+                    wrapWindowByMask2();
+                    ccn_ajax("/qmsProdMiddleListDel", {keyword:code_list}).then(function (data) {
+                        if (data.result === 'NG') {
+                            alert(data.message);
+                        } else {
+                            $('#mes_grid').trigger('reloadGrid');
+                        }
+                        closeWindowByMask();
+                    }).catch(function (err) {
+                        closeWindowByMask();
+                        console.error(err); // Error 출력
+                    });
+                }
+
+
+
+            }
+        }
+    } else {
+        alert(msg_object.TBMES_A002.msg_name1);
+    }
+}
+
+
 function img_btn(qc_no) {
     ccn_ajax("/qmsProdMiddleFileGet", {keyword:qc_no}).then(function (data) {
         ccn_ajax("/procedureLogAdd",{keyword:"중간검사현황 이미지조회",keyword2:JSON.stringify({keyword:qc_no})})
@@ -177,6 +225,7 @@ function img_btn(qc_no) {
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014");
+    msgGet_auth("TBMES_A005");
 }
 
 function datepickerInput() {
@@ -203,7 +252,7 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "중간검사현황 | MES",
-        colNames: ['검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','검사결과','수정','폐기','첨부사진','부적합보고서','검사자','검사일시'],
+        colNames: ['검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','검사결과','수정','폐기','첨부사진','부적합보고서','상태','상태','검사자','검사일시'],
         colModel: [
             {name: 'work_date', index: 'work_date', sortable:false, width: 90, fixed:true,formatter: formmatterDate2},
             {name: 'qc_no', index: 'qc_no', sortable:false, width: 120, key: true, fixed:true},
@@ -218,6 +267,8 @@ function jqGrid_main() {
             {name: 'result3_name', index: 'result3_name', sortable:false, width: 200, fixed:true},
             {name: 'upload_path', index: 'upload_path', sortable:false, width: 100, fixed:true,fixed:true,formatter: image_formatter},
             {name: 'file2_yn', index: 'file2_yn', sortable:false, width: 100, fixed:true,formatter: file2_formatter},
+            {name: 'status', index: 'status', sortable:false, width: 60,hidden:true ,fixed:true},
+            {name: 'status_name', index: 'status_name', sortable:false, width: 60, fixed:true},
             {name: 'user_name', index: 'user_name', sortable:false, width: 60, fixed:true},
             {name: 'update_date', index: 'update_date', sortable:false, width: 140, fixed:true,formatter: formmatterDate}
 
@@ -230,7 +281,13 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         pager: '#mes_grid_pager',
-
+        multiselect: true, // 다중선택 가능
+        beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
+            var $myGrid = $(this),
+                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                cm = $myGrid.jqGrid('getGridParam', 'colModel');
+            return (cm[i].name === 'cb');
+        },
         onCellSelect: function (rowid, icol, cellcontent, e) {
 
         },

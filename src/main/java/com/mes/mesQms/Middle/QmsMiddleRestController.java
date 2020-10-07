@@ -27,6 +27,11 @@ public class QmsMiddleRestController {
         return qmsMiddleService.qmsProdMiddleListGet(p);
     }
 
+    @RequestMapping(value = "/qmsProdMiddleListDel", method = RequestMethod.POST)
+    public Message qmsProdMiddleListDel(Page p) {
+        return qmsMiddleService.qmsProdMiddleListDel(p);
+    }
+
     @RequestMapping(value = "/qmsProdMiddleListOneGet", method = RequestMethod.POST)
     public QMS_PROD qmsProdMiddleListOneGet(Page p) {
         return qmsMiddleService.qmsProdMiddleListOneGet(p);

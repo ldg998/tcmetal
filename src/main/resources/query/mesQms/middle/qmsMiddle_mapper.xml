@@ -28,4 +28,8 @@
     <select id="qmsProdMiddleFileGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD_FILE">
        SELECT * FROM QMS_PROD_FILE WHERE QC_NO = #{keyword} ORDER BY SEQ
     </select>
+
+    <select id="qmsProdMiddleListDel" resultType="com.mes.Common.DataTransferObject.Message">
+       EXEC SP_QMS_PROD_MIDDLE_DEL #{keyword}
+    </select>
 </mapper>

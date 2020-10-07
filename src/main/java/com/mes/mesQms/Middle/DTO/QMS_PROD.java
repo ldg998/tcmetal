@@ -29,6 +29,8 @@ public class QMS_PROD {
     private String result2_name;
     private String act_type_name;
     private String qc_name;
+    private String status;
+    private String status_name;
     private int rownum;
     private int rownum_page;
     private int rec_count;

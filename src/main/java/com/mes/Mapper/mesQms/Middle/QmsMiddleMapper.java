@@ -27,4 +27,6 @@ public interface QmsMiddleMapper {
     Message qmsProdMiddleErrorManAdd(Files files);
 
     List<QMS_PROD_FILE> qmsProdMiddleFileGet(Page p);
+
+    Message qmsProdMiddleListDel(Page p);
 }

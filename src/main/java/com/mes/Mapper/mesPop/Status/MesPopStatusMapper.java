@@ -67,4 +67,8 @@ public interface MesPopStatusMapper {
     Message sysSPartDrawingAdd3(SYS_SPART_CD ssc);
 
     void sysFileAdd(SYS_SPART_CD vo);
+
+    Message popProdList2Add(POP_PLAN pp);
+
+    Message popProdLogAdd(POP_PLAN pp);
 }

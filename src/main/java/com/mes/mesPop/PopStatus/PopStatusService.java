@@ -259,4 +259,14 @@ public class PopStatusService extends UploadFunction {
     }
 
 
+    public Message popProdList2Add(HttpServletRequest req, POP_PLAN pp) {
+        pp.setUser_code(getSessionData(req).getUser_code());
+        return mesPopStatusMapper.popProdList2Add(pp);
+    }
+
+
+    public Message popProdLogAdd(HttpServletRequest req, POP_PLAN pp) {
+        pp.setUser_code(getSessionData(req).getUser_code());
+        return mesPopStatusMapper.popProdLogAdd(pp);
+    }
 }

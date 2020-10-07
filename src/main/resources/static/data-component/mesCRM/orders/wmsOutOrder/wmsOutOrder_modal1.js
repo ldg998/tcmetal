@@ -150,7 +150,7 @@ function modal_make1() {
 
     $("#addDialog").dialog({
         modal: true,
-        minWidth:1100,
+        minWidth:1500,
         height: 'auto',
         autoOpen: false,
         resizable: false,

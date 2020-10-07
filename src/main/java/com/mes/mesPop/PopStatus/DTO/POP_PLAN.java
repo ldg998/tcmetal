@@ -14,6 +14,7 @@ public class POP_PLAN {
     private String line_code;
     private String charge;
     private int seq;
+    private String work_date_key;
     private String supp_code;
     private String part_kind;
     private String part_code;
@@ -22,6 +23,7 @@ public class POP_PLAN {
     private String prod_qty;
     private String weight;
     private String lot_no;
+    private String prev_lot;
     private String user_code;
     private String create_date;
     private String work_user_code;

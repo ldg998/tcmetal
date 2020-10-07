@@ -16,7 +16,7 @@ function modal_start2() {
 function modal_make2() {
     $("#addDialog2").dialog({
         modal: true,
-        width: 632,
+        width: 800,
         height: 750,
 
         autoOpen: false,

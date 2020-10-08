@@ -21,4 +21,8 @@ public interface AuthorityMapper {
     List<SYSAuthProgram> sysAuthProgramGet(Page p); // 메뉴별 권한 조회
     Message sysAuthProgramAdd(Page p); // 메뉴별 권한 수정
     List<Auth> menuAllGet(); // 업무분류 조회
+
+    List<SYSAuth> sysAuthGet2(Page p);
+
+    SYSAuth sysAuthOneGet2(Page p);
 }

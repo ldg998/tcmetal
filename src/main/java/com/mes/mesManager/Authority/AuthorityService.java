@@ -68,4 +68,14 @@ public class AuthorityService extends ReturnFunction {
     public List<Auth> menuAllGet(){
         return authorityMapper.menuAllGet();
     } //업무분류 select 데이터 조회
+
+    public RESTful sysAuthGet2(HttpServletRequest req, Page p) {
+        List<SYSAuth> rows = authorityMapper.sysAuthGet2(p);
+        //System.out.println("1");
+        return getListData(rows , p);
+    }
+
+    public SYSAuth sysAuthOneGet2(HttpServletRequest req, Page p)  {  //권한 조회(UPDATE - 하나의 컬럼 조회)
+        return authorityMapper.sysAuthOneGet2(p);
+    }
 }

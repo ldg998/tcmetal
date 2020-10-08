@@ -36,7 +36,7 @@ $(document).ready(function () {
 function get_btn(page) {
     $("#mes_grid").setGridParam({ // 그리드 조회
         // URL -> RESTCONTROLLER 호출
-        url: '/sysAuthGet',
+        url: '/sysAuthGet2',
         // JSON 데이터 형식으로
         datatype: "json",
         // PAGE는 받은 파라미터로 설정
@@ -67,7 +67,7 @@ function update_btn(jqgrid_data) {
         modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할 항목 설정
         main_data.check = 'U'; // 수정인지 체크
         jqgrid_data.dept_code = main_data.send_data.keyword; // 저장한데이터 dept_code 를 넣어 서 진행
-        ccn_ajax('/sysAuthOneGet', {keyword: jqgrid_data.auth_code}).then(function (data) { // user의 하나 출력
+        ccn_ajax('/sysAuthOneGet2', {keyword: jqgrid_data.auth_code}).then(function (data) { // user의 하나 출력
             modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
             $("#addDialog").dialog('open'); // 모달 열기
         });

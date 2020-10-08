@@ -25,6 +25,10 @@ public class AuthorityRestController {
     public RESTful sysAuthGet(HttpServletRequest req, Page p){ return authorityService.sysAuthGet(req, p); }
     @RequestMapping(value="/sysAuthOneGet" , method = RequestMethod.POST)  //권한 조회(UPDATE - 하나의 컬럼 조회) SP_SYS_AUTH_GROUP_GET
     public SYSAuth sysAuthOneGet(HttpServletRequest req, Page p){ return authorityService.sysAuthOneGet(req, p); }
+    @RequestMapping(value="/sysAuthGet2" , method = RequestMethod.POST) //권한 조회 SP_SYS_AUTH_GROUP_GET
+    public RESTful sysAuthGet2(HttpServletRequest req, Page p){ return authorityService.sysAuthGet2(req, p); }
+    @RequestMapping(value="/sysAuthOneGet2" , method = RequestMethod.POST)  //권한 조회(UPDATE - 하나의 컬럼 조회) SP_SYS_AUTH_GROUP_GET
+    public SYSAuth sysAuthOneGet2(HttpServletRequest req, Page p){ return authorityService.sysAuthOneGet2(req, p); }
     @RequestMapping(value="/sysAuthAdd" , method = RequestMethod.POST)  //권한 추가 SP_SYS_AUTH_GROUP_ADD
     public Message sysAuthAU(HttpServletRequest request, SYSAuth sysAuth){ return authorityService.sysAuthAU(request, sysAuth); }
     @RequestMapping(value="/sysAuthDelete" , method = RequestMethod.POST)    //권한 삭제 SP_SYS_AUTH_GROUP_DEL

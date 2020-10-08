@@ -146,9 +146,19 @@
     EXEC SP_SYS_PROD_HR_DEL2 #{keyword}
     </select>
 
-<select id="popProdList2SubGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    <select id="popProdList2SubGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
     EXEC SP_POP_PROD_LIST2_SUB_GET #{page},#{rows},#{work_date},#{supp_code},#{part_code},#{part_kind},#{line_code}
     </select>
+
+
+    <select id="popProdList2Add" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC SP_POP_PROD_LIST2_SUB_ADD #{supp_code},#{part_kind},#{part_code},#{lot_no},#{prev_lot}
+    </select>
+
+    <select id="popProdLogAdd" resultType="com.mes.Common.DataTransferObject.Message">
+    EXEC SP_POP_PROD_LOG_ADD #{supp_code},#{part_kind},#{part_code},#{lot_no},#{prev_lot},#{user_code}
+    </select>
+
 
 
 

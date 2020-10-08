@@ -130,6 +130,14 @@ public class PopStatusRestController {
      @RequestMapping(value = "/popProdList2SubGet", method = RequestMethod.POST)
      public RESTful popProdList2SubGet(Page p, POP_PLAN pp) { return popStatusService.popProdList2SubGet(p,pp);}
 
+     @RequestMapping(value = "/popProdList2Add", method = RequestMethod.POST)
+     public Message popProdList2Add(HttpServletRequest req,POP_PLAN pp) { return popStatusService.popProdList2Add(req,pp);}
+
+    @RequestMapping(value = "/popProdLogAdd", method = RequestMethod.POST)
+     public Message popProdLogAdd(HttpServletRequest req,POP_PLAN pp) {System.out.println(pp); return popStatusService.popProdLogAdd(req,pp);}
+
+
+
 
 
 }

@@ -8,7 +8,9 @@ var main_data = {
     send_data: {},
     send_data_post: {},
     readonly: [''],
-    auth:{}
+    auth:{},
+    prev_lot : '',
+    afterList:{}
 };
 
 
@@ -22,6 +24,7 @@ $(document).ready(function () {
     jqgridPagerIcons();
     select_box();
     msg_get();
+    modal_start1();
 });
 
 
@@ -49,7 +52,7 @@ function excel_download() {
                 "name":"popProdList2List",
                 "row0": main_data.send_data.work_date,
                 "row1": main_data.send_data.keyword,
-                "row2":main_data.send_data.keyword2,
+                "row2": main_data.send_data.keyword2,
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');
@@ -72,6 +75,22 @@ function under_get(data) {
         page: 1,
         postData: data
     }).trigger("reloadGrid");
+}
+
+function update_btn(jqgrid_data) {
+    if (main_data.auth.check_edit !="N") {
+        main_data.check = "U";
+        modal_reset(".modal_value", []); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
+        jqgrid_data.prev_lot = jqgrid_data.lot_no
+        jqgrid_data.lot_no = ''
+        modal_edits('.modal_value',[],jqgrid_data)
+
+
+
+        $("#addDialog").dialog('open'); // 모달 열기
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1);
+    }
 }
 
 ////////////////////////////호출 함수//////////////////////////////////
@@ -138,17 +157,20 @@ function jqGrid_main() {
     $('#mes_grid2').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['생산일자','업체','기종','품번','품명','LOT'],
+        colNames: ['','생산일자','업체','기종','품번','품명','LOT'],
         colModel: [
+            {name: 'supp_code', index: 'supp_code',hidden:true, sortable: false,fixed:true},
             {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2 },
             {name: 'supp_name', index: 'dept_name', sortable: false, width: 130,fixed:true},
             {name: 'part_kind', index: 'supp_name', sortable: false, width: 120,fixed:true},
             {name: 'part_code', index: 'part_kind', sortable: false, width: 130,fixed:true},
             {name: 'part_name', index: 'part_code', sortable: false, width: 190,fixed:true},
-            {name: 'lot_no', index: 'part_name', sortable: false, width: 120,fixed:true},
-
-
+            {name: 'lot_no', key:true, index: 'part_name', sortable: false, width: 120,fixed:true},
         ],
+        ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
+            var data = $('#mes_grid2').jqGrid('getRowData', rowid);
+            update_btn(data);
+        },
         caption: "공정별 생산현황 | MES",
         autowidth: true,
         height: 230,

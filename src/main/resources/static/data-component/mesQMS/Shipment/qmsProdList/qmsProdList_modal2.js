@@ -111,7 +111,7 @@ function img_swiper(){
 function modal_make2() {
     $("#addDialog2").dialog({
         modal: true,
-        width: 600,
+        width: 800,
         height: 780,
 
         autoOpen: false,

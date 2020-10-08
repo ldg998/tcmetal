@@ -139,7 +139,7 @@ function jqGrid_main() {
         autowidth: true, // 그리드 자동 가로 길이 설정
         height: 600, // 그리드 세로 길이 설정
         pager: '#mes_grid_pager', // pager 연결
-        rowNum: 5, // 1페이지당 데이터 수
+        rowNum: 100, // 1페이지당 데이터 수
         rowList: [100, 200, 300, 400], // 페이지당 데이터 수 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
         multiselect: true, // 다중선택 가능,

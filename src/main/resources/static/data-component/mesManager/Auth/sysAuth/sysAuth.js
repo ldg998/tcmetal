@@ -130,19 +130,22 @@ function jqGrid_main() {
         mtype: 'POST', // post 방식 데이터 전달
         colNames : ['권한그룹코드','권한그룹명','등록자','등록일시'], // grid 헤더 설정
         colModel : [ // grid row 의 설정할 데이터 설정
-            {name:'auth_code',index:'auth_code',key: true ,sortable: false,width:150,fixed: true}, // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'auth_name',index:'auth_name',sortable: false,width:200,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'user_name',index:'user_name',sortable: false,width:150,fixed: true}, // fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:140,fixed: true} // formatter 사용을 통해 데이터 형식 가공
+            {name:'auth_code',index:'auth_code',key: true ,width:150,fixed: true}, // key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'auth_name',index:'auth_name',width:200,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'user_name',index:'user_name',width:150,fixed: true}, // fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'update_date',index:'update_date',formatter:formmatterDate,width:140,fixed: true} // formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "권한그룹관리 | MES", // grid 제목
         autowidth: true, // 그리드 자동 가로 길이 설정
         height: 600, // 그리드 세로 길이 설정
         pager: '#mes_grid_pager', // pager 연결
-        rowNum: 100, // 1페이지당 데이터 수
+        rowNum: 5, // 1페이지당 데이터 수
         rowList: [100, 200, 300, 400], // 페이지당 데이터 수 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
-        multiselect: true, // 다중선택 가능
+        multiselect: true, // 다중선택 가능,
+        sortable: true,
+        forceClientSorting: true,
+        navOptions: { reloadGridOptions: { fromServer: true } },
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

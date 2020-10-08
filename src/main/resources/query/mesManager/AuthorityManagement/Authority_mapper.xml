@@ -3,10 +3,10 @@
 <mapper namespace="com.mes.Mapper.mesManager.Authority.AuthorityMapper">
     <!-- 권한관리 -->
     <select id="sysAuthGet" resultType="com.mes.mesManager.Authority.DTO.SYSAuth"><!-- 권한 조회 -->
-        EXEC SP_SYS_AUTH_GROUP_GET  #{page},#{rows},''
+        EXEC SP_SYS_AUTH_GROUP_GET  #{page},#{rows},'',#{sidx}, #{sord}
     </select>
     <select id="sysAuthOneGet" resultType="com.mes.mesManager.Authority.DTO.SYSAuth"><!-- 권한 조회(UPDATE - 하나의 컬럼 조회) -->
-        EXEC SP_SYS_AUTH_GROUP_GET  1,1,#{keyword}
+        EXEC SP_SYS_AUTH_GROUP_GET  1,1,#{keyword},'',''
     </select>
     <select id="sysAuthAU" resultType="com.mes.Common.DataTransferObject.Message"><!-- 권한 추가 -->
         	EXEC SP_SYS_AUTH_GROUP_ADD  #{auth_code},#{auth_name},#{user_code},#{keyword}

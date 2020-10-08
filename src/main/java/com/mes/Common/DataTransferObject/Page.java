@@ -42,4 +42,6 @@ public class Page {
     private String part_kind;
     private String part_code;
     private String lot_no;
+    private String sidx;
+    private String sord;
 }

@@ -31,6 +31,10 @@ public class PopStatusRestController {
     @RequestMapping(value = "/popProdRangeGet", method = RequestMethod.POST)
     public RESTful popProdRangeGet(HttpServletRequest req, Page p) { return popStatusService.popProdRangeGet(req,p);}
 
+    @RequestMapping(value = "/popProdLeadTimeGet", method = RequestMethod.POST)
+    public RESTful popProdLeadTimeGet(HttpServletRequest req, Page p) { return popStatusService.popProdLeadTimeGet(req,p);}
+
+
     @RequestMapping(value = "/popProdList1Get", method = RequestMethod.POST)
     public RESTful popProdList1Get(HttpServletRequest req, Page p) { return popStatusService.popProdList1Get(req,p);}
 

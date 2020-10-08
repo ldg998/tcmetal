@@ -397,7 +397,7 @@ public class UploadFunction extends ReturnFunction {
         files.setFile_og_name(multipartFile.getOriginalFilename());
         files.setFile_name(FileName);
         files.setUrl(FileName);
-        files.setUpload_path( "C:/UploadFile/sound/tpmMC/" + FileName);
+        files.setUpload_path( "C:/UploadFile/tcmetal/tpmMC/" + FileName);
         return files;
     }
 

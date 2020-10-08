@@ -9,6 +9,8 @@ public class PopStatusController {
     public String popProdRange(){
         return "mesPop/PopStatus/popProdRange/popProdRange";
     }
+    @RequestMapping("popProdLeadTime")
+    public String popProdLeadTime(){ return "mesPop/PopStatus/popProdLeadTime/popProdLeadTime"; }
     @RequestMapping("popProdList1")
     public String popProdList1(){
         return "mesPop/PopStatus/popProdList1/popProdList1";

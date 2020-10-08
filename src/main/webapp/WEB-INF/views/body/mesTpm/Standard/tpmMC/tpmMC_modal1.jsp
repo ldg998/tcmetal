@@ -156,6 +156,7 @@
                             파일찾기
                         </label>
                         <input type="file" id="xlsUploads1" name="files1" class="upload-hidden" onchange="readURL(this,1)">
+
                         <label class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold" onclick="readURLRemove(1)">
                             <span>
                                 <i class="fa fa-trash bigger-110 blue"></i>

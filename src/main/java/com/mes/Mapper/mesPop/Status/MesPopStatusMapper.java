@@ -18,6 +18,8 @@ public interface MesPopStatusMapper {
 
     List<POP_PLAN_ORD_CD> popPlanOrderOrd(Page p);
 
+    List<POP_PLAN> popProdLeadTimeGet(Page p);
+
     List<POP_PLAN> popProdRangeGet(Page p);
 
     List<POP_PROD> popProdList1Get(Page p);
@@ -71,4 +73,6 @@ public interface MesPopStatusMapper {
     Message popProdList2Add(POP_PLAN pp);
 
     Message popProdLogAdd(POP_PLAN pp);
+
+
 }

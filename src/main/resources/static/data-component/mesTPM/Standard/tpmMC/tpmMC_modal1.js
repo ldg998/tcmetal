@@ -98,8 +98,8 @@ function readURL(input,index) {
         reader.onload = function (e) {
             $('#img-text'+index).hide();
 
-            //var img = $('<img style="width: 100%; height: 100%;" id="img'+index+'\">')
-            //$('#img_div'+index).prepend(img);
+            // var img = $('<img style="width: 100%; height: 100%;" id="img'+index+'\">')
+            // $('#img_div'+index).prepend(img);
             $('#img'+index).attr('src', e.target.result);
             $('#img'+index).show();
         }
@@ -138,6 +138,11 @@ function update_btn(jqgrid_data) {
 
         ccn_ajax('/tpmMCOneGet', {machine_code:jqgrid_data.machine_code}).then(function (data) { // user의 하나 출력
             data.install_amount = data.install_amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+           console.log(data.image1);
+            console.log(data.image2);
+            console.log(data.image3);
+
+
             modal_edits('.modal_value', main_data.readonly, data); // response 값 출력
             $("input[name=install_date]").val(formmatterDate2(data.install_date));
             if (data.image1 !== '' && data.image1 !== null){

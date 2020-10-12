@@ -28,6 +28,7 @@ public class POP_PLAN {
     private String create_date;
     private String work_user_code;
     private String keyword;
+    private String keyword2;
     private String in_date;
     private String out_date;
     private String part_name;
@@ -41,6 +42,12 @@ public class POP_PLAN {
     private String line_name;
     private String dept_name;
     private String ck;
+    private double read_time;
+    private String gu_name;
+    private String date1;
+    private String date2;
+    private String date3;
+
 
     private double test_value1;
     private double test_value2;

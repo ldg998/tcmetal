@@ -90,6 +90,7 @@ var array =
         {code: "popPlan", title: '생산관리', sub: '생산관리', name:'생산계획관리'},
     //생산현황
         {code: "popProdList", title: '생산관리', sub: '생산현황', name:'생산진행현황'},
+        {code: "popProdLeadTime", title: '생산관리', sub: '생산현황', name:'리드타임 생산실적'},
         {code: "popProdRange", title: '생산관리', sub: '생산현황', name:'기간별 생산실적'},
         {code: "popProdList1", title: '생산관리', sub: '생산현황', name:'제품별 생산실적'},
         {code: "popProdList2", title: '생산관리', sub: '생산현황', name:'공정별 작업현황'},

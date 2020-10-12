@@ -14,6 +14,10 @@
         EXEC SP_POP_PROD_RANGE_GET #{page},#{rows},#{start_date},#{stop_date},#{supp_code},#{part_kind},#{keyword}
     </select>
 
+  <select id="popProdLeadTimeGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+        EXEC SP_POP_PROD_LEAD_TIME_GET #{page},#{rows},#{start_date},#{stop_date},#{supp_code},#{part_kind},#{keyword},#{keyword2}
+    </select>
+
     <select id="popProdList1Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
         EXEC SP_POP_PROD_LIST1_GET #{page},#{rows},#{start_date},#{stop_date},#{supp_code},#{part_kind},#{keyword}
     </select>

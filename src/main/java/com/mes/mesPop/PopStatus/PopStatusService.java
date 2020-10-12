@@ -37,6 +37,11 @@ public class PopStatusService extends UploadFunction {
         return mesPopStatusMapper.popPlanOrderOrd(p);
     }
 
+    public RESTful popProdLeadTimeGet(HttpServletRequest req, Page p) {
+        List<POP_PLAN> rows = mesPopStatusMapper.popProdLeadTimeGet(p);
+        return getListData(rows, p);
+    }
+
     public RESTful popProdRangeGet(HttpServletRequest req, Page p) {
         p.setSite_code(getSessionData(req).getSite_code());
         List<POP_PLAN> rows = mesPopStatusMapper.popProdRangeGet(p);
@@ -269,4 +274,6 @@ public class PopStatusService extends UploadFunction {
         pp.setUser_code(getSessionData(req).getUser_code());
         return mesPopStatusMapper.popProdLogAdd(pp);
     }
+
+
 }

@@ -38,7 +38,7 @@ public class MachineService   extends UploadFunction {
 
         Message m = machineMapper.tpmMCAdd(tmc);
 
-        File dir = new File("C:/UploadFile/sound/tpmMC");
+        File dir = new File("C:/UploadFile/tcmetal/tpmMC");
         if (!dir.exists()) {
             dir.mkdirs();
         }
@@ -77,21 +77,21 @@ public class MachineService   extends UploadFunction {
                 if (check1 == 1) {
                     tmc3.setImage1(tpmMCFileAdd(page_name,tmc2.getMachine_code(), req, 1));
                     // 삭제 메소드
-                    file = new File("C:/UploadFile/sound/tpmMC/"+tmc2.getImage1());
+                    file = new File("C:/UploadFile/tcmetal/tpmMC/"+tmc2.getImage1());
                     file.delete();
                 }
 
                 if (check2 == 1) {
                     tmc3.setImage2(tpmMCFileAdd(page_name,tmc2.getMachine_code(), req, 2));
                     // 삭제 메소드
-                    file = new File("C:/UploadFile/sound/tpmMC/"+tmc2.getImage2());
+                    file = new File("C:/UploadFile/tcmetal/tpmMC/"+tmc2.getImage2());
                     file.delete();
                 }
 
                 if (check3 == 1) {
                     tmc3.setImage3(tpmMCFileAdd(page_name,tmc2.getMachine_code(), req, 3));
                     // 삭제 메소드
-                    file = new File("C:/UploadFile/sound/tpmMC/"+tmc2.getImage3());
+                    file = new File("C:/UploadFile/tcmetal/tpmMC/"+tmc2.getImage3());
                     file.delete();
                 }
                 int delCheck1 = Integer.parseInt(req.getParameter("delCheck1"));
@@ -100,17 +100,17 @@ public class MachineService   extends UploadFunction {
 
                 // 삭제 키워드 메소드
                 if (delCheck1 == 1) {
-                    file = new File("C:/UploadFile/sound/tpmMC/"+tmc2.getImage1());
+                    file = new File("C:/UploadFile/tcmetal/tpmMC/"+tmc2.getImage1());
                     file.delete();
                     tmc2.setImage1("");
                 }
                 if (delCheck2 == 1) {
-                    file = new File("C:/UploadFile/sound/tpmMC/"+tmc2.getImage2());
+                    file = new File("C:/UploadFile/tcmetal/tpmMC/"+tmc2.getImage2());
                     file.delete();
                     tmc2.setImage2("");
                 }
                 if (delCheck3 == 1) {
-                    file = new File("C:/UploadFile/sound/tpmMC/"+tmc2.getImage3());
+                    file = new File("C:/UploadFile/tcmetal/tpmMC/"+tmc2.getImage3());
                     file.delete();
                     tmc2.setImage3("");
                 }
@@ -147,15 +147,15 @@ public class MachineService   extends UploadFunction {
 
         for (TPM_MACHINE_CD tm :tmcLsit) {
             if (!tm.getImage1().equals("")){
-                file = new File("C:/UploadFile/sound/tpmMC/"+tm.getImage1());
+                file = new File("C:/UploadFile/tcmetal/tpmMC/"+tm.getImage1());
                 file.delete();
             }
             if (!tm.getImage2().equals("")){
-                file = new File("C:/UploadFile/sound/tpmMC/"+tm.getImage2());
+                file = new File("C:/UploadFile/tcmetal/tpmMC/"+tm.getImage2());
                 file.delete();
             }
             if (!tm.getImage3().equals("")){
-                file = new File("C:/UploadFile/sound/tpmMC/"+tm.getImage3());
+                file = new File("C:/UploadFile/tcmetal/tpmMC/"+tm.getImage3());
                 file.delete();
             }
         }

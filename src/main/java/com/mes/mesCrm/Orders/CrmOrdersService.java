@@ -222,4 +222,9 @@ public class CrmOrdersService extends ReturnFunction {
         List<CRM_ORD_RECP> rows = crmOrdersMapper.crmOrderRecpEndDateGet(p);
         return getListData(rows , p);
     }
+
+    public RESTful crmOrderRecpGet2(Page p) {
+        List<CRM_ORD_RECP> rows = crmOrdersMapper.crmOrderRecpGet2(p);
+        return getListData(rows , p);
+    }
 }

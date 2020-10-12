@@ -40,6 +40,14 @@ function addUdate_btn() {
 }
 
 }
+
+function modal_select_change1(value){
+    console.log(value);
+    if(value != '') {
+        select_makes_base("#line_select_modal2", "/syslineAllGroupGet", "line_code", "line_name", {keyword: value}, '').then(function (data2) {
+        });
+    }
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get_modal1() {
     msgGet_auth("TBMES_Q002");// 저장여부
@@ -101,7 +109,10 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
 }
 
 function select_modal_box() {
-    select_makes_base("#line_select_modal", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {});
+    select_makes_base("#line_select_modal", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
+        select_makes_base("#line_select_modal2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {});
+
+    });
 
 }
 

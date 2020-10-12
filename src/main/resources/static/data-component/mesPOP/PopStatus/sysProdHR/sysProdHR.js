@@ -30,8 +30,6 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수//////////////////////////////////
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-
-
     $("#mes_grid").setGridParam({
         url: '/sysProdHRGet',
         datatype: "json",
@@ -44,10 +42,13 @@ function get_btn(page) {
 function add_btn() {
     if (main_data.auth.check_add !="N"){
         modal_reset(".modal_value", ['work_date']); // 해당 클래스 내용을 리셋 시켜줌 ,데이터에 readonly 사용할거
-        $("#line_select_modal").prop("disabled",false).trigger("change");//셀렉트박스 잠금으로 체인지
-        $('#line_select_modal option:eq(0)').prop("selected", true).trigger("change"); //셀렉트 0번째 아이템으로 할당
+        $("#line_select_modal").prop("disabled",false)//셀렉트박스 잠금으로 체인지
+        $("#line_select_modal2").prop("disabled",false)//셀렉트박스 잠금으로 체인지
+
+        $('#line_select_modal option:eq(0)').prop("selected", true).trigger('change') //셀렉트 0번째 아이템으로 할당
         main_data.check = 'I'; // 저장인지 체크
         $("#addDialog").dialog('open'); // 모달 열기
+
     } else {
         alert(msg_object.TBMES_A001.msg_name1); // 경고메세지 출력
     }
@@ -60,7 +61,10 @@ function update_btn(jqgrid_data) {
         modal_reset(".modal_value", []);
         main_data.check = 'U'; // 수정인지 체크 'I' 추가 , 'U' 수정, 'D' 삭제
         modal_edits('.modal_value',['work_date'],jqgrid_data)
-        $("#line_select_modal").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
+
+        $("#line_select_modal").prop("disabled",true)//셀렉트박스 잠금으로 체인지
+        $("#line_select_modal2").prop("disabled",true)//셀렉트박스 잠금으로 체인지
+
         $("#addDialog").dialog('open'); // 모달 열기
     } else {
         alert(msg_object.TBMES_A003.msg_name1);
@@ -105,6 +109,12 @@ function delete_btn() {
     } else {
         alert(msg_object.TBMES_A002.msg_name1);// 권한 이 없을 경우 해당 메세지 출력
     }
+
+}
+
+
+function main_select_change1(value) {
+        select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},"").then(function (data) {});
 
 }
 
@@ -162,12 +172,13 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['','','계획일자','공정','작업인원','재적공수','결근/휴가','조퇴','지각','취업공수','잔업','특근','작업공수','작업공수(H/r)','작업자','등록일시'],
+        colNames: ['','','계획일자','라인그룹','라인','작업인원','재적공수','결근/휴가','조퇴','지각','취업공수','잔업','특근','작업공수','작업공수(H/r)','작업자','등록일시'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false,fixed:true,hidden:true,key:true},
             {name: 'line_code', index: 'line_code', sortable: false,fixed:true,hidden:true},
-            {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2 },
+            {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2},
             {name: 'line_name', index: 'line_name', sortable: false, width: 60,fixed:true},
+            {name: 'line_name2', index: 'line_name2', sortable: false, width: 60,fixed:true},
             {name: 'wk_qty', index: 'wk_qty', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
             {name: 'wk_qty_sum', index: 'wk_qty_sum', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
             {name: 'wk_qty1', index: 'wk_qty1', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
@@ -207,16 +218,18 @@ function jqGrid_main() {
             update_btn(data);
         },
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
-            // var $myGrid = $(this),
-            //     i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
-            //     cm = $myGrid.jqGrid('getGridParam', 'colModel');
-            // return (cm[i].name === 'cb');
+            var $myGrid = $(this),
+                i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),
+                cm = $myGrid.jqGrid('getGridParam', 'colModel');
+            return (cm[i].name === 'cb');
         }
     }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
 }
 
 function select_box() {
-    select_makes_base("#select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {});
+    select_makes_base("#select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
+        select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {});
+    });
 
 
 }

@@ -35,7 +35,7 @@ function get_btn(page) {
     main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, ''); //가져온 날짜데이터 가공 2020-06-01 = 20200601
 
     $("#mes_grid").setGridParam({ // 그리드 조회
-        url: '/crmOrderRecpGet',
+        url: '/crmOrderRecpGet2',
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -180,22 +180,22 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames : ['','수주일자','전표번호','업체','상태','PO','기종','품번','품명','단중','단가','수량','금액','납기일자','등록자','등록일시'],
         colModel : [
-            {name:'status',index:'status',sortable: false,fixed: true,hidden:true},
-            {name:'work_date',index:'work_date' ,sortable: false,width:90,fixed: true,formatter:formmatterDate2},
-            {name:'ord_no',index:'ord_no',sortable: false,key: true,width:120,fixed: true},
-            {name:'supp_name',index:'supp_name',sortable: false,width:130,fixed: true},
-            {name:'status_name',index:'status_name',hidden:true, sortable: false,width:70,fixed: true},
-            {name:'po_no',index:'po_no',sortable: false,width:120,fixed: true},
-            {name:'part_kind',index:'part_kind',sortable: false,width:110,fixed: true},
-            {name:'part_code',index:'part_code',sortable: false,width:130,fixed: true},
-            {name:'part_name',index:'part_name',sortable: false,width:190,fixed: true},
-            {name:'part_weight',index:'part_weight',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
-            {name:'qty',index:'qty',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
-            {name: 'price_amount', index: 'price_amount', sortable: false,fixed: true, width: 90, align: 'right',formatter:'integer'},
-            {name:'end_date',index:'end_date' ,sortable: false,width:90,fixed: true,formatter:formmatterDate2},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 60,fixed:true},
-            {name: 'update_date', index: 'update_date', sortable: false, width: 140, formatter: formmatterDate,fixed:true}
+            {name:'status',index:'status',fixed: true,hidden:true},
+            {name:'work_date',index:'work_date' ,width:90,fixed: true,formatter:formmatterDate2},
+            {name:'ord_no',index:'ord_no',key: true,width:120,fixed: true},
+            {name:'supp_name',index:'supp_name',width:130,fixed: true},
+            {name:'status_name',index:'status_name',hidden:true, width:70,fixed: true},
+            {name:'po_no',index:'po_no',width:120,fixed: true},
+            {name:'part_kind',index:'part_kind',width:110,fixed: true},
+            {name:'part_code',index:'part_code',width:130,fixed: true},
+            {name:'part_name',index:'part_name',width:190,fixed: true},
+            {name:'part_weight',index:'part_weight',width:90,fixed: true, align: 'right',formatter:'integer'},
+            {name:'unit_cost',index:'unit_cost',width:90,fixed: true, align: 'right',formatter:'integer'},
+            {name:'qty',index:'qty',width:90,fixed: true, align: 'right',formatter:'integer'},
+            {name: 'price_amount', index: 'price_amount', fixed: true, width: 90, align: 'right',formatter:'integer'},
+            {name:'end_date',index:'end_date' ,width:90,fixed: true,formatter:formmatterDate2},
+            {name: 'user_name', index: 'user_name',  width: 60,fixed:true},
+            {name: 'update_date', index: 'update_date',  width: 140, formatter: formmatterDate,fixed:true}
         ],
         caption: "수주정보관리 | MES",
         autowidth: true,
@@ -206,6 +206,10 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 400],
         viewrecords: true,
         multiselect: true,
+        sortable: true,
+        sortorder:"desc",
+        forceClientSorting: true,
+        navOptions: { reloadGridOptions: { fromServer: true } },
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

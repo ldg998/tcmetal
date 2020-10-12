@@ -25,7 +25,11 @@ public class CrmOrdersRestController {
 
     @RequestMapping(value = "/crmOrderRecpGet", method = RequestMethod.POST)
     public RESTful crmOrderRecpGet( Page p) {
-        return crmOrdersService.crmOrderRecpGet(p);
+       return crmOrdersService.crmOrderRecpGet(p);
+    }
+    @RequestMapping(value = "/crmOrderRecpGet2", method = RequestMethod.POST)
+    public RESTful crmOrderRecpGet2( Page p) {
+       return crmOrdersService.crmOrderRecpGet2(p);
     }
 
     @RequestMapping(value = "/crmOrderRecpEndDateGet", method = RequestMethod.POST)

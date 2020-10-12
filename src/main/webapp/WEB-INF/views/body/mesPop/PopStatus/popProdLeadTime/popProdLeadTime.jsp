@@ -62,7 +62,7 @@
                     <tr>
                         <td class="wt-px-100 t-align-c td-title padding-a-0">공정</td>
                         <td class="wt-px-200">
-                            <select id='select1' name="keyword"  class="form-control h-25 condition_main">--%>
+                            <select id='select1' name="keyword"  class="form-control  condition_main"  style="width: 100%">--%>
                                 <option value="1">합형</option>
                             </select>
                         </td>

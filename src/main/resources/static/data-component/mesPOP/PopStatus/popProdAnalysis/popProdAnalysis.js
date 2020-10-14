@@ -62,17 +62,17 @@ function jqGrid_main() {
         datatype: "local",
         colNames: ['작업일자','생산중량','작업공수','시간당 생산량'],
         colModel: [
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true},
-            {name: '', index: '', sortable: false, width: 150,fixed:true}
+            {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2},
+            {name: 'work_weight', index: 'work_weight', sortable: false, width: 150,fixed:true ,formatter:'integer', align: 'right'},
+            {name: 'wk_qty_hr', index: 'wk_qty_hr', sortable: false, width: 150,fixed:true ,formatter:'integer', align: 'right'},
+            {name: 'prod_mhr', index: 'prod_mhr', sortable: false, width: 150,fixed:true ,formatter:'integer', align: 'right'}
 
         ],
         caption: "생산량분석 | MES",
         autowidth: true,
         height: 562,
         pager: '#mes_grid_pager',
-        rowNum: 100,
+        rowNum: 1000,
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true
     }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
@@ -80,7 +80,9 @@ function jqGrid_main() {
 
 function select_box() {
     select_makes_base("#select1", "/sysCommonAllGet","code_value","code_name1",{keyword:'LINE_GROUP'},'').then(function (data) {
-        select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {});
+        select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'Y').then(function (data2) {
+        });
+
     });
 
 

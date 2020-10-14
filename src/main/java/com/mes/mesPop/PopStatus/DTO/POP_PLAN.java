@@ -47,7 +47,9 @@ public class POP_PLAN {
     private String date1;
     private String date2;
     private String date3;
-
+    private int work_weight;
+    private int wk_qty_hr;
+    private int prod_mhr;
 
     private double test_value1;
     private double test_value2;

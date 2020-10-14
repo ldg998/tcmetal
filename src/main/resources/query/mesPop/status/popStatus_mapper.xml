@@ -84,7 +84,7 @@
     </select>
 
      <select id="popProdAnalysisGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
-    EXEC SP_POP_PROD_ANALYSIS_GET #{page},#{rows},#{start_date},#{end_date}
+    EXEC SP_POP_PROD_ANALY #{start_date},#{end_date},#{keyword},#{keyword2}
     </select>
 
      <select id="popProdReport1Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">

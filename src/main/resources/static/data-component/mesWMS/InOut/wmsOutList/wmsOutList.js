@@ -108,7 +108,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['rownum','출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','성적서','업로드','파일','출고요청번호','생산일자','중간검사','출하검사','리드타임','등록자','등록일시'],
+        colNames: ['rownum','출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','성적서','업로드','파일','출고요청번호','생산일자','중간검사','출하검사','등록자','등록일시'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false, width: 90, fixed:true,hidden:true},
             {name: 'out_date', index: 'out_date', sortable: false, width: 90, fixed:true, formatter:formmatterDate2},
@@ -128,7 +128,8 @@ function jqGrid_main() {
             {name: 'date1', index: 'date1', sortable: false, width: 90, fixed:true,formatter:formmatterDate2},
             {name: 'date2', index: 'date2', sortable: false, width: 90, fixed:true,formatter:formmatterDate2},
             {name: 'date3', index: 'date3', sortable: false, width: 90, fixed:true,formatter:formmatterDate2},
-            {name: 'read_time', index: 'read_time', sortable: false, width: 80, fixed:true,formatter: {number:{thousandsSeparator:",", decimalPlaces: 1}},align: 'right'},
+           // {name: 'read_time', index: 'read_time', sortable: false, width: 80, fixed:true,formatter: {number:{thousandsSeparator:",", decimalPlaces: 1}},align: 'right'}, 리드타임
+
             {name: 'user_name', index: 'user_name', sortable: false, width: 60, fixed:true},
             {name: 'create_date', index: 'create_date', sortable: false, width: 140, fixed:true,formatter:formmatterDate}
         ],

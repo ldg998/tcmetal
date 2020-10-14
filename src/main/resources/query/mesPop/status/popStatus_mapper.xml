@@ -100,7 +100,7 @@
     </select>
 
      <select id="sysProdSumGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
-    EXEC SP_SYS_PROD_SUM_GET #{page},#{rows},#{work_date},#{supp_code},#{part_kind}
+    EXEC SP_POP_PROD_SUM_GET #{page},#{rows},#{work_date},#{supp_code},#{part_kind}
     </select>
 
     <select id="popProdList2Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">

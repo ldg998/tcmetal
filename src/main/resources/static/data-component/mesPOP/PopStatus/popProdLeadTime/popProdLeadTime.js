@@ -109,7 +109,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['생산지시일','생산완료일','공정','업체','기종','품번','품명','단중','중간검사','출하검사','LOT','리드타임'],
+        colNames: ['생산지시일','생산완료일','공정','업체','기종','품번','품명','단중','중간검사','출하검사','LOT','리드타임','상태'],
         colModel: [
             {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
             {name: 'date1', index: 'date1', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
@@ -122,7 +122,8 @@ function jqGrid_main() {
             {name: 'date2', index: 'date2', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
             {name: 'date3', index: 'date3', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
             {name: 'lot_no', index: 'lot_no', sortable: false, width: 120,fixed:true},
-            {name: 'read_time', index: 'read_time', sortable: false, width: 90,fixed:true,align: 'number', formatter: 'integer'}
+            {name: 'read_time', index: 'read_time', sortable: false, width: 90,fixed:true,align: 'number', formatter: 'integer'},
+            {name: 'qc_result_name', index: 'qc_result_name', sortable: false, width: 90,fixed:true},
 
         ],
         caption: "리드타임 생산실적 | MES",

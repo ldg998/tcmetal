@@ -22,7 +22,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">라인그룹</div>
             <div class="profile-info-value">
-                <select name="line_code" id="line_select_modal" class="modal_value" onchange="modal_select_change1(this.value)"  style="width: 100%">
+                <select name="line_grp_code" id="line_select_modal" class="modal_value" onchange="modal_select_change1(this.value)"  style="width: 100%">
                     <option value="">합형</option>
                     <option value=""></option>
                     <option value=""></option>
@@ -33,7 +33,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">라인</div>
             <div class="profile-info-value">
-                <select name="line_code2" id="line_select_modal2" class="modal_value"  style="width: 100%">
+                <select name="line_code" id="line_select_modal2" class="modal_value"  style="width: 100%">
                     <option value="">합형</option>
                     <option value=""></option>
                     <option value=""></option>
@@ -49,33 +49,33 @@
         </div>
 
         <div class="profile-info-row">
-            <div class="profile-info-name">결근/휴가</div>
+            <div class="profile-info-name">결근/휴가(일)</div>
             <div class="profile-info-value">
                 <input type="text" name="wk_qty1" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-name">조퇴(시간)</div>
+            <div class="profile-info-name">조퇴(분)</div>
             <div class="profile-info-value">
                 <input type="text" name="wk_qty2" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
         <div class="profile-info-row">
-            <div class="profile-info-name">지각(시간)</div>
+            <div class="profile-info-name">지각(분)</div>
             <div class="profile-info-value">
                 <input type="text" name="wk_qty3" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
 
         <div class="profile-info-row">
-            <div class="profile-info-name">잔업(시간)</div>
+            <div class="profile-info-name">잔업(분)</div>
             <div class="profile-info-value">
                 <input type="text" name="wk_qty4" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>
         </div>
 
         <div class="profile-info-row">
-            <div class="profile-info-name">특근(시간)</div>
+            <div class="profile-info-name">특근(분)</div>
             <div class="profile-info-value">
                 <input type="text" name="wk_qty5" onkeyup="num_keyup_float(this)" class="form-control modal_value" autocomplete="off" >
             </div>

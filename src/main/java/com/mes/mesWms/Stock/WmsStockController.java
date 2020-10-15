@@ -34,6 +34,11 @@ public class WmsStockController {
         return "mesWms/Stock/wmsStockRevList/wmsStockRevList";
     }
 
+    @RequestMapping(value = "/wmsAllStockList")
+    public String wmsAllStockList() {
+        return "mesWms/Stock/wmsAllStockList/wmsAllStockList";
+    }
+
 
 
 }

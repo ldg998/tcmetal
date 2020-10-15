@@ -3,7 +3,6 @@ package com.mes.mesWms.Stock;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
-import com.mes.mesManager.User.DTO.SYSDept;
 import com.mes.mesWms.Stock.DTO.WMS_STOCK;
 import com.mes.mesWms.Stock.DTO.WMS_STOCK_REV;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,4 +52,9 @@ public class WmsStockRestController {
 
     @RequestMapping(value = "/wmsStockOneGet", method = RequestMethod.POST)
     public WMS_STOCK wmsStockOneGet(Page p) { return wmsStockService.wmsStockOneGet(p); }
+
+    @RequestMapping(value = "/wmsAllStockListGet", method = RequestMethod.POST)
+    public RESTful wmsAllStockListGet(Page p) { return wmsStockService.wmsAllStockListGet(p); }
+
+
 }

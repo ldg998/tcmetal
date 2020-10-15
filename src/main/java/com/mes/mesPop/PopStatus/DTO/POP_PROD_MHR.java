@@ -20,6 +20,7 @@ public class POP_PROD_MHR {
     private String user_code;
     private String create_date;
     private String update_date;
+    private String line_grp_code;
     private String line_name;
     private String line_name2;
     private String user_name;

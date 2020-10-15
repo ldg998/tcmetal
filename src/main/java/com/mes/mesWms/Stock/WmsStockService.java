@@ -68,4 +68,9 @@ public class WmsStockService extends ReturnFunction {
     public WMS_STOCK wmsStockOneGet(Page p) {
         return wmsStockMapper.wmsStockOneGet(p);
     }
+
+    public RESTful wmsAllStockListGet(Page p) {
+        List<WMS_STOCK> rows = wmsStockMapper.wmsAllStockListGet(p);
+        return getListData(rows, p);
+    }
 }

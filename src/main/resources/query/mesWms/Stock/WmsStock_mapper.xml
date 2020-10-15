@@ -41,4 +41,10 @@
     <select id="wmsStockOneGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
         EXEC SP_WMS_STOCK_GET 1,1,#{keyword},#{keyword2},#{keyword3},#{keyword4}
     </select>
+
+    <select id="wmsAllStockListGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
+        EXEC SP_WMS_ALL_STOCK_LIST_GET #{page},#{rows}
+    </select>
+
+
 </mapper>

@@ -184,7 +184,10 @@ function select_change(value){
    }else if(value ==5){
        $('#code_select').empty();
        var option = $("<option></option>").text('수정').val(1);
+       var option2 = $("<option></option>").text('패기').val(2);
+
        $('#code_select').append(option);
+       $('#code_select').append(option2);
        $('#code_select').select2();
    }else {
        $('#code_select').empty();

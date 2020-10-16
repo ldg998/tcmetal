@@ -106,7 +106,9 @@ function select_change_modal1(value){
     }else if(value ==5){
         $('#select_modal2').empty();
         var option = $("<option></option>").text('수정').val(1);
+        var option2 = $("<option></option>").text('패기').val(2);
         $('#select_modal2').append(option);
+        $('#select_modal2').append(option2);
         $('#select_modal2').select2();
     }else {
         $('#select_modal2').empty();

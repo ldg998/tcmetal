@@ -188,8 +188,8 @@ function file3_formatter(cellvalue, options, rowObject) {
 }
 
 var agent = navigator.userAgent.toLowerCase();
-function file_openPDF(cell) {
 
+function file_openPDF(cell) {
     if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
         alert("익스플로러 브라우저는 지원되지 않습니다.");
     }

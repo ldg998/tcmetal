@@ -126,7 +126,7 @@ function selectBox_modal1() {
     select_makes_base('#select_modal1','/sysQcItemCdAll','qc_code','qc_name',{keyword:5,keyword2:1},'N').then(function(data){
 
     });
-    select_makes_base('#select_modal2','/sysQcItemCdAll','qc_code','qc_name',{keyword:2,keyword2:2},'N').then(function(data){
+    select_makes_base('#select_modal2','/sysQcItemCdAll','qc_code','qc_name',{keyword:5,keyword2:2},'N').then(function(data){
 
     });
 

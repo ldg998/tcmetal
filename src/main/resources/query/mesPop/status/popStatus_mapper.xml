@@ -124,7 +124,7 @@
     </select>
 
     <select id="sysProdHrAdd" resultType="com.mes.Common.DataTransferObject.Message">
-    EXEC SP_SYS_PROD_HR_ADD #{work_date},#{line_code2},#{wk_qty},#{wk_qty1},#{wk_qty2},#{wk_qty3},#{wk_qty4},#{wk_qty5},#{user_code},#{keyword}
+    EXEC SP_SYS_PROD_HR_ADD #{work_date},#{line_code},#{wk_qty},#{wk_qty1},#{wk_qty2},#{wk_qty3},#{wk_qty4},#{wk_qty5},#{user_code},#{keyword}
     </select>
 
     <select id="sysProdHrDel" resultType="com.mes.Common.DataTransferObject.Message">

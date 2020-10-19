@@ -51,6 +51,7 @@ public class POP_PLAN {
     private int wk_qty_hr;
     private int prod_mhr;
     private String qc_result_name;
+
     private int work_qty;
     private String stock_prev;
     private int work_seq;

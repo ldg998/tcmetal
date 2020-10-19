@@ -303,7 +303,7 @@ function jqGrid_main_modal() {
         ],
         // caption: "자재단가 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
-        height: 250, // 그리드 세로 길이 설정
+        height: 440, // 그리드 세로 길이 설정
         rowNum: 3000,
         caption: "출고지시서 | MES",
         cellEdit: true,

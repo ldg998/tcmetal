@@ -40,7 +40,7 @@ function get_btn(page) {
 
 
 function main_select_change1(value) {
-    select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},"").then(function (data) {});
+    select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},"Y").then(function (data) {});
 
 }
 ////////////////////////////호출 함수//////////////////////////////////

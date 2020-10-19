@@ -9,12 +9,12 @@ public class POP_PROD_MELT_SUB1 {
     private String line_code;
     private String charge;
     private int seq;
-    private int input1;
-    private int input2;
-    private int input3;
-    private int input4;
-    private int input5;
-    private int input6;
-    private int input_sum;
+    private double input1;
+    private double input2;
+    private double input3;
+    private double input4;
+    private double input5;
+    private double input6;
+    private double input_sum;
 
 }

@@ -125,6 +125,7 @@ function jqGrid_main() {
             {name: 'read_time', index: 'read_time', sortable: false, width: 90,fixed:true,align: 'number', formatter: 'integer'},
             {name: 'qc_result_name', index: 'qc_result_name', sortable: false, width: 90,fixed:true},
 
+
         ],
         caption: "리드타임 생산실적 | MES",
         autowidth: true,

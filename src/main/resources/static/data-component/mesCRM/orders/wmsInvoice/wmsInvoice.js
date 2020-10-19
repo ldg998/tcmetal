@@ -155,7 +155,7 @@ function invoice_btn() {
                             {
                                 style: 'nomal',
                                 table: {
-                                    widths: ['110%'], heights: [100], body: [
+                                    widths: ['109.5%'], heights: [100], body: [
                                         [
                                             {
                                                 text: 'Seller  \n '+data.ci.notice1,
@@ -169,7 +169,7 @@ function invoice_btn() {
                             {
                                 style: 'nomal',
                                 table: {
-                                    widths: ['110%'], heights: [100], body: [
+                                    widths: ['109.5%'], heights: [100], body: [
                                         [
                                             {
                                                 text: 'Consignee  \n '+data.ci.notice2,
@@ -183,7 +183,7 @@ function invoice_btn() {
                             {
                                 style: 'nomal',
                                 table: {
-                                    widths: ['110%'], heights: [50], body: [
+                                    widths: ['109.5%'], heights: [50], body: [
                                         [
                                             {
                                                 text: 'Departure  Date  : \n ' + data.ci.item4,
@@ -197,14 +197,45 @@ function invoice_btn() {
                             {
                                 style: 'nomal',
                                 table: {
-                                    widths: ['110%'], heights: [52], body: [
+                                    widths: ['109.5%'], heights: [16], body: [
                                         [
                                             {
                                                 text: 'Vessel/VOY.: '+data.ci.notice4,
+                                                border: [true, true, false, false]
+                                            },
+
+                                        ]
+
+                                    ]
+                                }
+                            },
+                            {
+                                style: 'nomal',
+                                table: {
+                                    widths: ['109.5%'], heights: [12], body: [
+                                        [
+                                            {
+                                                text: 'From              BUSAN, KOREA',
+                                                border: [true, false, false, false]
+                                            },
+
+                                        ]
+
+                                    ]
+                                }
+                            },
+                            {
+                                style: 'nomal',
+                                table: {
+                                    widths: ['109.5%'], heights: [12], body: [
+                                        [
+                                            {
+                                                text: 'TO                       YOKOHAMA  , JAPAN',
                                                 border: [true, true, false, true]
                                             },
 
                                         ]
+
                                     ]
                                 }
                             },
@@ -547,7 +578,7 @@ function packing_list_btn() {
                                 {
                                     style: 'nomal',
                                     table: {
-                                        widths: ['110%'], heights: [70], body: [
+                                        widths: ['109.5%'], heights: [70], body: [
                                             [
                                                 {
                                                     text: 'Seller \n '+data.ci.notice1,
@@ -561,7 +592,7 @@ function packing_list_btn() {
                                 {
                                     style: 'nomal',
                                     table: {
-                                        widths: ['110%'], heights: [70], body: [
+                                        widths: ['109.5%'], heights: [70], body: [
                                             [
                                                 {
                                                     text: 'Consignee \n'+data.ci.notice2,
@@ -575,7 +606,7 @@ function packing_list_btn() {
                                 {
                                     style: 'nomal',
                                     table: {
-                                        widths: ['110%'], heights: [45], body: [
+                                        widths: ['109.5%'], heights: [46.4], body: [
                                             [
                                                 {
                                                     text: 'Departure  Date :  \n ' + data.ci.item4,
@@ -589,17 +620,47 @@ function packing_list_btn() {
                                 {
                                     style: 'nomal',
                                     table: {
-                                        widths: ['110%'], heights: [46], body: [
+                                        widths: ['109.5%'], heights: [12.7], body: [
                                             [
                                                 {
                                                     text: 'Vessel/VOY.: '+data.ci.notice4,
+                                                    border: [true, true, false, false]
+                                                },
+
+                                            ]
+                                        ]
+                                    }
+                                },
+                                {
+                                    style: 'nomal',
+                                    table: {
+                                        widths: ['109.5%'], heights: [10], body: [
+                                            [
+                                                {
+                                                    text: 'From              BUSAN, KOREA',
+                                                    border: [true, false, false, false]
+                                                },
+
+                                            ]
+                                        ]
+                                    }
+                                },
+                                {
+                                    style: 'nomal',
+                                    table: {
+                                        widths: ['109.5%'], heights: [10], body: [
+                                            [
+                                                {
+                                                    text: 'To                 YOKOHAMA , JAPAN',
                                                     border: [true, true, false, true]
                                                 },
 
                                             ]
                                         ]
                                     }
-                                }
+                                },
+
+
 
                             ], //1번컬럼 종료
 

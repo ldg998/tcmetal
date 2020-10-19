@@ -72,12 +72,16 @@ function formmatterDate2(cellValue) { // 날짜 필터
 	} if(cellValue === '소계' || cellValue === '통계'){
 		return cellValue;
 	} else {
-		cellValue = cellValue.replace(/[^0-9]/g,'');
-		var y = cellValue.substring(0,4);
-		var m = cellValue.substring(4,6);
-		var d = cellValue.substring(6,8);
-		var date = y+"-"+m+"-"+d
-		return date;
+		if(cellValue.length > 7) {
+			cellValue = cellValue.replace(/[^0-9]/g, '');
+			var y = cellValue.substring(0, 4);
+			var m = cellValue.substring(4, 6);
+			var d = cellValue.substring(6, 8);
+			var date = y + "-" + m + "-" + d
+			return date;
+		}else {
+			return cellValue;
+		}
 	}
 }
 

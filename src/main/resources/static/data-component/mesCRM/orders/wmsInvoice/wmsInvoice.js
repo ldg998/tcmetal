@@ -606,7 +606,7 @@ function packing_list_btn() {
                                 {
                                     style: 'nomal',
                                     table: {
-                                        widths: ['109.5%'], heights: [46.4], body: [
+                                        widths: ['109.5%'], heights: [45], body: [
                                             [
                                                 {
                                                     text: 'Departure  Date :  \n ' + data.ci.item4,

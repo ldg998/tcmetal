@@ -66,11 +66,13 @@ function msg_get() {
 }
 
 function datepickerInput() {
-    datepicker_makes("#datepicker", 0);
+    datepicker_makes("#datepicker", -30);
+    datepicker_makes("#datepicker2", 0);
+
 }
 
 function authcheck() {
-    ccn_ajax("/menuAuthGet", {keyword: "wmsStockSum"}).then(function (data) {
+    ccn_ajax("/menuAuthGet", {keyword: "wmsAllStockList"}).then(function (data) {
         main_data.auth = data;
     });
 }
@@ -91,16 +93,25 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['업체', '기종', '품번','품명', '단중'],
+        colNames: ['생산날짜','지시날짜','업체', '기종', '품번','품명', 'LOT번호','라인그룹','라인','합형','중간검사','출하검사'],
         colModel: [
-            {name:'supp_name', index: 'supp_name', width: 130, fixed:true},
-            {name:'part_kind', index: 'part_kind',  width: 110, fixed:true},
+
+            {name:'create_work_date', index: 'create_work_date', formatter: formmatterDate2, width: 130, fixed:true},
+            {name:'work_date', index: 'work_date', formatter: formmatterDate2, width: 130, fixed:true},
+            {name:'supp_name', index: 'supp_name',  width: 110, fixed:true},
+            {name:'part_kind', index: 'part_kind',  width: 130, fixed:true},
             {name:'part_code', index: 'part_code',  width: 130, fixed:true},
             {name:'part_name', index: 'part_name',  width: 190, fixed:true},
-            {name:'part_weight', index: 'part_weight',  width: 90, fixed:true,formatter:'integer', align:'right',}
+            {name:'lot_no', index: 'lot_no',  width: 90, fixed:true},
+            {name:'line_grp_name', index: 'line_grp_name',  width: 90, fixed:true},
+            {name:'line_name', index: 'line_name',  width: 90, fixed:true},
+            {name:'date_name1', index: 'date_name1',  width: 90, fixed:true},
+            {name:'date_name2', index: 'date_name2',  width: 90, fixed:true},
+            {name:'date_name3', index: 'date_name3',  width: 90, fixed:true}
+
 
         ],
-        caption: '제품전체 재고 현황 | MES',
+        caption: '제품검사 현황 | MES',
         autowidth: true,
         shrinkToFit:false,
         height: 600,
@@ -149,11 +160,17 @@ function header_make() {
     })
 }
 
-function selectBox() {
-    $('#part_kind_select').select2();
-    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
-}
+function select_box() {
+    select_makes_base("#supp_code_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+    });
 
+    select_makes_base("#select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'4'},'').then(function (data){});
+    $('#select2').select2();
+}
 function select_change1(value) {
     if (value !== ""){
         select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");

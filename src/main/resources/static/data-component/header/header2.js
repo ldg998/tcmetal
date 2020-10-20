@@ -48,7 +48,7 @@ var array =
         {code: "wmsStockSumMonth", title: '출하관리', sub: '입출고관리', name: '제품재고 월원장'},
         {code: "wmsStockRev", title: '출하관리', sub: '입출고관리', name: '제품재고 조정'},
         {code: "wmsStockRevList", title: '출하관리', sub: '입출고관리', name: '제품재고 조정현황'},
-        {code: "wmsAllStockList", title: '출하관리', sub: '입출고관리', name: '제품전체재고 현황'},
+        {code: "wmsAllStockList", title: '출하관리', sub: '입출고관리', name: '제품 검사현황'},
 
 
      //영업관리 - 기준정보관리

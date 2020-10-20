@@ -12,12 +12,15 @@ public class CRM_ORD_RECP  {
     private String part_kind;
     private String part_code;
     private String part_name;
+
     private int part_weight;
     private int unit_cost;
     private int qty;
     private int price_amount;
     private int ord_qty;
     private int  prev_qty;
+    private int  weight;
+
     private String outs_supp_name;
     private String outs_supp_code;
     private String ship_date;

@@ -317,7 +317,7 @@ function msg_get() {
 }
 
 function datepickerInput() {
-    datepicker_makes("#datepicker", -30);
+    datepicker_makes("#datepicker", -365);
     datepicker_makes1("#datepicker2", 0);
 }
 

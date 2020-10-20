@@ -14,10 +14,14 @@ function addUdate_btn() {
         text = msg_object.TBMES_Q003.msg_name1;
     }
     if (confirm(text)) {
+
         var add_data = value_return(".modal_value");
         var formData = new FormData();
         var check1;
         var check2;
+
+        formData.append("file1_code", add_data.file1_code);
+        formData.append("file2_code", add_data.file2_code);
         formData.append("ret_no", add_data.ret_no);
         formData.append("work_date", add_data.work_date);
         formData.append("lot_no", add_data.lot_no);
@@ -25,7 +29,7 @@ function addUdate_btn() {
         formData.append("part_kind", add_data.part_kind);
         formData.append("part_code", add_data.part_code);
         formData.append("ng_type", add_data.ng_type);
-        formData.append("ng_name", $('#modal_select4').text());
+        formData.append("ng_name", $('#modal_select4 option:checked').text());
         formData.append("report_type", add_data.report_type);
         formData.append("report_date", add_data.report_date);
         formData.append("measuer_name", add_data.measuer_name);
@@ -223,7 +227,7 @@ function datepickerInput_modal() {
 function file_change(e) {
     var filename = $(e).val().split('\\');
     var data = $(e).val().split('.'); // 확장자
-    if ( $(e).val() !== ''){
+    if ($(e).val() !== ''){
         $(e).closest("div")
             .children(".file_labal")
             .text("업로드완료");

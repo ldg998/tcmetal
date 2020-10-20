@@ -18,19 +18,25 @@
                     <table class="table wt-100 margin-bottom-3">
                         <tbody>
                         <tr>
-                            <td class="wt-px-100 td-title t-align-c padding-a-0">조회일자</td>
+                            <td class="wt-px-100 td-title t-align-c padding-a-0">조회기간</td>
                             <td class="wt-px-200">
                                 <div class="input-icon input-icon-right">
-                                    <input type="text" name="work_date" id="datepicker"
+                                    <input type="text" name="start_date" id="datepicker"
                                            class="form-control h-25 condition_main sendDate" readonly>
                                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                                 </div>
                             </td>
-                            <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
-                            <td class="wt-px-200">
-                                <select class="form-control condition_main" name="keyword" id="supp_select"
-                                        style="width: 100%" onchange="select_change1(this.value)"></select>
+                            <td class="t-align-c" style="width:25px !important;">
+                                ~
                             </td>
+                            <td class="wt-px-200">
+                                <div class="input-icon input-icon-right">
+                                    <input type="text" name="end_date" id="datepicker2"
+                                           class="form-control h-25 condition_main sendDate" readonly>
+                                    <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
+                                </div>
+                            </td>
+                            <td class="border_no display_none" style=" width:80px !important;"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -39,11 +45,26 @@
                     <table class="table wt-100 margin-bottom-3">
                         <tbody>
                         <tr>
+                            <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                            <td class="wt-px-200">
+                                <select class="form-control condition_main" name="supp_code" id="supp_code_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
+                            </td>
+
                             <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                             <td class="wt-px-200">
-                                <select id="part_kind_select" class="form-control condition_main" name="keyword2"
-                                        style="width: 100%;">
+                                <select id="part_kind_select" name="part_kind" class="form-control condition_main" style="width: 100%;">
                                     <option value="">전체</option>
+
+                                </select>
+                            </td>
+
+                            <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
+                            <td class="wt-px-200">
+                                <select id="gu" name="gu" class="form-control condition_main" style="width: 100%;">
+                                    <option value="">전체</option>
+                                    <option value="1">합형</option>
+                                    <option value="2">중간검사</option>
+                                    <option value="3">출하검사</option>
 
                                 </select>
                             </td>

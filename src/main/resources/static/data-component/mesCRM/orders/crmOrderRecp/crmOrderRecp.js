@@ -178,7 +178,7 @@ function jqGrid_main() {
     $("#mes_grid").jqGrid({
         datatype: "local",
         mtype: 'POST',
-        colNames : ['','수주일자','전표번호','업체','상태','PO','기종','품번','품명','단중','단가','수량','금액','납기일자','등록자','등록일시'],
+        colNames : ['','수주일자','전표번호','업체','상태','PO','기종','품번','품명','단중','단가','수량','중량','금액','납기일자','등록자','등록일시'],
         colModel : [
             {name:'status',index:'status',fixed: true,hidden:true},
             {name:'work_date',index:'work_date' ,width:90,fixed: true,formatter:formmatterDate2},
@@ -192,6 +192,7 @@ function jqGrid_main() {
             {name:'part_weight',index:'part_weight',width:90,fixed: true, align: 'right',formatter:'integer'},
             {name:'unit_cost',index:'unit_cost',width:90,fixed: true, align: 'right',formatter:'integer'},
             {name:'qty',index:'qty',width:90,fixed: true, align: 'right',formatter:'integer'},
+            {name:'weight',index:'weight',width:90,fixed: true, align: 'right',formatter:'integer'},
             {name: 'price_amount', index: 'price_amount', fixed: true, width: 90, align: 'right',formatter:'integer'},
             {name:'end_date',index:'end_date' ,width:90,fixed: true,formatter:formmatterDate2},
             {name: 'user_name', index: 'user_name',  width: 60,fixed:true},
@@ -230,7 +231,7 @@ function jqGrid_main() {
 }
 
 function datepickerInput() {
-    datepicker_makes("#datepicker", -30);
+    datepicker_makes("#datepicker", -365);
     datepicker_makes("#datepicker2", 0);
 }
 

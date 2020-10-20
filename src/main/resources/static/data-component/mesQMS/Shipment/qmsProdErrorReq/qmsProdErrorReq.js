@@ -62,6 +62,8 @@ function add_btn() {
 // 그리드 항목 더블클릭시 수정 화면
 function update_btn(jqgrid_data) {
     if (main_data.auth.check_edit !="N") {
+        console.log(jqgrid_data.file1_code);
+
         modal_reset(".modal_value", []);
         $('#file_01').closest("div").children(".file_labal").text("업로드")
         $('#file_02').closest("div").children(".file_labal").text("업로드")
@@ -163,8 +165,8 @@ function jqGrid_main() {
             {name: 'measuer_name', index: 'measuer_name',sortable: false, width: 100,fixed: true},
             {name: 'act_date', index: 'act_date',sortable: false, width: 90,fixed: true,formatter: formmatterDate2},
             {name: 'act_type_name', index: 'act_type_name',sortable: false, width: 70,fixed: true},
-            {name: 'file1_ck', index: 'file1_code',sortable: false, width: 80,fixed: true,formatter: file1_formatter},
-            {name: 'file2_ck', index: 'file2_code',sortable: false, width: 80,fixed: true,formatter: file2_formatter},
+            {name: 'file1_ck', index: 'file1_ck',sortable: false, width: 80,fixed: true,formatter: file1_formatter},
+            {name: 'file2_ck', index: 'file2_ck',sortable: false, width: 80,fixed: true,formatter: file2_formatter},
             {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
             {name: 'create_date', index: 'create_date',sortable: false, width: 140,fixed: true ,formatter: formmatterDate}
 

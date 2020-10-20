@@ -4,7 +4,15 @@ import lombok.Data;
 
 @Data
 public class WMS_STOCK {
+    private String create_work_date;
+    private String work_date;
+
+    private String lot_no;
     private String part_code;
+
+    private String line_grp_name;
+    private String line_name;
+
     private int prev_qty;
     private int in_qty;
     private int out_qty;
@@ -26,4 +34,8 @@ public class WMS_STOCK {
     private int rownum;
     private int rownum_page;
     private int rec_count;
+
+    private String date_name1;
+    private String date_name2;
+    private String date_name3;
 }

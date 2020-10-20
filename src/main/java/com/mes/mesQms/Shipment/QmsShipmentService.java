@@ -181,7 +181,7 @@ public class QmsShipmentService extends UploadFunction {
                 qps.setType(mf.getContentType());
                 int pos = qps.getType().lastIndexOf( "/" );
                 String ext = qps.getType().substring( pos + 1 );
-                qps.setSavefile(saveFile(mf,ext,path));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
+                qps.setSavefile(saveFile(mf,ext,path,""));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
                 qps.setSize(mf.getSize());
                 qps.setOriginal_name(mf.getOriginalFilename());
                 qps.setAllpath(path+"/"+qps.getSavefile());
@@ -199,11 +199,11 @@ public class QmsShipmentService extends UploadFunction {
     }
 
 
-    private String saveFile(MultipartFile file,String ext,String path){ //파일 업로드 소스
+    private String saveFile(MultipartFile file,String ext,String path,String ck){ //파일 업로드 소스
         // 파일 이름 변경
         SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");
         String originalFilename = file.getOriginalFilename(); //파일에 진짜이름
-        String saveName =  "qmsProdList_"+ format1.format (System.currentTimeMillis())+"."+ext ;
+        String saveName =  "qmsProdList_"+ck+ format1.format (System.currentTimeMillis())+"."+ext ;
         // 저장할 File 객체를 생성(껍데기 파일)
         File saveFile = new File(path,saveName); // 저장할 폴더 이름, 저장할 파일 이름
            if(! saveFile.exists())
@@ -236,8 +236,11 @@ public class QmsShipmentService extends UploadFunction {
     public Message qmsProdErrorReqAdd(MultipartHttpServletRequest req, QMS_RET qr) {
         qr.setUser_code(getSessionData(req).getUser_code());
        String path = "C:/UploadFile/tcmetal/qmsProdEroorReq";
+        System.out.println("파일 "+qr.getFile1_ck());
+
         qr.setFile_key(file_key_retrun(qr,path));
         qr.setFile_key2(file_key_retrun2(qr,path));
+
         System.out.println(qr);
         return  qmsShipmentMapper.qmsProdErrorReqAdd(qr);
 
@@ -254,7 +257,7 @@ public class QmsShipmentService extends UploadFunction {
                 qr.setType(mf.getContentType());
                 int pos = qr.getType().lastIndexOf( "/" );
                 String ext = qr.getType().substring( pos + 1 );
-                qr.setSavefile(saveFile(mf,ext,path));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
+                qr.setSavefile(saveFile(mf,ext,path,"1"));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
                 qr.setSize(mf.getSize());
                 qr.setOriginal_name(mf.getOriginalFilename());
                 qr.setAllpath(path+"/"+qr.getSavefile());
@@ -268,7 +271,7 @@ public class QmsShipmentService extends UploadFunction {
             qmsShipmentMapper.qmsFileAdd(qr);
             return qr.getKey_value();
         }
-        return "";
+        return qr.getFile1_code();
     }
 
 
@@ -281,7 +284,7 @@ public class QmsShipmentService extends UploadFunction {
                 qr.setType(mf.getContentType());
                 int pos = qr.getType().lastIndexOf( "/" );
                 String ext = qr.getType().substring( pos + 1 );
-                qr.setSavefile(saveFile(mf,ext,path));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
+                qr.setSavefile(saveFile(mf,ext,path,"2"));//파일을 업로드 하고 업로드한 파일 이름을 가져온다
                 qr.setSize(mf.getSize());
                 qr.setOriginal_name(mf.getOriginalFilename());
                 qr.setAllpath(path+"/"+qr.getSavefile());
@@ -297,7 +300,7 @@ public class QmsShipmentService extends UploadFunction {
             qmsShipmentMapper.qmsFileAdd(qr);
            return qr.getKey_value2();
         }
-        return "";
+        return qr.getFile2_code();
     }
 
 

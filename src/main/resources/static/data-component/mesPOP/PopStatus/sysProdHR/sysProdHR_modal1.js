@@ -109,7 +109,7 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
 }
 
 function select_modal_box() {
-    select_makes_base("#line_select_modal", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'4'},'').then(function (data) {
+    select_makes_base("#line_select_modal", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'5'},'').then(function (data) {
          select_makes_base("#line_select_modal2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {});
 
     });

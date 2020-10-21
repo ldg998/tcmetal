@@ -12,7 +12,7 @@
     </select>
 
 	<select id="crmOrderRecpEndDateGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
-		EXEC SP_CRM_ORD_RECP_END_DATE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},''
+		EXEC SP_CRM_ORD_RECP_END_DATE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},'',#{sidx},#{sord}
     </select>
 	<select id="crmOrderRecpOneGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
 		EXEC SP_CRM_ORD_RECP_GET 1, 1,'', '','' ,#{keyword}
@@ -40,7 +40,7 @@
 		EXEC SP_WMS_OUT_ORD_ADD #{req_no},#{work_date},#{ship_date},#{supp_code},#{delivery_place},#{keyword2},#{keyword},#{user_code}
 	</select>
 	<select id="wmsOutOrderGet" resultType="com.mes.mesCrm.Orders.DTO.WMS_OUT_ORD_SUB">
-		EXEC SP_WMS_OUT_ORD_SUB_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword},''
+		EXEC SP_WMS_OUT_ORD_SUB_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword},'',#{keyword2}
     </select>
 
 	<select id="wmsOutOrderOneGet" resultType="com.mes.mesCrm.Orders.DTO.WMS_OUT_ORD_SUB">

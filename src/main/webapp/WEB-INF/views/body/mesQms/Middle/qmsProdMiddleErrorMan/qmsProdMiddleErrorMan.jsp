@@ -47,8 +47,8 @@
                                 <option value="2">수정</option>
                                 <option value="3">폐기</option>
                                 <option value="4">판정대기</option>
-
                             </select>
+                            <input type="hidden" name="keyword4" class="form-control h-25 condition_main">
                         </td>
                         <td class="wt-px-100"></td>
                         <td class="wt-px-200"></td>

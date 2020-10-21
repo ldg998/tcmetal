@@ -70,6 +70,16 @@
 
                             </select>
                         </td>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">상태</td>
+                        <td class="wt-px-200">
+                            <select id="main_select4" style="width: 100%" name="keyword4" class="form-control condition_main">
+                                <option value="">전체</option>
+                                <option value="0">진행중</option>
+                                <option value="1">완료</option>
+
+                            </select>
+                        </td>
+
                         <td class="wt-px-100"></td>
                         <td class="wt-px-200"></td>
                     </tr>

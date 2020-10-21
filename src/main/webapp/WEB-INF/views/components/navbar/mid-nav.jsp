@@ -19,7 +19,18 @@
                 <img src="/ui-component/assets/images/tclogo3.png" id="main_logo_img" width="160px">
             </a>
             <div class="form-group">
-                <a href="javascript:void(0);" class="navbar-brand top_m">
+
+<%--                <c:choose>--%>
+<%--                <c:when test="${sessionScope.userData.user_code eq 'donggun'}"  >--%>
+<%--                    <a href="wmsAllStockList" class="navbar-brand top_m">--%>
+<%--                </c:when>--%>
+<%--                    <c:otherwise>--%>
+<%--                    <a href="javascript:void(0);" class="navbar-brand top_m">--%>
+<%--                    </c:otherwise>--%>
+<%--                </c:choose>--%>
+
+                        <a href="javascript:void(0);" class="navbar-brand top_m">
+
                     <i class="fa fa-user"></i> ${sessionScope.userData.user_name}님 반갑습니다.
                     <input type="hidden" value="${sessionScope.userData.site_code}" id="hstcd">
                     <input type="hidden" value="${sessionScope.userData.user_code}" id="huscd">
@@ -27,7 +38,8 @@
                     <br>
                     <button type="button" class="btn btn-minier btn-dark btn_tcm" onclick="password_add_btn();">암호변경</button>
                     <button type="button" class="btn btn-minier btn-dark btn_tcm" onclick="logout();">로그아웃</button>
-                </a>
+
+                        </a>
             </div>
         </div>
     </div>

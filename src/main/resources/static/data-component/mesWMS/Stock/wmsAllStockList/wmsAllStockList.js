@@ -19,7 +19,7 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     // header_make();
-    selectBox();
+    select_box();
 });
 
 ////////////////////////////클릭 함수/////////////////////////////////////
@@ -167,10 +167,9 @@ function select_box() {
         $('#part_kind_select').append(option);
         $('#part_kind_select').select2();
     });
-
-    select_makes_base("#select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'4'},'').then(function (data){});
-    $('#select2').select2();
+     $('#gu').select2();
 }
+
 function select_change1(value) {
     if (value !== ""){
         select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");

@@ -45,22 +45,22 @@
                     <table class="table wt-100 margin-bottom-3">
                         <tbody>
                         <tr>
-                            <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
-                            <td class="wt-px-200">
-                                <select class="form-control condition_main" name="supp_code" id="supp_code_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
+                            <td class="wt-px-200 td-title t-align-c padding-a-0">업체</td>
+                            <td class="wt-px-400">
+                                <select class="form-control condition_main" name="keyword" id="supp_code_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
                             </td>
 
-                            <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
-                            <td class="wt-px-200">
-                                <select id="part_kind_select" name="part_kind" class="form-control condition_main" style="width: 100%;">
+                            <td class="wt-px-200 td-title t-align-c padding-a-0">기종</td>
+                            <td class="wt-px-400">
+                                <select id="part_kind_select" name="keyword2" class="form-control condition_main" style="width: 100%;">
                                     <option value="">전체</option>
 
                                 </select>
                             </td>
 
-                            <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
-                            <td class="wt-px-200">
-                                <select id="gu" name="gu" class="form-control condition_main" style="width: 100%;">
+                            <td class="wt-px-200 td-title t-align-c padding-a-0">구분</td>
+                            <td class="wt-px-400">
+                                <select id="gu" name="keyword3" class="form-control condition_main" style="width: 100%;">
                                     <option value="">전체</option>
                                     <option value="1">합형</option>
                                     <option value="2">중간검사</option>

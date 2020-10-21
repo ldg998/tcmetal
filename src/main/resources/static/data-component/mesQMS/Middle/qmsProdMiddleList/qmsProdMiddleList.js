@@ -243,6 +243,8 @@ function selectBox() {
     $('#part_kind_select').select2();
     select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
     $('#main_select3').select2();
+    $('#main_select4').select2();
+
 }
 
 

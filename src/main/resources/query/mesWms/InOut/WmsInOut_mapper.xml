@@ -13,9 +13,11 @@
     <select id="wmsOutReadyGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB">
         EXEC [SP_WMS_OUT_READY_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}
     </select>
-    <select id="wmsOutOrderGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD">
-        EXEC [SP_WMS_OUT_ORD_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{supp_code},#{keyword2}
-    </select>
+
+<!--    <select id="wmsOutOrderGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD">-->
+<!--        EXEC [SP_WMS_OUT_ORD_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{supp_code},#{keyword2}-->
+<!--    </select>-->
+
     <select id="wmsOutOrderSubGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB">
         EXEC [SP_WMS_OUT_ORD_SUB_GET]  #{page}, #{rows},#{keyword}
     </select>

@@ -390,4 +390,5 @@ function jqGrid_main() {
 function selectBox() {
     select_makes_base("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
     });
+    $('#status_select').select2();
 }

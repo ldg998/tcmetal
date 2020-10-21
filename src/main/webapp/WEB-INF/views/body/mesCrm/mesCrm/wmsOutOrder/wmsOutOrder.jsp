@@ -42,7 +42,22 @@
                             <div class="input-icon input-icon-right">
                                 <select class="form-control condition_main" name="keyword" id="supp_select" style="width: 100%"  ></select>
                             </div>
+
                         </td>
+
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">상태</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <select class="form-control condition_main" name="keyword2" id="status_select" style="width: 100%"  >
+                                    <option value="">전체</option>
+                                    <option value=0>대기(진행중)</option>
+                                    <option value=1>출고완료</option>
+
+                                </select>
+                            </div>
+
+                        </td>
+
                         <td class="wt-px-100"></td>
                         <td class="wt-px-200"></td>
                     </tr>

@@ -43,7 +43,7 @@
     </select>
 
     <select id="wmsAllStockListGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
-        EXEC SP_WMS_ALL_STOCK_LIST_GET #{page},#{rows}
+        EXEC SP_WMS_ALL_STOCK_LIST_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
     </select>
 
 

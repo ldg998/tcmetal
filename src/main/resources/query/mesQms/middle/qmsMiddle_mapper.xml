@@ -7,7 +7,7 @@
     </select>
 
     <select id="qmsProdMiddleListOneGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">
-       EXEC SP_QMS_PROD_MIDDLE_LIST_GET 1,1,'','','','','',#{keyword},''
+       EXEC SP_QMS_PROD_MIDDLE_LIST_GET2 1,1,'','','','','',#{keyword},''
     </select>
 
     <select id="qmsProdMiddleSubGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">

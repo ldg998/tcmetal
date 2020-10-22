@@ -159,6 +159,45 @@ function complete_btn() {
         alert(msg_object.TBMES_A003.msg_name1);         //오류메세지 출력
     }
 }
+
+function select_change1(value) {
+    if (value !== ""){
+        select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
+
+    } else {
+        $('#part_kind_select').empty();
+        var option = $("<option></option>").text('전체').val('');
+        $('#part_kind_select').append(option);
+        $('#part_kind_select').select2();
+
+        $('#part_code_select').empty();
+        var option2 = $("<option></option>").text('전체').val('');
+        $('#part_code_select').append(option2);
+        $('#part_code_select').select2();
+
+    }
+}
+
+
+function select_change2(value) {
+        if (value !== "") {
+            select_makes_base("#part_code_select", "/sysSpartAllGet", "part_code", "part_name", {
+                keyword: $("#supp_select").val(),
+                keyword2: value
+            }, "Y").then(function (data) {
+
+            });
+        } else {
+
+            $('#part_code_select').empty();
+            var option2 = $("<option></option>").text('전체').val('');
+            $('#part_code_select').append(option2);
+            $('#part_code_select').select2();
+        }
+
+
+}
+
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_A001");
@@ -238,6 +277,11 @@ function datepickerInput() {
 function selectBox() {
     select_makes_base("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y").then(function (data) {
     });
+    $('#part_kind_select').select2();
+    $('#part_code_select').select2();
+    $('#status').select2();
+
+
 }
 function status_ck(ids){
     var ck = 0;

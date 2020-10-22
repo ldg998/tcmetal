@@ -109,7 +109,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['공정','업체','기종','품번','품명','단중','생산수량'],
+        colNames: ['공정','업체','기종','품번','품명','단중','생산수량','중량'],
         colModel: [
             {name: 'line_name', index: 'line_name', sortable: false, width: 70,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
@@ -117,7 +117,8 @@ function jqGrid_main() {
             {name: 'part_code', index: 'plan_code', sortable: false, width: 120,fixed:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
-            {name: 'qty', index: 'qty', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'}
+            {name: 'qty', index: 'qty', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
+            {name: 'work_weight', index: 'work_weight', sortable: false, width: 100,fixed:true,align: 'right', formatter: 'integer'}
 
         ],
         caption: "기간별 생산실적 | MES",
@@ -127,7 +128,24 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
-    }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
+        // loadComplete : function(data){
+        //     var moneySum = $("#grid").jqGrid('getCol','money', false, 'sum');
+        //     $('#grid').jqGrid('footerData', 'set', { crateName:'합계', money:moneySum });
+        //     /* var widthSum = $('#grid tr:first td:eq(0)').width(); widthSum += $('#grid tr:first td:eq(1)').width();
+        //      widthSum += $('#grid tr:first td:eq(2)').width(); widthSum += $('#grid tr:first td:eq(3)').width(); */
+        //     /* $('table.ui-jqgrid-ftable td:eq(1)').hide(); $('table.ui-jqgrid-ftable td:eq(2)').hide();
+        //     $('table.ui-jqgrid-ftable td:eq(3)').hide(); */
+        //     var footer = $("table.ui-jqgrid-ftable tr:first td:eq(0)");
+        //     footer.css("color", "#2e6e9e");
+        //     footer.css("text-align", "left");
+        //     footer.css("width", widthSum);
+        //     $('table.ui-jqgrid-ftable tr:first').children("td").css("background-color", "#dfeffc");
+        //     $('table.ui-jqgrid-ftable tr:first td:eq(0),table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-top","8px");
+        //     $('table.ui-jqgrid-ftable tr:first td:eq(0),table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-bottom","8px");
+        //     $('table.ui-jqgrid-ftable tr:first td:eq(4)').append(" \u00A0");
+        //     }
+
+        }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
 }
 
 

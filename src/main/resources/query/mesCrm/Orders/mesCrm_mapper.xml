@@ -8,11 +8,11 @@
     </select>
 
 	<select id="crmOrderRecpGet2" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
-		EXEC SP_CRM_ORD_RECP_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},'',#{sidx},#{sord}
+		EXEC SP_CRM_ORD_RECP_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},'',#{sidx},#{sord},#{keyword2},#{keyword3},#{keyword4}
     </select>
 
 	<select id="crmOrderRecpEndDateGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
-		EXEC SP_CRM_ORD_RECP_END_DATE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},'',#{sidx},#{sord}
+		EXEC SP_CRM_ORD_RECP_END_DATE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},'',#{sidx},#{sord},#{keyword2},#{keyword3},#{keyword4}
     </select>
 	<select id="crmOrderRecpOneGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
 		EXEC SP_CRM_ORD_RECP_GET 1, 1,'', '','' ,#{keyword}

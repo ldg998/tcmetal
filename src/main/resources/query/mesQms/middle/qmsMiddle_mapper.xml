@@ -3,7 +3,7 @@
 
 <mapper namespace="com.mes.Mapper.mesQms.Middle.QmsMiddleMapper">
     <select id="qmsProdMiddleListGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">
-       EXEC SP_QMS_PROD_MIDDLE_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},'',#{keyword4}
+       EXEC SP_QMS_PROD_MIDDLE_LIST_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},'',#{keyword4}
     </select>
 
     <select id="qmsProdMiddleListOneGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">

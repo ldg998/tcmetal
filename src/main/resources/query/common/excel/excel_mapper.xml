@@ -241,7 +241,7 @@
         EXEC [SP_QMS_RECV_LIST_GET]  0,0,#{row0},#{row1},#{row2},'2'
     </select>
     <select id="qmsProdMiddleDbList" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">
-       EXEC SP_QMS_PROD_MIDDLE_LIST_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4},''
+       EXEC SP_QMS_PROD_MIDDLE_LIST_GET2 0,0,#{row0},#{row1},#{row2},#{row3},#{row4},'',''
     </select>
     <select id="qmsProdErrorListDbList" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
         EXEC SP_QMS_PROD_LIST_GET 0,0,#{row0},#{row1},#{row2},#{row3}

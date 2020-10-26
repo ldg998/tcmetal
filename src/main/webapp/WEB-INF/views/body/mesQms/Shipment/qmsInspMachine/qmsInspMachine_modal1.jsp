@@ -89,7 +89,7 @@
         <div class="profile-info-row">
             <div class="profile-info-name">사전알림(일)</div>
             <div class="profile-info-value">
-                <input type="text" name="alarm_day" class="form-control modal_value" onkeyup="num_keyup(this)" autocomplete="off">
+                <input type="text" name="alarm_day" class="form-control modal_value qty" onkeyup="num_keyup(this)" autocomplete="off" style="text-align: right">
             </div>
         </div>
         <div class="profile-info-row">

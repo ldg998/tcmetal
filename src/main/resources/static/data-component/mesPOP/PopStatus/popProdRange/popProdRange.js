@@ -116,9 +116,9 @@ function jqGrid_main() {
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 130,fixed:true},
             {name: 'part_code', index: 'plan_code', sortable: false, width: 120,fixed:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
-            {name: 'qty', index: 'qty', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
-            {name: 'work_weight', index: 'work_weight', sortable: false, width: 100,fixed:true,align: 'right', formatter: 'integer'}
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer', summaryType:'sum',formatoptions:{decimalPlaces:0}},
+            {name: 'qty', index: 'qty', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer',summaryType:'sum',formatoptions:{decimalPlaces:0}},
+            {name: 'work_weight', index: 'work_weight', sortable: false, width: 100,fixed:true,align: 'right', formatter: 'integer',summaryType:'sum',formatoptions:{decimalPlaces:0}}
 
         ],
         caption: "기간별 생산실적 | MES",
@@ -128,22 +128,78 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
-        // loadComplete : function(data){
-        //     var moneySum = $("#grid").jqGrid('getCol','money', false, 'sum');
-        //     $('#grid').jqGrid('footerData', 'set', { crateName:'합계', money:moneySum });
-        //     /* var widthSum = $('#grid tr:first td:eq(0)').width(); widthSum += $('#grid tr:first td:eq(1)').width();
-        //      widthSum += $('#grid tr:first td:eq(2)').width(); widthSum += $('#grid tr:first td:eq(3)').width(); */
-        //     /* $('table.ui-jqgrid-ftable td:eq(1)').hide(); $('table.ui-jqgrid-ftable td:eq(2)').hide();
-        //     $('table.ui-jqgrid-ftable td:eq(3)').hide(); */
-        //     var footer = $("table.ui-jqgrid-ftable tr:first td:eq(0)");
-        //     footer.css("color", "#2e6e9e");
-        //     footer.css("text-align", "left");
-        //     footer.css("width", widthSum);
-        //     $('table.ui-jqgrid-ftable tr:first').children("td").css("background-color", "#dfeffc");
-        //     $('table.ui-jqgrid-ftable tr:first td:eq(0),table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-top","8px");
-        //     $('table.ui-jqgrid-ftable tr:first td:eq(0),table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-bottom","8px");
-        //     $('table.ui-jqgrid-ftable tr:first td:eq(4)').append(" \u00A0");
-        //     }
+        footerrow: true, // 풋터서머리 사용여부
+        userDataOnFooter : true, //
+        grouping : true ,
+        loadComplete : function(data){
+
+            var moneySum = $('#mes_grid').jqGrid('getCol','part_weight', false, 'sum');
+            $('#mes_grid').jqGrid('footerData', 'set', { crateName:'합계', part_weight:moneySum });
+
+            var moneySum2 = $('#mes_grid').jqGrid('getCol','qty', false, 'sum');
+            $('#mes_grid').jqGrid('footerData', 'set', { crateName:'합계', qty:moneySum2 });
+
+            var moneySum3 = $('#mes_grid').jqGrid('getCol','work_weight', false, 'sum');
+            $('#mes_grid').jqGrid('footerData', 'set', { crateName:'합계', work_weight:moneySum3 });
+
+
+            // $('table.ui-jqgrid-ftable tr:first').children("td").css("border-top", "none");
+            // $('table.ui-jqgrid-ftable tr:first').children("td").css("font")
+            // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-top","5px");
+            // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-bottom","5px");
+
+             var widthSum = $('#mes_grid tr:first td:eq(0)').width();
+             widthSum += $('#mes_grid tr:first td:eq(1)').width();
+             widthSum += $('#mes_grid tr:first td:eq(2)').width();
+             widthSum += $('#mes_grid tr:first td:eq(3)').width();
+             widthSum += $('#mes_grid tr:first td:eq(4)').width();
+             widthSum += $('#mes_grid tr:first td:eq(5)').width();
+             widthSum += $('#mes_grid tr:first td:eq(6)').width();
+             widthSum += $('#mes_grid tr:first td:eq(7)').width();
+
+            // $('table.ui-jqgrid-ftable td:eq(1)').hide();
+            // $('table.ui-jqgrid-ftable td:eq(2)').hide();
+            // $('table.ui-jqgrid-ftable td:eq(3)').hide();
+            // $('table.ui-jqgrid-ftable td:eq(4)').hide();
+            var footer = $("table.ui-jqgrid-ftable");
+             footer.css("width", widthSum);
+
+
+            $('table.ui-jqgrid-ftable tr:first').children("td").css("background-color", "#ffffff");
+            $('table.ui-jqgrid-ftable tr:first').children("td").css("border", "0.1px solid #E1E1E1");
+            $('table.ui-jqgrid-ftable tr:first').children("td").css("border-top", "none");
+            $('table.ui-jqgrid-ftable tr:first').children("td").css("font-size", "12px");
+            footer.css("border-left", "0.1px solid #EAEAEA")
+            // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(1)').css("border-left", "0.1px solid #EAEAEA")
+
+            $('table.ui-jqgrid-ftable tr:first').children("td").css("border", "0px solid #E1E1E1");
+
+
+            // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(0)').css("border-rigth","none")
+            //
+            // $('table.ui-jqgrid-ftable tr:first td:eq(1), table.ui-jqgrid-ftable tr:first td:eq(1)').css("border-left","none")
+            // $('table.ui-jqgrid-ftable tr:first td:eq(1), table.ui-jqgrid-ftable tr:first td:eq(1)').css("border-rigth","none")
+
+
+
+            // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(6)').css("border-left","none")
+            // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(7)').css("border-left","none")
+            // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(8)').css("border-left","none")
+
+
+            // $('table.ui-jqgrid-ftable tr:first td:eq(5)').append(" \u00A0");
+            // $('table.ui-jqgrid-ftable tr:first td:eq(6)').append(" \u00A0");
+            // $('table.ui-jqgrid-ftable tr:first td:eq(7)').append(" \u00A0");
+
+            // var footer = $("table.ui-jqgrid-ftable tr:first td:eq(0)");
+            // footer.css("color", "#2e6e9e");
+            // footer.css("text-align", "left");
+            // footer.css("width", widthSum);
+            // $('table.ui-jqgrid-ftable tr:first').children("td").css("background-color", "#dfeffc");
+            // $('table.ui-jqgrid-ftable tr:first td:eq(0),table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-top","8px");
+            // $('table.ui-jqgrid-ftable tr:first td:eq(0),table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-bottom","8px");
+            // $('table.ui-jqgrid-ftable tr:first td:eq(4)').append(" \u00A0");
+            }
 
         }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
 }

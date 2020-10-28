@@ -16,7 +16,7 @@ public class CRM_ORD_RECP  {
     private int part_weight;
     private int unit_cost;
     private int qty;
-    private int price_amount;
+    private long price_amount;
     private int ord_qty;
     private int  prev_qty;
     private int  weight;

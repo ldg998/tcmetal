@@ -91,8 +91,9 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['업체', '기종', '품번','품명', '단중','수량','중량','수량','중량','수량','중량','수량','중량','수량','중량'],
+        colNames: ['','업체', '기종', '품번','품명', '단중','수량','중량','수량','중량','수량','중량','수량','중량','수량','중량'],
         colModel: [
+            {name:'rownum', index: 'rownum', hidden:true, fixed:true},
             {name:'supp_name', index: 'supp_name', width: 130, fixed:true},
             {name:'part_kind', index: 'part_kind',  width: 110, fixed:true},
             {name:'part_code', index: 'part_code',  width: 130, fixed:true},
@@ -119,7 +120,13 @@ function jqGrid_main() {
         overflow:'visible',
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
-        loadComplete:function(){
+        loadComplete:function(data){
+            data.rows.forEach(function (idsfor, s) {
+                if (idsfor.supp_name === '합계'){
+                    $("#mes_grid").setRowData(idsfor.rownum, false, {background:"rgb(155, 185, 239)"}) ;
+                }
+            });
+
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");
             else

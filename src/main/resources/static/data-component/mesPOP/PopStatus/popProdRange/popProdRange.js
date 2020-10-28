@@ -84,6 +84,11 @@ function select_change_modal1(value) {
 }
 
 
+function main_select_change1(value) {
+    select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (data2) {
+    });
+}
+
 ////////////////////////////호출 함수//////////////////////////////////
 function authcheck() {
     ccn_ajax("/menuAuthGet", {keyword: "popProdRange"}).then(function (data) {
@@ -109,8 +114,9 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['공정','업체','기종','품번','품명','단중','생산수량','중량'],
+        colNames: ['','공정','업체','기종','품번','품명','단중','생산수량','중량'],
         colModel: [
+            {name: 'rownum', index: 'rownum', sortable: false, hidden:true, fixed:true ,key:true},
             {name: 'line_name', index: 'line_name', sortable: false, width: 70,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 130,fixed:true},
@@ -132,7 +138,11 @@ function jqGrid_main() {
         // userDataOnFooter : true, //
         grouping : true ,
         loadComplete : function(data){
-
+            data.rows.forEach(function (idsfor, s) {
+                if (idsfor.line_name === '합계'){
+                    $("#mes_grid").setRowData(idsfor.rownum, false, {background:"rgb(155, 185, 239)"}) ;
+                }
+            });
 
             //
             // var moneySum = $('#mes_grid').jqGrid('getCol','part_weight', false, 'sum');
@@ -220,6 +230,10 @@ function select_box() {
         $('#part_kind_select').select2();
     });
 
-    select_makes_base("#select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'4'},'').then(function (data){});
+    select_makes_base("#select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'4'},'').then(function (data){
+        select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'Y').then(function (data2) {
+        });
+
+    });
 
 }

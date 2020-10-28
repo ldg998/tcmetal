@@ -92,7 +92,7 @@ var array =
     //생산현황
         {code: "popProdList", title: '생산관리', sub: '생산현황', name:'생산진행현황'},
         {code: "popProdLeadTime", title: '생산관리', sub: '생산현황', name:'리드타임 생산실적'},
-        {code: "popProdRange", title: '생산관리', sub: '생산현황', name:'기간별 생산실적'},
+        {code: "popProdRange", title: '생산관리', sub: '생산현황', name:'기간별,팀 생산(합형)실적'},
         {code: "popProdList1", title: '생산관리', sub: '생산현황', name:'제품별 생산실적'},
         {code: "popProdList2", title: '생산관리', sub: '생산현황', name:'공정별 작업현황'},
         {code: "popProdReport", title: '생산관리', sub: '생산현황', name:'작업일보현황'},

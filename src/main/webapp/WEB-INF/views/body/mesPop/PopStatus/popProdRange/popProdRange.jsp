@@ -60,10 +60,19 @@
                     <tr>
                         <td class="wt-px-100 t-align-c td-title padding-a-0">공정</td>
                         <td class="wt-px-200">
-                            <select id='select1' name="keyword"  class="form-control h-25 condition_main">--%>
+                            <select id='select1' name="keyword" onchange="main_select_change1(this.value);" class="form-control h-25 condition_main" style="width: 100%">--%>
                                 <option value="1">합형</option>
                             </select>
                         </td>
+
+                        <td class="wt-px-100 t-align-c td-title padding-a-0">공정세부</td>
+                        <td class="wt-px-200">
+                            <select id='select2' name="keyword2"  class="form-control h-25 condition_main" style="width: 100%">--%>
+                                <option value="1">합형</option>
+                            </select>
+                        </td>
+
+
                         <td class="wt-px-100"></td>
                         <td class="wt-px-200"></td>
                     </tr>

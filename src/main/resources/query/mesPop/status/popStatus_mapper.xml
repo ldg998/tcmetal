@@ -11,7 +11,7 @@
     </select>
 
     <select id="popProdRangeGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
-        EXEC SP_POP_PROD_RANGE_GET #{page},#{rows},#{start_date},#{stop_date},#{supp_code},#{part_kind},#{keyword}
+        EXEC SP_POP_PROD_RANGE_GET #{page},#{rows},#{start_date},#{stop_date},#{supp_code},#{part_kind},#{keyword},#{keyword2}
     </select>
 
   <select id="popProdLeadTimeGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">

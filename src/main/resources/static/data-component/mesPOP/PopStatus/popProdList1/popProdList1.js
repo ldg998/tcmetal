@@ -103,7 +103,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['','공정','업체','기종','품번','품명','단중','생산일자','생산수량'],
+        colNames: ['','공정','업체','기종','품번','품명','단중','생산일자','생산수량','중량'],
         colModel: [
             {name:'seq', index: 'seq',sortable: false,key:true,hidden:true},
             {name: 'line_name', index: 'line_name', sortable: false, width: 80,fixed:true},
@@ -113,7 +113,8 @@ function jqGrid_main() {
             {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer' },
             {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2},
-            {name: 'qty', index: 'qty', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer' }
+            {name: 'qty', index: 'qty', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer' },
+            {name: 'weight', index: 'weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer' }
 
         ],
         caption: "제품별 생산실적 | MES",

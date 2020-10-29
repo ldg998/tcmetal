@@ -260,7 +260,13 @@ function jqGrid_main() {
             var data = $('#mes_grid').jqGrid('getRowData', rowid);
             update_btn(data);
         },
-        loadComplete:function(){
+        loadComplete:function(data){
+            data.rows.forEach(function (idsfor, s) {
+                if (idsfor.work_date === '통계'){
+                    $("#mes_grid").setRowData(idsfor.ord_no, false, {background:"rgb(155, 185, 239)"}) ;
+                }
+            });
+
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");
             else

@@ -8,7 +8,7 @@
 
 
     <select id="wmsOutListGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_SUB">
-        EXEC [SP_WMS_OUT_LIST_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}
+        EXEC [SP_WMS_OUT_LIST_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2},#{keyword3}
     </select>
     <select id="wmsOutReadyGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB">
         EXEC [SP_WMS_OUT_READY_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}

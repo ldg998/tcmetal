@@ -47,7 +47,7 @@
                                 <option value="3">폐기</option>
                             </select>
                         </td>
-                        <td class="wt-px-100 td-title t-align-c padding-a-0">외주업체</td>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
                         <td class="wt-px-200">
                             <select name="keyword2" id="main_select3" class="form-control condition_main"  style="width:100%">
                                 <option value="">반드시 선택</option>

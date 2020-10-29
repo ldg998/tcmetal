@@ -7,6 +7,7 @@ public class WMS_OUT_SUB {
     private String site_code;
     private String out_no;
     private String part_code;
+    private String po_no;
     private int qty;
     private String part_grp_name;
     private String part_name;

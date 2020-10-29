@@ -67,7 +67,7 @@ function jqGrid_main() {
         datatype: "local",
         colNames: ['','','업체','기종','품명','품번','단중','생산누계','기초재고','구분', '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
         colModel: [
-            {name: 'rownum', index: 'rownum', sortable: false, fixed:true,hidden:true,key:true},
+            {name: 'rownum', index: 'rownum', sortable: false,width: 30, fixed:true,hidden:true,key:true},
             {name: 'work_seq', index: 'work_seq', sortable: false, fixed:true,hidden:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 100,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 130,fixed:true},
@@ -120,18 +120,25 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
         loadComplete:function(data){
-            // var i = 1
-            // data.rows.forEach(function (idsfor, s) {
-            //    // Math.pow(2, 3)
-            //     if (idsfor.work_seq == 0 && idsfor.rownum == i){
-            //         $("#mes_grid").setRowData(idsfor.rownum, false, {background:"rgb(155, 185, 239)"}) ;
-            //         $("#mes_grid").setRowData(idsfor.rownum+1, false, {background:"rgb(155, 185, 239)"}) ;
-            //         $("#mes_grid").setRowData(idsfor.rownum+2, false, {background:"rgb(155, 185, 239)"}) ;
-            //         $("#mes_grid").setRowData(idsfor.rownum+3, false, {background:"rgb(155, 185, 239)"}) ;
-            //         $("#mes_grid").setRowData(idsfor.rownum+4, false, {background:"rgb(155, 185, 239)"}) ;
-            //         $("#mes_grid").setRowData(idsfor.rownum+5, false, {background:"rgb(155, 185, 239)"}) ;
-            //     }
-            // });
+            data.rows.forEach(function (idsfor, s) {
+           var ck = Math.ceil(idsfor.rownum/6)
+                if(ck % 2 != 0){
+                    $("#mes_grid").setRowData(idsfor.rownum, false, {background:"rgb(155, 185, 239)"}) ;
+                }
+
+
+
+                //  if(Number.isInteger(idsfor.rownum/12)){
+                //     $("#mes_grid").setRowData(idsfor.rownum, false, {background:"rgb(155, 185, 239)"}) ;
+                //     $("#mes_grid").setRowData(idsfor.rownum-1, false, {background:"rgb(155, 185, 239)"}) ;
+                //     $("#mes_grid").setRowData(idsfor.rownum-2, false, {background:"rgb(155, 185, 239)"}) ;
+                //     $("#mes_grid").setRowData(idsfor.rownum-3, false, {background:"rgb(155, 185, 239)"}) ;
+                //     $("#mes_grid").setRowData(idsfor.rownum-4, false, {background:"rgb(155, 185, 239)"}) ;
+                //     $("#mes_grid").setRowData(idsfor.rownum-5, false, {background:"rgb(155, 185, 239)"}) ;
+                //
+                // }
+
+            });
 
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");

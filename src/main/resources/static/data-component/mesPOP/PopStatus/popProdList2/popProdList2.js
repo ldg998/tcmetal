@@ -102,7 +102,7 @@ function authcheck() {
 }
 
 function main_select_change1(value) {
-    select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'').then(function (data2) {
+    select_makes_base("#select2", "/syslineAllGroupGet","line_code","line_name",{keyword:value},'Y').then(function (data2) {
     });
 }
 

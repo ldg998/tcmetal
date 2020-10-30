@@ -108,7 +108,7 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['rownum','출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','PO','성적서','업로드','파일','출고요청번호','생산일자','중간검사','출하검사','등록자','등록일시'],
+        colNames: ['rownum','출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','성적서','업로드','파일','출고요청번호','생산일자','중간검사','출하검사','등록자','등록일시'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false, width: 90, fixed:true,hidden:true},
             {name: 'out_date', index: 'out_date', sortable: false, width: 90, fixed:true, formatter:formmatterDate2},
@@ -121,7 +121,6 @@ function jqGrid_main() {
             {name: 'qty', index: 'qty', sortable: false, width: 90, fixed:true,formatter:'integer',align: 'right'},
             {name: 'weight', index: 'weight', sortable: false, width: 90, fixed:true,formatter:'integer',align: 'right'},
             {name: 'lot_no', index: 'lot_no', sortable: false, width: 120, fixed:true },
-            {name: 'po_no', index: 'po_no', sortable: false, width: 120, fixed:true },
             {name: 'file1_name', index: 'file1_name', sortable: false, width: 80, align: 'center', formatter: file1_formatter,fixed:true},//성적서
             {name: 'file1_name', index: 'file1_name', sortable: false, width: 100, align: 'center',fixed:true, formatter: filebox},//성적서 수정
             {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true,hidden:true},//성적서 수정

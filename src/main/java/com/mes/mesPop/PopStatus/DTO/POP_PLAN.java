@@ -53,6 +53,7 @@ public class POP_PLAN {
     private String qc_result_name;
     private String ret_name;
 
+    private double qc_ratio;
     private int work_qty;
     private String stock_prev;
     private int work_seq;

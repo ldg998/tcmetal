@@ -13,7 +13,6 @@ function modal_start1() {
 function modal1_get_btn(page) {
     var modal_data = value_return(".modal_value");
     modal_data.keyword2='Y';
-
     $("#mes_modal1_grid1").setGridParam({
         url: '/sysUserGet',
         datatype: "json",

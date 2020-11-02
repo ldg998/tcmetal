@@ -60,12 +60,14 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         mtype: 'POST',
         datatype: "local",
-        colNames: ['작업일자','생산중량','작업공수','시간당 생산량'],
+        colNames: ['작업일자','생산중량','작업공수','시간당 생산량','검사누락 불량률'],
         colModel: [
             {name: 'work_date', index: 'work_date', sortable: false, width: 150,fixed:true,formatter: formmatterDate2},
             {name: 'work_weight', index: 'work_weight', sortable: false, width: 150,fixed:true ,formatter:'integer', align: 'right'},
             {name: 'wk_qty_hr', index: 'wk_qty_hr', sortable: false, width: 150,fixed:true ,formatter:'integer', align: 'right'},
-            {name: 'prod_mhr', index: 'prod_mhr', sortable: false, width: 150,fixed:true ,formatter:'integer', align: 'right'}
+            {name: 'prod_mhr', index: 'prod_mhr', sortable: false, width: 150,fixed:true ,formatter:'integer', align: 'right'},
+            {name: 'qc_ratio', index: 'qc_ratio', sortable: false, width: 150,fixed:true ,formatter:'number', align: 'right'}
+
 
         ],
         caption: "생산량분석 | MES",

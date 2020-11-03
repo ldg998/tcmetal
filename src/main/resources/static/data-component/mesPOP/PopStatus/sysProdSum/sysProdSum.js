@@ -21,6 +21,7 @@ $(document).ready(function () {
     authcheck();
     jqgridPagerIcons();
     select_box();
+    msg_get();
 });
 
 
@@ -49,8 +50,36 @@ function select_change1(value) {
     }
 }
 
-////////////////////////////호출 함수//////////////////////////////////
 
+function excel_download() {
+    if (confirm(msg_object.TBMES_Q014.msg_name1)) {
+        var $preparingFileModal = $("#preparing-file-modal");
+        $preparingFileModal.dialog({modal: true});
+        $("#progressbar").progressbar({value: false});
+        $.fileDownload("/excel_download", {
+            httpMethod: 'POST',
+            data : {
+                "name":"sysProdSum",
+                "row0": main_data.send_data.work_date,
+                "row1": main_data.send_data.supp_code,
+                "row2":main_data.send_data.part_kind,
+            },
+            successCallback: function (url) {
+                $preparingFileModal.dialog('close');
+            },
+            failCallback: function (responseHtml, url) {
+                $preparingFileModal.dialog('close');
+                $("#error-modal").dialog({modal: true});
+            }
+        });
+        return false;
+    }
+}
+
+////////////////////////////호출 함수//////////////////////////////////
+function msg_get() {
+    msgGet_auth("TBMES_Q014");
+}
 function authcheck() {
     ccn_ajax("/menuAuthGet", {keyword: "popLotTracking"}).then(function (data) {
         main_data.auth = data;

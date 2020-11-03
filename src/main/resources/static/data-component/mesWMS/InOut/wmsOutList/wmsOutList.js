@@ -46,6 +46,8 @@ function excel_download() {
                 "row1": main_data.send_data.end_date,
                 "row2": $('#supp_select').val(),
                 "row3": $('#part_kind_select').val(),
+                "row4": $('#lot_no').val(),
+
             },
             successCallback: function (url) {
                 $preparingFileModal.dialog('close');

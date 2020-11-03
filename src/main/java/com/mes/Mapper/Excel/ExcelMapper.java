@@ -95,4 +95,8 @@ public interface ExcelMapper {
     List<OUTS_STOCK> outsStockSumAllDbList(Excel excel);
 
     List<OUTS_STOCK> outsStockSumMonthDbList(Excel excel);
+
+    List<POP_PLAN> popProdLeadTimeDBList(Excel excel);
+
+    List<POP_PLAN> sysProdSumDB(Excel excel);
 }

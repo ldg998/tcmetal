@@ -54,6 +54,8 @@ function excel_download() {
                 "row2":main_data.send_data.supp_code,
                 "row3":main_data.send_data.part_kind,
                 "row4":main_data.send_data.keyword,
+                "row5":main_data.send_data.keyword2,
+
 
             },
             successCallback: function (url) {

@@ -80,7 +80,7 @@ public class MakeHeader {
 
     public String[] wmsOutListList_Header() {
 
-        String[] data={"출고일자", "출고전표", "업체","기종", "품명", "품번","단중","수량","중량","제품LOT","성적서","출고요청번호","생산일자","중간검사","출하검사","리드타임","등록자","등록일시"};
+        String[] data={"출고일자", "출고전표", "업체","기종", "품명", "품번","단중","수량","중량","제품LOT","성적서","출고요청번호","생산일자","중간검사","출하검사","등록자","등록일시"};
         return data;
     }
 
@@ -151,7 +151,7 @@ public class MakeHeader {
     }
 
     public String[] popProdRangeList_Header() {
-        String[] data={ "공정","업체","기종","품번","품명","단중","생산수량"};
+        String[] data={ "공정","업체","기종","품번","품명","단중","생산수량","중량"};
         return data;
     }
 
@@ -176,7 +176,7 @@ public class MakeHeader {
     }
 
     public String[] outsInListList_Header() {
-        String[] data={"계획일자","CHARGE","업체","기종","품명","단중","C","Si","Mn","P","S","Cr","Ni","Cu","Sn","작업자","등록일시"};
+        String[] data={"입고일자","전표번호","외주업체","업체","기종","품번","품명","단중","수량","출장검사","등록자","입고일시"};
         return data;
     }
 
@@ -192,6 +192,16 @@ public class MakeHeader {
 
     public String[] outsStockSumMonthList_Header() {
         String[] data={"외주업체","업체","기종","품번","품명","단중","전월재고","금월입고","금월출고","자체불량","재고"};
+        return data;
+    }
+
+    public String[] popProdLeadTimeList_Header() {
+        String[] data={"생산지시일","생산완료일","공정","업체","기종","품번","품명","단중","중간검사","출하검사","LOT","리드타임","상태"};
+        return data;
+    }
+
+    public String[] sysProdSum_Header() {
+        String[] data={"업체","기종","품명","품번","단중","생산누계","기초재고","구분", "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
         return data;
     }
 }

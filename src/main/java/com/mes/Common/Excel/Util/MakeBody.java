@@ -902,7 +902,6 @@ public class MakeBody {
                     if(data.getDate3().length() > 4) {
                         obj.add(dateFormat(data.getDate3()));
                     }else {obj.add(data.getDate3());}
-                    obj.add(data.getRead_time());
                     obj.add(data.getUser_name());
                     if(data.getCreate_date().length() > 4) {
                         obj.add(dateFormat2(data.getCreate_date()));
@@ -1315,6 +1314,8 @@ public class MakeBody {
                     obj.add(data.getPart_name());
                     obj.add(data.getPart_weight());
                     obj.add(data.getQty());
+                    obj.add(data.getWork_weight());
+
 
                     content.add(obj);
                 }
@@ -1531,6 +1532,110 @@ public class MakeBody {
                     obj.add(data.getNg_qty());
                     obj.add(data.getQty());
 
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> popProdLeadTimeList_Body(List<POP_PLAN> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (POP_PLAN data : list) {
+                    obj = new ArrayList<>();
+
+                    if(data.getWork_date().length()>4){
+                    obj.add(dateFormat(data.getWork_date()));
+                    }else {
+                        obj.add(data.getWork_date());
+                    }
+                    if(data.getDate1().length()>4){
+                        obj.add(dateFormat(data.getDate1()));
+                    }else {
+                        obj.add(data.getDate1());
+                    }
+
+
+                    obj.add(data.getLine_name());
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_weight());
+                    if(data.getDate2().length()>4){
+                        obj.add(dateFormat(data.getDate2()));
+                    }else {
+                        obj.add(data.getDate2());
+                    }
+                    if(data.getDate3().length()>4){
+                        obj.add(dateFormat(data.getDate3()));
+                    }else {
+                        obj.add(data.getDate3());
+                    }
+                    obj.add(data.getLot_no());
+                    obj.add(data.getRead_time());
+                    obj.add(data.getQc_result_name());
+
+                    content.add(obj);
+                }
+            }
+        } catch (Exception e) {
+            log.info("error code : " + e);
+        }
+        return content;
+
+    }
+
+    public List<List<Object>> sysProdSum_Body(List<POP_PLAN> list) {
+        List<List<Object>> content = new ArrayList<>();
+        try {
+            if (list.size() != 0) {
+                for (POP_PLAN data : list) {
+                    obj = new ArrayList<>();
+                    obj.add(data.getSupp_name());
+                    obj.add(data.getPart_kind());
+                    obj.add(data.getPart_name());
+                    obj.add(data.getPart_code());
+                    obj.add(data.getPart_weight());
+                    obj.add(data.getWork_qty());
+                    obj.add(data.getStock_prev());
+                    obj.add(data.getWork_name());
+                    obj.add(data.getDay1());
+                    obj.add(data.getDay2());
+                    obj.add(data.getDay3());
+                    obj.add(data.getDay4());
+                    obj.add(data.getDay5());
+                    obj.add(data.getDay6());
+                    obj.add(data.getDay7());
+                    obj.add(data.getDay8());
+                    obj.add(data.getDay9());
+                    obj.add(data.getDay10());
+                    obj.add(data.getDay11());
+                    obj.add(data.getDay12());
+                    obj.add(data.getDay13());
+                    obj.add(data.getDay14());
+                    obj.add(data.getDay15());
+                    obj.add(data.getDay16());
+                    obj.add(data.getDay17());
+                    obj.add(data.getDay18());
+                    obj.add(data.getDay19());
+                    obj.add(data.getDay20());
+                    obj.add(data.getDay21());
+                    obj.add(data.getDay22());
+                    obj.add(data.getDay23());
+                    obj.add(data.getDay24());
+//                    obj.add(data.getDay25());
+//                    obj.add(data.getDay26());
+//                    obj.add(data.getDay27());
+//                    obj.add(data.getDay28());
+//                    obj.add(data.getDay29());
+//                    obj.add(data.getDay30());
+//                    obj.add(data.getDay31());
                     content.add(obj);
                 }
             }

@@ -125,7 +125,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-                }else if (excel.getName().equals("scmOrderList")) {
+            } else if (excel.getName().equals("scmOrderList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("발주현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -162,7 +162,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }else if (excel.getName().equals("scmInList")) {
+            } else if (excel.getName().equals("scmInList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("자재입고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -199,9 +199,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-
-            else if (excel.getName().equals("scmOutListGet")) {
+            } else if (excel.getName().equals("scmOutListGet")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("자재출고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -238,9 +236,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-
-            else if (excel.getName().equals("scmIOList")) {
+            } else if (excel.getName().equals("scmIOList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("자재입출고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -275,7 +271,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }else if (excel.getName().equals("scmStockSumDayList")) {
+            } else if (excel.getName().equals("scmStockSumDayList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("자재재고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -310,9 +306,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-
-            else if (excel.getName().equals("scmStockSumMonthList")) {
+            } else if (excel.getName().equals("scmStockSumMonthList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("자재재고월원장");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -347,8 +341,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-                else if (excel.getName().equals("scmStockRevList")) {
+            } else if (excel.getName().equals("scmStockRevList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("자재재고조정");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -383,8 +376,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-                else if (excel.getName().equals("scmStockRevListList")) {
+            } else if (excel.getName().equals("scmStockRevListList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("자재재고조정현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -419,8 +411,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("wmsInList")) {
+            } else if (excel.getName().equals("wmsInList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("제품입고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -455,8 +446,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("wmsOutListList")) {
+            } else if (excel.getName().equals("wmsOutListList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("제품출고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -491,8 +481,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("wmsOutReady")) {
+            } else if (excel.getName().equals("wmsOutReady")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("제품미출고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -527,8 +516,42 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-                else if (excel.getName().equals("wmsStockSumList")) {
+            } else if (excel.getName().equals("popProdLeadTimeList")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("리드타임생산실적");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("리드타임생산실적", "UTF-8");
+                // DataTransfer [s]
+                List<POP_PLAN> list = excelMapper.popProdLeadTimeDBList(excel);
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.popProdLeadTimeList_Body(list);
+                    int index = makeHeader.popProdLeadTimeList_Header().length;
+                    String[] data = makeHeader.popProdLeadTimeList_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            } else if (excel.getName().equals("wmsStockSumList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("제품재고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -563,9 +586,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-
-                else if (excel.getName().equals("wmsStockSumMonthList")) {
+            } else if (excel.getName().equals("wmsStockSumMonthList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("제품재고월원장");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -600,9 +621,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-
-                else if (excel.getName().equals("wmsStockRevList")) {
+            } else if (excel.getName().equals("wmsStockRevList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("제품재고조정현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -637,9 +656,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-
-                else if (excel.getName().equals("crmPerform")) {
+            } else if (excel.getName().equals("crmPerform")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("실적현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -674,8 +691,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-                else if (excel.getName().equals("crmShipping")) {
+            } else if (excel.getName().equals("crmShipping")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("운송비용현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -710,8 +726,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-                else if (excel.getName().equals("qmsRecvListList")) {
+            } else if (excel.getName().equals("qmsRecvListList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("수입검사현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -747,8 +762,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-                else if (excel.getName().equals("qmsRecvErrorListList")) {
+            } else if (excel.getName().equals("qmsRecvErrorListList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("수입검사불량현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -784,8 +798,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-                else if (excel.getName().equals("qmsProdMiddleList")) {
+            } else if (excel.getName().equals("qmsProdMiddleList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("중간검사현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -821,8 +834,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-                else if (excel.getName().equals("qmsProdMiddleList2")) {
+            } else if (excel.getName().equals("qmsProdMiddleList2")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("중간검사조치기록");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -858,8 +870,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-                else if (excel.getName().equals("qmsProdMiddleList3")) {
+            } else if (excel.getName().equals("qmsProdMiddleList3")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("중간검사불량현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -895,9 +906,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-
-            else if (excel.getName().equals("qmsProdErrorListList")) {
+            } else if (excel.getName().equals("qmsProdErrorListList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("출하검사현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -933,8 +942,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("qmsMoldWashList")) {
+            } else if (excel.getName().equals("qmsMoldWashList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("도형제관리");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -970,8 +978,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("popProdRangeList")) {
+            } else if (excel.getName().equals("popProdRangeList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("기가별생산실적");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -1007,8 +1014,43 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("popProdList1List")) {
+            } else if (excel.getName().equals("sysProdSum")) {
+                // 시트 생성
+                Sheet sheet = sxssfWorkbook.createSheet("수량집계표");
+                // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
+                excelName = URLEncoder.encode("수량집계표", "UTF-8");
+                // DataTransfer [s]
+                List<POP_PLAN> list = excelMapper.sysProdSumDB(excel);
+                if (!list.isEmpty()) {
+                    List<List<Object>> rows = makeBody.sysProdSum_Body(list);
+                    int index = makeHeader.sysProdSum_Header().length;
+                    String[] data = makeHeader.sysProdSum_Header();
+                    // DataTransfer [e]
+
+                    // (MakeHeader) 헤더 생성
+                    row = sheet.createRow(rowNo++);
+                    row.setHeight((short) 512);
+                    for (i = 0; index > i; i++) {
+                        sheet.setColumnWidth((short) i, (short) 7000);
+                        cell = row.createCell(i);
+                        cell.setCellStyle(setHeadStyle(sxssfWorkbook));
+                        cell.setCellValue(data[i]);
+                    }
+
+                    // (MakeBody) 바디 생성
+                    for (i = 0; list.size() > i; i++) {
+                        row = sheet.createRow(rowNo++);
+                        for (v = 0; rows.get(i).size() > v; v++) {
+                            cell = row.createCell(v);
+                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
+
+                        }
+                    }
+                } else {
+                    response(response, sxssfWorkbook, excelName, "fail", null);
+                }
+            }else if (excel.getName().equals("popProdList1List")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("제품별생산실적");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -1044,8 +1086,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("popProdList2List")) {
+            } else if (excel.getName().equals("popProdList2List")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("공정별작업현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -1081,8 +1122,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("popProdReport1List")) {
+            } else if (excel.getName().equals("popProdReport1List")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("주입일보현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -1118,8 +1158,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("popSpectroList")) {
+            } else if (excel.getName().equals("popSpectroList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("성분분석");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -1155,8 +1194,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("outsInListList")) {
+            } else if (excel.getName().equals("outsInListList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("외주입고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -1192,8 +1230,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("outsIOList")) {
+            } else if (excel.getName().equals("outsIOList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("외주입출고현황");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -1229,8 +1266,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("outsStockSumAllList")) {
+            } else if (excel.getName().equals("outsStockSumAllList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("외주재고일원장");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -1266,8 +1302,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-            else if (excel.getName().equals("outsStockSumMonthList")) {
+            } else if (excel.getName().equals("outsStockSumMonthList")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("외주재고월원장");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>
@@ -1303,14 +1338,7 @@ public class ExcelService extends ExcelFunction {
                 } else {
                     response(response, sxssfWorkbook, excelName, "fail", null);
                 }
-            }
-
-
-
-
-
-
-            else if (excel.getName().equals("sysSupp")) {
+            } else if (excel.getName().equals("sysSupp")) {
                 // 시트 생성
                 Sheet sheet = sxssfWorkbook.createSheet("업체등록");
                 // 파일 이름 생성 <한글이 깨지기 때문에 인코딩 필수>

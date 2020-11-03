@@ -80,7 +80,7 @@
                     <tr>
                         <td class="wt-px-100 td-title t-align-c padding-a-0">LOT</td>
                         <td class="wt-px-200">
-                            <input type="text" name="keyword3"  class="form-control h-25 condition_main" autocomplete="off">
+                            <input type="text" name="keyword3" id="lot_no"  class="form-control h-25 condition_main" autocomplete="off">
 
                         </td>
 <%--                        <td class="wt-px-100 td-title t-align-c padding-a-0">PO</td>--%>

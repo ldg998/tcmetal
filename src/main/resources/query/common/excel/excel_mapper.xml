@@ -206,7 +206,7 @@
     </select>
 
     <select id="wmsOutListDbList" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_SUB">
-        EXEC [SP_WMS_OUT_LIST_GET]  0,0,#{row0},#{row1},#{row2},#{row3}
+        EXEC [SP_WMS_OUT_LIST_GET]  0,0,#{row0},#{row1},#{row2},#{row3},#{row4}
     </select>
 
     <select id="wmsOutReadyDbList" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB">
@@ -252,7 +252,7 @@
    </select>
 
     <select id="popProdRangeDbList" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
-        EXEC SP_POP_PROD_RANGE_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4}
+        EXEC SP_POP_PROD_RANGE_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4},#{row5}
     </select>
 
     <select id="popProdList1DbList" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
@@ -286,6 +286,17 @@
     <select id="outsStockSumMonthDbList" resultType="com.mes.mesOut.stock.DTO.OUTS_STOCK">
             EXEC [SP_OUTS_STOCK_SUM_MONTH_GET] 0,0,#{row0},#{row1},#{row2},#{row3}
     </select>
+
+    <select id="popProdLeadTimeDBList" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+            EXEC SP_POP_PROD_LEAD_TIME_GET 0,0,#{row0},#{row1},#{row2},#{row3},#{row4},#{row5}
+    </select>
+
+    <select id="sysProdSumDB" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+            EXEC SP_POP_PROD_SUM_GET 0,0,#{row0},#{row1},#{row2}
+    </select>
+
+
+
 </mapper>
 
 

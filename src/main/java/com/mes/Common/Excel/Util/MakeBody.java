@@ -53,16 +53,11 @@ public class MakeBody {
         return str.substring(0, 4) + '-' + str.substring(4, 6) + '-' + str.substring(6, 8) + ' ' + str.substring(8, 10) + ':' + str.substring(10, 12) + ':' + str.substring(12);
     }
 
-    public String doubleFormat(double db) {
-        String str = String.format("%,.3f", db);
-        String chStr = str.substring(0, str.length() - 1);
-        return chStr;
-    }
 
-    public int integer(double db) {
-        return (int) (Math.floor(db));
-    }
 
+    public String doubleFormat(double db) { String str= String.format("%,.1f",db); return str; }
+    public int integer(double db) {return  (int)(Math.floor(db));}
+    public String integer2(int db) { String str= String.format("%,d",db); return str; }
 
     //발주현황
     public List<List<Object>> scmOrderList_Body(List<SCM_IN_ORD_SUB> list) {
@@ -1629,13 +1624,13 @@ public class MakeBody {
                     obj.add(data.getDay22());
                     obj.add(data.getDay23());
                     obj.add(data.getDay24());
-//                    obj.add(data.getDay25());
-//                    obj.add(data.getDay26());
-//                    obj.add(data.getDay27());
-//                    obj.add(data.getDay28());
-//                    obj.add(data.getDay29());
-//                    obj.add(data.getDay30());
-//                    obj.add(data.getDay31());
+                    obj.add(data.getDay25());
+                    obj.add(data.getDay26());
+                    obj.add(data.getDay27());
+                    obj.add(data.getDay28());
+                    obj.add(data.getDay29());
+                    obj.add(data.getDay30());
+                    obj.add(data.getDay31());
                     content.add(obj);
                 }
             }

@@ -41,8 +41,8 @@ public class Handler extends HandlerInterceptorAdapter {
         HttpSession session = request.getSession();
 
 //        Session lv = new Session();
-//        lv.setUser_code("admin");
-//        lv.setUser_name("관리자");
+//        lv.setUser_code("devel");
+//        lv.setUser_name("개발");
 //        request.getSession().setAttribute("userData", lv);
 
 //        Session lv = new Session();

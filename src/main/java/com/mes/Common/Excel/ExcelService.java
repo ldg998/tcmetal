@@ -29,9 +29,7 @@ import com.mes.mesWms.InOut.DTO.WMS_OUT_SUB;
 import com.mes.mesWms.Stock.DTO.WMS_STOCK;
 import com.mes.mesWms.Stock.DTO.WMS_STOCK_REV;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,6 +72,7 @@ public class ExcelService extends ExcelFunction {
     public void ExcelDownload(HttpServletRequest req, HttpServletResponse response, Excel excel) throws IOException {
         // 생성자 선언
         SXSSFWorkbook sxssfWorkbook = new SXSSFWorkbook(100);
+        CellStyle cellStyle =  setBodyStyle(sxssfWorkbook);
         MakeHeader makeHeader = new MakeHeader();
         MakeBody makeBody = new MakeBody();
 
@@ -118,7 +117,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -155,7 +154,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -192,7 +191,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -229,7 +228,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -264,7 +263,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -299,7 +298,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -334,7 +333,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -369,7 +368,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -404,7 +403,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -439,7 +438,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -474,7 +473,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -509,7 +508,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -544,7 +543,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -579,7 +578,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -614,7 +613,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -649,7 +648,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -684,7 +683,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -719,7 +718,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -755,7 +754,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -791,7 +790,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -827,7 +826,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -863,7 +862,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -899,7 +898,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -935,7 +934,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -971,7 +970,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1007,7 +1006,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1021,12 +1020,12 @@ public class ExcelService extends ExcelFunction {
                 excelName = URLEncoder.encode("수량집계표", "UTF-8");
                 // DataTransfer [s]
                 List<POP_PLAN> list = excelMapper.sysProdSumDB(excel);
+                System.out.println("1");
                 if (!list.isEmpty()) {
                     List<List<Object>> rows = makeBody.sysProdSum_Body(list);
                     int index = makeHeader.sysProdSum_Header().length;
                     String[] data = makeHeader.sysProdSum_Header();
                     // DataTransfer [e]
-
                     // (MakeHeader) 헤더 생성
                     row = sheet.createRow(rowNo++);
                     row.setHeight((short) 512);
@@ -1036,15 +1035,18 @@ public class ExcelService extends ExcelFunction {
                         cell.setCellStyle(setHeadStyle(sxssfWorkbook));
                         cell.setCellValue(data[i]);
                     }
-
                     // (MakeBody) 바디 생성
+
+
+
+
                     for (i = 0; list.size() > i; i++) {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
-                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
 
+                            cell.setCellStyle(cellStyle);
+                            cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
                 } else {
@@ -1079,7 +1081,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1115,7 +1117,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1151,7 +1153,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1187,7 +1189,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1223,7 +1225,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1259,7 +1261,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1295,7 +1297,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1331,7 +1333,7 @@ public class ExcelService extends ExcelFunction {
                         row = sheet.createRow(rowNo++);
                         for (v = 0; rows.get(i).size() > v; v++) {
                             cell = row.createCell(v);
-                            cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                            cell.setCellStyle(cellStyle);
                             cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                         }
                     }
@@ -1366,7 +1368,7 @@ public class ExcelService extends ExcelFunction {
                     row = sheet.createRow(rowNo++);
                     for (v = 0; rows.get(i).size() > v; v++) {
                         cell = row.createCell(v);
-                        cell.setCellStyle(setBodyStyle(sxssfWorkbook));
+                        cell.setCellStyle(cellStyle);
                         cell.setCellValue(String.valueOf(rows.get(i).get(v)));
                     }
                 }
@@ -1374,6 +1376,7 @@ public class ExcelService extends ExcelFunction {
             response(response, sxssfWorkbook, excelName, "ok", null);
         } catch (Exception e) {
             response(response, sxssfWorkbook, excelName, "fail", null);
+            e.printStackTrace();
         } finally {
             try {
                 sxssfWorkbook.close();
@@ -1409,5 +1412,14 @@ public class ExcelService extends ExcelFunction {
 //            return " 중복된 키 값이 포함되어있습니다. \n 엑셀 데이터를 확인 후 재업로드 해주세요.";
 //        }
 //    }
+
+    static boolean isNumberic(String s) { //숫자 판별 함수
+        try {
+            Double.parseDouble(s);
+            return true;
+        } catch(NumberFormatException e) {  //문자열이 나타내는 숫자와 일치하지 않는 타입의 숫자로 변환 시 발생
+            return false;
+        }
+    }
 }
 

@@ -65,13 +65,13 @@
                         </span>
                     </a>
 
-<%--                    <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"--%>
-<%--                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""--%>
-<%--                       onclick="excel_download()">--%>
-<%--                        <span><i class="fa fa-download bigger-110 blue"></i>--%>
-<%--                            <span>저장</span>--%>
-<%--                        </span>--%>
-<%--                    </a>--%>
+                    <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
+                       onclick="excel_download()">
+                        <span><i class="fa fa-download bigger-110 blue"></i>
+                            <span>저장</span>
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>

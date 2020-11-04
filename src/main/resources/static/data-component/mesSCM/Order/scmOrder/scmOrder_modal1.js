@@ -76,6 +76,7 @@ function update_btn(rowid) {
             $("#place_name").val(data.place_name);
             $('#datepicker3').datepicker('setDate', data.work_date);
             $('#datepicker4').val(formmatterDate2(data.delivery_date));
+
             $("#delivery_place").val(data.delivery_place);
 
             main_data.check3 = 'Y';
@@ -113,6 +114,8 @@ function add_modal1_btn() {
         add_data.save_type = main_data.check;
         var jdata = $("#mes_add_grid2").getRowData();
 
+        console.log(add_data)
+
         if (jdata.length > 0) {
             var list = [];
             var list2 = [];
@@ -137,7 +140,7 @@ function add_modal1_btn() {
                         }
 
                         if (confirm(text)) {
-                            wrapWindowByMask2();
+                            // wrapWindowByMask2();
                             add_data.ord_sub = list.join(gu5);
 
                             ccn_ajax("/scmOrderAdd", add_data).then(function (data) {
@@ -379,6 +382,7 @@ function jqGrid_modal1() { // 메인 그리드 설정
         height: 200,
         cellEdit: true,
         cellsubmit: 'clientArray',
+        rowNum: 100,
         beforeEditCell: function (id, name, val, IRow, ICol) {
             lastsel = id;
             saverow = IRow;

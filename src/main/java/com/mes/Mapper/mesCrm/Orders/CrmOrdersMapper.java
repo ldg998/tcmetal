@@ -77,4 +77,6 @@ public interface CrmOrdersMapper {
     List<CRM_ORD_RECP> crmOrderRecpEndDateGet(Page p);
 
     List<CRM_ORD_RECP> crmOrderRecpGet2(Page p);
+
+    Message crmOrderRecpCancel(CRM_ORD_RECP crmOrdRecp);
 }

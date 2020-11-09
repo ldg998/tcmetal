@@ -103,7 +103,7 @@ function comp_btn() {
         var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
 
         if (ids.length === 0) { // 선택된 그리드 row가 없을 경우
-            alert("완료처리 데이터를 선택 해주세요"); // 경고문 출력
+            alert("완료처리할 데이터를 선택 해주세요"); // 경고문 출력
         } else {
 
             var list = [];
@@ -134,6 +134,47 @@ function comp_btn() {
         alert(msg_object.TBMES_A003.msg_name1); // 권한 이 없을 경우 해당 메세지 출력
     }
 }
+
+function return_btn() {
+    if(main_data.auth.check_edit != "N") { // 권한체크
+        var gu5 = String.fromCharCode(5); // CHAR(5) 구분자 선언
+        var gu4 = String.fromCharCode(4); // CHAR(5) 구분자 선언
+        var ids = $("#mes_grid").getGridParam('selarrrow'); // 체크된 그리드 로우
+
+        if (ids.length === 0) { // 선택된 그리드 row가 없을 경우
+            alert("대기처리 할 데이터를 선택 해주세요"); // 경고문 출력
+        } else {
+
+            var list = [];
+            var jdata  ={};
+            for(var i = 0; i < ids.length; i++){
+                jdata = $('#mes_grid').jqGrid('getRowData', ids[i]);
+                list.push((jdata.work_date).replace(/[^0-9]/g,'')+gu4+jdata.line_code + gu4 +jdata.seq)
+            }
+
+
+            if (confirm("대기처리 하시겠습니까?")) { // 삭제여부 확인 메세지 출력
+                wrapWindowByMask2(); // 마스크로 화면 덮음 / 삭제중 다른 작업을 할 수 없도록 방지
+                // ajax 통신 함수 url과 data 를 전달하여 promise로 실행 후 가공 data를 사용할 수 있도록 설정
+                ccn_ajax("/popPlanReturn", {keyword: list.join(gu5)}).then(function (data) {
+                    if (data.result === 'NG') { // 프로시져 결과가 NG로 넘어왔을 경우
+                        alert(data.message); // 해당 오류 메세지 출력
+                    } else {
+                        $("#mes_grid").trigger("reloadGrid"); // 성공시 기존에 조회했던 조건 그대로 grid를 조회
+                    }
+                    closeWindowByMask(); // 마스크 종료
+                }).catch(function (err) { // 에러 발생 시
+                    closeWindowByMask(); // 마스크 종료
+                    console.error(err); // Error 출력
+                });
+            }
+        }
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1); // 권한 이 없을 경우 해당 메세지 출력
+    }
+}
+
+
 
 function main_select_change1(value) {
     if (value !== ""){

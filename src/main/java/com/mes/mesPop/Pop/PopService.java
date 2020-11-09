@@ -170,4 +170,7 @@ public class PopService extends ReturnFunction {
     public Message popPlanComp(Page p) {
         return mesPopPopMapper.popPlanComp(p);
     }
+
+    public Message popPlanReturn(Page p) {return mesPopPopMapper.popPlanReturn(p);
+    }
 }

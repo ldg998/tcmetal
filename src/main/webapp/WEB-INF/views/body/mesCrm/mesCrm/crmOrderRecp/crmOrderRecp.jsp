@@ -62,6 +62,7 @@
                                     <option value="">전체</option>
                                 </select>
                             </td>
+                            <td class="border_no display_none" style=" width:80px !important;"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -88,10 +89,7 @@
                                     <option value="1">완료</option>
                                 </select>
                             </td>
-
-
-                            <td class="wt-px-100"></td>
-                            <td class="wt-px-200"></td>
+                            <td class="border_no display_none" style=" width:80px !important;"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -139,6 +137,15 @@
                         <span>완료처리</span>
                         </span>
                     </a>
+                    <a class="dt-button buttons-copy buttons-html5 btn btn-white btn-primary btn-mini btn-bold"
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title=""
+                       onclick="Cancel_btn();">
+                        <span>
+                        <i class="fa fa-times bigger-110 blue"></i>
+                        <span>완료취소</span>
+                        </span>
+                    </a>
+
                 </div>
             </div>
         </div>

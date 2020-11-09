@@ -153,6 +153,9 @@ public class PopRestController {
     @RequestMapping(value = "/popPlanComp", method = RequestMethod.POST)
     public Message popPlanComp(Page p) {return popService.popPlanComp(p);}
 
+    @RequestMapping(value = "/popPlanReturn", method = RequestMethod.POST)
+    public Message popPlanReturn(Page p) {return popService.popPlanReturn(p);}
+
 }
 
 

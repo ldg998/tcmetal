@@ -120,4 +120,8 @@
         EXEC SP_POP_PLAN_COMP #{keyword}
     </select>
 
+ <select id="popPlanReturn" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_POP_PLAN_RETURN #{keyword}
+    </select>
+
 </mapper>

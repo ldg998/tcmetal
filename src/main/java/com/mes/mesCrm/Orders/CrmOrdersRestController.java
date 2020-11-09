@@ -56,6 +56,10 @@ public class CrmOrdersRestController {
     public Message crmOrderRecpComp(HttpServletRequest req, CRM_ORD_RECP crmOrdRecp){
         return crmOrdersService.crmOrderRecpComp(req, crmOrdRecp);
     }
+    @RequestMapping(value="/crmOrderRecpCancel" , method = RequestMethod.POST)
+    public Message crmOrderRecpCancel(HttpServletRequest req, CRM_ORD_RECP crmOrdRecp){
+        return crmOrdersService.crmOrderRecpCancel(req, crmOrdRecp);
+    }
 
     @RequestMapping(value = "/crmOrderRecpModalGet", method = RequestMethod.POST)
     public List<CRM_ORD_RECP> crmOrderRecpModalGet( Page p) {

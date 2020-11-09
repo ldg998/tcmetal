@@ -10,7 +10,7 @@
 
         <!-- 검색 div 영역 -->
         <div class="col-lg-12 padding0 main_condition">
-            <div class="col-lg-4 col-md-12  padding0">
+            <div class="col-lg-6 col-md-12  padding0">
                 <table class="table wt-100 margin-bottom-3">
                     <tbody>
                     <tr>
@@ -26,7 +26,12 @@
                         <td class="wt-px-200">
                             <input type="text" name="keyword2" class="form-control h-25 condition_main" id="part_code" autocomplete="off">
                         </td>
-                        <td></td>
+
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                        <td class="wt-px-200">
+                            <select class="form-control condition_main" name="keyword3" id="supp_select" style="width: 100%">
+                            </select>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

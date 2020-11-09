@@ -148,6 +148,7 @@ function authcheck() { // 권한체크
 
 function selectBox() { //구분영역에 들어갈 select데이터 호출
     select_makes_base("#part_type_select", "/sysPartTypeGet", "part_type", "part_type_name",{keyword:'1'},'Y').then(function (data) {});
+    select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"Y")
 
 
 }

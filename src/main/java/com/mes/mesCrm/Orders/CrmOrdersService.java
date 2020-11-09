@@ -98,10 +98,16 @@ public class CrmOrdersService extends ReturnFunction {
 
 
     public Message crmOrderRecpComp(HttpServletRequest req, CRM_ORD_RECP crmOrdRecp) {
+        crmOrdRecp.setUser_code(getSessionData(req).getUser_code());
         return crmOrdersMapper.crmOrderRecpComp(crmOrdRecp);
+    }
+    public Message crmOrderRecpCancel(HttpServletRequest req, CRM_ORD_RECP crmOrdRecp) {
+        crmOrdRecp.setUser_code(getSessionData(req).getUser_code());
+        return crmOrdersMapper.crmOrderRecpCancel(crmOrdRecp);
     }
 
     public Message wmsOutOrderComp(Page p) {
+
         return crmOrdersMapper.wmsOutOrderComp(p);
     }
 
@@ -227,4 +233,6 @@ public class CrmOrdersService extends ReturnFunction {
         List<CRM_ORD_RECP> rows = crmOrdersMapper.crmOrderRecpGet2(p);
         return getListData(rows , p);
     }
+
+
 }

@@ -83,9 +83,9 @@
                                 </span>
                     </a>
                     <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-mini btn-bold"
-                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="">
+                       tabindex="0" aria-controls="dynamic-table" data-original-title="" title="" onclick="return_btn();">
                                 <span>
-                                    <span>인쇄</span>
+                                    <span>대기처리</span>
                                 </span>
                     </a>
                 </div>

@@ -801,10 +801,9 @@ function num_keyup_comma(e) {
 }
 
 	function num_focus_reset(e) {
-	if ($(e).val() === "0.00"){
+	if ($(e).val() === "0.00" || $(e).val() === "0.000"){
 		$(e).val("");
 	}
-
 		if ($(e).val() === "0"){
 			$(e).val("");
 		}

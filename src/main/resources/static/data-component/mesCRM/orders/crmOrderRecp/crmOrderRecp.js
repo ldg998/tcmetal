@@ -160,6 +160,45 @@ function complete_btn() {
     }
 }
 
+//취소처리버튼
+function Cancel_btn() {
+    if (main_data.auth.check_edit != "N") {
+        var gu5 = String.fromCharCode(5);             //아스키코드5
+        var ids = $("#mes_grid").getGridParam('selarrrow'); //선택한 그리드 로우
+        if (ids.length === 0) {                             //선택여부
+            alert("취소처리할 데이터를 선택해주세요");
+        } else {
+            if(status_ck2(ids)) {
+                if (confirm("취소처리 하시겠습니까?")) {           //시행여부
+                    wrapWindowByMask2();                       //마스크 온
+                    ccn_ajax("/crmOrderRecpCancel", {keyword: ids.join(gu5)}).then(function (data) {
+                        if (data.result === 'NG') {
+                            alert(data.message);
+                        } else {
+                            $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
+                        }
+                        closeWindowByMask();                //마스크 오프
+                    }).catch(function (err) {
+                        closeWindowByMask();                //마스크 오프
+                        console.error(err); // Error 출력
+                    });
+                }
+            }else {
+                alert('대기(진행중)인 데이터가 있습니다.');
+            }
+            $('#mes_grid').jqGrid("resetSelection");    //그리드 전체 선택해제
+        }
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1);         //오류메세지 출력
+    }
+}
+
+
+
+
+
+
+
 function select_change1(value) {
     if (value !== ""){
         select_makes_base("#part_kind_select","/partKindGet","part_kind","part_kind",{keyword:'Y',keyword2:value},"Y");
@@ -289,6 +328,7 @@ function selectBox() {
 
 
 }
+
 function status_ck(ids){
     var ck = 0;
     var ck2 = true;
@@ -304,4 +344,21 @@ function status_ck(ids){
    }
 
 return ck2;
+}
+
+function status_ck2(ids){
+    var ck = 0;
+    var ck2 = true;
+    ids.forEach(function (id) {
+        var rowdata = $('#mes_grid').jqGrid('getRowData', id);// 해당 로우아이디 데이터 호출
+        console.log(rowdata)
+        if(rowdata.status == 0){
+            ck++
+        }
+    })
+    if(ck >0){
+        ck2 = false;
+    }
+
+    return ck2;
 }

@@ -103,6 +103,11 @@
     <select id="suppAllGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
         EXEC SP_SYS_SUPP_SELECT_GET #{keyword},#{keyword2}
     </select>
+    <select id="sysPartGet2" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
+        EXEC SP_SYS_PART_GET2 #{keyword}
+    </select>
+
+
     <select id="suppDeliveryPlaceGet" resultType="com.mes.mesManager.Master.DTO.SYSSupp">
         EXEC SP_SUPP_DELIVERY_PLACE_GET #{keyword}
     </select>

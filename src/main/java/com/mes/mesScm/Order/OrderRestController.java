@@ -3,15 +3,14 @@ package com.mes.mesScm.Order;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
-import com.mes.mesScm.Order.DTO.*;
+import com.mes.mesScm.Order.DTO.SCM_IN_ORD;
+import com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -32,6 +31,8 @@ public class OrderRestController {
 
     @RequestMapping(value ="/scmOrderPartGet", method = RequestMethod.POST)
     public RESTful scmOrderPartGet(HttpServletRequest req, Page p) { return orderService.scmOrderPartGet(req,p); }
+    @RequestMapping(value ="/scmOrderPartGet2", method = RequestMethod.POST)
+    public RESTful scmOrderPartGet2(HttpServletRequest req, Page p) { return orderService.scmOrderPartGet2(req,p); }
 
     @RequestMapping(value = "/scmOrderPartOneGet", method = RequestMethod.POST)
     public List<SCM_IN_ORD_SUB> scmOrderPartOneGet(HttpServletRequest req, SCM_IN_ORD_SUB sios) { return orderService.scmOrderPartOneGet(req,sios); }

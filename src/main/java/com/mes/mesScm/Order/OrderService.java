@@ -5,18 +5,13 @@ import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.Function.ReturnFunction;
 import com.mes.Mapper.mesScm.Order.OrderMapper;
-import com.mes.mesScm.Order.DTO.*;
+import com.mes.mesScm.Order.DTO.SCM_IN_ORD;
+import com.mes.mesScm.Order.DTO.SCM_IN_ORD_SUB;
 import com.mes.mesScm.Standard.DTO.SYS_PART_CD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -69,6 +64,11 @@ public class OrderService extends ReturnFunction {
 
     public RESTful scmOrderPartGet(HttpServletRequest req, Page p) {
         List<SYS_PART_CD> rows = orderMapper.scmOrderPartGet(p);
+        return getListData(rows, p);
+    }
+
+    public RESTful scmOrderPartGet2(HttpServletRequest req, Page p) {
+        List<SYS_PART_CD> rows = orderMapper.scmOrderPartGet2(p);
         return getListData(rows, p);
     }
 }

@@ -23,7 +23,7 @@
                 <tr>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">업체</td>
                     <td class="wt-px-140">
-                        <select name="keyword" id="supp_code_modal" class="form-control modal_value" style="width: 100%;" onchange="supp_modal_change()">
+                        <select name="keyword" id="supp_code_modal" class="form-control modal_value" style="width: 100%;" onchange="supp_modal_change(this.value)">
                         </select>
                     </td>
                     <td class="wt-px-100 t-align-c td-title padding-a-0">구분</td>
@@ -31,7 +31,11 @@
                         <select class="form-control modal_value" name="keyword2" id="part_type_select" style="width: 100%">
                         </select>
                     </td>
-                    <td></td>
+                    <td class="wt-px-100 t-align-c td-title padding-a-0">품명</td>
+                    <td class="wt-px-140">
+                        <input type="text" name="keyword3" class="form-control modal_value"  autocomplete="off" >
+                    </td>
+
                 </tr>
                 </tbody>
             </table>

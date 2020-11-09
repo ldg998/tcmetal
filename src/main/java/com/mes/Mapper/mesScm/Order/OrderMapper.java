@@ -31,4 +31,6 @@ public interface OrderMapper {
 
 
     List<SYS_PART_CD> scmOrderPartGet(Page p);
+
+    List<SYS_PART_CD> scmOrderPartGet2(Page p);
 }

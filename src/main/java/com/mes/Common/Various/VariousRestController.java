@@ -126,6 +126,11 @@ public class VariousRestController {
     @RequestMapping(value ="/sysPartAllGet",method = RequestMethod.POST)
     public List<SYS_PART_CD> sysPartAllGet(HttpServletRequest req, Page p){ return variousService.sysPartAllGet(req, p);}
 
+    @RequestMapping(value ="/sysPartGet2",method = RequestMethod.POST)
+    public List<SYS_PART_CD> sysPartGet2(HttpServletRequest req, Page p){ return variousService.sysPartGet2(req, p);}
+
+
+
      @RequestMapping(value ="/sysQcItemCdAll",method = RequestMethod.POST)
     public List<SYS_QC_ITEM_CD> sysQcItemCdAll(HttpServletRequest req, Page p){ return variousService.sysQcItemCdAll(req, p);}
 

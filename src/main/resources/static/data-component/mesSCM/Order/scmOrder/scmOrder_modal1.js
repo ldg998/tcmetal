@@ -20,7 +20,7 @@ function get_modal1_btn(page) {
         var data = value_return(".modal_value"); //해당클레스이름 데이터 name value 할당
         if(data.keyword !== '') {
             $("#mes_add_grid").setGridParam({ //그리드 조회
-                url: "/scmOrderPartGet",
+                url: "/scmOrderPartGet2",
                 datatype: "json",
                 page: page,
                 postData: data
@@ -250,7 +250,11 @@ function datepicker_modal1() {
 
 function selectBox_modal1() {
     select_makes_sub('#part_type_select', "/sysPartTypeGet","part_type" ,"part_type_name",{keyword:''},'Y'); //셀렉트박스 초기값할당
-    select_makes_sub("#supp_code_modal","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N")
+    select_makes_base("#supp_code_modal","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE1'},"N").then(function (data) {
+    // $('#part_name_select').select2();
+
+    })
+
 }
 
 function jqGrid_modal1() { // 메인 그리드 설정
@@ -454,8 +458,15 @@ function trigger_true(){
   $("#part_type_select").prop("disabled",true).trigger("change");
 }
 
-function supp_modal_change(){
+function supp_modal_change(value){
     $("#mes_add_grid").jqGrid('clearGridData');
     $("#mes_add_grid2").jqGrid('clearGridData');
+
+    // if (value == '' || value ==null ||value =='null' ){
+    //     $('#part_name_select').val('');
+    // } else {
+    //     select_makes_sub('#part_name_select', "/sysPartGet2","part_code" ,"part_name",{keyword:value},'Y'); //셀렉트박스 초기값할당
+    // }
+
 
 }

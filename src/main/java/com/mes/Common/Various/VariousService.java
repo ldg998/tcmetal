@@ -4,27 +4,27 @@ import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.Function.ReturnFunction;
-import com.mes.Common.Various.DTO.*;
+import com.mes.Common.Various.DTO.SYSPartType;
+import com.mes.Common.Various.DTO.SYSSupp;
+import com.mes.Common.Various.DTO.SYS_MENU_FAVORITES_CD;
+import com.mes.Common.Various.DTO.SYS_QC_ITEM_CD;
 import com.mes.Mapper.Various.VariousMapper;
 import com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP;
 import com.mes.mesManager.Authority.DTO.SYSAuthProgram;
-import com.mes.mesManager.Master.DTO.SYSCargo;
 import com.mes.mesManager.Master.DTO.SYSCommon;
 import com.mes.mesManager.Master.DTO.SYSMsg;
 import com.mes.mesManager.Master.DTO.SYSProdLine;
 import com.mes.mesPop.Standard.DTO.POP_LINE_USER_CD;
 import com.mes.mesPop.Standard.DTO.POP_ROUTE_CD;
 import com.mes.mesQms.Standard.DTO.SYS_QC_ITEM;
-import com.mes.mesScm.Standard.DTO.*;
+import com.mes.mesScm.Standard.DTO.SYS_PART_CD;
+import com.mes.mesScm.Standard.DTO.sysLoc;
 import com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD;
 import com.mes.mesTpm.RegItem.DTO.TPM_REG_ITEM_CD;
-import com.mes.mesWms.Stock.DTO.WMS_STOCK_TOTAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -129,6 +129,7 @@ public class VariousService extends ReturnFunction {
         return variousMapper.msgGet(p);
     }
 
+
     public Message sysMenuFavoritesAdd(HttpServletRequest req, SYS_MENU_FAVORITES_CD smfc) {
         smfc.setUser_code(getSessionData(req).getUser_code());
         return variousMapper.sysMenuFavoritesAdd(smfc);
@@ -166,5 +167,11 @@ public class VariousService extends ReturnFunction {
     public Message procedureLogAdd(HttpServletRequest req, Page p) {
         p.setUser_code(getSessionData(req).getUser_code());
         return variousMapper.procedureLogAdd(p);
+    }
+
+
+    public List<SYS_PART_CD> sysPartGet2(HttpServletRequest req, Page p) {
+
+        return variousMapper.sysPartGet2(p);
     }
 }

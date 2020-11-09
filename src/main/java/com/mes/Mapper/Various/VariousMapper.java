@@ -79,4 +79,6 @@ public interface VariousMapper {
     List<SYSCommon> sysLineGroupAllGet(Page p);
 
     Message procedureLogAdd(Page p);
+
+    List<SYS_PART_CD> sysPartGet2(Page p);
 }

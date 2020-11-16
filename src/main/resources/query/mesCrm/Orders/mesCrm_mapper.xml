@@ -127,7 +127,7 @@
     </select>
 
 	<select id="crmPerformGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
-		EXEC SP_CRM_PERFORM_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+		EXEC SP_CRM_PERFORM_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3}
     </select>
 
 	<select id="crmShippingListGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_SHIPPING">

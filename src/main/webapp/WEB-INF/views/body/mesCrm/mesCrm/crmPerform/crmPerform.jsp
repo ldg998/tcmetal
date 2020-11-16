@@ -44,8 +44,6 @@
                             <select class="form-control condition_main" name="keyword" id="supp_select"
                                     onchange="select_change1(this.value)" style="width: 100%"></select>
                         </td>
-
-
                         <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                         <td class="wt-px-200">
                             <select name="keyword2" id="part_kind_select" class="form-control condition_main"
@@ -57,7 +55,27 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">선적</td>
+                        <td class="wt-px-200">
+                            <select class="form-control condition_main" id="ship_select" name="keyword3"
+                                    style="width: 100%">
+                                <option value="">전체</option>
+                                <option value="0">대기</option>
+                                <option value="1">완료</option>
+                            </select>
+                        </td>
+                        <td class="wt-px-100"></td>
+                        <td class="wt-px-200"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
 
         <div class="clearfix">
             <div class="pull-left tableTools-container">

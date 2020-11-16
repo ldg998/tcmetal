@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class POP_PLAN {
     private String work_date;
+    private String comp_date;
+
     private String line_code;
     private String line_name;
     private int seq;

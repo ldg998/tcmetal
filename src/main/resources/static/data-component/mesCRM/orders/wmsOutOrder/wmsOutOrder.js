@@ -177,7 +177,7 @@ function one_update_btn() {
             var send_date = $('#mes_grid').jqGrid('getRowData', ids[0]);
             if (send_date.status !== '0'){
                 alert("대기상태의 데이터만 수정이 가능합니다.");
-            } else {popPlanMelt
+            } else {
                 wrapWindowByMask2();
                 ccn_ajax("/wmsOutOrderUpdateGet", send_date).then(function (data) {
                     closeWindowByMask();

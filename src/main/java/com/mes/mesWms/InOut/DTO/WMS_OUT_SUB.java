@@ -48,6 +48,6 @@ public class WMS_OUT_SUB {
     private String date2;
     private String date3;
     private double read_time;
-
+    private String comp_date;
 
 }

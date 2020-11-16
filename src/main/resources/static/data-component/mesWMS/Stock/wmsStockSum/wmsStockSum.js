@@ -98,7 +98,7 @@ function jqGrid_main() {
             {name:'part_kind', index: 'part_kind',  width: 110, fixed:true},
             {name:'part_code', index: 'part_code',  width: 130, fixed:true},
             {name:'part_name', index: 'part_name',  width: 190, fixed:true},
-            {name:'part_weight', index: 'part_weight',  width: 90, fixed:true,formatter:'integer', align:'right'},
+                {name:'part_weight', index: 'part_weight',  width: 90, fixed:true,formatter:'integer', align:'right'},
             {name:'prev_qty', index: 'prev_qty',  width: 90, fixed:true,formatter:'integer', align:'right'},
             {name:'prev_weight', index: 'prev_weight',  width: 90, fixed:true,formatter:'integer', align:'right'},
             {name:'in_qty', index: 'in_qty',  width: 90, fixed:true,formatter:'integer', align:'right'},

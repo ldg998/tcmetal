@@ -37,15 +37,14 @@
                             <option value="2"></option>
                         </select>
                     </td>
-                    <input type="hidden" name="keyword2"  value="" class="form-control h-25 condition_main" >
-<%--                    <td class="wt-px-100 td-title t-align-c padding-a-0">라인</td>--%>
-<%--                    <td class="wt-px-200">--%>
-<%--                        <select id='select2' name="keyword2" class="form-control h-25 condition_main" style="width: 100%;">--%>
-<%--                            <option value="">합형</option>--%>
-<%--                            <option value="1"></option>--%>
-<%--                            <option value="2"></option>--%>
-<%--                        </select>--%>
-<%--                    </td>--%>
+                    <td class="wt-px-100 td-title t-align-c padding-a-0">라인</td>
+                    <td class="wt-px-200">
+                        <select id='select2' name="keyword2" class="form-control h-25 condition_main" style="width: 100%;">
+                            <option value="">합형</option>
+                            <option value="1"></option>
+                            <option value="2"></option>
+                        </select>
+                    </td>
 
                     <td></td>
                 </tr>

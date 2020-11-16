@@ -2,7 +2,6 @@ package com.mes.Mapper.mesWms.InOut;
 
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
-import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.File.DTO.Files;
 import com.mes.mesPop.Pop.DTO.POP_PLAN;
 import com.mes.mesWms.InOut.DTO.WMS_IN_SUB;
@@ -40,4 +39,6 @@ public interface WmsInOutMapper {
     void wmsOutListAdd(Files files);
 
     Message wmsOutListDel(Page p);
+
+    Message wmsOutListComp(Page p);
 }

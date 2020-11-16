@@ -92,6 +92,42 @@ function delete_btn() {
     }
 }
 
+
+//완료처리버튼
+function complete_btn() {
+    if (main_data.auth.check_edit != "N") {
+        var gu5 = String.fromCharCode(5);             //아스키코드5
+        var ids = $("#mes_grid").getGridParam('selarrrow'); //선택한 그리드 로우
+        if (ids.length === 0) {                             //선택여부
+            alert("완료처리하는 데이터를 선택해주세요");
+        } else {
+            if(comp_ck(ids)) {
+                if (confirm("완료처리 하시겠습니까?")) {           //시행여부
+                    wrapWindowByMask2();                       //마스크 온
+                    ccn_ajax("/wmsOutListComp", {keyword: ids.join(gu5)}).then(function (data) {
+                        if (data.result === 'NG') {
+                            alert(data.message);
+                        } else {
+                            $('#mes_grid').trigger("reloadGrid"); //화면 리로딩
+                        }
+                        closeWindowByMask();                //마스크 오프
+                    }).catch(function (err) {
+                        closeWindowByMask();                //마스크 오프
+                        console.error(err); // Error 출력
+                    });
+                }
+            }else {
+                alert('출고가 완료된 제품이있습니다..');
+            }
+            $('#mes_grid').jqGrid("resetSelection");    //그리드 전체 선택해제
+        }
+    } else {
+        alert(msg_object.TBMES_A003.msg_name1);         //오류메세지 출력
+    }
+}
+
+
+
 ////////////////////////////호출 함수/////////////////////////////////////
 
 
@@ -110,10 +146,11 @@ function jqGrid_main() {
     $('#mes_grid').jqGrid({
         datatype: 'local',
         mtype: 'POST',
-        colNames: ['rownum','출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','성적서','업로드','파일','출고요청번호','생산일자','중간검사','출하검사','등록자','등록일시'],
+        colNames: ['rownum','출하검사일자','출고일자', '출고전표', '업체','기종', '품명', '품번','단중','수량','중량','제품LOT','성적서','업로드','파일','출고요청번호','생산일자','중간검사','출하검사','등록자','등록일시'],
         colModel: [
             {name: 'rownum', index: 'rownum', sortable: false, width: 90, fixed:true,hidden:true},
             {name: 'out_date', index: 'out_date', sortable: false, width: 90, fixed:true, formatter:formmatterDate2},
+            {name: 'comp_date', index: 'comp_date', sortable: false, width: 90, fixed:true, formatter:formmatterDate2},
             {name: 'out_no', index: 'out_no', sortable: false, width: 120,key:true, fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130, fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 110, fixed:true},
@@ -286,4 +323,23 @@ function msg_get() {
     msgGet_auth("TBMES_A004"); // 삭제 데이터 선택 요청
     msgGet_auth("TBMES_A005"); // 삭제여부
     msgGet_auth("TBMES_Q014");
+}
+
+
+function comp_ck(ids){
+    var ck = 0;
+    var ck2 = true;
+
+    ids.forEach(function (id) {
+        var rowdata = $('#mes_grid').jqGrid('getRowData', id);// 해당 로우아이디 데이터 호출
+
+        if(rowdata.comp_date != ''){
+            ck++
+        }
+    })
+    if(ck >0){
+        ck2 = false;
+    }
+
+    return ck2;
 }

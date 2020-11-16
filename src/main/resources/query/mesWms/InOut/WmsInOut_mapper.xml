@@ -55,4 +55,9 @@
     <select id="wmsOutListDel" resultType="com.mes.Common.DataTransferObject.Message">
         EXEC SP_WMS_OUT_DEL #{keyword}
     </select>
+    <select id="wmsOutListComp" resultType="com.mes.Common.DataTransferObject.Message">
+        EXEC SP_WMS_OUT_COMP #{keyword},#{user_code}
+    </select>
+
+
 </mapper>

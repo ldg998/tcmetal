@@ -100,6 +100,7 @@ function datepickerInput() {
 function selectBox() {
     $('#part_kind_select').select2();
     select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
+    $('#ship_select').select2();
 }
 
 function jqGrid_main() {
@@ -107,7 +108,7 @@ function jqGrid_main() {
         mtype: 'POST',
         datatype: 'local',
         caption: '실적현황 | MES',
-        colNames: ['수주일자','전표번호','업체','PO','기종','품번','품명','단중','화폐단위','단가','수량','총금액','납품(선적)1','납품(선적)2','납품(선적)3','납품(선적)4','납품(선적)5','납품(선적)6','납품(선적)7','납품(선적)8','납품(선적)9','납품(선적)10',],
+        colNames: ['수주일자','전표번호','업체','PO','기종','품번','품명','단중','화폐단위','단가','수량','중량','총금액','납품(선적)1','납품(선적)2','납품(선적)3','납품(선적)4','납품(선적)5','납품(선적)6','납품(선적)7','납품(선적)8','납품(선적)9','납품(선적)10',],
         colModel: [
             {name:'work_date',index:'work_date' ,sortable: false,width:90,fixed: true,formatter:formmatterDate2},
             {name:'ord_no',index:'ord_no',sortable: false,key: true,width:120,fixed: true},
@@ -120,6 +121,7 @@ function jqGrid_main() {
             {name:'money_unit',index:'money_unit',sortable: false,width:60,fixed: true},
             {name:'unit_cost',index:'unit_cost',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
             {name:'qty',index:'qty',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
+             {name:'weight',index:'weight',sortable: false,width:90,fixed: true, align: 'right',formatter:'integer'},
             {name: 'price_amount', index: 'price_amount', sortable: false,fixed: true, width: 110, align: 'right',formatter:'integer'},
             {name: 'date1', index: 'date1', sortable: false, fixed:true, width:100},
             {name: 'date2', index: 'date2', sortable: false, fixed:true, width:100},
@@ -152,7 +154,13 @@ function jqGrid_main() {
         ondblClickRow: function (rowid, iRow, iCol, e) {  // 더블클릭
             update_btn(rowid);
             },
-            loadComplete:function(){
+            loadComplete:function(data){
+                data.rows.forEach(function (idsfor, s) {
+                    if (idsfor.work_date === '통계'){
+                        $("#mes_grid").setRowData(idsfor.ord_no, false, {background:"rgb(155, 185, 239)"}) ;
+                    }
+                });
+
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");
             else

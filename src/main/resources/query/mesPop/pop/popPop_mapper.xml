@@ -104,6 +104,12 @@
     <select id="popPlanGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
         EXEC SP_POP_PLAN_GET #{page},#{rows},#{start_date},#{end_date},#{keyword2}
     </select>
+
+    <select id="popPlanMeltGet2" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
+        EXEC SP_POP_PLAN_MELT_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword2},#{keyword3},#{keyword4}
+    </select>
+
+
     <select id="popPlanWorkDateGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
         EXEC SP_POP_PLAN_WORK_DATE_GET 0,0,#{keyword},#{keyword2}
     </select>

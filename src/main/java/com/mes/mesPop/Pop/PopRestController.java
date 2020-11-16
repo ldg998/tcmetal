@@ -34,6 +34,11 @@ public class PopRestController {
         return popService.popPlanGet(p);
     }
 
+    @RequestMapping(value = "/popPlanMeltGet2", method = RequestMethod.POST)
+    public RESTful popPlanMeltGet2(Page p) {
+        return popService.popPlanMeltGet2(p);
+    }
+
     @RequestMapping(value = "/popPlanOneGet", method = RequestMethod.POST)
     public POP_PLAN popPlanOneGet(Page p) {
         return popService.popPlanOneGet(p);

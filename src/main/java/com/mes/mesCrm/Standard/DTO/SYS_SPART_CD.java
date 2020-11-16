@@ -33,10 +33,13 @@ public class SYS_SPART_CD {
     private String file2;
     private String file3;
     private String file4;
+    private String file5;
 
     private String file1_name;
     private String file2_name;
     private String file3_name;
+    private String file4_name;
+    private String file5_name;
     private String remark2;
     private String wood_type1;
     private String wood_type2;

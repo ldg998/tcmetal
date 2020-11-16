@@ -450,7 +450,7 @@ public class UploadFunction extends ReturnFunction {
     }
 
     public Files sysSPartFile1Add(String page_name,MultipartHttpServletRequest req,String ad) {
-        Files files = UploadSetFilePath1(page_name,req.getFile("file1"), req,ad);
+        Files files = UploadSetFilePath1(page_name,req.getFile("file5"), req,ad);
         try {
             files.getFiles().transferTo(new File(files.getUpload_path()));
             fileUploadService.setSysSPartDrawingFile(files, req);

@@ -117,7 +117,7 @@ function delete_btn() {
         } else {
             main_data.check = 'D';
             var check = "Y"
-            for(i=0;i<ids.length;i++){
+            for(var i=0;i<ids.length;i++){
                 var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
 
                 if (data.status === "1" ){

@@ -45,7 +45,7 @@
             <div class="profile-info-value">
                 <div class="filebox_lee">
                     <label class='file_labal' for="file_01">업로드버튼</label>
-                    <input type='file' id='file_01' name='file1' onchange='file_change(this);' />
+                    <input type='file' id='file_01' name='file5' onchange='file_change(this);' />
                 </div>
             </div>
         </div>

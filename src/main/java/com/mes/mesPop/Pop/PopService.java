@@ -173,4 +173,10 @@ public class PopService extends ReturnFunction {
 
     public Message popPlanReturn(Page p) {return mesPopPopMapper.popPlanReturn(p);
     }
+
+    public RESTful popPlanMeltGet2(Page p) {
+        List<POP_PLAN> rows = mesPopPopMapper.popPlanMeltGet2(p);
+        return getListData(rows, p);
+
+    }
 }

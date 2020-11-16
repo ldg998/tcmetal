@@ -96,7 +96,7 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "제품이력관리 | MES",
-        colNames: ['rownum','','업체','기종','품번','품명','단중','도면','file2','지급품도면','file3','제품이력','file1','등록자','수정일'],
+        colNames: ['rownum','','업체','기종','품번','품명','단중','제품이력','제품이력(보기)','등록자','수정일'],
         colModel: [
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
             {name: 'supp_code', index: 'supp_code',hidden:true, sortable:false, width: 100,fixed:true},
@@ -105,12 +105,10 @@ function jqGrid_main() {
             {name: 'part_code', index: 'part_code', sortable:false, width: 130, fixed:true},
             {name: 'part_name', index: 'part_name', sortable:false, width: 190, fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable:false, width: 90, fixed:true},
-            {name: 'file2_name', index: 'file2_name', sortable: false, width: 80, align: 'center', formatter: file2_formatter,fixed:true},
-            {name: 'file2', index: 'file2', sortable: false,hidden: true},
-            {name: 'file3_name', index: 'file3_name', sortable: false, width: 80, align: 'center', formatter: file3_formatter,fixed:true},
-            {name: 'file3', index: 'file3', sortable: false,hidden: true},
-            {name: 'file1_name', index: 'file1_name', sortable: false, width: 80, align: 'center', formatter: file1_formatter,fixed:true},
-            {name: 'file1', index: 'file1', sortable: false,hidden: true},
+
+            {name: 'file5', index: 'file5', sortable: false, width: 80, align: 'center', formatter: file1_formatter,fixed:true},
+            {name: 'file5', index: 'file5',width: 80, sortable: false,formatter: file5_formatter,fixed:true},
+
             {name: 'user_name', index: 'user_name', sortable:false, width: 60, fixed:true},
             {name: 'update_date', index: 'update_date', sortable:false, width: 140, fixed:true, formatter:formmatterDate},
         ],
@@ -137,10 +135,11 @@ function jqGrid_main() {
 
 
 function file1_formatter(cellvalue, options, rowObject) {
-    if (cellvalue === "Y") {
+    if (cellvalue != "" && cellvalue != null && cellvalue != "null") {
+        console.log("다운버튼 :"+cellvalue)
         return "" +
             " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
-            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + rowObject.file1 + "\");'>" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_download(\"" + cellvalue + "\");'>" +
             "<span><i class='fa fa-download bigger-110 blue'></i>" +
             "<span>저장</span>" +
             "</span>" +
@@ -196,6 +195,29 @@ function file3_formatter(cellvalue, options, rowObject) {
     }
 }
 
+
+
+function file5_formatter(cellvalue, options, rowObject) {
+    if (cellvalue != "" && cellvalue != null && cellvalue != "null") {
+        console.log("조회버튼 :"+cellvalue)
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_openPDF(\"" + cellvalue + "\");'>" +
+            "<span><i class='fa fa-search bigger-110 blue'></i>" +
+            "<span>보기</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span>없음</span>" +
+            "</span>" +
+            "</a>";
+    }
+}
+
 function file_download(file_name) {
     if (confirm('파일을 저장하시겠습니까?')) {
         $.fileDownload('/FileUploads', {
@@ -207,4 +229,18 @@ function file_download(file_name) {
             }
         });
     }
+}
+
+var agent = navigator.userAgent.toLowerCase();
+function file_openPDF(cell) {
+    if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+        alert("익스플로러 브라우저는 지원되지 않습니다.");
+    }
+    else {
+        window.open("/uploadFile/sysSPartFile1Add/"+cell);
+        return false;
+    }
+
+
+
 }

@@ -72,4 +72,6 @@ public interface MesPopPopMapper {
     Message popPlanComp(Page p);
 
     Message popPlanReturn(Page p);
+
+    List<POP_PLAN>  popPlanMeltGet2(Page p);
 }

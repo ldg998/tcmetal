@@ -36,8 +36,9 @@ function test() {
 
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
+
     $("#mes_grid").setGridParam({
-        url: "/popPlanGet",
+        url: "/popPlanMeltGet2",
         datatype: "json",
         page: page,
         postData: main_data.send_data
@@ -259,8 +260,8 @@ function jqGrid_main() {
 function selectBox() {
     select_makes_base("#main_select1", "/sysLineGroupAllGet","code_value","code_name1",{keyword:'2'},'').then(function (data) {
         select_makes_base("#main_select2", "/syslineAllGroupGet","line_code","line_name",{keyword:data[0].code_value},'').then(function (data2) {
-
         });
     });
+    select_makes_base("#main_select3","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y");
 
 }

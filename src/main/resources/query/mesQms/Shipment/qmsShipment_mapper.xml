@@ -79,7 +79,7 @@
     <update id="sysSPartFile1Add">
         UPDATE SYS_SPART_CD
         SET
-            FILE1 = #{key_value}
+            FILE5 = #{key_value}
             WHERE
             SUPP_CODE = #{key1} AND PART_KIND = #{key2} AND PART_CODE = #{key3}
     </update>

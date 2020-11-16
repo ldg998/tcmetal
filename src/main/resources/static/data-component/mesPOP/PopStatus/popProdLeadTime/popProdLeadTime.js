@@ -124,7 +124,7 @@ function jqGrid_main() {
             {name: 'date2', index: 'date2', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
             {name: 'date3', index: 'date3', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
             {name: 'lot_no', index: 'lot_no', sortable: false, width: 120,fixed:true},
-            {name: 'read_time', index: 'read_time', sortable: false, width: 90,fixed:true,align: 'number', formatter: 'integer'},
+            {name: 'read_time', index: 'read_time', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
             {name: 'qc_result_name', index: 'qc_result_name', sortable: false, width: 90,fixed:true},
 
 

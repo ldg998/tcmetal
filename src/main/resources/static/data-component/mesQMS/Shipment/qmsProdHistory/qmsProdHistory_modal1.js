@@ -26,7 +26,7 @@ function addUpdate_btn() {
         formData.append("check", check);
     } else {
         check = 1;
-        formData.append("file1", $("#file_01").prop("files")[0]);
+        formData.append("file5", $("#file_01").prop("files")[0]);
         formData.append("check", check);
     }
     if(confirm("등록 하시겠습니까?")) {

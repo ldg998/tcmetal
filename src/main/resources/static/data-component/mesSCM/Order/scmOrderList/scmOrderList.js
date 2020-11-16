@@ -29,14 +29,17 @@ $(document).ready(function () {
 //조회 버튼
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main"); //해당 클레스이름의 객체를 불러와 NAME VALUE 를 할당
-    main_data.send_data.start_date = main_data.send_data.start_date.replace(/\-/g, ''); //날짜 모양 가공 2020-06-06 = 20200606
-    main_data.send_data.end_date = main_data.send_data.end_date.replace(/\-/g, '');//날짜 모양 가공 2020-06-06 = 20200606
+
+if(main_data.send_data.start_date < main_data.send_data.end_date){
     $("#mes_grid").setGridParam({ //그리드 조회
         url: '/scmOrderListGet',
         datatype: "json",
         page: page,
         postData: main_data.send_data
     }).trigger("reloadGrid"); // 그리드 리로드
+}else {
+    alert('조회기간 오류')
+}
 }
 
 //엑셀 다운로드

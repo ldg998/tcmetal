@@ -53,10 +53,36 @@
 
                             </select>
                         </td>
+
+
                     </tr>
                     </tbody>
                 </table>
             </div>
+            <div class="col-lg-4 col-md-12 padding0">
+                <table class="table wt-100 margin-bottom-3">
+                    <tbody>
+                    <tr>
+
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">업체</td>
+                        <td class="wt-px-200">
+                            <div class="input-icon input-icon-right">
+                                <select id="main_select3" style="width: 100%;" name="keyword3" class="condition_main">
+
+                                </select>
+                            </div>
+                        </td>
+
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">품명</td>
+                        <td class="wt-px-200">
+                            <input type="text" id="main_select4" name="keyword4"  class="form-control h-25 condition_main">
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
         <div class="clearfix">

@@ -31,7 +31,7 @@
 
                     <td class="wt-px-100 td-title t-align-c padding-a-0">라인그룹</td>
                     <td class="wt-px-200">
-                        <select id='select1' name="keyword" class="form-control h-25 condition_main" <%--onchange="main_select_change1(this.value)"--%> style="width: 100%;">
+                        <select id='select1' name="keyword" class="form-control h-25 condition_main" onchange="main_select_change1(this.value)" style="width: 100%;">
                             <option value="">합형</option>
                             <option value="1"></option>
                             <option value="2"></option>

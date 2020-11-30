@@ -130,6 +130,21 @@ function img_btn(qc_no) {
     });
 
 }
+
+
+var agent = navigator.userAgent.toLowerCase();
+function file_openPDF(cell) {
+    if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+        alert("익스플로러 브라우저는 지원되지 않습니다.");
+    }
+    else {
+        window.open("/uploadFile/qmsProdMiddleErrorMan/"+cell);
+        return false;
+    }
+
+
+
+}
 ////////////////////////////호출 함수/////////////////////////////////////
 function msg_get() {
     msgGet_auth("TBMES_Q014");
@@ -167,7 +182,7 @@ function jqGrid_main() {
             {name: 'result2_name', index: 'result2_name', sortable:false, width: 60, fixed:true},
             {name: 'result3_name', index: 'result3_name', sortable:false, width: 200, fixed:true},
             {name: 'upload_path', index: 'upload_path', sortable:false, width: 70, fixed:true,formatter: image_formatter},
-            {name: 'file2_yn', index: 'file2file2_yn', sortable:false, width: 100, fixed:true},
+            {name: 'file2', index: 'file2', sortable:false, width: 100, fixed:true, formatter: file3_formatter},
             {name: 'user_name', index: 'user_name', sortable:false, width: 60, fixed:true},
             {name: 'update_date', index: 'update_date', sortable:false, width: 140, fixed:true,formatter: formmatterDate}
         ],
@@ -252,5 +267,26 @@ function result_ck(qc_result){
         $("#result2_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
         $("#result3_code").prop("disabled",true).trigger("change");//셀렉트박스 잠금으로 체인지
         $("select#result_code").append("<option value='4'>판정대기</option>");
+    }
+}
+
+
+function file3_formatter(cellvalue, options, rowObject) {
+    if (cellvalue != "" && cellvalue != null && cellvalue != "null") {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-primary btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' data-original-title='' title='' onclick='file_openPDF(\"" + cellvalue + "\");'>" +
+            "<span><i class='fa fa-search bigger-110 blue'></i>" +
+            "<span>보기</span>" +
+            "</span>" +
+            "</a>";
+    } else {
+        return "" +
+            " <a class='dt-button buttons-csv buttons-html5 btn btn-white btn-danger btn-mini btn-bold'" +
+            "tabindex='0' aria-controls='dynamic-table' style='cursor: not-allowed;'>" +
+            "<span><i class='fa fa-ban bigger-110 red'></i>" +
+            "<span>없음</span>" +
+            "</span>" +
+            "</a>";
     }
 }

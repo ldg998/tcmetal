@@ -3,6 +3,8 @@ package com.mes.Common.File.DTO;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Data
 public class Files {
     private String key1;
@@ -21,6 +23,7 @@ public class Files {
     private String url;
     private MultipartFile files;
     private MultipartFile file;
+    private List<MultipartFile> file1;
     private String name;
     private String board_code;
     private String board_idx;

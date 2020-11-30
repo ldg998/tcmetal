@@ -36,12 +36,12 @@
                                     <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                                 </div>
                             </td>
-                            <td class="border_no display_none" style=" width:80px !important;"></td>
+                            <td class="border_no display_none" style=" width:20px !important;"></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="col-lg-4 col-md-12 padding0">
+                <div class="col-lg-6 col-md-12 padding0">
                     <table class="table wt-100 margin-bottom-3">
                         <tbody>
                         <tr>
@@ -68,12 +68,17 @@
 
                                 </select>
                             </td>
-                            <td class="wt-px-100"></td>
-                            <td class="wt-px-200"></td>
+                            <td class="border_no display_none" style=" width:20px !important;"></td>
                         </tr>
                         </tbody>
                     </table>
+
                 </div>
+                <div class="col-lg-2 col-md-12 padding0">
+                </div>
+
+
+
             </div>
 
 

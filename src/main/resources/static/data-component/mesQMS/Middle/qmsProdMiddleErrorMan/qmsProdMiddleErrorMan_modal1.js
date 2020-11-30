@@ -11,12 +11,7 @@ function modal_start1() {
     modal_make1();
     datepickerInput_modal();
 }
-
-
 ////////////////////////////클릭 함수/////////////////////////////////////
-
-
-
 function addUdate_btn() {
     var add_data = value_return(".modal_value");
     var formData = new FormData();

@@ -200,6 +200,10 @@ function iPadTouchHandler(event) {
 				return;
 			}
 
+			if ($(event.changedTouches[0].target).is("a")) {
+				return;
+			}
+
 			iPadTouchStart(event); /*We need to trigger two events here to support one touch drag and drop*/
 			event.preventDefault();
 			return false;

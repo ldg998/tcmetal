@@ -80,7 +80,9 @@
     <script src="/ui-component/assets/js/fastClick.js"></script>
     <script src="/data-component/common/es6-promise.auto.min.js"></script>
     <script src="/data-component/common/various.js"></script>
-    <script src="/ui-component/assets/js/jquery.ui.touch.js"></script>
+   <%-- 터치 --%>
+<%--    <script src="/ui-component/assets/js/jquery.ui.touch.js"></script>--%>
+
     <script src="/fullcalendar/core/main.js"></script>
     <script src="/fullcalendar/daygrid/main.js"></script>
     <script src="/ui-component/assets/js/jquery.mask.js"></script>

@@ -273,8 +273,8 @@ function jqGrid_modal1() { // 메인 그리드 설정
         ],
         autowidth: true,
         height: 200,
-        rowNum: 100,
-        rowList: [100, 200, 300, 500, 1000],
+        rowNum: 10000,
+        rowList: [10000, 200, 300, 500, 1000],
         loadComplete:function(){
             if ($("#mes_add_grid").jqGrid('getGridParam', 'reccount') === 0) {
                 $("table#mes_add_grid  tr.jqgfirstrow").css("height","1px");

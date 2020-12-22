@@ -119,7 +119,6 @@ function delete_btn() {
             var check = "Y"
             for(var i=0;i<ids.length;i++){
                 var data = $('#mes_grid').jqGrid('getRowData', ids[i]);
-
                 if (data.status === "1" ){
                     check = "N";
                 }
@@ -143,9 +142,6 @@ function delete_btn() {
                         console.error(err); // Error 출력
                     });
                 }
-
-
-
             }
         }
     } else {
@@ -258,6 +254,7 @@ function jqGrid_main() {
         colModel: [
             {name: 'work_date', index: 'work_date', sortable:false, width: 90, fixed:true,formatter: formmatterDate2},
             {name: 'qc_no', index: 'qc_no', sortable:false, width: 120, key: true, fixed:true},
+
             {name: 'supp_name', index: 'supp_name', sortable:false, width: 130, fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable:false, width: 130, fixed:true},
             {name: 'part_code', index: 'part_code', sortable:false, width: 130, fixed:true},
@@ -265,6 +262,7 @@ function jqGrid_main() {
             {name: 'part_weight', index: 'part_weight', sortable:false, width: 90, fixed:true,align:'right',formatter:'integer'},
             {name: 'lot_no', index: 'lot_no', sortable:false, width: 130, fixed:true},
             {name: 'qc_result_name', index: 'qc_result_name', sortable:false, width: 60, fixed:true},
+
             {name: 'result2_name', index: 'result2_name', sortable:false, width: 60, fixed:true},
             {name: 'result3_name', index: 'result3_name', sortable:false, width: 200, fixed:true},
             {name: 'upload_path', index: 'upload_path', sortable:false, width: 100, fixed:true,fixed:true,formatter: image_formatter},

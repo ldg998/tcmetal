@@ -11,11 +11,11 @@
     </select>
 
     <select id="wmsStockSumMonthListGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
-        EXEC SP_WMS_STOCK_GET_MONTH #{page},#{rows},#{work_date},#{keyword},#{keyword2},''
+        EXEC SP_WMS_STOCK_GET_MONTH #{page},#{rows},#{work_date},#{keyword},#{keyword2},#{keyword3}
     </select>
 
     <select id="wmsStockSumGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
-        EXEC SP_WMS_STOCK_GET_DAY #{page},#{rows},#{work_date},#{keyword},#{keyword2},''
+        EXEC SP_WMS_STOCK_GET_DAY #{page},#{rows},#{work_date},#{keyword},#{keyword2},#{keyword3}
     </select>
 
     <select id="wmsStockRevAdd" resultType="com.mes.Common.DataTransferObject.Message">
@@ -35,7 +35,7 @@
     </select>
 
     <select id="wmsStockGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
-        EXEC SP_WMS_STOCK_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3},''
+        EXEC SP_WMS_STOCK_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{keyword4}
     </select>
 
     <select id="wmsStockOneGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
@@ -43,7 +43,7 @@
     </select>
 
     <select id="wmsAllStockListGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
-        EXEC SP_WMS_ALL_STOCK_LIST_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
+        EXEC SP_WMS_ALL_STOCK_LIST_GET3 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},#{keyword4}
     </select>
 
 

@@ -164,6 +164,8 @@ function datepickerInput() {
 
 function selectBox() {
     $('#part_kind_select').select2();
+    $('#part_code_select').select2();
+
     $('#status').select2();
     select_makes_sub("#supp_select","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE2'},"Y")
     select_makes_base_tc("#main_select3","/suppAllGet","supp_code","supp_name",{keyword:'Y',keyword2:'CORP_TYPE3'},"").then(function (data) {});
@@ -178,4 +180,21 @@ function select_change1(value) {
         $('#part_kind_select').append(option);
         $('#part_kind_select').select2();
     }
+}
+function select_change2(value) {
+    if (value !== "") {
+        select_makes_base("#part_code_select", "/sysSpartAllGet", "part_code", "part_name", {
+            keyword: $("#supp_select").val(),
+            keyword2: value
+        }, "Y").then(function (data) {
+
+        });
+    } else {
+
+        $('#part_code_select').empty();
+        var option2 = $("<option></option>").text('전체').val('');
+        $('#part_code_select').append(option2);
+        $('#part_code_select').select2();
+    }
+
 }

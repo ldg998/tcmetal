@@ -2,6 +2,7 @@ package com.mes.Common;
 
 import com.mes.Common.Function.ReturnFunction;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,9 @@ import java.io.*;
 @Slf4j
 public class HomeController extends ReturnFunction {
 
+    @Autowired
+    private HomeService homeService;
+
     @RequestMapping("/login")
     public String home()
     {
@@ -27,10 +31,18 @@ public class HomeController extends ReturnFunction {
 
     @RequestMapping(value="/")
     public String index(HttpServletRequest req){
-
         req.setAttribute("home","home");
         return "index";
     }
+    @RequestMapping(value="/index2")
+    public String index2(HttpServletRequest req){
+
+        req.setAttribute("home","home");
+
+        return "index2";
+    }
+
+
 
     @RequestMapping(value = "/testFile" , method = RequestMethod.POST)
     public void testFile(@RequestParam("testFile") MultipartFile upload, HttpServletResponse response){

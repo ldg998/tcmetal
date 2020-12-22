@@ -54,8 +54,7 @@
                                 <option value="2"></option>
                             </select>
                         </td>
-                        <td class="wt-px-100"></td>
-                        <td class="wt-px-200"></td>
+
                     </tr>
                     </tbody>
                 </table>

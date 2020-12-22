@@ -15,7 +15,8 @@ function addUdate_btn() {
         }
         if (confirm(text)) {
             wrapWindowByMask2();
-            ccn_ajax("/popProdLogAdd",main_data.send_data).then(function (data) {});
+            ccn_ajax("/popProdLogAdd",main_data.send_data).then(function (data) {}).catch(function (err){})
+
             ccn_ajax("/popProdList2Add", main_data.send_data ).then(function (data) {
                 if (data.result === 'NG') {
                     alert(data.message);
@@ -26,7 +27,6 @@ function addUdate_btn() {
                     } else {
                         $("#addDialog").dialog('close');
                         $('#mes_grid2').trigger("reloadGrid");
-
                     }
                 }
                 closeWindowByMask();

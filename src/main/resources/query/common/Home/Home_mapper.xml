@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mes.Mapper.Home.Home.HomeMapper">
+
+    <select id="monitoringGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC [SP_POP_MONITORING_GET] 0,0
+    </select>
+
+    <select id="prodReport1Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC [SP_POP_PROD_REPORT1_GET2] 0,0
+    </select>
+
+    <select id="prodMiddleListGet" resultType="com.mes.mesQms.Middle.DTO.QMS_PROD">
+    EXEC [SP_QMS_PROD_MIDDLE_LIST_GET3] 0,0
+    </select>
+
+    <select id="prodLeadTimeGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
+    EXEC [SP_POP_PROD_LEAD_TIME_GET3] 0,0
+    </select>
+
+</mapper>

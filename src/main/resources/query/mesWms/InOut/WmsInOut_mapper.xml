@@ -3,15 +3,16 @@
 
 <mapper namespace="com.mes.Mapper.mesWms.InOut.WmsInOutMapper">
     <select id="wmsInListGet" resultType="com.mes.mesWms.InOut.DTO.WMS_IN_SUB">
-        EXEC [SP_WMS_IN_LIST_GET] #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}
+        EXEC [SP_WMS_IN_LIST_GET2] #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2},#{keyword3}
     </select>
 
 
     <select id="wmsOutListGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_SUB">
-        EXEC [SP_WMS_OUT_LIST_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2},#{keyword3}
+        EXEC [SP_WMS_OUT_LIST_GET2]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2},#{keyword3},#{keyword4}
     </select>
+
     <select id="wmsOutReadyGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD_SUB">
-        EXEC [SP_WMS_OUT_READY_GET]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2}
+        EXEC [SP_WMS_OUT_READY_GET2]  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword},#{keyword2},#{keyword3}
     </select>
 
 <!--    <select id="wmsOutOrderGet" resultType="com.mes.mesWms.InOut.DTO.WMS_OUT_ORD">-->

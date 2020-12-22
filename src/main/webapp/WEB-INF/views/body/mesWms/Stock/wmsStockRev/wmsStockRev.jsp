@@ -20,7 +20,7 @@
 
                         <td class="wt-px-100 td-title t-align-c padding-a-0">기종</td>
                         <td class="wt-px-200">
-                            <select id="part_kind_select" class="form-control condition_main" name="keyword2" style="width: 100%;">
+                            <select id="part_kind_select" class="form-control condition_main"  name="keyword2" style="width: 100%;" onchange="select_change2(this.value)">
                                 <option value="">전체</option>
 
                             </select>
@@ -33,6 +33,13 @@
                 <table class="table wt-100 margin-bottom-3">
                     <tbody>
                     <tr>
+                        <td class="wt-px-100 td-title t-align-c padding-a-0">품명</td>
+                        <td class="wt-px-200">
+                            <select id="part_code_select" name="keyword4" class="form-control condition_main" style="width: 100%;">
+                                <option value="">전체</option>
+                            </select>
+                        </td>
+
                         <td class="wt-px-100 td-title t-align-c padding-a-0">위치</td>
                         <td class="wt-px-200">
                             <select name="keyword3" id="main_select3" class="form-control condition_main" style="width: 100%;">
@@ -41,8 +48,7 @@
 
                             </select>
                         </td>
-                        <td class="wt-px-100"></td>
-                        <td class="wt-px-200"></td>
+
                     </tr>
                     </tbody>
                 </table>

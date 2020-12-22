@@ -156,7 +156,7 @@
 
 
     <select id="popProdList2Add" resultType="com.mes.Common.DataTransferObject.Message">
-    EXEC SP_POP_PROD_LIST2_SUB_ADD #{supp_code},#{part_kind},#{part_code},#{lot_no},#{prev_lot}
+    EXEC SP_POP_PROD_LIST2_SUB_ADD #{supp_code},#{part_kind},#{part_code},#{lot_no},#{prev_lot},#{work_date}
     </select>
 
     <select id="popProdLogAdd" resultType="com.mes.Common.DataTransferObject.Message">

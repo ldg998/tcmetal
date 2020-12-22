@@ -114,7 +114,7 @@ function jqGrid_main() {
         caption: '제품검사 현황 | MES',
         autowidth: true,
         shrinkToFit:false,
-        height: 600,
+        height: 582,
         pager: '#mes_grid_pager',
         rowNum: 100,
         overflow:'visible',
@@ -168,6 +168,8 @@ function select_box() {
         $('#part_kind_select').select2();
     });
      $('#gu').select2();
+     $('#part_code_select').select2();
+
 }
 
 function select_change1(value) {
@@ -178,5 +180,28 @@ function select_change1(value) {
         var option = $("<option></option>").text('전체').val('');
         $('#part_kind_select').append(option);
         $('#part_kind_select').select2();
+
+        $('#part_code_select').empty();
+        var option2 = $("<option></option>").text('전체').val('');
+        $('#part_code_select').append(option2);
+        $('#part_code_select').select2();
+
     }
+}
+function select_change2(value) {
+    if (value !== "") {
+        select_makes_base("#part_code_select", "/sysSpartAllGet", "part_code", "part_name", {
+            keyword: $("#supp_code_select").val(),
+            keyword2: value
+        }, "Y").then(function (data) {
+
+        });
+    } else {
+
+        $('#part_code_select').empty();
+        var option2 = $("<option></option>").text('전체').val('');
+        $('#part_code_select').append(option2);
+        $('#part_code_select').select2();
+    }
+
 }

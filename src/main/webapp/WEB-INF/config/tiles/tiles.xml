@@ -38,6 +38,8 @@
         <put-attribute name="body" value="/WEB-INF/views/body/{1}/{2}/{3}.jsp" />
     </definition>
 
+
+
     <definition name="*/*/*/*" extends="layout">
         <put-attribute name="lnb"   value="/WEB-INF/views/components/navbar/left-nav.jsp" />
         <put-attribute name="body" value="/WEB-INF/views/body/{1}/{2}/{3}/{4}.jsp" />
@@ -52,5 +54,11 @@
 
 
     <definition name="workForm/*"  template="/WEB-INF/views/body/mesImage/workForm/{1}.jsp"/>
+
+    <definition name="index2" template="/WEB-INF/index2.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/components/header.jsp" />
+
+        <put-attribute name="mid" value="/WEB-INF/views/components/navbar/mid-nav2.jsp" />
+    </definition>
 
 </tiles-definitions>

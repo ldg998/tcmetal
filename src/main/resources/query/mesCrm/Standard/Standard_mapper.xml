@@ -68,7 +68,7 @@
 	</select>
 
     <select id="sysSpartGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
-		EXEC SP_SYS_SPART_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{use_yn}
+            EXEC SP_SYS_SPART_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{use_yn}
 	</select>
 
     <select id="partKindGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">

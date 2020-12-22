@@ -376,7 +376,7 @@ function jqGrid_main() {
         },
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
             var data = $('#mes_grid').jqGrid('getRowData', rowid);
-            update_btn(data);
+         //   update_btn(data);
         },
         loadComplete:function(){
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)

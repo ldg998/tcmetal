@@ -14,6 +14,7 @@
             <div class="profile-info-value">
                 <input type="text" name="supp_name" class="form-control modal_value" readonly autocomplete="off" >
                 <input type="hidden" name="supp_code" class="form-control modal_value" autocomplete="off" style="text-align: right">
+                <input type="hidden" name="work_date" class="form-control modal_value sendDate">
 
             </div>
         </div>

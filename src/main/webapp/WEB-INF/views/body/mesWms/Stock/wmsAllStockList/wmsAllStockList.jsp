@@ -41,26 +41,46 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-lg-6 col-md-12 padding0">
+                <div class="col-lg-4 col-md-12 padding0">
                     <table class="table wt-100 margin-bottom-3">
                         <tbody>
                         <tr>
                             <td class="wt-px-200 td-title t-align-c padding-a-0">업체</td>
                             <td class="wt-px-400">
-                                <select class="form-control condition_main" name="keyword" id="supp_code_select" style="width: 100%" onchange="select_change1(this.value)" ></select>
+                                <select class="form-control condition_main" name="keyword" id="supp_code_select"
+                                        style="width: 100%" onchange="select_change1(this.value)"></select>
                             </td>
 
                             <td class="wt-px-200 td-title t-align-c padding-a-0">기종</td>
                             <td class="wt-px-400">
-                                <select id="part_kind_select" name="keyword2" class="form-control condition_main" style="width: 100%;">
+                                <select id="part_kind_select" name="keyword2" class="form-control condition_main"
+                                        style="width: 100%;" onchange="select_change2(this.value)">
                                     <option value="">전체</option>
 
                                 </select>
                             </td>
 
-                            <td class="wt-px-200 td-title t-align-c padding-a-0">구분</td>
-                            <td class="wt-px-400">
-                                <select id="gu" name="keyword3" class="form-control condition_main" style="width: 100%;">
+<%--                            <td class="border_no display_none" style=" width:20px !important;"></td>--%>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="col-lg-4 col-md-12 padding0">
+                    <table class="table wt-100 margin-bottom-3">
+                        <tbody>
+                        <tr>
+                            <td class="wt-px-100 td-title t-align-c padding-a-0">품명</td>
+                            <td class="wt-px-200">
+                                <select id="part_code_select" name="keyword4" class="form-control condition_main" style="width: 100%;">
+                                    <option value="">전체</option>
+                                </select>
+                            </td>
+
+                            <td class="wt-px-100 td-title t-align-c padding-a-0">구분</td>
+                            <td class="wt-px-200">
+                                <select id="gu" name="keyword3" class="form-control condition_main"
+                                        style="width: 100%;">
                                     <option value="">전체</option>
                                     <option value="1">합형</option>
                                     <option value="2">중간검사</option>
@@ -68,15 +88,11 @@
 
                                 </select>
                             </td>
-                            <td class="border_no display_none" style=" width:20px !important;"></td>
                         </tr>
                         </tbody>
                     </table>
 
                 </div>
-                <div class="col-lg-2 col-md-12 padding0">
-                </div>
-
 
 
             </div>

@@ -3,8 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <fmt:parseDate value="${InfoData.create_date}" var="c_date" pattern="yyyyMMddHHmmss"/>
 <fmt:parseDate value="${InfoData.update_date}" var="u_date" pattern="yyyyMMddHHmmss"/>
-<script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <%@include file="/WEB-INF/views/body/mesBoard/mesBoard/mesBoard/header.jsp" %>
+<script type="text/javascript" src="/ui-component/assets/js/jquery.fileDownload.js"></script>
 <!-- ###실제컨텐츠영역 -->
 <div class="page-content">
     <table class="bbs_view">
@@ -43,7 +43,7 @@
                 <tr>
                     <th width="23%"><img name=wiz_target_resize style="margin-top: 3px; vertical-align: top; display: inline-block;" src="https://directsend.co.kr/images/common/icon_bigfile.png"/> 첨부파일
                     <td>
-                        <a target="_blank" rel="noreferrer noopener" onclick="file_download('${data.file_name}')">${data.file_og_name}</a>
+                        <a target="_blank" rel="noreferrer noopener" onclick="file_download('${data.key_value}')">${data.file_og_name}</a>
                         <span style="color: #e6716b; margin-left: 3px;">${data.file_size}KB</span>
                     </td>
                 </tr>
@@ -267,12 +267,10 @@
 
 
     function file_download(file_name) {
-        var name = file_name.split(".");
-
         if (confirm('파일을 저장하시겠습니까?')) {
             $.fileDownload('/FileUploads', {
                 httpMethod: "POST",
-                data: { key_value: name[0] },
+                data: { key_value: file_name },
                 successCallback: function(url){
                 },
                 failCallback: function(){

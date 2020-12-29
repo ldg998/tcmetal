@@ -9,4 +9,5 @@ public class SYS_BOARD_FILE {
     private String board_code;
     private String board_idx;
     private String file_name;
+    private String key_value;
 }

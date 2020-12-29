@@ -19,7 +19,7 @@ $(document).ready(function () {
     jqGridResize("#mes_grid4", $('#mes_grid4').closest('[class*="col-"]'));
     jqgridPagerIcons();
     getList();
-    // setTimeout(function(){  location.reload();},10000);
+    setTimeout(function(){  location.reload();},30000);
 });
 
 function getList(){

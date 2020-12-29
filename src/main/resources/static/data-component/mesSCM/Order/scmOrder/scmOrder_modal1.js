@@ -386,7 +386,7 @@ function jqGrid_modal1() { // 메인 그리드 설정
         height: 200,
         cellEdit: true,
         cellsubmit: 'clientArray',
-        rowNum: 100,
+        rowNum: 10000,
         beforeEditCell: function (id, name, val, IRow, ICol) {
             lastsel = id;
             saverow = IRow;

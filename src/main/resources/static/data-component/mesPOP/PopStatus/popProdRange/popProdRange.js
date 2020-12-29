@@ -176,40 +176,40 @@ function jqGrid_main() {
             // $('table.ui-jqgrid-ftable tr:first').children("td").css("font-size", "12px");
             // footer.css("border-left", "0.1px solid #EAEAEA")
             // $('table.ui-jqgrid-ftable tr:first').children("td").css("border", "0px solid #E1E1E1");
-
-
+            //
+            //
             // $('table.ui-jqgrid-ftable tr:first').children("td").css("border-top", "none");
             // $('table.ui-jqgrid-ftable tr:first').children("td").css("font")
             // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-top","5px");
             // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-bottom","5px");
-
-
+            //
+            //
             // $('table.ui-jqgrid-ftable td:eq(1)').hide();
             // $('table.ui-jqgrid-ftable td:eq(2)').hide();
             // $('table.ui-jqgrid-ftable td:eq(3)').hide();
             // $('table.ui-jqgrid-ftable td:eq(4)').hide();
-
+            //
             // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(1)').css("border-left", "0.1px solid #EAEAEA")
-
-
-
-
+            //
+            //
+            //
+            //
             // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(0)').css("border-rigth","none")
             //
             // $('table.ui-jqgrid-ftable tr:first td:eq(1), table.ui-jqgrid-ftable tr:first td:eq(1)').css("border-left","none")
             // $('table.ui-jqgrid-ftable tr:first td:eq(1), table.ui-jqgrid-ftable tr:first td:eq(1)').css("border-rigth","none")
-
-
-
+            //
+            //
+            //
             // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(6)').css("border-left","none")
             // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(7)').css("border-left","none")
             // $('table.ui-jqgrid-ftable tr:first td:eq(0), table.ui-jqgrid-ftable tr:first td:eq(8)').css("border-left","none")
-
-
+            //
+            //
             // $('table.ui-jqgrid-ftable tr:first td:eq(5)').append(" \u00A0");
             // $('table.ui-jqgrid-ftable tr:first td:eq(6)').append(" \u00A0");
             // $('table.ui-jqgrid-ftable tr:first td:eq(7)').append(" \u00A0");
-
+            //
             // var footer = $("table.ui-jqgrid-ftable tr:first td:eq(0)");
             // footer.css("color", "#2e6e9e");
             // footer.css("text-align", "left");
@@ -218,6 +218,8 @@ function jqGrid_main() {
             // $('table.ui-jqgrid-ftable tr:first td:eq(0),table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-top","8px");
             // $('table.ui-jqgrid-ftable tr:first td:eq(0),table.ui-jqgrid-ftable tr:first td:eq(4)').css("padding-bottom","8px");
             // $('table.ui-jqgrid-ftable tr:first td:eq(4)').append(" \u00A0");
+
+
             }
 
         }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});

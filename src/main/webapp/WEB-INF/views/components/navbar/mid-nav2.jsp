@@ -30,9 +30,17 @@
 
 
     }
+
     .title_text{
 
     position: relative;
+    }
+    .navbar{
+        background-image: url("ui-component/assets/images/nav.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        max-width: 100%;
+        height: auto;
     }
 
     .log_img {
@@ -42,7 +50,7 @@
         /*float: left;*/
         background-repeat: no-repeat;
         background-position: left;
-        background-size: 38%;
+        background-size: 29%;
         max-width: 100%;
         height: auto;
         display: block;
@@ -54,7 +62,7 @@
 
     <div id="navbar" class="navbar navbar-default ace-save-state h_8">
         <div class="navbar-container ace-save-state" id="navbar-container">
-            <div class="col-lg-12 " >
+            <div class="col-lg-12" >
                 <div class="row title_text h_100">
 
                     <div class="log_img col-lg-4 h_100"></div>

@@ -18,4 +18,10 @@
     EXEC [SP_POP_PROD_LEAD_TIME_GET3] 0,0
     </select>
 
+    <select id="boardListGet" resultType="com.mes.mesBoard.board.DTO.SYS_BOARD_FILE">
+    EXEC [SP_BOARD_LIST_GET] 0,0
+    </select>
+
+
+
 </mapper>

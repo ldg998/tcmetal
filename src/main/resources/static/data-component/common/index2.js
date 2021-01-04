@@ -19,7 +19,7 @@ $(document).ready(function () {
     jqGridResize("#mes_grid4", $('#mes_grid4').closest('[class*="col-"]'));
     jqgridPagerIcons();
     getList();
-    setTimeout(function(){  location.reload();},30000);
+    setTimeout(function(){  location.reload();},60000);
 });
 
 function getList(){
@@ -51,25 +51,28 @@ function getList(){
 
 
 function jqGrid_main() {
+    var height = 370;
+
+
     $("#mes_grid").jqGrid({
         mtype: "POST",
         datatype: "local",
         caption: "생산모니터링 | MES",
         colNames: ['공정','업체','기종','품명','품번','LOT','등록자'],
         colModel: [
-            {name: 'line_name', index: 'line_name', sortable: false, width: 70,fixed:true},
+            {name: 'line_name', index: 'line_name', sortable: false, width: 60,fixed:true},
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 120,fixed:true},
             {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 130,fixed:true},
-            {name: 'lot_no', index: 'lot', sortable: false, width: 150,fixed:true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 70,fixed:true}
+            {name: 'lot_no', index: 'lot', sortable: false, width: 60,fixed:true},
+            {name: 'user_name', index: 'user_name', sortable: false, width: 60,fixed:true}
         ],
         autowidth: true,
         viewrecords: true,
-        height: 385,
-        rowNum: 100,
-        rowList: [100, 200, 300, 500, 1000],
+        height: height,
+        rowNum: 10000,
+        rowList: [10000],
 
 
         onCellSelect: function (rowid, icol, cellcontent, e) {
@@ -95,17 +98,17 @@ function jqGrid_main() {
             {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
             {name: 'part_kind', index: 'part_kind', sortable: false, width: 120,fixed:true},
             {name: 'part_code', index: 'part_code', sortable: false, width: 130,fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
-            {name: 'plan_qty', index: 'plan_qty', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
+            {name: 'part_name', index: 'part_name', sortable: false, width: 170,fixed:true},
+            {name: 'part_weight', index: 'part_weight', sortable: false, width: 70,fixed:true,align: 'right', formatter: 'integer'},
+            {name: 'plan_qty', index: 'plan_qty', sortable: false, width: 60,fixed:true,align: 'right', formatter: 'integer'},
             {name: 'user_name', index: 'user_name', sortable: false, width: 70,fixed:true},
 
         ],
         autowidth: true,
         viewrecords: true,
-        height: 385,
-        rowNum: 100,
-        rowList: [100, 200, 300, 500, 1000],
+        height: height,
+        rowNum: 10000,
+        rowList: [10000],
 
 
         onCellSelect: function (rowid, icol, cellcontent, e) {
@@ -127,7 +130,7 @@ function jqGrid_main() {
         colNames: ['업체','기종','품번','품명','단중','제품LOT','검사결과','등록자'],
         colModel: [
             {name: 'supp_name', index: 'supp_name', sortable:false, width: 130, fixed:true},
-            {name: 'part_kind', index: 'part_kind', sortable:false, width: 130, fixed:true},
+            {name: 'part_kind', index: 'part_kind', sortable:false, width: 100, fixed:true},
             {name: 'part_code', index: 'part_code', sortable:false, width: 130, fixed:true},
             {name: 'part_name', index: 'part_name', sortable:false, width: 190, fixed:true},
             {name: 'part_weight', index: 'part_weight', sortable:false, width: 90, fixed:true,align:'right',formatter:'integer'},
@@ -139,9 +142,9 @@ function jqGrid_main() {
         ],
         autowidth: true,
         viewrecords: true,
-        height: 385,
-        rowNum: 100,
-        rowList: [100, 200, 300, 500, 1000],
+        height: height,
+        rowNum: 10000,
+        rowList: [10000],
 
 
         onCellSelect: function (rowid, icol, cellcontent, e) {
@@ -163,22 +166,21 @@ function jqGrid_main() {
         colNames: ['공정','업체','기종','품번','품명','단중','LOT','리드타임'],
         colModel: [
             {name: 'line_name', index: 'line_name', sortable: false,fixed:true ,width:80},
-            {name: 'supp_name', index: 'supp_name', sortable: false, fixed:true,width:80},
+            {name: 'supp_name', index: 'supp_name', sortable: false, fixed:true,width:130},
             {name: 'part_kind', index: 'part_kind', sortable: false, fixed:true,width:80},
-            {name: 'part_code', index: 'plan_code', sortable: false, fixed:true,width:80},
-            {name: 'part_name', index: 'part_name', sortable: false, fixed:true,width:80},
-            {name: 'part_weight', index: 'part_weight', sortable: false, fixed:true,align: 'right', formatter: 'integer',width:80},
-            {name: 'lot_no', index: 'lot_no', sortable: false, fixed:true,width:80},
-            {name: 'read_time', index: 'read_time', sortable: false,fixed:true,align: 'right', formatter: 'integer',width:80}
+            {name: 'part_code', index: 'plan_code', sortable: false, fixed:true,width:130},
+            {name: 'part_name', index: 'part_name', sortable: false, fixed:true,width:160},
+            {name: 'part_weight', index: 'part_weight', sortable: false, fixed:true,align: 'right', formatter: 'integer',width:70},
+            {name: 'lot_no', index: 'lot_no', sortable: false, fixed:true,width:60},
+            {name: 'read_time', index: 'read_time', sortable: false,fixed:true,align: 'right', formatter: 'integer',width:70}
 
 
         ],
         viewrecords: true,
-        Width: 800,
-        height: 385,
-
-        rowNum: 100,
-        rowList: [100, 200, 300, 500, 1000],
+        autowidth: true,
+        height: height,
+        rowNum: 10000,
+        rowList: [10000],
 
 
         onCellSelect: function (rowid, icol, cellcontent, e) {

@@ -2,21 +2,71 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <style>
+    #mes_grid {
+        color: #ffffff;
+    }
+
+    #mes_grid2 {
+        color: #ffffff;
+    }
+
+    #mes_grid3 {
+        color: #ffffff;
+    }
+
+    #mes_grid4 {
+        color: #ffffff;
+    }
+
+    .table-responsive {
+        padding: 6px !important;
+    }
+
+    .ui-jqgrid-labels {
+
+    }
+
+    .ui-jqgrid-bdiv {
+        /*width: 90%;*/
+        color: #F0F9FF;
+    }
+
+    .ui-jqgrid-view > .ui-jqgrid-titlebar {
+        /*width: 90%;*/
+    }
+
+    .table_title {
+        color: #F0F9FF;
+        font-size: 1.8em;
+
+    }
+
     .lo {
         /*background-color: #0b2e13;*/
         height: 90% !important;
-        padding: 2px;!important;
-        margin: 6px;!important;
-        border: 1px #ffffff solid;
+        padding: 2px;
+    !important;
+        margin: 6px;
+    !important;
+        border: 2px rgba(192, 192, 192, 0.7) solid;
+        border-radius: 15px;
+        background-color: rgba(28, 22, 22, 0.4);
     }
 
     .lo2 {
-        /*background-color: red;*/
-        height: 100% !important;
-        padding: 0;
-    !important;
+
+        margin: 5px;
+
+        padding-top: 10px;
+        height: 98%;
+        border: 2px rgba(192, 192, 192, 0.7) solid;
+        border-radius: 15px;
+
+        background-color: rgba(21, 17, 17, 0.4);
     }
 
     .main-content:before {
@@ -76,16 +126,34 @@
         height: 100% !important;
     }
 
+    .mark_img {
+        background-image: url("/ui-component/assets/images/mark.png");
+        background-color: #000000;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 15px;
+        height: 15px;
+        max-width: 15px;
+
+        margin: auto;
+
+    }
+
     .back_img {
+        margin: 0px;
+        padding: 0px;
+        height: 92%;
         /*/ui-component/assets/images/main/main.jpg */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url("/ui-component/assets/images/main/main.jpg");
+        background-image: linear-gradient(rgba(20, 20, 20, 0.7) 100%, rgba(20, 20, 20, 0.7) 100%), url("/ui-component/assets/images/main/main3.jpg");
         opacity: 1;
         background-size: 98%;
         position: relative;
-        z-index: -1;
+
+        /*z-index: -10;*/
 
 
     }
+
 
     /*.back_img:after {*/
     /*    width: 100%;*/
@@ -98,55 +166,299 @@
     /*    z-index: -1;*/
     /*    opacity: 0.5;*/
     /*}*/
+
+    .thFont{
+        background: linear-gradient(to bottom, #504b4b 0%, #807a7a 50%,#504b4b 100%);
+        border: 1px #4f6e86 solid;
+
+    }
+    .thFont > th {
+        text-align: center;
+        color: #0b0d0f;
+        font-weight:bolder ;
+    }
+    .tdFont{
+        color: #d5d3d3;
+        text-align: center;
+    }
+
 </style>
 
 <!DOCTYPE html>
 <tiles:insertAttribute name="header"/>
 <script type="text/javascript" src="/data-component/common/index2.js" charset="UTF-8"></script>
 <html>
-<body class="no-skin ">
+<body style="">
 <tiles:insertAttribute name="mid"/>
-<div class="main-container ace-save-state " id="main-container">
+<div class="main-container ace-save-state" id="main-container">
     <div class="main-content-inner col-lg-12 back_img">
 
-        <div class="row h_46">
-            <div class="col-lg-6">
-                <div class="lo table-responsive">
+        <div class="lo2 col-lg-12">
+            <div class="row h_50">
+                <div class="col-lg-6">
+                    <div class="lo col-xs-12 table-responsive">
+                        <span>
+                            <i class="fa mark_img"></i>
+                                <span class="table_title">&nbsp; 생산모니터링</span>
+                            </span>
 
-                    <table id="mes_grid"></table>
+                        <table style="width: 100%;" border="1">
+                            <colgroup>
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="19%">
+                                <col width="17%">
+                                <col width="9%">
+                                <col width="10%">
+                            </colgroup>
+
+                            <thead >
+                            <tr class="thFont" style="height: 40px;">
+                                <th>공정</th>
+                                <th>업체</th>
+                                <th>기종</th>
+                                <th>품명</th>
+                                <th>품번</th>
+                                <th>LOT</th>
+                                <th>등록자</th>
+
+                            </tr>
+                            </thead>
+
+                            <c:forEach var="list" items="${list}"  varStatus="status">
+                            <tbody>
+                            <tr class="tdFont"  style="height: 40px;">
+                                <td>${list.line_name}</td>
+                                <td>${list.supp_name}</td>
+                                <td>${list.part_kind}</td>
+                                <td>${list.part_name}</td>
+                                <td>${list.part_code}</td>
+                                <td>${list.lot_no}</td>
+                                <td>${list.user_name}</td>
+                            </tr>
+                            </tbody>
+                            </c:forEach>
+                            <c:if test="${lg < 7}">
+                              <c:forEach var="i" begin="${lg}" end="7" step="1">
+                                  <tbody>
+                                  <tr style="height: 40px;">
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                  </tr>
+                                  </tbody>
+                              </c:forEach>
+                            </c:if>
+                        </table>
+                        <%--<table id="mes_grid"></table>--%>
 
 
-                </div><%--end lo--%>
-            </div> <%-- end col-lg-6 --%>
+
+                    </div>
+                    <%--end lo--%>
+                </div>
+                <%-- end col-lg-6 --%>
 
 
-            <div class="col-lg-6">
-                <div class="lo table-responsive">
-                    <table id="mes_grid2"></table>
+                <div class="col-lg-6">
+                    <div class="lo col-xs-12 table-responsive">
+                         <span>
+                                <i class="fa mark_img"></i>
+                                <span class="table_title">&nbsp; 용해 주입 일보현황</span>
+                            </span>
+                        <table style="width: 100%;" border="1">
+                            <colgroup>
+                                <col width="17%">
+                                <col width="17%">
+                                <col width="16%">
+                                <col width="17%">
+                                <col width="17%">
+                                <col width="15%">
+                            </colgroup>
 
-                </div><%--end lo--%>
-            </div> <%-- end col-lg-6 --%>
+                            <thead >
+                            <tr class="thFont" style="height: 40px;">
+                                <th>CGH</th>
+                                <th>업체</th>
+                                <th>기종</th>
+                                <th>품명</th>
+                                <th>품번</th>
+                                <th>등록자</th>
+
+                            </tr>
+                            </thead>
+
+                            <c:forEach var="list" items="${list2}"  varStatus="status">
+                                <tbody>
+                                <tr class="tdFont" style="height: 40px;">
+                                    <td>${list.line_name}</td>
+                                    <td>${list.supp_name}</td>
+                                    <td>${list.part_kind}</td>
+                                    <td>${list.part_name}</td>
+                                    <td>${list.part_code}</td>
+                                    <td>${list.lot_no}</td>
+                                    <td>${list.user_name}</td>
+                                </tr>
+                                </tbody>
+                            </c:forEach>
+                            <c:if test="${lg2 < 7}">
+                                <c:forEach var="i" begin="${lg2}" end="7" step="1">
+                                    <tbody>
+                                    <tr style="height: 40px;">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    </tbody>
+                                </c:forEach>
+                            </c:if>
+                        </table>
+
+
+                        <%--<table id="mes_grid2"></table>--%>
+                    </div>
+                    <%--end lo--%>
+                </div>
+                <%-- end col-lg-6 --%>
+
+            </div>
+
+
+            <%-- 아래쪽--%>
+            <div class="row h_50">
+                <div class="col-lg-6">
+                    <div class="lo col-xs-12 table-responsive">
+                        <span>
+                                <i class="fa mark_img"></i>
+                                <span class="table_title">&nbsp; 중간검사현황</span>
+                            </span>
+
+                        <table style="width: 100%;" border="1">
+                            <colgroup>
+                                <col width="22%">
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="8%">
+                                <col width="10%">
+                            </colgroup>
+
+                            <thead >
+                            <tr class="thFont" style="height: 40px;">
+                                <th>업체</th>
+                                <th>기종</th>
+                                <th>품명</th>
+                                <th>품번</th>
+                                <th>LOT</th>
+                                <th>결과</th>
+                                <th>등록자</th>
+
+                            </tr>
+                            </thead>
+
+                            <c:forEach var="list" items="${list3}"  varStatus="status">
+                                <tbody>
+                                <tr class="tdFont" style="height: 40px;">
+                                    <td>${list.supp_name}</td>
+                                    <td>${list.part_kind}</td>
+                                    <td>${list.part_name}</td>
+                                    <td>${list.part_code}</td>
+                                    <td>${list.lot_no}</td>
+                                    <td>${list.qc_result_name}</td>
+                                    <td>${list.user_name}</td>
+                                </tr>
+                                </tbody>
+                            </c:forEach>
+                            <c:if test="${lg3 < 7}">
+                                <c:forEach var="i" begin="${lg3}" end="7" step="1">
+                                    <tbody>
+                                    <tr style="height: 40px;">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </c:forEach>
+                            </c:if>
+                        </table>
+                        <%--<table id="mes_grid3"></table>--%>
+                    </div>
+                    <%--end lo--%>
+                </div>
+                <%-- end col-lg-6 --%>
+
+                <div class="col-lg-6">
+                    <div class="lo col-xs-12 table-responsive">
+                        <span>
+                                <i class="fa mark_img"></i>
+                                <span class="table_title">&nbsp; 공지사항</span>
+                            </span>
+
+
+                        <table style="width: 100%;" border="1">
+                            <colgroup>
+                                <col width="65%">
+                                <col width="20%">
+                                <col width="15%">
+
+                            </colgroup>
+
+                            <thead >
+                            <tr class="thFont" style="height: 40px;">
+                                <th>제목</th>
+                                <th>작성자</th>
+                                <th>작성일</th>
+                            </tr>
+                            </thead>
+
+                            <c:forEach var="list" items="${list5}"  varStatus="status">
+                                <tbody>
+                                <tr class="tdFont" style="height: 40px;">
+                                    <td>${list.subject}</td>
+                                    <td>${list.user_name}</td>
+                                    <td>${list.work_date2}</td>
+
+                                </tr>
+                                </tbody>
+                            </c:forEach>
+                            <c:if test="${lg5 < 7}">
+                                <c:forEach var="i" begin="${lg5}" end="7" step="1">
+                                    <tbody>
+                                    <tr style="height: 40px;">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    </tbody>
+                                </c:forEach>
+                            </c:if>
+                        </table>
+
+                        <%--<table id="mes_grid4"></table>--%>
+                    </div>
+                    <%--end lo--%>
+                </div>
+                <%-- end col-lg-6 --%>
+            </div>
+
 
         </div>
-
-        <div class="row h_46">
-            <div class="col-lg-6">
-                <div class="lo table-responsive">
-                    <table id="mes_grid3"></table>
-
-                </div><%--end lo--%>
-            </div> <%-- end col-lg-6 --%>
-
-            <div class="col-lg-6">
-                <div class="lo table-responsive">
-                    <table id="mes_grid4"></table>
-
-                </div><%--end lo--%>
-            </div> <%-- end col-lg-6 --%>
-        </div>
-
     </div>
-</div>
 </div>
 
 </body>

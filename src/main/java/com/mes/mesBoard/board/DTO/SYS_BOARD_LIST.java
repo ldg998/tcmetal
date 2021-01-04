@@ -17,6 +17,9 @@ public class SYS_BOARD_LIST {
     private String create_date;
     private String update_date;
     private String type;
+    private String work_date;
+    private String work_date2;
+
 
     private MultipartFile file_0;
     private MultipartFile file_1;

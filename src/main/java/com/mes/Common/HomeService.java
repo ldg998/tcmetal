@@ -3,6 +3,7 @@ package com.mes.Common;
 
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Mapper.Home.Home.HomeMapper;
+import com.mes.mesBoard.board.DTO.SYS_BOARD_FILE;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesQms.Middle.DTO.QMS_PROD;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,8 @@ public class HomeService {
 
     public List<POP_PLAN> prodLeadTimeGet(HttpServletRequest req, Page p) {
         return mapper.prodLeadTimeGet(req);
+    }
+
+    public List<SYS_BOARD_FILE> boardListGet(HttpServletRequest req, Page p) {return mapper.boardListGet(req);
     }
 }

@@ -168,20 +168,23 @@
     /*}*/
 
     .thFont{
-        background: linear-gradient(to bottom, #504b4b 0%, #807a7a 50%,#504b4b 100%);
-        border: 1px #4f6e86 solid;
+        /*background: linear-gradient(to bottom, #504b4b 0%, #807a7a 50%,#504b4b 100%);*/
+        background-color : #504b4b;
+        border: 1px #ffffff solid;
 
     }
     .thFont > th {
         text-align: center;
-        color: #0b0d0f;
+        color: #d5d3d3;
         font-weight:bolder ;
     }
     .tdFont{
         color: #d5d3d3;
         text-align: center;
     }
-
+    .table_border {
+        border-color : #ffffff;
+    }
 </style>
 
 <!DOCTYPE html>
@@ -202,7 +205,7 @@
                                 <span class="table_title">&nbsp; 생산모니터링</span>
                             </span>
 
-                        <table style="width: 100%;" border="1">
+                        <table style="width: 100%;" border="1" class="table_border">
                             <colgroup>
                                 <col width="15%">
                                 <col width="15%">
@@ -222,7 +225,6 @@
                                 <th>품번</th>
                                 <th>LOT</th>
                                 <th>등록자</th>
-
                             </tr>
                             </thead>
 
@@ -271,7 +273,7 @@
                                 <i class="fa mark_img"></i>
                                 <span class="table_title">&nbsp; 용해 주입 일보현황</span>
                             </span>
-                        <table style="width: 100%;" border="1">
+                        <table style="width: 100%;" border="1" class="table_border">
                             <colgroup>
                                 <col width="17%">
                                 <col width="17%">
@@ -341,7 +343,7 @@
                                 <span class="table_title">&nbsp; 중간검사현황</span>
                             </span>
 
-                        <table style="width: 100%;" border="1">
+                        <table style="width: 100%;" border="1" class="table_border">
                             <colgroup>
                                 <col width="22%">
                                 <col width="15%">
@@ -408,7 +410,7 @@
                             </span>
 
 
-                        <table style="width: 100%;" border="1">
+                        <table style="width: 100%;" border="1" class="table_border">
                             <colgroup>
                                 <col width="65%">
                                 <col width="20%">

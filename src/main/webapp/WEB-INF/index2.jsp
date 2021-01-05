@@ -105,7 +105,9 @@
     .h_50 {
         height: 50% !important;
     }
-
+    .h_55 {
+        height: 55% !important;
+    }
     .h_60 {
         height: 60% !important;
     }
@@ -185,6 +187,14 @@
     .table_border {
         border-color : #ffffff;
     }
+
+    .box {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    .box::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+    }
 </style>
 
 <!DOCTYPE html>
@@ -204,8 +214,7 @@
                             <i class="fa mark_img"></i>
                                 <span class="table_title">&nbsp; 생산모니터링</span>
                             </span>
-
-                        <table style="width: 100%;" border="1" class="table_border">
+                        <table style="width: 100%;" border="1" class="table_border box">
                             <colgroup>
                                 <col width="15%">
                                 <col width="15%">
@@ -215,8 +224,7 @@
                                 <col width="9%">
                                 <col width="10%">
                             </colgroup>
-
-                            <thead >
+                            <thead>
                             <tr class="thFont" style="height: 40px;">
                                 <th>공정</th>
                                 <th>업체</th>
@@ -227,39 +235,10 @@
                                 <th>등록자</th>
                             </tr>
                             </thead>
-
-                            <c:forEach var="list" items="${list}"  varStatus="status">
-                            <tbody>
-                            <tr class="tdFont"  style="height: 40px;">
-                                <td>${list.line_name}</td>
-                                <td>${list.supp_name}</td>
-                                <td>${list.part_kind}</td>
-                                <td>${list.part_name}</td>
-                                <td>${list.part_code}</td>
-                                <td>${list.lot_no}</td>
-                                <td>${list.user_name}</td>
-                            </tr>
+                            <tbody class="list1">
                             </tbody>
-                            </c:forEach>
-                            <c:if test="${lg < 7}">
-                              <c:forEach var="i" begin="${lg}" end="7" step="1">
-                                  <tbody>
-                                  <tr style="height: 40px;">
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                  </tr>
-                                  </tbody>
-                              </c:forEach>
-                            </c:if>
                         </table>
                         <%--<table id="mes_grid"></table>--%>
-
-
 
                     </div>
                     <%--end lo--%>
@@ -273,7 +252,7 @@
                                 <i class="fa mark_img"></i>
                                 <span class="table_title">&nbsp; 용해 주입 일보현황</span>
                             </span>
-                        <table style="width: 100%;" border="1" class="table_border">
+                        <table style="width: 100%;" border="1" class="table_border box">
                             <colgroup>
                                 <col width="17%">
                                 <col width="17%">
@@ -295,33 +274,10 @@
                             </tr>
                             </thead>
 
-                            <c:forEach var="list" items="${list2}"  varStatus="status">
-                                <tbody>
-                                <tr class="tdFont" style="height: 40px;">
-                                    <td>${list.charge}</td>
-                                    <td>${list.supp_name}</td>
-                                    <td>${list.part_kind}</td>
-                                    <td>${list.part_name}</td>
-                                    <td>${list.part_code}</td>
-                                    <td>${list.user_name}</td>
-                                </tr>
-                                </tbody>
-                            </c:forEach>
-                            <c:if test="${lg2 < 7}">
-                                <c:forEach var="i" begin="${lg2}" end="7" step="1">
-                                    <tbody>
-                                    <tr style="height: 40px;">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                <tbody class="list2">
 
-                                    </tr>
-                                    </tbody>
-                                </c:forEach>
-                            </c:if>
+                                </tbody>
+
                         </table>
 
 
@@ -343,7 +299,7 @@
                                 <span class="table_title">&nbsp; 중간검사현황</span>
                             </span>
 
-                        <table style="width: 100%;" border="1" class="table_border">
+                        <table style="width: 100%;" border="1" class="table_border box">
                             <colgroup>
                                 <col width="22%">
                                 <col width="15%">
@@ -367,34 +323,12 @@
                             </tr>
                             </thead>
 
-                            <c:forEach var="list" items="${list3}"  varStatus="status">
-                                <tbody>
-                                <tr class="tdFont" style="height: 40px;">
-                                    <td>${list.supp_name}</td>
-                                    <td>${list.part_kind}</td>
-                                    <td>${list.part_name}</td>
-                                    <td>${list.part_code}</td>
-                                    <td>${list.lot_no}</td>
-                                    <td>${list.qc_result_name}</td>
-                                    <td>${list.user_name}</td>
-                                </tr>
+
+                                <tbody class="list3">
+
                                 </tbody>
-                            </c:forEach>
-                            <c:if test="${lg3 < 7}">
-                                <c:forEach var="i" begin="${lg3}" end="7" step="1">
-                                    <tbody>
-                                    <tr style="height: 40px;">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    </tbody>
-                                </c:forEach>
-                            </c:if>
+
+
                         </table>
                         <%--<table id="mes_grid3"></table>--%>
                     </div>
@@ -410,7 +344,7 @@
                             </span>
 
 
-                        <table style="width: 100%;" border="1" class="table_border">
+                        <table style="width: 100%;" border="1" class="table_border box">
                             <colgroup>
                                 <col width="65%">
                                 <col width="20%">
@@ -426,28 +360,11 @@
                             </tr>
                             </thead>
 
-                            <c:forEach var="list" items="${list5}"  varStatus="status">
-                                <tbody>
-                                <tr class="tdFont" style="height: 40px;">
-                                    <td>${list.subject}</td>
-                                    <td>${list.user_name}</td>
-                                    <td>${list.work_date2}</td>
 
-                                </tr>
+                                <tbody class="list4">
+
                                 </tbody>
-                            </c:forEach>
-                            <c:if test="${lg5 < 7}">
-                                <c:forEach var="i" begin="${lg5}" end="7" step="1">
-                                    <tbody>
-                                    <tr style="height: 40px;">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
 
-                                    </tr>
-                                    </tbody>
-                                </c:forEach>
-                            </c:if>
                         </table>
 
                         <%--<table id="mes_grid4"></table>--%>

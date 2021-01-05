@@ -2,9 +2,6 @@ package com.mes.Common;
 
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.Function.ReturnFunction;
-import com.mes.mesBoard.board.DTO.SYS_BOARD_FILE;
-import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
-import com.mes.mesQms.Middle.DTO.QMS_PROD;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.List;
 
 @Controller
 @Slf4j
@@ -43,23 +39,8 @@ public class HomeController extends ReturnFunction {
     public String index2(HttpServletRequest req, Page p){
 
         req.setAttribute("home","home");
-        List<POP_PLAN> l1 =homeService.monitoringGet(req,p);
-        List<POP_PLAN> l2 = homeService.prodReport1Get(req, p);
-        List<QMS_PROD> l3 = homeService.prodMiddleListGet(req, p);
-        List<POP_PLAN> l4 =homeService.prodLeadTimeGet(req, p);
-        List<SYS_BOARD_FILE> l5 =homeService.boardListGet(req, p);
 
-        req.setAttribute("list",l1);
-        req.setAttribute("list2",l2);
-        req.setAttribute("list3",l3);
-        req.setAttribute("list4",l4);
-        req.setAttribute("list5",l5);
 
-        req.setAttribute("lg",l1.size());
-        req.setAttribute("lg2",l2.size());
-        req.setAttribute("lg3",l3.size());
-        req.setAttribute("lg4",l4.size());
-        req.setAttribute("lg5",l5.size());
         return "index2";
     }
 

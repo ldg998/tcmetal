@@ -2,21 +2,16 @@ $(document).ready(function () {
     Start()
     timerId = setInterval(Start,10000)
 
-
-
     // jqGrid_main();
     // jqGridResize("#mes_grid",  $('#mes_grid').closest('[class*="col-"]'));
     // jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));
     // jqGridResize("#mes_grid3", $('#mes_grid3').closest('[class*="col-"]'));
     // jqGridResize("#mes_grid4", $('#mes_grid4').closest('[class*="col-"]'));
     // jqgridPagerIcons();
-
     //getList();
     // setTimeout(function(){ },60000);
 
-
 });
-
 function Start() {
     var today = new Date();
     var year = today.getFullYear(); // 년도
@@ -27,6 +22,8 @@ function Start() {
     var minutes = today.getMinutes();  // 분
 
     $(".day_dong").html(year + "년 " + month + "월 " + date + "일 " +" "+hours+"시 " + minutes +"분");
+    table_set();
+
 }
 
 function getList(){
@@ -54,6 +51,140 @@ function getList(){
         page: 0
     }).trigger("reloadGrid");
 }
+
+function table_set(){
+    $(".list1").empty();
+    var tbody =  $(".list1");
+
+    $(".list2").empty();
+    var tbody2 =  $(".list2");
+
+    $(".list3").empty();
+    var tbody3 =  $(".list3");
+
+    $(".list4").empty();
+    var tbody4 =  $(".list4");
+
+
+    ccn_ajax("/monitoringGet",{}).then(function (data) {
+        data.forEach(function (list) {
+
+            var list1 = "<tr class=\"tdFont\"  style=\"height: 40px;\">" +
+                "<td> "+list.line_name+"</td>"
+            list1 += "  <td>"+list.supp_name+"</td>"
+            list1 += " <td>"+list.part_kind +"</td>"
+            list1 += " <td>"+ list.part_name +"</td>"
+            list1 += " <td>"+ list.part_code +"</td>"
+            list1 += " <td>"+ list.lot_no +"</td> "
+            list1 += " <td>"+ list.user_name +"</td>"
+             list1 += "</tr>"
+
+            tbody.append(list1);
+
+        })
+        for(var i = data.length; i < 7; i++){
+            var addList ="<tr class=\"tdFont\" style=\"height: 40px;\">" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "</tr>"
+
+            tbody.append(addList);
+        }
+    })
+
+
+    ccn_ajax("/prodReport1Get",{}).then(function (data) {
+        data.forEach(function (list) {
+            var list2 = " <tr class=\"tdFont\" style=\"height: 40px;\">\n" +
+                "                                    <td>"+list.charge+"</td>\n" +
+                "                                    <td>"+list.supp_name+"</td>\n" +
+                "                                    <td>"+list.part_kind+"</td>\n" +
+                "                                    <td>"+list.part_name+"</td>\n" +
+                "                                    <td>"+list.part_code+"</td>\n" +
+                "                                    <td>"+list.user_name+"</td>\n" +
+                "                                </tr>"
+
+            tbody2.append(list2);
+        })
+        for(var i = data.length; i < 7; i++){
+            var addList ="<tr class=\"tdFont\" style=\"height: 40px;\">" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "</tr>"
+
+            tbody2.append(addList);
+        }
+
+    })
+
+    ccn_ajax("/prodMiddleListGet",{}).then(function (data) {
+        data.forEach(function (list) {
+            var list3 =" <tr class=\"tdFont\" style=\"height: 40px;\">\n" +
+                "                                    <td>"+list.supp_name+"</td>\n" +
+                "                                    <td>"+list.part_kind+"</td>\n" +
+                "                                    <td>"+list.part_name+"</td>\n" +
+                "                                    <td>"+list.part_code+"</td>\n" +
+                "                                    <td>"+list.lot_no+"</td>\n" +
+                "                                    <td>"+list.qc_result_name+"</td>\n" +
+                "                                    <td>"+list.user_name+"</td>\n" +
+                "                                </tr>"
+
+            tbody3.append(list3);
+        })
+
+        for(var i = data.length; i < 7; i++){
+            var addList ="<tr class=\"tdFont\" style=\"height: 40px;\">" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "<td></td>" +
+                "</tr>"
+
+            tbody3.append(addList);
+        }
+    })
+
+    ccn_ajax("/boardListGet",{}).then(function (data) {
+        data.forEach(function (list) {
+
+            var list4 =" <tr class=\"tdFont\" style=\"height: 40px;\">\n" +
+                "                                    <td>"+list.subject+"</td>\n" +
+                "                                    <td>"+list.user_name+"</td>\n" +
+                "                                    <td>"+list.work_date2+"</td>\n" +
+                "\n" +
+                "                                </tr>"
+            tbody4.append(list4);
+        })
+
+        for(var i = data.length; i < 7; i++){
+           var addList ="<tr class=\"tdFont\" style=\"height: 40px;\">" +
+               "<td></td>" +
+               "<td></td>" +
+               "<td></td>" +
+               "</tr>"
+
+            tbody4.append(addList);
+        }
+
+    })
+
+
+
+}
+
+
 
 
 

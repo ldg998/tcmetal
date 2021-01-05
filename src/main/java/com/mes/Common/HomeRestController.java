@@ -1,6 +1,7 @@
 package com.mes.Common;
 
 import com.mes.Common.DataTransferObject.Page;
+import com.mes.mesBoard.board.DTO.SYS_BOARD_FILE;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
 import com.mes.mesQms.Middle.DTO.QMS_PROD;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,11 @@ public class HomeRestController {
      @RequestMapping(value = "/prodLeadTimeGet", method = RequestMethod.POST)
     public List<POP_PLAN> prodLeadTimeGet(HttpServletRequest req, Page p){
         return homeService.prodLeadTimeGet(req, p);
+    }
+
+ @RequestMapping(value = "/boardListGet", method = RequestMethod.POST)
+    public List<SYS_BOARD_FILE> boardListGet(HttpServletRequest req, Page p){
+        return homeService.boardListGet(req, p);
     }
 
 

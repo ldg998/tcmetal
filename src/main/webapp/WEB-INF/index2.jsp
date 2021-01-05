@@ -296,12 +296,11 @@
                             <c:forEach var="list" items="${list2}"  varStatus="status">
                                 <tbody>
                                 <tr class="tdFont" style="height: 40px;">
-                                    <td>${list.line_name}</td>
+                                    <td>${list.charge}</td>
                                     <td>${list.supp_name}</td>
                                     <td>${list.part_kind}</td>
                                     <td>${list.part_name}</td>
                                     <td>${list.part_code}</td>
-                                    <td>${list.lot_no}</td>
                                     <td>${list.user_name}</td>
                                 </tr>
                                 </tbody>

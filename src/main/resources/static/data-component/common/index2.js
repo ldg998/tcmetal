@@ -1,8 +1,24 @@
 $(document).ready(function () {
-    //
+    Start()
+    timerId = setInterval(Start,10000)
 
+
+
+    // jqGrid_main();
+    // jqGridResize("#mes_grid",  $('#mes_grid').closest('[class*="col-"]'));
+    // jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));
+    // jqGridResize("#mes_grid3", $('#mes_grid3').closest('[class*="col-"]'));
+    // jqGridResize("#mes_grid4", $('#mes_grid4').closest('[class*="col-"]'));
+    // jqgridPagerIcons();
+
+    //getList();
+    // setTimeout(function(){ },60000);
+
+
+});
+
+function Start() {
     var today = new Date();
-
     var year = today.getFullYear(); // 년도
     var month = today.getMonth() + 1;  // 월
     var date = today.getDate();  // 날짜
@@ -10,17 +26,8 @@ $(document).ready(function () {
     var hours = today.getHours(); // 시
     var minutes = today.getMinutes();  // 분
 
-
     $(".day_dong").html(year + "년 " + month + "월 " + date + "일 " +" "+hours+"시 " + minutes +"분");
-    jqGrid_main();
-    jqGridResize("#mes_grid",  $('#mes_grid').closest('[class*="col-"]'));
-    jqGridResize("#mes_grid2", $('#mes_grid2').closest('[class*="col-"]'));
-    jqGridResize("#mes_grid3", $('#mes_grid3').closest('[class*="col-"]'));
-    jqGridResize("#mes_grid4", $('#mes_grid4').closest('[class*="col-"]'));
-    jqgridPagerIcons();
-    getList();
-    setTimeout(function(){  location.reload();},60000);
-});
+}
 
 function getList(){
     $("#mes_grid").setGridParam({

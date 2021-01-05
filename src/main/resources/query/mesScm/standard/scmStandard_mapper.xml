@@ -10,8 +10,11 @@
 
 
     <select id="sysPartGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
-        	EXEC SP_SYS_PART_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
+        	EXEC SP_SYS_PART_GET3 #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{sidx},#{sord}
     </select>
+
+
+
     <select id="sysPartOneGet" resultType="com.mes.mesScm.Standard.DTO.SYS_PART_CD">
         	EXEC SP_SYS_PART_GET 1,1,#{keyword},#{keyword2},#{keyword3}
     </select>
@@ -38,7 +41,7 @@
     </select>
 
     <select id="sysLocGet" resultType="com.mes.mesScm.Standard.DTO.sysLoc">
-        EXEC SP_SYS_LOC_GET #{page}, #{rows},'',#{keyword}
+        EXEC SP_SYS_LOC_GET2 #{page}, #{rows},'',#{keyword},#{sidx},#{sord}
     </select>
 
     <select id="sysLocOneGet" resultType="com.mes.mesScm.Standard.DTO.sysLoc">

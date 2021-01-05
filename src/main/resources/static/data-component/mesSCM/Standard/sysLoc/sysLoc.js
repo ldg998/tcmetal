@@ -134,6 +134,10 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000], // 페이지당 데이터 수 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
         multiselect: true, // 다중선택 가능
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
+
         beforeSelectRow: function (rowid, e) {    // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

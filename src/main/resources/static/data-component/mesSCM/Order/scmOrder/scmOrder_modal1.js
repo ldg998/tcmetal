@@ -265,14 +265,17 @@ function jqGrid_modal1() { // 메인 그리드 설정
         caption: "발주추가 | MES",
         colNames: [ '구분', '품번', '품명', '규격', '단위'],
         colModel: [
-            {name: 'part_type_name', index: 'part_type_name', sortable: false},
-            {name: 'part_code',key:true, index: 'part_code', sortable: false},
-            {name: 'part_name', index: 'part_name', sortable: false},
-            {name: 'spec', index: 'spec', sortable: false},
-            {name: 'unit_name', index: 'unit_name', sortable: false}
+            {name: 'part_type_name', index: 'part_type_name',width: 70, fixed:true},
+            {name: 'part_code',key:true, index: 'part_code',width: 90, fixed:true},
+            {name: 'part_name', index: 'part_name',width: 160, fixed:true},
+            {name: 'spec', index: 'spec',width: 90, fixed:true},
+            {name: 'unit_name', index: 'unit_name',width: 60, fixed:true}
         ],
         autowidth: true,
-        height: 200,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
+        height: 350,
         rowNum: 10000,
         rowList: [10000, 200, 300, 500, 1000],
         loadComplete:function(){
@@ -288,12 +291,12 @@ function jqGrid_modal1() { // 메인 그리드 설정
         caption: "발주추가 | MES",
         colNames: ['구분', '품번', '품명', '규격', '단위','발주수량','비고'],
         colModel: [
-            {name: 'part_type_name', index: 'part_type_name', width: 80, sortable: false,fixed:true},
-            {name: 'part_code', index: 'part_code', width: 100,key:true, sortable: false,fixed:true},
-            {name: 'part_name', index: 'part_name', width: 120, sortable: false,fixed:true},
-            {name: 'spec', index: 'spec', width: 100, sortable: false,fixed:true},
-            {name: 'unit_name', index: 'unit_name', width: 100, sortable: false,fixed:true},
-            {name: 'ord_qty', index: 'ord_qty', width: 80, sortable: false,align: 'right',formatter:'integer',fixed:true,
+            {name: 'part_type_name', index: 'part_type_name', width: 80, fixed:true},
+            {name: 'part_code', index: 'part_code', width: 100,key:true, fixed:true},
+            {name: 'part_name', index: 'part_name', width: 120, fixed:true},
+            {name: 'spec', index: 'spec', width: 100, fixed:true},
+            {name: 'unit_name', index: 'unit_name', width: 100, fixed:true},
+            {name: 'ord_qty', index: 'ord_qty', width: 80, align: 'right',formatter:'integer',fixed:true,
                 editable: true,
                 editoptions: {
                     dataEvents: [
@@ -383,8 +386,11 @@ function jqGrid_modal1() { // 메인 그리드 설정
             }
         ],
         autowidth: true,
-        height: 200,
+        height: 350,
         cellEdit: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         cellsubmit: 'clientArray',
         rowNum: 10000,
         beforeEditCell: function (id, name, val, IRow, ICol) {
@@ -411,7 +417,7 @@ function jqGrid_modal1() { // 메인 그리드 설정
 function modal_make1() {
     $("#addDialog").dialog({//모달 초기설정
         modal: true,
-        width: 1350,
+        width: 1500,
         height: 'auto',
         autoOpen: false,
         resizable: false,

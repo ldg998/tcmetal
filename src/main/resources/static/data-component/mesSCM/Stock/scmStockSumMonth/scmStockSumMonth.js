@@ -100,15 +100,15 @@ function jqGrid_main() {
         datatype: "local",
         colNames: ['구분','품번','품명','규격','단위','전월재고','금월입고','금월출고','재고'],
         colModel: [
-            {name: 'part_type_name', index: 'part_type_name', width: 60,sortable:false,fixed:true},
-            {name: 'part_code', index: 'part_code', width: 130,sortable:false,fixed:true},
-            {name: 'part_name', index: 'part_name', width: 190,sortable:false,fixed:true},
-            {name: 'spec', index: 'spec', width: 150,sortable:false,fixed:true},
-            {name: 'unit_name', index: 'unit_name', width: 50,sortable:false,fixed:true},
-            {name: 'prev_qty', index: 'prev_qty', width: 90,sortable:false,fixed:true,align:'right',formatter:'integer'},
-            {name: 'in_qty', index: 'in_qty', width: 90,sortable:false,fixed:true,align:'right',formatter:'integer'},
-            {name: 'out_qty', index: 'out_qty', width: 90,sortable:false,fixed:true,align:'right',formatter:'integer'},
-            {name: 'qty', index: 'qty', width: 90,sortable:false,fixed:true,align:'right',formatter:'integer'}
+            {name: 'part_type_name', index: 'part_type_name', width: 60,fixed:true},
+            {name: 'part_code', index: 'part_code', width: 130,fixed:true},
+            {name: 'part_name', index: 'part_name', width: 190,fixed:true},
+            {name: 'spec', index: 'spec', width: 150,fixed:true},
+            {name: 'unit_name', index: 'unit_name', width: 50,fixed:true},
+            {name: 'prev_qty', index: 'prev_qty', width: 90,fixed:true,align:'right',formatter:'integer'},
+            {name: 'in_qty', index: 'in_qty', width: 90,fixed:true,align:'right',formatter:'integer'},
+            {name: 'out_qty', index: 'out_qty', width: 90,fixed:true,align:'right',formatter:'integer'},
+            {name: 'qty', index: 'qty', width: 90,fixed:true,align:'right',formatter:'integer'}
 
         ],
         caption: "자재 월원장 | MES",
@@ -118,6 +118,9 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         loadComplete:function(){
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");

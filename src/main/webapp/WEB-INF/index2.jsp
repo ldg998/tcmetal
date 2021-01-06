@@ -55,6 +55,12 @@
         border: 2px rgba(192, 192, 192, 0.7) solid;
         border-radius: 15px;
         background-color: rgba(28, 22, 22, 0.4);
+
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    .lo::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
     }
 
     .lo2 {
@@ -185,16 +191,12 @@
         text-align: center;
     }
     .table_border {
-        border-color : #ffffff;
+        border: 1px #ffffff solid;
+        /*border-color : #ffffff;*/
     }
 
-    .box {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-    }
-    .box::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera*/
-    }
+
+
 </style>
 
 <!DOCTYPE html>
@@ -252,7 +254,7 @@
                                 <i class="fa mark_img"></i>
                                 <span class="table_title">&nbsp; 용해 주입 일보현황</span>
                             </span>
-                        <table style="width: 100%;" border="1" class="table_border box">
+                        <table style="width: 100%;" border="1" class="table_border">
                             <colgroup>
                                 <col width="17%">
                                 <col width="17%">

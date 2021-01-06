@@ -53,22 +53,11 @@ function getList(){
 }
 
 function table_set(){
-    $(".list1").empty();
-    var tbody =  $(".list1");
-
-    $(".list2").empty();
-    var tbody2 =  $(".list2");
-
-    $(".list3").empty();
-    var tbody3 =  $(".list3");
-
-    $(".list4").empty();
-    var tbody4 =  $(".list4");
-
 
     ccn_ajax("/monitoringGet",{}).then(function (data) {
+        $(".list1").empty();
+        var tbody =  $(".list1");
         data.forEach(function (list) {
-
             var list1 = "<tr class=\"tdFont\"  style=\"height: 40px;\">" +
                 "<td> "+list.line_name+"</td>"
             list1 += "  <td>"+list.supp_name+"</td>"
@@ -99,6 +88,8 @@ function table_set(){
 
 
     ccn_ajax("/prodReport1Get",{}).then(function (data) {
+        $(".list2").empty();
+        var tbody2 =  $(".list2");
         data.forEach(function (list) {
             var list2 = " <tr class=\"tdFont\" style=\"height: 40px;\">\n" +
                 "                                    <td>"+list.charge+"</td>\n" +
@@ -127,6 +118,8 @@ function table_set(){
     })
 
     ccn_ajax("/prodMiddleListGet",{}).then(function (data) {
+        $(".list3").empty();
+        var tbody3 =  $(".list3");
         data.forEach(function (list) {
             var list3 =" <tr class=\"tdFont\" style=\"height: 40px;\">\n" +
                 "                                    <td>"+list.supp_name+"</td>\n" +
@@ -157,8 +150,9 @@ function table_set(){
     })
 
     ccn_ajax("/boardListGet",{}).then(function (data) {
+        $(".list4").empty();
+        var tbody4 =  $(".list4");
         data.forEach(function (list) {
-
             var list4 =" <tr class=\"tdFont\" style=\"height: 40px;\">\n" +
                 "                                    <td>"+list.subject+"</td>\n" +
                 "                                    <td>"+list.user_name+"</td>\n" +

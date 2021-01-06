@@ -104,16 +104,16 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['','출고일자','출고번호','품번','품명','규격','단위','출고수량','등록자','등록일시'],
         colModel: [
-            {name: 'rownum', index: 'rownum',sortable: false, fixed:true,hidden:true,key:true},
-            {name: 'work_date', index: 'work_date',sortable: false,fixed:true,width:90,formatter:formmatterDate2},
-            {name: 'out_no', index: 'out_no',sortable: false, fixed:true, width:120},
-            {name: 'part_code', index: 'part_code',sortable: false, fixed:true, width:130},
-            {name: 'part_name', index: 'part_name',sortable: false, fixed:true, width:190},
-            {name: 'spec', index: 'spec',sortable: false, fixed:true, width:150},
-            {name: 'unit_name', index: 'unit_name',sortable: false, fixed:true, width:60},
-            {name: 'qty', index: 'qty',sortable: false, fixed:true, width:110,formatter:'integer',align: 'right'},
-            {name: 'user_name', index: 'user_name',sortable: false, fixed:true, width:60},
-            {name: 'update_date', index: 'update_date',sortable: false, fixed:true, width:140,formatter:formmatterDate}
+            {name: 'rownum', index: 'rownum', fixed:true,hidden:true,key:true},
+            {name: 'work_date', index: 'work_date',fixed:true,width:90,formatter:formmatterDate2},
+            {name: 'out_no', index: 'out_no', fixed:true, width:120},
+            {name: 'part_code', index: 'part_code', fixed:true, width:130},
+            {name: 'part_name', index: 'part_name', fixed:true, width:190},
+            {name: 'spec', index: 'spec', fixed:true, width:150},
+            {name: 'unit_name', index: 'unit_name', fixed:true, width:60},
+            {name: 'qty', index: 'qty', fixed:true, width:110,formatter:'integer',align: 'right'},
+            {name: 'user_name', index: 'user_name', fixed:true, width:60},
+            {name: 'update_date', index: 'update_date', fixed:true, width:140,formatter:formmatterDate}
         ],
         caption: "자재출고현황 | MES",
         autowidth: true,
@@ -122,6 +122,9 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         rowNum: 100,
         viewrecords: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         loadComplete : function(data) {
             data.rows.forEach(function (idsfor, s) {
                 if (idsfor.work_date === '소계'){

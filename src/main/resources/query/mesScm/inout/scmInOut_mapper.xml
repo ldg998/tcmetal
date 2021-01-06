@@ -5,8 +5,9 @@
 
 
     <select id="scmInListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_SUB">
-        EXEC SP_SCM_IN_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword}
+        EXEC SP_SCM_IN_LIST_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{sidx},#{sord}
     </select>
+
 
     <select id="scmIOListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IO">
         EXEC SP_SCM_IO_LIST_GET  #{page}, #{rows}, #{start_date}, #{end_date},#{keyword}
@@ -23,7 +24,7 @@
 
 
     <select id="scmInGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN">
-        	EXEC SP_SCM_IN_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}, ''
+        	EXEC SP_SCM_IN_GET2 #{page}, #{rows},#{start_date}, #{end_date}, #{keyword}, '',#{sidx},#{sord}
     </select>
 
     <select id="scmInAdd" resultType="com.mes.Common.DataTransferObject.Message">
@@ -47,9 +48,7 @@
     </select>
 
     <select id="scmOutGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
-        	EXEC SP_SCM_OUT_GET #{page},#{rows},#{start_date},#{end_date},#{keyword2}
-
-        	/* 수정함 */
+        	EXEC SP_SCM_OUT_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword2},#{sidx},#{sord}
     </select>
 
     <select id="scmOutDel" resultType="com.mes.Common.DataTransferObject.Message">
@@ -57,7 +56,7 @@
     </select>
 
     <select id="scmOutListGet" resultType="com.mes.mesScm.InOut.DTO.SCM_OUT">
-        EXEC SP_SCM_OUT_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword}
+        EXEC SP_SCM_OUT_LIST_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{sidx},#{sord}
     </select>
 
     <select id="scmInOrdModalGet" resultType="com.mes.mesScm.InOut.DTO.SCM_IN_ORD_MODAL">

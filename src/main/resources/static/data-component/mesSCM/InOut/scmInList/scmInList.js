@@ -113,18 +113,18 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['입고일자','전표번호','업체명','품번','품명','규격','입고수량','단위','검사구분','검사결과','등록자','등록일시'],
         colModel: [
-            {name: 'work_date', index: 'work_date', sortable: false, formatter:formmatterDate2, width: 90, fixed: true},
-            {name: 'in_no', index: 'in_no', sortable: false, width: 120, fixed: true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130, fixed: true},
-            {name: 'part_code', index: 'part_code', sortable: false, width: 120, fixed: true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 190, fixed: true},
-            {name: 'spec', index: 'spec', sortable: false, width: 120   , fixed: true},
-            {name: 'qty', index: 'qty', sortable: false, width: 90, fixed: true, formatter:'number', align:'right'},
-            {name: 'unit_name', index: 'unit_name', sortable: false, width: 50, fixed: true},
-            {name: 'qc_level_name', index: 'qc_level_name', sortable: false, width: 60, fixed: true},
-            {name: 'qc_result_name', index: 'qc_result_name', sortable: false, width: 60, fixed: true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 60, fixed: true},
-            {name: 'update_date', index: 'update_date', sortable: false, formatter:formmatterDate, width: 140, fixed: true}
+            {name: 'work_date', index: 'work_date',  formatter:formmatterDate2, width: 90, fixed: true},
+            {name: 'in_no', index: 'in_no',  width: 120, fixed: true},
+            {name: 'supp_name', index: 'supp_name',  width: 130, fixed: true},
+            {name: 'part_code', index: 'part_code',  width: 120, fixed: true},
+            {name: 'part_name', index: 'part_name',  width: 190, fixed: true},
+            {name: 'spec', index: 'spec',  width: 120   , fixed: true},
+            {name: 'qty', index: 'qty',  width: 90, fixed: true, formatter:'number', align:'right'},
+            {name: 'unit_name', index: 'unit_name',  width: 50, fixed: true},
+            {name: 'qc_level_name', index: 'qc_level_name',  width: 60, fixed: true},
+            {name: 'qc_result_name', index: 'qc_result_name',  width: 60, fixed: true},
+            {name: 'user_name', index: 'user_name',  width: 60, fixed: true},
+            {name: 'update_date', index: 'update_date',  formatter:formmatterDate, width: 140, fixed: true}
         ],
         caption: "자재입고현황 | MES",
         autowidth: true,
@@ -133,6 +133,9 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         rowNum: 100,
         viewrecords: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         loadComplete : function(data) {
             data.rows.forEach(function (idsfor, s) {
                 if (idsfor.work_date === '소계'){

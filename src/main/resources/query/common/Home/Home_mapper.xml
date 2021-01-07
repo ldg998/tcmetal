@@ -3,7 +3,7 @@
 <mapper namespace="com.mes.Mapper.Home.Home.HomeMapper">
 
     <select id="monitoringGet" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">
-    EXEC [SP_POP_MONITORING_GET] 0,0
+       EXEC SP_POP_PLAN_GET2 0,0
     </select>
 
     <select id="prodReport1Get" resultType="com.mes.mesPop.PopStatus.DTO.POP_PLAN">

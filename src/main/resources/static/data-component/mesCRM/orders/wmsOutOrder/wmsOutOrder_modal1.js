@@ -188,22 +188,22 @@ function jqGrid_main_modal() {
         mtype: 'POST',// post 방식 데이터 전달
         colNames : ['저장수량','수주번호','수주일자','업체','업체','PO','기종','품번','품명','단중','trans_code','운송수단','납기일','수주수량','기납품수량','납품수량','외주(열처리)','외주(열처리)'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name: 'qty2', index: 'qty2', sortable: false, hidden:true},
-            {name:'ord_no',index:'ord_no',hidden:true,key:true,sortable: false,width:110,fixed: true},
-            {name:'work_date',index:'work_date',sortable: false,width:110,fixed: true, formatter: formmatterDate2},
-            {name:'supp_code',index:'supp_code',sortable: false,width:125,fixed: true,hidden:true},
-            {name:'supp_name',index:'supp_name',sortable: false,width:125,fixed: true},
-            {name:'po_no',index:'po_no',sortable: false,width:110,fixed: true},
-            {name:'part_kind',index:'part_kind',sortable: false,width:125,fixed: true},
-            {name:'part_code',index:'part_code',sortable: false,width:110,fixed: true},
-            {name:'part_name',index:'part_name',sortable: false,width:125,fixed: true},
-            {name:'part_weight',index:'part_weight',sortable: false,width:110,fixed: true, formatter:'integer', align:'right'},
-            {name:'trans_code',index:'trans_code',sortable: false,width:110,fixed: true,hidden:true},
-            {name:'trans_name',index:'trans_name',sortable: false,width:110,fixed: true},
-            {name:'end_date',index:'end_date',sortable: false,width:110,fixed: true, formatter: formmatterDate2},
-            {name:'ord_qty',index:'ord_qty',sortable: false,width:125,fixed: true, formatter:'integer', align:'right'},
-            {name:'prev_qty',index:'prev_qty',sortable: false,width:110,fixed: true, formatter:'integer', align:'right'},
-            {name:'qty',index:'qty',sortable: false,width:125,fixed: true, formatter:'integer', align:'right',
+            {name: 'qty2', index: 'qty2',  hidden:true},
+            {name:'ord_no',index:'ord_no',hidden:true,key:true,width:110,fixed: true},
+            {name:'work_date',index:'work_date',width:110,fixed: true, formatter: formmatterDate2},
+            {name:'supp_code',index:'supp_code',width:125,fixed: true,hidden:true},
+            {name:'supp_name',index:'supp_name',width:125,fixed: true},
+            {name:'po_no',index:'po_no',width:110,fixed: true},
+            {name:'part_kind',index:'part_kind',width:125,fixed: true},
+            {name:'part_code',index:'part_code',width:110,fixed: true},
+            {name:'part_name',index:'part_name',width:125,fixed: true},
+            {name:'part_weight',index:'part_weight',width:110,fixed: true, formatter:'integer', align:'right'},
+            {name:'trans_code',index:'trans_code',width:110,fixed: true,hidden:true},
+            {name:'trans_name',index:'trans_name',width:110,fixed: true},
+            {name:'end_date',index:'end_date',width:110,fixed: true, formatter: formmatterDate2},
+            {name:'ord_qty',index:'ord_qty',width:125,fixed: true, formatter:'integer', align:'right'},
+            {name:'prev_qty',index:'prev_qty',width:110,fixed: true, formatter:'integer', align:'right'},
+            {name:'qty',index:'qty',width:125,fixed: true, formatter:'integer', align:'right',
                 editable: true,
                 editoptions: {
 
@@ -297,8 +297,8 @@ function jqGrid_main_modal() {
                     ]
                 }
             },
-            {name:'outs_supp_code',index:'outs_supp_code',sortable: false,width:110,fixed: true,hidden:true},
-            {name:'outs_supp_name',index:'outs_supp_name',sortable: false,width:110,fixed: true}
+            {name:'outs_supp_code',index:'outs_supp_code',width:110,fixed: true,hidden:true},
+            {name:'outs_supp_name',index:'outs_supp_name',width:110,fixed: true}
 
         ],
         // caption: "자재단가 | MES",// grid 제목
@@ -308,6 +308,9 @@ function jqGrid_main_modal() {
         caption: "출고지시서 | MES",
         cellEdit: true,
         cellsubmit: 'clientArray',
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         beforeEditCell: function (id, name, val, IRow, ICol) {
             lastsel = id;
             saverow = IRow;

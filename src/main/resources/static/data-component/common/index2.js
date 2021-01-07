@@ -58,27 +58,25 @@ function table_set(){
         $(".list1").empty();
         var tbody =  $(".list1");
         data.forEach(function (list) {
-            var list1 = "<tr class=\"tdFont\"  style=\"height: 40px;\">" +
-                "<td> "+list.line_name+"</td>"
+            var list1 = "<tr class=\"tdFont\"  style=\"height: 35px;\">"
+
             list1 += "  <td>"+list.supp_name+"</td>"
             list1 += " <td>"+list.part_kind +"</td>"
             list1 += " <td>"+ list.part_name +"</td>"
-            list1 += " <td>"+ list.part_code +"</td>"
             list1 += " <td>"+ list.lot_no +"</td> "
-            list1 += " <td>"+ list.user_name +"</td>"
+            list1 += " <td>"+ list.work_user_name +"</td>"
              list1 += "</tr>"
 
             tbody.append(list1);
 
         })
-        for(var i = data.length; i < 7; i++){
-            var addList ="<tr class=\"tdFont\" style=\"height: 40px;\">" +
+        for(var i = data.length; i < 12; i++){
+            var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
                 "<td></td>" +
                 "<td></td>" +
                 "<td></td>" +
                 "<td></td>" +
-                "<td></td>" +
-                "<td></td>" +
+
                 "<td></td>" +
                 "</tr>"
 
@@ -91,19 +89,22 @@ function table_set(){
         $(".list2").empty();
         var tbody2 =  $(".list2");
         data.forEach(function (list) {
-            var list2 = " <tr class=\"tdFont\" style=\"height: 40px;\">\n" +
+            var list2 = " <tr class=\"tdFont\" style=\"height: 35px;\">\n" +
                 "                                    <td>"+list.charge+"</td>\n" +
                 "                                    <td>"+list.supp_name+"</td>\n" +
                 "                                    <td>"+list.part_kind+"</td>\n" +
                 "                                    <td>"+list.part_name+"</td>\n" +
-                "                                    <td>"+list.part_code+"</td>\n" +
+                "                                    <td>"+ list.weight +"</td>  \n" +
+                "                                    <td>"+ list.plan_qty +"</td>\n" +
+
                 "                                    <td>"+list.user_name+"</td>\n" +
                 "                                </tr>"
 
             tbody2.append(list2);
         })
         for(var i = data.length; i < 7; i++){
-            var addList ="<tr class=\"tdFont\" style=\"height: 40px;\">" +
+            var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
+                "<td></td>" +
                 "<td></td>" +
                 "<td></td>" +
                 "<td></td>" +
@@ -121,7 +122,7 @@ function table_set(){
         $(".list3").empty();
         var tbody3 =  $(".list3");
         data.forEach(function (list) {
-            var list3 =" <tr class=\"tdFont\" style=\"height: 40px;\">\n" +
+            var list3 =" <tr class=\"tdFont\" style=\"height: 35px;\">\n" +
                 "                                    <td>"+list.supp_name+"</td>\n" +
                 "                                    <td>"+list.part_kind+"</td>\n" +
                 "                                    <td>"+list.part_name+"</td>\n" +
@@ -134,8 +135,8 @@ function table_set(){
             tbody3.append(list3);
         })
 
-        for(var i = data.length; i < 7; i++){
-            var addList ="<tr class=\"tdFont\" style=\"height: 40px;\">" +
+        for(var i = data.length; i < 4; i++){
+            var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
                 "<td></td>" +
                 "<td></td>" +
                 "<td></td>" +
@@ -153,7 +154,7 @@ function table_set(){
         $(".list4").empty();
         var tbody4 =  $(".list4");
         data.forEach(function (list) {
-            var list4 =" <tr class=\"tdFont\" style=\"height: 40px;\">\n" +
+            var list4 =" <tr class=\"tdFont\" style=\"height: 35px;\">\n" +
                 "                                    <td>"+list.subject+"</td>\n" +
                 "                                    <td>"+list.user_name+"</td>\n" +
                 "                                    <td>"+list.work_date2+"</td>\n" +
@@ -163,7 +164,7 @@ function table_set(){
         })
 
         for(var i = data.length; i < 7; i++){
-           var addList ="<tr class=\"tdFont\" style=\"height: 40px;\">" +
+           var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
                "<td></td>" +
                "<td></td>" +
                "<td></td>" +

@@ -59,6 +59,7 @@
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
     }
+
     .lo::-webkit-scrollbar {
         display: none; /* Chrome, Safari, Opera*/
     }
@@ -111,13 +112,18 @@
     .h_50 {
         height: 50% !important;
     }
+
     .h_55 {
         height: 55% !important;
     }
+
     .h_60 {
         height: 60% !important;
     }
 
+    .h_68 {
+        height: 68% !important;
+    }
     .h_70 {
         height: 70% !important;
     }
@@ -175,26 +181,28 @@
     /*    opacity: 0.5;*/
     /*}*/
 
-    .thFont{
+    .thFont {
         /*background: linear-gradient(to bottom, #504b4b 0%, #807a7a 50%,#504b4b 100%);*/
-        background-color : #504b4b;
+        background-color: #504b4b;
         border: 1px #ffffff solid;
 
     }
+
     .thFont > th {
         text-align: center;
         color: #d5d3d3;
-        font-weight:bolder ;
+        font-weight: bolder;
     }
-    .tdFont{
+
+    .tdFont {
         color: #d5d3d3;
         text-align: center;
     }
+
     .table_border {
         border: 1px #ffffff solid;
         /*border-color : #ffffff;*/
     }
-
 
 
 </style>
@@ -206,179 +214,171 @@
 <body style="">
 <tiles:insertAttribute name="mid"/>
 <div class="main-container ace-save-state" id="main-container">
+
     <div class="main-content-inner col-lg-12 back_img">
-
-        <div class="lo2 col-lg-12">
-            <div class="row h_50">
-                <div class="col-lg-6">
-                    <div class="lo col-xs-12 table-responsive">
-                        <span>
-                            <i class="fa mark_img"></i>
-                                <span class="table_title">&nbsp; 생산모니터링</span>
-                            </span>
-                        <table style="width: 100%;" border="1" class="table_border box">
-                            <colgroup>
-                                <col width="15%">
-                                <col width="15%">
-                                <col width="15%">
-                                <col width="19%">
-                                <col width="17%">
-                                <col width="9%">
-                                <col width="10%">
-                            </colgroup>
-                            <thead>
-                            <tr class="thFont" style="height: 40px;">
-                                <th>공정</th>
-                                <th>업체</th>
-                                <th>기종</th>
-                                <th>품명</th>
-                                <th>품번</th>
-                                <th>LOT</th>
-                                <th>등록자</th>
-                            </tr>
-                            </thead>
-                            <tbody class="list1">
-                            </tbody>
-                        </table>
-                        <%--<table id="mes_grid"></table>--%>
-
-                    </div>
-                    <%--end lo--%>
-                </div>
-                <%-- end col-lg-6 --%>
-
-
-                <div class="col-lg-6">
-                    <div class="lo col-xs-12 table-responsive">
-                         <span>
+        <div class="lo2 col-lg-12" style="display: block; float: left">
+            <div class="col-lg-5 h_68">
+                <div class="lo col-xs-12 table-responsive">
+                            <span>
                                 <i class="fa mark_img"></i>
-                                <span class="table_title">&nbsp; 용해 주입 일보현황</span>
-                            </span>
-                        <table style="width: 100%;" border="1" class="table_border">
-                            <colgroup>
-                                <col width="17%">
-                                <col width="17%">
-                                <col width="16%">
-                                <col width="17%">
-                                <col width="17%">
-                                <col width="15%">
-                            </colgroup>
+                                    <span class="table_title">&nbsp; 합형현황</span>
+                                </span>
+                    <table style="width: 100%;" border="1" class="table_border box">
+                        <colgroup>
 
-                            <thead >
-                            <tr class="thFont" style="height: 40px;">
-                                <th>CGH</th>
-                                <th>업체</th>
-                                <th>기종</th>
-                                <th>품명</th>
-                                <th>품번</th>
-                                <th>등록자</th>
+                            <col width="20%">
+                            <col width="30%">
+                            <col width="21%">
+                            <col width="9%">
+                            <col width="10%">
+                        </colgroup>
+                        <thead>
+                        <tr class="thFont" style="height: 40px;">
+                            <th>업체</th>
+                            <th>기종</th>
+                            <th>품명</th>
+                            <th>LOT</th>
+                            <th>등록자</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list1">
+                        </tbody>
+                    </table>
+                    <%--<table id="mes_grid"></table>--%>
 
-                            </tr>
-                            </thead>
-
-                                <tbody class="list2">
-
-                                </tbody>
-
-                        </table>
-
-
-                        <%--<table id="mes_grid2"></table>--%>
-                    </div>
-                    <%--end lo--%>
                 </div>
-                <%-- end col-lg-6 --%>
-
+                <%--end lo--%>
             </div>
+            <%-- end col-lg-6 --%>
 
 
-            <%-- 아래쪽--%>
-            <div class="row h_50">
-                <div class="col-lg-6">
-                    <div class="lo col-xs-12 table-responsive">
-                        <span>
-                                <i class="fa mark_img"></i>
-                                <span class="table_title">&nbsp; 중간검사현황</span>
-                            </span>
+            <div class="col-lg-7 h_50">
+                <div class="lo col-xs-12 table-responsive">
+                             <span>
+                                    <i class="fa mark_img"></i>
+                                    <span class="table_title">&nbsp; 용해 주입 일보현황</span>
+                                </span>
+                    <table style="width: 100%;" border="1" class="table_border">
+                        <colgroup>
+                            <col width="5%">
+                            <col width="20%">
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="5%">
+                            <col width="5%">
+                        </colgroup>
 
-                        <table style="width: 100%;" border="1" class="table_border box">
-                            <colgroup>
-                                <col width="22%">
-                                <col width="15%">
-                                <col width="15%">
-                                <col width="15%">
-                                <col width="15%">
-                                <col width="8%">
-                                <col width="10%">
-                            </colgroup>
+                        <thead>
+                        <tr class="thFont" style="height: 40px;">
+                            <th>CGH</th>
+                            <th>업체</th>
+                            <th>기종</th>
+                            <th>품명</th>
+                            <th>중량</th>
+                            <th>개수</th>
+                            <th>등록자</th>
 
-                            <thead >
-                            <tr class="thFont" style="height: 40px;">
-                                <th>업체</th>
-                                <th>기종</th>
-                                <th>품명</th>
-                                <th>품번</th>
-                                <th>LOT</th>
-                                <th>결과</th>
-                                <th>등록자</th>
+                        </tr>
+                        </thead>
 
-                            </tr>
-                            </thead>
+                        <tbody class="list2">
 
+                        </tbody>
 
-                                <tbody class="list3">
-
-                                </tbody>
+                    </table>
 
 
-                        </table>
-                        <%--<table id="mes_grid3"></table>--%>
-                    </div>
-                    <%--end lo--%>
+                    <%--<table id="mes_grid2"></table>--%>
                 </div>
-                <%-- end col-lg-6 --%>
-
-                <div class="col-lg-6">
-                    <div class="lo col-xs-12 table-responsive">
-                        <span>
-                                <i class="fa mark_img"></i>
-                                <span class="table_title">&nbsp; 공지사항</span>
-                            </span>
-
-
-                        <table style="width: 100%;" border="1" class="table_border box">
-                            <colgroup>
-                                <col width="65%">
-                                <col width="20%">
-                                <col width="15%">
-
-                            </colgroup>
-
-                            <thead >
-                            <tr class="thFont" style="height: 40px;">
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                            </tr>
-                            </thead>
-
-
-                                <tbody class="list4">
-
-                                </tbody>
-
-                        </table>
-
-                        <%--<table id="mes_grid4"></table>--%>
-                    </div>
-                    <%--end lo--%>
-                </div>
-                <%-- end col-lg-6 --%>
+                <%--end lo--%>
             </div>
+            <%-- end col-lg-6 --%>
 
 
+            <div class="col-lg-6 h_50" style="float: right;">
+                <div class="lo col-xs-12 table-responsive">
+                            <span>
+                                    <i class="fa mark_img"></i>
+                                    <span class="table_title">&nbsp; 공지사항</span>
+                                </span>
+
+
+                    <table style="width: 100%;" border="1" class="table_border box">
+                        <colgroup>
+                            <col width="65%">
+                            <col width="20%">
+                            <col width="15%">
+
+                        </colgroup>
+
+                        <thead>
+                        <tr class="thFont" style="height: 40px;">
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                        </tr>
+                        </thead>
+
+
+                        <tbody class="list4">
+
+                        </tbody>
+
+                    </table>
+
+                    <%--<table id="mes_grid4"></table>--%>
+                </div>
+                <%--end lo--%>
+            </div>
+            <%-- end col-lg-6 --%>
+
+            <div class="col-lg-6 h_30" style="float: left;">
+                <div class="lo col-xs-12 table-responsive">
+                            <span>
+                                    <i class="fa mark_img"></i>
+                                    <span class="table_title">&nbsp; 중간검사현황</span>
+                                </span>
+
+                    <table style="width: 100%;" border="1" class="table_border box">
+                        <colgroup>
+                            <col width="22%">
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="15%">
+                            <col width="8%">
+                            <col width="10%">
+                        </colgroup>
+
+                        <thead>
+                        <tr class="thFont" style="height: 40px;">
+                            <th>업체</th>
+                            <th>기종</th>
+                            <th>품명</th>
+                            <th>품번</th>
+                            <th>LOT</th>
+                            <th>결과</th>
+                            <th>등록자</th>
+
+                        </tr>
+                        </thead>
+
+
+                        <tbody class="list3">
+
+                        </tbody>
+
+
+                    </table>
+                    <%--<table id="mes_grid3"></table>--%>
+                </div>
+                <%--end lo--%>
+            </div>
+            <%-- end col-lg-6 --%>
         </div>
     </div>
+</div>
 </div>
 
 </body>

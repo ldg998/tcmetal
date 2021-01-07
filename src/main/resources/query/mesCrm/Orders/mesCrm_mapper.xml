@@ -36,7 +36,7 @@
 	</select>
 
 	<select id="crmOrderRecpModalGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
-		EXEC SP_CRM_ORD_RECP_MODAL_GET 0, 0,#{start_date}, #{end_date}, #{keyword}
+		EXEC SP_CRM_ORD_RECP_MODAL_GET2 0, 0,#{start_date}, #{end_date}, #{keyword},#{sidx},#{sord}
     </select>
 
 
@@ -44,7 +44,7 @@
 		EXEC SP_WMS_OUT_ORD_ADD #{req_no},#{work_date},#{ship_date},#{supp_code},#{delivery_place},#{keyword2},#{keyword},#{user_code}
 	</select>
 	<select id="wmsOutOrderGet" resultType="com.mes.mesCrm.Orders.DTO.WMS_OUT_ORD_SUB">
-		EXEC SP_WMS_OUT_ORD_SUB_GET #{page}, #{rows},#{start_date}, #{end_date}, #{keyword},'',#{keyword2}
+		EXEC SP_WMS_OUT_ORD_SUB_GET2 #{page}, #{rows},#{start_date}, #{end_date}, #{keyword},'',#{keyword2},#{sidx},#{sord}
     </select>
 
 	<select id="wmsOutOrderOneGet" resultType="com.mes.mesCrm.Orders.DTO.WMS_OUT_ORD_SUB">

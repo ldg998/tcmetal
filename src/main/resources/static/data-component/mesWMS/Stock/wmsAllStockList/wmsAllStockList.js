@@ -120,6 +120,9 @@ function jqGrid_main() {
         overflow:'visible',
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         loadComplete:function(){
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");

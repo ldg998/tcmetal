@@ -11,11 +11,11 @@
     </select>
 
     <select id="wmsStockSumMonthListGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
-        EXEC SP_WMS_STOCK_GET_MONTH #{page},#{rows},#{work_date},#{keyword},#{keyword2},#{keyword3}
+        EXEC SP_WMS_STOCK_GET_MONTH2 #{page},#{rows},#{work_date},#{keyword},#{keyword2},#{keyword3},#{sidx},#{sord}
     </select>
 
     <select id="wmsStockSumGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
-        EXEC SP_WMS_STOCK_GET_DAY #{page},#{rows},#{work_date},#{keyword},#{keyword2},#{keyword3}
+        EXEC SP_WMS_STOCK_GET_DAY2 #{page},#{rows},#{work_date},#{keyword},#{keyword2},#{keyword3},#{sidx},#{sord}
     </select>
 
     <select id="wmsStockRevAdd" resultType="com.mes.Common.DataTransferObject.Message">
@@ -23,7 +23,7 @@
     </select>
 
     <select id="wmsStockRevGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK_REV">
-        EXEC SP_WMS_STOCK_REV_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},''
+        EXEC SP_WMS_STOCK_REV_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},'',#{sidx},#{sord}
     </select>
 
     <select id="wmsStockRevOneGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK_REV">
@@ -35,7 +35,7 @@
     </select>
 
     <select id="wmsStockGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
-        EXEC SP_WMS_STOCK_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{keyword4}
+        EXEC SP_WMS_STOCK_GET2 #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{keyword4},#{sidx},#{sord}
     </select>
 
     <select id="wmsStockOneGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
@@ -43,7 +43,7 @@
     </select>
 
     <select id="wmsAllStockListGet" resultType="com.mes.mesWms.Stock.DTO.WMS_STOCK">
-        EXEC SP_WMS_ALL_STOCK_LIST_GET3 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},#{keyword4}
+        EXEC SP_WMS_ALL_STOCK_LIST_GET4 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},#{keyword4},#{sidx},#{sord}
     </select>
 
 

@@ -153,6 +153,9 @@ function jqGrid_main() {
         overflow:'visible',
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         loadComplete:function(data){
             data.rows.forEach(function (idsfor, s) {
                 if (idsfor.supp_name === '합계'){

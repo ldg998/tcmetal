@@ -127,7 +127,7 @@
     </select>
 
 	<select id="crmPerformGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_ORD_RECP">
-		EXEC SP_CRM_PERFORM_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3}
+		EXEC SP_CRM_PERFORM_GET3 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{keyword3},#{sidx},#{sord}
     </select>
 
 	<select id="crmShippingListGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_SHIPPING">
@@ -156,7 +156,7 @@
     </select>
 
 	<select id="wmsInvoiceFormGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_INVOICE_REPORT">
-		EXEC SP_CRM_INVOICE_REPORT_GET #{page},#{rows},#{keyword},'',''
+		EXEC SP_CRM_INVOICE_REPORT_GET2 #{page},#{rows},#{keyword},'','',#{sidx},#{sord}
 	</select>
 	<select id="wmsInvoiceFormOneGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_INVOICE_REPORT">
 		EXEC SP_CRM_INVOICE_REPORT_GET 1,1,#{keyword},#{keyword2},#{keyword3}
@@ -165,7 +165,7 @@
         EXEC SP_CRM_INVOICE_REPORT_DEL #{keyword}
     </select>
 	<select id="wmsInvoiceGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_INVOICE">
-		EXEC SP_CRM_INVOICE_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},''
+		EXEC SP_CRM_INVOICE_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},'',#{sidx},#{sord}
 	</select>
 
 	<select id="invoiceRptNameGet" resultType="com.mes.mesCrm.Orders.DTO.CRM_INVOICE_REPORT">

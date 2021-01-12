@@ -135,30 +135,30 @@ function jqGrid_main() {
         datatype: "local",
         colNames: ['','','','','입고일자','전표번호','업체','구분','품번','품명','규격','단위','입고수량'/*,'검사구분'*/,'검사수량','불량수량','불량유형','불량상세','조치구분','성적서','성적서 수정','검사자','검사일시'],
         colModel: [
-            {name: 'rownum', index: 'rownum', sortable: false,hidden:true ,key:true},
-            {name: 'file1_code', index: 'file1_code', sortable: false,hidden:true },
-            {name: 'upload_path', index: 'upload_path', sortable: false,hidden:true},
-            {name: 'ord_no', index: 'ord_no', sortable: false,hidden:true},
+            {name: 'rownum', index: 'rownum',hidden:true ,key:true},
+            {name: 'file1_code', index: 'file1_code',hidden:true },
+            {name: 'upload_path', index: 'upload_path',hidden:true},
+            {name: 'ord_no', index: 'ord_no',hidden:true},
 
-            {name: 'work_date', index: 'work_date', sortable: false, width: 90, formatter: formmatterDate2,fixed:true},
+            {name: 'work_date', index: 'work_date', width: 90, formatter: formmatterDate2,fixed:true},
             {name: 'in_no', index: 'in_no',sortable: false, width: 120,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
-            {name: 'part_type_name', index: 'part_type_name', sortable: false, width: 80,fixed:true},
-            {name: 'part_code', index: 'part_code', sortable: false, width: 130,fixed:true},         //품번
-            {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},        //품명
-            {name: 'spec', index: 'spec', sortable: false, width: 130,fixed:true},                  //규격
-            {name: 'unit_name', index: 'unit_name', sortable: false, width: 70,fixed:true},        //단위
-            {name: 'in_qty', index: 'in_qty', sortable: false, width: 90,fixed:true,align:'right',formatter:'integer' },                    //입고수량
-          //  {name: 'qc_level', index: 'qc_level', sortable: false, width: 130,fixed:true},  //검사구분
-            {name: 'qc_qty', index: 'qc_qty', sortable: false, width: 90,fixed:true,align:'right',formatter:'integer'},              //검사수령
-            {name: 'ng_qty', index: 'ng_qty', sortable: false, width: 90,fixed:true,align:'right',formatter:'integer'},              //검사수령
-            {name: 'ng_type_name', index: 'ng_type_name', sortable: false, width: 130,fixed:true},   //불량유형
-            {name: 'ng_name', index: 'ng_name', sortable: false, width: 130,fixed:true},            //불량상세
-            {name: 'act_type_name', index: 'act_type_name', sortable: false, width: 130,fixed:true}, //조치구분
-            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true,formatter: file2_formatter,fixed:true },//성적서
-            {name: 'file1', index: 'file1', sortable: false, width: 100, align: 'center',fixed:true,formatter: filebox,fixed:true },//성적서 수정
-            {name: 'user_name', index: 'user_name', sortable: false, width: 70,fixed:true},                                //검사자
-            {name: 'update_date', index: 'update_date', sortable: false, width: 140,fixed:true,formatter: formmatterDate} //검사일시
+            {name: 'supp_name', index: 'supp_name', width: 130,fixed:true},
+            {name: 'part_type_name', index: 'part_type_name', width: 80,fixed:true},
+            {name: 'part_code', index: 'part_code', width: 130,fixed:true},         //품번
+            {name: 'part_name', index: 'part_name', width: 190,fixed:true},        //품명
+            {name: 'spec', index: 'spec', width: 130,fixed:true},                  //규격
+            {name: 'unit_name', index: 'unit_name', width: 70,fixed:true},        //단위
+            {name: 'in_qty', index: 'in_qty', width: 90,fixed:true,align:'right',formatter:'integer' },                    //입고수량
+          //  {name: 'qc_level', index: 'qc_level', width: 130,fixed:true},  //검사구분
+            {name: 'qc_qty', index: 'qc_qty', width: 90,fixed:true,align:'right',formatter:'integer'},              //검사수령
+            {name: 'ng_qty', index: 'ng_qty', width: 90,fixed:true,align:'right',formatter:'integer'},              //검사수령
+            {name: 'ng_type_name', index: 'ng_type_name', width: 130,fixed:true},   //불량유형
+            {name: 'ng_name', index: 'ng_name', width: 130,fixed:true},            //불량상세
+            {name: 'act_type_name', index: 'act_type_name', width: 130,fixed:true}, //조치구분
+            {name: 'file1', index: 'file1', width: 100, align: 'center',fixed:true,formatter: file2_formatter,fixed:true },//성적서
+            {name: 'file1', index: 'file1', width: 100, align: 'center',fixed:true,formatter: filebox,fixed:true },//성적서 수정
+            {name: 'user_name', index: 'user_name', width: 70,fixed:true},                                //검사자
+            {name: 'update_date', index: 'update_date', width: 140,fixed:true,formatter: formmatterDate} //검사일시
 
              ],
         caption: "수입검사현황 | MES",
@@ -168,6 +168,9 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         rowNum: 100,
         viewrecords: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

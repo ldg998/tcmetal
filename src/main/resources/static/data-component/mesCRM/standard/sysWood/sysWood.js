@@ -117,10 +117,10 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames : ['사이즈','단가','등록자','수정일'],
         colModel : [
-            {name:'wood_code',index:'wood_code' ,key:true,sortable: false,width:130,fixed: true},
-            {name:'unit_cost',index:'unit_cost',sortable: false,width:90,fixed: true,align: 'right',formatter: 'integer'},
-            {name:'user_name',index:'user_name',sortable: false,width:60,fixed: true},
-            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:140,fixed: true}
+            {name:'wood_code',index:'wood_code' ,key:true,width:130,fixed: true},
+            {name:'unit_cost',index:'unit_cost',width:90,fixed: true,align: 'right',formatter: 'integer'},
+            {name:'user_name',index:'user_name',width:60,fixed: true},
+            {name:'update_date',index:'update_date',formatter:formmatterDate,width:140,fixed: true}
         ],
         caption: "목재단가관리 | MES",
         autowidth: true,
@@ -131,6 +131,9 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 400],
         viewrecords: true,
         multiselect: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

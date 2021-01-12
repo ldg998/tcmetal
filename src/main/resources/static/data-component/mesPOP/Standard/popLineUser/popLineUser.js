@@ -117,7 +117,7 @@ function main_select_change1(value) {
 
 function user_get(page) {
     $("#mes_grid2").setGridParam({ // 그리드 조회
-        url: '/sysUserGet',
+        url: '/sysUserGet2',
         datatype: "json",
         page: page,
         postData: {keyword:'D9000',keyword2:'Y'}
@@ -162,9 +162,9 @@ function jqGrid_main() {
         colNames: ['line_code','공정', '사용자코드', '사용자명'],
         colModel: [
             {name: 'line_code', index: 'line_code',hidden:true, sortable: false},
-            {name: 'line_name', index: 'line_name', sortable: false, width: 100,fixed:true},
-            {name: 'user_code', index: 'user_code',key:true, sortable: false, width: 150,fixed:true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed:true}
+            {name: 'line_name', index: 'line_name',  width: 100,fixed:true},
+            {name: 'user_code', index: 'user_code',key:true,  width: 150,fixed:true},
+            {name: 'user_name', index: 'user_name',  width: 150,fixed:true}
         ],
         caption: "공정별작업자 | MES",
         autowidth: true,
@@ -187,8 +187,8 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames: ['사용자코드', '사용자명'],
         colModel: [
-            {name: 'user_code', index: 'user_code', key: true, sortable: false, width: 150,fixed:true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 150,fixed:true}
+            {name: 'user_code', index: 'user_code', key: true,  width: 150,fixed:true},
+            {name: 'user_name', index: 'user_name',  width: 150,fixed:true}
         ],
         caption: "공정별작업자 | MES",
         autowidth: true,
@@ -198,6 +198,9 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
         multiselect: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         loadComplete:function(){
             if ($("#mes_grid2").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");

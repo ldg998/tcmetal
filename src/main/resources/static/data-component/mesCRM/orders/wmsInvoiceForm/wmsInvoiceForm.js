@@ -156,14 +156,14 @@ function jqGrid_main() {
         mtype: 'POST',// post 방식 데이터 전달
         colNames : ['rownum','업체','업체','명칭','운송수단','운송수단','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'rownum',index:'rownum',key: true ,sortable: false,width:100,hidden:true,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'supp_name',index:'supp_name',sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'supp_code',index:'supp_code',hidden:true,sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'rpt_name',index:'rpt_name',sortable: false,width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'trans_name',index:'trans_name',sortable: false,width:80,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'trans_code',index:'trans_code',hidden:true,sortable: false,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'user_name',index:'user_name',sortable: false,width:60,fixed: true},
-            {name:'update_date',index:'update_date',sortable: false,width:140,fixed: true,formatter: formmatterDate}
+            {name:'rownum',index:'rownum',key: true ,width:100,hidden:true,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'supp_name',index:'supp_name',width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'supp_code',index:'supp_code',hidden:true,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'rpt_name',index:'rpt_name',width:150,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'trans_name',index:'trans_name',width:80,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'trans_code',index:'trans_code',hidden:true,width:150,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'user_name',index:'user_name',width:60,fixed: true},
+            {name:'update_date',index:'update_date',width:140,fixed: true,formatter: formmatterDate}
         ],
         caption: "인보이스양식 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
@@ -173,6 +173,9 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 400], // 페이지당 데이터 수 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
         multiselect: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
                 var $myGrid = $(this),
                     i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

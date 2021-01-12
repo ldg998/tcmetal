@@ -102,11 +102,11 @@
     </select>
 
     <select id="popPlanGet" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
-        EXEC SP_POP_PLAN_GET #{page},#{rows},#{start_date},#{end_date},#{keyword2}
+        EXEC SP_POP_PLAN_GET3 #{page},#{rows},#{start_date},#{end_date},#{keyword2},#{sidx},#{sord}
     </select>
 
     <select id="popPlanMeltGet2" resultType="com.mes.mesPop.Pop.DTO.POP_PLAN">
-        EXEC SP_POP_PLAN_MELT_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword2},#{keyword3},#{keyword4}
+        EXEC SP_POP_PLAN_MELT_GET3 #{page},#{rows},#{start_date},#{end_date},#{keyword2},#{keyword3},#{keyword4},#{sidx},#{sord}
     </select>
 
 

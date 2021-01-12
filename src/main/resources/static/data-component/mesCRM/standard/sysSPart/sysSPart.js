@@ -189,29 +189,29 @@ function jqGrid_main() {
             {name: 'currency_code', index: 'currency_code',hidden:true,fixed: true},
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
             {name: 'supp_code', index: 'supp_code',hidden:true, width: 80,fixed: true},
-            {name: 'supp_name', index: 'supp_name',sortable: false, width: 130,fixed: true},//업체
-            {name: 'part_kind', index: 'part_kind',sortable: false, width: 110,fixed: true},//기종
-            {name: 'part_name', index: 'part_name',sortable: false, width: 140,fixed: true},//품명
-            {name: 'part_name2', index: 'part_name',sortable: false, width: 120,fixed: true},//품명
-            {name: 'part_code', index: 'part_code',sortable: false, width: 120,fixed: true},//품번
-            // {name: 'part_name2', index: 'part_name2',sortable: false, width: 120,fixed: true},//품명(생산지용)
-            {name: 'part_weight', index: 'part_weight',sortable: false, width: 120,fixed: true,formatter: 'integer',align: 'right'},//단중
-            {name: 'part_size', index: 'part_size',sortable: false, width: 90,fixed: true},//사이즈
-            {name: 'gross_weight', index: 'gross_weight',sortable: false, width: 120,fixed: true,formatter: 'integer',align: 'right'},//포장무게
-            {name: 'unit_cost', index: 'unit_cost',sortable: false, width: 80,fixed: true,formatter: 'integer',align: 'right'},//단가
-            {name: 'total_cost', index: 'total_cost',sortable: false, width: 80,fixed: true,formatter: 'integer',align: 'right'},//단가
-            {name: 'currency_type_name', index: 'currency_type_name',sortable: false, width: 50,fixed: true},//화폐단위
-            {name: 'route_name', index: 'route_name',sortable: false, width: 120,fixed: true},//공정라우팅
-            // {name: 'outs', index: 'outs',sortable: false, width: 120,fixed: true},//외주
-            {name: 'outs_supp_name', index: 'outs_supp_name',sortable: false, width: 120,fixed: true},//외주(열처리)
-            {name: 'use_yn', index: 'use_yn',sortable: false, width: 80,fixed: true},
-            {name: 'startup_date', index: 'startup_date',sortable: false, width: 90,fixed: true,formatter:formmatterDate2},
-            {name: 'wood_code1', index: 'wood_code1',sortable: false, width: 100,fixed: true},
-            {name: 'wood_code2', index: 'wood_code2',sortable: false, width: 100,fixed: true},
-            {name: 'wood_code3', index: 'wood_code3',sortable: false, width: 100,fixed: true},
-            {name: 'outs_qc', index: 'outs_qc',sortable: false, width: 80,fixed: true},
-            {name: 'user_name', index: 'user_name',sortable: false, width: 80,fixed: true},
-            {name: 'update_date', index: 'update_date',sortable: false, width: 140,fixed: true,formatter:formmatterDate}
+            {name: 'supp_name', index: 'supp_name', width: 130,fixed: true},//업체
+            {name: 'part_kind', index: 'part_kind', width: 110,fixed: true},//기종
+            {name: 'part_name', index: 'part_name', width: 140,fixed: true},//품명
+            {name: 'part_name2', index: 'part_name', width: 120,fixed: true},//품명
+            {name: 'part_code', index: 'part_code', width: 120,fixed: true},//품번
+            // {name: 'part_name2', index: 'part_name2', width: 120,fixed: true},//품명(생산지용)
+            {name: 'part_weight', index: 'part_weight', width: 120,fixed: true,formatter: 'integer',align: 'right'},//단중
+            {name: 'part_size', index: 'part_size', width: 90,fixed: true},//사이즈
+            {name: 'gross_weight', index: 'gross_weight', width: 120,fixed: true,formatter: 'integer',align: 'right'},//포장무게
+            {name: 'unit_cost', index: 'unit_cost', width: 80,fixed: true,formatter: 'integer',align: 'right'},//단가
+            {name: 'total_cost', index: 'total_cost', width: 80,fixed: true,formatter: 'integer',align: 'right'},//단가
+            {name: 'currency_type_name', index: 'currency_type_name', width: 50,fixed: true},//화폐단위
+            {name: 'route_name', index: 'route_name', width: 120,fixed: true},//공정라우팅
+            // {name: 'outs', index: 'outs', width: 120,fixed: true},//외주
+            {name: 'outs_supp_name', index: 'outs_supp_name', width: 120,fixed: true},//외주(열처리)
+            {name: 'use_yn', index: 'use_yn', width: 80,fixed: true},
+            {name: 'startup_date', index: 'startup_date', width: 90,fixed: true,formatter:formmatterDate2},
+            {name: 'wood_code1', index: 'wood_code1', width: 100,fixed: true},
+            {name: 'wood_code2', index: 'wood_code2', width: 100,fixed: true},
+            {name: 'wood_code3', index: 'wood_code3', width: 100,fixed: true},
+            {name: 'outs_qc', index: 'outs_qc', width: 80,fixed: true},
+            {name: 'user_name', index: 'user_name', width: 80,fixed: true},
+            {name: 'update_date', index: 'update_date', width: 140,fixed: true,formatter:formmatterDate}
 
         ],
         caption: "제품품목 | MES",
@@ -222,6 +222,10 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
         multiselect: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
+        
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

@@ -5,8 +5,8 @@ import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.Common.Function.ReturnFunction;
 import com.mes.Mapper.mesPop.Standard.MesPopMapper;
+import com.mes.mesManager.User.DTO.SYSUser;
 import com.mes.mesPop.Standard.DTO.*;
-import com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -191,5 +191,10 @@ public class PopStandardService extends ReturnFunction {
         }
         return  m;
 
+    }
+
+    public RESTful sysUserGet2(HttpServletRequest req, Page p) {
+        List<SYSUser> rows = mesPopMapper.sysUserGet2(p);
+        return getListData(rows,p);
     }
 }

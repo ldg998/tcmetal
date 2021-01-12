@@ -21,7 +21,7 @@
     </select>
 
     <select id="qmsRecvListGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">
-        EXEC [SP_QMS_RECV_LIST_GET]  #{page}, #{rows},#{start_date},#{end_date}, #{keyword},''
+        EXEC [SP_QMS_RECV_LIST_GET2]  #{page}, #{rows},#{start_date},#{end_date}, #{keyword},'',#{sidx},#{sord}
     </select>
 
     <select id="qmsRecvErrorListGet" resultType="com.mes.mesQms.Import.DTO.QMS_RECV_SUB">

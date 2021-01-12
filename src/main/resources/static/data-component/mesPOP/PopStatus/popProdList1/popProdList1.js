@@ -105,16 +105,16 @@ function jqGrid_main() {
         datatype: "local",
         colNames: ['','공정','업체','기종','품번','품명','단중','생산일자','생산수량','중량'],
         colModel: [
-            {name:'seq', index: 'seq',sortable: false,key:true,hidden:true},
-            {name: 'line_name', index: 'line_name', sortable: false, width: 80,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 110,fixed:true},
-            {name: 'part_code', index: 'plan_code', sortable: false, width: 130,fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer' },
-            {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter: formmatterDate2},
-            {name: 'qty', index: 'qty', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer' },
-            {name: 'weight', index: 'weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer' }
+            {name:'seq', index: 'seq',key:true,hidden:true},
+            {name: 'line_name', index: 'line_name',  width: 80,fixed:true,sortable:false},
+            {name: 'supp_name', index: 'supp_name',  width: 130,fixed:true,sortable:false},
+            {name: 'part_kind', index: 'part_kind',  width: 110,fixed:true,sortable:false},
+            {name: 'part_code', index: 'plan_code',  width: 130,fixed:true,sortable:false},
+            {name: 'part_name', index: 'part_name',  width: 190,fixed:true,sortable:false},
+            {name: 'part_weight', index: 'part_weight',  width: 90,fixed:true,align: 'right', formatter: 'integer',sortable:false },
+            {name: 'work_date', index: 'work_date',  width: 90,fixed:true,formatter: formmatterDate2,sortable:false},
+            {name: 'qty', index: 'qty',  width: 90,fixed:true,align: 'right', formatter: 'integer' ,sortable:false},
+            {name: 'weight', index: 'weight',  width: 90,fixed:true,align: 'right', formatter: 'integer' ,sortable:false}
 
         ],
         caption: "제품별 생산실적 | MES",
@@ -124,6 +124,9 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
             },
         loadComplete : function(data) {

@@ -16,7 +16,7 @@
     </select>
 
     <select id="qmsQcItemGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_ITEM">
-        	EXEC SP_SYS_QC_ITEM_GET #{page}, #{rows},#{keyword}, #{keyword2},'',''
+        	EXEC SP_SYS_QC_ITEM_GET2 #{page}, #{rows},#{keyword}, #{keyword2},'','',#{sidx},#{sord}
     </select>
     <select id="qmsQcItemOneGet" resultType="com.mes.mesQms.Standard.DTO.SYS_QC_ITEM">
         	EXEC SP_SYS_QC_ITEM_GET 1, 1,'', '',#{qc_code},''
@@ -28,7 +28,7 @@
         EXEC SP_SYS_QC_ITEM_DEL  #{keyword}
     </select>
     <select id="qmsMeltSpecGet" resultType="com.mes.mesQms.Standard.DTO.SYS_SPART_MELT">
-        EXEC SP_QMS_MELT_SPEC_GET  #{page},#{rows},#{keyword},#{keyword2},#{keyword3}
+        EXEC SP_QMS_MELT_SPEC_GET2  #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{sidx},#{sord}
     </select>
     <select id="qmsMeltSpecOneGet" resultType="com.mes.mesQms.Standard.DTO.SYS_SPART_MELT">
         EXEC SP_QMS_MELT_SPEC_ONE_GET  #{keyword} ,#{keyword2} ,#{part_kind} ,#{part_code}

@@ -145,21 +145,21 @@ function jqGrid_main() {
         mtype: 'POST',// post 방식 데이터 전달
         colNames : ['','','','','업체','기종','품번','품명','단중','화폐단위','변경일자','단가','총금액','등록자','수정일'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
-            {name:'currency_code',index:'currency_code',hidden:true,sortable: false,fixed: true},
+            {name:'currency_code',index:'currency_code',hidden:true,fixed: true},
             {name: 'rownum', index: 'rownum',hidden:true,fixed: true,key:true},
             {name: 'use_yn', index: 'use_yn',hidden:true,fixed: true},
             {name: 'supp_code', index: 'supp_code',hidden:true,fixed: true},
-            {name:'supp_name',index:'supp_name',sortable: false,width:130,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
-            {name:'part_kind',index:'part_kind',sortable: false,width:110,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name:'part_code',index:'part_code',sortable: false,width:130,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name:'part_name',index:'part_name',sortable: false,width:190,fixed: true},
-            {name:'part_weight',index:'part_weight',sortable: false,width:90,fixed: true,formatter: 'integer',align: 'right'},
-            {name:'currency_type_name',index:'currency_type_name',sortable: false,width:80,fixed: true},
-            {name:'start_date',index:'start_date',sortable: false,width:90,fixed: true,formatter:formmatterDate2},
-            {name:'max_unit_cost',index:'max_unit_cost',sortable: false,width:90,fixed: true,formatter: 'integer',align: 'right'},
-            {name:'total_cost',index:'total_cost',sortable: false,width:90,fixed: true,formatter: 'integer',align: 'right'},
-            {name:'cost_user_name',index:'cost_user_name',sortable: false,width:60,fixed: true},
-            {name:'cost_create_date',index:'cost_create_date',sortable: false,width:140,fixed: true,formatter:formmatterDate}// formatter 사용을 통해 데이터 형식 가공
+            {name:'supp_name',index:'supp_name',width:130,fixed: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name:'part_kind',index:'part_kind',width:110,fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name:'part_code',index:'part_code',width:130,fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name:'part_name',index:'part_name',width:190,fixed: true},
+            {name:'part_weight',index:'part_weight',width:90,fixed: true,formatter: 'integer',align: 'right'},
+            {name:'currency_type_name',index:'currency_type_name',width:80,fixed: true},
+            {name:'start_date',index:'start_date',width:90,fixed: true,formatter:formmatterDate2},
+            {name:'max_unit_cost',index:'max_unit_cost',width:90,fixed: true,formatter: 'integer',align: 'right'},
+            {name:'total_cost',index:'total_cost',width:90,fixed: true,formatter: 'integer',align: 'right'},
+            {name:'cost_user_name',index:'cost_user_name',width:60,fixed: true},
+            {name:'cost_create_date',index:'cost_create_date',width:140,fixed: true,formatter:formmatterDate}// formatter 사용을 통해 데이터 형식 가공
         ],
         caption: "제품단가관리 | MES",// grid 제목
         autowidth: true,// 그리드 자동 가로 길이 설정
@@ -169,6 +169,10 @@ function jqGrid_main() {
         rowNum: 100, // 1페이지당 데이터 수
         rowList: [100, 200, 300, 400], // 페이지당 데이터 수 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
+
         beforeSelectRow: function (rowid, e) {  // 클릭 시 체크박스 선택 방지 / 체크박스를 눌러야만 체크
                 var $myGrid = $(this),
                     i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

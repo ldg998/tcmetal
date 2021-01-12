@@ -99,9 +99,17 @@
 
     </select>
 
+      <select id="sysUserGet2" resultType="com.mes.mesManager.User.DTO.SYSUser">
+        	EXEC SP_SYS_USER_GET2  #{page}, #{rows}, '', #{keyword},#{keyword2},#{sidx},#{sord}
+    </select>
+
+
     <update id="popReportSpecImageUpdate" >
         UPDATE SYS_PROD_REPORT_SPEC SET IMAGE = #{keyword3}
         WHERE PROD_TYPE = #{keyword} AND PROD_CODE = #{keyword2}
     </update>
+
+
+
 
 </mapper>

@@ -99,18 +99,16 @@ function jqGrid_main() {
         colNames: ['rownum','','업체','기종','품번','품명','단중','제품이력','제품이력(보기)','등록자','수정일'],
         colModel: [
             {name: 'rownum', index: 'rownum',hidden:true, width: 80,fixed: true,key:true},
-            {name: 'supp_code', index: 'supp_code',hidden:true, sortable:false, width: 100,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable:false, width: 130,fixed:true},
-            {name: 'part_kind', index: 'part_kind', sortable:false, width: 120, fixed:true},
-            {name: 'part_code', index: 'part_code', sortable:false, width: 130, fixed:true},
-            {name: 'part_name', index: 'part_name', sortable:false, width: 190, fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable:false, width: 90, fixed:true},
-
-            {name: 'file5', index: 'file5', sortable: false, width: 80, align: 'center', formatter: file1_formatter,fixed:true},
-            {name: 'file5', index: 'file5',width: 80, sortable: false,formatter: file5_formatter,fixed:true},
-
-            {name: 'user_name', index: 'user_name', sortable:false, width: 60, fixed:true},
-            {name: 'update_date', index: 'update_date', sortable:false, width: 140, fixed:true, formatter:formmatterDate},
+            {name: 'supp_code', index: 'supp_code',hidden:true,  width: 100,fixed:true},
+            {name: 'supp_name', index: 'supp_name',  width: 130,fixed:true},
+            {name: 'part_kind', index: 'part_kind',  width: 120, fixed:true},
+            {name: 'part_code', index: 'part_code',  width: 130, fixed:true},
+            {name: 'part_name', index: 'part_name',  width: 190, fixed:true},
+            {name: 'part_weight', index: 'part_weight',  width: 90, fixed:true},
+            {name: 'file5', index: 'file5',  width: 80, align: 'center', formatter: file1_formatter,fixed:true},
+            {name: 'file5', index: 'file5',width: 80, formatter: file5_formatter,fixed:true},
+            {name: 'user_name', index: 'user_name',  width: 60, fixed:true},
+            {name: 'update_date', index: 'update_date',  width: 140, fixed:true, formatter:formmatterDate},
         ],
         autowidth: true,
         viewrecords: true,
@@ -118,6 +116,9 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         pager: '#mes_grid_pager',
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         onCellSelect: function (rowid, icol, cellcontent, e) {
         },
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창

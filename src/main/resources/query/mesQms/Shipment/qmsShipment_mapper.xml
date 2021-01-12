@@ -89,7 +89,7 @@
     </select>
 
     <select id="qmsInspMachineGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_INSP_MACHINE">
-        EXEC SP_QMS_INSP_MACHINE_GET  #{page}, #{rows}, #{keyword}
+        EXEC SP_QMS_INSP_MACHINE_GET2  #{page}, #{rows}, #{keyword},#{sidx},#{sord}
     </select>
 
     <select id="qmsInspMachineOneGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_INSP_MACHINE">
@@ -102,7 +102,7 @@
     </select>
 
     <select id="qmsProdListGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
-        EXEC SP_QMS_PROD_LIST_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+        EXEC SP_QMS_PROD_LIST_GET2 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{sidx},#{sord}
     </select>
 
      <select id="qmsProdListModalGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_PROD_SUB">
@@ -126,7 +126,7 @@
     </select>
 
     <select id="qmsProdErrorReqGet" resultType="com.mes.mesQms.Shipment.DTO.QMS_RET">
-        EXEC SP_QMS_PROD_ERROR_REQ_GET #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+        EXEC SP_QMS_PROD_ERROR_REQ_GET3 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{sidx},#{sord}
     </select>
 
     <select id="qmsProdErrorReqDel" resultType="com.mes.Common.DataTransferObject.Message">

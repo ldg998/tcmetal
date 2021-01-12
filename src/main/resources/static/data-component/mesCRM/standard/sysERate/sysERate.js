@@ -134,14 +134,14 @@ function jqGrid_main() {
         mtype: 'POST',
         colNames : ['','','화폐단위','시작일','종료일','환율','등록자','수정일'],
         colModel : [
-            {name:'rownum',index:'rownum',key:true,hidden:true,sortable: false,fixed: true},
-            {name:'currency_code',index:'currency_code',hidden:true,sortable: false,fixed: true},
-            {name:'code_name1',index:'code_name1',sortable: false,width:60,fixed: true},
-            {name:'start_date',index:'start_date',sortable: false,width:90,fixed: true,formatter:formmatterDate2},
-            {name:'stop_date',index:'stop_date',sortable: false,width:90,fixed: true,formatter:formmatterDate2},
-            {name:'exch_rate',index:'exch_rate',sortable: false,width:90,fixed: true,align: 'right'},
-            {name:'user_name',index:'user_name',sortable: false,width:60,fixed: true},
-            {name:'update_date',index:'update_date',formatter:formmatterDate,sortable: false,width:140,fixed: true}
+            {name:'rownum',index:'rownum',key:true,hidden:true,fixed: true},
+            {name:'currency_code',index:'currency_code',hidden:true,fixed: true},
+            {name:'code_name1',index:'code_name1',width:60,fixed: true},
+            {name:'start_date',index:'start_date',width:90,fixed: true,formatter:formmatterDate2},
+            {name:'stop_date',index:'stop_date',width:90,fixed: true,formatter:formmatterDate2},
+            {name:'exch_rate',index:'exch_rate',width:90,fixed: true,align: 'right'},
+            {name:'user_name',index:'user_name',width:60,fixed: true},
+            {name:'update_date',index:'update_date',formatter:formmatterDate,width:140,fixed: true}
         ],
         caption: "환율관리 | MES",
         autowidth: true,
@@ -151,6 +151,9 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 400],
         viewrecords: true,
         multiselect: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

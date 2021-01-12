@@ -2,6 +2,7 @@ package com.mes.Mapper.mesPop.Standard;
 
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
+import com.mes.mesManager.User.DTO.SYSUser;
 import com.mes.mesPop.Standard.DTO.*;
 import org.springframework.stereotype.Repository;
 
@@ -53,4 +54,6 @@ public interface MesPopMapper {
     Message popReportSpecAdd(SYS_PROD_REPORT_SPEC sprs);
 
     void popReportSpecImageUpdate(Page p2);
+
+    List<SYSUser> sysUserGet2(Page p);
 }

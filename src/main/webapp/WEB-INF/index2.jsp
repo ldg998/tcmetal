@@ -5,208 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<style>
-    #mes_grid {
-        color: #ffffff;
-    }
-
-    #mes_grid2 {
-        color: #ffffff;
-    }
-
-    #mes_grid3 {
-        color: #ffffff;
-    }
-
-    #mes_grid4 {
-        color: #ffffff;
-    }
-
-    .table-responsive {
-        padding: 6px !important;
-    }
-
-    .ui-jqgrid-labels {
-
-    }
-
-    .ui-jqgrid-bdiv {
-        /*width: 90%;*/
-        color: #F0F9FF;
-    }
-
-    .ui-jqgrid-view > .ui-jqgrid-titlebar {
-        /*width: 90%;*/
-    }
-
-    .table_title {
-        color: #F0F9FF;
-        font-size: 1.8em;
-
-    }
-
-    .lo {
-        /*background-color: #0b2e13;*/
-        height: 90% !important;
-        padding: 2px;
-    !important;
-        margin: 6px;
-    !important;
-        border: 2px rgba(192, 192, 192, 0.7) solid;
-        border-radius: 15px;
-        background-color: rgba(28, 22, 22, 0.4);
-
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-    }
-
-    .lo::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera*/
-    }
-
-    .lo2 {
-
-        margin: 5px;
-
-        padding-top: 10px;
-        height: 98%;
-        border: 2px rgba(192, 192, 192, 0.7) solid;
-        border-radius: 15px;
-
-        background-color: rgba(21, 17, 17, 0.4);
-    }
-
-    .main-content:before {
-        content: "";
-        display: block !important;
-    }
-
-    .h_5 {
-        height: 5% !important;
-    }
-
-    .h_8 {
-        height: 8% !important;
-    }
-
-    .h_10 {
-        height: 10% !important;
-    }
-
-    .h_20 {
-        height: 20% !important;
-    }
-
-    .h_30 {
-        height: 30% !important;
-    }
-
-    .h_40 {
-        height: 40% !important;
-    }
-
-    .h_46 {
-        height: 46% !important;
-    }
-
-    .h_50 {
-        height: 50% !important;
-    }
-
-    .h_55 {
-        height: 55% !important;
-    }
-
-    .h_60 {
-        height: 60% !important;
-    }
-
-    .h_68 {
-        height: 68% !important;
-    }
-    .h_70 {
-        height: 70% !important;
-    }
-
-    .h_80 {
-        height: 80% !important;
-    }
-
-    .h_90 {
-        height: 90% !important;
-    }
-
-    .h_100 {
-        height: 100% !important;
-    }
-
-    .mark_img {
-        background-image: url("/ui-component/assets/images/mark.png");
-        background-color: #000000;
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 15px;
-        height: 15px;
-        max-width: 15px;
-
-        margin: auto;
-
-    }
-
-    .back_img {
-        margin: 0px;
-        padding: 0px;
-        height: 92%;
-        /*/ui-component/assets/images/main/main.jpg */
-        background-image: linear-gradient(rgba(20, 20, 20, 0.7) 100%, rgba(20, 20, 20, 0.7) 100%), url("/ui-component/assets/images/main/main3.jpg");
-        opacity: 1;
-        background-size: 98%;
-        position: relative;
-
-        /*z-index: -10;*/
-
-
-    }
-
-
-    /*.back_img:after {*/
-    /*    width: 100%;*/
-    /*    height: 100%;*/
-    /*    content: "";*/
-    /*    background-image: url("/ui-component/assets/images/main/main.jpg");*/
-
-    /*    top: 0;*/
-    /*    left: 0;*/
-    /*    z-index: -1;*/
-    /*    opacity: 0.5;*/
-    /*}*/
-
-    .thFont {
-        /*background: linear-gradient(to bottom, #504b4b 0%, #807a7a 50%,#504b4b 100%);*/
-        background-color: #504b4b;
-        border: 1px #ffffff solid;
-
-    }
-
-    .thFont > th {
-        text-align: center;
-        color: #d5d3d3;
-        font-weight: bolder;
-    }
-
-    .tdFont {
-        color: #d5d3d3;
-        text-align: center;
-    }
-
-    .table_border {
-        border: 1px #ffffff solid;
-        /*border-color : #ffffff;*/
-    }
-
-
-</style>
-
+<link rel="stylesheet" href="/ui-component/assets/css/index2.css" />
 <!DOCTYPE html>
 <tiles:insertAttribute name="header"/>
 <script type="text/javascript" src="/data-component/common/index2.js" charset="UTF-8"></script>
@@ -252,7 +51,7 @@
             <%-- end col-lg-6 --%>
 
 
-            <div class="col-lg-7 h_50">
+            <div class="col-lg-7 h_55">
                 <div class="lo col-xs-12 table-responsive">
                              <span>
                                     <i class="fa mark_img"></i>
@@ -296,7 +95,7 @@
             <%-- end col-lg-6 --%>
 
 
-            <div class="col-lg-6 h_50" style="float: right;">
+            <div class="col-lg-6 h_45" style="float: right;">
                 <div class="lo col-xs-12 table-responsive">
                             <span>
                                     <i class="fa mark_img"></i>

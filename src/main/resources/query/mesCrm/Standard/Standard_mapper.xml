@@ -20,7 +20,7 @@
     </select>
 
     <select id="sysERateGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_ERATE_CD">
-        EXEC SP_SYS_ERATE_GET_LIST #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2}
+        EXEC SP_SYS_ERATE_GET_LIST2 #{page},#{rows},#{start_date},#{end_date},#{keyword},#{keyword2},#{sidx},#{sord}
     </select>
 
      <select id="sysERateOneGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_ERATE_CD">
@@ -44,7 +44,7 @@
 	</select>
 
     <select id="sysWoodGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_WOOD_CD">
-		EXEC SP_CRM_WOOD_GET #{page},#{rows},#{keyword}
+		EXEC SP_CRM_WOOD_GET2 #{page},#{rows},#{keyword},#{sidx},#{sord}
 	</select>
 
     <select id="sysWoodOneGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_WOOD_CD">
@@ -64,11 +64,11 @@
 	</select>
 
     <select id="sysSpartCostGet2" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
-		EXEC SP_SYS_SPART_COST_GET #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{use_yn}
+		EXEC SP_SYS_SPART_COST_GET2 #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{use_yn},#{sidx},#{sord}
 	</select>
 
     <select id="sysSpartGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">
-            EXEC SP_SYS_SPART_GET_LIST #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{use_yn}
+            EXEC SP_SYS_SPART_GET_LIST2 #{page},#{rows},#{keyword},#{keyword2},#{keyword3},#{use_yn},#{sidx},#{sord}
 	</select>
 
     <select id="partKindGet" resultType="com.mes.mesCrm.Standard.DTO.SYS_SPART_CD">

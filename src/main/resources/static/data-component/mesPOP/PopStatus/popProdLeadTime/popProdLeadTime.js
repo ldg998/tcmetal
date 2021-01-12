@@ -29,8 +29,6 @@ $(document).ready(function () {
 ////////////////////////////클릭 함수//////////////////////////////////
 function get_btn(page) {
     main_data.send_data = value_return(".condition_main");
-
-
     $("#mes_grid").setGridParam({
         url: '/popProdLeadTimeGet',
         datatype: "json",
@@ -113,19 +111,19 @@ function jqGrid_main() {
         datatype: "local",
         colNames: ['생산지시일','생산완료일','공정','업체','기종','품번','품명','단중','중간검사','출하검사','LOT','리드타임','상태'],
         colModel: [
-            {name: 'work_date', index: 'work_date', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
-            {name: 'date1', index: 'date1', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
-            {name: 'line_name', index: 'line_name', sortable: false, width: 70,fixed:true},
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130,fixed:true},
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 130,fixed:true},
-            {name: 'part_code', index: 'plan_code', sortable: false, width: 120,fixed:true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 190,fixed:true},
-            {name: 'part_weight', index: 'part_weight', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
-            {name: 'date2', index: 'date2', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
-            {name: 'date3', index: 'date3', sortable: false, width: 90,fixed:true,formatter:formmatterDate2},
-            {name: 'lot_no', index: 'lot_no', sortable: false, width: 120,fixed:true},
-            {name: 'read_time', index: 'read_time', sortable: false, width: 90,fixed:true,align: 'right', formatter: 'integer'},
-            {name: 'qc_result_name', index: 'qc_result_name', sortable: false, width: 90,fixed:true},
+            {name: 'work_date', index: 'work_date',  width: 90,fixed:true,formatter:formmatterDate2},
+            {name: 'date1', index: 'date1',  width: 90,fixed:true,formatter:formmatterDate2},
+            {name: 'line_name', index: 'line_name',  width: 70,fixed:true},
+            {name: 'supp_name', index: 'supp_name',  width: 130,fixed:true},
+            {name: 'part_kind', index: 'part_kind',  width: 130,fixed:true},
+            {name: 'part_code', index: 'plan_code',  width: 120,fixed:true},
+            {name: 'part_name', index: 'part_name',  width: 190,fixed:true},
+            {name: 'part_weight', index: 'part_weight',  width: 90,fixed:true,align: 'right', formatter: 'integer'},
+            {name: 'date2', index: 'date2',  width: 90,fixed:true,formatter:formmatterDate2},
+            {name: 'date3', index: 'date3',  width: 90,fixed:true,formatter:formmatterDate2},
+            {name: 'lot_no', index: 'lot_no',  width: 120,fixed:true},
+            {name: 'read_time', index: 'read_time',  width: 90,fixed:true,align: 'right', formatter: 'integer'},
+            {name: 'qc_result_name', index: 'qc_result_name',  width: 90,fixed:true},
 
 
         ],
@@ -136,6 +134,9 @@ function jqGrid_main() {
         rowNum: 100,
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
     }).navGrid('#mes_grid_pager', {search: false, add: false, edit: false, del: false});
 }
 

@@ -1023,41 +1023,41 @@ function jqGrid_main() {
         mtype: 'POST',// post 방식 데이터 전달
         colNames: ['rownum', '출고일자', '출시번호', '수주번호', '업체', '업체', 'check', 'PO', '기종', '품번', '품명', '단중', '수량', 'INVOICE', '운송수단', '등록자', '등록일시'],// grid 헤더 설정
         colModel: [// grid row 의 설정할 데이터 설정
-            {name: 'rownum', index: 'rownum', key: true, sortable: false, width: 100, fixed: true, hidden: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
+            {name: 'rownum', index: 'rownum', key: true,  width: 100, fixed: true, hidden: true},// key 지정시 grid에서 rowid 데이터 추출시 해당 데이터로 추출
             {
                 name: 'work_date',
                 index: 'work_date',
-                sortable: false,
+                
                 width: 90,
                 fixed: true,
                 formatter: formmatterDate2
             }, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name: 'req_no', index: 'req_no', sortable: false, width: 120, fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
-            {name: 'ord_no', index: 'ord_no', sortable: false, width: 120, fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
-            {name: 'supp_name', index: 'supp_name', sortable: false, width: 130, fixed: true},
-            {name: 'supp_code', index: 'supp_code', sortable: false, width: 150, fixed: true, hidden: true},
-            {name: 'iu_check', index: 'iu_check', sortable: false, width: 150, fixed: true, hidden: true},
-            {name: 'po_no', index: 'po_no', sortable: false, width: 130, fixed: true},
-            {name: 'part_kind', index: 'part_kind', sortable: false, width: 110, fixed: true},
-            {name: 'part_code', index: 'part_code', sortable: false, width: 130, fixed: true},
-            {name: 'part_name', index: 'part_name', sortable: false, width: 190, fixed: true},
+            {name: 'req_no', index: 'req_no',  width: 120, fixed: true}, // sortable 사용시 그리드 헤더 자체 정렬 기능 설정
+            {name: 'ord_no', index: 'ord_no',  width: 120, fixed: true},// fixed 사용시 해당 그리드 너비 고정값 사용 여부 설정
+            {name: 'supp_name', index: 'supp_name',  width: 130, fixed: true},
+            {name: 'supp_code', index: 'supp_code',  width: 150, fixed: true, hidden: true},
+            {name: 'iu_check', index: 'iu_check',  width: 150, fixed: true, hidden: true},
+            {name: 'po_no', index: 'po_no',  width: 130, fixed: true},
+            {name: 'part_kind', index: 'part_kind',  width: 110, fixed: true},
+            {name: 'part_code', index: 'part_code',  width: 130, fixed: true},
+            {name: 'part_name', index: 'part_name',  width: 190, fixed: true},
             {
                 name: 'part_weight',
                 index: 'part_weight',
-                sortable: false,
+                
                 width: 90,
                 fixed: true,
                 align: 'right',
                 formatter: 'integer'
             },
-            {name: 'qty', index: 'qty', sortable: false, width: 90, fixed: true, align: 'right', formatter: 'integer'},
-            {name: 'rpt_name', index: 'rpt_name', sortable: false, width: 130, fixed: true},
-            {name: 'trans_name', index: 'trans_name', sortable: false, width: 80, fixed: true},
-            {name: 'user_name', index: 'user_name', sortable: false, width: 60, fixed: true},
+            {name: 'qty', index: 'qty',  width: 90, fixed: true, align: 'right', formatter: 'integer'},
+            {name: 'rpt_name', index: 'rpt_name',  width: 130, fixed: true},
+            {name: 'trans_name', index: 'trans_name',  width: 80, fixed: true},
+            {name: 'user_name', index: 'user_name',  width: 60, fixed: true},
             {
                 name: 'update_date',
                 index: 'update_date',
-                sortable: false,
+                
                 width: 140,
                 fixed: true,
                 formatter: formmatterDate
@@ -1070,7 +1070,9 @@ function jqGrid_main() {
         rowNum: 100, // 1페이지당 데이터 수
         rowList: [100, 200, 300, 400], // 페이지당 데이터 수 설정
         viewrecords: true, // 그리드 하단 현재 컬럼/총컬럼 수 명시
-
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         ondblClickRow: function (rowid, iRow, iCol, e) { // 더블 클릭시 수정 모달창
             var data = $('#mes_grid').jqGrid('getRowData', rowid);
             update_btn(data);

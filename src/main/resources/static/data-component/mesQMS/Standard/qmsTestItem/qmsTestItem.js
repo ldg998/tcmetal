@@ -123,13 +123,13 @@ function jqGrid_main() {
         datatype: "local",
         colNames: ['검사구분','코드그룹','검사코드','검사명','사용유무','등록자','등록일시'],
         colModel: [
-            {name: 'qc_group_name', index: 'qc_group_name', width: 70, sortable:false,fixed:true},
-            {name: 'qc_type_name', index: 'qc_type_name', width: 110, sortable:false,fixed:true},
-            {name: 'qc_code', index: 'qc_code',key:true, width: 130, sortable:false,fixed:true},
-            {name: 'qc_name', index: 'qc_name', width: 150, sortable:false,fixed:true},
-            {name: 'use_yn', index: 'use_yn', width: 70, sortable:false,fixed:true},
-            {name: 'user_name', index: 'user_name', width: 130, sortable:false,fixed:true},
-            {name: 'create_date', index: 'create_date', width: 140, sortable:false,fixed:true,formatter: formmatterDate}
+            {name: 'qc_group_name', index: 'qc_group_name', width: 70, fixed:true},
+            {name: 'qc_type_name', index: 'qc_type_name', width: 110, fixed:true},
+            {name: 'qc_code', index: 'qc_code',key:true, width: 130, fixed:true},
+            {name: 'qc_name', index: 'qc_name', width: 150, fixed:true},
+            {name: 'use_yn', index: 'use_yn', width: 70, fixed:true},
+            {name: 'user_name', index: 'user_name', width: 130, fixed:true},
+            {name: 'create_date', index: 'create_date', width: 140, fixed:true,formatter: formmatterDate}
         ],
         caption: "검사항목관리 | MES",
         autowidth: true,
@@ -139,6 +139,9 @@ function jqGrid_main() {
         rowList: [100, 200, 300, 500, 1000],
         viewrecords: true,
         multiselect: true,
+        sortable: true,
+        sortorder: 'desc',
+        jsonReader: {cell: ""},
         beforeSelectRow: function (rowid, e) {          // 클릭시 체크 방지
             var $myGrid = $(this),
                 i = $.jgrid.getCellIndex($(e.target).closest('td')[0]),

@@ -4,7 +4,6 @@ import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
 import com.mes.mesPop.Standard.DTO.*;
-import com.mes.mesTpm.Machine.DTO.TPM_MACHINE_CD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -116,6 +115,11 @@ public class PopStandardRestController {
         return popStandardService.popSpecGet(req, p);
     }
 
+    @RequestMapping(value = "/sysUserGet2", method = RequestMethod.POST)
+    public RESTful sysUserGet2(HttpServletRequest req, Page p) {
+        return popStandardService.sysUserGet2(req, p);
+    }
+
     @RequestMapping(value = "/popSpecAdd", method = RequestMethod.POST)
     public Message popSpecAdd(HttpServletRequest req, POP_SPEC ps) {
         return popStandardService.popSpecAdd(req,ps);
@@ -130,5 +134,6 @@ public class PopStandardRestController {
     public Message popSpecDel(HttpServletRequest req, POP_SPEC ps) {
         return popStandardService.popSpecDel(req, ps);
     }
+
 
 }

@@ -53,23 +53,33 @@ function getList(){
 }
 
 function table_set(){
-
+//합형현황
     ccn_ajax("/monitoringGet",{}).then(function (data) {
         $(".list1").empty();
         var tbody =  $(".list1");
         data.forEach(function (list) {
             var list1 = "<tr class=\"tdFont\"  style=\"height: 35px;\">"
 
-            list1 += "  <td>"+list.supp_name+"</td>"
+            list1 += "  <td class="+list.idx+">"+list.supp_name+"</td>"
             list1 += " <td>"+list.part_kind +"</td>"
             list1 += " <td>"+ list.part_name +"</td>"
             list1 += " <td>"+ list.lot_no +"</td> "
             list1 += " <td>"+ list.work_user_name +"</td>"
              list1 += "</tr>"
-
             tbody.append(list1);
-
         })
+
+        // $("."+1).parent().css({"background-color": "rgba(0,104,63,0.4)"})
+        // $("."+2).parent().css({"background-color": "rgba(34,118,25,0.9)"})
+        // $("."+3).parent().css({"background-color": "rgb(132,141,30)"})
+        // $("."+4).parent().css({"background-color": "rgb(116,116,116,0.6)"})
+        // $("."+5).parent().css({"background-color": "rgba(99,36,189,0.8)"})
+        $("."+1).parent().css({"background-color": "rgba(47,121,142,0.5)"})
+        $("."+2).parent().css({"background-color": "rgba(79,144,196,0.5)"})
+        // $("."+3).parent().css({"background-color": ""})
+        $("."+4).parent().css({"background-color": "rgba(148,209,220,0.5)"})
+        $("."+5).parent().css({"background-color": "rgba(182,213,124,0.5)"})
+
         for(var i = data.length; i < 12; i++){
             var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
                 "<td></td>" +
@@ -83,25 +93,34 @@ function table_set(){
             tbody.append(addList);
         }
     })
+/////////////////////////////합형현황 끝
 
-
+// 용해주입일보현황
     ccn_ajax("/prodReport1Get",{}).then(function (data) {
         $(".list2").empty();
         var tbody2 =  $(".list2");
         data.forEach(function (list) {
             var list2 = " <tr class=\"tdFont\" style=\"height: 35px;\">\n" +
-                "                                    <td>"+list.charge+"</td>\n" +
+                "                                    <td >"+list.charge+"</td>\n" +
                 "                                    <td>"+list.supp_name+"</td>\n" +
-                "                                    <td>"+list.part_kind+"</td>\n" +
-                "                                    <td>"+list.part_name+"</td>\n" +
-                "                                    <td>"+ list.weight +"</td>  \n" +
+                "                                    <td>"+list.part_kind+"</td>\n"
+            if(list.part_name == "합계"){
+                list2 +="<td class=\"col_name\">"+list.part_name+"</td>\n"
+            }else {
+                list2 +="<td>"+list.part_name+"</td>\n"
+            }
+            list2 += "                               <td>"+ list.weight +"</td>  \n" +
                 "                                    <td>"+ list.plan_qty +"</td>\n" +
 
                 "                                    <td>"+list.user_name+"</td>\n" +
                 "                                </tr>"
 
+
             tbody2.append(list2);
         })
+
+        $(".col_name").parent().css({"background-color": "rgb(25,116,118)"})
+
         for(var i = data.length; i < 7; i++){
             var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
                 "<td></td>" +
@@ -117,7 +136,9 @@ function table_set(){
         }
 
     })
+////////////////////////////////// 용해주입일보현황 끝
 
+// 중간검사현황
     ccn_ajax("/prodMiddleListGet",{}).then(function (data) {
         $(".list3").empty();
         var tbody3 =  $(".list3");
@@ -148,8 +169,11 @@ function table_set(){
 
             tbody3.append(addList);
         }
-    })
 
+    })
+/////////////////////////////// 중간검사현황 끝
+
+// 공지사항
     ccn_ajax("/boardListGet",{}).then(function (data) {
         $(".list4").empty();
         var tbody4 =  $(".list4");
@@ -174,7 +198,7 @@ function table_set(){
         }
 
     })
-
+////////////////////////////// 공지사항 끝
 
 
 }

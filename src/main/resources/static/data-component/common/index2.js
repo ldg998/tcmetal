@@ -75,12 +75,12 @@ function table_set(){
         // $("."+4).parent().css({"background-color": "rgb(116,116,116,0.6)"})
         // $("."+5).parent().css({"background-color": "rgba(99,36,189,0.8)"})
 
-        $("."+1).parent().css({"background-color": "rgba(47,121,142,0.5)"})
-        $("."+2).parent().css({"background-color": "rgba(79,144,196,0.5)"})
+        // $("."+1).parent().css({"background-color": "rgba(47,121,142,0.5)"})
+        // $("."+2).parent().css({"background-color": "rgba(79,144,196,0.5)"})
         // $("."+3).parent().css({"background-color": ""})
-        $("."+4).parent().css({"background-color": "rgba(148,209,220,0.5)"})
-        $("."+5).parent().css({"background-color": "rgba(182,213,124,0.5)"})
-        $(".prod_status3").css({"background-color": "rgba(0,0,0,0.5)"})
+        // $("."+4).parent().css({"background-color": "rgba(148,209,220,0.5)"})
+        // $("."+5).parent().css({"background-color": "rgba(182,213,124,0.5)"})
+        $(".prod_status3").css({"background-color": "rgb(114,86,17)"})
 
         for(var i = data.length; i < 12; i++){
             var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
@@ -126,8 +126,8 @@ function table_set(){
         })
 
         $(".col_name").parent().css({"background-color": "rgb(25,116,118)"})
-        $(".status2").css({"background-color": "rgb(10,78,18)"})
-        $(".status3").css({"background-color": "rgb(114,86,17)"})
+        /*$(".status2").css({"background-color": "rgb(10,78,18)"})*/
+        $(".status2").css({"background-color": "rgb(114,86,17)"})
 
         for(var i = data.length; i < 7; i++){
             var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +

@@ -58,7 +58,7 @@ function table_set(){
         $(".list1").empty();
         var tbody =  $(".list1");
         data.forEach(function (list) {
-            var list1 = "<tr class=\"tdFont\"  style=\"height: 35px;\">"
+            var list1 = " <tr class=\"tdFont prod_status"+list.status+"\"  style=\"height: 35px;\">"
 
             list1 += "  <td class="+list.idx+">"+list.supp_name+"</td>"
             list1 += " <td>"+list.part_kind +"</td>"
@@ -74,11 +74,13 @@ function table_set(){
         // $("."+3).parent().css({"background-color": "rgb(132,141,30)"})
         // $("."+4).parent().css({"background-color": "rgb(116,116,116,0.6)"})
         // $("."+5).parent().css({"background-color": "rgba(99,36,189,0.8)"})
+
         $("."+1).parent().css({"background-color": "rgba(47,121,142,0.5)"})
         $("."+2).parent().css({"background-color": "rgba(79,144,196,0.5)"})
         // $("."+3).parent().css({"background-color": ""})
         $("."+4).parent().css({"background-color": "rgba(148,209,220,0.5)"})
         $("."+5).parent().css({"background-color": "rgba(182,213,124,0.5)"})
+        $(".prod_status3").css({"background-color": "rgba(0,0,0,0.5)"})
 
         for(var i = data.length; i < 12; i++){
             var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
@@ -92,6 +94,10 @@ function table_set(){
 
             tbody.append(addList);
         }
+
+
+
+
     })
 /////////////////////////////합형현황 끝
 
@@ -100,7 +106,7 @@ function table_set(){
         $(".list2").empty();
         var tbody2 =  $(".list2");
         data.forEach(function (list) {
-            var list2 = " <tr class=\"tdFont\" style=\"height: 35px;\">\n" +
+            var list2 = " <tr class=\"tdFont status"+list.status+"\"   style=\"height: 35px;\">\n" +
                 "                                    <td >"+list.charge+"</td>\n" +
                 "                                    <td>"+list.supp_name+"</td>\n" +
                 "                                    <td>"+list.part_kind+"</td>\n"
@@ -120,6 +126,8 @@ function table_set(){
         })
 
         $(".col_name").parent().css({"background-color": "rgb(25,116,118)"})
+        $(".status2").css({"background-color": "rgb(10,78,18)"})
+        $(".status3").css({"background-color": "rgb(114,86,17)"})
 
         for(var i = data.length; i < 7; i++){
             var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +

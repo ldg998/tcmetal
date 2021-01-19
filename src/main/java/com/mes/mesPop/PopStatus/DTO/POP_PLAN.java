@@ -37,6 +37,7 @@ public class POP_PLAN {
     private String work_user_name;
     private String prod_date;
     private String status_name;
+    private String status;
     private int qty;
     private String plan_code;
     private String line_name;

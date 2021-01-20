@@ -38,9 +38,6 @@ public class HomeController extends ReturnFunction {
     @RequestMapping(value="/index2")
     public String index2(HttpServletRequest req, Page p){
 
-        req.setAttribute("home","home");
-
-
         return "index2";
     }
 

@@ -1,7 +1,6 @@
 package com.mes.Common;
 
 
-import com.mes.Common.DataTransferObject.Page;
 import com.mes.Mapper.Home.Home.HomeMapper;
 import com.mes.mesBoard.board.DTO.SYS_BOARD_FILE;
 import com.mes.mesPop.PopStatus.DTO.POP_PLAN;
@@ -9,7 +8,6 @@ import com.mes.mesQms.Middle.DTO.QMS_PROD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
@@ -18,22 +16,22 @@ public class HomeService {
     @Autowired
     private HomeMapper mapper;
 
-    public List<POP_PLAN> monitoringGet(HttpServletRequest req, Page p) {
-        return  mapper.monitoringGet(req);
+    public List<POP_PLAN> monitoringGet() {
+        return  mapper.monitoringGet();
     }
 
-    public List<POP_PLAN> prodReport1Get(HttpServletRequest req, Page p) {
-        return mapper.prodReport1Get(req);
+    public List<POP_PLAN> prodReport1Get() {
+        return mapper.prodReport1Get();
     }
 
-    public List<QMS_PROD> prodMiddleListGet(HttpServletRequest req, Page p) {
-        return mapper.prodMiddleListGet(req);
+    public List<QMS_PROD> prodMiddleListGet() {
+        return mapper.prodMiddleListGet();
     }
 
-    public List<POP_PLAN> prodLeadTimeGet(HttpServletRequest req, Page p) {
-        return mapper.prodLeadTimeGet(req);
+    public List<POP_PLAN> prodLeadTimeGet() {
+        return mapper.prodLeadTimeGet();
     }
 
-    public List<SYS_BOARD_FILE> boardListGet(HttpServletRequest req, Page p) {return mapper.boardListGet(req);
+    public List<SYS_BOARD_FILE> boardListGet() {return mapper.boardListGet();
     }
 }

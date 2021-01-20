@@ -94,45 +94,7 @@
             </div>
             <%-- end col-lg-6 --%>
 
-
             <div class="col-lg-6 h_45" style="float: right;">
-                <div class="lo col-xs-12 table-responsive">
-                            <span>
-                                    <i class="fa mark_img"></i>
-                                    <span class="table_title">&nbsp; 공지사항</span>
-                                </span>
-
-
-                    <table style="width: 100%;" border="1" class="table_border box">
-                        <colgroup>
-                            <col width="65%">
-                            <col width="20%">
-                            <col width="15%">
-
-                        </colgroup>
-
-                        <thead>
-                        <tr class="thFont" style="height: 40px;">
-                            <th>제목</th>
-                            <th>작성자</th>
-                            <th>작성일</th>
-                        </tr>
-                        </thead>
-
-
-                        <tbody class="list4">
-
-                        </tbody>
-
-                    </table>
-
-                    <%--<table id="mes_grid4"></table>--%>
-                </div>
-                <%--end lo--%>
-            </div>
-            <%-- end col-lg-6 --%>
-
-            <div class="col-lg-6 h_30" style="float: left;">
                 <div class="lo col-xs-12 table-responsive">
                             <span>
                                     <i class="fa mark_img"></i>
@@ -174,6 +136,44 @@
                 </div>
                 <%--end lo--%>
             </div>
+
+            <div class="col-lg-6 h_30" style="float: left;">
+                <div class="lo col-xs-12 table-responsive">
+                            <span>
+                                    <i class="fa mark_img"></i>
+                                    <span class="table_title">&nbsp; 공지사항</span>
+                                </span>
+
+
+                    <table style="width: 100%;" border="1" class="table_border box">
+                        <colgroup>
+                            <col width="90%">
+                            <col width="10%">
+
+
+                        </colgroup>
+
+                        <thead>
+                        <tr class="thFont" style="height: 40px;">
+                            <th>제목</th>
+                            <th>작성자</th>
+                        </tr>
+                        </thead>
+
+
+                        <tbody class="list4">
+
+                        </tbody>
+
+                    </table>
+
+                    <%--<table id="mes_grid4"></table>--%>
+                </div>
+                <%--end lo--%>
+            </div>
+            <%-- end col-lg-6 --%>
+
+
             <%-- end col-lg-6 --%>
         </div>
     </div>

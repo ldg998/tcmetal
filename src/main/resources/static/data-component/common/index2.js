@@ -164,7 +164,7 @@ function table_set(){
             tbody3.append(list3);
         })
 
-        for(var i = data.length; i < 4; i++){
+        for(var i = data.length; i < 6; i++){
             var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
                 "<td></td>" +
                 "<td></td>" +
@@ -188,18 +188,16 @@ function table_set(){
         data.forEach(function (list) {
             var list4 =" <tr class=\"tdFont\" style=\"height: 35px;\">\n" +
                 "                                    <td>"+list.subject+"</td>\n" +
-                "                                    <td>"+list.user_name+"</td>\n" +
-                "                                    <td>"+list.work_date2+"</td>\n" +
-                "\n" +
+                "                                    <td>"+list.user_name+"</td>" +
                 "                                </tr>"
             tbody4.append(list4);
         })
 
-        for(var i = data.length; i < 7; i++){
+        for(var i = data.length; i < 4; i++){
            var addList ="<tr class=\"tdFont\" style=\"height: 35px;\">" +
                "<td></td>" +
                "<td></td>" +
-               "<td></td>" +
+
                "</tr>"
 
             tbody4.append(addList);

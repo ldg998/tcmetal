@@ -183,7 +183,15 @@ function jqGrid_main() {
         sortable: true,
         sortorder: 'desc',
         jsonReader: {cell: ""},
-        loadComplete:function(){
+        loadComplete:function(data){
+            data.rows.forEach(function (idsfor, s) {
+                if (idsfor.part_code === '합계'){
+                    $("#mes_grid").setRowData(idsfor.out_no, false, {background:"rgb(155, 185, 239)"}) ;
+                    $("#mes_grid").jqGrid('setCell', idsfor.out_no, 'cb').attr('disabled',true);
+
+                }
+            });
+
             if ($("#mes_grid").jqGrid('getGridParam', 'reccount') === 0)
                 $(".jqgfirstrow").css("height","1px");
             else
@@ -195,6 +203,13 @@ function jqGrid_main() {
                 cm = $myGrid.jqGrid('getGridParam', 'colModel');
             return (cm[i].name === 'cb');
         },
+        onSelectAll: function(aRowids,status) { //disabled 처리된 checkbox 선택 안되도록 해주는 부분
+            if (status) {
+                var cbs = $("tr.jqgrow > td > input.cbox:disabled", $("#mes_grid")[0]);
+                cbs.removeAttr("checked");
+
+            }
+        }
     });
 }
 
@@ -273,6 +288,8 @@ function file1_formatter(cellvalue, options, rowObject) {
             "</span>" +
             "</a>";
     } else if (cellvalue === "Z") {
+        return "";
+    }else {
         return "";
     }
 }

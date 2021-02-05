@@ -205,7 +205,7 @@ function modal_make1() { //dialog 에 사이즈 및 버튼 기타옵션을 설�
         open: function () {
             if ($.ui && $.ui.dialog && !$.ui.dialog.prototype._allowInteractionRemapped && $(this).closest(".ui-dialog").length) {
                 if ($.ui.dialog.prototype._allowInteraction) {
-                    $.ui.dialog.prototype._allowInteraction = function (e) {
+                    $.ui.dialog.prototype._allowInteraction = function (e) {wmsOutList
                         if ($(e.target).closest('.select2-drop').length) return true;
 
                         if (typeof ui_dialog_interaction!="undefined") {

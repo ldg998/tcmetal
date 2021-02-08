@@ -68,8 +68,6 @@
                 <input type="text" name="unit_cost" class="form-control modal_value" onkeyup="num_keyup_comma(this)" autocomplete="off" style="text-align: right">
             </div>
         </div>
-
-
     </div>
     <%-- end_input_data --%>
     <br/>

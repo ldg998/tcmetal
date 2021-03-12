@@ -108,11 +108,11 @@ public class UserService extends ReturnFunction {
         u.setUser_code(getSessionData(req).getUser_code());
         u.setUser_pwd(p.getPassword());
         int check = userMapper.userInformationCheck(u);
-        System.out.println(check);
+
         if (check == 1){
             u.setUser_pwd(p.getPassword_new());
             check = userMapper.userInformationChange(u);
-            System.out.println(check);
+
             if (check ==1){
                 req.getSession().invalidate();
                 m.setResult("OK");

@@ -173,7 +173,7 @@ public class QmsImportService  extends UploadFunction {
         String path = "C:/UploadFile/tcmetal/qmsqmsImport";
         qrs.setUser_code(getSessionData(req).getUser_code());
         qrs.setKey_value(file_key_retrun(qrs,path));
-        System.out.println(qrs);
+
        return qmsImportMapper.qmsRecvListFileAdd(qrs);
     }
 

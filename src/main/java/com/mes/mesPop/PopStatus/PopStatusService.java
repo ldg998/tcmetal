@@ -201,7 +201,7 @@ public class PopStatusService extends UploadFunction {
             ssc.setFile4(ssc.getFile4());
         }
 
-        System.out.println(ssc);
+
 
         return mesPopStatusMapper.sysSPartDrawingAdd3(ssc);
     }

@@ -247,7 +247,7 @@ public class MESBoardService extends ReturnFunction {
                 list.setOriginal_name(mf.getOriginalFilename());
                 list.setType(mf.getContentType());
 
-                System.out.println(list);
+
                 i++;
             }
         }

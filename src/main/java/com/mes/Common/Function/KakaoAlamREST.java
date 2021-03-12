@@ -16,7 +16,7 @@ import java.net.URL;
 public class KakaoAlamREST {
     @RequestMapping("sendmsg")
     public void SendMessage(KakaoAlam kakao, HttpServletResponse response) throws IOException {
-        System.out.println(kakao.getTmp_number());
+
         URL url = null;
         HttpURLConnection connection = null;
         InputStream input = null;

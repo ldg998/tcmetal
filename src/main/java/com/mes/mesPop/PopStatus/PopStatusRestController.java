@@ -76,7 +76,7 @@ public class PopStatusRestController {
 
     @RequestMapping(value = "/popProdListGet", method = RequestMethod.POST)
     public RESTful popProdListGet(HttpServletRequest req, Page p) {
-        System.out.println(p);
+
         return popStatusService.popProdListGet(req,p);}
 
 
@@ -104,7 +104,7 @@ public class PopStatusRestController {
 
     @RequestMapping(value = "/popProdReportGet", method = RequestMethod.POST)
     public RESTful popProdReportGet(HttpServletRequest req, Page p) {
-        System.out.println(p);
+
         return popStatusService.popProdReportGet(req,p);}
 
     @RequestMapping(value = "/popMonitoringGet", method = RequestMethod.POST)
@@ -138,7 +138,7 @@ public class PopStatusRestController {
      public Message popProdList2Add(HttpServletRequest req,POP_PLAN pp) { return popStatusService.popProdList2Add(req,pp);}
 
     @RequestMapping(value = "/popProdLogAdd", method = RequestMethod.POST)
-     public Message popProdLogAdd(HttpServletRequest req,POP_PLAN pp) {System.out.println(pp); return popStatusService.popProdLogAdd(req,pp);}
+     public Message popProdLogAdd(HttpServletRequest req,POP_PLAN pp) { return popStatusService.popProdLogAdd(req,pp);}
 
 
 

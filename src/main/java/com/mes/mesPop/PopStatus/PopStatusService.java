@@ -155,6 +155,7 @@ public class PopStatusService extends UploadFunction {
     public POP_PLAN popProdMeltGet(HttpServletRequest req, POP_PLAN pp) {
         POP_PLAN vo = new POP_PLAN();
         List<List<Object>> datas = mesPopStatusMapper.popProdMeltGet(pp);
+
         List<POP_PROD_MELT> dataset1 = getDataset(datas, 0);
         List<POP_PROD_MELT_SUB1> dataset2 = getDataset(datas, 1);
         List<POP_PROD_MELT_SUB2> dataset3 = getDataset(datas, 2);

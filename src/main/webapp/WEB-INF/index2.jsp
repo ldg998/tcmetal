@@ -37,7 +37,7 @@
                             <th>기종</th>
                             <th>품명</th>
                             <th>LOT</th>
-                            <th>등록자</th>
+                            <th>작업자</th>
                         </tr>
                         </thead>
                         <tbody class="list1">
@@ -76,7 +76,7 @@
                             <th>품명</th>
                             <th>중량</th>
                             <th>개수</th>
-                            <th>등록자</th>
+                            <th>작업자</th>
 
                         </tr>
                         </thead>

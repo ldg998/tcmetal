@@ -142,6 +142,7 @@
     <resultMap id="myId3" type="com.mes.mesPop.PopStatus.DTO.POP_PROD_MELT_SUB2"></resultMap>
 
     <resultMap id="myId4" type="com.mes.mesPop.PopStatus.DTO.POP_PROD_MELT_SUB3"></resultMap>
+
     <select id="popProdMeltGet" resultMap="myId1, myId2, myId3, myId4">
     EXEC SP_POP_PROD_MELT_GET #{work_date},#{line_code},#{charge}
     </select>

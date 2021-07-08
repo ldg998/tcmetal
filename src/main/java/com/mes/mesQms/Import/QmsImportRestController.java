@@ -148,7 +148,7 @@ public class QmsImportRestController extends UploadFunction {
         file.setKey_value(req.getParameter("key_value"));
         file.setFiles(req.getFile("files"));
         String fileName = file.getFiles().getOriginalFilename();   //파일 오리진 네임
-        String uploadPath = "C:/UploadFile/tcmetal/";   //파일 저장경로
+        String uploadPath = "D:/UploadFile/tcmetal/";   //파일 저장경로
         int type = fileName.lastIndexOf(".");
         String ext = fileName.substring(type + 1);       //파일 확장자
         file.setUrl("qmsRecvList_"+time1+"."+ext);

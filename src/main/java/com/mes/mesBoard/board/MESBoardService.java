@@ -115,7 +115,7 @@ public class MESBoardService extends ReturnFunction {
         String adf=null;
         String adc=null;
         String board_code = req.getParameter("board_code");
-        String path = "C:/UploadFile/sound/board_"+board_code;
+        String path = "D:/UploadFile/sound/board_"+board_code;
         int file_num = Integer.parseInt(req.getParameter("file_num"));
 
         try{
@@ -256,7 +256,7 @@ public class MESBoardService extends ReturnFunction {
 
 
     private String saveFile(MultipartFile file){ //파일 업로드 소스
-        String path = "C:/UploadFile/sound";
+        String path = "D:/UploadFile/sound";
         // 파일 이름 변경
         UUID uuid = UUID.randomUUID(); //랜덤 uuid
         String originalFilename = file.getOriginalFilename(); //파일에 진짜이름

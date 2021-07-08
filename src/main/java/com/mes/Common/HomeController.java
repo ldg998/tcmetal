@@ -45,7 +45,7 @@ public class HomeController extends ReturnFunction {
 
     @RequestMapping(value = "/testFile" , method = RequestMethod.POST)
     public void testFile(@RequestParam("testFile") MultipartFile upload, HttpServletResponse response){
-        String uploadPath   = "C:/UploadFile/sensorview";
+        String uploadPath   = "D:/UploadFile/sensorview";
 
         OutputStream out = null;
         PrintWriter printWriter = null;

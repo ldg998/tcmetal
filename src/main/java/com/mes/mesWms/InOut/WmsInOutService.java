@@ -83,7 +83,7 @@ public class WmsInOutService extends UploadFunction {
     public void wmsOutListAdd(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "wmsOutList";
-        Files newFiles = qmsInspMachineAdd(page_name,req,"C:/UploadFile/tcmetal/wmsOutList/");
+        Files newFiles = qmsInspMachineAdd(page_name,req,"D:/UploadFile/tcmetal/wmsOutList/");
         files.setKey_value(newFiles.getKey_value());
         wmsInOutMapper.wmsOutListAdd(files);
     }

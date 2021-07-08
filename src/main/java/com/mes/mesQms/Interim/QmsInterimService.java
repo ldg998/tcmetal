@@ -44,7 +44,7 @@ public class QmsInterimService extends UploadFunction {
     public void qmsAssyErrorManAdd_File2(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "qmsAssyErrorMan";
-        Files newFiles = setQmsRecvErrorManFile2(page_name,req,"C:/UploadFile/sensorview/qmsAssyErrorMan/");
+        Files newFiles = setQmsRecvErrorManFile2(page_name,req,"D:/UploadFile/sensorview/qmsAssyErrorMan/");
         files.setKey_value(newFiles.getKey_value());
         qmsInterimMapper.qmsAssyErrorManAdd_File2(files);
     }
@@ -52,7 +52,7 @@ public class QmsInterimService extends UploadFunction {
     public void qmsAssyErrorManAdd_File3(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "qmsAssyErrorMan";
-        Files newFiles = setQmsRecvErrorManFile1(page_name,req,"C:/UploadFile/sensorview/qmsAssyErrorMan/");
+        Files newFiles = setQmsRecvErrorManFile1(page_name,req,"D:/UploadFile/sensorview/qmsAssyErrorMan/");
         files.setKey_value(newFiles.getKey_value());
         qmsInterimMapper.qmsAssyErrorManAdd_File3(files);
     }
@@ -61,7 +61,7 @@ public class QmsInterimService extends UploadFunction {
         String page_name = "qmsAssyErrorMan";
         for(int i=2; 4>i; i++){
             String Key = MakeFileName_new(page_name,i);
-            Files newFiles = AllFile(files, req,Key,i,"C:/UploadFile/sensorview/qmsAssyErrorMan/");
+            Files newFiles = AllFile(files, req,Key,i,"D:/UploadFile/sensorview/qmsAssyErrorMan/");
             qmsInterimMapper.qmsAssyErrorManAdd_AllFile(newFiles);
         }
     }

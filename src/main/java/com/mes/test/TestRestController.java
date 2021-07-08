@@ -71,7 +71,7 @@ public class TestRestController {
     public void mobileImgUp( MultipartHttpServletRequest req) throws IOException {
         System.out.println("sss");
 
-        File dir = new File("C:/UploadFile/sound/mobile/img");
+        File dir = new File("D:/UploadFile/sound/mobile/img");
         if (!dir.exists()) {
             dir.mkdirs();
         }
@@ -81,7 +81,7 @@ public class TestRestController {
        String FileName = format.format(now)+".png";
         //byte fileData = Byte.parseByte(req.getParameter("file"));
        // System.out.println(fileData);
-//        File lOutFile = new File("C:/UploadFile/sound/mobile/img/"+FileName);
+//        File lOutFile = new File("D:/UploadFile/sound/mobile/img/"+FileName);
 //
 //        FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
 //
@@ -92,7 +92,7 @@ public class TestRestController {
 
 //        System.out.println(fileData.toString());
 //
-//        fos = new FileOutputStream("C:/UploadFile/sound/mobile/img/" + FileName);
+//        fos = new FileOutputStream("D:/UploadFile/sound/mobile/img/" + FileName);
 //
 //        fos.write(fileData);
 
@@ -111,7 +111,7 @@ public class TestRestController {
 //       // String[] name = uploadedFile.getOriginalFilename().split("\\.");
 //        //String FileName2 = FileName + "." + name[name.length - 1];
 //
-//        File lOutFile = new File("C:/UploadFile/sound/mobile/img/"+FileName);
+//        File lOutFile = new File("D:/UploadFile/sound/mobile/img/"+FileName);
 //
 //        FileOutputStream lFileOutputStream = new FileOutputStream(lOutFile);
 //
@@ -121,7 +121,7 @@ public class TestRestController {
 
 
 
-        File file = new File("C:/UploadFile/sound/mobile/img", FileName);
+        File file = new File("D:/UploadFile/sound/mobile/img", FileName);
         //uploadedFile 을 file로 저장한다.
         //물리적인 공간에 저장.
         uploadedFile.transferTo(file);

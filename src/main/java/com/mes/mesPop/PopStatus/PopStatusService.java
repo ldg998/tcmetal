@@ -57,7 +57,7 @@ public class PopStatusService extends UploadFunction {
     public void sysSPartDrawingAdd(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "sysSPartDrawing";
-        Files newFiles = setSysSPartDrawingAdd(page_name, req, "C:/UploadFile/tcmetal/sysSPartDrawing/");
+        Files newFiles = setSysSPartDrawingAdd(page_name, req, "D:/UploadFile/tcmetal/sysSPartDrawing/");
         files.setKey_value(newFiles.getUrl());
         mesPopStatusMapper.sysSPartDrawingAdd(files);
     }
@@ -71,7 +71,7 @@ public class PopStatusService extends UploadFunction {
     public void sysSPartWoodAdd(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "sysSPartWood";
-        Files newFiles = setSysSPartWoodAdd(page_name, req, "C:/UploadFile/tcmetal/sysSPartWood/");
+        Files newFiles = setSysSPartWoodAdd(page_name, req, "D:/UploadFile/tcmetal/sysSPartWood/");
         files.setKey_value(newFiles.getUrl());
         mesPopStatusMapper.sysSPartWoodAdd(files);
     }
@@ -184,7 +184,7 @@ public class PopStatusService extends UploadFunction {
 
     public Message sysSPartDrawingAdd3(MultipartHttpServletRequest req, SYS_SPART_CD ssc) {
         ssc.setUser_code(getSessionData(req).getUser_code());
-        String path = "C:/UploadFile/tcmetal/sysSPartDrawing";
+        String path = "D:/UploadFile/tcmetal/sysSPartDrawing";
 
         if (ssc.getCheck1() == 1) {
             ssc.setFile1(file_key_retrun1(ssc.getFiles1(), path,ssc.getUser_code()));

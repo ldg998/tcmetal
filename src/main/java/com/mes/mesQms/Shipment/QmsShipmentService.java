@@ -128,7 +128,7 @@ public class QmsShipmentService extends UploadFunction {
     public void sysSPartFile1Add(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "sysSPartFile1Add";
-        Files newFiles = sysSPartFile1Add(page_name,req,"C:/UploadFile/tcmetal/sysSPartFile1Add/");
+        Files newFiles = sysSPartFile1Add(page_name,req,"D:/UploadFile/tcmetal/sysSPartFile1Add/");
         files.setKey_value(newFiles.getKey_value());
         qmsShipmentMapper.sysSPartFile1Add(files);
     }
@@ -148,7 +148,7 @@ public class QmsShipmentService extends UploadFunction {
         String page_name = "qmsInspMachine";
         int check = Integer.parseInt(req.getParameter("check"));
         if (check == 1){
-            Files newFiles = qmsInspMachineAdd(page_name,req,"C:/UploadFile/tcmetal/qmsInspMachine/");
+            Files newFiles = qmsInspMachineAdd(page_name,req,"D:/UploadFile/tcmetal/qmsInspMachine/");
             files.setKey_value(newFiles.getKey_value());
         }
         return qmsShipmentMapper.qmsInspMachineAdd(files);
@@ -172,7 +172,7 @@ public class QmsShipmentService extends UploadFunction {
     }
 
     public Message qmsProdListUpload(MultipartHttpServletRequest req,QMS_PROD_SUB qps) {
-        String path = "C:/UploadFile/tcmetal/qmsOutsErrorMan";
+        String path = "D:/UploadFile/tcmetal/qmsOutsErrorMan";
         if(qps.getFiles() != null) {
             List<MultipartFile> fileList = qps.getFiles();
             int i = 1;
@@ -235,7 +235,7 @@ public class QmsShipmentService extends UploadFunction {
 
     public Message qmsProdErrorReqAdd(MultipartHttpServletRequest req, QMS_RET qr) {
         qr.setUser_code(getSessionData(req).getUser_code());
-       String path = "C:/UploadFile/tcmetal/qmsProdEroorReq";
+       String path = "D:/UploadFile/tcmetal/qmsProdEroorReq";
 
 
         qr.setFile_key(file_key_retrun(qr,path));

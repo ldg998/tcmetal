@@ -144,13 +144,13 @@ public class CrmOrdersService extends ReturnFunction {
             if (uploadedFile != null){
                 if (!m.getResult().equals("NG")) {
 
-                    File dir = new File("C:/UploadFile/tcmetal/wmsInvoiceForm" );
+                    File dir = new File("D:/UploadFile/tcmetal/wmsInvoiceForm" );
                     if (!dir.exists()) {
                         dir.mkdirs();
                     }
 
 
-                    file = new File("C:/UploadFile/tcmetal/wmsInvoiceForm", FileName2);
+                    file = new File("D:/UploadFile/tcmetal/wmsInvoiceForm", FileName2);
                     //uploadedFile 을 file로 저장한다.
                     //물리적인 공간에 저장.
                     uploadedFile.transferTo(file);

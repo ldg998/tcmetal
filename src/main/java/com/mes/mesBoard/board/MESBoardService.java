@@ -115,7 +115,7 @@ public class MESBoardService extends ReturnFunction {
         String adf=null;
         String adc=null;
         String board_code = req.getParameter("board_code");
-        String path = "C:/UploadFile/sound/board_"+board_code;
+        String path = "D:/UploadFile/tcmetal/board_"+board_code;
         int file_num = Integer.parseInt(req.getParameter("file_num"));
 
         try{

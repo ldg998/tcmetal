@@ -119,7 +119,7 @@ public class QmsImportService  extends UploadFunction {
     public void qmsRecvErrorManAdd_File1(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "qmsRecvErrorMan";
-        Files newFiles = setQmsRecvErrorManFile1(page_name,req,"D:/UploadFile/sound/qmsRecvErrorMan/");
+        Files newFiles = setQmsRecvErrorManFile1(page_name,req,"D:/UploadFile/tcmetal/qmsRecvErrorMan/");
         files.setKey_value(newFiles.getKey_value());
         qmsImportMapper.qmsRecvErrorManAdd1(files);
     }
@@ -127,7 +127,7 @@ public class QmsImportService  extends UploadFunction {
     public void qmsRecvErrorManAdd_File2(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "qmsRecvErrorMan";
-        Files newFiles = setQmsRecvErrorManFile2(page_name,req,"D:/UploadFile/sound/qmsRecvErrorMan/");
+        Files newFiles = setQmsRecvErrorManFile2(page_name,req,"D:/UploadFile/tcmetal/qmsRecvErrorMan/");
         files.setKey_value(newFiles.getKey_value());
         qmsImportMapper.qmsRecvErrorManAdd2(files);
     }
@@ -135,7 +135,7 @@ public class QmsImportService  extends UploadFunction {
     public void qmsRecvErrorManAdd_File3(Files files, MultipartHttpServletRequest req) {
         files.setUser_code(getSessionData(req).getUser_code());
         String page_name = "qmsRecvErrorMan";
-        Files newFiles = setQmsRecvErrorManFile3(page_name,req,"D:/UploadFile/sound/qmsRecvErrorMan/");
+        Files newFiles = setQmsRecvErrorManFile3(page_name,req,"D:/UploadFile/tcmetal/qmsRecvErrorMan/");
         files.setKey_value(newFiles.getKey_value());
         qmsImportMapper.qmsRecvErrorManAdd3(files);
     }
@@ -144,7 +144,7 @@ public class QmsImportService  extends UploadFunction {
         String page_name = "qmsRecvErrorMan";
         for(int i=1; 4>i; i++){
             String Key = MakeFileName_new(page_name,i);
-            Files newFiles = AllFile(files, req,Key,i,"D:/UploadFile/sound/qmsRecvErrorMan/");
+            Files newFiles = AllFile(files, req,Key,i,"D:/UploadFile/tcmetal/qmsRecvErrorMan/");
             qmsImportMapper.qmsRecvErrorManAdd_AllFile(newFiles);
         }
     }

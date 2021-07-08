@@ -21,7 +21,7 @@ public class Ckeditor {
         response.setContentType("text/html;charset=utf-8");
 
         try{
-            File dir = new File("D:/UploadFile/sound/image_board/");
+            File dir = new File("D:/UploadFile/tcmetal/image_board/");
             if (!dir.exists()) {
                 dir.mkdirs();
             }
@@ -31,7 +31,7 @@ public class Ckeditor {
             fileName = UUID.randomUUID().toString();
 
             //String uploadPath = request.getSession().getServletContext().getRealPath("uploads/etc") + '/' +fileName;//저장경로
-            String uploadPath = "D:/UploadFile/sound/image_board" + '/' +fileName;//저장경로
+            String uploadPath = "D:/UploadFile/tcmetal/image_board" + '/' +fileName;//저장경로
             String fileUrl = "uploadFile/image_board/"+fileName;//url경로
             byte[] bytes = upload.getBytes();
             String callback = request.getParameter("CKEditorFuncNum");

@@ -73,7 +73,7 @@ public class QmsShipmentRestController extends UploadFunction {
         Files files = new Files();
         files.setKey1(req.getParameter("qc_no"));
         files.setKey3(req.getParameter("act_type"));
-        String p = "D:/UploadFile/sound/qmsProdErrorMan/";
+        String p = "D:/UploadFile/tcmetal/qmsProdErrorMan/";
         int check2 = Integer.parseInt(req.getParameter("check2"));
         int check3 = Integer.parseInt(req.getParameter("check3"));
         if(check2+check3 == 0)
@@ -101,7 +101,7 @@ public class QmsShipmentRestController extends UploadFunction {
         Files files = new Files();
         files.setKey1(req.getParameter("qc_no"));
         files.setKey3(req.getParameter("act_type"));
-        String p = "D:/UploadFile/sound/qmsAssyErrorMan/";
+        String p = "D:/UploadFile/tcmetal/qmsAssyErrorMan/";
         int check2 = Integer.parseInt(req.getParameter("check2"));
         int check3 = Integer.parseInt(req.getParameter("check3"));
         if(check2+check3 == 0)
@@ -129,7 +129,7 @@ public class QmsShipmentRestController extends UploadFunction {
         Files files = new Files();
         files.setKey1(req.getParameter("qc_no"));
         files.setKey3(req.getParameter("act_type"));
-        String p = "D:/UploadFile/sound/qmsOutsErrorMan/";
+        String p = "D:/UploadFile/tcmetal/qmsOutsErrorMan/";
         int check2 = Integer.parseInt(req.getParameter("check2"));
         int check3 = Integer.parseInt(req.getParameter("check3"));
         if(check2+check3 == 0)

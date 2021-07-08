@@ -138,7 +138,7 @@ public class PopStandardService extends ReturnFunction {
         sprs.setUser_code(getSessionData(req).getUser_code());
 
         Message m = mesPopMapper.popReportSpecAdd(sprs);
-        File dir = new File("D:/UploadFile/sound/popReportSpec");
+        File dir = new File("D:/UploadFile/tcmetal/popReportSpec");
         if (!dir.exists()) {
             dir.mkdirs();
         }
@@ -169,11 +169,11 @@ public class PopStandardService extends ReturnFunction {
                 File file = new File(sprs2.getImage());
                 file.delete();
 
-                file = new File("D:/UploadFile/sound/popReportSpec", FileName2);
+                file = new File("D:/UploadFile/tcmetal/popReportSpec", FileName2);
                 //uploadedFile 을 file로 저장한다.
                 //물리적인 공간에 저장.
                 uploadedFile.transferTo(file);
-                FileName3 = "D:/UploadFile/sound/popReportSpec/"+FileName2;
+                FileName3 = "D:/UploadFile/tcmetal/popReportSpec/"+FileName2;
                 p2.setKeyword3(FileName3);
                 mesPopMapper.popReportSpecImageUpdate(p2);
             }

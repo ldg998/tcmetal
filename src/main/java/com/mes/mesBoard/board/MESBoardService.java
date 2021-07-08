@@ -256,7 +256,7 @@ public class MESBoardService extends ReturnFunction {
 
 
     private String saveFile(MultipartFile file){ //파일 업로드 소스
-        String path = "C:/UploadFile/sound";
+        String path = "D:/UploadFile/tcmetal";
         // 파일 이름 변경
         UUID uuid = UUID.randomUUID(); //랜덤 uuid
         String originalFilename = file.getOriginalFilename(); //파일에 진짜이름

@@ -185,11 +185,11 @@ public class ReturnFunction {
 
             for (int i = 0; i < one.length; i++) {
                 a = tree[i].length();
-                log.info("tree["+i+"] data 추출 = " + codeList.substring(a+1,a+2));
-                log.info("one = " + one[i]);
+//                log.info("tree["+i+"] data 추출 = " + codeList.substring(a+1,a+2));
+//                log.info("one = " + one[i]);
             }
             for (int x = 0; x < two.length; x++) {
-                log.info("two = " + two[x]);
+//                log.info("two = " + two[x]);
             }
         }
         return null;

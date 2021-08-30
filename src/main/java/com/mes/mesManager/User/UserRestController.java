@@ -3,6 +3,7 @@ package com.mes.mesManager.User;
 import com.mes.Common.DataTransferObject.Message;
 import com.mes.Common.DataTransferObject.Page;
 import com.mes.Common.DataTransferObject.RESTful;
+import com.mes.Common.Function.LogFunction;
 import com.mes.Common.Interceptor.Session;
 import com.mes.mesManager.User.DTO.SYSDept;
 import com.mes.mesManager.User.DTO.SYSUser;
@@ -15,24 +16,30 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @RestController
-public class UserRestController {
+public class UserRestController extends LogFunction {
 
     @Autowired
     private UserService userService;
 
     @RequestMapping("/loginAction")
-    public Session loginAction(Session s, HttpServletRequest request , HttpServletResponse res) {
+    public Session loginAction(Session s, HttpServletRequest request , HttpServletResponse res) throws UnsupportedEncodingException {
         HttpSession session = request.getSession();
         Session data = userService.loginAction(s);
 
 
         data.setSite_code("S0001");
 
-        session.setAttribute("userData", data);
-        session.setMaxInactiveInterval(60*60*24);
+        if (!data.getUser_code().equals(""))
+        {
+            data.setIp(getClientIP(request));
+            session.setAttribute("userData", data);
+            session.setMaxInactiveInterval(60*60*24);
+            apiLogSend(session,"접속");
+        }
 //
 //
 //        Cookie loginId = new Cookie("senUserData", data.getUser_code());

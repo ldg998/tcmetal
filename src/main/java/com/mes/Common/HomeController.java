@@ -1,7 +1,8 @@
 package com.mes.Common;
 
 import com.mes.Common.DataTransferObject.Page;
-import com.mes.Common.Function.ReturnFunction;
+import com.mes.Common.Function.LogFunction;
+import com.mes.Common.Interceptor.Session;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 
 @Controller
 @Slf4j
-public class HomeController extends ReturnFunction {
+public class HomeController extends LogFunction {
 
     @Autowired
     private HomeService homeService;
@@ -98,8 +100,14 @@ public class HomeController extends ReturnFunction {
     }
 
     @RequestMapping("/logout")
-    public String logout(HttpServletRequest req, HttpServletResponse res)
-    {
+    public String logout(HttpServletRequest req, HttpServletResponse res) throws UnsupportedEncodingException {
+        HttpSession session = req.getSession();
+        Session userData = (Session) session.getAttribute("userData");
+
+        if (userData != null && !userData.getUser_code().equals("")) {
+            apiLogSend(session,"종료");
+        }
+
         req.getSession().invalidate();
 //        Cookie[] cookies = req.getCookies();
 //        if (cookies != null) {

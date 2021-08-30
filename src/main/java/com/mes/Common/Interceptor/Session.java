@@ -27,4 +27,5 @@ public class Session {
     private String login_date;
     private String keyword;
     private String message;
+    private String ip;
 }

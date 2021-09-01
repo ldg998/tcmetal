@@ -15,6 +15,9 @@
     .swiper-slide {
         overflow: hidden;
     }
+    .swiper-wrapper{
+        overflow: hidden;
+    }
 </style>
 
 <div id="addDialog2" title="출하검사현황" style="display:none; ">

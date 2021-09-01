@@ -17,8 +17,12 @@
         overflow: hidden;
     }
 
-    .swiper-wrapper{
-        overflow: hidden;
+    #addDialog2 {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    #addDialog2::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
     }
 </style>
 

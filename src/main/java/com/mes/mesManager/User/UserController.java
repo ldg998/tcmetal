@@ -23,4 +23,10 @@ public class UserController {
 		return "mesManager/User/sysUserSupp/sysUserSupp";
 	}
 
+	@RequestMapping(value="/sysUserLog")
+	public String sysUserLog(){
+		return "mesManager/User/sysUserLog/sysUserLog";
+	}
+
+
 }

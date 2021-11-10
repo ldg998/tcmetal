@@ -9,6 +9,7 @@ import com.mes.Mapper.mesManager.User.UserMapper;
 import com.mes.mesManager.User.DTO.SYSDept;
 import com.mes.mesManager.User.DTO.SYSUser;
 import com.mes.mesManager.User.DTO.SYSUserSupp;
+import com.mes.mesManager.User.DTO.SYS_USER_LOG_CD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -143,5 +144,10 @@ public class UserService extends ReturnFunction {
 
     public List<SYSUser> sysUserAllGet(Page p, HttpServletRequest req) {
         return userMapper.sysUserAllGet(p);
+    }
+
+    public RESTful sysUserLogGet(Page p, HttpServletRequest req) {
+        List<SYS_USER_LOG_CD> rows = userMapper.sysUserLogGet(p);
+        return getListData(rows , p);
     }
 }

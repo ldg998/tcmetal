@@ -6,6 +6,7 @@ import com.mes.Common.Interceptor.Session;
 import com.mes.mesManager.User.DTO.SYSDept;
 import com.mes.mesManager.User.DTO.SYSUser;
 import com.mes.mesManager.User.DTO.SYSUserSupp;
+import com.mes.mesManager.User.DTO.SYS_USER_LOG_CD;
 import org.springframework.stereotype.Repository;
 
 
@@ -38,4 +39,6 @@ public interface UserMapper {
     List<SYSDept> sysDeptAllGet2(Page p);
 
     List<SYSUser> sysUserAllGet(Page p);
+
+    List<SYS_USER_LOG_CD> sysUserLogGet(Page p);
 }

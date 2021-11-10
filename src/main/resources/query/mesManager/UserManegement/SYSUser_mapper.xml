@@ -37,6 +37,13 @@
         EXEC SP_SYS_USER_PWD_RESET #{user_code},#{update_user},#{keyword}
     </select>
 
+     <select id="sysUserLogGet" resultType="com.mes.mesManager.User.DTO.SYS_USER_LOG_CD">
+      EXEC SP_SYS_USER_LOG_GET #{page},#{rows},#{start_date},#{end_date},#{sidx},#{sord}
+   </select>
+
+
+
+
 </mapper>
 
 

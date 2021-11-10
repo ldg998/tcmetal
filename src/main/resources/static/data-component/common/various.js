@@ -641,7 +641,36 @@ function part_type_select_ajax_all(tag,url,value,text,data){
 	});
 }
 
+function datepicker_makes_one_month(top_class_name,tag,num) {
+	var date = new Date();
+	date.setDate(date.getDate());
 
+	var year = date.getFullYear().toString();
+	var month = (date.getMonth()).toString();
+	if (num == 0) {
+		month = (date.getMonth()+1).toString();
+	}
+	var day = "";
+
+	date = new Date(year,month,num);
+
+	year = date.getFullYear().toString();
+	month = (date.getMonth()+1).toString();
+	day = date.getDate().toString();
+
+
+	if(month.length < 2) { month = '0'+month; }
+	if(day.length <2) { day = '0'+day; }
+
+	var strDate = year+month+day;
+
+	$(top_class_name).find( tag ).datepicker({
+		autoclose: true,
+		format:'yyyy-mm-dd',
+		language: "kr",
+		todayHighlight: true,
+	}).datepicker('setDate',formmatterDate2(strDate)).trigger("change");
+}
 function datepicker_makes(tag,num) {
 	var date = new Date();
 	date.setDate(date.getDate() + num);
@@ -666,7 +695,26 @@ function datepicker_years_make(tag,num) {
 
 }
 
+function datepicker_makes(top_class_name,tag,num) {
+	var date = new Date();
+	date.setDate(date.getDate() + num);
 
+	var year = date.getFullYear().toString();
+	var month = (date.getMonth()+1).toString();
+	var day = date.getDate().toString();
+
+	if(month.length < 2) { month = '0'+month; }
+	if(day.length <2) { day = '0'+day; }
+
+	var strDate = year+month+day;
+
+	$(top_class_name).find( tag ).datepicker({
+		autoclose: true,
+		format:'yyyy-mm-dd',
+		language: "kr",
+		todayHighlight: true,
+	}).datepicker('setDate',formmatterDate2(strDate)).trigger("change");
+}
 function datepicker_makes1(tag,num) {
 	var date = new Date();
 	date.setDate(date.getDate() + num);
@@ -679,7 +727,12 @@ function datepicker_makes1(tag,num) {
 		todayHighlight: true,
 	}).datepicker('setDate',date);
 }
-
+function grid_horizon_scroll(table_id) {
+	if ($(table_id).jqGrid('getGridParam', 'reccount') === 0)
+		$("table"+table_id+" tr.jqgfirstrow").css("height","1px");
+	else
+		$("table"+table_id+" tr.jqgfirstrow").css("height","0px");
+}
 
 
 function modalValuePush(name1,name2,name3) {

@@ -117,6 +117,12 @@ public class UserRestController extends LogFunction {
     public RESTful sysUserSuppGet(Page p, HttpServletRequest req) {
         return userService.sysUserSuppGet(p, req);
     }
+     @RequestMapping(value = "/sysUserLogGet", method = RequestMethod.POST)
+    public RESTful sysUserLogGet(Page p, HttpServletRequest req) {
+        return userService.sysUserLogGet(p, req);
+    }
+
+
     @RequestMapping(value = "/sysUserSuppOneGet", method = RequestMethod.POST)
     public SYSUserSupp sysUserSuppOneGet(Page p, HttpServletRequest req) {
         return userService.sysUserSuppOneGet(p, req);
@@ -136,5 +142,6 @@ public class UserRestController extends LogFunction {
     public Message sysUserPwdReset(HttpServletRequest req, SYSUser su) {
         return userService.sysUserPwdReset(req,su);
     }
+
 
 }

@@ -47,7 +47,7 @@
                             <i class="ace-icon fa fa-calendar dark" style="top: -2px;"></i>
                         </div>
                     </td>
-
+                    <input type="hidden" name="delivery_place" class="form-control h-25 modal_value" autocomplete="off" value="">
 <%--                    <td class="wt-px-50 td-title t-align-c padding-a-0">납품장소</td>--%>
 <%--                    <td class="wt-px-125">--%>
 <%--                        <input type="text" name="delivery_place" class="form-control h-25 modal_value" autocomplete="off">--%>

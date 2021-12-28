@@ -50,10 +50,6 @@ function addUdate_btn() {
                         trans_code = data.trans_code;
                         part_object = {supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code};
                     }
-
-
-
-
                 });
                 if (list.length === 0) {
                     alert("수량 및 납품장소를 다시 확인해주세요");

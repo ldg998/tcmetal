@@ -144,7 +144,7 @@ function modal_make1() {
 
     $("#addDialog").dialog({
         modal: true,
-        minWidth:1500,
+        minWidth:1550,
         height: 'auto',
         autoOpen: false,
         resizable: false,
@@ -184,7 +184,7 @@ function jqGrid_main_modal() {
         colModel : [// grid row 의 설정할 데이터 설정
             {name: 'qty2', index: 'qty2',  hidden:true},
             {name:'ord_no',index:'ord_no',hidden:true,key:true,width:110,fixed: true},
-            {name:'work_date',index:'work_date',width:110,fixed: true, formatter: formmatterDate2},
+            {name:'work_date',index:'work_date',width:80,fixed: true, formatter: formmatterDate2},
             {name:'supp_code',index:'supp_code',width:125,fixed: true,hidden:true},
             {name:'supp_name',index:'supp_name',width:125,fixed: true},
             {name:'po_no',index:'po_no',width:110,fixed: true},
@@ -194,10 +194,10 @@ function jqGrid_main_modal() {
             {name:'part_weight',index:'part_weight',width:110,fixed: true, formatter:'integer', align:'right'},
             {name:'trans_code',index:'trans_code',width:110,fixed: true,hidden:true},
             {name:'trans_name',index:'trans_name',width:110,fixed: true},
-            {name:'end_date',index:'end_date',width:110,fixed: true, formatter: formmatterDate2},
-            {name:'ord_qty',index:'ord_qty',width:125,fixed: true, formatter:'integer', align:'right'},
-            {name:'prev_qty',index:'prev_qty',width:110,fixed: true, formatter:'integer', align:'right'},
-            {name:'qty',index:'qty',width:125,fixed: true, formatter:'integer', align:'right',
+            {name:'end_date',index:'end_date',width:80,fixed: true, formatter: formmatterDate2},
+            {name:'ord_qty',index:'ord_qty',width:80,fixed: true, formatter:'integer', align:'right'},
+            {name:'prev_qty',index:'prev_qty',width:80,fixed: true, formatter:'integer', align:'right'},
+            {name:'qty',index:'qty',width:80,fixed: true, formatter:'integer', align:'right',
                 editable: true,
                 editoptions: {
 

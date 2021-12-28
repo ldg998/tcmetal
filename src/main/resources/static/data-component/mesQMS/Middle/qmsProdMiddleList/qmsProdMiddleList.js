@@ -250,7 +250,7 @@ function jqGrid_main() {
         mtype:"POST",
         datatype: "local",
         caption: "중간검사현황 | MES",
-        colNames: ['검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','검사결과','수정','폐기','첨부사진','부적합보고서','상태','상태','검사자','검사일시'],
+        colNames: ['검사일자','검사번호','업체','기종','품번','품명','단중','제품LOT','검사결과','수정','폐기','비고','첨부사진','부적합보고서','상태','상태','검사자','검사일시'],
         colModel: [
             {name: 'work_date', index: 'work_date',  width: 90, fixed:true,formatter: formmatterDate2},
             {name: 'qc_no', index: 'qc_no',  width: 120, key: true, fixed:true},
@@ -263,7 +263,7 @@ function jqGrid_main() {
             {name: 'qc_result_name', index: 'qc_result_name',  width: 60, fixed:true},
             {name: 'result2_name', index: 'result2_name',  width: 60, fixed:true},
             {name: 'result3_name', index: 'result3_name',  width: 200, fixed:true},
-
+            {name: 'remark', index: 'remark',  width: 200, fixed:true},
             {name: 'upload_path', index: 'upload_path', align:'center', width: 70, fixed:true,fixed:true,formatter: image_formatter},
             {name: 'file2_yn', index: 'file2_yn', align:'center', width: 70, fixed:true,formatter: file2_formatter},
             {name: 'status', index: 'status',  width: 60,hidden:true ,fixed:true},

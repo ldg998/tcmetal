@@ -71,8 +71,10 @@
             <div class="profile-info-value">
                 <input type="text" name="result3_name" class="form-control modal_value" autocomplete="off" readonly>
             </div>
-            <div class="profile-info-name"></div>
-            <div class="profile-info-value"></div>
+            <div class="profile-info-name">비고</div>
+            <div class="profile-info-value">
+                <input type="text" name="remark" class="form-control modal_value" autocomplete="off" readonly>
+            </div>
         </div>
     </div>
         <br/>

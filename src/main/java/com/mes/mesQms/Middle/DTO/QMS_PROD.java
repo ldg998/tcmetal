@@ -35,4 +35,5 @@ public class QMS_PROD {
     private int rownum_page;
     private int rec_count;
     private String upload_path;
+    private String remark;
 }

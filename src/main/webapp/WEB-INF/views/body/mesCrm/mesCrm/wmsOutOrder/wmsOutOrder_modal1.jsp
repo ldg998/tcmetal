@@ -8,6 +8,9 @@
         height: 18px !important;
     }
 
+    input[type=text][name="delivery_place"] {
+        height: 18px !important;
+    }
 </style>
 <div id="addDialog" title="출고지시서" style="display:none">
     <div class="col-lg-12">
@@ -45,13 +48,14 @@
                         </div>
                     </td>
 
-                    <td class="wt-px-50 td-title t-align-c padding-a-0">납품장소</td>
-                    <td class="wt-px-125">
-                        <input type="text" name="delivery_place" class="form-control h-25 modal_value" autocomplete="off">
-<%--                        <select name="delivery_place" id="modal1_select2" class="form-control keyword modal_value" style="width:100%">--%>
-<%--                            <option value="">성우</option>--%>
-<%--                        </select>--%>
-                    </td>
+<%--                    <td class="wt-px-50 td-title t-align-c padding-a-0">납품장소</td>--%>
+<%--                    <td class="wt-px-125">--%>
+<%--                        <input type="text" name="delivery_place" class="form-control h-25 modal_value" autocomplete="off">--%>
+<%--&lt;%&ndash;                        <select name="delivery_place" id="modal1_select2" class="form-control keyword modal_value" style="width:100%">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            <option value="">성우</option>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        </select>&ndash;%&gt;--%>
+<%--                    </td>--%>
+
                     <td class="wt-px-50 td-title t-align-c padding-a-0">선적일자</td>
                     <td class="wt-px-125">
                         <div class="input-icon input-icon-right">

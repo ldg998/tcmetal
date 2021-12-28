@@ -54,8 +54,9 @@ function sysUserLog_authcheck() { // 권한체크
 }
 
 function sysUserLog_datepickerInput() {
-    datepicker_makes_one_month(".sysUserLog","#sysUserLog_datepicker", 1);
-    datepicker_makes(".sysUserLog","#sysUserLog_datepicker2", 0);
+
+    datepicker_makes("#sysUserLog_datepicker", -30);
+    datepicker_makes("#sysUserLog_datepicker2", 0);
 }
 
 function sysUserLog_jqGrid_main() {

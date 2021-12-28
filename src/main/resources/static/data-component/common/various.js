@@ -695,7 +695,7 @@ function datepicker_years_make(tag,num) {
 
 }
 
-function datepicker_makes(top_class_name,tag,num) {
+/*function datepicker_makes(top_class_name,tag,num) {
 	var date = new Date();
 	date.setDate(date.getDate() + num);
 
@@ -714,7 +714,9 @@ function datepicker_makes(top_class_name,tag,num) {
 		language: "kr",
 		todayHighlight: true,
 	}).datepicker('setDate',formmatterDate2(strDate)).trigger("change");
-}
+}*/
+
+
 function datepicker_makes1(tag,num) {
 	var date = new Date();
 	date.setDate(date.getDate() + num);

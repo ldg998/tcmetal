@@ -25,7 +25,6 @@ function addUdate_btn() {
             var jdata = $("#mes_modal1_grid1").getRowData();
             if (jdata.length > 0) {
 
-
                 var list = [];
                 var list2 = [];
                 var transCheck = "Y";
@@ -34,31 +33,30 @@ function addUdate_btn() {
                 var part_object = {supp_code:"",part_kind:"",part_code:""};
                 var part_object2 = {supp_code:"",part_kind:"",part_code:""};
                 jdata.forEach(function (data, j) {
-                    if (data.qty !== '' && data.qty > 0) {
-                        list.push(data.ord_no + gu4 + data.qty + gu4 + data.outs_supp_code );
+                    if (data.qty !== '' && data.qty > 0 && data.delivery_place != '' ) {
+                        list.push(data.ord_no + gu4 + data.qty + gu4 + data.outs_supp_code + gu4 + data.delivery_place);
+
+
                         if (j !== 0) {
                             // if (trans_code !== data.trans_code) {
                             //     transCheck = "N";
                             // }
-
                             // if (JSON.stringify(part_object) !== JSON.stringify({supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code})) {
                             //     partCheck = "N";
                             // }
-
-
                         }
-
-
                     }
-
                     if (j == 0){
                         trans_code = data.trans_code;
                         part_object = {supp_code:data.supp_code,part_kind:data.part_kind,part_code:data.part_code};
                     }
 
+
+
+
                 });
                 if (list.length === 0) {
-                    alert("수량을 다시 확인해주세요");
+                    alert("수량 및 납품장소를 다시 확인해주세요");
                 } else if(transCheck === 'N') {
                     alert("운송수단을 다시 확인해주세요");
                 }else if(partCheck === 'N') {
@@ -186,7 +184,7 @@ function jqGrid_main_modal() {
     $("#mes_modal1_grid1").jqGrid({
         datatype: "local", // local 설정을 통해 handler 에 재요청하는 경우를 방지
         mtype: 'POST',// post 방식 데이터 전달
-        colNames : ['저장수량','수주번호','수주일자','업체','업체','PO','기종','품번','품명','단중','trans_code','운송수단','납기일','수주수량','기납품수량','납품수량','외주(열처리)','외주(열처리)'],// grid 헤더 설정
+        colNames : ['저장수량','수주번호','수주일자','업체','업체','PO','기종','품번','품명','단중','trans_code','운송수단','납기일','수주수량','기납품수량','납품수량','납품장소','외주(열처리)','외주(열처리)'],// grid 헤더 설정
         colModel : [// grid row 의 설정할 데이터 설정
             {name: 'qty2', index: 'qty2',  hidden:true},
             {name:'ord_no',index:'ord_no',hidden:true,key:true,width:110,fixed: true},
@@ -297,6 +295,55 @@ function jqGrid_main_modal() {
                     ]
                 }
             },
+            {name:'delivery_place',index:'delivery_place',width:125,fixed: true,
+                editable: true,
+                editoptions: {
+
+                    dataEvents: [
+                        {
+                            type: 'focus',
+                            fn: function (e) {
+
+
+                                // if(main_data.check !== 'I') {
+                                //     $(e.target).prop('readonly',true);
+                                // }
+
+                                $(e.target).attr('autocomplete', 'off');
+
+                            }
+                        },
+                        {
+                            type: 'keydown',
+                            fn: function (e) {
+                                if (e.keyCode === 13) {
+                                    var row = $(e.target).closest('tr.jqgrow');
+                                    var rowid = row.attr('id');
+                                    var data = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
+                                    var value = e.target.value;
+
+
+                                    $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                                }
+                            }
+
+                        },
+                        {
+                            type: 'focusout',
+                            fn: function (e) {
+                                var row = $(e.target).closest('tr.jqgrow');
+                                var rowid = row.attr('id');
+                                var data = $('#mes_modal1_grid1').jqGrid('getRowData', rowid);
+                                var value = e.target.value;
+
+
+                                $("#mes_modal1_grid1").jqGrid("saveCell", saverow, savecol);
+                            }
+                        }
+
+                    ]
+                }
+            },
             {name:'outs_supp_code',index:'outs_supp_code',width:110,fixed: true,hidden:true},
             {name:'outs_supp_name',index:'outs_supp_name',width:110,fixed: true}
 
@@ -354,10 +401,12 @@ function effectiveness1(data) {
     if (data.supp_code === ""){
         alert("업체를 선택해주세요");
         return false;
-    } else if(data.delivery_place === "") {
-        alert("납품장소를 입력해주세요");
-        return false;
-    } else {
+    }
+    // else if(data.delivery_place === "") {
+    //     alert("납품장소를 입력해주세요");
+    //     return false;
+    // }
+    else {
         return true;
     }
 
